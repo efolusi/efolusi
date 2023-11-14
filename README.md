@@ -52,8 +52,8 @@ Streamline your human resource processes with our HR tools.
 ### Security
 Protect your digital assets and ensure the security of your business.
 - [ ] **Perisai:** Securely manage and store passwords.
-- [ ] **Remote:** Access and manage desktops remotely.
-- [ ] **DNS:** Effectively manage domain settings.
-- [ ] **Auditrail:** Keep track of and analyze user activity logs.
+- [ ] **Kendali:** Access and manage desktops remotely.
+- [ ] **Hubungi:** Contact employees securely and effectively.
+- [ ] **Pelacak:** Keep track of and analyze user activity logs.
 
 Explore the full potential of Yukerjo and revolutionize the way you manage your business.
