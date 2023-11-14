@@ -4,7 +4,7 @@ Welcome to Yukerjo, your all-in-one platform for managing and enhancing your bus
 ### Products Overview
 #### DevTools
 Manage your online presence and technical operations efficiently with our suite of development tools.
-- [ ] **Sites:** Build and manage microsites effortlessly.
+- [ ] **Situs:** Build and manage microsites effortlessly.
 - [ ] **Outlet:** Run your e-commerce operations seamlessly.
 - [ ] **Assist:** Engage with your customers through a live chat platform.
 - [ ] **Setapp:** Simplify deployment processes.
