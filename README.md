@@ -12,7 +12,7 @@ Manage your online presence and technical operations efficiently with our suite 
 
 #### Productivity & Collaboration
 Empower your team and enhance collaboration with our productivity tools.
-- [ ] **Meetup:** Conducting conferences and meetings.
+- [x] **Meetup:** Conducting conferences and meetings.
 - [ ] **Naskah:** Creating and managing knowledge bases.
 - [ ] **Taktik:** Planning and executing projects.
 - [ ] **Placak:** Tracking tasks and projects.
@@ -33,7 +33,7 @@ Optimize your office operations with our suite of office tools.
 - [ ] **Poinpo:** Creating and editing slides.
 - [ ] **Hitung:** Creating and editing sheets.
 - [ ] **Tulisa:** Creating and editing docs.
-- [ ] **OnDisk:** Securely storing and managing digital assets.
+- [x] **OnDisk:** Securely storing and managing digital assets.
 
 #### Finance Management
 Take control of your financial processes with our finance tools.
