@@ -22,7 +22,6 @@ Empower your team and enhance collaboration with our productivity tools.
 Boost your brand visibility and engagement with our marketing tools.
 - [ ] **Blastr:** Amplifying social media presence.
 - [ ] **Survey:** Gathering insights through customizable forms.
-- [ ] **Emailo:** Managing business communications.
 - [ ] **Events:** Organizing and hosting events.
 - [ ] **Assist:** Engaging with customers through live chat.
 
@@ -32,7 +31,8 @@ Optimize your office operations with our suite of office tools.
 - [ ] **Poinpo:** Creating and editing slides.
 - [ ] **Hitung:** Creating and editing sheets.
 - [ ] **Tulisa:** Creating and editing docs.
-- [ ] **Cloudy:** Securely storing and managing digital assets.
+- [ ] **OnDisk:** Securely storing and managing digital assets.
+- [ ] **Emailo:** Managing business communications.
 
 #### Finance
 Take control of your financial processes with our finance tools.
