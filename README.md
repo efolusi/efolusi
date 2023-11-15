@@ -2,7 +2,7 @@
 Welcome to Yukerjo, your all-in-one platform for managing and enhancing your business. Explore our comprehensive suite of tools designed to streamline your operations, boost productivity, and elevate your business to new heights.
 
 ### Products Overview
-#### DevTools
+#### Development & Operations
 Manage your online presence and technical operations efficiently with our suite of development tools.
 - [ ] **Create:** Building and managing microsites.
 - [ ] **Outlet:** Running e-commerce operations.
@@ -10,31 +10,32 @@ Manage your online presence and technical operations efficiently with our suite 
 - [ ] **Monito:** Monitoring cloud or apps.
 - [ ] **Setapp:** Simplifying deployment processes.
 
-#### Productivity
+#### Productivity & Collaboration
 Empower your team and enhance collaboration with our productivity tools.
 - [ ] **Meetup:** Conducting conferences and meetings.
 - [ ] **Naskah:** Creating and managing knowledge bases.
 - [ ] **Taktik:** Planning and executing projects.
 - [ ] **Placak:** Tracking tasks and projects.
 - [ ] **Finder:** Streamlining bug reporting processes.
+- [ ] **Emailo:** Managing business communications.
+- [ ] **Hubung:** Contacting employees securely and effectively.
 
-#### Marketing
+#### Marketing & Engagement
 Boost your brand visibility and engagement with our marketing tools.
 - [ ] **Blastr:** Amplifying social media presence.
 - [ ] **Survey:** Gathering insights through customizable forms.
 - [ ] **Events:** Organizing and hosting events.
 - [ ] **Assist:** Engaging with customers through live chat.
 
-#### Office
+#### Document Management & Creation
 Optimize your office operations with our suite of office tools.
 - [ ] **Tandaa:** Streamlining document signing processes.
 - [ ] **Poinpo:** Creating and editing slides.
 - [ ] **Hitung:** Creating and editing sheets.
 - [ ] **Tulisa:** Creating and editing docs.
 - [ ] **OnDisk:** Securely storing and managing digital assets.
-- [ ] **Emailo:** Managing business communications.
 
-#### Finance
+#### Finance Management
 Take control of your financial processes with our finance tools.
 - [ ] **Jualan:** Efficiently managing point-of-sale operations.
 - [ ] **Faktur:** Generating and tracking quotations.
@@ -42,17 +43,16 @@ Take control of your financial processes with our finance tools.
 - [ ] **Kontak:** Managing and organizing contact lists.
 - [ ] **Salary:** Simplifying payroll management.
 
-#### HR Tools
+#### Human Resources & Recruitment
 Streamline your human resource processes with our HR tools.
 - [ ] **Gawean:** Posting job openings and managing recruitment processes.
 - [ ] **Pkerja:** Efficiently managing employee information and records.
 - [ ] **Referr:** Facilitating and tracking employee referrals.
 
-#### Security
+#### Security & Access Control
 Protect your digital assets and ensure the security of your business.
 - [ ] **Amanin:** Securely managing and storing passwords.
 - [ ] **Mbantu:** Accessing and managing desktops remotely.
-- [ ] **Hubung:** Contacting employees securely and effectively.
 - [ ] **Aktivi:** Keeping track of and analyzing user activity logs.
 
 Explore the full potential of Yukerjo and revolutionize the way you manage your business.
