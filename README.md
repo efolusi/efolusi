@@ -10,7 +10,7 @@ Manage your online presence and technical operations efficiently with our suite 
 - [ ] **Monito:** Monitoring cloud or apps.
 - [ ] **Setapp:** Simplifying deployment processes.
 
-### Productivity
+#### Productivity
 Empower your team and enhance collaboration with our productivity tools.
 - [ ] **Meetup:** Conducting conferences and meetings.
 - [ ] **Naskah:** Creating and managing knowledge bases.
@@ -18,7 +18,7 @@ Empower your team and enhance collaboration with our productivity tools.
 - [ ] **Placak:** Tracking tasks and projects.
 - [ ] **Finder:** Streamlining bug reporting processes.
 
-### Marketing
+#### Marketing
 Boost your brand visibility and engagement with our marketing tools.
 - [ ] **Blastr:** Amplifying social media presence.
 - [ ] **Survey:** Gathering insights through customizable forms.
@@ -26,7 +26,7 @@ Boost your brand visibility and engagement with our marketing tools.
 - [ ] **Events:** Organizing and hosting events.
 - [ ] **Assist:** Engaging with customers through live chat.
 
-### Office
+#### Office
 Optimize your office operations with our suite of office tools.
 - [ ] **Tandaa:** Streamlining document signing processes.
 - [ ] **Poinpo:** Creating and editing slides.
@@ -34,7 +34,7 @@ Optimize your office operations with our suite of office tools.
 - [ ] **Tulisa:** Creating and editing docs.
 - [ ] **Cloudy:** Securely storing and managing digital assets.
 
-### Finance
+#### Finance
 Take control of your financial processes with our finance tools.
 - [ ] **Jualan:** Efficiently managing point-of-sale operations.
 - [ ] **Faktur:** Generating and tracking quotations.
@@ -42,13 +42,13 @@ Take control of your financial processes with our finance tools.
 - [ ] **Kontak:** Managing and organizing contact lists.
 - [ ] **Salary:** Simplifying payroll management.
 
-### Human Resource
+#### Human Resource
 Streamline your human resource processes with our HR tools.
 - [ ] **Gawean:** Posting job openings and managing recruitment processes.
 - [ ] **Pkerja:** Efficiently managing employee information and records.
 - [ ] **Referr:** Facilitating and tracking employee referrals.
 
-### Security
+#### Security
 Protect your digital assets and ensure the security of your business.
 - [ ] **Amankn:** Securely managing and storing passwords.
 - [ ] **Mbantu:** Accessing and managing desktops remotely.
