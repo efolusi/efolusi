@@ -29,7 +29,7 @@ Boost your brand visibility and engagement with our marketing tools.
 
 #### Document Management & Creation
 Optimize your office operations with our suite of office tools.
-- [ ] **Tandaa:** Streamlining document signing processes.
+- [ ] **Tandai:** Streamlining document signing processes.
 - [ ] **Poinpo:** Creating and editing slides.
 - [ ] **Hitung:** Creating and editing sheets.
 - [ ] **Tulisa:** Creating and editing docs.
