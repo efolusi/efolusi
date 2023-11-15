@@ -50,7 +50,7 @@ Streamline your human resource processes with our HR tools.
 
 #### Security
 Protect your digital assets and ensure the security of your business.
-- [ ] **Amankn:** Securely managing and storing passwords.
+- [ ] **Amanin:** Securely managing and storing passwords.
 - [ ] **Mbantu:** Accessing and managing desktops remotely.
 - [ ] **Hubung:** Contacting employees securely and effectively.
 - [ ] **Aktivi:** Keeping track of and analyzing user activity logs.
