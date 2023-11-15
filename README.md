@@ -42,7 +42,7 @@ Take control of your financial processes with our finance tools.
 - [ ] **Kontak:** Managing and organizing contact lists.
 - [ ] **Salary:** Simplifying payroll management.
 
-#### Human Resource
+#### HR Tools
 Streamline your human resource processes with our HR tools.
 - [ ] **Gawean:** Posting job openings and managing recruitment processes.
 - [ ] **Pkerja:** Efficiently managing employee information and records.
