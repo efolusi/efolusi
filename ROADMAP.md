@@ -1,0 +1,10 @@
+- tasks management + tracker + invoice
+- cloud/app monitoring + logging + analytics
+- password management + credit card + secure note
+- chat + call + conference + sharescreen + drawing tool
+- cloud storage + words + slides + sheets + draw + share access
+- documentations + knowledge bases + custom domain (public/private access)
+- deployment for container base (apps, database, queue, cache, more) + monitoring + api management
+- ssh management + vpn integration + ftp/sftp + webdav/s3/gdrive + share access + command (bookmark & autocomplete)
+- web/mobile app builder + database management + visualization + automation + chatbot
+- screen record/capture + edit + comment + share (public/private) + dev mode (error detection by network/text/video)
