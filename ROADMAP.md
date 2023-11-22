@@ -8,3 +8,4 @@
 - ssh management + vpn integration + ftp/sftp + webdav/s3/gdrive + share access + command (bookmark & autocomplete)
 - web/mobile app builder + database management + visualization + automation + chatbot
 - screen record/capture + edit + comment + share (public/private) + dev mode (error detection by network/text/video)
+- recruitement (job post/pages/selection/interview/more ) + ats + HR + payroll + timeoff tracking + check-ins + performance
