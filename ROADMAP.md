@@ -1,11 +1,77 @@
-- tasks management + tracker + invoice
-- cloud/app monitoring + logging + analytics
-- password management + credit card + secure note
-- chat + call + conference + sharescreen + drawing tool
-- cloud storage + words + slides + sheets + draw + share access
-- documentations + knowledge bases + custom domain (public/private access)
-- deployment for container base (apps, database, queue, cache, more) + monitoring + api management
-- ssh management + vpn integration + ftp/sftp + webdav/s3/gdrive + share access + command (bookmark & autocomplete)
-- web/mobile app builder + database management + visualization + automation + chatbot
-- screen record/capture + edit + comment + share (public/private) + dev mode (error detection by network/text/video)
-- recruitement (job post/pages/selection/interview/more ) + ats + HR + payroll + timeoff tracking + check-ins + performance
+# ROADMAP
+
+## PRODUCTS
+
+### Taktik
+- tasks management
+- tracker
+- invoice
+
+### Radar
+- cloud monitoring
+- app monitoring
+- logging
+- analytics
+
+### Perisai
+- password management
+- credit card
+- secure note
+
+### Cakap
+- chat
+- call
+- conference
+- Share screen
+- drawing tool
+- recording
+
+### Simpan
+- cloud storage
+- words
+- slides
+- sheets
+- drawing tool
+- Share access
+
+### Naskah
+- documentations
+- knowledge bases
+- custom domain (public/private access)
+
+### Upcode
+- deployment for container base (apps, database, queue, cache, more)
+- monitoring
+- API management
+
+### Teleport
+- ssh management
+- VPN integration
+- ftp/sftp
+- WebDAV/s3/drive
+- Share access
+- command (bookmark & autocomplete)
+
+### Kraft
+- web/mobile app builder
+- database management
+- visualization
+- automation
+- chatbot
+
+### Replay
+- screen record/capture
+- edit
+- comment
+- Share (public/private)
+- dev mode (error detection by network/text/video)
+- post issue to GitLab, Bitbucket, GitHub
+
+### Pkerja
+- recruitment (job post/pages/selection/interview/more )
+- ATS
+- HR
+- payroll
+- time-off tracking
+- check-ins
+- performance
