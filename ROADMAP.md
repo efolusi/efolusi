@@ -31,6 +31,7 @@
 - words
 - slides
 - sheets
+- forms
 - drawing tool
 - Share access
 
@@ -75,3 +76,11 @@
 - time-off tracking
 - check-ins
 - performance
+
+### Blastr
+- multiple social media
+- create content
+- scheduler
+- analytics
+- omnichat
+- bio
