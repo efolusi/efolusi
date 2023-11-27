@@ -25,6 +25,7 @@
 - Share screen
 - drawing tool
 - recording
+- take control
 
 ### Simpan
 - cloud storage
