@@ -6,6 +6,7 @@
 - tasks management
 - tracker
 - invoice
+- payment
 
 ### Radar
 - cloud monitoring
