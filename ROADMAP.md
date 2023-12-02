@@ -2,22 +2,26 @@
 
 ## PRODUCTS
 
-### Taktik
+### Taktik (Web and Desktop App)
 - tasks management
 - tracker
 - invoice
 - payment
 
-### Radar
+### Radar (Web and Agent CLI)
 - cloud monitoring
 - app monitoring
 - logging
 - analytics
 
-### Perisai
-- password management
-- credit card
-- secure note
+### Perisai (Web and Chrome Extension)
+- Auth
+- User & Pass
+- Credit Card
+- Identity
+- Secure Note
+- Attachment
+- Share access
 
 ### Cakap
 - chat
