@@ -21,6 +21,7 @@
 - Identity
 - Secure Note
 - Attachment
+- Teams
 - Share access
 
 ### Cakap
