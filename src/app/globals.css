@@ -25,3 +25,18 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.slick-center {
+  opacity: 1;
+  transform: scale(1.08);
+  -ms-transform: scale(1.08);
+}
+
+/* .slick-prev {
+  z-index: 3;
+  left: 1rem
+}
+.slick-next {
+  z-index: 3;
+  right: 1rem
+} */

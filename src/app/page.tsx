@@ -1,8 +1,8 @@
 'use client'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import Image from 'next/image'
-import Slider from 'react-slick'
+import Slider, { Settings } from 'react-slick'
 import { PiHandWavingFill, PiPresentationChartBold } from "react-icons/pi";
 import { HiMenu, HiOutlineX  } from "react-icons/hi"
 import { HiOutlineLightBulb  } from "react-icons/hi2";
@@ -11,13 +11,21 @@ import { GoEye } from "react-icons/go";
 import { RiArrowRightCircleLine, RiArrowLeftCircleLine } from "react-icons/ri";
 import { FaFacebookF, FaTwitter, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
+import { useMediaQuery } from 'react-responsive'
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 
 function Home(){
 
   const home = classNames('flex min-h-screen flex-col items-center justify-center bg-white')
   const [show, setShow] = useState(false)
+  const sliderCommentRef = useRef<Slider>(null)
+  // const mdScreen = useMediaQuery({ query: '(min-width: 1024)' })
 
-  const carouselSettings = {
+  // useEffect(() => {
+  //   console.log(mdScreen)
+  // }, [mdScreen])
+
+  const carouselSettings: Settings = {
     swipe : false,
     infinite: true,
     slidesToShow: 3,
@@ -29,29 +37,48 @@ function Home(){
     arrows: false
   }
 
-  const carouselSettings2 = {
+  const carouselSettings2: Settings = {
     infinite: true,
+    speed: 500,
     slidesToShow: 3,
-    speed: 3000,
+    slidesToScroll: 3,
     cssEase: "linear",
-    classNames: "center",
+    className: "center",
     centerMode: true,
     centerPadding: "60px",
     dots: true,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+    ]
   }
 
   const carouselSettings3 = {
-    centerMode:true,
+    centerMode: true,
     classNames: "center",
     slidesToShow: 3,
     slidesToScroll: 1,
     dots: true,
     infinite: true,
     cssEase: 'linear',
-    // variableWidth: true,
-    nextArrow: <RiArrowRightCircleLine />,
-    prevArrow: <RiArrowLeftCircleLine />,
-    // variableHeight: true
   };
 
   const products1 = [
@@ -122,14 +149,14 @@ function Home(){
 
   return (
     <main className="flex align-middle min-h-screen flex-col bg-white">
-      <nav className="flex justify-between w-full p-[2rem] sm:px-0 md:px-[3em]">
+      {/* <nav className="flex justify-between w-full p-[2rem] sm:px-0 md:px-[3em]">
         <Image src="/logo.svg" alt="Logo" width={0} height={0} className='w-20' />
         <button type="button" onClick={() => setShow(!show)} className="inline-flex items-center border-[1px] p-3 w-15 h-15 justify-center text-sm text-gray-500 rounded-full border-black md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
           <span className="sr-only">Open main menu</span>
           {show ? <HiOutlineX size={25} /> : <HiMenu size={25} />}
       </button>
       <div className={`md:flex md:items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[1] left-0 w-full md:w-auto  transition-all duration-500 ease-in ${show ? 'top-21' : 'top-[-20rem]'}`}>
-      {/* <div className="hidden w-full md:flex md:items-center md:w-auto" id="navbar-default"> */}
+      <div className="hidden w-full md:flex md:items-center md:w-auto" id="navbar-default"> // comment
         <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
             <a href="#" className="block text-base py-2 px-3 text-white bg-neutral-950 rounded md:bg-transparent md:text-neutral-950 md:p-0 dark:text-white md:dark:text-neutral-950" aria-current="page">Home</a>
@@ -152,6 +179,42 @@ function Home(){
         <button className='py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-black hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Sign Up</button>
         <button className='text-white bg-neutral-950 hover:bg-neutral-800 focus:outline-none focus:ring-4 focus:ring-neutral-700 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:focus:ring-neutral-700'>Sign In</button>
       </div>
+      </nav> */}
+      <nav className='p-5 bg-white shadow md:flex md:items-center md:justify-between'>
+        <div className='flex justify-between items-center'>
+          <Image src="/logo.svg" alt="Logo" width={0} height={0} className='w-20' />
+          <button type="button" onClick={() => setShow(!show)} className="inline-flex items-center border-[1px] p-3 w-15 h-15 justify-center text-sm text-gray-500 rounded-full border-black md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span className="sr-only">Open main menu</span>
+          {show ? <HiOutlineX size={25} /> : <HiMenu size={25} />}
+      </button>
+        </div>
+
+        <ul className={`md:flex md:items-center md:z-auto md:static absolute bg-white w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 md:opacity-100 opacity-0 transition-all ease-in duration-500 ${show ? 'top-20 opacity-100 z-[1] h-full' : 'top-[-400px] z-[-1]'}`}>
+          <li className="px-4 py-6 pl-7 md:py-0 bg-neutral-950 md:bg-transparent">
+            <a href="#" className="text-base hover:text-cyan-500 duration-500 text-white rounded md:bg-transparent md:text-neutral-950 dark:text-white md:dark:text-neutral-950">HOME</a>
+          </li>
+          <li className="px-4 py-6 pl-7 md:py-0">
+            <a href="#" className="text-base hover:text-cyan-500 duration-500 text-neutral-600 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-800 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">SERVICE</a>
+          </li>
+          <li className="px-4 py-6 pl-7 md:py-0">
+            <a href="#" className="text-base hover:text-cyan-500 duration-500 text-neutral-600 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-800 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">ABOUT</a>
+          </li>
+          <li className="px-4 py-6 pl-7 md:py-0">
+            <a href="#" className="text-base hover:text-cyan-500 duration-500 text-neutral-600 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-800 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">CONTACT</a>
+          </li>
+          <li className="px-4 py-6 pl-7 md:py-0">
+            <a href="#" className="text-base hover:text-cyan-500 duration-500 text-neutral-600 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-neutral-800 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">BLOG</a>
+          </li>
+
+          <div className='flex md:hidden pl-7'>
+            <button className='py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-black hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Sign Up</button>
+            <button className='text-white bg-neutral-950 hover:bg-neutral-800 focus:outline-none focus:ring-4 focus:ring-neutral-700 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:focus:ring-neutral-700'>Sign In</button>
+          </div>
+        </ul>
+        <div className='hidden md:flex md:items-center'>
+          <button className='py-2.5 px-5 me-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-black hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'>Sign Up</button>
+          <button className='text-white bg-neutral-950 hover:bg-neutral-800 focus:outline-none focus:ring-4 focus:ring-neutral-700 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:focus:ring-neutral-700'>Sign In</button>
+        </div>
       </nav>
 
       <section className='flex justify-center flex-col items-center gap-4 pt-10 px-[1em] md:px-[3em]'>
@@ -267,16 +330,31 @@ function Home(){
           <p className='max-w-[651px] text-center text-[#545454]'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
 
-        <div className=''>
-          <Slider {...carouselSettings3}>
+        <div className='relative'>
+          <button className='bg-gradient-to-r from-white to-transparent absolute z-[3] h-full w-[7rem] flex items-center justify-center' onClick={() => sliderCommentRef.current?.slickPrev()}>
+          {/* <button className='absolute z-[3] top-[50%] left-3'>Prev</button> */}
+          <GrFormPrevious size={30} />
+          </button>
+          <Slider {...carouselSettings2} ref={sliderCommentRef}>
           {Array.from({ length: 11 }, (_, i) => (
             <div key={i}>
-              <div className='py-10 bg-red-600'>
-                <h1>{i+1}</h1>
+              <div className='m-2 p-3 shadow rounded-lg max-h-[12rem]'>
+                <h5 className='line-clamp-4 italic font-normal text-sm'>A game-changer for my business. Thank you for your expertise! The guidance and strategies provided by this team have transformed my business into a thriving success.</h5>
+                <div className='py-2 flex gap-2 items-center'>
+                  <img src="https://source.unsplash.com/random/500x500/?close-up-model" alt="profile" width={500} height={500} className='rounded-full w-9 h-9' />
+                  <div>
+                    <h5 className='font-jakarta font-bold text-lg'>Bojack Horse</h5>
+                    <h6 className='font-normal color-[#6E6E6E] text-base'>Full Stack Developer</h6>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
           </Slider>
+          <button className='bg-gradient-to-r from-transparent to-white absolute z-[3] h-full w-[7rem] right-0 top-0 flex items-center justify-center' onClick={() => sliderCommentRef.current?.slickNext()}>
+          {/* <button className='absolute z-[3] top-[50%] left-3'>Prev</button> */}
+            <GrFormNext size={30} />
+          </button>
         </div>
       </section>
 
