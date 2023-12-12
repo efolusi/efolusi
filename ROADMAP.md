@@ -24,15 +24,6 @@
 - Teams
 - Share access
 
-### Cakap (Web and Mobile)
-- chat
-- call
-- conference
-- Share screen
-- drawing tool
-- recording
-- take control
-
 ### Paperless (Web and Mobile)
 - office docs
 - office slides
@@ -44,6 +35,7 @@
 - office sign
 - office mail
 - office storage
+- office meet
 
 ### Teleport (Web and Desktop)
 - ssh management
