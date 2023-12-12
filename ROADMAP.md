@@ -2,19 +2,19 @@
 
 ## PRODUCTS
 
-### Taktik (Web and Desktop App)
+### Taktik (Web and Desktop)
 - tasks management
 - tracker
 - invoice
 - payment
 
-### Radar (Web and Agent CLI)
+### Radar (Web and CLI)
 - cloud monitoring
 - app monitoring
 - logging
 - analytics
 
-### Perisai (Web and Chrome Extension)
+### Perisai (Web and Chrome)
 - Auth
 - User & Pass
 - Credit Card
@@ -24,7 +24,7 @@
 - Teams
 - Share access
 
-### Cakap
+### Cakap (Web and Mobile)
 - chat
 - call
 - conference
@@ -33,26 +33,18 @@
 - recording
 - take control
 
-### Simpan
+### Paperless (Web and Mobile)
 - cloud storage
-- words
-- slides
-- sheets
-- forms
-- drawing tool
-- Share access
+- share access
+- office docs
+- office slides
+- office sheets
+- office forms
+- office codex
+- office draw
+- office play
 
-### Naskah
-- documentations
-- knowledge bases
-- custom domain (public/private access)
-
-### Upcode
-- deployment for container base (apps, database, queue, cache, more)
-- monitoring
-- API management
-
-### Teleport
+### Teleport (Web and Desktop)
 - ssh management
 - VPN integration
 - ftp/sftp
@@ -60,22 +52,14 @@
 - Share access
 - command (bookmark & autocomplete)
 
-### Kraft
-- web/mobile app builder
+### Kraft (Web)
+- web builder for market validation
 - database management
 - visualization
 - automation
 - chatbot
 
-### Replay
-- screen record/capture
-- edit
-- comment
-- Share (public/private)
-- dev mode (error detection by network/text/video)
-- post issue to GitLab, Bitbucket, GitHub
-
-### Pkerja
+### Pkerja (Web)
 - recruitment (job post/pages/selection/interview/more )
 - ATS
 - HR
@@ -84,7 +68,7 @@
 - check-ins
 - performance
 
-### Blastr
+### Blastr (Web)
 - multiple social media
 - create content
 - scheduler
