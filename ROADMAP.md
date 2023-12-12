@@ -43,6 +43,7 @@
 - office codex
 - office draw
 - office play
+- office sign
 
 ### Teleport (Web and Desktop)
 - ssh management
