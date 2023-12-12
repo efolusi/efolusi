@@ -34,8 +34,6 @@
 - take control
 
 ### Paperless (Web and Mobile)
-- cloud storage
-- share access
 - office docs
 - office slides
 - office sheets
@@ -44,6 +42,8 @@
 - office draw
 - office play
 - office sign
+- office mail
+- office storage
 
 ### Teleport (Web and Desktop)
 - ssh management
