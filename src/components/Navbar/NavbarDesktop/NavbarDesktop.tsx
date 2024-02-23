@@ -118,7 +118,7 @@ export const NavbarDesktop = ({
                         className={`flex justify-evenly p-8 pointer-events-none h-fit`}
                       >
                         <div>
-                          <h3 className="font-sans font-medium text-2xl">
+                          <h3 className="font-sans font-medium text-2xl mb-7">
                             Server
                           </h3>
                           <div className="flex flex-row gap-5">
@@ -140,7 +140,7 @@ export const NavbarDesktop = ({
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-sans font-medium text-2xl">
+                          <h3 className="font-sans font-medium text-2xl  mb-7">
                             Management
                           </h3>
                           <div className="flex flex-col gap-3">
@@ -198,7 +198,7 @@ export const NavbarDesktop = ({
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-sans font-medium text-2xl">
+                          <h3 className="font-sans font-medium text-2xl mb-7">
                             Education
                           </h3>
                           <div className="flex flex-col gap-3">
@@ -239,7 +239,7 @@ export const NavbarDesktop = ({
                           </div>
                         </div>
                         <div>
-                          <h3 className="font-sans font-medium text-2xl">
+                          <h3 className="font-sans font-medium text-2xl mb-7">
                             Application
                           </h3>
                           <div className="flex flex-col gap-3">
