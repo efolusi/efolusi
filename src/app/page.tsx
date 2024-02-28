@@ -37,6 +37,27 @@ function Home() {
     cssEase: 'linear',
     pauseOnFocus: true,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+    ],
   };
 
   const carouselSettings2: Settings = {
@@ -206,13 +227,13 @@ function Home() {
         <Slider {...carouselSettings}>
           {Array.from({ length: 12 }, (_, i) => (
             <div key={i}>
-              <div className="py-10 mx-3">
+              <div className="p-10">
                 <Image
                   src={`/company/img${i + 1}.png`}
                   alt={`logo ${i + 1}`}
                   width={400}
                   height={120}
-                  className="mx-auto w-full h-full max-h-16"
+                  className="mx-auto w-[400px] h-full object-contain max-h-16"
                 />
               </div>
             </div>
@@ -223,7 +244,9 @@ function Home() {
       <section className="px-[1em] md:px-[3em]">
         <div className="flex justify-center flex-col items-center gap-4 py-16">
           <div className="bg-[#C4DFAA66] p-4 rounded-full">
-            <p className="text-xs leading-[18px] font-medium">Benefits will you get</p>
+            <p className="text-xs leading-[18px] font-medium">
+              Benefits will you get
+            </p>
           </div>
           <h1 className="font-jakarta font-bold text-5xl text-center">
             The advantage using our products
