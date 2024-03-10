@@ -30,7 +30,7 @@ function Home() {
   const carouselSettings: Settings = {
     swipe: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: 4,
     autoplay: true,
     speed: 3000,
     autoplaySpeed: 3000,
@@ -233,7 +233,7 @@ function Home() {
                   alt={`logo ${i + 1}`}
                   width={400}
                   height={120}
-                  className="mx-auto w-[400px] h-full object-contain max-h-16"
+                  className="mx-auto w-full h-[45px] object-contain max-h-16"
                 />
               </div>
             </div>
