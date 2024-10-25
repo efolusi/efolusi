@@ -6,7 +6,7 @@ Our cloud-based platform offers a complete set of tools to boost business produc
 - [x] **Komando:** Accessing and managing servers.
 - [x] **Monitory:** Monitoring and analyzing activity logs.
 - [x] **Kongkow:** Conducting conferences and meetings.
-- [x] **Worksite:** Creating and managing projects.
+- [x] **Workspace:** Creating and managing projects.
 - [x] **Findbugs:** Record and share bugs to the teams.
 - [x] **Tandata:** Streamlining document signing processes.
 - [x] **Outlet:** Efficiently managing point-of-sale operations.
