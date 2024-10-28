@@ -8,7 +8,5 @@ Our cloud-based platform offers a complete set of tools to boost business produc
 - [x] **Kongkow:** Conducting conferences and meetings.
 - [x] **Worksite:** Creating and managing projects.
 - [x] **Findbugs:** Record and share bugs to the teams.
-- [x] **Tandata:** Streamlining document signing processes.
-- [x] **Outlet:** Efficiently managing point-of-sale operations.
 
 Explore the full potential of Efolusi and revolutionize the way you manage your business.
