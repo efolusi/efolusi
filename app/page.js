@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const stageProducts = [
   {
@@ -229,7 +229,20 @@ export default function HomePage() {
   const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterButton, setNewsletterButton] = useState('Subscribe');
-  const [openFaqIndex, setOpenFaqIndex] = useState(0);
+  const [openFaqIndex, setOpenFaqIndex] = useState(-1);
+  const faqRefs = useRef([]);
+  const [faqHeights, setFaqHeights] = useState([]);
+
+  useEffect(() => {
+    const update = () => {
+      setFaqHeights(faqRefs.current.map((el) => (el ? el.scrollHeight : 0)));
+    };
+
+    // initial measurement and on window resize
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   const activeProduct = stageProducts.find((item) => item.id === activeStage) || stageProducts[0];
 
@@ -649,11 +662,17 @@ export default function HomePage() {
 
                 return (
                   <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                    <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)}>
+                    <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
                       {question}
                       <span className="pm" />
                     </button>
-                    <div className="faq-a" style={{ maxHeight: open ? 400 : null }}>
+                    <div
+                      className="faq-a"
+                      ref={(el) => {
+                        faqRefs.current[index] = el;
+                      }}
+                      style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
+                    >
                       <div className="faq-a-inner">{answer}</div>
                     </div>
                   </div>
