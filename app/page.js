@@ -657,27 +657,61 @@ export default function HomePage() {
             <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." lede="" />
 
             <div className="faq faq-items">
-              {faqItems.map(([question, answer], index) => {
-                const open = openFaqIndex === index;
+              <div className="faq-col">
+                {faqItems
+                  .map((pair, i) => [pair, i])
+                  .filter(([, i]) => i % 2 === 0)
+                  .map(([questionAndAnswer, index]) => {
+                    const [question, answer] = questionAndAnswer;
+                    const open = openFaqIndex === index;
 
-                return (
-                  <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                    <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
-                      {question}
-                      <span className="pm" />
-                    </button>
-                    <div
-                      className="faq-a"
-                      ref={(el) => {
-                        faqRefs.current[index] = el;
-                      }}
-                      style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
-                    >
-                      <div className="faq-a-inner">{answer}</div>
-                    </div>
-                  </div>
-                );
-              })}
+                    return (
+                      <div className={`faq-item${open ? ' open' : ''}`} key={question}>
+                        <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
+                          {question}
+                          <span className="pm" />
+                        </button>
+                        <div
+                          className="faq-a"
+                          ref={(el) => {
+                            faqRefs.current[index] = el;
+                          }}
+                          style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
+                        >
+                          <div className="faq-a-inner">{answer}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              <div className="faq-col">
+                {faqItems
+                  .map((pair, i) => [pair, i])
+                  .filter(([, i]) => i % 2 === 1)
+                  .map(([questionAndAnswer, index]) => {
+                    const [question, answer] = questionAndAnswer;
+                    const open = openFaqIndex === index;
+
+                    return (
+                      <div className={`faq-item${open ? ' open' : ''}`} key={question}>
+                        <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
+                          {question}
+                          <span className="pm" />
+                        </button>
+                        <div
+                          className="faq-a"
+                          ref={(el) => {
+                            faqRefs.current[index] = el;
+                          }}
+                          style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
+                        >
+                          <div className="faq-a-inner">{answer}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
           </div>
         </section>

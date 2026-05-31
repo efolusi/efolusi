@@ -1150,11 +1150,17 @@ body[data-show="grid"] .products {
 .faq {}
 
 .faq-items {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 56px;
-    align-items: start;
+    display: flex;
+    gap: 56px;
+    align-items: flex-start;
     border-top: 1px solid var(--line);
+}
+
+.faq-col {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .faq-item {
