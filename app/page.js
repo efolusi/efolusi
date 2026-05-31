@@ -293,7 +293,7 @@ export default function HomePage() {
       })
       .catch((err) => {
         console.error('Send error', err);
-        setContactStatus({ type: 'error', text: 'Sorry — there was an error sending your message.' });
+        setContactStatus({ type: 'error', text: err?.message || 'Sorry — there was an error sending your message.' });
       });
   };
 
