@@ -232,6 +232,7 @@ export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState(-1);
   const faqRefs = useRef([]);
   const [faqHeights, setFaqHeights] = useState([]);
+  const [isNarrow, setIsNarrow] = useState(false);
 
   useEffect(() => {
     const update = () => {
@@ -242,6 +243,19 @@ export default function HomePage() {
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 900px)');
+    const onChange = () => setIsNarrow(mq.matches);
+    onChange();
+    mq.addEventListener?.('change', onChange);
+    // fallback for older browsers
+    if (!mq.addEventListener) mq.addListener(onChange);
+    return () => {
+      mq.removeEventListener?.('change', onChange);
+      if (!mq.removeEventListener) mq.removeListener(onChange);
+    };
   }, []);
 
   const activeProduct = stageProducts.find((item) => item.id === activeStage) || stageProducts[0];
@@ -657,14 +671,10 @@ export default function HomePage() {
             <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." lede="" />
 
             <div className="faq faq-items">
-              <div className="faq-col">
-                {faqItems
-                  .map((pair, i) => [pair, i])
-                  .filter(([, i]) => i % 2 === 0)
-                  .map(([questionAndAnswer, index]) => {
-                    const [question, answer] = questionAndAnswer;
+              {isNarrow ? (
+                <div className="faq-col">
+                  {faqItems.map(([question, answer], index) => {
                     const open = openFaqIndex === index;
-
                     return (
                       <div className={`faq-item${open ? ' open' : ''}`} key={question}>
                         <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
@@ -683,35 +693,66 @@ export default function HomePage() {
                       </div>
                     );
                   })}
-              </div>
+                </div>
+              ) : (
+                <>
+                  <div className="faq-col">
+                    {faqItems
+                      .map((pair, i) => [pair, i])
+                      .filter(([, i]) => i % 2 === 0)
+                      .map(([questionAndAnswer, index]) => {
+                        const [question, answer] = questionAndAnswer;
+                        const open = openFaqIndex === index;
 
-              <div className="faq-col">
-                {faqItems
-                  .map((pair, i) => [pair, i])
-                  .filter(([, i]) => i % 2 === 1)
-                  .map(([questionAndAnswer, index]) => {
-                    const [question, answer] = questionAndAnswer;
-                    const open = openFaqIndex === index;
+                        return (
+                          <div className={`faq-item${open ? ' open' : ''}`} key={question}>
+                            <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
+                              {question}
+                              <span className="pm" />
+                            </button>
+                            <div
+                              className="faq-a"
+                              ref={(el) => {
+                                faqRefs.current[index] = el;
+                              }}
+                              style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
+                            >
+                              <div className="faq-a-inner">{answer}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
 
-                    return (
-                      <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                        <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
-                          {question}
-                          <span className="pm" />
-                        </button>
-                        <div
-                          className="faq-a"
-                          ref={(el) => {
-                            faqRefs.current[index] = el;
-                          }}
-                          style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
-                        >
-                          <div className="faq-a-inner">{answer}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
+                  <div className="faq-col">
+                    {faqItems
+                      .map((pair, i) => [pair, i])
+                      .filter(([, i]) => i % 2 === 1)
+                      .map(([questionAndAnswer, index]) => {
+                        const [question, answer] = questionAndAnswer;
+                        const open = openFaqIndex === index;
+
+                        return (
+                          <div className={`faq-item${open ? ' open' : ''}`} key={question}>
+                            <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
+                              {question}
+                              <span className="pm" />
+                            </button>
+                            <div
+                              className="faq-a"
+                              ref={(el) => {
+                                faqRefs.current[index] = el;
+                              }}
+                              style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
+                            >
+                              <div className="faq-a-inner">{answer}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>
