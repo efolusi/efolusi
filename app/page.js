@@ -229,6 +229,7 @@ export default function HomePage() {
   const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterButton, setNewsletterButton] = useState('Subscribe');
+  const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
   const [openFaqIndex, setOpenFaqIndex] = useState(-1);
   const faqRefs = useRef([]);
   const [faqHeights, setFaqHeights] = useState([]);
@@ -299,21 +300,39 @@ export default function HomePage() {
 
   const handleNewsletterSubmit = (event) => {
     event.preventDefault();
+    const formEl = event.currentTarget;
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(formEl);
     const email = String(formData.get('email') || '').trim();
 
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      event.currentTarget.querySelector('input')?.focus();
+      setNewsletterStatus({ type: 'error', text: 'Please enter a valid email address.' });
+      formEl.querySelector('input')?.focus();
       return;
     }
 
-    setNewsletterButton('Subscribed ✓');
-    event.currentTarget.reset();
+    setNewsletterStatus({ type: 'sending', text: 'Subscribing…' });
 
-    window.setTimeout(() => {
-      setNewsletterButton('Subscribe');
-    }, 2600);
+    fetch('/api/newsletter', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email })
+    })
+      .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Subscribe failed');
+        setNewsletterButton('Subscribed ✓');
+        setNewsletterStatus({ type: 'success', text: 'Thanks — you are on the list.' });
+        formEl.reset();
+
+        window.setTimeout(() => {
+          setNewsletterButton('Subscribe');
+        }, 2600);
+      })
+      .catch((err) => {
+        console.error('Newsletter error', err);
+        setNewsletterStatus({ type: 'error', text: err?.message || 'Sorry — there was an error subscribing.' });
+      });
   };
 
   return (
@@ -826,6 +845,9 @@ export default function HomePage() {
                   {newsletterButton}
                 </button>
               </form>
+              <div className="form-msg" role="status" style={{ color: newsletterStatus.type === 'error' ? 'var(--accent-deep)' : 'var(--accent)' }}>
+                {newsletterStatus.text}
+              </div>
             </div>
           </div>
         </section>
