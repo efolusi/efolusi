@@ -1695,9 +1695,17 @@ body[data-show="grid"] .products {
     }
 
     /* Reduce heading → FAQ spacing on mobile to remove blank gap */
-    .shead { margin-bottom: 14px; }
-    section#faq { padding-top: 42px; }
-    .faq-items { margin-top: 0; }
+    .shead {
+        margin-bottom: 14px;
+    }
+
+    section#faq {
+        padding-top: 42px;
+    }
+
+    .faq-items {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 480px) {
