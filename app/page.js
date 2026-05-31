@@ -278,8 +278,23 @@ export default function HomePage() {
       return;
     }
 
-    setContactStatus({ type: 'success', text: 'Thanks - we will be in touch shortly.' });
-    event.currentTarget.reset();
+    setContactStatus({ type: 'sending', text: 'Sending…' });
+
+    fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message })
+    })
+      .then(async (res) => {
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || 'Send failed');
+        setContactStatus({ type: 'success', text: 'Thanks — we will be in touch shortly.' });
+        event.currentTarget.reset();
+      })
+      .catch((err) => {
+        console.error('Send error', err);
+        setContactStatus({ type: 'error', text: 'Sorry — there was an error sending your message.' });
+      });
   };
 
   const handleNewsletterSubmit = (event) => {
