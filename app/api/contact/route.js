@@ -37,9 +37,20 @@ export async function POST(req) {
       html: `<p>${message.replace(/\n/g, '<br/>')}</p><p>From: ${name} &lt;${email}&gt;</p>`
     };
 
-    await transport.sendMail(mail);
+    const info = await transport.sendMail(mail);
 
-    return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    // Nodemailer may resolve but still report rejected recipients
+    if (info && Array.isArray(info.rejected) && info.rejected.length > 0) {
+      console.error('Mail rejected', info);
+      return new Response(JSON.stringify({ ok: false, error: 'Message rejected by SMTP server' }), { status: 502 });
+    }
+
+    if (info && Array.isArray(info.accepted) && info.accepted.length === 0) {
+      console.error('No accepted recipients', info);
+      return new Response(JSON.stringify({ ok: false, error: 'No recipients accepted by SMTP server' }), { status: 502 });
+    }
+
+    return new Response(JSON.stringify({ ok: true, info }), { status: 200 });
   } catch (err) {
     console.error('Contact send error', err);
     return new Response(JSON.stringify({ ok: false, error: 'Send failed' }), { status: 500 });

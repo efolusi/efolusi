@@ -287,7 +287,7 @@ export default function HomePage() {
     })
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
-        if (!res.ok) throw new Error(data.error || 'Send failed');
+        if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Send failed');
         setContactStatus({ type: 'success', text: 'Thanks — we will be in touch shortly.' });
         event.currentTarget.reset();
       })
