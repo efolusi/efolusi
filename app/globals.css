@@ -1630,6 +1630,56 @@ body[data-show="grid"] .products {
     }
 }
 
+/* FAQ responsive: stack columns on small screens and tighten spacing */
+@media (max-width: 900px) {
+    .faq-items {
+        flex-direction: column;
+        gap: 28px;
+        border-top: 1px solid var(--line);
+    }
+
+    .faq-col {
+        width: 100%;
+    }
+
+    .faq-q {
+        padding: 20px 0;
+        font-size: clamp(17px, 2.4vw, 22px);
+    }
+
+    .faq-a-inner {
+        padding: 0 0 22px;
+        max-width: 100%;
+    }
+
+    .faq-q .pm {
+        width: 20px;
+        height: 20px;
+    }
+
+    .faq-q .pm::before {
+        left: auto;
+        right: 0;
+        top: 9px;
+        width: 18px;
+        height: 2px;
+    }
+
+    .faq-q .pm::after {
+        left: auto;
+        right: 9px;
+        top: 0;
+        width: 2px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .faq-q { padding: 16px 0; }
+    .faq-items { gap: 18px; }
+    .wrap { padding: 0 18px; }
+}
+
 @media (max-width: 680px) {
     .wrap {
         padding: 0 22px;
