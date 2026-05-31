@@ -34,7 +34,7 @@ const stageProducts = [
     title: 'Toolips',
     desc: 'All-in-one productivity tools. 100+ utilities to convert, compress, edit and export - no accounts, no subscriptions, always available.',
     specs: ['100+ utilities', 'No account', 'Always free'],
-    href: 'https://efolusi.com/products/toolips',
+    href: 'https://toolips.xyz',
     buttonLabel: 'Visit Toolips',
     tag: 'Productivity',
     summary: '100+ productivity utilities — convert, compress, edit and export. No accounts, free.'
