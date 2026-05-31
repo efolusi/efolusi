@@ -262,8 +262,8 @@ export default function HomePage() {
 
   const handleContactSubmit = (event) => {
     event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
+    const formEl = event.currentTarget;
+    const formData = new FormData(formEl);
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
@@ -289,7 +289,7 @@ export default function HomePage() {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Send failed');
         setContactStatus({ type: 'success', text: 'Thanks — we will be in touch shortly.' });
-        event.currentTarget.reset();
+        formEl.reset();
       })
       .catch((err) => {
         console.error('Send error', err);
