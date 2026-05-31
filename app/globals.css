@@ -1675,9 +1675,17 @@ body[data-show="grid"] .products {
 }
 
 @media (max-width: 480px) {
-    .faq-q { padding: 16px 0; }
-    .faq-items { gap: 18px; }
-    .wrap { padding: 0 18px; }
+    .faq-q {
+        padding: 16px 0;
+    }
+
+    .faq-items {
+        gap: 18px;
+    }
+
+    .wrap {
+        padding: 0 18px;
+    }
 }
 
 @media (max-width: 680px) {
