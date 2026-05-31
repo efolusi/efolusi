@@ -86,9 +86,7 @@ const stats = [
 
 const team = [
   ['01', 'S', 'Sugeng Agung Suganda', 'Founder & CEO'],
-  ['02', 'S', 'Sari Wijaya', 'Head of Engineering'],
-  ['03', 'B', 'Bima Saputra', 'Head of Design'],
-  ['04', 'D', 'Dewi Anggraini', 'Head of Product']
+  ['02', 'R', 'Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
 const quotes = [
