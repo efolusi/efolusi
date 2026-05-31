@@ -1783,9 +1783,6 @@ body[data-show="grid"] .products {
         width: 100%;
     }
 
-    .faq-items {
-        grid-template-columns: 1fr;
-    }
 
     .stat {
         border-left: none;
