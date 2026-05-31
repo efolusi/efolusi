@@ -1187,7 +1187,7 @@ body[data-show="grid"] .products {
 }
 
 .faq-q:hover {
-    color: var(--accent);
+    /* keep text color stable on hover; only change the toggle icon */
 }
 
 .faq-q .pm {
@@ -1195,6 +1195,7 @@ body[data-show="grid"] .products {
     width: 18px;
     height: 18px;
     flex: none;
+    color: var(--ink-3);
 }
 
 .faq-q .pm::before,
@@ -1221,6 +1222,26 @@ body[data-show="grid"] .products {
 
 .faq-item.open .faq-q .pm::after {
     transform: scaleY(0);
+}
+
+/* Only color the toggle icon on hover/focus/open, preserve question text color */
+.faq-q:hover .pm,
+.faq-q:focus .pm,
+.faq-q:active .pm,
+.faq-item.open .faq-q .pm {
+    color: var(--accent);
+}
+
+/* Keep the question text from turning accent when the item is open or focused */
+.faq-item.open .faq-q,
+.faq-q:focus {
+    color: var(--ink);
+}
+
+/* Improve focus visibility without changing text color */
+.faq-q:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--accent) 8%, transparent);
+    outline-offset: 6px;
 }
 
 .faq-a {
