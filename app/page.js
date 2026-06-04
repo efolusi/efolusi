@@ -628,11 +628,7 @@ export default function HomePage() {
                   A small team, <span className="it acc">distributed</span> - held to one standard.
                 </>
               }
-              lede={
-                <>
-                  A focused group of builders who care deeply about craft. <em>Names and avatars are placeholders - send me the real team and I will drop them in.</em>
-                </>
-              }
+              lede="A focused group of builders who care deeply about craft."
             />
 
             <div className="team-grid">
@@ -651,7 +647,7 @@ export default function HomePage() {
 
         <section className="section rule" id="testimonials">
           <div className="wrap">
-            <SectionHeading kicker="04 / In the wild" title="Used every day." lede={<em>Placeholder quotes - swap in real testimonials when you have them.</em>} />
+            <SectionHeading kicker="04 / In the wild" title="Used every day." lede="" />
 
             <div className="quotes">
               {quotes.map(([letter, body, name, role]) => (
