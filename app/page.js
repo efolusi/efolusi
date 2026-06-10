@@ -78,10 +78,10 @@ const stageProducts = [
 ];
 
 const stats = [
-  ['06', 'Products in the portfolio - each built to lead its category'],
+  ['06', 'Products across the portfolio - one standard of craft'],
   ['100+', 'Exchanges, utilities and integrations connected'],
   ['20+', 'Social channels reached from one publish'],
-  ['24/7', 'Autonomous, always-on - built to run without you']
+  ['24/7', 'Autonomous, always-on - built to keep moving']
 ];
 
 const team = [
@@ -120,7 +120,7 @@ const roles = [
 const faqItems = [
   [
     'What is Efolusi?',
-    'Efolusi is a technology company based in Indonesia. We build independent software products across AI, cloud infrastructure, productivity, content creation, social media and automated trading. Each product is its own platform, made to be the best in its category.'
+    'Efolusi is a technology company based in Indonesia. We build independent software products across AI, cloud infrastructure, productivity, content creation, social media and automation. The portfolio is broad by design: different categories, one standard for clarity, usefulness and craft.'
   ],
   [
     'Where are you based?',
@@ -128,7 +128,7 @@ const faqItems = [
   ],
   [
     'Are you hiring?',
-    'Yes. We are always looking for people who care deeply about craft and want to build products that last. If that sounds like you, reach out through our contact form.'
+    'Yes. We are always looking for people who care deeply about craft and want to build products across categories. If that sounds like you, reach out through our contact form.'
   ],
   [
     'How do I get support for a product?',
@@ -294,7 +294,7 @@ export default function HomePage() {
       })
       .catch((err) => {
         console.error('Send error', err);
-        setContactStatus({ type: 'error', text: err?.message || 'Sorry — there was an error sending your message.' });
+        setContactStatus({ type: 'error', text: 'We could not send your message right now. Please try again in a moment.' });
       });
   };
 
@@ -331,7 +331,7 @@ export default function HomePage() {
       })
       .catch((err) => {
         console.error('Newsletter error', err);
-        setNewsletterStatus({ type: 'error', text: err?.message || 'Sorry — there was an error subscribing.' });
+        setNewsletterStatus({ type: 'error', text: 'We could not subscribe you right now. Please try again in a moment.' });
       });
   };
 
@@ -388,18 +388,18 @@ export default function HomePage() {
         <section className="hero" id="hero">
           <div className="wrap hero-main">
             <div className="hero-top mono" data-rise="2">
-              <span>Independent software studio</span>
+              <span>General software studio</span>
               <span>Made in Indonesia</span>
             </div>
 
             <h1 data-rise="2">
-              Tools people love using. <span className="it">Built to lead</span> their category.
+              General-purpose software. <span className="it">Built with</span> one standard.
             </h1>
 
             <div className="hero-row">
               <div>
                 <p className="hero-sub" data-rise="3">
-                  Independent software for developers, creators, traders and operators. Every product earns its place in your workflow - or we do not ship it.
+                  We build independent products across AI, infrastructure, productivity, content, social and automation. Different categories, one standard: software that earns its place in everyday work.
                 </p>
 
                 <div className="hero-actions" data-rise="4">
@@ -418,7 +418,7 @@ export default function HomePage() {
                     <span className="av">T</span>
                     <span className="av">O</span>
                   </div>
-                  <p>Used by developers, creators and traders every day.</p>
+                  <p>Built for modern digital work, wherever it happens.</p>
                 </div>
               </div>
 
@@ -453,12 +453,12 @@ export default function HomePage() {
             <span>Built for the world</span>
             <span>Quality before growth</span>
             <span>Opinionated by design</span>
-            <span>Built to lead the category</span>
+            <span>Built with one standard</span>
             <span>No feature bloat</span>
             <span>Built for the world</span>
             <span>Quality before growth</span>
             <span>Opinionated by design</span>
-            <span>Built to lead the category</span>
+            <span>Built with one standard</span>
             <span>No feature bloat</span>
           </div>
         </div>
@@ -486,7 +486,7 @@ export default function HomePage() {
               <h2>
                 Six platforms. <span className="it acc">One standard.</span>
               </h2>
-              <p className="lede">Each product starts from a single question - what does the best version of this look like? Select one to look closer.</p>
+              <p className="lede">Different categories, one product philosophy: make useful software clearer, faster and easier to trust. Select one to look closer.</p>
             </div>
 
             <div className="stage-wrap reveal" id="stage-wrap">
@@ -563,12 +563,12 @@ export default function HomePage() {
               <div className="reveal">
                 <span className="kicker">02 / Approach</span>
                 <h2 style={{ marginTop: 18 }}>
-                  We do not enter a category unless we believe we can <span className="it acc">lead</span> it.
+                  We build across categories, but hold every product to <span className="it acc">one standard</span>.
                 </h2>
               </div>
               <div className="reveal">
-                <p className="big">Every product starts from the same question: what does the best version of this look like - and why has no one built it yet?</p>
-                <p>If we cannot answer that clearly, we do not build it. That discipline keeps the portfolio small and every product sharp.</p>
+                <p className="big">We are not tied to one field. We look for broad digital problems, build focused products and hold each one to the same standard.</p>
+                <p>If a product does not make its category clearer, faster or more useful, we keep working. That discipline keeps the portfolio broad without becoming scattered.</p>
                 <div className="checks">
                   <div className="check">
                     <span className="tick">
@@ -612,7 +612,7 @@ export default function HomePage() {
               </div>
               <div className="reveal">
                 <p>
-                  We operate in one of the world's fastest-growing markets. That experience informs every product decision we make - and we hold each one to the same standard regardless of where it is used. Global-first architecture, emerging-market insight, world-class engineering, built for scale from day one.
+                  We operate from one of the world's fastest-growing markets. That experience informs every product decision we make - and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
                 </p>
               </div>
             </div>
@@ -625,10 +625,10 @@ export default function HomePage() {
               kicker="03 / The studio"
               title={
                 <>
-                  A small team, <span className="it acc">distributed</span> - held to one standard.
+                  A small team, <span className="it acc">distributed</span> - building across categories.
                 </>
               }
-              lede="A focused group of builders who care deeply about craft."
+              lede="A focused group of builders who care deeply about useful software."
             />
 
             <div className="team-grid">
@@ -675,9 +675,9 @@ export default function HomePage() {
                 <h2 style={{ marginTop: 18 }}>
                   Care deeply about craft? <span className="it acc">Let's build.</span>
                 </h2>
-                <p>We are always looking for people who want to build products that last. If that sounds like you, reach out - even if you do not see your exact role below.</p>
+                <p>We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out - even if you do not see your exact role below.</p>
                 <AppButton href="#contact" className="btn--primary" onClick={() => setMenuOpen(false)}>
-                  See open roles <span className="arr">↗</span>
+                  Contact us about roles <span className="arr">↗</span>
                 </AppButton>
               </div>
 
@@ -874,7 +874,7 @@ export default function HomePage() {
                 <img className="glyph" src="/efolusi/logo-owl.png" alt="" />
                 Efolusi
               </a>
-              <p className="tag-line">Software products built to lead their category. Made in Indonesia, engineered for every market.</p>
+              <p className="tag-line">General-purpose software products built with intent. Made in Indonesia, engineered for every market.</p>
               <div className="socials">
                 <a href="#" aria-label="Efolusi on X">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -927,7 +927,7 @@ export default function HomePage() {
                 <i />
                 <i />
               </span>
-              Made within Indonesia
+              Made in Indonesia
             </span>
           </div>
         </div>

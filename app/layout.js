@@ -1,17 +1,17 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Efolusi - Software products built to lead their category',
+  title: 'Efolusi - General-purpose software products built with intent',
   description:
-    'Efolusi is an Indonesian software studio building independent products across AI, cloud infrastructure, productivity, content, social and automated trading - each built to lead its category.',
+    'Efolusi is an Indonesian software studio building independent products across AI, cloud infrastructure, productivity, content, social and automation - broad software, one standard of craft.',
   icons: {
     icon: '/efolusi/logo-owl.png'
   },
   openGraph: {
     type: 'website',
-    title: 'Efolusi - Software products built to lead their category',
+    title: 'Efolusi - General-purpose software products built with intent',
     description:
-      'We build software for developers, creators, traders and operators. Each product is designed to earn its place in your workflow.'
+      'We build independent software across categories. Every product is designed to make digital work clearer, faster and more capable.'
   },
   twitter: {
     card: 'summary_large_image'
