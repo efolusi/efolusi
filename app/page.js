@@ -15,7 +15,6 @@ import {
 } from '@efolusi/meridian';
 import SiteHeader from './components/SiteHeader.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
-import Section from './components/Section.jsx';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
@@ -122,8 +121,8 @@ const stats = [
 ];
 
 const leadership = [
-  ['01', 'Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
-  ['02', 'Rakha Febryza Rasendriya', 'Co-founder']
+  ['Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
+  ['Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
 const roles = [
@@ -162,6 +161,19 @@ const marqueeItems = [
   'Opinionated by design',
   'Built with one standard',
   'No feature bloat'
+];
+
+const edgeTiles = [
+  { id: 'zoyya', text: 'Zo', tint: 'caramel', href: 'https://zoyya.xyz', style: { left: '4%', top: 90, '--rot': '-8deg', '--fd': '0.4s' }, size: 72 },
+  { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '5%', top: 210, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
+  { id: 'trady', text: 'Tr', tint: 'coral', href: 'https://trady.efolusi.com', style: { left: '9%', bottom: 60, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
+  { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '10%', bottom: 110, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 }
+];
+
+const stickers = [
+  { text: '#AI', tint: 'caramel', style: { left: '13%', top: 210, '--rot': '-7deg', '--fd': '0.5s' } },
+  { text: '#trading', tint: 'green', style: { right: '13%', top: 110, '--rot': '5deg', '--fd': '1s' } },
+  { text: '#social', tint: 'coral', style: { right: '7%', bottom: 200, '--rot': '-4deg', '--fd': '1.5s' } }
 ];
 
 /* Reveal-on-scroll: soft settle with sibling stagger, Meridian motion tokens do the rest. */
@@ -274,88 +286,20 @@ function CountUp({ value, suffix }) {
   );
 }
 
-/* The ecosystem orbit: product tiles circling the owl very slowly, staying
-   upright, each clickable. Pointer tilt is skipped on touch and reduced motion. */
-const orbitTiles = [
-  { id: 'efo', label: '$EFO token', href: '/token', angle: -90, w: 104, h: 52, d: 0.5, text: '$EFO', tint: 'cocoa' },
-  { id: 'zoyya', label: 'ZOYYA', href: 'https://zoyya.xyz', angle: -38.6, size: 92, d: 0.15, text: 'Zo', tint: 'caramel' },
-  { id: 'komando', label: 'Komando', href: 'https://komando.efolusi.com', angle: 12.8, size: 86, d: 0.2, text: 'Ko', tint: 'green' },
-  { id: 'toolips', label: 'Toolips', href: 'https://toolips.xyz', angle: 64.3, size: 80, d: 0.25, text: 'To', tint: 'amber' },
-  { id: 'trady', label: 'Trady', href: 'https://trady.efolusi.com', angle: 115.7, size: 86, d: 0.3, text: 'Tr', tint: 'coral' },
-  { id: 'kongkow', label: 'Kongkow', href: 'https://kongkow.xyz', angle: 167.1, size: 78, d: 0.35, text: 'Kg', tint: 'peach' },
-  { id: 'cuwan', label: 'Cuwan', href: 'https://cuwan.xyz', angle: 218.6, size: 88, d: 0.4, text: 'Cu', tint: 'green' }
-];
-
-function HeroConstellation() {
-  const fieldRef = useRef(null);
-
-  useEffect(() => {
-    const el = fieldRef.current;
-    if (!el) return undefined;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
-    if (window.matchMedia('(hover: none)').matches) return undefined;
-
-    let raf = 0;
-    const onMove = (event) => {
-      const rect = el.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        el.style.setProperty('--tiltX', `${(-y * 8).toFixed(2)}deg`);
-        el.style.setProperty('--tiltY', `${(x * 10).toFixed(2)}deg`);
-      });
-    };
-    const onLeave = () => {
-      el.style.setProperty('--tiltX', '0deg');
-      el.style.setProperty('--tiltY', '0deg');
-    };
-
-    el.addEventListener('pointermove', onMove);
-    el.addEventListener('pointerleave', onLeave);
-    return () => {
-      el.removeEventListener('pointermove', onMove);
-      el.removeEventListener('pointerleave', onLeave);
-      cancelAnimationFrame(raf);
-    };
-  }, []);
-
+function SpinBadge() {
   return (
-    <div className="orbit" aria-label="The Efolusi portfolio">
-      <div className="orbit-field" ref={fieldRef}>
-        <a className="orbit-center" href="#products" aria-label="View the portfolio" style={{ '--d': '0s' }}>
-          <span className="tile-card" style={{ width: 128, height: 128 }}>
-            <img src="/efolusi/logo-owl.png" alt="" width="72" height="72" />
-          </span>
-        </a>
-        {orbitTiles.map((tile) => (
-          <a
-            key={tile.id}
-            className="orbit-slot"
-            href={tile.href}
-            target={tile.href.startsWith('http') ? '_blank' : undefined}
-            rel={tile.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            aria-label={tile.label}
-            style={{ '--angle': `${tile.angle}deg`, '--d': `${tile.d}s` }}
-          >
-            <span
-              className={`tile-card tint-${tile.tint}`}
-              style={{ width: tile.w || tile.size, height: tile.h || tile.size }}
-            >
-              {tile.text}
-            </span>
-          </a>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function SectionHeading({ title, lede }) {
-  return (
-    <div className="reveal">
-      <h2 className="section-title">{title}</h2>
-      {lede ? <p className="section-lede">{lede}</p> : null}
+    <div className="spin-badge" style={{ right: '7%', top: 24 }} aria-hidden="true">
+      <svg viewBox="0 0 110 110">
+        <defs>
+          <path id="badge-circle" d="M 55,55 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
+        </defs>
+        <text>
+          <textPath href="#badge-circle">EFOLUSI · SOFTWARE STUDIO · INDONESIA ·</textPath>
+        </text>
+      </svg>
+      <span className="spin-badge-owl">
+        <img src="/efolusi/logo-owl.png" alt="" width="34" height="34" />
+      </span>
     </div>
   );
 }
@@ -444,43 +388,59 @@ export default function HomePage() {
       <SiteHeader />
 
       <main id="top">
-        <section className="hero" id="hero">
+        <section className="hero hero-center" id="hero">
           <div className="wrap">
-            <div className="hero-grid">
-              <div>
-                <h1 className="reveal">
-                  We build and run{' '}
-                  <span className="accent">
-                    independent software{' '}
-                    <span className="scribble">
-                      products
-                      <svg viewBox="0 0 220 26" preserveAspectRatio="none" aria-hidden="true">
-                        <path d="M6 16 C 48 22, 88 6, 126 13 S 196 21, 214 9" pathLength="100" />
-                      </svg>
-                    </span>
-                  </span>
-                  .
-                </h1>
-                <p className="hero-sub reveal">
-                  We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
-                </p>
+            <SpinBadge />
+            {stickers.map((s) => (
+              <span key={s.text} className={`sticker tint-${s.tint} hero-deco`} style={s.style} aria-hidden="true">
+                {s.text}
+              </span>
+            ))}
+            {edgeTiles.map((tile) => (
+              <a key={tile.id} className="edge-tile hero-deco" href={tile.href} target="_blank" rel="noopener noreferrer" aria-label={tile.id} style={tile.style}>
+                <span className={`tile-card tint-${tile.tint}`} style={{ width: tile.size, height: tile.size, fontSize: 26 }}>
+                  {tile.text}
+                </span>
+              </a>
+            ))}
+            <div className="hero-doodle hero-deco" style={{ left: '16%', top: '58%', width: 64, height: 64 }} aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M50 6 C 20 10, 10 28, 22 44 M22 44 l-8 -4 M22 44 l2 -10" />
+              </svg>
+            </div>
 
-                <div className="hero-actions reveal">
-                  <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
-                    View the portfolio <Icon name="arrow-right" size={16} />
-                  </a>
-                  <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
-                    Get in touch
-                  </a>
-                </div>
+            <h1 className="reveal">
+              <span className="h1-owl" aria-hidden="true">
+                <img src="/efolusi/logo-owl.png" alt="" />
+              </span>
+              We <span className="script accent">build</span> and run independent software{' '}
+              <span className="scribble">
+                products
+                <svg viewBox="0 0 220 26" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M6 16 C 48 22, 88 6, 126 13 S 196 21, 214 9" pathLength="100" />
+                </svg>
+              </span>
+              .
+            </h1>
+            <p className="hero-sub reveal">
+              We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
+            </p>
 
-                <div className="hero-proof reveal">
-                  <StatusDot state="ok" pulse />
-                  <span>Every platform is live and used every day.</span>
-                </div>
-              </div>
+            <div className="hero-actions reveal">
+              <a className="pill pill--primary" href="#products">
+                View the portfolio
+                <span className="pill-arrow">
+                  <Icon name="arrow-up-right" size={16} />
+                </span>
+              </a>
+              <a className="pill pill--outline" href="#contact">
+                Get in touch
+              </a>
+            </div>
 
-              <HeroConstellation />
+            <div className="hero-proof reveal">
+              <StatusDot state="ok" pulse />
+              <span>Every platform is live and used every day.</span>
             </div>
           </div>
         </section>
@@ -495,26 +455,94 @@ export default function HomePage() {
           </div>
         </div>
 
-        <Section label="In numbers" fact="July 2026">
-          <div className="ruled-cells stats-cells" data-cols="3">
-            {stats.map(([num, suffix, label]) => (
-              <div className="reveal" key={label}>
-                <CountUp value={num} suffix={suffix} />
-                <div className="stat-label">{label}</div>
-              </div>
-            ))}
-          </div>
-        </Section>
+        <section className="csec" aria-label="At a glance">
+          <div className="wrap">
+            <div className="csec-head reveal">
+              <h2>
+                One studio, <span className="script accent">three</span> things to know.
+              </h2>
+            </div>
+            <div className="feat-grid">
+              <a className="feat-card feat-card--peach reveal" href="#products">
+                <span className="feat-icon">
+                  <Icon name="package" size={22} />
+                </span>
+                <span className="feat-deco" aria-hidden="true">
+                  <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="36" cy="36" r="10" />
+                    <circle cx="36" cy="36" r="20" />
+                    <circle cx="36" cy="36" r="30" />
+                  </svg>
+                </span>
+                <h3>
+                  Six independent <span className="script">products</span>
+                </h3>
+                <p>From AI to automated trading, each with its own team and roadmap.</p>
+                <span className="feat-cta">
+                  See the portfolio <Icon name="arrow-right" size={15} />
+                </span>
+              </a>
 
-        <Section id="products" label="Portfolio" fact="6 platforms">
-          <SectionHeading
-            title={
-              <>
-                Independent platforms, <span className="accent">one portfolio</span>.
-              </>
-            }
-            lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. Pick one to take a closer look."
-          />
+              <a className="feat-card feat-card--cocoa reveal" href="/token">
+                <span className="feat-icon">
+                  <Icon name="coins" size={22} />
+                </span>
+                <span className="feat-deco" aria-hidden="true">
+                  <svg width="84" height="40" viewBox="0 0 84 40" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                    <path d="M4 20 q 10 -16 20 0 t 20 0 t 20 0 t 16 0" />
+                  </svg>
+                </span>
+                <h3>
+                  $EFO, the ecosystem <span className="script">token</span>
+                </h3>
+                <p>Live on BNB Smart Chain, tradable on Uniswap v4.</p>
+                <span className="feat-cta">
+                  About the token <Icon name="arrow-right" size={15} />
+                </span>
+              </a>
+
+              <a className="feat-card feat-card--amber reveal" href="/about">
+                <span className="feat-icon">
+                  <Icon name="sparkles" size={22} />
+                </span>
+                <span className="feat-deco" aria-hidden="true">
+                  <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
+                    {[8, 24, 40, 56].map((x) => [8, 24, 40, 56].map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r="2.4" />))}
+                  </svg>
+                </span>
+                <h3>
+                  One standard of <span className="script">craft</span>
+                </h3>
+                <p>If it doesn't make its category clearer, faster or more useful, it doesn't ship.</p>
+                <span className="feat-cta">
+                  How we operate <Icon name="arrow-right" size={15} />
+                </span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="csec csec--rule" aria-label="The studio in numbers">
+          <div className="wrap">
+            <div className="ruled-cells stats-cells" data-cols="3">
+              {stats.map(([num, suffix, label]) => (
+                <div className="reveal" key={label}>
+                  <CountUp value={num} suffix={suffix} />
+                  <div className="stat-label">{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="csec csec--rule" id="products">
+          <div className="wrap">
+            <div className="csec-head reveal">
+              <h2>
+                Independent platforms, <span className="script accent">one portfolio</span>.
+              </h2>
+              <p className="section-lede">Each product has its own team, roadmap and infrastructure. What they share is the standard. Pick one to take a closer look.</p>
+            </div>
 
             <div className="stage-wrap reveal">
               <div className="stage">
@@ -571,59 +599,49 @@ export default function HomePage() {
               </ol>
             </div>
 
-          <div className="plist reveal">
-            {stageProducts.map((product) => (
-              <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
-                <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
-                  {product.mark}
-                </span>
-                <span>
-                  <span className="plist-name">{product.title}</span>
-                  <span className="plist-cat">{product.section}</span>
-                </span>
-                <span className="plist-sum">{product.summary}</span>
-                <span className="plist-arrow">
-                  <Icon name="arrow-up-right" size={18} />
-                </span>
-              </a>
-            ))}
-          </div>
-        </Section>
-
-        <Section id="approach" label="How we operate" fact="One standard">
-          <SectionHeading
-            title={
-              <>
-                Independent products. <span className="accent">Shared discipline.</span>
-              </>
-            }
-          />
-          <div className="approach-body reveal">
-            <p className="big">Every product runs on its own: its own roadmap, its own releases, its own users to answer to.</p>
-            <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline keeps the portfolio broad without getting scattered.</p>
-          </div>
-          <div className="ruled-cells reveal" data-cols="2" style={{ marginTop: 32 }}>
-            {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item, index) => (
-              <div className="check" key={item}>
-                <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
-                  <Icon name="check" size={15} />
-                </span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </Section>
-
-        <section className="band">
-          <div className="wrap band-grid">
-            <h3 className="band-title reveal">Built in Indonesia. Engineered for every market.</h3>
-            <p className="reveal">
-              We work from one of the world's fastest-growing markets, and that shapes every product decision we make. Wherever you use our products, the standard is the same: emerging-market insight, careful engineering, and software that's built for everywhere from day one.
-            </p>
+            <div className="plist reveal">
+              {stageProducts.map((product) => (
+                <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
+                  <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
+                    {product.mark}
+                  </span>
+                  <span>
+                    <span className="plist-name">{product.title}</span>
+                    <span className="plist-cat">{product.section}</span>
+                  </span>
+                  <span className="plist-sum">{product.summary}</span>
+                  <span className="plist-arrow">
+                    <Icon name="arrow-up-right" size={18} />
+                  </span>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 
-        <Section id="ecosystem" label="Ecosystem" fact="BEP-20 · BSC">
+        <section className="band band-team" id="team">
+          <div className="wrap">
+            <p className="band-statement reveal">
+              Built in Indonesia, <span className="script" style={{ color: 'var(--brand-300)' }}>engineered</span> for every market, and{' '}
+              <span className="script" style={{ color: 'var(--brand-300)' }}>led</span> by the people who ship it.
+            </p>
+
+            <div className="founders reveal">
+              {leadership.map(([name, role], index) => (
+                <div className="founder" key={name}>
+                  <span className="founder-blob">
+                    <Avatar name={name} size={84} />
+                  </span>
+                  <span className="nm">{name}</span>
+                  <span className="ro">{role}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="csec" id="ecosystem">
+          <div className="wrap">
             <div className="eco-grid">
               <div className="reveal">
                 <h2 className="section-title">
@@ -633,11 +651,14 @@ export default function HomePage() {
                   EFO is the ecosystem token of Efolusi, live on BNB Smart Chain. The official contract address, on-chain facts and every announcement live on the token page.
                 </p>
                 <div className="eco-actions">
-                  <a className="ef-btn ef-btn--primary ef-btn--md" href="/token">
-                    About $EFO <Icon name="arrow-right" size={16} />
+                  <a className="pill pill--primary" href="/token">
+                    About $EFO
+                    <span className="pill-arrow">
+                      <Icon name="arrow-up-right" size={16} />
+                    </span>
                   </a>
                   <a
-                    className="ef-btn ef-btn--secondary ef-btn--md"
+                    className="pill pill--outline"
                     href={`https://bscscan.com/token/${EFO_CONTRACT}`}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -648,45 +669,29 @@ export default function HomePage() {
               </div>
               <div className="eco-card reveal">
                 <div className="eco-badges">
-                  <Badge tone="success">Tradable on Uniswap v4 · BSC</Badge>
+                  <Badge tone="success">Tradable on Uniswap v4</Badge>
                   <Badge>BEP-20</Badge>
                 </div>
                 <CopyField label="Official contract address" value={EFO_CONTRACT} />
                 <p className="eco-note">Verify this address before interacting with anything that calls itself EFO.</p>
               </div>
             </div>
-        </Section>
+          </div>
+        </section>
 
-        <Section id="team" label="Leadership" fact="Founder-led">
-            <SectionHeading
-              title={
-                <>
-                  Founder-led and <span className="accent">hands-on</span>.
-                </>
-              }
-              lede="Decisions sit close to the products. These are the people who look after the standard."
-            />
-
-            <div className="ruled-cells team-cells reveal" data-cols="2">
-              {leadership.map(([idx, name, role]) => (
-                <div key={name}>
-                  <Avatar name={name} size={64} />
-                  <div className="nm">{name}</div>
-                  <div className="ro">{role}</div>
-                </div>
-              ))}
-            </div>
-        </Section>
-
-        <Section id="careers" label="Careers" fact="4 open roles">
+        <section className="csec csec--rule" id="careers">
+          <div className="wrap">
             <div className="careers-grid">
               <div className="reveal">
                 <h2 className="section-title">
-                  Care deeply about craft? <span className="accent">Let's build.</span>
+                  Care deeply about craft? <span className="script accent">Let's build.</span>
                 </h2>
                 <p className="body">We're always happy to meet people who love building useful things. Say hi, even if your role isn't listed yet.</p>
-                <a className="ef-btn ef-btn--primary ef-btn--md" href="#contact">
-                  Reach out about a role <Icon name="arrow-right" size={16} />
+                <a className="pill pill--primary" href="#contact">
+                  Reach out about a role
+                  <span className="pill-arrow">
+                    <Icon name="arrow-up-right" size={16} />
+                  </span>
                 </a>
               </div>
 
@@ -704,11 +709,18 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-        </Section>
+          </div>
+        </section>
 
-        <Section id="faq" label="FAQ" fact="5 answers">
-            <SectionHeading title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
-            <div className="reveal" style={{ marginTop: 32 }}>
+        <section className="csec csec--rule" id="faq">
+          <div className="wrap">
+            <div className="csec-head reveal">
+              <h2>
+                Clear answers to what we <span className="script accent">hear most</span>.
+              </h2>
+              <p className="section-lede">Anything else, ask us directly through the contact form.</p>
+            </div>
+            <div className="reveal" style={{ maxWidth: 760, margin: '36px auto 0' }}>
               <Accordion
                 items={faqItems.map(([question, answer], index) => ({
                   id: `faq-${index}`,
@@ -717,12 +729,16 @@ export default function HomePage() {
                 }))}
               />
             </div>
-        </Section>
+          </div>
+        </section>
 
-        <Section id="contact" label="Contact" fact="hi@efolusi.com">
+        <section className="csec csec--rule" id="contact">
+          <div className="wrap">
             <div className="contact-grid">
               <div className="reveal">
-                <h2 className="section-title">Tell us what you're building.</h2>
+                <h2 className="section-title">
+                  Tell us what <span className="script accent">you're building</span>.
+                </h2>
                 <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
                 <div className="contact-aside">
                   <div className="ci">
@@ -763,12 +779,16 @@ export default function HomePage() {
                 </div>
               </form>
             </div>
-        </Section>
+          </div>
+        </section>
 
-        <Section label="Newsletter" fact="No noise">
+        <section className="csec csec--rule" aria-label="Newsletter">
+          <div className="wrap">
             <div className="news reveal">
               <div>
-                <h3>Stay in the loop.</h3>
+                <h3>
+                  Stay in the <span className="script accent">loop</span>.
+                </h3>
                 <p className="sub">Product launches and studio updates. No noise, unsubscribe anytime.</p>
                 <div
                   className={`form-status${newsletterStatus.type === 'success' ? ' is-success' : ''}${newsletterStatus.type === 'error' ? ' is-error' : ''}`}
@@ -786,15 +806,21 @@ export default function HomePage() {
                 </Button>
               </form>
             </div>
-        </Section>
+          </div>
+        </section>
 
         <section className="band closer">
           <div className="wrap">
-            <h2 className="reveal">Find the product built for your work.</h2>
+            <h2 className="reveal">
+              Find the product built for <span className="script" style={{ color: 'var(--brand-300)' }}>your work</span>.
+            </h2>
             <p className="reveal">Every product we build starts from the belief that the existing solution isn't good enough. We think you'll agree.</p>
             <div className="closer-actions reveal">
-              <a className="band-btn" href="#products">
-                See the portfolio <Icon name="arrow-right" size={16} />
+              <a className="pill pill--cream" href="#products">
+                See the portfolio
+                <span className="pill-arrow">
+                  <Icon name="arrow-up-right" size={16} />
+                </span>
               </a>
             </div>
           </div>

@@ -160,30 +160,34 @@ a.ef-btn--secondary:hover {
 
 .site-nav {
   display: flex;
-  gap: 4px;
+  gap: 8px;
 }
 
 .site-nav a {
-  padding: 7px 12px;
-  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-full);
   font-size: var(--text-md);
   font-weight: var(--weight-medium);
   color: var(--text-secondary);
   text-decoration: none;
   transition:
     background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out);
 }
 
 .site-nav a:hover {
   background: var(--surface-sunken);
+  border-color: var(--border-strong);
   color: var(--text-primary);
   text-decoration: none;
 }
 
 .site-nav a.is-active {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
 }
 
 .header-actions {
@@ -281,73 +285,6 @@ a.ef-btn--secondary:hover {
   }
 }
 
-/* The ecosystem orbit: tiles circle the owl slowly and stay upright.
-   --spin is a registered property so one keyframe drives the revolution. */
-
-@property --spin {
-  syntax: '<angle>';
-  inherits: false;
-  initial-value: 0deg;
-}
-
-.orbit {
-  perspective: 1100px;
-  height: 480px;
-}
-
-.orbit-field {
-  --radius: 188px;
-  position: relative;
-  width: 480px;
-  height: 480px;
-  max-width: 100%;
-  margin: 0 auto;
-  transform: rotateX(var(--tiltX, 0deg)) rotateY(var(--tiltY, 0deg));
-  transform-style: preserve-3d;
-  transition: transform var(--dur-slow) var(--ease-out);
-}
-
-.orbit-center {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  display: block;
-  text-decoration: none;
-  animation: owl-bob 7s ease-in-out 1.6s infinite alternate;
-  z-index: 5;
-}
-
-@keyframes owl-bob {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-7px);
-  }
-}
-
-.orbit-slot {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  translate: -50% -50%;
-  display: block;
-  text-decoration: none;
-  transform: rotate(calc(var(--angle) + var(--spin))) translateX(var(--radius))
-    rotate(calc(-1 * (var(--angle) + var(--spin))));
-  animation: orbit-spin 80s linear infinite;
-}
-
-@keyframes orbit-spin {
-  from {
-    --spin: 0deg;
-  }
-  to {
-    --spin: 360deg;
-  }
-}
-
 .tile-card {
   display: flex;
   align-items: center;
@@ -378,22 +315,18 @@ a.ef-btn--secondary:hover {
   }
 }
 
-.orbit-slot:hover .tile-card,
-.orbit-center:hover .tile-card,
-.orbit-slot:focus-visible .tile-card,
-.orbit-center:focus-visible .tile-card {
+.edge-tile:hover .tile-card,
+.edge-tile:focus-visible .tile-card {
   transform: scale(1.1);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
 }
 
-.orbit-slot:focus-visible,
-.orbit-center:focus-visible {
+.edge-tile:focus-visible {
   outline: none;
 }
 
-.orbit-slot:focus-visible .tile-card,
-.orbit-center:focus-visible .tile-card {
-  box-shadow: var(--focus-ring), var(--shadow-xl);
+.edge-tile:focus-visible .tile-card {
+  box-shadow: var(--focus-ring), var(--shadow-lg);
 }
 
 .tile-card.tint-cocoa {
@@ -1634,6 +1567,454 @@ a.ef-btn--secondary:hover {
   color: var(--danger-600) !important;
 }
 
+/* ---------- Wonder layer: pills, script accents, badges, stickers ---------- */
+
+.script {
+  font-family: var(--font-sans);
+  font-style: italic;
+  font-weight: var(--weight-semibold);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 8px 0 24px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+  text-decoration: none;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.pill:hover {
+  text-decoration: none;
+}
+
+.pill:active {
+  transform: scale(0.985);
+}
+
+.pill:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.pill--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.pill--primary:hover {
+  background: var(--accent-hover);
+  color: var(--accent-contrast);
+}
+
+.pill--outline {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  padding-right: 24px;
+}
+
+.pill--outline:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+}
+
+.pill--cream {
+  background: var(--cream-50);
+  color: var(--brand-950);
+}
+
+.pill--cream:hover {
+  background: #ffffff;
+  color: var(--brand-950);
+}
+
+.pill--sm {
+  height: 40px;
+  padding: 0 6px 0 18px;
+  font-size: var(--text-md);
+}
+
+.pill--sm.pill--outline {
+  padding-right: 18px;
+}
+
+.pill--sm .pill-arrow {
+  width: 28px;
+  height: 28px;
+}
+
+.pill-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--brand-500);
+  color: #ffffff;
+  transition: transform var(--dur-med) var(--ease-spring);
+}
+
+.pill:hover .pill-arrow {
+  transform: rotate(45deg);
+}
+
+.pill--cream .pill-arrow {
+  background: var(--brand-900);
+  color: var(--cream-50);
+}
+
+/* Rotating circular badge */
+
+.spin-badge {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  animation: badge-spin 24s linear infinite;
+}
+
+.spin-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.spin-badge text {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  fill: var(--text-secondary);
+}
+
+.spin-badge-owl {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: badge-spin 24s linear infinite reverse;
+}
+
+@keyframes badge-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Sticker tags */
+
+.sticker {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 16px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  rotate: var(--rot, 0deg);
+  animation: sticker-float 6s ease-in-out var(--fd, 0s) infinite alternate;
+  box-shadow: var(--shadow-sm);
+}
+
+@keyframes sticker-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-6px);
+  }
+}
+
+/* Centered hero */
+
+.hero-center {
+  position: relative;
+  text-align: center;
+  padding: clamp(48px, 7vh, 80px) 0 clamp(56px, 8vh, 88px);
+}
+
+.hero-center h1 {
+  font-size: clamp(38px, 4.6vw, 68px);
+  font-weight: var(--weight-bold);
+  line-height: 1.12;
+  letter-spacing: var(--tracking-display);
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.hero-center h1 .script {
+  font-size: 0.96em;
+}
+
+.h1-owl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.92em;
+  height: 0.92em;
+  border-radius: var(--radius-full);
+  background: var(--brand-200);
+  vertical-align: -0.12em;
+  margin-right: 0.12em;
+}
+
+.h1-owl img {
+  width: 72%;
+  height: 72%;
+}
+
+.hero-center .hero-sub {
+  margin: 22px auto 0;
+  max-width: 560px;
+}
+
+.hero-center .hero-actions {
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.hero-center .hero-proof {
+  justify-content: center;
+}
+
+.hero-doodle {
+  position: absolute;
+  color: var(--brand-500);
+}
+
+.hero-doodle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-doodle path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+/* Small floating monogram tiles at the hero edges */
+
+.edge-tile {
+  position: absolute;
+  display: block;
+  text-decoration: none;
+  rotate: var(--rot, 0deg);
+  animation: sticker-float 7s ease-in-out var(--fd, 0s) infinite alternate;
+}
+
+.edge-tile .tile-card {
+  box-shadow: var(--shadow-md);
+}
+
+/* Feature trio cards */
+
+.feat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+
+.feat-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 32px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: transform var(--dur-med) var(--ease-spring), box-shadow var(--dur-med) var(--ease-out);
+}
+
+.feat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  color: inherit;
+  text-decoration: none;
+}
+
+.feat-card--peach {
+  background: var(--brand-100);
+}
+
+.feat-card--cocoa {
+  background: var(--surface-brand);
+  color: var(--cream-50);
+}
+
+.feat-card--cocoa:hover {
+  color: var(--cream-50);
+}
+
+.feat-card--amber {
+  background: var(--warning-100);
+}
+
+.feat-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--surface-card);
+  color: var(--brand-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.feat-card--cocoa .feat-icon {
+  background: var(--brand-800);
+  color: var(--cream-50);
+}
+
+.feat-card h3 {
+  font-size: 26px;
+  font-weight: var(--weight-bold);
+  margin-top: auto;
+  padding-top: 40px;
+  line-height: 1.2;
+}
+
+.feat-card p {
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  margin-top: 10px;
+  color: var(--text-secondary);
+  max-width: 30ch;
+}
+
+.feat-card--cocoa p {
+  color: var(--text-on-brand-muted);
+}
+
+.feat-card .feat-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-weight: var(--weight-semibold);
+  color: var(--brand-700);
+}
+
+.feat-card--cocoa .feat-cta {
+  color: var(--cream-50);
+}
+
+.feat-deco {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  color: var(--brand-300);
+  pointer-events: none;
+}
+
+.feat-card--cocoa .feat-deco {
+  color: var(--brand-700);
+}
+
+.feat-card--amber .feat-deco {
+  color: var(--warning-300);
+}
+
+/* Centered section headings with mixed type */
+
+.csec {
+  padding: clamp(64px, 9vh, 96px) 0;
+}
+
+.csec--rule {
+  border-top: 1px solid var(--border-default);
+}
+
+.csec-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.csec-head h2 {
+  font-size: clamp(28px, 3.4vw, 40px);
+  font-weight: var(--weight-display);
+}
+
+.csec-head .section-lede {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Cocoa band with the founders in blobs */
+
+.band-team {
+  text-align: center;
+}
+
+.band-team .band-statement {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: var(--weight-display);
+  line-height: 1.3;
+  max-width: 760px;
+  margin: 0 auto;
+  color: var(--cream-50);
+}
+
+.founders {
+  display: flex;
+  justify-content: center;
+  gap: clamp(32px, 6vw, 80px);
+  margin-top: 44px;
+}
+
+.founder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.founder-blob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  background: var(--brand-200);
+}
+
+.founder:nth-child(2n) .founder-blob {
+  border-radius: 44% 56% 48% 52% / 56% 44% 58% 42%;
+  background: var(--warning-100);
+}
+
+.founder .nm {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  margin-top: 16px;
+  color: var(--cream-50);
+}
+
+.founder .ro {
+  font-size: var(--text-sm);
+  color: var(--text-on-brand-muted);
+  margin-top: 4px;
+}
+
 /* ---------- Legal pages (privacy, terms) ---------- */
 
 .legal-page {
@@ -1684,9 +2065,17 @@ a.ef-btn--secondary:hover {
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1020px) {
-  .hero-grid {
+  .hero-deco {
+    display: none;
+  }
+
+  .feat-grid {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .feat-card {
+    min-height: 220px;
   }
 
   .approach-grid,
@@ -1838,8 +2227,16 @@ a.ef-btn--secondary:hover {
     align-items: stretch;
   }
 
-  .hero-actions .ef-btn {
+  .hero-actions .ef-btn,
+  .hero-actions .pill {
     width: 100%;
+    justify-content: center;
+  }
+
+  .founders {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
   }
 
   .masthead-meta {
@@ -1880,5 +2277,11 @@ a.ef-btn--secondary:hover {
 
   .news form {
     min-width: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions .pill {
+    display: none;
   }
 }
