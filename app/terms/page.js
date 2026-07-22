@@ -31,6 +31,12 @@ export default function TermsPage() {
         ; the MIT grant does not cover the names or the mark.
       </p>
 
+      <h2>The $EFO token</h2>
+      <p>
+        $EFO is the ecosystem token of Efolusi on BNB Smart Chain. It is not a share, security, or investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. The only official contract address is published on{' '}
+        <a href="/token">the token page</a>; addresses published anywhere else are not ours. Digital assets carry a risk of total loss. Do your own research and comply with the laws of your jurisdiction before interacting with any digital asset.
+      </p>
+
       <h2>Liability</h2>
       <p>
         We work to keep the information on this site accurate but do not guarantee it. Efolusi is not liable for damages arising from the use of this website. Nothing on this site is financial, legal or professional advice.

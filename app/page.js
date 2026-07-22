@@ -6,12 +6,17 @@ import {
   Avatar,
   Badge,
   Button,
+  CopyField,
   Icon,
   Input,
   StatusDot,
   Tag,
   Textarea
 } from '@efolusi/meridian';
+import SiteHeader from './components/SiteHeader.jsx';
+import SiteFooter from './components/SiteFooter.jsx';
+
+const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
 const stageProducts = [
   {
@@ -144,13 +149,15 @@ const marqueeItems = [
   'No feature bloat'
 ];
 
-const navLinks = [
-  ['Portfolio', '#products'],
-  ['Company', '#approach'],
-  ['Leadership', '#team'],
-  ['Careers', '#careers'],
-  ['FAQ', '#faq']
-];
+/* Home scrollspy section ids mapped to the shared header's nav keys. */
+const sectionToNavKey = {
+  products: 'products',
+  approach: 'about',
+  ecosystem: 'token',
+  team: 'about',
+  careers: 'careers',
+  faq: 'faq'
+};
 
 /* Reveal-on-scroll: soft settle with sibling stagger, Meridian motion tokens do the rest. */
 function useRevealOnScroll() {
@@ -294,57 +301,6 @@ function CountUp({ value, suffix }) {
   );
 }
 
-/* Sun/moon glyphs copied from Lucide (24px grid, stroke 2 source, rendered at 1.5). */
-function ThemeToggle() {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
-  }, []);
-
-  const toggle = () => {
-    const next = theme === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    if (next === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-    }
-    try {
-      window.localStorage.setItem('efolusi-theme', next);
-    } catch {
-      /* private mode */
-    }
-  };
-
-  return (
-    <button
-      type="button"
-      className="theme-toggle"
-      onClick={toggle}
-      aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
-    >
-      {theme === 'dark' ? (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2" />
-          <path d="M12 20v2" />
-          <path d="m4.93 4.93 1.41 1.41" />
-          <path d="m17.66 17.66 1.41 1.41" />
-          <path d="M2 12h2" />
-          <path d="M20 12h2" />
-          <path d="m6.34 17.66-1.41 1.41" />
-          <path d="m19.07 4.93-1.41 1.41" />
-        </svg>
-      ) : (
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
-        </svg>
-      )}
-    </button>
-  );
-}
-
 function SectionHeading({ kicker, title, lede }) {
   return (
     <div className="reveal">
@@ -358,19 +314,10 @@ function SectionHeading({ kicker, title, lede }) {
 export default function HomePage() {
   useRevealOnScroll();
 
-  const activeSection = useActiveSection(['hero', 'products', 'approach', 'team', 'careers', 'faq']);
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const activeSection = useActiveSection(['hero', 'products', 'approach', 'ecosystem', 'team', 'careers', 'faq']);
   const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 4);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const activeProduct = stageProducts.find((item) => item.id === activeStage) || stageProducts[0];
 
@@ -446,49 +393,7 @@ export default function HomePage() {
 
   return (
     <>
-      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-        <div className="wrap site-header-inner">
-          <a href="#top" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
-            <img src="/efolusi/logo-owl.png" alt="" width="30" height="30" />
-            Efolusi
-          </a>
-
-          <nav className="site-nav" aria-label="Primary">
-            {navLinks.map(([label, href]) => (
-              <a key={href} href={href} className={activeSection === href.slice(1) ? 'is-active' : ''}>
-                {label}
-              </a>
-            ))}
-          </nav>
-
-          <div className="header-actions">
-            <ThemeToggle />
-            <a className="ef-btn ef-btn--primary ef-btn--md" href="#contact" onClick={() => setMenuOpen(false)}>
-              Get in touch
-            </a>
-            <button
-              type="button"
-              className="menu-toggle"
-              aria-label="Toggle menu"
-              aria-expanded={menuOpen ? 'true' : 'false'}
-              onClick={() => setMenuOpen((value) => !value)}
-            >
-              <Icon name={menuOpen ? 'x' : 'menu'} size={18} />
-            </button>
-          </div>
-        </div>
-
-        <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
-          {navLinks.map(([label, href]) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)}>
-              {label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}>
-            Contact
-          </a>
-        </nav>
-      </header>
+      <SiteHeader active={sectionToNavKey[activeSection] || ''} />
 
       <main id="top">
         <section className="hero" id="hero">
@@ -656,10 +561,47 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="team">
+        <section className="section" id="ecosystem">
+          <div className="wrap">
+            <div className="eco-grid">
+              <div className="reveal">
+                <span className="eyebrow eyebrow--mono">03 / Ecosystem</span>
+                <h2 className="section-title">
+                  One token across the portfolio: <span className="accent">$EFO</span>.
+                </h2>
+                <p className="section-lede">
+                  EFO is the ecosystem token of Efolusi, live on BNB Smart Chain. The official contract address, on-chain facts and every announcement live on the token page, and only there.
+                </p>
+                <div className="eco-actions">
+                  <a className="ef-btn ef-btn--primary ef-btn--md" href="/token">
+                    About $EFO <Icon name="arrow-right" size={16} />
+                  </a>
+                  <a
+                    className="ef-btn ef-btn--secondary ef-btn--md"
+                    href={`https://bscscan.com/token/${EFO_CONTRACT}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    BscScan
+                  </a>
+                </div>
+              </div>
+              <div className="eco-card reveal">
+                <div className="eco-badges">
+                  <Badge tone="warning">Not yet publicly traded</Badge>
+                  <Badge>BEP-20</Badge>
+                </div>
+                <CopyField label="Official contract address" value={EFO_CONTRACT} />
+                <p className="eco-note">Verify this address before interacting with anything that calls itself EFO.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="section section--rule" id="team">
           <div className="wrap">
             <SectionHeading
-              kicker="03 / Leadership"
+              kicker="04 / Leadership"
               title={
                 <>
                   Founder-led and <span className="accent">hands-on</span>.
@@ -687,7 +629,7 @@ export default function HomePage() {
           <div className="wrap">
             <div className="careers-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">04 / Careers</span>
+                <span className="eyebrow eyebrow--mono">05 / Careers</span>
                 <h2 className="section-title">
                   Care deeply about craft? <span className="accent">Let's build.</span>
                 </h2>
@@ -717,7 +659,7 @@ export default function HomePage() {
         <section className="section section--rule" id="faq">
           <div className="wrap">
             <div className="faq-grid">
-              <SectionHeading kicker="05 / FAQ" title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
+              <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
 
               <div className="reveal">
                 <Accordion
@@ -736,7 +678,7 @@ export default function HomePage() {
           <div className="wrap">
             <div className="contact-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">06 / Contact</span>
+                <span className="eyebrow eyebrow--mono">07 / Contact</span>
                 <h2 className="section-title">Tell us what you're building.</h2>
                 <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
                 <div className="contact-aside">
@@ -822,55 +764,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="wrap">
-          <div className="footer-top">
-            <div>
-              <a href="#top" className="brand">
-                <img src="/efolusi/logo-owl.png" alt="" width="28" height="28" />
-                Efolusi
-              </a>
-              <p className="tag-line">PT. Efolusi Dunia Teknologi. A general software studio building and operating independent software products. Made in Indonesia, engineered for every market.</p>
-              <a className="footer-mail" href="mailto:hi@efolusi.com">
-                <Icon name="mail" size={15} /> hi@efolusi.com
-              </a>
-            </div>
-
-            <div className="fcol">
-              <h4>Portfolio</h4>
-              {stageProducts.map((product) => (
-                <a key={product.id} href={product.href} target="_blank" rel="noopener noreferrer">
-                  {product.title}
-                </a>
-              ))}
-            </div>
-            <div className="fcol">
-              <h4>Company</h4>
-              <a href="#approach">How we operate</a>
-              <a href="#team">Leadership</a>
-              <a href="#careers">Careers</a>
-              <a href="#faq">FAQ</a>
-              <a href="#contact">Contact</a>
-            </div>
-            <div className="fcol">
-              <h4>Legal</h4>
-              <a href="/privacy">Privacy policy</a>
-              <a href="/terms">Terms of use</a>
-            </div>
-          </div>
-
-          <div className="footer-bot">
-            <p>© 2026 PT. Efolusi Dunia Teknologi. All rights reserved.</p>
-            <span className="made">
-              <span className="flag">
-                <i />
-                <i />
-              </span>
-              Made in Indonesia
-            </span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
