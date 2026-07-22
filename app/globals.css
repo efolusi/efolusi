@@ -862,9 +862,10 @@ a.ef-btn--secondary:hover {
 
 .closer .closer-actions {
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px;
   margin-top: 28px;
 }
 
