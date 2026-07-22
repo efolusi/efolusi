@@ -10,6 +10,16 @@ function escapeHtml(value) {
     .replace(/"/g, '&quot;');
 }
 
+/* Accepts both a bare address and the nodemailer-era "Name <address>" form. */
+function parseSender(raw) {
+  const match = raw.match(/^(.*)<([^>]+)>\s*$/);
+  if (match) {
+    const name = match[1].trim().replace(/^"|"$/g, '').trim();
+    return { name: name || 'Efolusi website', email: match[2].trim() };
+  }
+  return { name: 'Efolusi website', email: raw };
+}
+
 export async function POST(req) {
   try {
     const body = await req.json();
@@ -42,7 +52,7 @@ export async function POST(req) {
         accept: 'application/json'
       },
       body: JSON.stringify({
-        sender: { email: from, name: 'Efolusi website' },
+        sender: parseSender(from),
         to: [{ email: to }],
         replyTo: { email, name },
         subject: `Contact form: ${name}`,
