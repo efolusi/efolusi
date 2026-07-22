@@ -588,7 +588,7 @@ export default function HomePage() {
               </div>
               <div className="eco-card reveal">
                 <div className="eco-badges">
-                  <Badge tone="warning">Not yet publicly traded</Badge>
+                  <Badge tone="success">Tradable on Uniswap v4 · BSC</Badge>
                   <Badge>BEP-20</Badge>
                 </div>
                 <CopyField label="Official contract address" value={EFO_CONTRACT} />

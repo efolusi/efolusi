@@ -1142,6 +1142,43 @@ a.ef-btn--secondary:hover {
   max-width: 760px;
 }
 
+.trade-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.trade-link {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.trade-link:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.trade-link .nm {
+  font-weight: var(--weight-semibold);
+}
+
+.trade-link .ro {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 .token-faq {
   display: flex;
   flex-direction: column;
@@ -1356,6 +1393,10 @@ a.ef-btn--secondary:hover {
     display: none;
   }
 
+  .trade-links {
+    grid-template-columns: 1fr;
+  }
+
   .footer-top {
     grid-template-columns: 1fr 1fr;
   }
@@ -1419,7 +1460,8 @@ a.ef-btn--secondary:hover {
   .products-grid,
   .checks,
   .perks-grid,
-  .brand-assets {
+  .brand-assets,
+  .trade-links {
     grid-template-columns: 1fr;
   }
 
