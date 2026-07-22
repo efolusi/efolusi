@@ -3,15 +3,6 @@
 import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 
-const products = [
-  ['ZOYYA', 'https://zoyya.xyz'],
-  ['Komando', 'https://komando.efolusi.com'],
-  ['Toolips', 'https://toolips.xyz'],
-  ['Trady', 'https://trady.efolusi.com'],
-  ['Kongkow', 'https://kongkow.xyz'],
-  ['Cuwan', 'https://cuwan.xyz']
-];
-
 export default function SiteFooter() {
   return (
     <footer className="footer">
@@ -28,14 +19,6 @@ export default function SiteFooter() {
             </a>
           </div>
 
-          <div className="fcol">
-            <h4>Portfolio</h4>
-            {products.map(([name, href]) => (
-              <a key={name} href={href} target="_blank" rel="noopener noreferrer">
-                {name}
-              </a>
-            ))}
-          </div>
           <div className="fcol">
             <h4>Company</h4>
             <Link href="/about">About</Link>

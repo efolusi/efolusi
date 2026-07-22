@@ -492,14 +492,6 @@ export default function HomePage() {
       <main id="top">
         <section className="hero" id="hero">
           <div className="wrap">
-            <div className="masthead-meta reveal">
-              <span>Software studio</span>
-              <div className="m-right">
-                <span>Indonesia</span>
-                <span>$EFO live</span>
-              </div>
-            </div>
-
             <div className="hero-grid">
               <div>
                 <h1 className="reveal">
@@ -849,9 +841,6 @@ export default function HomePage() {
             <div className="closer-actions reveal">
               <a className="band-btn" href="#products">
                 See the portfolio <Icon name="arrow-right" size={16} />
-              </a>
-              <a className="band-link" href="#contact">
-                Contact us
               </a>
             </div>
           </div>

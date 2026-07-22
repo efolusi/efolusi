@@ -239,7 +239,6 @@ a.ef-btn--secondary:hover {
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: 48px;
   align-items: center;
-  margin-top: clamp(24px, 4vh, 44px);
 }
 
 .hero h1 {
@@ -1240,7 +1239,7 @@ a.ef-btn--secondary:hover {
 
 .footer-top {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 32px;
 }
 
