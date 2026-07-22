@@ -1,11 +1,24 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import {
+  Accordion,
+  Avatar,
+  AvatarGroup,
+  Badge,
+  Button,
+  Icon,
+  Input,
+  StatusDot,
+  Tag,
+  Textarea
+} from '@efolusi/meridian';
 
 const stageProducts = [
   {
     id: 'zoyya',
     mark: 'Zo',
+    icon: 'brain',
     section: 'Artificial Intelligence',
     title: 'ZOYYA',
     desc: 'General autonomous intelligence. It reasons through complex problems, learns your context and acts without requiring direction at every step.',
@@ -18,6 +31,7 @@ const stageProducts = [
   {
     id: 'komando',
     mark: 'Ko',
+    icon: 'server',
     section: 'Cloud Infrastructure',
     title: 'Komando',
     desc: 'Centralized cloud infrastructure. Every server, deployment, pipeline and alert - full visibility, managed from a single interface.',
@@ -30,6 +44,7 @@ const stageProducts = [
   {
     id: 'toolips',
     mark: 'To',
+    icon: 'package',
     section: 'Productivity',
     title: 'Toolips',
     desc: 'All-in-one productivity tools. 100+ utilities to convert, compress, edit and export - no accounts, no subscriptions, always available.',
@@ -42,6 +57,7 @@ const stageProducts = [
   {
     id: 'trady',
     mark: 'Tr',
+    icon: 'sparkles',
     section: 'Content Generation',
     title: 'Trady',
     desc: 'General content generator. Input a brief, receive a finished campaign - text, audio, video and images in one workflow. Weeks into hours.',
@@ -54,6 +70,7 @@ const stageProducts = [
   {
     id: 'kongkow',
     mark: 'Kg',
+    icon: 'message-square',
     section: 'Social Media',
     title: 'Kongkow',
     desc: 'Social media command center. Publish once to Facebook, Instagram, TikTok, YouTube, LinkedIn, X and 20+ more platforms at the same time.',
@@ -66,6 +83,7 @@ const stageProducts = [
   {
     id: 'cuwan',
     mark: 'Cu',
+    icon: 'chart-candlestick',
     section: 'Automated Trading',
     title: 'Cuwan',
     desc: 'Automated trading platform. One dashboard for 100+ CEX and DEX markets - set a strategy and let it execute autonomously, around the clock.',
@@ -78,34 +96,31 @@ const stageProducts = [
 ];
 
 const stats = [
-  ['06', 'Products across the portfolio - one standard of craft'],
-  ['100+', 'Exchanges, utilities and integrations connected'],
-  ['20+', 'Social channels reached from one publish'],
-  ['24/7', 'Autonomous, always-on - built to keep moving']
+  ['06', '', 'Products across the portfolio - one standard of craft'],
+  ['100', '+', 'Exchanges, utilities and integrations connected'],
+  ['20', '+', 'Social channels reached from one publish'],
+  ['24', '/7', 'Autonomous, always-on - built to keep moving']
 ];
 
 const team = [
-  ['01', 'S', 'Sugeng Agung Suganda', 'Founder & CEO'],
-  ['02', 'R', 'Rakha Febryza Rasendriya', 'Co-founder']
+  ['01', 'Sugeng Agung Suganda', 'Founder & CEO'],
+  ['02', 'Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
 const quotes = [
   [
-    'R',
-    'Komando replaced three dashboards for us. Every deploy, alert and pipeline lives in one place - and I actually trust what it tells me.',
     'Rangga',
+    'Komando replaced three dashboards for us. Every deploy, alert and pipeline lives in one place - and I actually trust what it tells me.',
     'Platform Lead'
   ],
   [
-    'M',
-    'I brief Trady once and walk away with a full campaign - copy, video, the lot. It compressed a two-week sprint into an afternoon.',
     'Maya',
+    'I brief Trady once and walk away with a full campaign - copy, video, the lot. It compressed a two-week sprint into an afternoon.',
     'Content Creator'
   ],
   [
-    'F',
-    'Cuwan runs my strategy across CEX and DEX while I sleep. One dashboard, every market - it is the tool I wished existed for years.',
     'Farhan',
+    'Cuwan runs my strategy across CEX and DEX while I sleep. One dashboard, every market - it is the tool I wished existed for years.',
     'Quant Trader'
   ]
 ];
@@ -140,17 +155,30 @@ const faqItems = [
   ]
 ];
 
+const marqueeItems = [
+  'Built for the world',
+  'Quality before growth',
+  'Opinionated by design',
+  'Built with one standard',
+  'No feature bloat'
+];
+
+const navLinks = [
+  ['Products', '#products'],
+  ['Approach', '#approach'],
+  ['Team', '#team'],
+  ['Careers', '#careers'],
+  ['FAQ', '#faq']
+];
+
+/* Reveal-on-scroll: soft settle with sibling stagger, Meridian motion tokens do the rest. */
 function useRevealOnScroll() {
   useEffect(() => {
-    document.body.classList.add('loaded');
-
     const reveals = Array.from(document.querySelectorAll('.reveal'));
 
     if (!('IntersectionObserver' in window)) {
       reveals.forEach((element) => element.classList.add('in'));
-      return () => {
-        document.body.classList.remove('loaded');
-      };
+      return undefined;
     }
 
     const io = new IntersectionObserver(
@@ -183,41 +211,192 @@ function useRevealOnScroll() {
     return () => {
       io.disconnect();
       window.clearTimeout(fallbackTimer);
-      document.body.classList.remove('loaded');
     };
   }, []);
 }
 
-function AppButton({ href, children, outline = false, external = false, onClick, className = '' }) {
-  const classes = ['btn', outline ? 'btn--outline' : 'btn--primary', className].filter(Boolean).join(' ');
+/* Scrollspy for the header nav. */
+function useActiveSection(ids) {
+  const [active, setActive] = useState('');
 
-  if (href) {
-    return (
-      <a
-        className={classes}
-        href={href}
-        onClick={onClick}
-        target={external ? '_blank' : undefined}
-        rel={external ? 'noopener noreferrer' : undefined}
-      >
-        {children}
-      </a>
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      return undefined;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-35% 0px -55% 0px' }
     );
-  }
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+
+    return () => io.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return active;
+}
+
+/* Count-up number that starts when it scrolls into view. */
+function CountUp({ value, suffix }) {
+  const ref = useRef(null);
+  const [display, setDisplay] = useState(value.replace(/[1-9]/g, '0'));
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+
+    const target = parseInt(value, 10);
+    const digits = value.length;
+    let raf = 0;
+
+    const run = () => {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setDisplay(value);
+        return;
+      }
+      const start = performance.now();
+      const dur = 900;
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - t, 3);
+        setDisplay(String(Math.round(target * eased)).padStart(digits, '0'));
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      setDisplay(value);
+      return undefined;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          io.disconnect();
+          run();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [value]);
 
   return (
-    <button type="button" className={classes} onClick={onClick}>
-      {children}
+    <div className="stat-num" ref={ref}>
+      {display}
+      {suffix ? <span className="suffix">{suffix}</span> : null}
+    </div>
+  );
+}
+
+/* Sun/moon glyphs copied from Lucide (24px grid, stroke 2 source, rendered at 1.5). */
+function ThemeToggle() {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    setTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+  }, []);
+
+  const toggle = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    if (next === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+    }
+    try {
+      window.localStorage.setItem('efolusi-theme', next);
+    } catch {
+      /* private mode */
+    }
+  };
+
+  return (
+    <button
+      type="button"
+      className="theme-toggle"
+      onClick={toggle}
+      aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+    >
+      {theme === 'dark' ? (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2" />
+          <path d="M12 20v2" />
+          <path d="m4.93 4.93 1.41 1.41" />
+          <path d="m17.66 17.66 1.41 1.41" />
+          <path d="M2 12h2" />
+          <path d="M20 12h2" />
+          <path d="m6.34 17.66-1.41 1.41" />
+          <path d="m19.07 4.93-1.41 1.41" />
+        </svg>
+      ) : (
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+        </svg>
+      )}
     </button>
   );
 }
 
 function SectionHeading({ kicker, title, lede }) {
   return (
-    <div className="shead reveal">
-      <span className="kicker">{kicker}</span>
-      <h2>{title}</h2>
-      <p className="lede">{lede}</p>
+    <div className="reveal">
+      <span className="eyebrow eyebrow--mono">{kicker}</span>
+      <h2 className="section-title">{title}</h2>
+      {lede ? <p className="section-lede">{lede}</p> : null}
+    </div>
+  );
+}
+
+function PortfolioPanel() {
+  return (
+    <div className="panel hero-visual reveal">
+      <div className="panel-chrome" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+        <span>efolusi.com/portfolio</span>
+      </div>
+      <div className="panel-stats">
+        {[
+          ['Platforms', '06'],
+          ['Integrations', '100+'],
+          ['Uptime', '24/7']
+        ].map(([k, v]) => (
+          <div className="panel-stat" key={k}>
+            <div className="k">{k}</div>
+            <div className="v">{v}</div>
+          </div>
+        ))}
+      </div>
+      <div className="panel-rows">
+        {stageProducts.map((product) => (
+          <div className="panel-row" key={product.id}>
+            <StatusDot state="ok" pulse={product.id === 'zoyya'} />
+            <span className="nm">{product.title}</span>
+            <span className="cat">{product.tag}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -225,38 +404,18 @@ function SectionHeading({ kicker, title, lede }) {
 export default function HomePage() {
   useRevealOnScroll();
 
+  const activeSection = useActiveSection(['products', 'approach', 'team', 'careers', 'faq']);
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
-  const [newsletterButton, setNewsletterButton] = useState('Subscribe');
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
-  const [openFaqIndex, setOpenFaqIndex] = useState(-1);
-  const faqRefs = useRef([]);
-  const [faqHeights, setFaqHeights] = useState([]);
-  const [isNarrow, setIsNarrow] = useState(false);
 
   useEffect(() => {
-    const update = () => {
-      setFaqHeights(faqRefs.current.map((el) => (el ? el.scrollHeight : 0)));
-    };
-
-    // initial measurement and on window resize
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 900px)');
-    const onChange = () => setIsNarrow(mq.matches);
-    onChange();
-    mq.addEventListener?.('change', onChange);
-    // fallback for older browsers
-    if (!mq.addEventListener) mq.addListener(onChange);
-    return () => {
-      mq.removeEventListener?.('change', onChange);
-      if (!mq.removeEventListener) mq.removeListener(onChange);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 4);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const activeProduct = stageProducts.find((item) => item.id === activeStage) || stageProducts[0];
@@ -279,7 +438,7 @@ export default function HomePage() {
       return;
     }
 
-    setContactStatus({ type: 'sending', text: 'Sending…' });
+    setContactStatus({ type: 'sending', text: '' });
 
     fetch('/api/contact', {
       method: 'POST',
@@ -311,7 +470,7 @@ export default function HomePage() {
       return;
     }
 
-    setNewsletterStatus({ type: 'sending', text: 'Subscribing…' });
+    setNewsletterStatus({ type: 'sending', text: '' });
 
     fetch('/api/newsletter', {
       method: 'POST',
@@ -321,13 +480,8 @@ export default function HomePage() {
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Subscribe failed');
-        setNewsletterButton('Subscribed ✓');
         setNewsletterStatus({ type: 'success', text: 'Thanks — you are on the list.' });
         formEl.reset();
-
-        window.setTimeout(() => {
-          setNewsletterButton('Subscribe');
-        }, 2600);
       })
       .catch((err) => {
         console.error('Newsletter error', err);
@@ -337,194 +491,156 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="grain" aria-hidden="true" />
-
-      <header className={`nav${menuOpen ? ' menu-open' : ''}`} id="nav">
-        <div className="nav-inner">
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+        <div className="wrap site-header-inner">
           <a href="#top" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
-            <img className="glyph" src="/efolusi/logo-owl.png" alt="" />
+            <img src="/efolusi/logo-owl.png" alt="" />
             Efolusi
           </a>
 
-          <nav className="nav-links" aria-label="Primary">
-            <a className="nav-link" href="#products" onClick={() => setMenuOpen(false)}>
-              Products
-            </a>
-            <a className="nav-link" href="#approach" onClick={() => setMenuOpen(false)}>
-              Approach
-            </a>
-            <a className="nav-link" href="#team" onClick={() => setMenuOpen(false)}>
-              Team
-            </a>
-            <a className="nav-link" href="#careers" onClick={() => setMenuOpen(false)}>
-              Careers
-            </a>
-            <a className="nav-link" href="#faq" onClick={() => setMenuOpen(false)}>
-              FAQ
-            </a>
+          <nav className="site-nav" aria-label="Primary">
+            {navLinks.map(([label, href]) => (
+              <a key={href} href={href} className={activeSection === href.slice(1) ? 'is-active' : ''}>
+                {label}
+              </a>
+            ))}
           </nav>
 
-          <div className="nav-right">
-            <AppButton href="#contact" className="btn--primary" onClick={() => setMenuOpen(false)}>
+          <div className="header-actions">
+            <ThemeToggle />
+            <Button size="sm" onClick={() => { setMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
               Get in touch
-            </AppButton>
+            </Button>
             <button
-              className="nav-toggle"
-              id="navToggle"
+              type="button"
+              className="menu-toggle"
               aria-label="Toggle menu"
               aria-expanded={menuOpen ? 'true' : 'false'}
               onClick={() => setMenuOpen((value) => !value)}
-              type="button"
             >
-              <span />
-              <span />
-              <span />
+              <Icon name={menuOpen ? 'x' : 'menu'} size={18} />
             </button>
           </div>
         </div>
+
+        <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
+          {navLinks.map(([label, href]) => (
+            <a key={href} href={href} onClick={() => setMenuOpen(false)}>
+              {label}
+            </a>
+          ))}
+          <a href="#contact" onClick={() => setMenuOpen(false)}>
+            Contact
+          </a>
+        </nav>
       </header>
 
       <main id="top">
-        <section className="hero" id="hero">
-          <div className="wrap hero-main">
-            <div className="hero-top mono" data-rise="2">
-              <span>General software studio</span>
-              <span>Made in Indonesia</span>
-            </div>
+        <section className="hero">
+          <div className="wrap hero-grid">
+            <div>
+              <span className="eyebrow reveal">General software studio · Made in Indonesia</span>
+              <h1 className="reveal">
+                General-purpose software. Built with <span className="accent">one standard</span>.
+              </h1>
+              <p className="hero-sub reveal">
+                We build independent products across AI, infrastructure, productivity, content, social and automation. Different categories, one standard: software that earns its place in everyday work.
+              </p>
 
-            <h1 data-rise="2">
-              General-purpose software. <span className="it">Built with</span> one standard.
-            </h1>
-
-            <div className="hero-row">
-              <div>
-                <p className="hero-sub" data-rise="3">
-                  We build independent products across AI, infrastructure, productivity, content, social and automation. Different categories, one standard: software that earns its place in everyday work.
-                </p>
-
-                <div className="hero-actions" data-rise="4">
-                  <AppButton href="#products">
-                    Browse our products <span className="arr">↗</span>
-                  </AppButton>
-                  <AppButton href="#contact" outline>
-                    Get in touch
-                  </AppButton>
-                </div>
-
-                <div className="hero-proof" data-rise="5">
-                  <div className="avatars">
-                    <span className="av">D</span>
-                    <span className="av">C</span>
-                    <span className="av">T</span>
-                    <span className="av">O</span>
-                  </div>
-                  <p>Built for modern digital work, wherever it happens.</p>
-                </div>
+              <div className="hero-actions reveal">
+                <Button size="lg" iconRight="arrow-right" onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Browse our products
+                </Button>
+                <Button size="lg" variant="secondary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                  Get in touch
+                </Button>
               </div>
 
-              <div className="hero-meta" data-rise="5">
-                <div className="row">
-                  <span>Discipline</span>
-                  <span>One standard</span>
-                </div>
-                <div className="row">
-                  <span>Origin</span>
-                  <span>Indonesia</span>
-                </div>
-                <div className="row">
-                  <span>Reach</span>
-                  <span>Global</span>
-                </div>
-                <div className="row">
-                  <span>Portfolio</span>
-                  <span>06 platforms</span>
-                </div>
+              <div className="hero-proof reveal">
+                <AvatarGroup>
+                  {stageProducts.slice(0, 4).map((product) => (
+                    <Avatar key={product.id} name={product.title} size={28} />
+                  ))}
+                </AvatarGroup>
+                <span>Six platforms, built for modern digital work.</span>
               </div>
             </div>
-          </div>
 
-          <div className="hero-ghost" aria-hidden="true">
-            E
+            <PortfolioPanel />
           </div>
         </section>
 
-        <div className="strip" aria-hidden="true">
-          <div className="strip-track">
-            <span>Built for the world</span>
-            <span>Quality before growth</span>
-            <span>Opinionated by design</span>
-            <span>Built with one standard</span>
-            <span>No feature bloat</span>
-            <span>Built for the world</span>
-            <span>Quality before growth</span>
-            <span>Opinionated by design</span>
-            <span>Built with one standard</span>
-            <span>No feature bloat</span>
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track">
+            {[...marqueeItems, ...marqueeItems].map((item, index) => (
+              <span className="marquee-item" key={`${item}-${index}`}>
+                {item}
+              </span>
+            ))}
           </div>
         </div>
 
         <section className="section" aria-label="By the numbers">
           <div className="wrap">
             <div className="stats">
-              {stats.map(([num, label]) => (
-                <div className="stat reveal" key={label}>
-                  <div className="num">
-                    {num}
-                    {num.includes('+') ? <em /> : null}
-                  </div>
-                  <div className="lbl">{label}</div>
+              {stats.map(([num, suffix, label]) => (
+                <div className="reveal" key={label}>
+                  <CountUp value={num} suffix={suffix} />
+                  <div className="stat-label">{label}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section rule" id="products">
+        <section className="section section--rule" id="products">
           <div className="wrap">
-            <div className="shead reveal">
-              <span className="kicker">01 / What we make</span>
-              <h2>
-                Six platforms. <span className="it acc">One standard.</span>
-              </h2>
-              <p className="lede">Different categories, one product philosophy: make useful software clearer, faster and easier to trust. Select one to look closer.</p>
-            </div>
+            <SectionHeading
+              kicker="01 / What we make"
+              title={
+                <>
+                  Six platforms. <span className="accent">One standard.</span>
+                </>
+              }
+              lede="Different categories, one product philosophy: make useful software clearer, faster and easier to trust. Select one to look closer."
+            />
 
-            <div className="stage-wrap reveal" id="stage-wrap">
+            <div className="stage-wrap reveal">
               <div className="stage">
-                <div className="stage-watermark" id="stageWatermark" aria-hidden="true">
+                <div className="stage-watermark" key={activeProduct.id} aria-hidden="true">
                   {activeProduct.mark}
                 </div>
 
-                {stageProducts.map((product) => (
-                  <article key={product.id} className={`stage-panel${activeStage === product.id ? ' is-active' : ''}`} data-id={product.id} data-mark={product.mark}>
-                    <div className="sp-top">
-                      <span className="sp-mono">
-                        {String(stageProducts.findIndex((item) => item.id === product.id) + 1).padStart(2, '0')} - {product.section}
-                      </span>
-                      <span className="sp-mark">{product.mark}</span>
-                    </div>
+                {stageProducts.map((product, index) => (
+                  <article key={product.id} className={`stage-panel${activeStage === product.id ? ' is-active' : ''}`}>
+                    <span className="eyebrow eyebrow--mono">
+                      {String(index + 1).padStart(2, '0')} / {product.section}
+                    </span>
                     <h3>{product.title}</h3>
                     <p className="desc">{product.desc}</p>
-                    <ul className="spec">
+                    <div className="specs">
                       {product.specs.map((spec) => (
-                        <li key={spec}>{spec}</li>
+                        <Tag key={spec}>{spec}</Tag>
                       ))}
-                    </ul>
-                    <div className="sp-cta">
-                      <AppButton href={product.href} external>
-                        {product.buttonLabel} <span className="arr">↗</span>
-                      </AppButton>
+                    </div>
+                    <div className="cta">
+                      <Button
+                        variant="brand"
+                        iconRight="arrow-up-right"
+                        onClick={() => window.open(product.href, '_blank', 'noopener,noreferrer')}
+                      >
+                        {product.buttonLabel}
+                      </Button>
                     </div>
                   </article>
                 ))}
               </div>
 
-              <ol className="switch" id="switch">
+              <ol className="switch">
                 {stageProducts.map((product, index) => (
                   <li key={product.id}>
                     <button
                       type="button"
-                      data-target={product.id}
                       className={activeStage === product.id ? 'is-active' : ''}
                       onMouseEnter={() => setActiveStage(product.id)}
                       onFocus={() => setActiveStage(product.id)}
@@ -539,17 +655,17 @@ export default function HomePage() {
               </ol>
             </div>
 
-            <div className="products" id="products-grid">
+            <div className="products-grid">
               {stageProducts.map((product) => (
-                <a key={product.id} className="card" href={product.href} target="_blank" rel="noopener noreferrer">
-                  <div className="card-top">
-                    <span className="mark">{product.mark}</span>
-                    <span className="tag">{product.tag}</span>
+                <a key={product.id} className="product-card" href={product.href} target="_blank" rel="noopener noreferrer">
+                  <div className="product-card-head">
+                    <Icon name={product.icon} size={22} />
+                    <Badge>{product.tag}</Badge>
                   </div>
                   <h3>{product.title}</h3>
-                  <p className="one">{product.summary}</p>
-                  <span className="card-foot">
-                    Visit <span className="arr">↗</span>
+                  <p>{product.summary}</p>
+                  <span className="visit">
+                    Visit <Icon name="arrow-up-right" size={15} />
                   </span>
                 </a>
               ))}
@@ -557,65 +673,39 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="manifesto" id="approach">
+        <section className="section section--rule" id="approach">
           <div className="wrap">
-            <div className="manifesto-grid">
+            <div className="approach-grid">
               <div className="reveal">
-                <span className="kicker">02 / Approach</span>
-                <h2 style={{ marginTop: 18 }}>
-                  We build across categories, but hold every product to <span className="it acc">one standard</span>.
+                <span className="eyebrow eyebrow--mono">02 / Approach</span>
+                <h2 className="section-title">
+                  We build across categories, but hold every product to <span className="accent">one standard</span>.
                 </h2>
               </div>
               <div className="reveal">
                 <p className="big">We are not tied to one field. We look for broad digital problems, build focused products and hold each one to the same standard.</p>
-                <p>If a product does not make its category clearer, faster or more useful, we keep working. That discipline keeps the portfolio broad without becoming scattered.</p>
+                <p className="body">If a product does not make its category clearer, faster or more useful, we keep working. That discipline keeps the portfolio broad without becoming scattered.</p>
                 <div className="checks">
-                  <div className="check">
-                    <span className="tick">
-                      <svg viewBox="0 0 12 12" fill="none">
-                        <path d="M2 6.5 5 9.5 10 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    No feature bloat
-                  </div>
-                  <div className="check">
-                    <span className="tick">
-                      <svg viewBox="0 0 12 12" fill="none">
-                        <path d="M2 6.5 5 9.5 10 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    Opinionated by design
-                  </div>
-                  <div className="check">
-                    <span className="tick">
-                      <svg viewBox="0 0 12 12" fill="none">
-                        <path d="M2 6.5 5 9.5 10 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    Built to scale globally
-                  </div>
-                  <div className="check">
-                    <span className="tick">
-                      <svg viewBox="0 0 12 12" fill="none">
-                        <path d="M2 6.5 5 9.5 10 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </span>
-                    Quality before growth
-                  </div>
+                  {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
+                    <div className="check" key={item}>
+                      <span className="tick">
+                        <Icon name="check" size={15} />
+                      </span>
+                      {item}
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
-            <div className="origin">
-              <div className="reveal">
-                <h3>Built in Indonesia. Engineered for every market.</h3>
-              </div>
-              <div className="reveal">
-                <p>
-                  We operate from one of the world's fastest-growing markets. That experience informs every product decision we make - and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
-                </p>
-              </div>
-            </div>
+        <section className="band">
+          <div className="wrap band-grid">
+            <h3 className="band-title reveal">Built in Indonesia. Engineered for every market.</h3>
+            <p className="reveal">
+              We operate from one of the world's fastest-growing markets. That experience informs every product decision we make - and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
+            </p>
           </div>
         </section>
 
@@ -625,17 +715,18 @@ export default function HomePage() {
               kicker="03 / The studio"
               title={
                 <>
-                  A small team, <span className="it acc">distributed</span> - building across categories.
+                  A small team, <span className="accent">distributed</span> - building across categories.
                 </>
               }
               lede="A focused group of builders who care deeply about useful software."
             />
 
             <div className="team-grid">
-              {team.map(([mono, letter, name, role]) => (
+              {team.map(([idx, name, role]) => (
                 <div className="member reveal" key={name}>
-                  <div className="face" data-mono={mono}>
-                    {letter}
+                  <span className="idx">{idx}</span>
+                  <div style={{ marginTop: 16 }}>
+                    <Avatar name={name} size={56} />
                   </div>
                   <div className="nm">{name}</div>
                   <div className="ro">{role}</div>
@@ -645,17 +736,16 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section rule" id="testimonials">
+        <section className="section section--rule" id="testimonials">
           <div className="wrap">
-            <SectionHeading kicker="04 / In the wild" title="Used every day." lede="" />
+            <SectionHeading kicker="04 / In the wild" title="Used every day." />
 
             <div className="quotes">
-              {quotes.map(([letter, body, name, role]) => (
+              {quotes.map(([name, body, role]) => (
                 <figure className="quote reveal" key={name}>
-                  <div className="mk">”</div>
                   <p>{body}</p>
                   <figcaption className="who">
-                    <span className="av">{letter}</span>
+                    <Avatar name={name} size={36} />
                     <span>
                       <span className="nm">{name}</span>
                       <span className="ro">{role}</span>
@@ -667,18 +757,21 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section rule" id="careers">
+        <section className="section section--rule" id="careers">
           <div className="wrap">
-            <div className="join-grid join">
+            <div className="careers-grid">
               <div className="reveal">
-                <span className="kicker">05 / Join us</span>
-                <h2 style={{ marginTop: 18 }}>
-                  Care deeply about craft? <span className="it acc">Let's build.</span>
+                <span className="eyebrow eyebrow--mono">05 / Join us</span>
+                <h2 className="section-title">
+                  Care deeply about craft? <span className="accent">Let's build.</span>
                 </h2>
-                <p>We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out - even if you do not see your exact role below.</p>
-                <AppButton href="#contact" className="btn--primary" onClick={() => setMenuOpen(false)}>
-                  Contact us about roles <span className="arr">↗</span>
-                </AppButton>
+                <p className="body">We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out - even if you do not see your exact role below.</p>
+                <Button
+                  iconRight="arrow-right"
+                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Contact us about roles
+                </Button>
               </div>
 
               <div className="roles reveal">
@@ -688,7 +781,9 @@ export default function HomePage() {
                       <div className="rt">{title}</div>
                       <div className="rm">{meta}</div>
                     </div>
-                    <span className="ar">↗</span>
+                    <span className="role-arrow">
+                      <Icon name="arrow-right" size={18} />
+                    </span>
                   </a>
                 ))}
               </div>
@@ -696,131 +791,48 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section rule" id="faq">
+        <section className="section section--rule" id="faq">
           <div className="wrap">
-            <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." lede="" />
+            <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." />
 
-            <div className="faq faq-items">
-              {isNarrow ? (
-                <div className="faq-col">
-                  {faqItems.map(([question, answer], index) => {
-                    const open = openFaqIndex === index;
-                    return (
-                      <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                        <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
-                          {question}
-                          <span className="pm" />
-                        </button>
-                        <div
-                          className="faq-a"
-                          ref={(el) => {
-                            faqRefs.current[index] = el;
-                          }}
-                          style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
-                        >
-                          <div className="faq-a-inner">{answer}</div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <>
-                  <div className="faq-col">
-                    {faqItems
-                      .map((pair, i) => [pair, i])
-                      .filter(([, i]) => i % 2 === 0)
-                      .map(([questionAndAnswer, index]) => {
-                        const [question, answer] = questionAndAnswer;
-                        const open = openFaqIndex === index;
-
-                        return (
-                          <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                            <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
-                              {question}
-                              <span className="pm" />
-                            </button>
-                            <div
-                              className="faq-a"
-                              ref={(el) => {
-                                faqRefs.current[index] = el;
-                              }}
-                              style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
-                            >
-                              <div className="faq-a-inner">{answer}</div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-
-                  <div className="faq-col">
-                    {faqItems
-                      .map((pair, i) => [pair, i])
-                      .filter(([, i]) => i % 2 === 1)
-                      .map(([questionAndAnswer, index]) => {
-                        const [question, answer] = questionAndAnswer;
-                        const open = openFaqIndex === index;
-
-                        return (
-                          <div className={`faq-item${open ? ' open' : ''}`} key={question}>
-                            <button className="faq-q" type="button" onClick={() => setOpenFaqIndex(open ? -1 : index)} aria-expanded={open}>
-                              {question}
-                              <span className="pm" />
-                            </button>
-                            <div
-                              className="faq-a"
-                              ref={(el) => {
-                                faqRefs.current[index] = el;
-                              }}
-                              style={{ maxHeight: open ? `${faqHeights[index] || 0}px` : '0px' }}
-                            >
-                              <div className="faq-a-inner">{answer}</div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                  </div>
-                </>
-              )}
+            <div className="faq-wrap reveal">
+              <Accordion
+                items={faqItems.map(([question, answer], index) => ({
+                  id: `faq-${index}`,
+                  title: question,
+                  content: answer
+                }))}
+              />
             </div>
           </div>
         </section>
 
-        <section className="section rule" id="contact">
+        <section className="section section--rule" id="contact">
           <div className="wrap">
             <div className="contact-grid">
               <div className="reveal">
-                <span className="kicker">07 / Contact</span>
-                <h2 style={{ fontSize: 'clamp(32px,4.4vw,54px)', marginTop: 18 }}>Tell us what you are building.</h2>
-                <p className="lede" style={{ marginTop: 20 }}>
-                  Questions, partnerships, or just hello - we read everything.
-                </p>
+                <span className="eyebrow eyebrow--mono">07 / Contact</span>
+                <h2 className="section-title">Tell us what you are building.</h2>
+                <p className="section-lede">Questions, partnerships, or just hello - we read everything.</p>
                 <div className="contact-aside">
-                  <div className="ci">
-                    <div className="k">Headquarters</div>
-                    <div className="v">Indonesia - Distributed team</div>
-                  </div>
+                  <div className="k">Headquarters</div>
+                  <div className="v">Indonesia - Distributed team</div>
                 </div>
               </div>
 
-              <form className="reveal" id="contactForm" noValidate onSubmit={handleContactSubmit}>
-                <div className="field">
-                  <label htmlFor="cf-name">Name</label>
-                  <input id="cf-name" name="name" type="text" placeholder="Your name" required />
-                </div>
-                <div className="field">
-                  <label htmlFor="cf-email">Email</label>
-                  <input id="cf-email" name="email" type="email" placeholder="you@company.com" required />
-                </div>
-                <div className="field">
-                  <label htmlFor="cf-msg">Message</label>
-                  <textarea id="cf-msg" name="message" placeholder="What is on your mind?" required />
-                </div>
-                <button className="btn btn--primary" type="submit" style={{ width: '100%', justifyContent: 'center' }}>
-                  Send message <span className="arr">↗</span>
-                </button>
-                <div className="form-msg" id="formMsg" role="status" style={{ color: contactStatus.type === 'error' ? 'var(--accent-deep)' : 'var(--accent)' }}>
+              <form className="contact-form reveal" noValidate onSubmit={handleContactSubmit}>
+                <Input label="Name" name="name" type="text" placeholder="Your name" required autoComplete="name" />
+                <Input label="Email" name="email" type="email" placeholder="you@company.com" required autoComplete="email" />
+                <Textarea label="Message" name="message" placeholder="What is on your mind?" rows={5} required />
+                <Button type="submit" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
+                  Send message
+                </Button>
+                <div
+                  className={`form-status${contactStatus.type === 'success' ? ' is-success' : ''}${contactStatus.type === 'error' ? ' is-error' : ''}`}
+                  role="status"
+                >
+                  {contactStatus.type === 'success' ? <Icon name="circle-check" size={15} /> : null}
+                  {contactStatus.type === 'error' ? <Icon name="circle-alert" size={15} /> : null}
                   {contactStatus.text}
                 </div>
               </form>
@@ -828,39 +840,47 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section rule" aria-label="Newsletter">
+        <section className="section section--rule" aria-label="Newsletter">
           <div className="wrap">
             <div className="news reveal">
-              <div className="nt">
+              <div>
                 <h3>Get product news from the studio.</h3>
-                <p>New launches and updates. No noise, unsubscribe anytime.</p>
+                <p className="sub">New launches and updates. No noise, unsubscribe anytime.</p>
+                <div
+                  className={`form-status${newsletterStatus.type === 'success' ? ' is-success' : ''}${newsletterStatus.type === 'error' ? ' is-error' : ''}`}
+                  role="status"
+                >
+                  {newsletterStatus.type === 'success' ? <Icon name="circle-check" size={15} /> : null}
+                  {newsletterStatus.type === 'error' ? <Icon name="circle-alert" size={15} /> : null}
+                  {newsletterStatus.text}
+                </div>
               </div>
-              <form id="newsForm" onSubmit={handleNewsletterSubmit}>
-                <input type="email" placeholder="you@email.com" aria-label="Email address" name="email" required />
-                <button className="btn btn--primary" type="submit">
-                  {newsletterButton}
-                </button>
+              <form onSubmit={handleNewsletterSubmit}>
+                <Input type="email" placeholder="you@email.com" aria-label="Email address" name="email" required />
+                <Button type="submit" loading={newsletterStatus.type === 'sending'}>
+                  Subscribe
+                </Button>
               </form>
-              <div className="form-msg" role="status" style={{ color: newsletterStatus.type === 'error' ? 'var(--accent-deep)' : 'var(--accent)' }}>
-                {newsletterStatus.text}
-              </div>
             </div>
           </div>
         </section>
 
-        <section className="closer">
+        <section className="band closer">
           <div className="wrap">
-            <h2 className="reveal">
-              Find the product built for <span className="it acc">your</span> work.
-            </h2>
+            <h2 className="reveal">Find the product built for your work.</h2>
             <p className="reveal">Every product we build starts from the belief that the existing solution is not good enough. We think you will agree.</p>
             <div className="closer-actions reveal">
-              <AppButton href="#products">
-                See the products <span className="arr">↗</span>
-              </AppButton>
-              <AppButton href="#contact" outline>
+              <Button
+                variant="secondary"
+                size="lg"
+                iconRight="arrow-right"
+                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                See the products
+              </Button>
+              <a className="band-link" href="#contact">
                 Contact us
-              </AppButton>
+              </a>
             </div>
           </div>
         </section>
@@ -869,9 +889,9 @@ export default function HomePage() {
       <footer className="footer">
         <div className="wrap">
           <div className="footer-top">
-            <div className="fbrand">
+            <div>
               <a href="#top" className="brand">
-                <img className="glyph" src="/efolusi/logo-owl.png" alt="" />
+                <img src="/efolusi/logo-owl.png" alt="" />
                 Efolusi
               </a>
               <p className="tag-line">General-purpose software products built with intent. Made in Indonesia, engineered for every market.</p>
@@ -881,8 +901,13 @@ export default function HomePage() {
                     <path d="M4 4l16 16M20 4L4 20" />
                   </svg>
                 </a>
-                <a className="li" href="#" aria-label="Efolusi on LinkedIn">
-                  in
+                <a href="#" aria-label="Efolusi on LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
+                    <path d="M8 10.5v6" />
+                    <path d="M8 7.6v.1" />
+                    <path d="M12 16.5v-3.6a2.4 2.4 0 0 1 4.8 0v3.6" />
+                  </svg>
                 </a>
                 <a href="#" aria-label="Efolusi on Instagram">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
@@ -900,23 +925,21 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="fcols">
-              <div className="fcol">
-                <h4>Products</h4>
-                {stageProducts.map((product) => (
-                  <a key={product.id} href={product.href} target="_blank" rel="noopener noreferrer">
-                    {product.title}
-                  </a>
-                ))}
-              </div>
-              <div className="fcol">
-                <h4>Company</h4>
-                <a href="#approach">Approach</a>
-                <a href="#team">Team</a>
-                <a href="#careers">Careers</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contact">Contact</a>
-              </div>
+            <div className="fcol">
+              <h4>Products</h4>
+              {stageProducts.map((product) => (
+                <a key={product.id} href={product.href} target="_blank" rel="noopener noreferrer">
+                  {product.title}
+                </a>
+              ))}
+            </div>
+            <div className="fcol">
+              <h4>Company</h4>
+              <a href="#approach">Approach</a>
+              <a href="#team">Team</a>
+              <a href="#careers">Careers</a>
+              <a href="#faq">FAQ</a>
+              <a href="#contact">Contact</a>
             </div>
           </div>
 

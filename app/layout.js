@@ -1,3 +1,4 @@
+import '@efolusi/meridian/styles.css';
 import './globals.css';
 
 export const metadata = {
@@ -18,10 +19,13 @@ export const metadata = {
   }
 };
 
+const themeInit = `try{var t=localStorage.getItem('efolusi-theme');if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}`;
+
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body data-show="stage" data-band="off">
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         {children}
       </body>
     </html>
