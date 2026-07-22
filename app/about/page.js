@@ -51,9 +51,9 @@ export default function AboutPage() {
             <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline is what lets the portfolio grow without getting scattered.</p>
           </div>
           <div className="ruled-cells" data-cols="2" style={{ marginTop: 32 }}>
-            {values.map((item) => (
+            {values.map((item, index) => (
               <div className="check" key={item}>
-                <span className="tick">
+                <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
                   <Icon name="check" size={15} />
                 </span>
                 {item}

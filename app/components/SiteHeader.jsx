@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
@@ -28,24 +29,24 @@ export default function SiteHeader({ active = '' }) {
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap site-header-inner">
-        <a href="/" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
+        <Link href="/" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
           <img src="/efolusi/logo-owl.png" alt="" width="30" height="30" />
           Efolusi
-        </a>
+        </Link>
 
         <nav className="site-nav" aria-label="Primary">
           {navLinks.map(([label, href, key]) => (
-            <a key={key} href={href} className={active === key ? 'is-active' : ''}>
+            <Link key={key} href={href} className={active === key ? 'is-active' : ''}>
               {label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="header-actions">
           <ThemeToggle />
-          <a className="ef-btn ef-btn--primary ef-btn--md" href="/#contact" onClick={() => setMenuOpen(false)}>
+          <Link className="ef-btn ef-btn--primary ef-btn--md" href="/#contact" onClick={() => setMenuOpen(false)}>
             Get in touch
-          </a>
+          </Link>
           <button
             type="button"
             className="menu-toggle"
@@ -60,13 +61,13 @@ export default function SiteHeader({ active = '' }) {
 
       <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
         {navLinks.map(([label, href, key]) => (
-          <a key={key} href={href} onClick={() => setMenuOpen(false)}>
+          <Link key={key} href={href} onClick={() => setMenuOpen(false)}>
             {label}
-          </a>
+          </Link>
         ))}
-        <a href="/#contact" onClick={() => setMenuOpen(false)}>
+        <Link href="/#contact" onClick={() => setMenuOpen(false)}>
           Contact
-        </a>
+        </Link>
       </nav>
     </header>
   );

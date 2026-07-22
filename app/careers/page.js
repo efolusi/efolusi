@@ -67,9 +67,9 @@ export default function CareersPage() {
         <Section label="Working here" fact="Distributed · Async">
           <h2 className="section-title">What it's actually like.</h2>
           <div className="ruled-cells" data-cols="2" style={{ marginTop: 32 }}>
-            {workingHere.map(([icon, title, body]) => (
+            {workingHere.map(([icon, title, body], index) => (
               <div className="perk" key={title}>
-                <span className="tick">
+                <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
                   <Icon name={icon} size={16} />
                 </span>
                 <h3>{title}</h3>

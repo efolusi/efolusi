@@ -19,9 +19,19 @@ import Section from './components/Section.jsx';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
+/* Category tint backgrounds, used for the stage watermark wash. */
+const TINT_BG = {
+  caramel: 'var(--brand-100)',
+  green: 'var(--success-100)',
+  amber: 'var(--warning-100)',
+  coral: 'var(--danger-100)',
+  peach: 'var(--brand-200)'
+};
+
 const stageProducts = [
   {
     id: 'zoyya',
+    tint: 'caramel',
     mark: 'Zo',
     icon: 'brain',
     section: 'Artificial Intelligence',
@@ -35,6 +45,7 @@ const stageProducts = [
   },
   {
     id: 'komando',
+    tint: 'green',
     mark: 'Ko',
     icon: 'server',
     section: 'Cloud Infrastructure',
@@ -48,6 +59,7 @@ const stageProducts = [
   },
   {
     id: 'toolips',
+    tint: 'amber',
     mark: 'To',
     icon: 'package',
     section: 'Productivity',
@@ -61,6 +73,7 @@ const stageProducts = [
   },
   {
     id: 'trady',
+    tint: 'coral',
     mark: 'Tr',
     icon: 'sparkles',
     section: 'Content Generation',
@@ -74,6 +87,7 @@ const stageProducts = [
   },
   {
     id: 'kongkow',
+    tint: 'peach',
     mark: 'Kg',
     icon: 'message-square',
     section: 'Social Media',
@@ -87,6 +101,7 @@ const stageProducts = [
   },
   {
     id: 'cuwan',
+    tint: 'green',
     mark: 'Cu',
     icon: 'chart-candlestick',
     section: 'Automated Trading',
@@ -301,6 +316,86 @@ function CountUp({ value, suffix }) {
   );
 }
 
+/* The floating constellation: the owl and the product monograms as tilting,
+   softly bobbing tiles. Pointer tilt is skipped on touch and reduced motion. */
+const heroTiles = [
+  { id: 'owl', label: 'View the portfolio', href: '#products', left: 190, top: 128, size: 128, rot: -3, d: 0.1, z: 7, owl: true },
+  { id: 'efo', label: '$EFO token', href: '/token', left: 226, top: 8, w: 108, h: 52, rot: 5, d: 0.55, z: 6, text: '$EFO', tint: 'cocoa' },
+  { id: 'zoyya', label: 'ZOYYA', href: 'https://zoyya.xyz', left: 22, top: 26, size: 96, rot: -8, d: 0.2, z: 4, text: 'Zo', tint: 'caramel' },
+  { id: 'komando', label: 'Komando', href: 'https://komando.efolusi.com', left: 396, top: 44, size: 88, rot: 6, d: 0.3, z: 3, text: 'Ko', tint: 'green' },
+  { id: 'toolips', label: 'Toolips', href: 'https://toolips.xyz', left: 438, top: 220, size: 80, rot: -5, d: 0.4, z: 5, text: 'To', tint: 'amber' },
+  { id: 'trady', label: 'Trady', href: 'https://trady.efolusi.com', left: 48, top: 296, size: 88, rot: 7, d: 0.35, z: 5, text: 'Tr', tint: 'coral' },
+  { id: 'kongkow', label: 'Kongkow', href: 'https://kongkow.xyz', left: 236, top: 344, size: 76, rot: -6, d: 0.5, z: 4, text: 'Kg', tint: 'peach' },
+  { id: 'cuwan', label: 'Cuwan', href: 'https://cuwan.xyz', left: 404, top: 352, size: 92, rot: 4, d: 0.45, z: 6, text: 'Cu', tint: 'green' }
+];
+
+function HeroConstellation() {
+  const fieldRef = useRef(null);
+
+  useEffect(() => {
+    const el = fieldRef.current;
+    if (!el) return undefined;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined;
+    if (window.matchMedia('(hover: none)').matches) return undefined;
+
+    let raf = 0;
+    const onMove = (event) => {
+      const rect = el.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        el.style.setProperty('--tiltX', `${(-y * 8).toFixed(2)}deg`);
+        el.style.setProperty('--tiltY', `${(x * 10).toFixed(2)}deg`);
+      });
+    };
+    const onLeave = () => {
+      el.style.setProperty('--tiltX', '0deg');
+      el.style.setProperty('--tiltY', '0deg');
+    };
+
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerleave', onLeave);
+    return () => {
+      el.removeEventListener('pointermove', onMove);
+      el.removeEventListener('pointerleave', onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div className="orbit" aria-label="The Efolusi portfolio">
+      <div className="orbit-field" ref={fieldRef}>
+        {heroTiles.map((tile) => (
+          <a
+            key={tile.id}
+            className="tile"
+            href={tile.href}
+            target={tile.href.startsWith('http') ? '_blank' : undefined}
+            rel={tile.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+            aria-label={tile.label}
+            style={{
+              left: tile.left,
+              top: tile.top,
+              zIndex: tile.z,
+              '--rot': `${tile.rot}deg`,
+              '--d': `${tile.d}s`,
+              '--fd': `${6 + tile.d * 3}s`
+            }}
+          >
+            <span
+              className={`tile-card${tile.tint ? ` tint-${tile.tint}` : ''}`}
+              style={{ width: tile.w || tile.size, height: tile.h || tile.size }}
+            >
+              {tile.owl ? <img src="/efolusi/logo-owl.png" alt="" width="72" height="72" /> : tile.text}
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function SectionHeading({ title, lede }) {
   return (
     <div className="reveal">
@@ -404,25 +499,42 @@ export default function HomePage() {
                 <span>$EFO live</span>
               </div>
             </div>
-            <h1 className="reveal">
-              We build and run <span className="accent">independent software products</span>.
-            </h1>
-            <p className="hero-sub reveal">
-              We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
-            </p>
 
-            <div className="hero-actions reveal">
-              <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
-                View the portfolio <Icon name="arrow-right" size={16} />
-              </a>
-              <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
-                Get in touch
-              </a>
-            </div>
+            <div className="hero-grid">
+              <div>
+                <h1 className="reveal">
+                  We build and run{' '}
+                  <span className="accent">
+                    independent software{' '}
+                    <span className="scribble">
+                      products
+                      <svg viewBox="0 0 220 26" preserveAspectRatio="none" aria-hidden="true">
+                        <path d="M6 16 C 48 22, 88 6, 126 13 S 196 21, 214 9" pathLength="100" />
+                      </svg>
+                    </span>
+                  </span>
+                  .
+                </h1>
+                <p className="hero-sub reveal">
+                  We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
+                </p>
 
-            <div className="hero-proof reveal">
-              <StatusDot state="ok" pulse />
-              <span>Every platform is live and used every day.</span>
+                <div className="hero-actions reveal">
+                  <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
+                    View the portfolio <Icon name="arrow-right" size={16} />
+                  </a>
+                  <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
+                    Get in touch
+                  </a>
+                </div>
+
+                <div className="hero-proof reveal">
+                  <StatusDot state="ok" pulse />
+                  <span>Every platform is live and used every day.</span>
+                </div>
+              </div>
+
+              <HeroConstellation />
             </div>
           </div>
         </section>
@@ -460,7 +572,12 @@ export default function HomePage() {
 
             <div className="stage-wrap reveal">
               <div className="stage">
-                <div className="stage-watermark" key={activeProduct.id} aria-hidden="true">
+                <div
+                  className="stage-watermark"
+                  key={activeProduct.id}
+                  aria-hidden="true"
+                  style={{ color: TINT_BG[activeProduct.tint] }}
+                >
                   {activeProduct.mark}
                 </div>
 
@@ -511,7 +628,7 @@ export default function HomePage() {
           <div className="plist reveal">
             {stageProducts.map((product) => (
               <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
-                <span className="plist-mark" aria-hidden="true">
+                <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
                   {product.mark}
                 </span>
                 <span>
@@ -540,9 +657,9 @@ export default function HomePage() {
             <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline keeps the portfolio broad without getting scattered.</p>
           </div>
           <div className="ruled-cells reveal" data-cols="2" style={{ marginTop: 32 }}>
-            {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
+            {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item, index) => (
               <div className="check" key={item}>
-                <span className="tick">
+                <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
                   <Icon name="check" size={15} />
                 </span>
                 {item}

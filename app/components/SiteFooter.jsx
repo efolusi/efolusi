@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 
 const products = [
@@ -17,10 +18,10 @@ export default function SiteFooter() {
       <div className="wrap">
         <div className="footer-top">
           <div>
-            <a href="/" className="brand">
+            <Link href="/" className="brand">
               <img src="/efolusi/logo-owl.png" alt="" width="28" height="28" />
               Efolusi
-            </a>
+            </Link>
             <p className="tag-line">PT. Efolusi Dunia Teknologi. A software studio building and running independent products. Made in Indonesia, engineered for every market.</p>
             <a className="footer-mail" href="mailto:hi@efolusi.com">
               <Icon name="mail" size={15} /> hi@efolusi.com
@@ -37,15 +38,15 @@ export default function SiteFooter() {
           </div>
           <div className="fcol">
             <h4>Company</h4>
-            <a href="/about">About</a>
-            <a href="/careers">Careers</a>
-            <a href="/brand">Brand</a>
-            <a href="/#faq">FAQ</a>
-            <a href="/#contact">Contact</a>
+            <Link href="/about">About</Link>
+            <Link href="/careers">Careers</Link>
+            <Link href="/brand">Brand</Link>
+            <Link href="/#faq">FAQ</Link>
+            <Link href="/#contact">Contact</Link>
           </div>
           <div className="fcol">
             <h4>Ecosystem</h4>
-            <a href="/token">$EFO token</a>
+            <Link href="/token">$EFO token</Link>
             <a
               href="https://bscscan.com/token/0xb61a09e93b4f14585e9afbac3adaea626f25fb07"
               target="_blank"
@@ -56,8 +57,8 @@ export default function SiteFooter() {
           </div>
           <div className="fcol">
             <h4>Legal</h4>
-            <a href="/privacy">Privacy policy</a>
-            <a href="/terms">Terms of use</a>
+            <Link href="/privacy">Privacy policy</Link>
+            <Link href="/terms">Terms of use</Link>
           </div>
         </div>
 
