@@ -463,7 +463,7 @@ export default function HomePage() {
 
           <div className="header-actions">
             <ThemeToggle />
-            <a className="ef-btn ef-btn--primary ef-btn--sm" href="#contact" onClick={() => setMenuOpen(false)}>
+            <a className="ef-btn ef-btn--primary ef-btn--md" href="#contact" onClick={() => setMenuOpen(false)}>
               Get in touch
             </a>
             <button
