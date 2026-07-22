@@ -209,14 +209,14 @@ a.ef-btn--secondary:hover {
 /* ---------- Hero: full-width editorial, type carries the brand ---------- */
 
 .hero {
-  padding: clamp(72px, 13vh, 128px) 0 clamp(72px, 11vh, 112px);
+  padding: clamp(64px, 10vh, 104px) 0 clamp(64px, 9vh, 96px);
 }
 
 .hero h1 {
-  font-size: clamp(44px, 7vw, 88px);
+  font-size: clamp(38px, 5vw, 68px);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
-  margin-top: 22px;
+  margin-top: 20px;
   letter-spacing: var(--tracking-display);
   max-width: 1060px;
 }
