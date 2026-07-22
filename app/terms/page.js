@@ -1,0 +1,45 @@
+export const metadata = {
+  title: 'Terms of use · Efolusi',
+  description: 'Terms of use for efolusi.com, the website of PT. Efolusi Dunia Teknologi.',
+  alternates: { canonical: '/terms' }
+};
+
+export default function TermsPage() {
+  return (
+    <main className="legal-page">
+      <a className="back-home" href="/">
+        ← Back to efolusi.com
+      </a>
+      <h1>Terms of use</h1>
+      <p className="legal-meta">PT. Efolusi Dunia Teknologi · Effective 22 July 2026</p>
+
+      <p>
+        By using efolusi.com you agree to these terms. This website presents PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio. It is provided for information purposes, as is, without warranties of any kind.
+      </p>
+
+      <h2>Products</h2>
+      <p>
+        Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.
+      </p>
+
+      <h2>Content and trademarks</h2>
+      <p>
+        The Efolusi name, the owl mark and product names are property of PT. Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at{' '}
+        <a href="https://github.com/efolusi/efolusi" target="_blank" rel="noopener noreferrer">
+          github.com/efolusi/efolusi
+        </a>
+        ; the MIT grant does not cover the names or the mark.
+      </p>
+
+      <h2>Liability</h2>
+      <p>
+        We work to keep the information on this site accurate but do not guarantee it. Efolusi is not liable for damages arising from the use of this website. Nothing on this site is financial, legal or professional advice.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms: <a href="mailto:hi@efolusi.com">hi@efolusi.com</a>.
+      </p>
+    </main>
+  );
+}

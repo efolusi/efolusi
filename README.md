@@ -98,16 +98,25 @@ Optional variable:
 ```text
 app/
   api/
+    _lib/guard.js         Shared endpoint protections (origin check, rate limit)
     contact/route.js      Contact form endpoint (Brevo transactional email)
     newsletter/route.js   Newsletter signup endpoint (Brevo contacts)
+  privacy/page.js         Privacy policy
+  terms/page.js           Terms of use
+  sitemap.js, robots.js   SEO metadata routes
   globals.css             Marketing-page styles on top of Meridian tokens
-  layout.js               Metadata, Meridian stylesheet, theme init
+  layout.js               Metadata, JSON-LD, Meridian stylesheet, theme init
   page.js                 Main marketing site
 public/
   efolusi/logo-owl.png    Site icon and brand asset
-wrangler.jsonc            Cloudflare Workers configuration
+  og-image.png            Social share image
+wrangler.jsonc            Cloudflare Workers configuration (incl. rate limits)
 open-next.config.ts       OpenNext Cloudflare adapter configuration
 ```
+
+## Endpoint protections
+
+Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP (5 requests per minute) through the Workers rate limiting binding. The contact form also carries a honeypot field; submissions that fill it are silently dropped.
 
 ## Content Updates
 

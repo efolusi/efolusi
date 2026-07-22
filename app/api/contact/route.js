@@ -1,3 +1,5 @@
+import { isSameOrigin, passesRateLimit, tooLong } from '../_lib/guard.js';
+
 function validateEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
@@ -22,13 +24,31 @@ function parseSender(raw) {
 
 export async function POST(req) {
   try {
+    if (!isSameOrigin(req)) {
+      return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), { status: 403 });
+    }
+
+    if (!(await passesRateLimit(req, 'CONTACT_RATE_LIMIT'))) {
+      return new Response(JSON.stringify({ ok: false, error: 'Too many requests. Please try again in a minute.' }), { status: 429 });
+    }
+
     const body = await req.json();
     const name = String(body.name || '').trim();
     const email = String(body.email || '').trim();
     const message = String(body.message || '').trim();
+    const honeypot = String(body.company || '').trim();
+
+    // Bots fill the hidden field; pretend success and drop the message.
+    if (honeypot) {
+      return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    }
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ ok: false, error: 'Missing fields' }), { status: 400 });
+    }
+
+    if (tooLong(name, 200) || tooLong(email, 320) || tooLong(message, 5000)) {
+      return new Response(JSON.stringify({ ok: false, error: 'Message too long' }), { status: 400 });
     }
 
     if (!validateEmail(email)) {

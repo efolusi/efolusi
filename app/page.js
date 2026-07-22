@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import {
   Accordion,
   Avatar,
-  AvatarGroup,
   Badge,
   Button,
   Icon,
@@ -26,7 +25,7 @@ const stageProducts = [
     href: 'https://zoyya.xyz',
     buttonLabel: 'Visit ZOYYA',
     tag: 'AI',
-    summary: 'General autonomous intelligence — reasons, learns your context and acts on its own.'
+    summary: 'General autonomous intelligence that reasons, learns your context and acts on its own.'
   },
   {
     id: 'komando',
@@ -34,12 +33,12 @@ const stageProducts = [
     icon: 'server',
     section: 'Cloud Infrastructure',
     title: 'Komando',
-    desc: 'Centralized cloud infrastructure. Every server, deployment, pipeline and alert - full visibility, managed from a single interface.',
+    desc: 'Centralized cloud infrastructure. Every server, deployment, pipeline and alert in one interface, with full visibility.',
     specs: ['Unified', 'Full visibility', 'Single pane'],
     href: 'https://komando.efolusi.com',
     buttonLabel: 'Visit Komando',
     tag: 'Infrastructure',
-    summary: 'Centralized cloud infrastructure — every server, deployment and alert in one interface.'
+    summary: 'Centralized cloud infrastructure. Every server, deployment and alert in one interface.'
   },
   {
     id: 'toolips',
@@ -47,12 +46,12 @@ const stageProducts = [
     icon: 'package',
     section: 'Productivity',
     title: 'Toolips',
-    desc: 'All-in-one productivity tools. 100+ utilities to convert, compress, edit and export - no accounts, no subscriptions, always available.',
+    desc: 'All-in-one productivity tools. 100+ utilities to convert, compress, edit and export. No accounts, no subscriptions, always available.',
     specs: ['100+ utilities', 'No account', 'Always free'],
     href: 'https://toolips.xyz',
     buttonLabel: 'Visit Toolips',
     tag: 'Productivity',
-    summary: '100+ productivity utilities — convert, compress, edit and export. No accounts, free.'
+    summary: '100+ productivity utilities to convert, compress, edit and export. No accounts, free.'
   },
   {
     id: 'trady',
@@ -60,12 +59,12 @@ const stageProducts = [
     icon: 'sparkles',
     section: 'Content Generation',
     title: 'Trady',
-    desc: 'General content generator. Input a brief, receive a finished campaign - text, audio, video and images in one workflow. Weeks into hours.',
+    desc: 'General content generator. Input a brief, receive a finished campaign: text, audio, video and images in one workflow. Weeks into hours.',
     specs: ['Text + Audio', 'Video + Image', 'One workflow'],
     href: 'https://trady.efolusi.com',
     buttonLabel: 'Visit Trady',
     tag: 'Content',
-    summary: 'General content generator — brief in, finished campaign out across text, audio, video, image.'
+    summary: 'General content generator. Brief in, finished campaign out across text, audio, video and image.'
   },
   {
     id: 'kongkow',
@@ -78,7 +77,7 @@ const stageProducts = [
     href: 'https://kongkow.xyz',
     buttonLabel: 'Visit Kongkow',
     tag: 'Social',
-    summary: 'Social media command center — publish once to 20+ platforms at the same time.'
+    summary: 'Social media command center. Publish once to 20+ platforms at the same time.'
   },
   {
     id: 'cuwan',
@@ -86,60 +85,42 @@ const stageProducts = [
     icon: 'chart-candlestick',
     section: 'Automated Trading',
     title: 'Cuwan',
-    desc: 'Automated trading platform. One dashboard for 100+ CEX and DEX markets - set a strategy and let it execute autonomously, around the clock.',
+    desc: 'Automated trading platform. One dashboard for 100+ CEX and DEX markets. Set a strategy and let it execute autonomously, around the clock.',
     specs: ['100+ markets', 'CEX + DEX', '24/7'],
     href: 'https://cuwan.xyz',
     buttonLabel: 'Visit Cuwan',
     tag: 'Trading',
-    summary: 'Automated trading — one dashboard for 100+ CEX and DEX markets, executing 24/7.'
+    summary: 'Automated trading. One dashboard for 100+ CEX and DEX markets, executing 24/7.'
   }
 ];
 
 const stats = [
-  ['06', '', 'Products across the portfolio - one standard of craft'],
+  ['06', '', 'Independent products, each with its own roadmap'],
+  ['06', '', 'Categories, from AI to automated trading'],
   ['100', '+', 'Exchanges, utilities and integrations connected'],
-  ['20', '+', 'Social channels reached from one publish'],
-  ['24', '/7', 'Autonomous, always-on - built to keep moving']
+  ['01', '', 'Standard of craft across everything we ship']
 ];
 
-const team = [
-  ['01', 'Sugeng Agung Suganda', 'Founder & CEO'],
+const leadership = [
+  ['01', 'Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
   ['02', 'Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
-const quotes = [
-  [
-    'Rangga',
-    'Komando replaced three dashboards for us. Every deploy, alert and pipeline lives in one place - and I actually trust what it tells me.',
-    'Platform Lead'
-  ],
-  [
-    'Maya',
-    'I brief Trady once and walk away with a full campaign - copy, video, the lot. It compressed a two-week sprint into an afternoon.',
-    'Content Creator'
-  ],
-  [
-    'Farhan',
-    'Cuwan runs my strategy across CEX and DEX while I sleep. One dashboard, every market - it is the tool I wished existed for years.',
-    'Quant Trader'
-  ]
-];
-
 const roles = [
-  ['Senior Go Engineer', 'Remote - Full-time'],
-  ['Product Designer', 'Remote - Full-time'],
-  ['AI Research Engineer', 'Remote - Full-time'],
-  ['Growth Lead', 'Indonesia - Full-time']
+  ['Senior Go Engineer', 'Remote · Full-time'],
+  ['Product Designer', 'Remote · Full-time'],
+  ['AI Research Engineer', 'Remote · Full-time'],
+  ['Growth Lead', 'Indonesia · Full-time']
 ];
 
 const faqItems = [
   [
     'What is Efolusi?',
-    'Efolusi is a technology company based in Indonesia. We build independent software products across AI, cloud infrastructure, productivity, content creation, social media and automation. The portfolio is broad by design: different categories, one standard for clarity, usefulness and craft.'
+    'Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio based in Indonesia. We build and operate independent software products across AI, cloud infrastructure, productivity, content creation, social media and automated trading. The portfolio is broad by design and keeps growing; every product is held to one standard for clarity, usefulness and craft.'
   ],
   [
     'Where are you based?',
-    'We are headquartered in Indonesia. Our team is distributed, and our products are built to global standards for users everywhere.'
+    'The company is headquartered in Indonesia and the team works distributed. Our products are built to global standards for users everywhere.'
   ],
   [
     'Are you hiring?',
@@ -164,9 +145,9 @@ const marqueeItems = [
 ];
 
 const navLinks = [
-  ['Products', '#products'],
-  ['Approach', '#approach'],
-  ['Team', '#team'],
+  ['Portfolio', '#products'],
+  ['Company', '#approach'],
+  ['Leadership', '#team'],
   ['Careers', '#careers'],
   ['FAQ', '#faq']
 ];
@@ -215,7 +196,7 @@ function useRevealOnScroll() {
   }, []);
 }
 
-/* Scrollspy for the header nav. */
+/* Scrollspy for the header nav. Observing the hero clears the highlight at the top. */
 function useActiveSection(ids) {
   const [active, setActive] = useState('');
 
@@ -228,7 +209,7 @@ function useActiveSection(ids) {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActive(entry.target.id);
+            setActive(entry.target.id === 'hero' ? '' : entry.target.id);
           }
         });
       },
@@ -247,7 +228,8 @@ function useActiveSection(ids) {
   return active;
 }
 
-/* Count-up number that starts when it scrolls into view. */
+/* Count-up number that starts when it scrolls into view. Announced to screen
+   readers as the final value; the animation is visual only. */
 function CountUp({ value, suffix }) {
   const ref = useRef(null);
   const [display, setDisplay] = useState(value.replace(/[1-9]/g, '0'));
@@ -259,6 +241,7 @@ function CountUp({ value, suffix }) {
     const target = parseInt(value, 10);
     const digits = value.length;
     let raf = 0;
+    let doneTimer = 0;
 
     const run = () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -268,12 +251,14 @@ function CountUp({ value, suffix }) {
       const start = performance.now();
       const dur = 900;
       const tick = (now) => {
-        const t = Math.min(1, (now - start) / dur);
+        const t = Math.min(1, Math.max(0, (now - start) / dur));
         const eased = 1 - Math.pow(1 - t, 3);
         setDisplay(String(Math.round(target * eased)).padStart(digits, '0'));
         if (t < 1) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
+      // rAF can be throttled to a stop in background tabs; guarantee the final value.
+      doneTimer = window.setTimeout(() => setDisplay(value), dur + 200);
     };
 
     if (!('IntersectionObserver' in window)) {
@@ -295,13 +280,16 @@ function CountUp({ value, suffix }) {
     return () => {
       io.disconnect();
       cancelAnimationFrame(raf);
+      window.clearTimeout(doneTimer);
     };
   }, [value]);
 
   return (
-    <div className="stat-num" ref={ref}>
-      {display}
-      {suffix ? <span className="suffix">{suffix}</span> : null}
+    <div className="stat-num" ref={ref} role="img" aria-label={`${value}${suffix || ''}`}>
+      <span aria-hidden="true">
+        {display}
+        {suffix ? <span className="suffix">{suffix}</span> : null}
+      </span>
     </div>
   );
 }
@@ -378,9 +366,9 @@ function PortfolioPanel() {
       </div>
       <div className="panel-stats">
         {[
-          ['Platforms', '06'],
-          ['Integrations', '100+'],
-          ['Uptime', '24/7']
+          ['Products', '06'],
+          ['Categories', '06'],
+          ['Standard', '01']
         ].map(([k, v]) => (
           <div className="panel-stat" key={k}>
             <div className="k">{k}</div>
@@ -404,7 +392,7 @@ function PortfolioPanel() {
 export default function HomePage() {
   useRevealOnScroll();
 
-  const activeSection = useActiveSection(['products', 'approach', 'team', 'careers', 'faq']);
+  const activeSection = useActiveSection(['hero', 'products', 'approach', 'team', 'careers', 'faq']);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStage, setActiveStage] = useState('zoyya');
@@ -427,6 +415,7 @@ export default function HomePage() {
     const name = String(formData.get('name') || '').trim();
     const email = String(formData.get('email') || '').trim();
     const message = String(formData.get('message') || '').trim();
+    const company = String(formData.get('company') || '').trim();
 
     if (!name || !email || !message) {
       setContactStatus({ type: 'error', text: 'Please fill in every field.' });
@@ -443,7 +432,7 @@ export default function HomePage() {
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, message })
+      body: JSON.stringify({ name, email, message, company })
     })
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
@@ -494,7 +483,7 @@ export default function HomePage() {
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
         <div className="wrap site-header-inner">
           <a href="#top" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
-            <img src="/efolusi/logo-owl.png" alt="" />
+            <img src="/efolusi/logo-owl.png" alt="" width="30" height="30" />
             Efolusi
           </a>
 
@@ -508,9 +497,9 @@ export default function HomePage() {
 
           <div className="header-actions">
             <ThemeToggle />
-            <Button size="sm" onClick={() => { setMenuOpen(false); document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }); }}>
+            <a className="ef-btn ef-btn--primary ef-btn--sm" href="#contact" onClick={() => setMenuOpen(false)}>
               Get in touch
-            </Button>
+            </a>
             <button
               type="button"
               className="menu-toggle"
@@ -536,33 +525,29 @@ export default function HomePage() {
       </header>
 
       <main id="top">
-        <section className="hero">
+        <section className="hero" id="hero">
           <div className="wrap hero-grid">
             <div>
-              <span className="eyebrow reveal">General software studio · Made in Indonesia</span>
+              <span className="eyebrow reveal">General software studio · Indonesia</span>
               <h1 className="reveal">
-                General-purpose software. Built with <span className="accent">one standard</span>.
+                We build and run <span className="accent">independent software products</span>.
               </h1>
               <p className="hero-sub reveal">
-                We build independent products across AI, infrastructure, productivity, content, social and automation. Different categories, one standard: software that earns its place in everyday work.
+                PT. Efolusi Dunia Teknologi is a general software studio. We build and operate products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms today, more to come. All of them answer to one standard of craft.
               </p>
 
               <div className="hero-actions reveal">
-                <Button size="lg" iconRight="arrow-right" onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}>
-                  Browse our products
-                </Button>
-                <Button size="lg" variant="secondary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
+                  View the portfolio <Icon name="arrow-right" size={16} />
+                </a>
+                <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
                   Get in touch
-                </Button>
+                </a>
               </div>
 
               <div className="hero-proof reveal">
-                <AvatarGroup>
-                  {stageProducts.slice(0, 4).map((product) => (
-                    <Avatar key={product.id} name={product.title} size={28} />
-                  ))}
-                </AvatarGroup>
-                <span>Six platforms, built for modern digital work.</span>
+                <StatusDot state="ok" pulse />
+                <span>Every platform is live and in daily use.</span>
               </div>
             </div>
 
@@ -580,7 +565,7 @@ export default function HomePage() {
           </div>
         </div>
 
-        <section className="section" aria-label="By the numbers">
+        <section className="section" aria-label="The company in numbers">
           <div className="wrap">
             <div className="stats">
               {stats.map(([num, suffix, label]) => (
@@ -596,13 +581,13 @@ export default function HomePage() {
         <section className="section section--rule" id="products">
           <div className="wrap">
             <SectionHeading
-              kicker="01 / What we make"
+              kicker="01 / Portfolio"
               title={
                 <>
-                  Six platforms. <span className="accent">One standard.</span>
+                  Independent platforms, <span className="accent">one portfolio</span>.
                 </>
               }
-              lede="Different categories, one product philosophy: make useful software clearer, faster and easier to trust. Select one to look closer."
+              lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; select one to look closer."
             />
 
             <div className="stage-wrap reveal">
@@ -677,14 +662,14 @@ export default function HomePage() {
           <div className="wrap">
             <div className="approach-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">02 / Approach</span>
+                <span className="eyebrow eyebrow--mono">02 / How we operate</span>
                 <h2 className="section-title">
-                  We build across categories, but hold every product to <span className="accent">one standard</span>.
+                  Independent products. <span className="accent">Shared discipline.</span>
                 </h2>
               </div>
               <div className="reveal">
-                <p className="big">We are not tied to one field. We look for broad digital problems, build focused products and hold each one to the same standard.</p>
-                <p className="body">If a product does not make its category clearer, faster or more useful, we keep working. That discipline keeps the portfolio broad without becoming scattered.</p>
+                <p className="big">Every product operates on its own: its own roadmap, its own releases, its own users to answer to.</p>
+                <p className="body">The studio exists to keep the bar high. If a product does not make its category clearer, faster or more useful, it does not ship. That discipline keeps the portfolio broad without becoming scattered.</p>
                 <div className="checks">
                   {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
                     <div className="check" key={item}>
@@ -704,7 +689,7 @@ export default function HomePage() {
           <div className="wrap band-grid">
             <h3 className="band-title reveal">Built in Indonesia. Engineered for every market.</h3>
             <p className="reveal">
-              We operate from one of the world's fastest-growing markets. That experience informs every product decision we make - and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
+              We operate from one of the world's fastest-growing markets. That experience informs every product decision we make, and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
             </p>
           </div>
         </section>
@@ -712,21 +697,21 @@ export default function HomePage() {
         <section className="section" id="team">
           <div className="wrap">
             <SectionHeading
-              kicker="03 / The studio"
+              kicker="03 / Leadership"
               title={
                 <>
-                  A small team, <span className="accent">distributed</span> - building across categories.
+                  Founder-led and <span className="accent">hands-on</span>.
                 </>
               }
-              lede="A focused group of builders who care deeply about useful software."
+              lede="Decisions sit close to the products. These are the people accountable for the standard."
             />
 
             <div className="team-grid">
-              {team.map(([idx, name, role]) => (
+              {leadership.map(([idx, name, role]) => (
                 <div className="member reveal" key={name}>
                   <span className="idx">{idx}</span>
                   <div style={{ marginTop: 16 }}>
-                    <Avatar name={name} size={56} />
+                    <Avatar name={name} size={64} />
                   </div>
                   <div className="nm">{name}</div>
                   <div className="ro">{role}</div>
@@ -736,42 +721,18 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section section--rule" id="testimonials">
-          <div className="wrap">
-            <SectionHeading kicker="04 / In the wild" title="Used every day." />
-
-            <div className="quotes">
-              {quotes.map(([name, body, role]) => (
-                <figure className="quote reveal" key={name}>
-                  <p>{body}</p>
-                  <figcaption className="who">
-                    <Avatar name={name} size={36} />
-                    <span>
-                      <span className="nm">{name}</span>
-                      <span className="ro">{role}</span>
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="section section--rule" id="careers">
           <div className="wrap">
             <div className="careers-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">05 / Join us</span>
+                <span className="eyebrow eyebrow--mono">04 / Careers</span>
                 <h2 className="section-title">
                   Care deeply about craft? <span className="accent">Let's build.</span>
                 </h2>
-                <p className="body">We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out - even if you do not see your exact role below.</p>
-                <Button
-                  iconRight="arrow-right"
-                  onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Contact us about roles
-                </Button>
+                <p className="body">We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out, even if you do not see your exact role below.</p>
+                <a className="ef-btn ef-btn--primary ef-btn--md" href="#contact">
+                  Contact us about roles <Icon name="arrow-right" size={16} />
+                </a>
               </div>
 
               <div className="roles reveal">
@@ -793,16 +754,18 @@ export default function HomePage() {
 
         <section className="section section--rule" id="faq">
           <div className="wrap">
-            <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." />
+            <div className="faq-grid">
+              <SectionHeading kicker="05 / FAQ" title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
 
-            <div className="faq-wrap reveal">
-              <Accordion
-                items={faqItems.map(([question, answer], index) => ({
-                  id: `faq-${index}`,
-                  title: question,
-                  content: answer
-                }))}
-              />
+              <div className="reveal">
+                <Accordion
+                  items={faqItems.map(([question, answer], index) => ({
+                    id: `faq-${index}`,
+                    title: question,
+                    content: answer
+                  }))}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -811,12 +774,24 @@ export default function HomePage() {
           <div className="wrap">
             <div className="contact-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">07 / Contact</span>
+                <span className="eyebrow eyebrow--mono">06 / Contact</span>
                 <h2 className="section-title">Tell us what you are building.</h2>
-                <p className="section-lede">Questions, partnerships, or just hello - we read everything.</p>
+                <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
                 <div className="contact-aside">
-                  <div className="k">Headquarters</div>
-                  <div className="v">Indonesia - Distributed team</div>
+                  <div className="ci">
+                    <div className="k">Legal entity</div>
+                    <div className="v">PT. Efolusi Dunia Teknologi</div>
+                  </div>
+                  <div className="ci">
+                    <div className="k">Headquarters</div>
+                    <div className="v">Indonesia · Distributed team</div>
+                  </div>
+                  <div className="ci">
+                    <div className="k">Email</div>
+                    <div className="v">
+                      <a href="mailto:hi@efolusi.com">hi@efolusi.com</a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -824,6 +799,10 @@ export default function HomePage() {
                 <Input label="Name" name="name" type="text" placeholder="Your name" required autoComplete="name" />
                 <Input label="Email" name="email" type="email" placeholder="you@company.com" required autoComplete="email" />
                 <Textarea label="Message" name="message" placeholder="What is on your mind?" rows={5} required />
+                <div className="hp" aria-hidden="true">
+                  <label htmlFor="cf-company">Company</label>
+                  <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
+                </div>
                 <Button type="submit" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
                   Send message
                 </Button>
@@ -844,8 +823,8 @@ export default function HomePage() {
           <div className="wrap">
             <div className="news reveal">
               <div>
-                <h3>Get product news from the studio.</h3>
-                <p className="sub">New launches and updates. No noise, unsubscribe anytime.</p>
+                <h3>Get news from Efolusi.</h3>
+                <p className="sub">Product launches and company updates. No noise, unsubscribe anytime.</p>
                 <div
                   className={`form-status${newsletterStatus.type === 'success' ? ' is-success' : ''}${newsletterStatus.type === 'error' ? ' is-error' : ''}`}
                   role="status"
@@ -870,14 +849,9 @@ export default function HomePage() {
             <h2 className="reveal">Find the product built for your work.</h2>
             <p className="reveal">Every product we build starts from the belief that the existing solution is not good enough. We think you will agree.</p>
             <div className="closer-actions reveal">
-              <Button
-                variant="secondary"
-                size="lg"
-                iconRight="arrow-right"
-                onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                See the products
-              </Button>
+              <a className="band-btn" href="#products">
+                See the portfolio <Icon name="arrow-right" size={16} />
+              </a>
               <a className="band-link" href="#contact">
                 Contact us
               </a>
@@ -891,42 +865,17 @@ export default function HomePage() {
           <div className="footer-top">
             <div>
               <a href="#top" className="brand">
-                <img src="/efolusi/logo-owl.png" alt="" />
+                <img src="/efolusi/logo-owl.png" alt="" width="28" height="28" />
                 Efolusi
               </a>
-              <p className="tag-line">General-purpose software products built with intent. Made in Indonesia, engineered for every market.</p>
-              <div className="socials">
-                <a href="#" aria-label="Efolusi on X">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M4 4l16 16M20 4L4 20" />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Efolusi on LinkedIn">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <rect x="3.5" y="3.5" width="17" height="17" rx="3" />
-                    <path d="M8 10.5v6" />
-                    <path d="M8 7.6v.1" />
-                    <path d="M12 16.5v-3.6a2.4 2.4 0 0 1 4.8 0v3.6" />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Efolusi on Instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
-                    <circle cx="12" cy="12" r="4" />
-                    <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-                <a href="#" aria-label="Efolusi on YouTube">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                    <rect x="3" y="6" width="18" height="12" rx="4" />
-                    <path d="M10.5 9.5l4 2.5-4 2.5z" fill="currentColor" stroke="none" />
-                  </svg>
-                </a>
-              </div>
+              <p className="tag-line">PT. Efolusi Dunia Teknologi. A general software studio building and operating independent software products. Made in Indonesia, engineered for every market.</p>
+              <a className="footer-mail" href="mailto:hi@efolusi.com">
+                <Icon name="mail" size={15} /> hi@efolusi.com
+              </a>
             </div>
 
             <div className="fcol">
-              <h4>Products</h4>
+              <h4>Portfolio</h4>
               {stageProducts.map((product) => (
                 <a key={product.id} href={product.href} target="_blank" rel="noopener noreferrer">
                   {product.title}
@@ -935,11 +884,16 @@ export default function HomePage() {
             </div>
             <div className="fcol">
               <h4>Company</h4>
-              <a href="#approach">Approach</a>
-              <a href="#team">Team</a>
+              <a href="#approach">How we operate</a>
+              <a href="#team">Leadership</a>
               <a href="#careers">Careers</a>
               <a href="#faq">FAQ</a>
               <a href="#contact">Contact</a>
+            </div>
+            <div className="fcol">
+              <h4>Legal</h4>
+              <a href="/privacy">Privacy policy</a>
+              <a href="/terms">Terms of use</a>
             </div>
           </div>
 

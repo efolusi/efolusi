@@ -1,3 +1,5 @@
+import { isSameOrigin, passesRateLimit, tooLong } from '../_lib/guard.js';
+
 function validateEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
@@ -12,10 +14,18 @@ function getListIds() {
 
 export async function POST(req) {
   try {
+    if (!isSameOrigin(req)) {
+      return new Response(JSON.stringify({ ok: false, error: 'Forbidden' }), { status: 403 });
+    }
+
+    if (!(await passesRateLimit(req, 'NEWSLETTER_RATE_LIMIT'))) {
+      return new Response(JSON.stringify({ ok: false, error: 'Too many requests. Please try again in a minute.' }), { status: 429 });
+    }
+
     const body = await req.json();
     const email = String(body.email || '').trim();
 
-    if (!email) {
+    if (!email || tooLong(email, 320)) {
       return new Response(JSON.stringify({ ok: false, error: 'Missing email' }), { status: 400 });
     }
 
