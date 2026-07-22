@@ -24,7 +24,7 @@ const facts = [
 const tokenFaq = [
   [
     'Is EFO tradable right now?',
-    'Yes. EFO trades in the EFO/USDT pool on Uniswap v4, on BNB Smart Chain. Always start from the links on this page rather than searching, so you end up in the real pool.'
+    'Yes, in the EFO/USDT pool on Uniswap v4. Start from the links in the Trading section above rather than searching, so you end up in the real pool.'
   ],
   [
     'Where does official token information live?',
@@ -47,9 +47,7 @@ export default function TokenPage() {
             <div className="masthead-meta">
               <span>Ecosystem token</span>
               <div className="m-right">
-                <span>BEP-20</span>
                 <span>BNB Smart Chain</span>
-                <span>Tradable</span>
               </div>
             </div>
             <h1>
@@ -59,7 +57,7 @@ export default function TokenPage() {
               EFO is the token of the Efolusi ecosystem, live on BNB Smart Chain. This page is the official home for its contract address, on-chain facts and announcements.
             </p>
             <div className="token-status">
-              <Badge tone="success">Tradable on Uniswap v4 · BSC</Badge>
+              <Badge tone="success">Tradable on Uniswap v4</Badge>
               <Badge tone="neutral">BEP-20</Badge>
             </div>
           </div>
@@ -146,9 +144,6 @@ export default function TokenPage() {
               <Icon name="arrow-up-right" size={16} />
             </a>
           </div>
-          <p className="eco-note" style={{ marginTop: 16 }}>
-            Before you swap, check that the token address in your wallet matches the official address above, character by character.
-          </p>
         </Section>
 
         <Section label="Roadmap" fact="Utility ships first">

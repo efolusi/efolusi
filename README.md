@@ -1,6 +1,6 @@
 # Efolusi
 
-The open-source marketing site for [Efolusi](https://efolusi.com), a general-purpose software studio. It presents the Efolusi product portfolio, company positioning, careers section, FAQ, contact form, and newsletter signup, styled entirely with the [Meridian design system](https://github.com/efolusi/meridian).
+The open-source marketing site for [Efolusi](https://efolusi.com), a software studio. It presents the Efolusi product portfolio, company positioning, careers section, FAQ, contact form, and newsletter signup, styled entirely with the [Meridian design system](https://github.com/efolusi/meridian).
 
 Repository: <https://github.com/efolusi/efolusi>
 

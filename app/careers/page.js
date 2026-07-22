@@ -6,7 +6,7 @@ import Section from '../components/Section.jsx';
 export const metadata = {
   title: 'Careers · Efolusi',
   description:
-    'Work with Efolusi, a general software studio from Indonesia building independent products across AI, infrastructure, productivity, content, social and trading.',
+    'Work with Efolusi, a software studio from Indonesia building independent products across AI, infrastructure, productivity, content, social and trading.',
   alternates: { canonical: '/careers' }
 };
 
@@ -36,7 +36,7 @@ const workingHere = [
   [
     'trending-up',
     'A growing portfolio',
-    'Six platforms so far, more on the way. New products mean new problems to own, not reorgs to survive.'
+    'New products mean new problems to own, not reorgs to survive.'
   ]
 ];
 

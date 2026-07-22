@@ -6,7 +6,7 @@ import Section from '../components/Section.jsx';
 export const metadata = {
   title: 'About · Efolusi',
   description:
-    'Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio from Indonesia, building and running independent software products held to one standard of craft.',
+    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio from Indonesia, building and running independent software products held to one standard of craft.',
   alternates: { canonical: '/about' }
 };
 
@@ -37,7 +37,7 @@ export default function AboutPage() {
               A studio that ships, <span className="accent">then keeps its word</span>.
             </h1>
             <p className="page-lede">
-              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a general software studio headquartered in Indonesia with a distributed team. We build and run independent software products, and we hold every one of them to the same standard.
+              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software studio headquartered in Indonesia with a distributed team. We build and run independent software products, and we hold every one of them to the same standard.
             </p>
           </div>
         </section>
@@ -48,7 +48,7 @@ export default function AboutPage() {
           </h2>
           <div className="approach-body">
             <p className="big">We are not tied to one field. We look for broad digital problems, build focused products, and run each one as its own platform with its own roadmap.</p>
-            <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline is what lets the portfolio grow without getting scattered. Six platforms so far, across AI, cloud infrastructure, productivity, content, social media and automated trading, with more on the way.</p>
+            <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline is what lets the portfolio grow without getting scattered.</p>
           </div>
           <div className="ruled-cells" data-cols="2" style={{ marginTop: 32 }}>
             {values.map((item) => (

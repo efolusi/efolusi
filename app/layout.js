@@ -9,9 +9,9 @@ export const revalidate = 600;
 
 export const metadata = {
   metadataBase: new URL(siteUrl),
-  title: 'Efolusi · A general software studio building independent products',
+  title: 'Efolusi · A software studio building independent products',
   description:
-    'Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio in Indonesia. We build and operate independent software products across AI, cloud infrastructure, productivity, content, social media and automated trading.',
+    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio in Indonesia. We build and operate independent software products across AI, cloud infrastructure, productivity, content, social media and automated trading.',
   alternates: {
     canonical: '/'
   },
@@ -23,9 +23,9 @@ export const metadata = {
     url: siteUrl,
     siteName: 'Efolusi',
     locale: 'en_US',
-    title: 'Efolusi · A general software studio building independent products',
+    title: 'Efolusi · A software studio building independent products',
     description:
-      'A general software studio in Indonesia, building and operating independent software products held to one standard of craft.',
+      'A software studio in Indonesia, building and operating independent software products held to one standard of craft.',
     images: [
       {
         url: '/og-image.png',
@@ -37,9 +37,9 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Efolusi · A general software studio building independent products',
+    title: 'Efolusi · A software studio building independent products',
     description:
-      'A general software studio in Indonesia, building and operating independent software products held to one standard of craft.',
+      'A software studio in Indonesia, building and operating independent software products held to one standard of craft.',
     images: ['/og-image.png']
   }
 };

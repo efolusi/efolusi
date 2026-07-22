@@ -101,10 +101,9 @@ const stageProducts = [
 ];
 
 const stats = [
-  ['06', '', 'Independent products, each with its own roadmap'],
-  ['06', '', 'Categories, from AI to automated trading'],
-  ['100', '+', 'Exchanges, utilities and integrations connected'],
-  ['01', '', 'Standard of craft across everything we ship']
+  ['06', '', 'Products in operation'],
+  ['06', '', 'Categories, from AI to trading'],
+  ['100', '+', 'Exchanges and integrations connected']
 ];
 
 const leadership = [
@@ -122,7 +121,7 @@ const roles = [
 const faqItems = [
   [
     'What is Efolusi?',
-    "Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio based in Indonesia. We build and run independent software products across AI, cloud infrastructure, productivity, content creation, social media and automated trading. The portfolio is broad on purpose and keeps growing, and we hold every product to one standard for clarity, usefulness and craft."
+    "Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build and run independent software products across six categories, and we hold every one of them to one standard for clarity, usefulness and craft."
   ],
   [
     'Where are you based?',
@@ -399,10 +398,9 @@ export default function HomePage() {
         <section className="hero" id="hero">
           <div className="wrap">
             <div className="masthead-meta reveal">
-              <span>General software studio</span>
+              <span>Software studio</span>
               <div className="m-right">
                 <span>Indonesia</span>
-                <span>6 platforms</span>
                 <span>$EFO live</span>
               </div>
             </div>
@@ -410,7 +408,7 @@ export default function HomePage() {
               We build and run <span className="accent">independent software products</span>.
             </h1>
             <p className="hero-sub reveal">
-              We're Efolusi, a software studio from Indonesia. We build and run products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, and every one of them is built with the same care.
+              We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
             </p>
 
             <div className="hero-actions reveal">
@@ -440,7 +438,7 @@ export default function HomePage() {
         </div>
 
         <Section label="In numbers" fact="July 2026">
-          <div className="ruled-cells stats-cells" data-cols="4">
+          <div className="ruled-cells stats-cells" data-cols="3">
             {stats.map(([num, suffix, label]) => (
               <div className="reveal" key={label}>
                 <CountUp value={num} suffix={suffix} />
@@ -457,7 +455,7 @@ export default function HomePage() {
                 Independent platforms, <span className="accent">one portfolio</span>.
               </>
             }
-            lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; pick one to take a closer look."
+            lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. Pick one to take a closer look."
           />
 
             <div className="stage-wrap reveal">
@@ -569,7 +567,7 @@ export default function HomePage() {
                   One token across the portfolio: <span className="accent">$EFO</span>.
                 </h2>
                 <p className="section-lede">
-                  EFO is the ecosystem token of Efolusi, live on BNB Smart Chain. The official contract address, on-chain facts and every announcement live on the token page, and only there.
+                  EFO is the ecosystem token of Efolusi, live on BNB Smart Chain. The official contract address, on-chain facts and every announcement live on the token page.
                 </p>
                 <div className="eco-actions">
                   <a className="ef-btn ef-btn--primary ef-btn--md" href="/token">
