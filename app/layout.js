@@ -3,10 +3,6 @@ import './globals.css';
 
 const siteUrl = 'https://efolusi.com';
 
-/* Cap the CDN TTL so deploys show up within minutes; without this, prerendered
-   pages ship with a one-year s-maxage and the edge serves stale HTML. */
-export const revalidate = 600;
-
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Efolusi · A software studio building independent products',

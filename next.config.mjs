@@ -24,6 +24,12 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: securityHeaders
+      },
+      {
+        // Short shared-cache TTL for pages so deploys show up within minutes;
+        // hashed /_next assets keep their own immutable caching.
+        source: '/((?!_next/).*)',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=60' }]
       }
     ];
   }
