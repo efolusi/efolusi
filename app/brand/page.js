@@ -26,7 +26,7 @@ const donts = [
 export default function BrandPage() {
   return (
     <>
-      <SiteHeader active="" />
+      <SiteHeader />
 
       <main>
         <section className="page-hero">

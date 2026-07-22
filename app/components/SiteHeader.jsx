@@ -2,20 +2,22 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
 const navLinks = [
-  ['Portfolio', '/#products', 'products'],
-  ['Token', '/token', 'token'],
-  ['Company', '/about', 'about'],
-  ['Careers', '/careers', 'careers'],
-  ['FAQ', '/#faq', 'faq']
+  ['Portfolio', '/#products', null],
+  ['Token', '/token', '/token'],
+  ['Company', '/about', '/about'],
+  ['Careers', '/careers', '/careers'],
+  ['FAQ', '/#faq', null]
 ];
 
-/* `active` is a page key ('token', 'about', 'careers') on subpages, or the
-   scrollspy section id on the home page. */
-export default function SiteHeader({ active = '' }) {
+/* The highlight marks the page you are on, nothing else. Anchor links into
+   home sections never light up. */
+export default function SiteHeader() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -35,8 +37,8 @@ export default function SiteHeader({ active = '' }) {
         </Link>
 
         <nav className="site-nav" aria-label="Primary">
-          {navLinks.map(([label, href, key]) => (
-            <Link key={key} href={href} className={active === key ? 'is-active' : ''}>
+          {navLinks.map(([label, href, page]) => (
+            <Link key={label} href={href} className={page && pathname === page ? 'is-active' : ''}>
               {label}
             </Link>
           ))}
@@ -60,8 +62,8 @@ export default function SiteHeader({ active = '' }) {
       </div>
 
       <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
-        {navLinks.map(([label, href, key]) => (
-          <Link key={key} href={href} onClick={() => setMenuOpen(false)}>
+        {navLinks.map(([label, href]) => (
+          <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
             {label}
           </Link>
         ))}

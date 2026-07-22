@@ -20,7 +20,7 @@ const values = ['No feature bloat', 'Opinionated by design', 'Built to scale glo
 export default function AboutPage() {
   return (
     <>
-      <SiteHeader active="about" />
+      <SiteHeader />
 
       <main>
         <section className="page-hero">

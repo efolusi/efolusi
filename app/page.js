@@ -164,16 +164,6 @@ const marqueeItems = [
   'No feature bloat'
 ];
 
-/* Home scrollspy section ids mapped to the shared header's nav keys. */
-const sectionToNavKey = {
-  products: 'products',
-  approach: 'about',
-  ecosystem: 'token',
-  team: 'about',
-  careers: 'careers',
-  faq: 'faq'
-};
-
 /* Reveal-on-scroll: soft settle with sibling stagger, Meridian motion tokens do the rest. */
 function useRevealOnScroll() {
   useEffect(() => {
@@ -216,38 +206,6 @@ function useRevealOnScroll() {
       window.clearTimeout(fallbackTimer);
     };
   }, []);
-}
-
-/* Scrollspy for the header nav. Observing the hero clears the highlight at the top. */
-function useActiveSection(ids) {
-  const [active, setActive] = useState('');
-
-  useEffect(() => {
-    if (!('IntersectionObserver' in window)) {
-      return undefined;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id === 'hero' ? '' : entry.target.id);
-          }
-        });
-      },
-      { rootMargin: '-35% 0px -55% 0px' }
-    );
-
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) io.observe(el);
-    });
-
-    return () => io.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  return active;
 }
 
 /* Count-up number that starts when it scrolls into view. Announced to screen
@@ -316,17 +274,16 @@ function CountUp({ value, suffix }) {
   );
 }
 
-/* The floating constellation: the owl and the product monograms as tilting,
-   softly bobbing tiles. Pointer tilt is skipped on touch and reduced motion. */
-const heroTiles = [
-  { id: 'owl', label: 'View the portfolio', href: '#products', left: 190, top: 128, size: 128, rot: -3, d: 0.1, z: 7, owl: true },
-  { id: 'efo', label: '$EFO token', href: '/token', left: 226, top: 8, w: 108, h: 52, rot: 5, d: 0.55, z: 6, text: '$EFO', tint: 'cocoa' },
-  { id: 'zoyya', label: 'ZOYYA', href: 'https://zoyya.xyz', left: 22, top: 26, size: 96, rot: -8, d: 0.2, z: 4, text: 'Zo', tint: 'caramel' },
-  { id: 'komando', label: 'Komando', href: 'https://komando.efolusi.com', left: 396, top: 44, size: 88, rot: 6, d: 0.3, z: 3, text: 'Ko', tint: 'green' },
-  { id: 'toolips', label: 'Toolips', href: 'https://toolips.xyz', left: 438, top: 220, size: 80, rot: -5, d: 0.4, z: 5, text: 'To', tint: 'amber' },
-  { id: 'trady', label: 'Trady', href: 'https://trady.efolusi.com', left: 48, top: 296, size: 88, rot: 7, d: 0.35, z: 5, text: 'Tr', tint: 'coral' },
-  { id: 'kongkow', label: 'Kongkow', href: 'https://kongkow.xyz', left: 236, top: 344, size: 76, rot: -6, d: 0.5, z: 4, text: 'Kg', tint: 'peach' },
-  { id: 'cuwan', label: 'Cuwan', href: 'https://cuwan.xyz', left: 404, top: 352, size: 92, rot: 4, d: 0.45, z: 6, text: 'Cu', tint: 'green' }
+/* The ecosystem orbit: product tiles circling the owl very slowly, staying
+   upright, each clickable. Pointer tilt is skipped on touch and reduced motion. */
+const orbitTiles = [
+  { id: 'efo', label: '$EFO token', href: '/token', angle: -90, w: 104, h: 52, d: 0.5, text: '$EFO', tint: 'cocoa' },
+  { id: 'zoyya', label: 'ZOYYA', href: 'https://zoyya.xyz', angle: -38.6, size: 92, d: 0.15, text: 'Zo', tint: 'caramel' },
+  { id: 'komando', label: 'Komando', href: 'https://komando.efolusi.com', angle: 12.8, size: 86, d: 0.2, text: 'Ko', tint: 'green' },
+  { id: 'toolips', label: 'Toolips', href: 'https://toolips.xyz', angle: 64.3, size: 80, d: 0.25, text: 'To', tint: 'amber' },
+  { id: 'trady', label: 'Trady', href: 'https://trady.efolusi.com', angle: 115.7, size: 86, d: 0.3, text: 'Tr', tint: 'coral' },
+  { id: 'kongkow', label: 'Kongkow', href: 'https://kongkow.xyz', angle: 167.1, size: 78, d: 0.35, text: 'Kg', tint: 'peach' },
+  { id: 'cuwan', label: 'Cuwan', href: 'https://cuwan.xyz', angle: 218.6, size: 88, d: 0.4, text: 'Cu', tint: 'green' }
 ];
 
 function HeroConstellation() {
@@ -366,28 +323,26 @@ function HeroConstellation() {
   return (
     <div className="orbit" aria-label="The Efolusi portfolio">
       <div className="orbit-field" ref={fieldRef}>
-        {heroTiles.map((tile) => (
+        <a className="orbit-center" href="#products" aria-label="View the portfolio" style={{ '--d': '0s' }}>
+          <span className="tile-card" style={{ width: 128, height: 128 }}>
+            <img src="/efolusi/logo-owl.png" alt="" width="72" height="72" />
+          </span>
+        </a>
+        {orbitTiles.map((tile) => (
           <a
             key={tile.id}
-            className="tile"
+            className="orbit-slot"
             href={tile.href}
             target={tile.href.startsWith('http') ? '_blank' : undefined}
             rel={tile.href.startsWith('http') ? 'noopener noreferrer' : undefined}
             aria-label={tile.label}
-            style={{
-              left: tile.left,
-              top: tile.top,
-              zIndex: tile.z,
-              '--rot': `${tile.rot}deg`,
-              '--d': `${tile.d}s`,
-              '--fd': `${6 + tile.d * 3}s`
-            }}
+            style={{ '--angle': `${tile.angle}deg`, '--d': `${tile.d}s` }}
           >
             <span
-              className={`tile-card${tile.tint ? ` tint-${tile.tint}` : ''}`}
+              className={`tile-card tint-${tile.tint}`}
               style={{ width: tile.w || tile.size, height: tile.h || tile.size }}
             >
-              {tile.owl ? <img src="/efolusi/logo-owl.png" alt="" width="72" height="72" /> : tile.text}
+              {tile.text}
             </span>
           </a>
         ))}
@@ -408,7 +363,6 @@ function SectionHeading({ title, lede }) {
 export default function HomePage() {
   useRevealOnScroll();
 
-  const activeSection = useActiveSection(['hero', 'products', 'approach', 'ecosystem', 'team', 'careers', 'faq']);
   const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
@@ -487,7 +441,7 @@ export default function HomePage() {
 
   return (
     <>
-      <SiteHeader active={sectionToNavKey[activeSection] || ''} />
+      <SiteHeader />
 
       <main id="top">
         <section className="hero" id="hero">

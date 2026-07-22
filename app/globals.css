@@ -281,17 +281,25 @@ a.ef-btn--secondary:hover {
   }
 }
 
-/* The constellation: perspective field of floating monogram tiles */
+/* The ecosystem orbit: tiles circle the owl slowly and stay upright.
+   --spin is a registered property so one keyframe drives the revolution. */
+
+@property --spin {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
 
 .orbit {
   perspective: 1100px;
-  height: 470px;
+  height: 480px;
 }
 
 .orbit-field {
+  --radius: 188px;
   position: relative;
-  width: 540px;
-  height: 470px;
+  width: 480px;
+  height: 480px;
   max-width: 100%;
   margin: 0 auto;
   transform: rotateX(var(--tiltX, 0deg)) rotateY(var(--tiltY, 0deg));
@@ -299,32 +307,44 @@ a.ef-btn--secondary:hover {
   transition: transform var(--dur-slow) var(--ease-out);
 }
 
-.tile {
+.orbit-center {
   position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
   display: block;
   text-decoration: none;
-  animation:
-    tile-in 0.6s var(--ease-spring) var(--d) both,
-    tile-float var(--fd, 7s) ease-in-out calc(var(--d) + 1.4s) infinite alternate;
+  animation: owl-bob 7s ease-in-out 1.6s infinite alternate;
+  z-index: 5;
 }
 
-@keyframes tile-in {
+@keyframes owl-bob {
   from {
-    opacity: 0;
-    transform: rotate(calc(var(--rot) + 12deg)) translateY(32px) scale(0.6);
+    transform: translateY(0);
   }
   to {
-    opacity: 1;
-    transform: rotate(var(--rot)) translateY(0) scale(1);
+    transform: translateY(-7px);
   }
 }
 
-@keyframes tile-float {
+.orbit-slot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  display: block;
+  text-decoration: none;
+  transform: rotate(calc(var(--angle) + var(--spin))) translateX(var(--radius))
+    rotate(calc(-1 * (var(--angle) + var(--spin))));
+  animation: orbit-spin 80s linear infinite;
+}
+
+@keyframes orbit-spin {
   from {
-    transform: rotate(var(--rot)) translateY(0);
+    --spin: 0deg;
   }
   to {
-    transform: rotate(var(--rot)) translateY(-7px);
+    --spin: 360deg;
   }
 }
 
@@ -337,27 +357,42 @@ a.ef-btn--secondary:hover {
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   font-family: var(--font-display);
-  font-size: 34px;
+  font-size: 32px;
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-display);
   color: var(--brand-500);
+  animation: pop-in 0.55s var(--ease-spring) var(--d, 0s) both;
   transition:
     transform var(--dur-med) var(--ease-spring),
-    box-shadow var(--dur-med) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
+    box-shadow var(--dur-med) var(--ease-out);
 }
 
-.tile:hover .tile-card,
-.tile:focus-visible .tile-card {
-  transform: scale(1.08) rotate(calc(var(--rot) * -0.5));
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    scale: 0.4;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+.orbit-slot:hover .tile-card,
+.orbit-center:hover .tile-card,
+.orbit-slot:focus-visible .tile-card,
+.orbit-center:focus-visible .tile-card {
+  transform: scale(1.1);
   box-shadow: var(--shadow-xl);
 }
 
-.tile:focus-visible {
+.orbit-slot:focus-visible,
+.orbit-center:focus-visible {
   outline: none;
 }
 
-.tile:focus-visible .tile-card {
+.orbit-slot:focus-visible .tile-card,
+.orbit-center:focus-visible .tile-card {
   box-shadow: var(--focus-ring), var(--shadow-xl);
 }
 

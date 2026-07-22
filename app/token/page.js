@@ -39,7 +39,7 @@ const tokenFaq = [
 export default function TokenPage() {
   return (
     <>
-      <SiteHeader active="token" />
+      <SiteHeader />
 
       <main>
         <section className="page-hero">

@@ -43,7 +43,7 @@ const workingHere = [
 export default function CareersPage() {
   return (
     <>
-      <SiteHeader active="careers" />
+      <SiteHeader />
 
       <main>
         <section className="page-hero">
