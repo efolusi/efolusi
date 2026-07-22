@@ -355,40 +355,6 @@ function SectionHeading({ kicker, title, lede }) {
   );
 }
 
-function PortfolioPanel() {
-  return (
-    <div className="panel hero-visual reveal">
-      <div className="panel-chrome" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <span>efolusi.com/portfolio</span>
-      </div>
-      <div className="panel-stats">
-        {[
-          ['Products', '06'],
-          ['Categories', '06'],
-          ['Standard', '01']
-        ].map(([k, v]) => (
-          <div className="panel-stat" key={k}>
-            <div className="k">{k}</div>
-            <div className="v">{v}</div>
-          </div>
-        ))}
-      </div>
-      <div className="panel-rows">
-        {stageProducts.map((product) => (
-          <div className="panel-row" key={product.id}>
-            <StatusDot state="ok" pulse={product.id === 'zoyya'} />
-            <span className="nm">{product.title}</span>
-            <span className="cat">{product.tag}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function HomePage() {
   useRevealOnScroll();
 
@@ -526,32 +492,28 @@ export default function HomePage() {
 
       <main id="top">
         <section className="hero" id="hero">
-          <div className="wrap hero-grid">
-            <div>
-              <span className="eyebrow reveal">General software studio · Indonesia</span>
-              <h1 className="reveal">
-                We build and run <span className="accent">independent software products</span>.
-              </h1>
-              <p className="hero-sub reveal">
-                We're Efolusi, a software studio from Indonesia. We build and run products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, and every one of them is built with the same care.
-              </p>
+          <div className="wrap">
+            <span className="eyebrow reveal">General software studio · Indonesia</span>
+            <h1 className="reveal">
+              We build and run <span className="accent">independent software products</span>.
+            </h1>
+            <p className="hero-sub reveal">
+              We're Efolusi, a software studio from Indonesia. We build and run products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, and every one of them is built with the same care.
+            </p>
 
-              <div className="hero-actions reveal">
-                <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
-                  View the portfolio <Icon name="arrow-right" size={16} />
-                </a>
-                <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
-                  Get in touch
-                </a>
-              </div>
-
-              <div className="hero-proof reveal">
-                <StatusDot state="ok" pulse />
-                <span>Every platform is live and used every day.</span>
-              </div>
+            <div className="hero-actions reveal">
+              <a className="ef-btn ef-btn--primary ef-btn--lg" href="#products">
+                View the portfolio <Icon name="arrow-right" size={16} />
+              </a>
+              <a className="ef-btn ef-btn--secondary ef-btn--lg" href="#contact">
+                Get in touch
+              </a>
             </div>
 
-            <PortfolioPanel />
+            <div className="hero-proof reveal">
+              <StatusDot state="ok" pulse />
+              <span>Every platform is live and used every day.</span>
+            </div>
           </div>
         </section>
 
