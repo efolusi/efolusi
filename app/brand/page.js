@@ -1,6 +1,7 @@
 import { Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
+import Section from '../components/Section.jsx';
 
 export const metadata = {
   title: 'Brand · Efolusi',
@@ -30,7 +31,13 @@ export default function BrandPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <span className="eyebrow eyebrow--mono">Brand</span>
+            <div className="masthead-meta">
+              <span>Brand</span>
+              <div className="m-right">
+                <span>1 owl</span>
+                <span>MIT excludes the mark</span>
+              </div>
+            </div>
             <h1>
               The owl, the wordmark, <span className="accent">and the rules</span>.
             </h1>
@@ -40,11 +47,9 @@ export default function BrandPage() {
           </div>
         </section>
 
-        <section className="section section--rule">
-          <div className="wrap">
-            <span className="eyebrow eyebrow--mono">01 / The mark</span>
-            <h2 className="section-title">One owl, treated well.</h2>
-            <div className="brand-assets">
+        <Section label="The mark" fact="PNG · 668×668">
+          <h2 className="section-title">One owl, treated well.</h2>
+          <div className="brand-assets">
               <div className="brand-tile">
                 <div className="brand-preview">
                   <img src="/efolusi/logo-owl.png" alt="The Efolusi owl mark" width="120" height="120" />
@@ -68,41 +73,37 @@ export default function BrandPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule">
-          <div className="wrap">
-            <div className="approach-grid">
-              <div>
-                <span className="eyebrow eyebrow--mono">02 / Do</span>
-                <div className="brand-rules">
-                  {dos.map((item) => (
-                    <div className="check" key={item}>
-                      <span className="tick">
-                        <Icon name="check" size={15} />
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
+        <Section label="Usage" fact="Do and don't">
+          <h2 className="section-title">The rules, briefly.</h2>
+          <div className="approach-grid" style={{ marginTop: 32 }}>
+            <div>
+              <div className="brand-rules">
+                {dos.map((item) => (
+                  <div className="check" key={item}>
+                    <span className="tick">
+                      <Icon name="check" size={15} />
+                    </span>
+                    {item}
+                  </div>
+                ))}
               </div>
-              <div>
-                <span className="eyebrow eyebrow--mono">03 / Don't</span>
-                <div className="brand-rules">
-                  {donts.map((item) => (
-                    <div className="check" key={item}>
-                      <span className="tick tick--danger">
-                        <Icon name="x" size={15} />
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
+            </div>
+            <div>
+              <div className="brand-rules">
+                {donts.map((item) => (
+                  <div className="check" key={item}>
+                    <span className="tick tick--danger">
+                      <Icon name="x" size={15} />
+                    </span>
+                    {item}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
         <section className="band closer">
           <div className="wrap">

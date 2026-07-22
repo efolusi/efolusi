@@ -15,6 +15,7 @@ import {
 } from '@efolusi/meridian';
 import SiteHeader from './components/SiteHeader.jsx';
 import SiteFooter from './components/SiteFooter.jsx';
+import Section from './components/Section.jsx';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
@@ -301,10 +302,9 @@ function CountUp({ value, suffix }) {
   );
 }
 
-function SectionHeading({ kicker, title, lede }) {
+function SectionHeading({ title, lede }) {
   return (
     <div className="reveal">
-      <span className="eyebrow eyebrow--mono">{kicker}</span>
       <h2 className="section-title">{title}</h2>
       {lede ? <p className="section-lede">{lede}</p> : null}
     </div>
@@ -398,7 +398,14 @@ export default function HomePage() {
       <main id="top">
         <section className="hero" id="hero">
           <div className="wrap">
-            <span className="eyebrow reveal">General software studio · Indonesia</span>
+            <div className="masthead-meta reveal">
+              <span>General software studio</span>
+              <div className="m-right">
+                <span>Indonesia</span>
+                <span>6 platforms</span>
+                <span>$EFO live</span>
+              </div>
+            </div>
             <h1 className="reveal">
               We build and run <span className="accent">independent software products</span>.
             </h1>
@@ -432,30 +439,26 @@ export default function HomePage() {
           </div>
         </div>
 
-        <section className="section" aria-label="The company in numbers">
-          <div className="wrap">
-            <div className="stats">
-              {stats.map(([num, suffix, label]) => (
-                <div className="reveal" key={label}>
-                  <CountUp value={num} suffix={suffix} />
-                  <div className="stat-label">{label}</div>
-                </div>
-              ))}
-            </div>
+        <Section label="In numbers" fact="July 2026">
+          <div className="ruled-cells stats-cells" data-cols="4">
+            {stats.map(([num, suffix, label]) => (
+              <div className="reveal" key={label}>
+                <CountUp value={num} suffix={suffix} />
+                <div className="stat-label">{label}</div>
+              </div>
+            ))}
           </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="products">
-          <div className="wrap">
-            <SectionHeading
-              kicker="01 / Portfolio"
-              title={
-                <>
-                  Independent platforms, <span className="accent">one portfolio</span>.
-                </>
-              }
-              lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; pick one to take a closer look."
-            />
+        <Section id="products" label="Portfolio" fact="6 platforms">
+          <SectionHeading
+            title={
+              <>
+                Independent platforms, <span className="accent">one portfolio</span>.
+              </>
+            }
+            lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; pick one to take a closer look."
+          />
 
             <div className="stage-wrap reveal">
               <div className="stage">
@@ -507,50 +510,48 @@ export default function HomePage() {
               </ol>
             </div>
 
-            <div className="products-grid">
-              {stageProducts.map((product) => (
-                <a key={product.id} className="product-card" href={product.href} target="_blank" rel="noopener noreferrer">
-                  <div className="product-card-head">
-                    <Icon name={product.icon} size={22} />
-                    <Badge>{product.tag}</Badge>
-                  </div>
-                  <h3>{product.title}</h3>
-                  <p>{product.summary}</p>
-                  <span className="visit">
-                    Visit <Icon name="arrow-up-right" size={15} />
-                  </span>
-                </a>
-              ))}
-            </div>
+          <div className="plist reveal">
+            {stageProducts.map((product) => (
+              <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
+                <span className="plist-mark" aria-hidden="true">
+                  {product.mark}
+                </span>
+                <span>
+                  <span className="plist-name">{product.title}</span>
+                  <span className="plist-cat">{product.section}</span>
+                </span>
+                <span className="plist-sum">{product.summary}</span>
+                <span className="plist-arrow">
+                  <Icon name="arrow-up-right" size={18} />
+                </span>
+              </a>
+            ))}
           </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="approach">
-          <div className="wrap">
-            <div className="approach-grid">
-              <div className="reveal">
-                <span className="eyebrow eyebrow--mono">02 / How we operate</span>
-                <h2 className="section-title">
-                  Independent products. <span className="accent">Shared discipline.</span>
-                </h2>
-              </div>
-              <div className="reveal">
-                <p className="big">Every product runs on its own: its own roadmap, its own releases, its own users to answer to.</p>
-                <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline keeps the portfolio broad without getting scattered.</p>
-                <div className="checks">
-                  {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
-                    <div className="check" key={item}>
-                      <span className="tick">
-                        <Icon name="check" size={15} />
-                      </span>
-                      {item}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+        <Section id="approach" label="How we operate" fact="One standard">
+          <SectionHeading
+            title={
+              <>
+                Independent products. <span className="accent">Shared discipline.</span>
+              </>
+            }
+          />
+          <div className="approach-body reveal">
+            <p className="big">Every product runs on its own: its own roadmap, its own releases, its own users to answer to.</p>
+            <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline keeps the portfolio broad without getting scattered.</p>
           </div>
-        </section>
+          <div className="ruled-cells reveal" data-cols="2" style={{ marginTop: 32 }}>
+            {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
+              <div className="check" key={item}>
+                <span className="tick">
+                  <Icon name="check" size={15} />
+                </span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </Section>
 
         <section className="band">
           <div className="wrap band-grid">
@@ -561,11 +562,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="section" id="ecosystem">
-          <div className="wrap">
+        <Section id="ecosystem" label="Ecosystem" fact="BEP-20 · BSC">
             <div className="eco-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">03 / Ecosystem</span>
                 <h2 className="section-title">
                   One token across the portfolio: <span className="accent">$EFO</span>.
                 </h2>
@@ -595,13 +594,10 @@ export default function HomePage() {
                 <p className="eco-note">Verify this address before interacting with anything that calls itself EFO.</p>
               </div>
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="team">
-          <div className="wrap">
+        <Section id="team" label="Leadership" fact="Founder-led">
             <SectionHeading
-              kicker="04 / Leadership"
               title={
                 <>
                   Founder-led and <span className="accent">hands-on</span>.
@@ -610,26 +606,20 @@ export default function HomePage() {
               lede="Decisions sit close to the products. These are the people who look after the standard."
             />
 
-            <div className="team-grid">
+            <div className="ruled-cells team-cells reveal" data-cols="2">
               {leadership.map(([idx, name, role]) => (
-                <div className="member reveal" key={name}>
-                  <span className="idx">{idx}</span>
-                  <div style={{ marginTop: 16 }}>
-                    <Avatar name={name} size={64} />
-                  </div>
+                <div key={name}>
+                  <Avatar name={name} size={64} />
                   <div className="nm">{name}</div>
                   <div className="ro">{role}</div>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="careers">
-          <div className="wrap">
+        <Section id="careers" label="Careers" fact="4 open roles">
             <div className="careers-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">05 / Careers</span>
                 <h2 className="section-title">
                   Care deeply about craft? <span className="accent">Let's build.</span>
                 </h2>
@@ -653,32 +643,24 @@ export default function HomePage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="faq">
-          <div className="wrap">
-            <div className="faq-grid">
-              <SectionHeading kicker="06 / FAQ" title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
-
-              <div className="reveal">
-                <Accordion
-                  items={faqItems.map(([question, answer], index) => ({
-                    id: `faq-${index}`,
-                    title: question,
-                    content: answer
-                  }))}
-                />
-              </div>
+        <Section id="faq" label="FAQ" fact="5 answers">
+            <SectionHeading title="Clear answers to what we hear most." lede="Anything else, ask us directly through the contact form." />
+            <div className="reveal" style={{ marginTop: 32 }}>
+              <Accordion
+                items={faqItems.map(([question, answer], index) => ({
+                  id: `faq-${index}`,
+                  title: question,
+                  content: answer
+                }))}
+              />
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" id="contact">
-          <div className="wrap">
+        <Section id="contact" label="Contact" fact="hi@efolusi.com">
             <div className="contact-grid">
               <div className="reveal">
-                <span className="eyebrow eyebrow--mono">07 / Contact</span>
                 <h2 className="section-title">Tell us what you're building.</h2>
                 <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
                 <div className="contact-aside">
@@ -720,11 +702,9 @@ export default function HomePage() {
                 </div>
               </form>
             </div>
-          </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule" aria-label="Newsletter">
-          <div className="wrap">
+        <Section label="Newsletter" fact="No noise">
             <div className="news reveal">
               <div>
                 <h3>Stay in the loop.</h3>
@@ -745,8 +725,7 @@ export default function HomePage() {
                 </Button>
               </form>
             </div>
-          </div>
-        </section>
+        </Section>
 
         <section className="band closer">
           <div className="wrap">

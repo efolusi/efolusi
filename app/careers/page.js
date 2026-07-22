@@ -1,6 +1,7 @@
 import { Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
+import Section from '../components/Section.jsx';
 
 export const metadata = {
   title: 'Careers · Efolusi',
@@ -47,7 +48,13 @@ export default function CareersPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <span className="eyebrow eyebrow--mono">Careers</span>
+            <div className="masthead-meta">
+              <span>Careers</span>
+              <div className="m-right">
+                <span>4 open roles</span>
+                <span>Remote-first</span>
+              </div>
+            </div>
             <h1>
               Care deeply about craft? <span className="accent">Let's build.</span>
             </h1>
@@ -57,29 +64,24 @@ export default function CareersPage() {
           </div>
         </section>
 
-        <section className="section section--rule">
-          <div className="wrap">
-            <span className="eyebrow eyebrow--mono">01 / Working here</span>
-            <h2 className="section-title">What it's actually like.</h2>
-            <div className="perks-grid">
-              {workingHere.map(([icon, title, body]) => (
-                <div className="perk" key={title}>
-                  <span className="tick">
-                    <Icon name={icon} size={16} />
-                  </span>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </div>
-              ))}
-            </div>
+        <Section label="Working here" fact="Distributed · Async">
+          <h2 className="section-title">What it's actually like.</h2>
+          <div className="ruled-cells" data-cols="2" style={{ marginTop: 32 }}>
+            {workingHere.map(([icon, title, body]) => (
+              <div className="perk" key={title}>
+                <span className="tick">
+                  <Icon name={icon} size={16} />
+                </span>
+                <h3>{title}</h3>
+                <p>{body}</p>
+              </div>
+            ))}
           </div>
-        </section>
+        </Section>
 
-        <section className="section section--rule">
-          <div className="wrap">
+        <Section label="Open roles" fact="4 roles">
             <div className="careers-grid">
               <div>
-                <span className="eyebrow eyebrow--mono">02 / Open roles</span>
                 <h2 className="section-title">Where we're hiring now.</h2>
                 <p className="body">Every application gets read by a human. Tell us what you've built and what you want to build next; a portfolio or repo beats a long CV.</p>
                 <a className="ef-btn ef-btn--primary ef-btn--md" href="/#contact">
@@ -101,8 +103,7 @@ export default function CareersPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
+        </Section>
 
         <section className="band closer">
           <div className="wrap">
