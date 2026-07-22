@@ -116,23 +116,23 @@ const roles = [
 const faqItems = [
   [
     'What is Efolusi?',
-    'Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio based in Indonesia. We build and operate independent software products across AI, cloud infrastructure, productivity, content creation, social media and automated trading. The portfolio is broad by design and keeps growing; every product is held to one standard for clarity, usefulness and craft.'
+    "Efolusi (PT. Efolusi Dunia Teknologi) is a general software studio based in Indonesia. We build and run independent software products across AI, cloud infrastructure, productivity, content creation, social media and automated trading. The portfolio is broad on purpose and keeps growing, and we hold every product to one standard for clarity, usefulness and craft."
   ],
   [
     'Where are you based?',
-    'The company is headquartered in Indonesia and the team works distributed. Our products are built to global standards for users everywhere.'
+    "We're headquartered in Indonesia and work as a distributed team. Our products are built to global standards for users everywhere."
   ],
   [
     'Are you hiring?',
-    'Yes. We are always looking for people who care deeply about craft and want to build products across categories. If that sounds like you, reach out through our contact form.'
+    "Yes. We're always looking for people who care deeply about craft and want to build across categories. Sounds like you? Drop us a line through the contact form."
   ],
   [
     'How do I get support for a product?',
-    'Each product has its own support channel. Visit the product website directly for documentation, help, or to contact the product team.'
+    "Every product has its own support team. Head to the product's website for docs, help, or to reach the team directly; they'll take care of you."
   ],
   [
     'Can I partner with Efolusi?',
-    'We are open to partnerships that align with what we are building. If you have a proposal or want to explore working together, get in touch through our contact form.'
+    "We're open to partnerships that fit what we're building. If you have a proposal or just want to explore an idea together, we'd love to hear it. The contact form goes straight to us."
   ]
 ];
 
@@ -423,7 +423,7 @@ export default function HomePage() {
     }
 
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
-      setContactStatus({ type: 'error', text: 'That email does not look right.' });
+      setContactStatus({ type: 'error', text: "That email doesn't look right." });
       return;
     }
 
@@ -437,12 +437,12 @@ export default function HomePage() {
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Send failed');
-        setContactStatus({ type: 'success', text: 'Thanks — we will be in touch shortly.' });
+        setContactStatus({ type: 'success', text: "Thanks. We'll be in touch soon." });
         formEl.reset();
       })
       .catch((err) => {
         console.error('Send error', err);
-        setContactStatus({ type: 'error', text: 'We could not send your message right now. Please try again in a moment.' });
+        setContactStatus({ type: 'error', text: "We couldn't send your message just now. Please try again in a moment." });
       });
   };
 
@@ -469,12 +469,12 @@ export default function HomePage() {
       .then(async (res) => {
         const data = await res.json().catch(() => ({}));
         if (!res.ok || (data && data.ok === false)) throw new Error(data.error || 'Subscribe failed');
-        setNewsletterStatus({ type: 'success', text: 'Thanks — you are on the list.' });
+        setNewsletterStatus({ type: 'success', text: "Thanks, you're on the list." });
         formEl.reset();
       })
       .catch((err) => {
         console.error('Newsletter error', err);
-        setNewsletterStatus({ type: 'error', text: 'We could not subscribe you right now. Please try again in a moment.' });
+        setNewsletterStatus({ type: 'error', text: "We couldn't subscribe you just now. Please try again in a moment." });
       });
   };
 
@@ -533,7 +533,7 @@ export default function HomePage() {
                 We build and run <span className="accent">independent software products</span>.
               </h1>
               <p className="hero-sub reveal">
-                PT. Efolusi Dunia Teknologi is a general software studio. We build and operate products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms today, more to come. All of them answer to one standard of craft.
+                We're Efolusi, a software studio from Indonesia. We build and run products across AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, and every one of them is built with the same care.
               </p>
 
               <div className="hero-actions reveal">
@@ -547,7 +547,7 @@ export default function HomePage() {
 
               <div className="hero-proof reveal">
                 <StatusDot state="ok" pulse />
-                <span>Every platform is live and in daily use.</span>
+                <span>Every platform is live and used every day.</span>
               </div>
             </div>
 
@@ -587,7 +587,7 @@ export default function HomePage() {
                   Independent platforms, <span className="accent">one portfolio</span>.
                 </>
               }
-              lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; select one to look closer."
+              lede="Each product has its own team, roadmap and infrastructure. What they share is the standard. The portfolio keeps growing; pick one to take a closer look."
             />
 
             <div className="stage-wrap reveal">
@@ -668,8 +668,8 @@ export default function HomePage() {
                 </h2>
               </div>
               <div className="reveal">
-                <p className="big">Every product operates on its own: its own roadmap, its own releases, its own users to answer to.</p>
-                <p className="body">The studio exists to keep the bar high. If a product does not make its category clearer, faster or more useful, it does not ship. That discipline keeps the portfolio broad without becoming scattered.</p>
+                <p className="big">Every product runs on its own: its own roadmap, its own releases, its own users to answer to.</p>
+                <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline keeps the portfolio broad without getting scattered.</p>
                 <div className="checks">
                   {['No feature bloat', 'Opinionated by design', 'Built to scale globally', 'Quality before growth'].map((item) => (
                     <div className="check" key={item}>
@@ -689,7 +689,7 @@ export default function HomePage() {
           <div className="wrap band-grid">
             <h3 className="band-title reveal">Built in Indonesia. Engineered for every market.</h3>
             <p className="reveal">
-              We operate from one of the world's fastest-growing markets. That experience informs every product decision we make, and we hold each one to the same standard regardless of where it is used. Emerging-market insight, careful engineering and products built for use across markets from day one.
+              We work from one of the world's fastest-growing markets, and that shapes every product decision we make. Wherever you use our products, the standard is the same: emerging-market insight, careful engineering, and software that's built for everywhere from day one.
             </p>
           </div>
         </section>
@@ -703,7 +703,7 @@ export default function HomePage() {
                   Founder-led and <span className="accent">hands-on</span>.
                 </>
               }
-              lede="Decisions sit close to the products. These are the people accountable for the standard."
+              lede="Decisions sit close to the products. These are the people who look after the standard."
             />
 
             <div className="team-grid">
@@ -729,9 +729,9 @@ export default function HomePage() {
                 <h2 className="section-title">
                   Care deeply about craft? <span className="accent">Let's build.</span>
                 </h2>
-                <p className="body">We are always looking for people who want to build useful products across different fields. If that sounds like you, reach out, even if you do not see your exact role below.</p>
+                <p className="body">We're always happy to meet people who love building useful things. Say hi, even if your role isn't listed yet.</p>
                 <a className="ef-btn ef-btn--primary ef-btn--md" href="#contact">
-                  Contact us about roles <Icon name="arrow-right" size={16} />
+                  Reach out about a role <Icon name="arrow-right" size={16} />
                 </a>
               </div>
 
@@ -775,7 +775,7 @@ export default function HomePage() {
             <div className="contact-grid">
               <div className="reveal">
                 <span className="eyebrow eyebrow--mono">06 / Contact</span>
-                <h2 className="section-title">Tell us what you are building.</h2>
+                <h2 className="section-title">Tell us what you're building.</h2>
                 <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
                 <div className="contact-aside">
                   <div className="ci">
@@ -823,8 +823,8 @@ export default function HomePage() {
           <div className="wrap">
             <div className="news reveal">
               <div>
-                <h3>Get news from Efolusi.</h3>
-                <p className="sub">Product launches and company updates. No noise, unsubscribe anytime.</p>
+                <h3>Stay in the loop.</h3>
+                <p className="sub">Product launches and studio updates. No noise, unsubscribe anytime.</p>
                 <div
                   className={`form-status${newsletterStatus.type === 'success' ? ' is-success' : ''}${newsletterStatus.type === 'error' ? ' is-error' : ''}`}
                   role="status"
@@ -847,7 +847,7 @@ export default function HomePage() {
         <section className="band closer">
           <div className="wrap">
             <h2 className="reveal">Find the product built for your work.</h2>
-            <p className="reveal">Every product we build starts from the belief that the existing solution is not good enough. We think you will agree.</p>
+            <p className="reveal">Every product we build starts from the belief that the existing solution isn't good enough. We think you'll agree.</p>
             <div className="closer-actions reveal">
               <a className="band-btn" href="#products">
                 See the portfolio <Icon name="arrow-right" size={16} />
