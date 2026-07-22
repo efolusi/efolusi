@@ -1,17 +1,13 @@
-import nodemailer from 'nodemailer';
-
-const transport = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT || 587),
-  secure: (process.env.SMTP_SECURE === 'true') || false,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS
-  }
-});
-
 function validateEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+}
+
+function escapeHtml(value) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
 }
 
 export async function POST(req) {
@@ -29,28 +25,39 @@ export async function POST(req) {
       return new Response(JSON.stringify({ ok: false, error: 'Invalid email' }), { status: 400 });
     }
 
-    const mail = {
-      from: process.env.EMAIL_FROM || process.env.SMTP_USER,
-      to: process.env.EMAIL_TO || process.env.SMTP_USER,
-      subject: `Contact form: ${name}`,
-      text: `${message}\n\nFrom: ${name} <${email}>`,
-      html: `<p>${message.replace(/\n/g, '<br/>')}</p><p>From: ${name} &lt;${email}&gt;</p>`
-    };
+    const apiKey = String(process.env.BREVO_API_KEY || '').trim();
+    const to = String(process.env.EMAIL_TO || '').trim();
+    const from = String(process.env.EMAIL_FROM || '').trim();
 
-    const info = await transport.sendMail(mail);
-
-    // Nodemailer may resolve but still report rejected recipients
-    if (info && Array.isArray(info.rejected) && info.rejected.length > 0) {
-      console.error('Mail rejected', info);
-      return new Response(JSON.stringify({ ok: false, error: 'Message rejected by SMTP server' }), { status: 502 });
+    if (!apiKey || !to || !from) {
+      console.error('Contact form not configured: BREVO_API_KEY, EMAIL_TO and EMAIL_FROM are required');
+      return new Response(JSON.stringify({ ok: false, error: 'Contact form not configured' }), { status: 500 });
     }
 
-    if (info && Array.isArray(info.accepted) && info.accepted.length === 0) {
-      console.error('No accepted recipients', info);
-      return new Response(JSON.stringify({ ok: false, error: 'No recipients accepted by SMTP server' }), { status: 502 });
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': apiKey,
+        'content-type': 'application/json',
+        accept: 'application/json'
+      },
+      body: JSON.stringify({
+        sender: { email: from, name: 'Efolusi website' },
+        to: [{ email: to }],
+        replyTo: { email, name },
+        subject: `Contact form: ${name}`,
+        textContent: `${message}\n\nFrom: ${name} <${email}>`,
+        htmlContent: `<p>${escapeHtml(message).replace(/\n/g, '<br/>')}</p><p>From: ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>`
+      })
+    });
+
+    if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
+      console.error('Brevo contact error', response.status, data);
+      return new Response(JSON.stringify({ ok: false, error: 'Send failed' }), { status: 502 });
     }
 
-    return new Response(JSON.stringify({ ok: true, info }), { status: 200 });
+    return new Response(JSON.stringify({ ok: true }), { status: 200 });
   } catch (err) {
     console.error('Contact send error', err);
     return new Response(JSON.stringify({ ok: false, error: 'Send failed' }), { status: 500 });

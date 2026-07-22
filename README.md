@@ -1,20 +1,24 @@
 # Efolusi
 
-Efolusi is a general-purpose software studio site built with Next.js. It presents the Efolusi product portfolio, company positioning, careers section, FAQ, contact form, and newsletter signup.
+The open-source marketing site for [Efolusi](https://efolusi.com), a general-purpose software studio. It presents the Efolusi product portfolio, company positioning, careers section, FAQ, contact form, and newsletter signup, styled entirely with the [Meridian design system](https://github.com/efolusi/meridian).
+
+Repository: <https://github.com/efolusi/efolusi>
 
 ## Tech Stack
 
 - Next.js 15 App Router
 - React 18
-- Nodemailer for contact form delivery
-- Brevo API for newsletter subscriptions
-- Vercel-ready deployment
+- @efolusi/meridian design system (components, tokens, self-hosted fonts)
+- Brevo API for the contact form and newsletter subscriptions
+- Cloudflare Workers deployment via @opennextjs/cloudflare
 
 ## Getting Started
 
-Install dependencies:
+Clone and install dependencies:
 
 ```bash
+git clone https://github.com/efolusi/efolusi.git
+cd efolusi
 npm install
 ```
 
@@ -45,43 +49,37 @@ npm run build
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-npm run start
+npm run preview
 ```
 
-Starts the production server after a successful build.
+Builds the Cloudflare Worker with OpenNext and serves it locally in the workerd runtime. Use this to test the site exactly as it runs in production.
+
+```bash
+npm run deploy
+```
+
+Builds and deploys the site to Cloudflare Workers.
 
 ## Environment Variables
 
-Create a local `.env.local` file for development. This file is ignored by git.
+For local Next.js development, put the variables in `.env.local`. For `npm run preview` (workerd runtime), put them in `.dev.vars`. Both files are ignored by git.
 
 ```bash
-SMTP_HOST=
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=
-SMTP_PASS=
-EMAIL_FROM=
-EMAIL_TO=
 BREVO_API_KEY=
 BREVO_LIST_ID=
+EMAIL_TO=
+EMAIL_FROM=
 ```
 
 ### Contact Form
 
-The contact form posts to `app/api/contact/route.js` and sends email through SMTP.
+The contact form posts to `app/api/contact/route.js` and delivers the message through the Brevo transactional email API.
 
 Required variables:
 
-- `SMTP_HOST`
-- `SMTP_USER`
-- `SMTP_PASS`
-
-Optional variables:
-
-- `SMTP_PORT`, defaults to `587`
-- `SMTP_SECURE`, set to `true` for secure SMTP
-- `EMAIL_FROM`, defaults to `SMTP_USER`
-- `EMAIL_TO`, defaults to `SMTP_USER`
+- `BREVO_API_KEY`
+- `EMAIL_TO`, the inbox that receives contact form messages
+- `EMAIL_FROM`, a sender address verified in Brevo
 
 ### Newsletter
 
@@ -100,13 +98,15 @@ Optional variable:
 ```text
 app/
   api/
-    contact/route.js      Contact form endpoint
-    newsletter/route.js   Newsletter signup endpoint
-  globals.css             Global styles
-  layout.js               Metadata and root layout
+    contact/route.js      Contact form endpoint (Brevo transactional email)
+    newsletter/route.js   Newsletter signup endpoint (Brevo contacts)
+  globals.css             Marketing-page styles on top of Meridian tokens
+  layout.js               Metadata, Meridian stylesheet, theme init
   page.js                 Main marketing site
 public/
   efolusi/logo-owl.png    Site icon and brand asset
+wrangler.jsonc            Cloudflare Workers configuration
+open-next.config.ts       OpenNext Cloudflare adapter configuration
 ```
 
 ## Content Updates
@@ -117,20 +117,34 @@ Site metadata lives in `app/layout.js`.
 
 ## Deployment
 
-The app is designed to deploy on Vercel.
+The app deploys to Cloudflare Workers through the OpenNext Cloudflare adapter.
 
-1. Set the environment variables in the Vercel project settings.
-2. Deploy from the connected git branch.
-3. Verify the contact and newsletter forms in production with real credentials.
+1. Authenticate wrangler once with `npx wrangler login`.
+2. Set the secrets on the Worker:
 
-Before deploying manually, run:
+   ```bash
+   npx wrangler secret put BREVO_API_KEY
+   npx wrangler secret put EMAIL_TO
+   npx wrangler secret put EMAIL_FROM
+   npx wrangler secret put BREVO_LIST_ID
+   ```
 
-```bash
-npm run build
-```
+3. Deploy:
+
+   ```bash
+   npm run deploy
+   ```
+
+4. Verify the contact and newsletter forms in production with real credentials.
+
+Continuous deployment can also be set up with Workers Builds by connecting this repository in the Cloudflare dashboard; the build command is `npx opennextjs-cloudflare build` and the deploy command is `npx opennextjs-cloudflare deploy`.
 
 ## Notes
 
 - `node` version must be `>=20`.
-- `.env.local`, `.next`, `node_modules`, and `.vercel` are intentionally ignored.
+- `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
 - Social links in the footer currently use placeholder `#` URLs and should be updated before launch.
+
+## License
+
+MIT, see [LICENSE](LICENSE). The Efolusi name and the owl mark are not covered by the MIT grant; do not use them to brand derived sites.
