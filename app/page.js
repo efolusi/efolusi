@@ -154,17 +154,26 @@ const marqueeItems = [
   'No feature bloat'
 ];
 
+/* Decorations live in the two gutters beside the centered text column, in
+   staggered vertical slots so neighbours never touch. They are hidden below
+   1200px, where the gutters get too narrow to hold them. */
 const edgeTiles = [
-  { id: 'zoyya', text: 'Zo', tint: 'caramel', href: 'https://zoyya.xyz', style: { left: '4%', top: 90, '--rot': '-8deg', '--fd': '0.4s' }, size: 72 },
-  { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '5%', top: 210, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
-  { id: 'trady', text: 'Tr', tint: 'coral', href: 'https://trady.efolusi.com', style: { left: '9%', bottom: 60, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
-  { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '10%', bottom: 110, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 }
+  { id: 'zoyya', text: 'Zo', tint: 'caramel', href: 'https://zoyya.xyz', style: { left: '3%', top: 30, '--rot': '-8deg', '--fd': '0.4s' }, size: 72 },
+  { id: 'kongkow', text: 'Kg', tint: 'peach', href: 'https://kongkow.xyz', style: { left: '2%', top: 210, '--rot': '5deg', '--fd': '1.4s' }, size: 62 },
+  { id: 'trady', text: 'Tr', tint: 'coral', href: 'https://trady.efolusi.com', style: { left: '10%', top: 450, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
+  { id: 'efo', text: '$EFO', tint: 'cocoa', href: '/token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
+  { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
+  { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
+  { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 }
 ];
 
 const stickers = [
-  { text: '#AI', tint: 'caramel', style: { left: '13%', top: 210, '--rot': '-7deg', '--fd': '0.5s' } },
-  { text: '#trading', tint: 'green', style: { right: '13%', top: 110, '--rot': '5deg', '--fd': '1s' } },
-  { text: '#social', tint: 'coral', style: { right: '7%', bottom: 200, '--rot': '-4deg', '--fd': '1.5s' } }
+  { text: '#AI', tint: 'caramel', style: { left: '12%', top: 120, '--rot': '-7deg', '--fd': '0.5s' } },
+  { text: '#infrastructure', tint: 'green', style: { left: '8%', top: 300, '--rot': '-5deg', '--fd': '1.8s' } },
+  { text: '#content', tint: 'coral', style: { left: '1%', top: 520, '--rot': '4deg', '--fd': '1.1s' } },
+  { text: '#trading', tint: 'green', style: { right: '12%', top: 120, '--rot': '5deg', '--fd': '1s' } },
+  { text: '#productivity', tint: 'amber', style: { right: '6%', top: 295, '--rot': '-4deg', '--fd': '2s' } },
+  { text: '#social', tint: 'peach', style: { right: '2%', top: 465, '--rot': '-4deg', '--fd': '1.5s' } }
 ];
 
 /* Reveal-on-scroll: soft settle with sibling stagger, Meridian motion tokens do the rest. */
@@ -277,24 +286,6 @@ function CountUp({ value, suffix }) {
   );
 }
 
-function SpinBadge() {
-  return (
-    <div className="spin-badge" style={{ right: '7%', top: 24 }} aria-hidden="true">
-      <svg viewBox="0 0 110 110">
-        <defs>
-          <path id="badge-circle" d="M 55,55 m -40,0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" />
-        </defs>
-        <text>
-          <textPath href="#badge-circle">EFOLUSI · SOFTWARE STUDIO · INDONESIA ·</textPath>
-        </text>
-      </svg>
-      <span className="spin-badge-owl">
-        <img src="/efolusi/logo-owl.png" alt="" width="34" height="34" />
-      </span>
-    </div>
-  );
-}
-
 export default function HomePage() {
   useRevealOnScroll();
 
@@ -381,29 +372,36 @@ export default function HomePage() {
       <main id="top">
         <section className="hero hero-center" id="hero">
           <div className="wrap">
-            <SpinBadge />
             {stickers.map((s) => (
               <span key={s.text} className={`sticker tint-${s.tint} hero-deco`} style={s.style} aria-hidden="true">
                 {s.text}
               </span>
             ))}
             {edgeTiles.map((tile) => (
-              <a key={tile.id} className="edge-tile hero-deco" href={tile.href} target="_blank" rel="noopener noreferrer" aria-label={tile.id} style={tile.style}>
-                <span className={`tile-card tint-${tile.tint}`} style={{ width: tile.size, height: tile.size, fontSize: 26 }}>
+              <a
+                key={tile.id}
+                className="edge-tile hero-deco"
+                href={tile.href}
+                target={tile.href.startsWith('http') ? '_blank' : undefined}
+                rel={tile.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                aria-label={tile.id}
+                style={tile.style}
+              >
+                <span
+                  className={`tile-card tint-${tile.tint}`}
+                  style={{ width: tile.w || tile.size, height: tile.h || tile.size, fontSize: tile.w ? 17 : 26 }}
+                >
                   {tile.text}
                 </span>
               </a>
             ))}
-            <div className="hero-doodle hero-deco" style={{ left: '16%', top: '58%', width: 64, height: 64 }} aria-hidden="true">
+            <div className="hero-doodle hero-deco" style={{ left: '1%', top: 385, width: 64, height: 64 }} aria-hidden="true">
               <svg viewBox="0 0 64 64">
                 <path d="M50 6 C 20 10, 10 28, 22 44 M22 44 l-8 -4 M22 44 l2 -10" />
               </svg>
             </div>
 
             <h1 className="reveal">
-              <span className="h1-owl" aria-hidden="true">
-                <img src="/efolusi/logo-owl.png" alt="" />
-              </span>
               We <span className="script accent">build</span> and run independent software{' '}
               <span className="scribble">
                 products
