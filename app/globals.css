@@ -775,7 +775,7 @@ a.ef-btn--secondary:hover {
 .switch {
   list-style: none;
   margin: 0;
-  padding: 6px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -784,20 +784,21 @@ a.ef-btn--secondary:hover {
   border-radius: var(--radius-xl);
 }
 
+/* Radius is the panel's minus its padding, so the corners stay concentric. */
 .switch button {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 13px 14px;
+  padding: 13px 14px 13px 18px;
   border: 0;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   background: transparent;
   font: inherit;
   text-align: left;
   color: var(--text-secondary);
   cursor: pointer;
-  box-shadow: inset 2px 0 0 transparent;
   transition:
     background var(--dur-fast) var(--ease-out),
     color var(--dur-fast) var(--ease-out),
@@ -817,7 +818,18 @@ a.ef-btn--secondary:hover {
 .switch button.is-active {
   background: var(--surface-sunken);
   color: var(--text-primary);
-  box-shadow: inset 2px 0 0 var(--brand-500);
+}
+
+.switch button.is-active::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 50%;
+  translate: 0 -50%;
+  width: 3px;
+  height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--brand-500);
 }
 
 .switch .sw-n {
