@@ -102,6 +102,34 @@ const stageProducts = [
     buttonLabel: 'Visit Cuwan',
     tag: 'Trading',
     summary: 'Automated trading. One dashboard for 100+ CEX and DEX markets, executing 24/7.'
+  },
+  {
+    id: 'meridian',
+    tint: 'cocoa',
+    mark: 'Me',
+    icon: 'layout-dashboard',
+    section: 'Design System',
+    title: 'Meridian',
+    desc: 'The open-source design system every Efolusi product is built on. 109 accessible React components and 177 tokens, served browser-native with no build step. This site runs on it.',
+    specs: ['109 components', 'No build step', 'MIT licensed'],
+    href: 'https://meridian.efolusi.com',
+    buttonLabel: 'Visit Meridian',
+    tag: 'Design',
+    summary: 'Our open-source design system. 109 React components and 177 tokens, no build step.'
+  },
+  {
+    id: 'earthos',
+    tint: 'green',
+    mark: 'Ea',
+    icon: 'globe',
+    section: 'Geospatial',
+    title: 'EarthOS',
+    desc: 'A real-time 3D digital twin of Earth in the browser. Satellites, aircraft, earthquakes, wildfires and storms on one globe, with over 100,000 objects moving at 60fps. Every data source is a plugin.',
+    specs: ['Real-time 3D', 'Plugin-based', 'Open source'],
+    href: 'https://earthos.efolusi.com',
+    buttonLabel: 'Visit EarthOS',
+    tag: 'Geospatial',
+    summary: 'A real-time 3D digital twin of Earth, with live satellites, flights and weather on one globe.'
   }
 ];
 
@@ -120,7 +148,7 @@ const roles = [
 const faqItems = [
   [
     'What is Efolusi?',
-    "Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content creation, social media and automated trading. Every one of them is held to one standard for clarity, usefulness and craft."
+    "Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build our own products and run them ourselves, from AI and cloud infrastructure to automated trading, geospatial and the open-source tools underneath it all. Every one of them is held to one standard for clarity, usefulness and craft."
   ],
   [
     'Where are you based?',
@@ -158,7 +186,9 @@ const edgeTiles = [
   { id: 'efo', text: '$EFO', tint: 'cocoa', href: '/token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
   { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
-  { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 }
+  { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
+  { id: 'meridian', text: 'Me', tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
+  { id: 'earthos', text: 'Ea', tint: 'green', href: 'https://earthos.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
 ];
 
 const stickers = [
@@ -334,7 +364,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="hero-sub reveal">
-              We're Efolusi, a software studio from Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content, social media and automated trading. The portfolio keeps growing; the standard doesn't budge.
+              We're Efolusi, a software studio from Indonesia. We build our own products and run them ourselves, from AI and cloud infrastructure to automated trading, geospatial and the open-source tools underneath it all. The portfolio keeps growing; the standard doesn't budge.
             </p>
 
             <div className="hero-actions reveal">
@@ -394,7 +424,7 @@ export default function HomePage() {
                 <h3>
                   Our <span className="script">own</span> products
                 </h3>
-                <p>From AI to automated trading. Every one has its own team, its own roadmap, its own users to answer to.</p>
+                <p>From AI to automated trading, and the open-source tools we build in the open. Every one has its own team, its own roadmap, its own users to answer to.</p>
                 <span className="feat-cta">
                   See the portfolio <Icon name="arrow-right" size={15} />
                 </span>

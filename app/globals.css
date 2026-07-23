@@ -688,7 +688,8 @@ a.ef-btn--secondary:hover {
 /* Watermark washes stay subtle in both themes: status tints remap on their
    own; the fixed brand tints swap to the dark accent-subtle. */
 .wm-caramel,
-.wm-peach {
+.wm-peach,
+.wm-cocoa {
   color: var(--accent-subtle);
 }
 

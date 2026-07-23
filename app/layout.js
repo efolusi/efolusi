@@ -7,7 +7,7 @@ export const metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Efolusi · A software studio from Indonesia',
   description:
-    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio in Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content, social media and automated trading.',
+    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio in Indonesia. We build our own products and run them ourselves, from AI and cloud infrastructure to automated trading, geospatial and the open-source tools underneath it all.',
   alternates: {
     canonical: '/'
   },

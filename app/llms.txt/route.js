@@ -3,8 +3,9 @@
 const BODY = `# Efolusi
 
 > Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia.
-> We build our own products and run them ourselves, across AI, cloud
-> infrastructure, productivity, content, social media and automated trading.
+> We build our own products and run them ourselves, from AI and cloud
+> infrastructure to automated trading, geospatial and the open-source tools
+> underneath it all.
 
 ## Company
 - Legal entity: PT. Efolusi Dunia Teknologi
@@ -23,6 +24,8 @@ const BODY = `# Efolusi
 - Trady (https://trady.efolusi.com): content generator; a brief in, a finished campaign out across text, audio, video and image.
 - Kongkow (https://kongkow.xyz): social media command center; publish once to 20+ platforms.
 - Cuwan (https://cuwan.xyz): automated trading across 100+ CEX and DEX markets, running 24/7.
+- Meridian (https://meridian.efolusi.com): open-source design system, 109 React components and 177 tokens, no build step. MIT licensed, and every Efolusi product is built on it.
+- EarthOS (https://earthos.efolusi.com): real-time 3D digital twin of Earth in the browser, with live satellites, aircraft, earthquakes, wildfires and storms. Plugin-based and open source.
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07
