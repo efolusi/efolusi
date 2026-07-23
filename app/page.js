@@ -164,6 +164,7 @@ const edgeTiles = [
 const stickers = [
   { text: '#AI', tint: 'caramel', style: { left: '12%', top: 120, '--rot': '-7deg', '--fd': '0.5s' } },
   { text: '#infrastructure', tint: 'green', style: { left: '8%', top: 300, '--rot': '-5deg', '--fd': '1.8s' } },
+  { text: '#open-source', tint: 'caramel', style: { left: '2%', top: 385, '--rot': '6deg', '--fd': '1.3s' } },
   { text: '#content', tint: 'coral', style: { left: '1%', top: 520, '--rot': '4deg', '--fd': '1.1s' } },
   { text: '#trading', tint: 'green', style: { right: '12%', top: 120, '--rot': '5deg', '--fd': '1s' } },
   { text: '#productivity', tint: 'amber', style: { right: '6%', top: 295, '--rot': '-4deg', '--fd': '2s' } },
@@ -508,13 +509,15 @@ export default function HomePage() {
                     {product.mark}
                   </span>
                   <span>
-                    <span className="plist-name">{product.title}</span>
+                    <span className="plist-name">
+                      {product.title}
+                      <span className="plist-arrow">
+                        <Icon name="arrow-up-right" size={17} />
+                      </span>
+                    </span>
                     <span className="plist-cat">{product.section}</span>
                   </span>
                   <span className="plist-sum">{product.summary}</span>
-                  <span className="plist-arrow">
-                    <Icon name="arrow-up-right" size={18} />
-                  </span>
                 </a>
               ))}
             </div>

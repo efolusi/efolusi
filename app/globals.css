@@ -595,7 +595,7 @@ a.ef-btn--secondary:hover {
 
 .plist-row {
   display: grid;
-  grid-template-columns: 80px minmax(0, 1.1fr) minmax(0, 1.6fr) auto;
+  grid-template-columns: 80px minmax(0, 1.1fr) minmax(0, 1.6fr);
   gap: 24px;
   align-items: center;
   padding: 22px 4px;
@@ -632,7 +632,9 @@ a.ef-btn--secondary:hover {
 }
 
 .plist-name {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
@@ -653,6 +655,7 @@ a.ef-btn--secondary:hover {
 }
 
 .plist-arrow {
+  display: inline-flex;
   color: var(--text-muted);
   transition: transform var(--dur-med) var(--ease-spring), color var(--dur-fast) var(--ease-out);
 }
@@ -2088,8 +2091,9 @@ a.ef-btn--secondary:hover {
     border-top: none;
   }
 
+  /* Tablet: the brand block on its own row, then three link columns. */
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .footer-top > div:first-child {
@@ -2147,6 +2151,12 @@ a.ef-btn--secondary:hover {
 }
 
 @media (max-width: 640px) {
+  /* Phone: one column, everything stacked. */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
   .brand-assets {
     grid-template-columns: 1fr;
   }
@@ -2185,7 +2195,7 @@ a.ef-btn--secondary:hover {
 
 
   .plist-row {
-    grid-template-columns: 56px minmax(0, 1fr) auto;
+    grid-template-columns: 56px minmax(0, 1fr);
     gap: 8px 16px;
     padding: 18px 4px;
   }
