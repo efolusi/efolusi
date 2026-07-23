@@ -4,6 +4,26 @@
 
 :root {
   --nav-h: 64px;
+
+  /* One rounding scale for the whole site, softer than Meridian's default so
+     the playful surfaces agree. Meridian's own components read these tokens
+     too, so buttons, inputs and tags round with everything else.
+       sm  8  — ticks and other small squares
+       md 12  — icon buttons, menu items, inner controls
+       lg 16  — chips and small tiles
+       xl 24  — every large surface: cards, panels, forms, the stage
+       full   — pills, badges, tags, round icons */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+/* Anything shaped like a control reads as a pill. */
+.ef-btn,
+.ef-tag,
+.ef-badge {
+  border-radius: var(--radius-full);
 }
 
 html {
@@ -213,7 +233,7 @@ a.ef-btn--secondary:hover {
   width: 36px;
   height: 36px;
   border: 1px solid transparent;
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
@@ -293,7 +313,7 @@ a.ef-btn--secondary:hover {
   justify-content: center;
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   font-family: var(--font-display);
   font-size: 32px;
@@ -612,32 +632,6 @@ a.ef-btn--secondary:hover {
 
 /* Masthead meta row (hero) */
 
-/* ---------- Stats ---------- */
-
-.stats-cells > * {
-  padding: 28px;
-}
-
-.stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4vw, 48px);
-  font-weight: var(--weight-display);
-  letter-spacing: var(--tracking-display);
-  font-variant-numeric: tabular-nums;
-}
-
-.stat-num .suffix {
-  color: var(--brand-600);
-}
-
-.stat-label {
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
-  color: var(--text-secondary);
-  margin-top: 8px;
-  max-width: 220px;
-}
-
 /* ---------- Product stage ---------- */
 
 .stage-wrap {
@@ -652,7 +646,7 @@ a.ef-btn--secondary:hover {
   background: var(--surface-card);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-xl);
-  min-height: 470px;
+  min-height: 400px;
   overflow: hidden;
 }
 
@@ -740,8 +734,7 @@ a.ef-btn--secondary:hover {
 }
 
 .stage-panel .cta {
-  margin-top: auto;
-  padding-top: 24px;
+  margin-top: 28px;
 }
 
 .switch {
@@ -753,7 +746,7 @@ a.ef-btn--secondary:hover {
   gap: 2px;
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
 }
 
 .switch button {
@@ -1028,7 +1021,7 @@ a.ef-btn--secondary:hover {
   gap: 16px;
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 28px;
 }
 
@@ -1122,40 +1115,6 @@ a.ef-btn--secondary:hover {
 
 .band a.band-link:hover {
   color: #ffffff;
-}
-
-/* Solid cream button for cocoa bands, where Meridian's surface variants vanish. */
-.band-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  height: var(--control-h-lg);
-  padding: 0 22px;
-  border-radius: var(--radius-sm);
-  background: var(--cream-50);
-  color: var(--brand-950);
-  font-size: var(--text-md);
-  font-weight: var(--weight-semibold);
-  text-decoration: none;
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out);
-}
-
-.band-btn:hover {
-  background: #ffffff;
-  color: var(--brand-950);
-  text-decoration: none;
-}
-
-.band-btn:active {
-  transform: scale(0.985);
-}
-
-.band-btn:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--surface-brand), 0 0 0 4px var(--cream-50);
 }
 
 /* ---------- Footer ---------- */
@@ -1304,7 +1263,7 @@ a.ef-btn--secondary:hover {
 .eco-card {
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 28px;
   display: flex;
   flex-direction: column;
@@ -1339,7 +1298,7 @@ a.ef-btn--secondary:hover {
 .ca-card {
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   padding: 24px;
   margin-top: 28px;
   display: flex;
@@ -1472,7 +1431,7 @@ a.ef-btn--secondary:hover {
 .brand-tile {
   background: var(--surface-card);
   border: 1px solid var(--border-default);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-xl);
   overflow: hidden;
 }
 
@@ -1696,6 +1655,7 @@ a.ef-btn--secondary:hover {
 }
 
 .hero-center .hero-actions {
+  position: relative;
   justify-content: center;
   margin-top: 30px;
 }
@@ -1704,8 +1664,14 @@ a.ef-btn--secondary:hover {
   justify-content: center;
 }
 
+/* Anchored to the centered actions row so it always points at the button. */
 .hero-doodle {
   position: absolute;
+  left: calc(50% - 310px);
+  top: 50%;
+  translate: 0 -50%;
+  width: 72px;
+  height: 56px;
   color: var(--brand-500);
 }
 
@@ -1747,7 +1713,7 @@ a.ef-btn--secondary:hover {
 .feat-card {
   position: relative;
   overflow: hidden;
-  border-radius: 28px;
+  border-radius: var(--radius-xl);
   padding: 32px;
   min-height: 300px;
   display: flex;
@@ -2101,7 +2067,7 @@ a.ef-btn--secondary:hover {
     width: 36px;
     height: 36px;
     border: 1px solid transparent;
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-full);
     background: transparent;
     color: var(--text-secondary);
     cursor: pointer;

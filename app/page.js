@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   Accordion,
   Avatar,
@@ -103,12 +103,6 @@ const stageProducts = [
     tag: 'Trading',
     summary: 'Automated trading. One dashboard for 100+ CEX and DEX markets, executing 24/7.'
   }
-];
-
-const stats = [
-  ['06', '', 'Products in operation'],
-  ['06', '', 'Categories, from AI to trading'],
-  ['100', '+', 'Exchanges and integrations connected']
 ];
 
 const leadership = [
@@ -220,72 +214,6 @@ function useRevealOnScroll() {
   }, []);
 }
 
-/* Count-up number that starts when it scrolls into view. Announced to screen
-   readers as the final value; the animation is visual only. */
-function CountUp({ value, suffix }) {
-  const ref = useRef(null);
-  const [display, setDisplay] = useState(value.replace(/[1-9]/g, '0'));
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return undefined;
-
-    const target = parseInt(value, 10);
-    const digits = value.length;
-    let raf = 0;
-    let doneTimer = 0;
-
-    const run = () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        setDisplay(value);
-        return;
-      }
-      const start = performance.now();
-      const dur = 900;
-      const tick = (now) => {
-        const t = Math.min(1, Math.max(0, (now - start) / dur));
-        const eased = 1 - Math.pow(1 - t, 3);
-        setDisplay(String(Math.round(target * eased)).padStart(digits, '0'));
-        if (t < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-      // rAF can be throttled to a stop in background tabs; guarantee the final value.
-      doneTimer = window.setTimeout(() => setDisplay(value), dur + 200);
-    };
-
-    if (!('IntersectionObserver' in window)) {
-      setDisplay(value);
-      return undefined;
-    }
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          io.disconnect();
-          run();
-        }
-      },
-      { threshold: 0.5 }
-    );
-    io.observe(el);
-
-    return () => {
-      io.disconnect();
-      cancelAnimationFrame(raf);
-      window.clearTimeout(doneTimer);
-    };
-  }, [value]);
-
-  return (
-    <div className="stat-num" ref={ref} role="img" aria-label={`${value}${suffix || ''}`}>
-      <span aria-hidden="true">
-        {display}
-        {suffix ? <span className="suffix">{suffix}</span> : null}
-      </span>
-    </div>
-  );
-}
-
 export default function HomePage() {
   useRevealOnScroll();
 
@@ -395,12 +323,6 @@ export default function HomePage() {
                 </span>
               </a>
             ))}
-            <div className="hero-doodle hero-deco" style={{ left: '1%', top: 385, width: 64, height: 64 }} aria-hidden="true">
-              <svg viewBox="0 0 64 64">
-                <path d="M50 6 C 20 10, 10 28, 22 44 M22 44 l-8 -4 M22 44 l2 -10" />
-              </svg>
-            </div>
-
             <h1 className="reveal">
               We <span className="script accent">build</span> and run independent software{' '}
               <span className="scribble">
@@ -416,6 +338,12 @@ export default function HomePage() {
             </p>
 
             <div className="hero-actions reveal">
+              {/* Curls in from the left and points at the portfolio button. */}
+              <span className="hero-doodle hero-deco" aria-hidden="true">
+                <svg viewBox="0 0 72 56">
+                  <path d="M4 6 C 10 34, 26 46, 58 44 M58 44 l-13 -7 M58 44 l-11 9" />
+                </svg>
+              </span>
               <a className="pill pill--primary" href="#products">
                 View the portfolio
                 <span className="pill-arrow">
@@ -507,19 +435,6 @@ export default function HomePage() {
                   How we operate <Icon name="arrow-right" size={15} />
                 </span>
               </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="csec csec--rule" aria-label="The studio in numbers">
-          <div className="wrap">
-            <div className="ruled-cells stats-cells" data-cols="3">
-              {stats.map(([num, suffix, label]) => (
-                <div className="reveal" key={label}>
-                  <CountUp value={num} suffix={suffix} />
-                  <div className="stat-label">{label}</div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
