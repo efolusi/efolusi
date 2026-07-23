@@ -1,7 +1,6 @@
 import { Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
-import Section from '../components/Section.jsx';
 
 export const metadata = {
   title: 'Brand · Efolusi',
@@ -31,15 +30,8 @@ export default function BrandPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <div className="masthead-meta">
-              <span>Brand</span>
-              <div className="m-right">
-                <span>1 owl</span>
-                <span>MIT excludes the mark</span>
-              </div>
-            </div>
             <h1>
-              The owl, the wordmark, <span className="accent">and the rules</span>.
+              The owl, the wordmark, <span className="script accent">and the rules</span>.
             </h1>
             <p className="page-lede">
               Assets for press, partners and the community. The site's source code is MIT licensed, but the Efolusi name, the owl mark and product names are not covered by that grant.
@@ -47,9 +39,14 @@ export default function BrandPage() {
           </div>
         </section>
 
-        <Section label="The mark" fact="PNG · 668×668">
-          <h2 className="section-title">One owl, treated well.</h2>
-          <div className="brand-assets">
+        <section className="csec csec--rule">
+          <div className="wrap">
+            <div className="csec-head">
+              <h2>
+                One owl, <span className="script accent">treated well</span>.
+              </h2>
+            </div>
+            <div className="brand-assets" style={{ marginTop: 36 }}>
               <div className="brand-tile">
                 <div className="brand-preview">
                   <img src="/efolusi/logo-owl.png" alt="The Efolusi owl mark" width="120" height="120" />
@@ -73,48 +70,57 @@ export default function BrandPage() {
                 </div>
               </div>
             </div>
-        </Section>
+          </div>
+        </section>
 
-        <Section label="Usage" fact="Do and don't">
-          <h2 className="section-title">The rules, briefly.</h2>
-          <div className="approach-grid" style={{ marginTop: 32 }}>
-            <div>
-              <div className="brand-rules">
-                {dos.map((item) => (
-                  <div className="check" key={item}>
-                    <span className="tick">
-                      <Icon name="check" size={15} />
-                    </span>
-                    {item}
-                  </div>
-                ))}
-              </div>
+        <section className="csec csec--rule">
+          <div className="wrap">
+            <div className="csec-head">
+              <h2>
+                The rules, <span className="script accent">briefly</span>.
+              </h2>
             </div>
-            <div>
-              <div className="brand-rules">
-                {donts.map((item) => (
-                  <div className="check" key={item}>
-                    <span className="tick tick--danger">
-                      <Icon name="x" size={15} />
-                    </span>
-                    {item}
-                  </div>
-                ))}
+            <div className="approach-grid" style={{ marginTop: 36 }}>
+              <div>
+                <div className="brand-rules">
+                  {dos.map((item) => (
+                    <div className="check" key={item}>
+                      <span className="tick tick--green">
+                        <Icon name="check" size={15} />
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="brand-rules">
+                  {donts.map((item) => (
+                    <div className="check" key={item}>
+                      <span className="tick tick--coral">
+                        <Icon name="x" size={15} />
+                      </span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </Section>
+        </section>
 
         <section className="band closer">
           <div className="wrap">
-            <h2>Need something else?</h2>
+            <h2>
+              Need something <span className="script" style={{ color: 'var(--brand-300)' }}>else</span>?
+            </h2>
             <p>Higher resolutions, product marks, or a press question. We're quick over email.</p>
             <div className="closer-actions">
-              <a className="band-btn" href="mailto:hi@efolusi.com">
-                Email us <Icon name="arrow-right" size={16} />
-              </a>
-              <a className="band-link" href="/">
-                Back to efolusi.com
+              <a className="pill pill--cream" href="mailto:hi@efolusi.com">
+                Email us
+                <span className="pill-arrow">
+                  <Icon name="arrow-up-right" size={16} />
+                </span>
               </a>
             </div>
           </div>

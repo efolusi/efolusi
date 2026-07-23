@@ -1,7 +1,6 @@
 import { Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
-import Section from '../components/Section.jsx';
 
 export const metadata = {
   title: 'Careers · Efolusi',
@@ -48,15 +47,8 @@ export default function CareersPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <div className="masthead-meta">
-              <span>Careers</span>
-              <div className="m-right">
-                <span>4 open roles</span>
-                <span>Remote-first</span>
-              </div>
-            </div>
             <h1>
-              Care deeply about craft? <span className="accent">Let's build.</span>
+              Care deeply about craft? <span className="script accent">Let's build.</span>
             </h1>
             <p className="page-lede">
               We're always happy to meet people who love building useful things. Browse the open roles, or just say hi; the best people we've worked with rarely fit a listing exactly.
@@ -64,28 +56,40 @@ export default function CareersPage() {
           </div>
         </section>
 
-        <Section label="Working here" fact="Distributed · Async">
-          <h2 className="section-title">What it's actually like.</h2>
-          <div className="ruled-cells" data-cols="2" style={{ marginTop: 32 }}>
-            {workingHere.map(([icon, title, body], index) => (
-              <div className="perk" key={title}>
-                <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
-                  <Icon name={icon} size={16} />
-                </span>
-                <h3>{title}</h3>
-                <p>{body}</p>
-              </div>
-            ))}
+        <section className="csec csec--rule">
+          <div className="wrap">
+            <div className="csec-head">
+              <h2>
+                What it's <span className="script accent">actually like</span>.
+              </h2>
+            </div>
+            <div className="ruled-cells" data-cols="2" style={{ marginTop: 36 }}>
+              {workingHere.map(([icon, title, body], index) => (
+                <div className="perk" key={title}>
+                  <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
+                    <Icon name={icon} size={16} />
+                  </span>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </Section>
+        </section>
 
-        <Section label="Open roles" fact="4 roles">
+        <section className="csec csec--rule">
+          <div className="wrap">
             <div className="careers-grid">
               <div>
-                <h2 className="section-title">Where we're hiring now.</h2>
+                <h2 className="section-title">
+                  Where we're <span className="script accent">hiring now</span>.
+                </h2>
                 <p className="body">Every application gets read by a human. Tell us what you've built and what you want to build next; a portfolio or repo beats a long CV.</p>
-                <a className="ef-btn ef-btn--primary ef-btn--md" href="/#contact">
-                  Reach out about a role <Icon name="arrow-right" size={16} />
+                <a className="pill pill--primary" href="/#contact">
+                  Reach out about a role
+                  <span className="pill-arrow">
+                    <Icon name="arrow-up-right" size={16} />
+                  </span>
                 </a>
               </div>
 
@@ -103,18 +107,21 @@ export default function CareersPage() {
                 ))}
               </div>
             </div>
-        </Section>
+          </div>
+        </section>
 
         <section className="band closer">
           <div className="wrap">
-            <h2>Don't see your role?</h2>
+            <h2>
+              Don't see <span className="script" style={{ color: 'var(--brand-300)' }}>your role</span>?
+            </h2>
             <p>Write to us anyway. If you care about useful software and can show it, we want to hear from you.</p>
             <div className="closer-actions">
-              <a className="band-btn" href="/#contact">
-                Say hi <Icon name="arrow-right" size={16} />
-              </a>
-              <a className="band-link" href="/about">
-                About the studio
+              <a className="pill pill--cream" href="/#contact">
+                Say hi
+                <span className="pill-arrow">
+                  <Icon name="arrow-up-right" size={16} />
+                </span>
               </a>
             </div>
           </div>
