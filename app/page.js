@@ -424,7 +424,7 @@ export default function HomePage() {
                 <h3>
                   Our <span className="script">own</span> products
                 </h3>
-                <p>From AI to automated trading, and the open-source tools we build in the open. Every one has its own team, its own roadmap, its own users to answer to.</p>
+                <p>From AI to automated trading, some of it open source. Every one answers to its own users.</p>
                 <span className="feat-cta">
                   See the portfolio <Icon name="arrow-right" size={15} />
                 </span>
