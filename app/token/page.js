@@ -155,11 +155,6 @@ export default function TokenPage() {
                 We're wiring EFO into the ecosystem one piece at a time. Each bit of utility, tokenomics and documentation shows up here as it goes live, never before. No promises ahead of working software; that's the same rule our products live by.
               </p>
             </div>
-
-            <p className="section-lede" style={{ marginTop: 20 }}>
-              One thing worth saying plainly: EFO is not an investment product, and nothing here is financial advice. The full wording lives in our{' '}
-              <a href="/terms">terms of use</a>.
-            </p>
           </div>
         </section>
 

@@ -391,7 +391,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <h3>
-                  Products we build <span className="script">and run</span>
+                  Our <span className="script">own</span> products
                 </h3>
                 <p>From AI to automated trading. Every one has its own team, its own roadmap, its own users to answer to.</p>
                 <span className="feat-cta">
@@ -409,7 +409,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <h3>
-                  $EFO, the ecosystem <span className="script">token</span>
+                  The $EFO <span className="script">token</span>
                 </h3>
                 <p>Live on BNB Smart Chain and trading on Uniswap. Everything official about it sits in one place.</p>
                 <span className="feat-cta">
@@ -427,7 +427,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <h3>
-                  One standard of <span className="script">craft</span>
+                  One <span className="script">standard</span>
                 </h3>
                 <p>If it doesn't make its corner of the world clearer, faster or more useful, it doesn't ship.</p>
                 <span className="feat-cta">

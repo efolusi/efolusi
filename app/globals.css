@@ -47,7 +47,6 @@
    contract address) can force a track wider than the screen. Let them shrink;
    the copy field already truncates its value. */
 .eco-grid > *,
-.token-grid > *,
 .careers-grid > *,
 .contact-grid > *,
 .approach-grid > *,
@@ -545,9 +544,6 @@ a.ef-btn--secondary:hover {
   padding: clamp(72px, 10vh, 104px) 0;
 }
 
-.section--rule {
-  border-top: 1px solid var(--border-default);
-}
 
 /* Ruled cell grids: hairlines do the structure, no boxes */
 
@@ -854,10 +850,6 @@ a.ef-btn--secondary:hover {
   align-items: start;
 }
 
-.approach-body {
-  max-width: 720px;
-  margin-top: 24px;
-}
 
 /* Prose on the left, its checklist as a ruled panel on the right. */
 .split-grid {
@@ -876,27 +868,21 @@ a.ef-btn--secondary:hover {
   border-bottom: 1px solid var(--border-default);
 }
 
-.approach-grid .big,
-.approach-body .big {
+/* Body prose used by the about and careers columns. */
+.big {
   font-size: var(--text-2xl);
   line-height: var(--leading-relaxed);
   color: var(--text-primary);
+  margin-top: 20px;
 }
 
-.approach-grid .body,
-.approach-body .body {
+.body {
   font-size: var(--text-lg);
   line-height: var(--leading-relaxed);
   color: var(--text-secondary);
   margin-top: 16px;
 }
 
-.checks {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 28px;
-}
 
 .check {
   display: flex;
@@ -951,22 +937,8 @@ a.ef-btn--secondary:hover {
 
 /* ---------- Leadership ---------- */
 
-.team-cells {
-  margin-top: 40px;
-}
 
-.team-cells .nm {
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: var(--weight-semibold);
-  margin-top: 16px;
-}
 
-.team-cells .ro {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-  margin-top: 4px;
-}
 
 /* ---------- Careers ---------- */
 
@@ -1093,6 +1065,12 @@ a.ef-btn--secondary:hover {
   gap: 6px;
   font-size: var(--text-sm);
   min-height: 20px;
+}
+
+/* Before anything is submitted the status line is empty; don't let it
+   reserve a gap under the button. */
+.form-status:empty {
+  display: none;
 }
 
 .form-status.is-success {
@@ -1341,12 +1319,6 @@ a.ef-btn--secondary:hover {
   margin-top: 20px;
 }
 
-.token-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
 
 .ca-link {
   display: inline-flex;
@@ -1407,10 +1379,6 @@ a.ef-btn--secondary:hover {
   margin-top: 4px;
 }
 
-.token-alert {
-  margin-top: 32px;
-  max-width: 760px;
-}
 
 .trade-link {
   display: flex;
@@ -1635,6 +1603,11 @@ a.ef-btn--secondary:hover {
 .pill--sm .pill-arrow {
   width: 28px;
   height: 28px;
+}
+
+/* No trailing arrow: keep the padding even on both sides. */
+.pill--plain {
+  padding: 0 20px;
 }
 
 .pill-arrow {
@@ -2066,7 +2039,6 @@ a.ef-btn--secondary:hover {
   .careers-grid,
   .contact-grid,
   .eco-grid,
-  .token-grid,
   .split-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -2211,14 +2183,6 @@ a.ef-btn--secondary:hover {
     gap: 32px;
   }
 
-  .orbit {
-    height: 300px;
-  }
-
-  .orbit-field {
-    transform: scale(0.6) !important;
-    transform-origin: top center;
-  }
 
   .plist-row {
     grid-template-columns: 56px minmax(0, 1fr) auto;

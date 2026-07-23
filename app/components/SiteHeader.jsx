@@ -45,11 +45,8 @@ export default function SiteHeader() {
 
         <div className="header-actions">
           <ThemeToggle />
-          <Link className="pill pill--primary pill--sm" href="/#contact" onClick={() => setMenuOpen(false)}>
+          <Link className="pill pill--primary pill--sm pill--plain" href="/#contact" onClick={() => setMenuOpen(false)}>
             Get in touch
-            <span className="pill-arrow">
-              <Icon name="arrow-up-right" size={14} />
-            </span>
           </Link>
           <button
             type="button"

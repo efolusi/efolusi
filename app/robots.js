@@ -4,6 +4,7 @@ export default function robots() {
       userAgent: '*',
       allow: '/'
     },
-    sitemap: 'https://efolusi.com/sitemap.xml'
+    sitemap: 'https://efolusi.com/sitemap.xml',
+    host: 'https://efolusi.com'
   };
 }

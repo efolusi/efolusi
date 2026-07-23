@@ -1,6 +1,6 @@
 # Efolusi
 
-The open-source marketing site for [Efolusi](https://efolusi.com), a software studio. It presents the Efolusi product portfolio, company positioning, careers section, FAQ, contact form, and newsletter signup, styled entirely with the [Meridian design system](https://github.com/efolusi/meridian).
+The open-source marketing site for [Efolusi](https://efolusi.com), a software studio from Indonesia. It covers the product portfolio, the $EFO ecosystem token, the company, careers, brand assets and the contact and newsletter forms, styled entirely with the [Meridian design system](https://github.com/efolusi/meridian).
 
 Repository: <https://github.com/efolusi/efolusi>
 
@@ -101,9 +101,13 @@ app/
     _lib/guard.js         Shared endpoint protections (origin check, rate limit)
     contact/route.js      Contact form endpoint (Brevo transactional email)
     newsletter/route.js   Newsletter signup endpoint (Brevo contacts)
+  about|careers|brand|token/page.js
+                        The subpages, each with its own copy at the top
   privacy/page.js         Privacy policy
   terms/page.js           Terms of use
-  sitemap.js, robots.js   SEO metadata routes
+  components/             Shared header, footer and theme toggle
+  sitemap.js, robots.js, llms.txt/route.js
+                        SEO and AI-answer-engine metadata routes
   globals.css             Marketing-page styles on top of Meridian tokens
   layout.js               Metadata, JSON-LD, Meridian stylesheet, theme init
   page.js                 Main marketing site
@@ -120,7 +124,7 @@ Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit 
 
 ## Content Updates
 
-Most visible site copy, product entries, stats, team entries, testimonials, roles, and FAQ items live in `app/page.js` near the top of the file. Update those arrays first before changing the rendered JSX.
+Home page copy, product entries, leadership, roles and FAQ items live in the arrays at the top of `app/page.js`. Each other page keeps its own copy at the top of its `page.js`. Update those arrays before touching the rendered JSX.
 
 Site metadata lives in `app/layout.js`.
 
@@ -152,7 +156,6 @@ Continuous deployment can also be set up with Workers Builds by connecting this 
 
 - `node` version must be `>=20`.
 - `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
-- Social links in the footer currently use placeholder `#` URLs and should be updated before launch.
 
 ## License
 
