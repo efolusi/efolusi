@@ -45,7 +45,7 @@
 
 /* Grid and flex items default to min-width:auto, so one nowrap child (the
    contract address) can force a track wider than the screen. Let them shrink;
-   the copy field already truncates its value. */
+   the copy field already truncates its value, as of Meridian 1.9.1. */
 .eco-grid > *,
 .careers-grid > *,
 .contact-grid > *,
@@ -54,10 +54,7 @@
 .feat-grid > *,
 .brand-assets > *,
 .ruled-cells > *,
-.news > *,
-.ef-copyfield,
-.ef-copyfield__box,
-.ef-copyfield__value {
+.news > * {
   min-width: 0;
 }
 
