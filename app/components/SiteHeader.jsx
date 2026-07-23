@@ -10,8 +10,7 @@ const navLinks = [
   ['Portfolio', '/#products', null],
   ['Token', '/token', '/token'],
   ['Company', '/about', '/about'],
-  ['Careers', '/careers', '/careers'],
-  ['FAQ', '/#faq', null]
+  ['Careers', '/careers', '/careers']
 ];
 
 /* The highlight marks the page you are on, nothing else. Anchor links into

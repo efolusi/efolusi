@@ -33,8 +33,13 @@ export default function TermsPage() {
 
       <h2>The $EFO token</h2>
       <p>
-        $EFO is the ecosystem token of Efolusi on BNB Smart Chain. It is not a share, security, or investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. The only official contract address is published on{' '}
-        <a href="/token">the token page</a>; addresses published anywhere else are not ours. Digital assets carry a risk of total loss. Do your own research and comply with the laws of your jurisdiction before interacting with any digital asset.
+        $EFO is the ecosystem token of Efolusi on BNB Smart Chain. It is not a share, a security, or an investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. Nothing here is financial advice.
+      </p>
+      <p>
+        Digital assets are volatile and carry a risk of total loss: you can lose everything you put in. Please do your own research and follow the laws where you live before interacting with any digital asset.
+      </p>
+      <p>
+        The only official contract address is the one published on <a href="/token">the token page</a>. Any address published anywhere else is not ours. We never send you the first message, we never ask for your seed phrase, and we never announce airdrops or presales outside this site.
       </p>
 
       <h2>Liability</h2>

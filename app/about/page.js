@@ -35,31 +35,32 @@ export default function AboutPage() {
               A studio that ships, <span className="script accent">then keeps its word</span>.
             </h1>
             <p className="page-lede">
-              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software studio headquartered in Indonesia with a distributed team. We build our own products and run them ourselves, and we hold every one of them to the same standard.
+              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software studio based in Indonesia with a team spread across timezones. We build our own products and run them ourselves, and we hold every one of them to the same standard.
             </p>
           </div>
         </section>
 
         <section className="csec csec--rule">
           <div className="wrap">
-            <div className="csec-head">
-              <h2>
-                Broad on purpose. <span className="script accent">Sharp by discipline.</span>
-              </h2>
-            </div>
-            <div className="approach-body" style={{ marginLeft: 'auto', marginRight: 'auto' }}>
-              <p className="big">We are not tied to one field. We look for broad digital problems, build focused products, and run each one as its own platform with its own roadmap.</p>
-              <p className="body">The studio's job is keeping the bar high. If a product doesn't make its category clearer, faster or more useful, it doesn't ship. That discipline is what lets the portfolio grow without getting scattered.</p>
-            </div>
-            <div className="ruled-cells" data-cols="2" style={{ marginTop: 36 }}>
-              {values.map((item, index) => (
-                <div className="check" key={item}>
-                  <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
-                    <Icon name="check" size={15} />
-                  </span>
-                  {item}
-                </div>
-              ))}
+            <div className="split-grid">
+              <div>
+                <h2 className="section-title">
+                  Broad on purpose. <span className="script accent">Sharp by discipline.</span>
+                </h2>
+                <p className="big">We're not tied to one field. We go looking for problems worth solving, build a focused product for each, and let every one run as its own platform with its own roadmap.</p>
+                <p className="body">Our job as a studio is keeping the bar high. If a product doesn't make its corner of the world clearer, faster or more useful, it doesn't ship. That's what lets the portfolio grow without turning into a grab bag.</p>
+              </div>
+
+              <div className="values-panel">
+                {values.map((item, index) => (
+                  <div className="check" key={item}>
+                    <span className={`tick tick--${['caramel', 'green', 'amber', 'coral'][index % 4]}`}>
+                      <Icon name="check" size={15} />
+                    </span>
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -67,7 +68,7 @@ export default function AboutPage() {
         <section className="band band-team">
           <div className="wrap">
             <p className="band-statement">
-              Built in Indonesia, <span className="script" style={{ color: 'var(--brand-300)' }}>engineered</span> for every market. Wherever you use our products, the standard is the same.
+              Built in Indonesia, <span className="script" style={{ color: 'var(--brand-300)' }}>engineered</span> for every market. Wherever you happen to open our products, the standard is the same.
             </p>
           </div>
         </section>
@@ -78,7 +79,7 @@ export default function AboutPage() {
               <h2>
                 Founder-led and <span className="script accent">hands-on</span>.
               </h2>
-              <p className="section-lede">Decisions sit close to the products. These are the people who look after the standard.</p>
+              <p className="section-lede">Decisions stay close to the products. These are the people who look after the standard, day to day.</p>
             </div>
 
             <div className="founders founders--light">
@@ -126,7 +127,7 @@ export default function AboutPage() {
             <h2>
               See what <span className="script" style={{ color: 'var(--brand-300)' }}>we've built</span>.
             </h2>
-            <p>One standard of craft, across everything we ship. Find the product built for your work.</p>
+            <p>One standard of craft, across everything we ship. Go find the one built for your work.</p>
             <div className="closer-actions">
               <a className="pill pill--cream" href="/#products">
                 View the portfolio

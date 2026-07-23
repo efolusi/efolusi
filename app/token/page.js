@@ -1,4 +1,4 @@
-import { Alert, Badge, Icon } from '@efolusi/meridian';
+import { Badge, Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 
@@ -25,15 +25,15 @@ const facts = [
 const tokenFaq = [
   [
     'Is EFO tradable right now?',
-    'Yes, in the EFO/USDT pool on Uniswap v4. Start from the links in the Trading section above rather than searching, so you end up in the real pool.'
+    "Yes, in the EFO/USDT pool on Uniswap v4. Start from the links above rather than searching for it, so you know you're in the real pool."
   ],
   [
     'Where does official token information live?',
-    'Right here. This page is the single source of truth for the $EFO contract address and token announcements. Treat any other address or claim as unofficial.'
+    'Right here, and only here. This page is the single source of truth for the $EFO contract address and any announcement about the token. Treat anything else as unofficial until you see it on this page.'
   ],
   [
     'How do I avoid scams?',
-    'Verify the contract address on this page character by character before interacting with anything. We never DM first, we never ask for your seed phrase, and we never run surprise airdrops or presales announced outside this site.'
+    "Check the contract address here, character by character, before you interact with anything. And remember: we never message you first, we'll never ask for your seed phrase, and we don't run surprise airdrops or presales anywhere but this site."
   ]
 ];
 
@@ -50,7 +50,7 @@ export default function TokenPage() {
               <span className="script accent">token</span>.
             </h1>
             <p className="page-lede">
-              EFO is the token of the Efolusi ecosystem, live on BNB Smart Chain. This page is the official home for its contract address, on-chain facts and announcements.
+              EFO is the token of the Efolusi ecosystem, live on BNB Smart Chain. This page is its official home: the contract address, the on-chain facts, and every announcement we make about it.
             </p>
             <div className="token-status">
               <Badge tone="success">Tradable on Uniswap v4</Badge>
@@ -66,7 +66,7 @@ export default function TokenPage() {
                 One address. Verify it <span className="script accent">every time</span>.
               </h2>
               <p className="section-lede">
-                This is the only official $EFO contract address. Anything else that calls itself EFO is not ours.
+                This is the only official $EFO contract address. If you see any other address calling itself EFO, it isn't ours. Please check it here first.
               </p>
             </div>
 
@@ -100,7 +100,7 @@ export default function TokenPage() {
                 One pool, <span className="script accent">linked from here</span>.
               </h2>
               <p className="section-lede">
-                Prices and liquidity move constantly, so we link the live sources instead of printing numbers that go stale.
+                Prices and liquidity move all day, so we point you at the live sources instead of printing numbers that go stale by lunchtime.
               </p>
             </div>
 
@@ -152,17 +152,14 @@ export default function TokenPage() {
                 Utility, documented <span className="script accent">before it ships</span>.
               </h2>
               <p className="section-lede">
-                EFO is being wired into the Efolusi ecosystem step by step. We publish utility, tokenomics and documentation here as each piece goes live, not before. No promises ahead of working software; that is the same standard our products are held to.
+                We're wiring EFO into the ecosystem one piece at a time. Each bit of utility, tokenomics and documentation shows up here as it goes live, never before. No promises ahead of working software; that's the same rule our products live by.
               </p>
             </div>
 
-            <div className="token-alert" style={{ margin: '36px auto 0' }}>
-              <Alert
-                tone="warning"
-                title="Please read before doing anything with EFO"
-                description="EFO is not an investment product and nothing on this site is financial advice. Digital assets are volatile and you can lose everything you put in. Do your own research, use only the contract address above, and never share your seed phrase with anyone."
-              />
-            </div>
+            <p className="section-lede" style={{ marginTop: 20 }}>
+              One thing worth saying plainly: EFO is not an investment product, and nothing here is financial advice. The full wording lives in our{' '}
+              <a href="/terms">terms of use</a>.
+            </p>
           </div>
         </section>
 
@@ -189,7 +186,7 @@ export default function TokenPage() {
             <h2>
               Questions about the <span className="script" style={{ color: 'var(--brand-300)' }}>ecosystem</span>?
             </h2>
-            <p>Partnerships, integrations, or anything about $EFO. We read everything.</p>
+            <p>Partnerships, integrations, or anything at all about $EFO. Write to us and a person will read it.</p>
             <div className="closer-actions">
               <a className="pill pill--cream" href="/#contact">
                 Get in touch

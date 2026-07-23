@@ -18,24 +18,24 @@ const roles = [
 
 const workingHere = [
   [
-    'briefcase',
+    'key',
     'Real ownership',
-    'Products here are small teams with full stacks. You ship things users touch the same month, not tickets in a queue.'
+    "Products here are small teams with full stacks. You'll ship things people actually touch the same month, not tickets in a queue."
   ],
   [
     'globe',
     'Distributed by default',
-    "We're headquartered in Indonesia and work async across timezones. Output matters; hours don't."
+    "We're based in Indonesia and work async across timezones. What you ship matters; the hours you keep don't."
   ],
   [
     'sparkles',
     'Craft over ceremony',
-    'One standard across everything we ship. Code review is real, design review is real, and "good enough" has to actually be good.'
+    'One standard across everything we ship. Code review is real, design review is real, and "good enough" actually has to be good.'
   ],
   [
     'trending-up',
     'A growing portfolio',
-    'New products mean new problems to own, not reorgs to survive.'
+    'New products mean new problems to take on, not reorgs to survive.'
   ]
 ];
 
@@ -51,7 +51,7 @@ export default function CareersPage() {
               Care deeply about craft? <span className="script accent">Let's build.</span>
             </h1>
             <p className="page-lede">
-              We're always happy to meet people who love building useful things. Browse the open roles, or just say hi; the best people we've worked with rarely fit a listing exactly.
+              We're always happy to meet people who love building useful things. Have a look at the open roles, or just say hi. The best people we've worked with rarely fit a listing exactly.
             </p>
           </div>
         </section>
@@ -84,7 +84,7 @@ export default function CareersPage() {
                 <h2 className="section-title">
                   Where we're <span className="script accent">hiring now</span>.
                 </h2>
-                <p className="body">Every application gets read by a human. Tell us what you've built and what you want to build next; a portfolio or repo beats a long CV.</p>
+                <p className="body">Every application gets read by a person. Tell us what you've built and what you'd love to build next. A portfolio or a repo beats a long CV every time.</p>
                 <a className="pill pill--primary" href="/#contact">
                   Reach out about a role
                   <span className="pill-arrow">
@@ -115,7 +115,7 @@ export default function CareersPage() {
             <h2>
               Don't see <span className="script" style={{ color: 'var(--brand-300)' }}>your role</span>?
             </h2>
-            <p>Write to us anyway. If you care about useful software and can show it, we want to hear from you.</p>
+            <p>Write to us anyway. If you care about useful software and can show us something you made, we want to hear from you.</p>
             <div className="closer-actions">
               <a className="pill pill--cream" href="/#contact">
                 Say hi

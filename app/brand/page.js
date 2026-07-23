@@ -34,7 +34,7 @@ export default function BrandPage() {
               The owl, the wordmark, <span className="script accent">and the rules</span>.
             </h1>
             <p className="page-lede">
-              Assets for press, partners and the community. The site's source code is MIT licensed, but the Efolusi name, the owl mark and product names are not covered by that grant.
+              Assets for press, partners and anyone writing about us. The site's source code is MIT licensed, but the Efolusi name, the owl mark and our product names aren't part of that grant.
             </p>
           </div>
         </section>
@@ -114,7 +114,7 @@ export default function BrandPage() {
             <h2>
               Need something <span className="script" style={{ color: 'var(--brand-300)' }}>else</span>?
             </h2>
-            <p>Higher resolutions, product marks, or a press question. We're quick over email.</p>
+            <p>Need a higher resolution, a product mark, or an answer for a story? Email us; we're quick.</p>
             <div className="closer-actions">
               <a className="pill pill--cream" href="mailto:hi@efolusi.com">
                 Email us

@@ -19,18 +19,28 @@
   --radius-xl: 24px;
 }
 
-/* Anything shaped like a control reads as a pill; multi-line fields take the
-   surface radius instead, since a rounded-end textarea reads as a mistake. */
+/* Two shapes, no exceptions: things you press are pills, things you type into
+   are rounded rectangles. A pill-shaped textarea reads as a mistake, so the
+   fields share one radius instead of each picking its own. */
 .ef-btn,
 .ef-tag,
-.ef-badge,
-.ef-input__el,
-.ef-copyfield__box {
+.ef-badge {
   border-radius: var(--radius-full);
 }
 
-.ef-textarea__el {
+.ef-input__el,
+.ef-textarea,
+.ef-copyfield__box {
   border-radius: var(--radius-lg);
+}
+
+/* Fields default to --surface-card, the same colour as the card they sit in,
+   so on the dark theme the form melted into one brown block. Sink them one
+   step so a field looks like a field. */
+.contact-form .ef-input__el,
+.contact-form .ef-textarea,
+.news .ef-input__el {
+  background: var(--surface-sunken);
 }
 
 /* Grid and flex items default to min-width:auto, so one nowrap child (the
@@ -41,6 +51,7 @@
 .careers-grid > *,
 .contact-grid > *,
 .approach-grid > *,
+.split-grid > *,
 .feat-grid > *,
 .brand-assets > *,
 .ruled-cells > *,
@@ -846,6 +857,23 @@ a.ef-btn--secondary:hover {
 .approach-body {
   max-width: 720px;
   margin-top: 24px;
+}
+
+/* Prose on the left, its checklist as a ruled panel on the right. */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: start;
+}
+
+.values-panel {
+  border-top: 1px solid var(--border-default);
+}
+
+.values-panel .check {
+  padding: 18px 4px;
+  border-bottom: 1px solid var(--border-default);
 }
 
 .approach-grid .big,
@@ -2038,7 +2066,8 @@ a.ef-btn--secondary:hover {
   .careers-grid,
   .contact-grid,
   .eco-grid,
-  .token-grid {
+  .token-grid,
+  .split-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }

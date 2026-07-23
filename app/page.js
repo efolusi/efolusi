@@ -326,15 +326,14 @@ export default function HomePage() {
             <h1 className="reveal">
               We <span className="script accent">build</span> and run independent software{' '}
               <span className="scribble">
-                products
+                products.
                 <svg viewBox="0 0 220 26" preserveAspectRatio="none" aria-hidden="true">
                   <path d="M6 16 C 48 22, 88 6, 126 13 S 196 21, 214 9" pathLength="100" />
                 </svg>
               </span>
-              .
             </h1>
             <p className="hero-sub reveal">
-              We're Efolusi, a software studio from Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content, social media and automated trading. The portfolio keeps growing; the standard never moves.
+              We're Efolusi, a software studio from Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content, social media and automated trading. The portfolio keeps growing; the standard doesn't budge.
             </p>
 
             <div className="hero-actions reveal">
@@ -394,7 +393,7 @@ export default function HomePage() {
                 <h3>
                   Products we build <span className="script">and run</span>
                 </h3>
-                <p>From AI to automated trading, each with its own team and roadmap.</p>
+                <p>From AI to automated trading. Every one has its own team, its own roadmap, its own users to answer to.</p>
                 <span className="feat-cta">
                   See the portfolio <Icon name="arrow-right" size={15} />
                 </span>
@@ -412,7 +411,7 @@ export default function HomePage() {
                 <h3>
                   $EFO, the ecosystem <span className="script">token</span>
                 </h3>
-                <p>Live on BNB Smart Chain, tradable on Uniswap v4.</p>
+                <p>Live on BNB Smart Chain and trading on Uniswap. Everything official about it sits in one place.</p>
                 <span className="feat-cta">
                   About the token <Icon name="arrow-right" size={15} />
                 </span>
@@ -430,7 +429,7 @@ export default function HomePage() {
                 <h3>
                   One standard of <span className="script">craft</span>
                 </h3>
-                <p>If it doesn't make its category clearer, faster or more useful, it doesn't ship.</p>
+                <p>If it doesn't make its corner of the world clearer, faster or more useful, it doesn't ship.</p>
                 <span className="feat-cta">
                   How we operate <Icon name="arrow-right" size={15} />
                 </span>
@@ -445,7 +444,7 @@ export default function HomePage() {
               <h2>
                 Independent platforms, <span className="script accent">one portfolio</span>.
               </h2>
-              <p className="section-lede">Each product has its own team, roadmap and infrastructure. What they share is the standard. Pick one to take a closer look.</p>
+              <p className="section-lede">Every product runs on its own, with its own team and roadmap. What they share is the standard we hold them to. Pick one and have a look.</p>
             </div>
 
             <div className="stage-wrap reveal">
@@ -602,7 +601,7 @@ export default function HomePage() {
                 <h2 className="section-title">
                   Care deeply about craft? <span className="script accent">Let's build.</span>
                 </h2>
-                <p className="body">We're always happy to meet people who love building useful things. Say hi, even if your role isn't listed yet.</p>
+                <p className="body">We're always happy to meet people who love building useful things. Say hi, even if your role isn't on the list yet.</p>
                 <a className="pill pill--primary" href="#contact">
                   Reach out about a role
                   <span className="pill-arrow">
@@ -634,7 +633,7 @@ export default function HomePage() {
               <h2>
                 Clear answers to what we <span className="script accent">hear most</span>.
               </h2>
-              <p className="section-lede">Anything else, ask us directly through the contact form.</p>
+              <p className="section-lede">Anything we missed? Ask us straight through the form below.</p>
             </div>
             <div className="reveal" style={{ maxWidth: 760, margin: '36px auto 0' }}>
               <Accordion
@@ -655,7 +654,7 @@ export default function HomePage() {
                 <h2 className="section-title">
                   Tell us what <span className="script accent">you're building</span>.
                 </h2>
-                <p className="section-lede">Questions, partnerships, press, or just hello. We read everything.</p>
+                <p className="section-lede">Questions, partnerships, press, or just hello. Everything you send lands with a person, and we read all of it.</p>
                 <div className="contact-aside">
                   <div className="ci">
                     <div className="k">Legal entity</div>
@@ -705,7 +704,7 @@ export default function HomePage() {
                 <h3>
                   Stay in the <span className="script accent">loop</span>.
                 </h3>
-                <p className="sub">Product launches and studio updates. No noise, unsubscribe anytime.</p>
+                <p className="sub">Launches and studio news, a few times a year. No noise, and you can leave whenever you like.</p>
                 <div
                   className={`form-status${newsletterStatus.type === 'success' ? ' is-success' : ''}${newsletterStatus.type === 'error' ? ' is-error' : ''}`}
                   role="status"
@@ -730,7 +729,7 @@ export default function HomePage() {
             <h2 className="reveal">
               Find the product built for <span className="script" style={{ color: 'var(--brand-300)' }}>your work</span>.
             </h2>
-            <p className="reveal">Every product we build starts from the belief that the existing solution isn't good enough. We think you'll agree.</p>
+            <p className="reveal">Everything we build starts from the same feeling: the thing that exists isn't good enough yet. We think you'll agree.</p>
             <div className="closer-actions reveal">
               <a className="pill pill--cream" href="#products">
                 See the portfolio
