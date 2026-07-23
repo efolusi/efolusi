@@ -120,7 +120,7 @@ const roles = [
 const faqItems = [
   [
     'What is Efolusi?',
-    "Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build and run independent software products across six categories, and we hold every one of them to one standard for clarity, usefulness and craft."
+    "Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content creation, social media and automated trading. Every one of them is held to one standard for clarity, usefulness and craft."
   ],
   [
     'Where are you based?',
@@ -334,7 +334,7 @@ export default function HomePage() {
               .
             </h1>
             <p className="hero-sub reveal">
-              We're Efolusi, a software studio from Indonesia. Our products span AI, cloud infrastructure, productivity, content, social media and automated trading. Six platforms so far, more on the way, each built with the same care.
+              We're Efolusi, a software studio from Indonesia. We build our own products and run them ourselves, across AI, cloud infrastructure, productivity, content, social media and automated trading. The portfolio keeps growing; the standard never moves.
             </p>
 
             <div className="hero-actions reveal">
@@ -392,7 +392,7 @@ export default function HomePage() {
                   </svg>
                 </span>
                 <h3>
-                  Six independent <span className="script">products</span>
+                  Products we build <span className="script">and run</span>
                 </h3>
                 <p>From AI to automated trading, each with its own team and roadmap.</p>
                 <span className="feat-cta">
@@ -551,7 +551,7 @@ export default function HomePage() {
                   One token across the portfolio: <span className="accent">$EFO</span>.
                 </h2>
                 <p className="section-lede">
-                  EFO is the ecosystem token of Efolusi, live on BNB Smart Chain. The official contract address, on-chain facts and every announcement live on the token page.
+                  EFO is the ecosystem token of Efolusi, live on BNB Smart Chain and trading on Uniswap. Everything official about it, the contract address, the on-chain facts and every announcement, lives on the token page and nowhere else.
                 </p>
                 <div className="eco-actions">
                   <a className="pill pill--primary" href="/token">
@@ -576,7 +576,20 @@ export default function HomePage() {
                   <Badge>BEP-20</Badge>
                 </div>
                 <CopyField label="Official contract address" value={EFO_CONTRACT} />
-                <p className="eco-note">Verify this address before interacting with anything that calls itself EFO.</p>
+                <div className="token-facts eco-facts">
+                  {[
+                    ['Network', 'BNB Smart Chain'],
+                    ['Symbol', 'EFO'],
+                    ['Total supply', '100,000,000,000'],
+                    ['Pool', 'EFO/USDT on Uniswap v4']
+                  ].map(([k, v]) => (
+                    <div className="token-fact" key={k}>
+                      <div className="k">{k}</div>
+                      <div className="v">{v}</div>
+                    </div>
+                  ))}
+                </div>
+                <p className="eco-note">Verify this address before interacting with anything that calls itself EFO. It is the only one we publish.</p>
               </div>
             </div>
           </div>

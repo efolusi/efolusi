@@ -13,7 +13,7 @@ export default function SiteFooter() {
               <img src="/efolusi/logo-owl.png" alt="" width="28" height="28" />
               Efolusi
             </Link>
-            <p className="tag-line">PT. Efolusi Dunia Teknologi. A software studio building and running independent products. Made in Indonesia, engineered for every market.</p>
+            <p className="tag-line">PT. Efolusi Dunia Teknologi. A software studio that builds its own products and runs them. Made in Indonesia, engineered for every market.</p>
             <a className="footer-mail" href="mailto:hi@efolusi.com">
               <Icon name="mail" size={15} /> hi@efolusi.com
             </a>

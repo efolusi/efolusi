@@ -19,11 +19,36 @@
   --radius-xl: 24px;
 }
 
-/* Anything shaped like a control reads as a pill. */
+/* Anything shaped like a control reads as a pill; multi-line fields take the
+   surface radius instead, since a rounded-end textarea reads as a mistake. */
 .ef-btn,
 .ef-tag,
-.ef-badge {
+.ef-badge,
+.ef-input__el,
+.ef-copyfield__box {
   border-radius: var(--radius-full);
+}
+
+.ef-textarea__el {
+  border-radius: var(--radius-lg);
+}
+
+/* Grid and flex items default to min-width:auto, so one nowrap child (the
+   contract address) can force a track wider than the screen. Let them shrink;
+   the copy field already truncates its value. */
+.eco-grid > *,
+.token-grid > *,
+.careers-grid > *,
+.contact-grid > *,
+.approach-grid > *,
+.feat-grid > *,
+.brand-assets > *,
+.ruled-cells > *,
+.news > *,
+.ef-copyfield,
+.ef-copyfield__box,
+.ef-copyfield__value {
+  min-width: 0;
 }
 
 html {
@@ -1295,17 +1320,6 @@ a.ef-btn--secondary:hover {
   align-items: start;
 }
 
-.ca-card {
-  background: var(--surface-card);
-  border: 1px solid var(--border-default);
-  border-radius: var(--radius-xl);
-  padding: 24px;
-  margin-top: 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
 .ca-link {
   display: inline-flex;
   align-items: center;
@@ -1342,6 +1356,27 @@ a.ef-btn--secondary:hover {
   font-weight: var(--weight-medium);
   text-align: right;
   font-variant-numeric: tabular-nums;
+  min-width: 0;
+}
+
+/* The address is long and must never push the row wider than its container. */
+.token-fact .v--address {
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.fact-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 760px;
+  margin: 14px auto 0;
+}
+
+.eco-facts {
+  margin-top: 4px;
 }
 
 .token-alert {

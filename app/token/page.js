@@ -1,4 +1,4 @@
-import { Alert, Badge, CopyField, Icon } from '@efolusi/meridian';
+import { Alert, Badge, Icon } from '@efolusi/meridian';
 import SiteHeader from '../components/SiteHeader.jsx';
 import SiteFooter from '../components/SiteFooter.jsx';
 
@@ -13,11 +13,13 @@ export const metadata = {
 };
 
 const facts = [
+  ['Contract address', CONTRACT],
   ['Token name', 'EFOLUSI'],
   ['Symbol', 'EFO'],
   ['Network', 'BNB Smart Chain (BEP-20)'],
   ['Decimals', '18'],
-  ['Total supply', '100,000,000,000 EFO']
+  ['Total supply', '100,000,000,000 EFO'],
+  ['Pool', 'EFO/USDT on Uniswap v4']
 ];
 
 const tokenFaq = [
@@ -59,41 +61,34 @@ export default function TokenPage() {
 
         <section className="csec csec--rule">
           <div className="wrap">
-            <div className="token-grid">
-              <div>
-                <h2 className="section-title">
-                  One address. Verify it <span className="script accent">every time</span>.
-                </h2>
-                <p className="section-lede">
-                  This is the only official $EFO contract address. Anything else that calls itself EFO is not ours.
-                </p>
+            <div className="csec-head">
+              <h2>
+                One address. Verify it <span className="script accent">every time</span>.
+              </h2>
+              <p className="section-lede">
+                This is the only official $EFO contract address. Anything else that calls itself EFO is not ours.
+              </p>
+            </div>
 
-                <div className="ca-card">
-                  <CopyField label="Contract address (BNB Smart Chain)" value={CONTRACT} />
-                  <a
-                    className="ca-link"
-                    href={`https://bscscan.com/token/${CONTRACT}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View on BscScan <Icon name="arrow-up-right" size={14} />
-                  </a>
+            <div className="token-facts" style={{ maxWidth: 760, margin: '36px auto 0' }}>
+              {facts.map(([k, v]) => (
+                <div className="token-fact" key={k}>
+                  <div className="k">{k}</div>
+                  <div className={`v${k === 'Contract address' ? ' v--address' : ''}`}>{v}</div>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              <div>
-                <div className="token-facts">
-                  {facts.map(([k, v]) => (
-                    <div className="token-fact" key={k}>
-                      <div className="k">{k}</div>
-                      <div className="v">{v}</div>
-                    </div>
-                  ))}
-                </div>
-                <p className="eco-note" style={{ marginTop: 12 }}>
-                  Read from the contract on 22 July 2026.
-                </p>
-              </div>
+            <div className="fact-foot">
+              <span className="eco-note">Read from the contract on 22 July 2026.</span>
+              <a
+                className="ca-link"
+                href={`https://bscscan.com/token/${CONTRACT}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on BscScan <Icon name="arrow-up-right" size={14} />
+              </a>
             </div>
           </div>
         </section>

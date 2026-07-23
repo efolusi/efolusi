@@ -5,7 +5,7 @@ import SiteFooter from '../components/SiteFooter.jsx';
 export const metadata = {
   title: 'Careers · Efolusi',
   description:
-    'Work with Efolusi, a software studio from Indonesia building independent products across AI, infrastructure, productivity, content, social and trading.',
+    'Work with Efolusi, a software studio from Indonesia building products across AI, infrastructure, productivity, content, social and trading.',
   alternates: { canonical: '/careers' }
 };
 

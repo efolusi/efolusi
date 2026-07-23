@@ -5,7 +5,7 @@ import SiteFooter from '../components/SiteFooter.jsx';
 export const metadata = {
   title: 'About · Efolusi',
   description:
-    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio from Indonesia, building and running independent software products held to one standard of craft.',
+    'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio from Indonesia. We build our own products and run them ourselves, held to one standard of craft.',
   alternates: { canonical: '/about' }
 };
 
@@ -35,7 +35,7 @@ export default function AboutPage() {
               A studio that ships, <span className="script accent">then keeps its word</span>.
             </h1>
             <p className="page-lede">
-              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software studio headquartered in Indonesia with a distributed team. We build and run independent software products, and we hold every one of them to the same standard.
+              Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software studio headquartered in Indonesia with a distributed team. We build our own products and run them ourselves, and we hold every one of them to the same standard.
             </p>
           </div>
         </section>
@@ -126,7 +126,7 @@ export default function AboutPage() {
             <h2>
               See what <span className="script" style={{ color: 'var(--brand-300)' }}>we've built</span>.
             </h2>
-            <p>Six independent products, one standard of craft. Find the one built for your work.</p>
+            <p>One standard of craft, across everything we ship. Find the product built for your work.</p>
             <div className="closer-actions">
               <a className="pill pill--cream" href="/#products">
                 View the portfolio
