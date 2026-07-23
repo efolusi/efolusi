@@ -58,6 +58,10 @@ main {
   color: var(--brand-600);
 }
 
+[data-theme='dark'] .accent {
+  color: var(--brand-400);
+}
+
 /* Anchors dressed in Meridian button classes must not inherit link hover styles. */
 a.ef-btn,
 a.ef-btn:hover {
@@ -645,6 +649,25 @@ a.ef-btn--secondary:hover {
   border-radius: var(--radius-xl);
   min-height: 470px;
   overflow: hidden;
+}
+
+/* Watermark washes stay subtle in both themes: status tints remap on their
+   own; the fixed brand tints swap to the dark accent-subtle. */
+.wm-caramel,
+.wm-peach {
+  color: var(--accent-subtle);
+}
+
+.wm-green {
+  color: var(--success-100);
+}
+
+.wm-amber {
+  color: var(--warning-100);
+}
+
+.wm-coral {
+  color: var(--danger-100);
 }
 
 .stage-watermark {
@@ -1448,12 +1471,13 @@ a.ef-btn--secondary:hover {
   overflow: hidden;
 }
 
+/* The mark is always shown on warm paper, whatever the theme. */
 .brand-preview {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 200px;
-  background: var(--surface-subtle);
+  background: var(--cream-50);
   border-bottom: 1px solid var(--border-default);
 }
 
@@ -1462,6 +1486,7 @@ a.ef-btn--secondary:hover {
   font-weight: var(--weight-display);
   letter-spacing: var(--tracking-display);
   font-size: 44px;
+  color: var(--sand-950);
 }
 
 .brand-meta {
@@ -1781,8 +1806,19 @@ a.ef-btn--secondary:hover {
   text-decoration: none;
 }
 
+/* Fixed-light card: text must use fixed inks, not theme tokens,
+   or dark mode paints light text on the light background. */
 .feat-card--peach {
   background: var(--brand-100);
+  color: var(--sand-950);
+}
+
+.feat-card--peach:hover {
+  color: var(--sand-950);
+}
+
+.feat-card.feat-card--peach p {
+  color: var(--sand-700);
 }
 
 .feat-card--cocoa {
@@ -1813,6 +1849,23 @@ a.ef-btn--secondary:hover {
 .feat-card--cocoa .feat-icon {
   background: var(--brand-800);
   color: var(--cream-50);
+}
+
+.feat-card--peach .feat-icon {
+  background: #ffffff;
+  color: var(--brand-700);
+}
+
+[data-theme='dark'] .feat-icon {
+  color: var(--brand-300);
+}
+
+[data-theme='dark'] .feat-card--peach .feat-icon {
+  color: var(--brand-700);
+}
+
+.feat-card.feat-card--amber .feat-cta {
+  color: var(--warning-600);
 }
 
 .feat-card h3 {
@@ -1931,7 +1984,7 @@ a.ef-btn--secondary:hover {
 
 .founder:nth-child(2n) .founder-blob {
   border-radius: 44% 56% 48% 52% / 56% 44% 58% 42%;
-  background: var(--warning-100);
+  background: var(--brand-100);
 }
 
 .founder .nm {

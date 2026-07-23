@@ -18,15 +18,6 @@ import SiteFooter from './components/SiteFooter.jsx';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
-/* Category tint backgrounds, used for the stage watermark wash. */
-const TINT_BG = {
-  caramel: 'var(--brand-100)',
-  green: 'var(--success-100)',
-  amber: 'var(--warning-100)',
-  coral: 'var(--danger-100)',
-  peach: 'var(--brand-200)'
-};
-
 const stageProducts = [
   {
     id: 'zoyya',
@@ -547,10 +538,9 @@ export default function HomePage() {
             <div className="stage-wrap reveal">
               <div className="stage">
                 <div
-                  className="stage-watermark"
+                  className={`stage-watermark wm-${activeProduct.tint}`}
                   key={activeProduct.id}
                   aria-hidden="true"
-                  style={{ color: TINT_BG[activeProduct.tint] }}
                 >
                   {activeProduct.mark}
                 </div>
