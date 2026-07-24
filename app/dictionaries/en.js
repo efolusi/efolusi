@@ -191,7 +191,7 @@ const en = {
       items: [
         [
           'What is Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build our own products and run them ourselves, from AI and cloud infrastructure to automated trading, geospatial and the open-source tools underneath it all. Every one of them is held to one standard for clarity, usefulness and craft.'
+          'Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia. We build our own products and run them ourselves, from AI and cloud infrastructure to automated trading, geospatial and the open-source tools underneath it all. We hold every one of them to the same standard: it has to be clear, useful and genuinely well made.'
         ],
         [
           'Where are you based?',

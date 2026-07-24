@@ -40,7 +40,7 @@ const id = {
       build: 'bangun',
       trail: 'dan jalankan sendiri produk software',
       products: 'independen.',
-      sub: 'Kami Efolusi, studio software dari Indonesia. Kami membangun produk kami sendiri dan menjalankannya sendiri, dari AI dan infrastruktur cloud sampai trading otomatis, geospasial, dan tools open-source di baliknya. Portofolionya terus tumbuh; standarnya tidak pernah turun.',
+      sub: 'Kami Efolusi, studio software dari Indonesia. Semua produk ini kami yang buat, kami juga yang jalankan, mulai dari AI dan infrastruktur cloud sampai trading otomatis, geospasial, dan tools open-source di baliknya. Portofolionya terus bertambah, tapi standarnya tidak pernah kami turunkan.',
       viewPortfolio: 'Lihat portofolio',
       getInTouch: 'Hubungi kami',
       proof: 'Setiap platform sudah live dan dipakai tiap hari.'
@@ -55,7 +55,7 @@ const id = {
           titleA: 'Produk',
           titleEm: 'kami',
           titleB: 'sendiri',
-          body: 'Dari AI sampai trading otomatis, sebagian open source. Tiap produk bertanggung jawab ke penggunanya sendiri.',
+          body: 'Dari AI sampai trading otomatis, sebagian open source. Tiap produk jawab langsung ke penggunanya sendiri.',
           cta: 'Lihat portofolio'
         },
         token: {
@@ -69,7 +69,7 @@ const id = {
           titleA: 'Satu',
           titleEm: 'standar',
           titleB: '',
-          body: 'Kalau tidak membuat bidangnya lebih jelas, lebih cepat, atau lebih berguna, produknya tidak kami rilis.',
+          body: 'Kalau tidak bikin bidangnya lebih jelas, cepat, atau berguna, ya tidak kami rilis.',
           cta: 'Cara kami bekerja'
         }
       }
@@ -78,12 +78,12 @@ const id = {
       headA: 'Platform independen,',
       headEm: 'satu portofolio',
       headB: '.',
-      lede: 'Tiap produk berjalan sendiri, dengan tim dan roadmap-nya masing-masing. Yang mereka bagi adalah standar yang kami pegang. Pilih satu dan lihat sendiri.'
+      lede: 'Tiap produk jalan sendiri, punya tim dan roadmap masing-masing. Yang sama cuma satu: standar yang kami pegang. Pilih satu, lihat langsung.'
     },
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
-        desc: 'Kecerdasan otonom serba guna. Ia menalar masalah rumit, memahami konteksmu, dan bertindak tanpa perlu diarahkan di tiap langkah.',
+        desc: 'Kecerdasan otonom serba guna. Bisa menalar masalah rumit, paham konteksmu, dan bertindak tanpa perlu kamu arahkan tiap langkah.',
         specs: ['Otonom', 'Paham konteks', 'Mandiri'],
         buttonLabel: 'Kunjungi ZOYYA',
         tag: 'AI',
@@ -91,7 +91,7 @@ const id = {
       },
       komando: {
         section: 'Infrastruktur Cloud',
-        desc: 'Infrastruktur cloud terpusat. Semua server, deployment, pipeline, dan alert dalam satu antarmuka, dengan visibilitas penuh.',
+        desc: 'Infrastruktur cloud terpusat. Semua server, deployment, pipeline, dan alert dalam satu layar, dan kamu bisa lihat semuanya.',
         specs: ['Terpusat', 'Visibilitas penuh', 'Satu layar'],
         buttonLabel: 'Kunjungi Komando',
         tag: 'Infrastruktur',
@@ -123,7 +123,7 @@ const id = {
       },
       cuwan: {
         section: 'Trading Otomatis',
-        desc: 'Platform trading otomatis. Satu dashboard untuk 100+ market CEX dan DEX. Pasang strategi, biar ia mengeksekusi sendiri, sepanjang waktu.',
+        desc: 'Platform trading otomatis. Satu dashboard untuk 100+ market CEX dan DEX. Pasang strategi, biarkan jalan sendiri, sepanjang waktu.',
         specs: ['100+ market', 'CEX + DEX', '24/7'],
         buttonLabel: 'Kunjungi Cuwan',
         tag: 'Trading',
@@ -131,7 +131,7 @@ const id = {
       },
       meridian: {
         section: 'Sistem Desain',
-        desc: 'Design system open-source yang jadi dasar tiap produk Efolusi. 109 komponen React yang aksesibel dan 177 token, jalan native di browser tanpa build. Situs ini pun berjalan di atasnya.',
+        desc: 'Design system open-source yang jadi dasar tiap produk Efolusi. 109 komponen React yang aksesibel dan 177 token, jalan native di browser tanpa build. Situs ini juga jalan di atasnya.',
         specs: ['109 komponen', 'Tanpa build', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
@@ -157,7 +157,7 @@ const id = {
       titleA: 'Satu token untuk seluruh portofolio:',
       titleEm: '$EFO',
       titleB: '.',
-      lede: 'EFO adalah token ekosistem Efolusi, live di BNB Smart Chain dan diperdagangkan di Uniswap. Semua yang resmi soal token, alamat kontrak, fakta on-chain, dan tiap pengumuman, ada di halaman token dan tidak di tempat lain.',
+      lede: 'EFO adalah token ekosistem Efolusi, live di BNB Smart Chain dan diperdagangkan di Uniswap. Semua yang resmi soal token, alamat kontrak, data on-chain, sampai tiap pengumuman, ada di halaman token. Tidak di tempat lain.',
       about: 'Tentang $EFO',
       bscscan: 'BscScan',
       tradable: 'Bisa ditradingkan di Uniswap v4',
@@ -169,7 +169,7 @@ const id = {
         ['Total pasokan', '100.000.000.000'],
         ['Pool', 'EFO/USDT di Uniswap v4']
       ],
-      note: 'Verifikasi alamat ini sebelum berinteraksi dengan apa pun yang mengaku EFO. Hanya inilah yang kami publikasikan.'
+      note: 'Cek alamat ini dulu sebelum berinteraksi dengan apa pun yang mengaku EFO. Cuma ini yang kami publikasikan.'
     },
     careers: {
       titleA: 'Peduli banget sama craft?',
@@ -191,11 +191,11 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) adalah studio software yang berbasis di Indonesia. Kami membangun produk kami sendiri dan menjalankannya sendiri, dari AI dan infrastruktur cloud sampai trading otomatis, geospasial, dan tools open-source di baliknya. Semuanya dipegang pada satu standar untuk kejelasan, kegunaan, dan craft.'
+          'Efolusi (PT. Efolusi Dunia Teknologi) adalah studio software yang berbasis di Indonesia. Produk kami, kami yang buat dan kami juga yang jalankan, dari AI dan infrastruktur cloud sampai trading otomatis, geospasial, dan tools open-source di baliknya. Semuanya kami pegang di standar yang sama: harus jelas, berguna, dan digarap dengan serius.'
         ],
         [
           'Kalian berbasis di mana?',
-          'Kantor pusat kami di Indonesia dan kami bekerja sebagai tim terdistribusi. Produk kami dibangun dengan standar global untuk pengguna di mana pun.'
+          'Kantor pusat kami di Indonesia, dan kami kerja sebagai tim yang tersebar. Tapi produknya kami bikin dengan standar global, buat pengguna di mana saja.'
         ],
         [
           'Sedang buka lowongan?',
@@ -247,7 +247,7 @@ const id = {
       titleA: 'Temukan produk yang dibuat untuk',
       titleEm: 'pekerjaanmu',
       titleB: '.',
-      body: 'Semua yang kami bangun berangkat dari satu perasaan yang sama: yang ada sekarang belum cukup baik. Kami rasa kamu setuju.',
+      body: 'Semua yang kami bangun lahir dari perasaan yang sama: yang ada sekarang belum cukup baik. Kami yakin kamu setuju.',
       cta: 'Lihat portofolio'
     }
   },
@@ -261,11 +261,11 @@ const id = {
     heroA: 'Studio yang merilis,',
     heroEm: 'lalu menepati janjinya',
     heroB: '.',
-    lede: 'Efolusi adalah nama dagang PT. Efolusi Dunia Teknologi, studio software yang berbasis di Indonesia dengan tim yang tersebar di berbagai zona waktu. Kami membangun produk kami sendiri dan menjalankannya sendiri, dan kami memegang semuanya pada standar yang sama.',
+    lede: 'Efolusi adalah nama dagang PT. Efolusi Dunia Teknologi, studio software yang berbasis di Indonesia dengan tim yang tersebar di berbagai zona waktu. Produknya kami yang buat, kami juga yang jalankan, dan semuanya kami pegang di standar yang sama.',
     splitTitleA: 'Luas dengan sengaja.',
     splitTitleEm: 'Tajam karena disiplin.',
-    splitBig: 'Kami tidak terikat pada satu bidang. Kami mencari masalah yang layak diselesaikan, membangun produk yang fokus untuk tiap masalah, dan membiarkan tiap produk berjalan sebagai platformnya sendiri dengan roadmap-nya sendiri.',
-    splitBody: 'Tugas kami sebagai studio adalah menjaga standar tetap tinggi. Kalau sebuah produk tidak membuat bidangnya lebih jelas, lebih cepat, atau lebih berguna, produknya tidak kami rilis. Itulah yang membuat portofolio bisa tumbuh tanpa jadi keranjang campur aduk.',
+    splitBig: 'Kami tidak terikat ke satu bidang. Kami cari masalah yang benar-benar layak dikerjakan, bikin satu produk yang fokus buat tiap masalah, lalu biarkan masing-masing jalan sebagai platform sendiri dengan roadmap-nya sendiri.',
+    splitBody: 'Tugas kami sebagai studio cuma satu: menjaga standarnya tetap tinggi. Kalau sebuah produk tidak bikin bidangnya lebih jelas, cepat, atau berguna, ya tidak kami rilis. Itu yang bikin portofolio bisa tumbuh tanpa jadi keranjang campur aduk.',
     values: ['Tanpa fitur bloat', 'Punya pendirian', 'Dibangun untuk skala global', 'Kualitas sebelum pertumbuhan'],
     bandA: 'Dibangun di Indonesia,',
     bandEm: 'dirancang',
@@ -298,7 +298,7 @@ const id = {
     },
     heroA: 'Peduli banget sama craft?',
     heroEm: 'Ayo bangun bareng.',
-    lede: 'Kami selalu senang bertemu orang yang suka membangun hal yang berguna. Lihat posisi yang terbuka, atau sekadar menyapa. Orang-orang terbaik yang pernah bekerja dengan kami jarang pas persis dengan sebuah lowongan.',
+    lede: 'Kami selalu senang bertemu orang yang suka membangun hal yang berguna. Lihat posisi yang terbuka, atau sekadar menyapa. Orang-orang terbaik yang pernah kerja bareng kami jarang yang pas persis sama satu lowongan.',
     whatTitleA: 'Rasanya',
     whatTitleEm: 'kerja di sini',
     whatTitleB: '.',
@@ -306,12 +306,12 @@ const id = {
       [
         'key',
         'Kepemilikan nyata',
-        'Produk di sini adalah tim kecil dengan full stack. Kamu akan merilis hal yang benar-benar dipakai orang di bulan yang sama, bukan tiket dalam antrean.'
+        'Tiap produk di sini tim kecil yang pegang full stack. Kamu akan merilis hal yang benar-benar dipakai orang, di bulan yang sama, bukan sekadar tiket dalam antrean.'
       ],
       [
         'globe',
         'Terdistribusi secara default',
-        'Kami berbasis di Indonesia dan bekerja async lintas zona waktu. Yang penting apa yang kamu rilis; jamnya bukan soal.'
+        'Kami berbasis di Indonesia dan bekerja async lintas zona waktu. Yang penting hasil kerjamu, bukan jam berapa kamu online.'
       ],
       [
         'sparkles',
@@ -322,7 +322,7 @@ const id = {
     ],
     hiringTitleA: 'Posisi yang',
     hiringTitleEm: 'kami buka sekarang',
-    hiringBody: 'Setiap lamaran dibaca oleh orang sungguhan. Ceritakan apa yang sudah kamu bangun dan apa yang ingin kamu bangun berikutnya. Portofolio atau repo selalu lebih berarti daripada CV panjang.',
+    hiringBody: 'Tiap lamaran dibaca orang sungguhan. Ceritakan apa yang sudah kamu bangun, dan apa yang ingin kamu bangun berikutnya. Buat kami, portofolio atau repo jauh lebih berarti daripada CV panjang.',
     reachOut: 'Tanya soal posisi',
     roles: [
       ['Senior Go Engineer', 'Remote · Penuh waktu'],
@@ -367,7 +367,7 @@ const id = {
     poolTitleA: 'Satu pool,',
     poolTitleEm: 'ditautkan dari sini',
     poolTitleB: '.',
-    poolLede: 'Harga dan likuiditas bergerak sepanjang hari, jadi kami arahkan kamu ke sumber live daripada mencetak angka yang sudah basi sebelum makan siang.',
+    poolLede: 'Harga dan likuiditas bergerak sepanjang hari, jadi kami arahkan kamu ke sumber yang live, daripada menulis angka yang sudah basi sebelum makan siang.',
     trade: {
       swapTitle: 'Swap di Uniswap',
       swapDesc: 'Membuka swap dengan EFO sudah terpilih di BNB Chain',
@@ -379,7 +379,7 @@ const id = {
     utilTitleA: 'Utilitas, didokumentasikan',
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',
-    utilLede: 'Kami menyambungkan EFO ke ekosistem sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Tidak ada janji mendahului software yang bekerja; aturannya sama dengan yang dipegang produk kami.',
+    utilLede: 'Kami menyambungkan EFO ke ekosistem sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi baru muncul di sini kalau sudah live, bukan sebelumnya. Kami tidak janji apa pun sebelum software-nya benar-benar jalan. Aturannya sama persis dengan yang dipegang produk kami.',
     faqTitleA: 'Jawaban',
     faqTitleEm: 'lugas',
     faqTitleB: '.',
