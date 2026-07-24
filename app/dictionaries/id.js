@@ -12,7 +12,7 @@ const id = {
     footer: {
       tagline: 'PT. Efolusi Dunia Teknologi. Kami membangun software dan menjalankannya sendiri. Dibuat di Indonesia.',
       companyHead: 'Perusahaan',
-      ecosystemHead: 'Ekosistem',
+      ecosystemHead: 'Token',
       legalHead: 'Legal',
       about: 'Tentang',
       careers: 'Karier',
@@ -35,14 +35,14 @@ const id = {
         'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis sehari-hari, dan kami sendiri yang menjaganya tetap jalan.'
     },
     hero: {
-      lead: 'Software praktis untuk',
-      build: 'masalah',
-      trail: 'bisnis yang',
-      products: 'nyata.',
-      sub: 'Efolusi membangun software dan menjalankannya sendiri. Kami menggarap cloud, infrastruktur, AI, dan internal tools yang diandalkan bisnis tiap hari, yang biasanya baru terasa saat rusak.',
+      lead: 'Alat yang',
+      build: 'diam-diam',
+      trail: 'membuat pekerjaan Anda lebih',
+      products: 'ringan.',
+      sub: 'Kami Efolusi, tim kecil di Indonesia. Kami membangun software kami sendiri, yang mengubah hal-hal yang lambat atau merepotkan jadi terasa gampang. Semua yang ada di sini adalah produk yang kami butuhkan untuk diri kami sendiri lebih dulu.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Semuanya sudah live dan dipakai sekarang.'
+      proof: 'Semuanya di sini sudah live, dan kami memakainya tiap hari.'
     },
     marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
@@ -54,21 +54,21 @@ const id = {
           titleA: 'Produk',
           titleEm: 'kami',
           titleB: 'sendiri',
-          body: 'Software untuk cloud, infrastruktur, AI, dan urusan back-office. Sebagian open source. Tiap produk sudah ada penggunanya sekarang.',
+          body: 'Software untuk bagian pekerjaan yang lambat dan berulang. Ada yang gratis, ada yang open source. Semuanya kami pakai sendiri.',
           cta: 'Lihat portofolio'
         },
         token: {
           titleA: 'Token',
           titleEm: '$EFO',
           titleB: '',
-          body: 'Token ekosistem kami, live di BNB Smart Chain dan diperdagangkan di Uniswap. Semua yang resmi ada di satu tempat.',
+          body: 'Token milik kami sendiri, live di BNB Smart Chain dan diperdagangkan di Uniswap. Semua yang resmi ada di satu tempat.',
           cta: 'Tentang token'
         },
         standard: {
           titleA: 'Satu',
-          titleEm: 'standar',
+          titleEm: 'aturan',
           titleB: '',
-          body: 'Kalau tidak membuat pekerjaan seseorang jadi lebih gampang, ya tidak kami rilis.',
+          body: 'Kalau tidak membuat pekerjaan seseorang jadi lebih ringan, ya tidak kami rilis.',
           cta: 'Cara kami bekerja'
         }
       }
@@ -77,7 +77,7 @@ const id = {
       headA: 'Produk kami,',
       headEm: 'satu portofolio',
       headB: '.',
-      lede: 'Tiap produk punya tim sendiri, roadmap sendiri, pengguna sendiri. Yang sama cuma satu: kami. Silakan lihat.'
+      lede: 'Tiap produk berdiri sendiri, dengan penggunanya sendiri. Benang merahnya cuma satu: kami. Silakan lihat.'
     },
     products: {
       zoyya: {
@@ -153,10 +153,10 @@ const id = {
       statementC: 'oleh orang-orang yang menulisnya.'
     },
     ecosystem: {
-      titleA: 'Satu token untuk seluruh portofolio:',
+      titleA: 'Satu token di balik semua yang kami bangun:',
       titleEm: '$EFO',
       titleB: '.',
-      lede: 'EFO adalah token ekosistem kami, live di BNB Smart Chain dan diperdagangkan di Uniswap. Alamat kontrak, fakta on-chain, tiap pengumuman, semuanya ada di halaman token dan tidak di tempat lain.',
+      lede: 'EFO adalah token milik kami sendiri, live di BNB Smart Chain dan diperdagangkan di Uniswap. Alamat kontrak, fakta on-chain, tiap pengumuman, semuanya ada di halaman token dan tidak di tempat lain.',
       about: 'Tentang $EFO',
       bscscan: 'BscScan',
       tradable: 'Bisa ditradingkan di Uniswap v4',
@@ -340,12 +340,12 @@ const id = {
     meta: {
       title: 'Token $EFO · Efolusi',
       description:
-        '$EFO adalah token ekosistem Efolusi di BNB Smart Chain, bisa ditradingkan di Uniswap. Alamat kontrak resmi, fakta on-chain, tautan trading, dan catatan keamanan ada di halaman ini.'
+        '$EFO adalah token milik Efolusi sendiri di BNB Smart Chain, bisa ditradingkan di Uniswap. Alamat kontrak resmi, fakta on-chain, tautan trading, dan catatan keamanan ada di halaman ini.'
     },
-    heroA: 'token ekosistem',
+    heroA: 'token milik',
     heroEm: 'Efolusi',
     heroB: '.',
-    lede: 'EFO adalah token ekosistem Efolusi, live di BNB Smart Chain. Halaman ini rumah resminya: alamat kontrak, fakta on-chain, dan tiap pengumuman yang kami buat soal token.',
+    lede: 'EFO adalah token milik Efolusi sendiri, live di BNB Smart Chain. Halaman ini rumah resminya: alamat kontrak, fakta on-chain, dan tiap pengumuman yang kami buat soal token.',
     tradable: 'Bisa ditradingkan di Uniswap v4',
     bep20: 'BEP-20',
     addrTitleA: 'Satu alamat. Periksa',
@@ -378,7 +378,7 @@ const id = {
     utilTitleA: 'Utilitas, didokumentasikan',
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',
-    utilLede: 'Kami menyambungkan EFO ke ekosistem sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
+    utilLede: 'Kami menyambungkan EFO ke produk-produk kami sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
     faqTitleA: 'Jawaban',
     faqTitleEm: 'lugas',
     faqTitleB: '.',
@@ -397,9 +397,9 @@ const id = {
       ]
     ],
     closerA: 'Ada pertanyaan soal',
-    closerEm: 'ekosistem',
+    closerEm: '$EFO',
     closerB: '?',
-    closerBody: 'Kerja sama, integrasi, atau apa pun soal $EFO. Tulis ke kami dan akan dibaca oleh orang sungguhan.',
+    closerBody: 'Kerja sama, integrasi, atau apa pun soal token. Tulis ke kami dan akan dibaca oleh orang sungguhan.',
     closerCta: 'Hubungi kami'
   },
 
@@ -493,7 +493,7 @@ const id = {
     trademarksB: '; lisensi MIT tidak mencakup nama-nama atau maskot.',
     tokenHead: 'Token $EFO',
     tokenP1:
-      '$EFO adalah token ekosistem Efolusi di BNB Smart Chain. Ia bukan saham, sekuritas, atau produk investasi, dan tidak ada yang di situs ini merupakan penawaran untuk menjual atau ajakan untuk membeli instrumen keuangan apa pun. Tidak ada yang di sini merupakan nasihat keuangan.',
+      '$EFO adalah token milik Efolusi sendiri di BNB Smart Chain. Ia bukan saham, sekuritas, atau produk investasi, dan tidak ada yang di situs ini merupakan penawaran untuk menjual atau ajakan untuk membeli instrumen keuangan apa pun. Tidak ada yang di sini merupakan nasihat keuangan.',
     tokenP2:
       'Aset digital bersifat volatil dan membawa risiko kerugian total: Anda bisa kehilangan semua yang Anda tanamkan. Lakukan riset sendiri dan patuhi hukum di tempat tinggal Anda sebelum berinteraksi dengan aset digital apa pun.',
     tokenP3a: 'Satu-satunya alamat kontrak resmi adalah yang diterbitkan di ',

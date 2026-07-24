@@ -12,7 +12,7 @@ const en = {
     footer: {
       tagline: 'PT. Efolusi Dunia Teknologi. We build software and run it ourselves. Made in Indonesia.',
       companyHead: 'Company',
-      ecosystemHead: 'Ecosystem',
+      ecosystemHead: 'Token',
       legalHead: 'Legal',
       about: 'About',
       careers: 'Careers',
@@ -35,14 +35,14 @@ const en = {
         'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and we keep them running ourselves.'
     },
     hero: {
-      lead: 'Practical software for',
-      build: 'real',
-      trail: 'business',
-      products: 'problems.',
-      sub: 'Efolusi builds software and runs it ourselves. We work on cloud, infrastructure, AI, and the internal tools a business leans on every day, the ones nobody notices until they break.',
-      viewPortfolio: 'See what we build',
+      lead: 'Tools that',
+      build: 'quietly',
+      trail: 'make your work',
+      products: 'lighter.',
+      sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
+      viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'Everything here is live and in use right now.'
+      proof: 'Everything here is live, and we use it every day.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -54,19 +54,19 @@ const en = {
           titleA: 'Our',
           titleEm: 'own',
           titleB: 'products',
-          body: 'Software for cloud, infrastructure, AI, and back-office work. Some of it is open source. Every one has people using it right now.',
+          body: "Software for the slow, repetitive parts of the day. Some of it's free, some open source. We use every one of them ourselves.",
           cta: 'See the portfolio'
         },
         token: {
           titleA: 'The $EFO',
           titleEm: 'token',
           titleB: '',
-          body: 'Our ecosystem token, live on BNB Smart Chain and trading on Uniswap. Everything official is in one place.',
+          body: 'Our own token, live on BNB Smart Chain and trading on Uniswap. Everything official is in one place.',
           cta: 'About the token'
         },
         standard: {
           titleA: 'One',
-          titleEm: 'standard',
+          titleEm: 'rule',
           titleB: '',
           body: "If it doesn't make someone's actual job easier, it doesn't ship.",
           cta: 'How we work'
@@ -77,7 +77,7 @@ const en = {
       headA: 'Our products,',
       headEm: 'one portfolio',
       headB: '.',
-      lede: 'Each one has its own team, its own roadmap, its own users. The only thing they share is us. Have a look.'
+      lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.'
     },
     products: {
       zoyya: {
@@ -153,10 +153,10 @@ const en = {
       statementC: 'by the same people who wrote it.'
     },
     ecosystem: {
-      titleA: 'One token across the portfolio:',
+      titleA: 'One token behind everything we build:',
       titleEm: '$EFO',
       titleB: '.',
-      lede: 'EFO is our ecosystem token, live on BNB Smart Chain and trading on Uniswap. The contract address, the on-chain facts, every announcement, all of it lives on the token page and nowhere else.',
+      lede: 'EFO is our own token, live on BNB Smart Chain and trading on Uniswap. The contract address, the on-chain facts, every announcement, all of it lives on the token page and nowhere else.',
       about: 'About $EFO',
       bscscan: 'BscScan',
       tradable: 'Tradable on Uniswap v4',
@@ -173,7 +173,7 @@ const en = {
     careers: {
       titleA: 'Care about how software gets built?',
       titleEm: "Let's talk.",
-      body: 'We like people who build useful things. Say hello, even if none of the roles below fit you yet.',
+      body: 'We like people who build things that help. Say hello, even if none of the roles below fit you yet.',
       reachOut: 'Ask about a role',
       roles: [
         ['Senior Go Engineer', 'Remote · Full-time'],
@@ -297,7 +297,7 @@ const en = {
     },
     heroA: 'Care about how software gets built?',
     heroEm: "Let's talk.",
-    lede: "We like people who build useful things. Look through the open roles, or just say hello. The best people we've worked with almost never matched a job post exactly.",
+    lede: "We like people who build things that help. Look through the open roles, or just say hello. The best people we've worked with almost never matched a job post exactly.",
     whatTitleA: "What it's",
     whatTitleEm: 'actually like',
     whatTitleB: '.',
@@ -332,7 +332,7 @@ const en = {
     closerA: "Don't see",
     closerEm: 'your role',
     closerB: '?',
-    closerBody: 'Write anyway. If you care about useful software and can show us something you made, we want to hear from you.',
+    closerBody: 'Write anyway. If you care about software that helps and can show us something you made, we want to hear from you.',
     closerCta: 'Say hello'
   },
 
@@ -340,12 +340,12 @@ const en = {
     meta: {
       title: '$EFO token · Efolusi',
       description:
-        '$EFO is the ecosystem token of Efolusi on BNB Smart Chain, tradable on Uniswap. The official contract address, on-chain facts, trading links, and safety notes are all on this page.'
+        "$EFO is Efolusi's own token on BNB Smart Chain, tradable on Uniswap. The official contract address, on-chain facts, trading links, and safety notes are all on this page."
     },
-    heroA: 'the Efolusi ecosystem',
+    heroA: "Efolusi's own",
     heroEm: 'token',
     heroB: '.',
-    lede: 'EFO is the token of the Efolusi ecosystem, live on BNB Smart Chain. This page is its official home: the contract address, the on-chain facts, and every announcement we make about it.',
+    lede: "EFO is Efolusi's own token, live on BNB Smart Chain. This page is its official home: the contract address, the on-chain facts, and every announcement we make about it.",
     tradable: 'Tradable on Uniswap v4',
     bep20: 'BEP-20',
     addrTitleA: 'One address. Check it',
@@ -378,7 +378,7 @@ const en = {
     utilTitleA: 'Utility, documented',
     utilTitleEm: 'before it ships',
     utilTitleB: '.',
-    utilLede: "We wire EFO into the ecosystem one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live, never before. We'd rather show you something that works than talk about something that might.",
+    utilLede: "We wire EFO into our products one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live, never before. We'd rather show you something that works than talk about something that might.",
     faqTitleA: 'Straight',
     faqTitleEm: 'answers',
     faqTitleB: '.',
@@ -396,10 +396,10 @@ const en = {
         "Check the contract address here, character by character, before you interact with anything. And remember: we never message you first, we'll never ask for your seed phrase, and we don't run surprise airdrops or presales anywhere but this site."
       ]
     ],
-    closerA: 'Questions about the',
-    closerEm: 'ecosystem',
+    closerA: 'Questions about',
+    closerEm: '$EFO',
     closerB: '?',
-    closerBody: 'Partnerships, integrations, or anything about $EFO. Write to us and a person will read it.',
+    closerBody: 'Partnerships, integrations, or anything about the token. Write to us and a person will read it.',
     closerCta: 'Get in touch'
   },
 
@@ -493,7 +493,7 @@ const en = {
     trademarksB: '; the MIT grant does not cover the names or the mark.',
     tokenHead: 'The $EFO token',
     tokenP1:
-      '$EFO is the ecosystem token of Efolusi on BNB Smart Chain. It is not a share, a security, or an investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. Nothing here is financial advice.',
+      '$EFO is Efolusi\'s own token on BNB Smart Chain. It is not a share, a security, or an investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. Nothing here is financial advice.',
     tokenP2:
       'Digital assets are volatile and carry a risk of total loss: you can lose everything you put in. Please do your own research and follow the laws where you live before interacting with any digital asset.',
     tokenP3a: 'The only official contract address is the one published on ',
