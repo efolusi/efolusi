@@ -6,16 +6,9 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
-const navLinks = [
-  ['Portfolio', '/#products', null],
-  ['Token', '/token', '/token'],
-  ['Company', '/about', '/about'],
-  ['Careers', '/careers', '/careers']
-];
-
 /* The highlight marks the page you are on, nothing else. Anchor links into
    home sections never light up. */
-export default function SiteHeader() {
+export default function SiteHeader({ lang, t }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,10 +20,22 @@ export default function SiteHeader() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  const base = `/${lang}`;
+  const navLinks = [
+    [t.nav.portfolio, `${base}/#products`, null],
+    [t.nav.token, `${base}/token`, `${base}/token`],
+    [t.nav.company, `${base}/about`, `${base}/about`],
+    [t.nav.careers, `${base}/careers`, `${base}/careers`]
+  ];
+
+  const other = lang === 'en' ? 'id' : 'en';
+  const rest = pathname.replace(/^\/(en|id)/, '');
+  const switchHref = `/${other}${rest}`;
+
   return (
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap site-header-inner">
-        <Link href="/" className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
+        <Link href={base} className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
           <img src="/efolusi/logo-owl.png" alt="" width="30" height="30" />
           Efolusi
         </Link>
@@ -44,14 +49,17 @@ export default function SiteHeader() {
         </nav>
 
         <div className="header-actions">
+          <Link className="lang-switch" href={switchHref} aria-label={t.switchLanguage} onClick={() => setMenuOpen(false)}>
+            {t.langLabel}
+          </Link>
           <ThemeToggle />
-          <Link className="pill pill--primary pill--sm pill--plain" href="/#contact" onClick={() => setMenuOpen(false)}>
-            Get in touch
+          <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
+            {t.getInTouch}
           </Link>
           <button
             type="button"
             className="menu-toggle"
-            aria-label="Toggle menu"
+            aria-label={t.toggleMenu}
             aria-expanded={menuOpen ? 'true' : 'false'}
             onClick={() => setMenuOpen((value) => !value)}
           >
@@ -66,8 +74,11 @@ export default function SiteHeader() {
             {label}
           </Link>
         ))}
-        <Link href="/#contact" onClick={() => setMenuOpen(false)}>
-          Contact
+        <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
+          {t.contact}
+        </Link>
+        <Link href={switchHref} onClick={() => setMenuOpen(false)}>
+          {t.switchLanguage}
         </Link>
       </nav>
     </header>

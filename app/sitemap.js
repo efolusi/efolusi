@@ -1,13 +1,29 @@
-export default function sitemap() {
-  const base = 'https://efolusi.com';
+const base = 'https://efolusi.com';
 
-  return [
-    { url: base, changeFrequency: 'monthly', priority: 1 },
-    { url: `${base}/token`, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${base}/about`, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/careers`, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${base}/brand`, changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${base}/privacy`, changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${base}/terms`, changeFrequency: 'yearly', priority: 0.3 }
-  ];
+const pages = [
+  ['', 'monthly', 1],
+  ['/token', 'weekly', 0.9],
+  ['/about', 'monthly', 0.7],
+  ['/careers', 'monthly', 0.7],
+  ['/brand', 'yearly', 0.4],
+  ['/privacy', 'yearly', 0.3],
+  ['/terms', 'yearly', 0.3]
+];
+
+export default function sitemap() {
+  const entries = [];
+
+  for (const [path, changeFrequency, priority] of pages) {
+    const languages = { en: `${base}/en${path}`, id: `${base}/id${path}` };
+    for (const lang of ['en', 'id']) {
+      entries.push({
+        url: `${base}/${lang}${path}`,
+        changeFrequency,
+        priority,
+        alternates: { languages }
+      });
+    }
+  }
+
+  return entries;
 }

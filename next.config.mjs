@@ -32,6 +32,16 @@ const nextConfig = {
         headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=60' }]
       }
     ];
+  },
+  async redirects() {
+    // The site is now served under /en and /id. Root is a language gateway
+    // (kept temporary in case language detection lands later); the old
+    // unprefixed content URLs moved permanently to their English equivalents.
+    const moved = ['about', 'careers', 'token', 'brand', 'privacy', 'terms'];
+    return [
+      { source: '/', destination: '/en', permanent: false },
+      ...moved.map((path) => ({ source: `/${path}`, destination: `/en/${path}`, permanent: true }))
+    ];
   }
 };
 

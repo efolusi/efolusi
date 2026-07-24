@@ -36,12 +36,13 @@ const BODY = `# Efolusi
 - EFO is not an investment product and nothing published by Efolusi is financial advice.
 
 ## Pages
-- https://efolusi.com/: the studio and its portfolio
-- https://efolusi.com/token: everything official about $EFO
-- https://efolusi.com/about: the company, how it operates, its leadership
-- https://efolusi.com/careers: open roles and what working here is like
-- https://efolusi.com/brand: the owl mark, the wordmark and the usage rules
-- https://efolusi.com/privacy and https://efolusi.com/terms: legal
+The site is available in English (/en) and Indonesian (/id); English URLs are listed below.
+- https://efolusi.com/en: the studio and its portfolio
+- https://efolusi.com/en/token: everything official about $EFO
+- https://efolusi.com/en/about: the company, how it operates, its leadership
+- https://efolusi.com/en/careers: open roles and what working here is like
+- https://efolusi.com/en/brand: the owl mark, the wordmark and the usage rules
+- https://efolusi.com/en/privacy and https://efolusi.com/en/terms: legal
 `;
 
 export const dynamic = 'force-static';
