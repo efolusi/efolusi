@@ -293,7 +293,7 @@ const en = {
     meta: {
       title: 'Careers · Efolusi',
       description:
-        'Work with Efolusi, a software company in Indonesia. We build products across cloud, infrastructure, AI, internal tools, and enterprise software.'
+        'Work with a small, self-funded software company in Indonesia. Small teams, real ownership, and products people actually use.'
     },
     heroA: 'Care about how software gets built?',
     heroEm: "Let's talk.",

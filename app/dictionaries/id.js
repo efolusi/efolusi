@@ -293,7 +293,7 @@ const id = {
     meta: {
       title: 'Karier · Efolusi',
       description:
-        'Bekerja bersama Efolusi, perusahaan software di Indonesia. Kami membangun produk di bidang cloud, infrastruktur, AI, internal tools, dan software enterprise.'
+        'Bekerja bersama perusahaan software kecil dari Indonesia yang dibiayai sendiri. Tim kecil, kepemilikan nyata, dan produk yang benar-benar dipakai orang.'
     },
     heroA: 'Peduli pada cara software dibangun?',
     heroEm: 'Mari bicara.',
