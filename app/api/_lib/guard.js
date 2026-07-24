@@ -30,3 +30,7 @@ export async function passesRateLimit(req, bindingName) {
 export function tooLong(value, max) {
   return typeof value === 'string' && value.length > max;
 }
+
+export function validateEmail(email) {
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+}

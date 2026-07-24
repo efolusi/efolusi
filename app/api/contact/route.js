@@ -1,10 +1,6 @@
-import { isSameOrigin, passesRateLimit, tooLong } from '../_lib/guard.js';
+import { isSameOrigin, passesRateLimit, tooLong, validateEmail } from '../_lib/guard.js';
 
-function validateEmail(email) {
-  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
-}
-
-function escapeHtml(value) {
+export function escapeHtml(value) {
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -13,7 +9,7 @@ function escapeHtml(value) {
 }
 
 /* Accepts both a bare address and the nodemailer-era "Name <address>" form. */
-function parseSender(raw) {
+export function parseSender(raw) {
   const match = raw.match(/^(.*)<([^>]+)>\s*$/);
   if (match) {
     const name = match[1].trim().replace(/^"|"$/g, '').trim();

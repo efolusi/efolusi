@@ -1,8 +1,4 @@
-import { isSameOrigin, passesRateLimit, tooLong } from '../_lib/guard.js';
-
-function validateEmail(email) {
-  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
-}
+import { isSameOrigin, passesRateLimit, tooLong, validateEmail } from '../_lib/guard.js';
 
 function getListIds() {
   const raw = String(process.env.BREVO_LIST_ID || '').trim();
@@ -58,12 +54,10 @@ export async function POST(req) {
       body: JSON.stringify(payload)
     });
 
-    const data = await response.json().catch(() => ({}));
-
     if (!response.ok) {
+      const data = await response.json().catch(() => ({}));
       console.error('Brevo newsletter error', response.status, data);
-      const message = data?.message || data?.error || 'Newsletter signup failed';
-      return new Response(JSON.stringify({ ok: false, error: message }), { status: response.status });
+      return new Response(JSON.stringify({ ok: false, error: 'Subscribe failed' }), { status: 502 });
     }
 
     return new Response(JSON.stringify({ ok: true }), { status: 200 });
