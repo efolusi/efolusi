@@ -412,7 +412,7 @@ const en = {
     heroA: 'The owl, the wordmark,',
     heroEm: 'and the rules',
     heroB: '.',
-    lede: "Assets for press, partners, and anyone writing about us. The site's source code is MIT licensed, but the Efolusi name, the owl mark, and our product names are not part of that grant.",
+    lede: "The owl and the wordmark are ours, and we're a little protective of them. Everything here is free to use for press, partners, or anyone writing about us, as long as you stick to the few rules below. The site's code is MIT licensed; the Efolusi name, the owl, and our product names aren't.",
     owlTitleA: 'One owl,',
     owlTitleEm: 'treated well',
     owlTitleB: '.',
@@ -426,21 +426,21 @@ const en = {
     rulesTitleEm: 'briefly',
     rulesTitleB: '.',
     dos: [
-      'Use the owl mark as provided, on warm paper or white backgrounds',
-      'Set the wordmark "Efolusi" in Bricolage Grotesque, semibold or bolder',
-      'Keep the mark at 24px or larger so it stays legible',
-      'Link to efolusi.com when referencing us or the $EFO token'
+      'Use the owl as we made it, on warm paper or a white background',
+      'Set "Efolusi" in Bricolage Grotesque, semibold or heavier',
+      'Keep the owl at 24px or bigger so it stays readable',
+      'Link back to efolusi.com when you mention us or $EFO'
     ],
     donts: [
-      'Recolor, redraw, distort, or add effects to the owl mark',
-      'Use the Efolusi name or mark to brand your own product or token',
-      'Imply endorsement or partnership we have not confirmed',
-      'Present any contract address as ours except the one on the token page'
+      'Recolor, redraw, stretch, or add effects to the owl',
+      'Use our name or owl to brand your own product or token',
+      "Suggest we've endorsed or partnered with you when we haven't",
+      'Pass off any contract address as ours except the one on the token page'
     ],
     closerA: 'Need something',
     closerEm: 'else',
     closerB: '?',
-    closerBody: 'Need a bigger file, a product mark, or a quote for a story? Email us, we reply quickly.',
+    closerBody: "Need a bigger file, a product logo, or a quote for a story? Email us, we're quick.",
     closerCta: 'Email us'
   },
 

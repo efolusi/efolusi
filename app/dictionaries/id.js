@@ -412,7 +412,7 @@ const id = {
     heroA: 'Owl, wordmark,',
     heroEm: 'dan aturannya',
     heroB: '.',
-    lede: 'Aset untuk pers, mitra, dan siapa pun yang menulis tentang kami. Kode sumber situs ini berlisensi MIT, tapi nama Efolusi, maskot owl, dan nama-nama produk kami bukan bagian dari lisensi itu.',
+    lede: 'Owl dan wordmark ini milik kami, dan kami sedikit protektif soal keduanya. Semua di sini bebas dipakai untuk pers, mitra, atau siapa pun yang menulis tentang kami, selama mengikuti beberapa aturan di bawah. Kode sumber situs ini berlisensi MIT; nama Efolusi, maskot owl, dan nama produk kami tidak.',
     owlTitleA: 'Satu owl,',
     owlTitleEm: 'diperlakukan baik',
     owlTitleB: '.',
@@ -426,21 +426,21 @@ const id = {
     rulesTitleEm: 'singkat saja',
     rulesTitleB: '.',
     dos: [
-      'Gunakan maskot owl apa adanya, di atas latar kertas hangat atau putih',
-      'Set wordmark "Efolusi" dengan Bricolage Grotesque, semibold atau lebih tebal',
-      'Jaga ukuran maskot minimal 24px supaya tetap terbaca',
-      'Tautkan ke efolusi.com saat menyebut kami atau token $EFO'
+      'Pakai owl seperti kami membuatnya, di atas kertas hangat atau latar putih',
+      'Set "Efolusi" dengan Bricolage Grotesque, semibold atau lebih tebal',
+      'Jaga ukuran owl minimal 24px supaya tetap terbaca',
+      'Tautkan balik ke efolusi.com saat menyebut kami atau $EFO'
     ],
     donts: [
-      'Mewarnai ulang, menggambar ulang, mendistorsi, atau menambah efek pada maskot owl',
-      'Memakai nama atau maskot Efolusi untuk mem-brand produk atau token Anda sendiri',
-      'Menyiratkan dukungan atau kerja sama yang belum kami konfirmasi',
-      'Menyajikan alamat kontrak apa pun sebagai milik kami selain yang ada di halaman token'
+      'Mewarnai ulang, menggambar ulang, meregangkan, atau menambah efek pada owl',
+      'Memakai nama atau owl kami untuk mem-brand produk atau token Anda sendiri',
+      'Mengesankan kami mendukung atau bermitra dengan Anda padahal belum',
+      'Mengaku-akui alamat kontrak apa pun sebagai milik kami selain yang ada di halaman token'
     ],
     closerA: 'Butuh sesuatu yang',
     closerEm: 'lain',
     closerB: '?',
-    closerBody: 'Butuh file lebih besar, maskot produk, atau kutipan untuk sebuah liputan? Email kami, kami balas cepat.',
+    closerBody: 'Butuh file lebih besar, logo produk, atau kutipan untuk sebuah liputan? Email kami, kami cepat kok.',
     closerCta: 'Email kami'
   },
 
