@@ -10,8 +10,7 @@ const id = {
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
     footer: {
-      tagline:
-        'PT. Efolusi Dunia Teknologi. Kami membangun software praktis untuk masalah bisnis yang nyata, dan kami menjalankannya sendiri di production. Dibuat di Indonesia.',
+      tagline: 'PT. Efolusi Dunia Teknologi. Kami membangun software dan menjalankannya sendiri. Dibuat di Indonesia.',
       companyHead: 'Perusahaan',
       ecosystemHead: 'Ekosistem',
       legalHead: 'Legal',
@@ -31,21 +30,21 @@ const id = {
 
   home: {
     meta: {
-      title: 'Efolusi · Software untuk masalah bisnis yang nyata',
+      title: 'Efolusi · Kami membangun software dan menjalankannya sendiri',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) membangun software praktis di bidang AI, cloud, infrastruktur, DevOps, internal tools, dan sistem enterprise. Andal, aman, dan siap berkembang.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis sehari-hari, dan kami sendiri yang menjaganya tetap jalan.'
     },
     hero: {
       lead: 'Software praktis untuk',
       build: 'masalah',
       trail: 'bisnis yang',
       products: 'nyata.',
-      sub: 'Efolusi membangun software praktis dan menjalankannya di production, mulai dari cloud dan infrastruktur hingga internal tools dan sistem enterprise. Andal, aman, dan siap berkembang.',
+      sub: 'Efolusi membangun software dan menjalankannya sendiri. Kami menggarap cloud, infrastruktur, AI, dan internal tools yang diandalkan bisnis tiap hari, yang biasanya baru terasa saat rusak.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Semua produk sudah live dan berjalan di production hari ini.'
+      proof: 'Semuanya sudah live dan dipakai sekarang.'
     },
-    marquee: ['Dibangun untuk production', 'Andal sejak awal', 'Aman dari awal', 'Siap berkembang', 'Jelas lebih penting daripada rumit'],
+    marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
       headA: 'Satu studio,',
       headEm: 'tiga',
@@ -55,7 +54,7 @@ const id = {
           titleA: 'Produk',
           titleEm: 'kami',
           titleB: 'sendiri',
-          body: 'Software di bidang AI, cloud, DevOps, dan sistem enterprise. Sebagian open source. Tiap produk melayani penggunanya sendiri.',
+          body: 'Software untuk cloud, infrastruktur, AI, dan urusan back-office. Sebagian open source. Tiap produk sudah ada penggunanya sekarang.',
           cta: 'Lihat portofolio'
         },
         token: {
@@ -69,7 +68,7 @@ const id = {
           titleA: 'Satu',
           titleEm: 'standar',
           titleB: '',
-          body: 'Kalau tidak membuat sebuah pekerjaan lebih cepat, lebih jelas, atau lebih aman, kami tidak merilisnya.',
+          body: 'Kalau tidak membuat pekerjaan seseorang jadi lebih gampang, ya tidak kami rilis.',
           cta: 'Cara kami bekerja'
         }
       }
@@ -78,16 +77,16 @@ const id = {
       headA: 'Produk kami,',
       headEm: 'satu portofolio',
       headB: '.',
-      lede: 'Tiap produk berjalan sendiri, dengan tim dan roadmap-nya masing-masing. Semuanya memegang satu standar untuk keandalan dan kualitas. Pilih satu dan lihat langsung.'
+      lede: 'Tiap produk punya tim sendiri, roadmap sendiri, pengguna sendiri. Yang sama cuma satu: kami. Silakan lihat.'
     },
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
-        desc: 'Asisten AI yang menangani pekerjaan nyata. Ia menalar masalah, memahami konteks Anda, dan bertindak tanpa perlu diarahkan langkah demi langkah.',
+        desc: 'Asisten AI yang benar-benar mengerjakan pekerjaannya. Beri ia sebuah tujuan, ia yang menyusun langkahnya, bukan menunggu Anda menjabarkan satu per satu.',
         specs: ['Otonom', 'Paham konteks', 'Mandiri'],
         buttonLabel: 'Kunjungi ZOYYA',
         tag: 'AI',
-        summary: 'Asisten AI yang menalar, memahami konteks Anda, dan bertindak sendiri.'
+        summary: 'Asisten AI yang menerima tujuan lalu menyusun sendiri langkah-langkahnya.'
       },
       komando: {
         section: 'Infrastruktur Cloud',
@@ -95,11 +94,11 @@ const id = {
         specs: ['Terpusat', 'Terlihat penuh', 'Satu layar'],
         buttonLabel: 'Kunjungi Komando',
         tag: 'Infrastruktur',
-        summary: 'Jalankan semua server, deployment, dan alert dari satu antarmuka.'
+        summary: 'Jalankan semua server, deployment, dan alert dari satu tempat.'
       },
       toolips: {
         section: 'Produktivitas',
-        desc: 'Lebih dari 100 alat untuk konversi, kompres, edit, dan ekspor file. Tanpa akun, tanpa langganan, selalu siap.',
+        desc: 'Lebih dari 100 alat untuk konversi, kompres, edit, dan ekspor file. Tanpa akun, tanpa langganan, selalu ada.',
         specs: ['100+ alat', 'Tanpa akun', 'Selalu gratis'],
         buttonLabel: 'Kunjungi Toolips',
         tag: 'Produktivitas',
@@ -107,11 +106,11 @@ const id = {
       },
       trady: {
         section: 'Pembuatan Konten',
-        desc: 'Ubah sebuah brief jadi kampanye yang selesai: teks, audio, video, dan gambar dalam satu alur kerja. Hitungan jam, bukan minggu.',
+        desc: 'Kasih sebuah brief, terima kampanye yang sudah jadi: teks, audio, video, dan gambar, semua dalam satu tempat. Hitungan jam, bukan minggu.',
         specs: ['Teks + Audio', 'Video + Gambar', 'Satu alur'],
         buttonLabel: 'Kunjungi Trady',
         tag: 'Konten',
-        summary: 'Ubah sebuah brief jadi kampanye yang selesai: teks, audio, video, dan gambar.'
+        summary: 'Kasih sebuah brief, terima kampanye yang sudah jadi: teks, audio, video, dan gambar.'
       },
       kongkow: {
         section: 'Media Sosial',
@@ -148,16 +147,16 @@ const id = {
     },
     team: {
       statementA: 'Dibangun di Indonesia,',
-      engineered: 'dirancang',
-      statementB: 'untuk semua pasar, dan',
-      led: 'dijalankan',
-      statementC: 'oleh orang-orang yang membangunnya.'
+      engineered: 'dipakai',
+      statementB: 'di mana-mana, dan',
+      led: 'dijaga',
+      statementC: 'oleh orang-orang yang menulisnya.'
     },
     ecosystem: {
       titleA: 'Satu token untuk seluruh portofolio:',
       titleEm: '$EFO',
       titleB: '.',
-      lede: 'EFO adalah token ekosistem kami, live di BNB Smart Chain dan diperdagangkan di Uniswap. Alamat kontrak, fakta on-chain, dan tiap pengumuman ada di halaman token, dan tidak di tempat lain.',
+      lede: 'EFO adalah token ekosistem kami, live di BNB Smart Chain dan diperdagangkan di Uniswap. Alamat kontrak, fakta on-chain, tiap pengumuman, semuanya ada di halaman token dan tidak di tempat lain.',
       about: 'Tentang $EFO',
       bscscan: 'BscScan',
       tradable: 'Bisa ditradingkan di Uniswap v4',
@@ -169,12 +168,12 @@ const id = {
         ['Total pasokan', '100.000.000.000'],
         ['Pool', 'EFO/USDT di Uniswap v4']
       ],
-      note: 'Periksa alamat ini sebelum berinteraksi dengan apa pun yang mengaku EFO. Hanya inilah yang kami publikasikan.'
+      note: 'Periksa alamat ini sebelum menyentuh apa pun yang mengaku EFO. Hanya inilah yang kami publikasikan.'
     },
     careers: {
       titleA: 'Peduli pada cara software dibangun?',
       titleEm: 'Mari bicara.',
-      body: 'Kami senang bekerja dengan orang yang membangun hal yang berguna. Sapa kami, meski posisi Anda belum ada di daftar.',
+      body: 'Kami suka orang yang membangun hal berguna. Sapa kami, walau belum ada posisi di bawah yang pas buat Anda.',
       reachOut: 'Tanya soal posisi',
       roles: [
         ['Senior Go Engineer', 'Remote · Penuh waktu'],
@@ -191,15 +190,15 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software yang berbasis di Indonesia. Kami membangun software praktis di bidang AI, cloud, infrastruktur, DevOps, internal tools, dan sistem enterprise, dan kami menjalankannya sendiri di production. Tiap produk dipegang pada standar yang sama untuk keandalan dan kualitas.'
+          'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis, dan tim yang sama pula yang menjaganya tetap jalan. Tidak ada yang dilempar begitu saja ke tim lain.'
         ],
         [
           'Kalian berbasis di mana?',
-          'Kami berbasis di Indonesia dan bekerja sebagai tim terdistribusi. Produk kami dibangun dengan standar global dan dipakai orang di mana pun.'
+          'Kami di Indonesia dan bekerja sebagai tim terdistribusi. Produk kami dipakai orang di mana-mana, jadi kami membangunnya supaya jalan di mana saja.'
         ],
         [
           'Sedang buka lowongan?',
-          'Ya. Kami mencari orang yang peduli pada cara software dibangun dan ingin bekerja lintas berbagai masalah. Hubungi kami lewat formulir kontak.'
+          'Ya. Kami mencari orang yang peduli pada cara software dibangun dan senang berpindah antar-masalah. Formulir kontak langsung sampai ke kami.'
         ],
         [
           'Bagaimana cara mendapat dukungan untuk sebuah produk?',
@@ -207,7 +206,7 @@ const id = {
         ],
         [
           'Bisakah kita bekerja sama?',
-          'Kami terbuka untuk kerja sama yang sejalan dengan yang kami bangun. Kirim proposal atau ide lewat formulir kontak. Semuanya langsung sampai ke kami.'
+          'Kami terbuka, selama sejalan dengan yang kami bangun. Kirim proposal atau ide kasar lewat formulir kontak, langsung sampai ke kami.'
         ]
       ]
     },
@@ -215,7 +214,7 @@ const id = {
       titleA: 'Ceritakan apa yang',
       titleEm: 'sedang Anda bangun',
       titleB: '.',
-      lede: 'Pertanyaan, kerja sama, pers, atau sekadar menyapa. Semua yang Anda kirim sampai ke orang sungguhan, dan kami baca semuanya.',
+      lede: 'Pertanyaan, kerja sama, pers, atau sekadar menyapa. Apa pun yang Anda kirim sampai ke orang sungguhan, dan kami baca semuanya.',
       legalEntity: 'Badan hukum',
       headquarters: 'Kantor pusat',
       headquartersValue: 'Indonesia · Tim terdistribusi',
@@ -225,7 +224,7 @@ const id = {
       emailLabel: 'Email',
       emailPlaceholder: 'anda@perusahaan.com',
       messageLabel: 'Pesan',
-      messagePlaceholder: 'Ada yang bisa kami bantu?',
+      messagePlaceholder: 'Apa yang ada di pikiran Anda?',
       send: 'Kirim pesan',
       errFields: 'Mohon isi semua kolom.',
       errEmail: 'Alamat emailnya sepertinya kurang tepat.',
@@ -247,7 +246,7 @@ const id = {
       titleA: 'Temukan produk yang dibuat untuk',
       titleEm: 'pekerjaan Anda',
       titleB: '.',
-      body: 'Kami membangun software yang kami sendiri harap sudah ada, dan kami menjalankannya tiap hari. Silakan lihat.',
+      body: 'Semua yang ada di sini bermula karena kami membutuhkannya dan tidak menemukan yang cukup bagus. Mungkin Anda sedang di posisi yang sama. Silakan lihat.',
       cta: 'Lihat portofolio'
     }
   },
@@ -256,24 +255,24 @@ const id = {
     meta: {
       title: 'Tentang · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software dari Indonesia. Kami membangun software praktis dan menjalankannya di production, dipegang pada satu standar untuk keandalan dan kualitas.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri dan menjaganya tetap jalan.'
     },
     heroA: 'Kami membangun software,',
     heroEm: 'lalu menjalankannya sendiri',
     heroB: '.',
-    lede: 'Efolusi adalah nama dagang PT. Efolusi Dunia Teknologi, perusahaan software yang berbasis di Indonesia dengan tim terdistribusi. Kami membangun produk kami sendiri di bidang AI, cloud, infrastruktur, dan software enterprise, dan kami menjalankannya di production.',
-    splitTitleA: 'Luas karena pilihan.',
-    splitTitleEm: 'Fokus karena disiplin.',
-    splitBig: 'Kami tidak terpaku pada satu bidang. Kami mencari masalah yang layak diselesaikan, membangun satu produk yang fokus untuk tiap masalah, dan menjalankan masing-masing sebagai platformnya sendiri.',
-    splitBody: 'Tugas kami adalah menjaga standar tetap tinggi. Kalau sebuah produk tidak membuat sebuah pekerjaan lebih cepat, lebih jelas, atau lebih aman, kami tidak merilisnya. Itulah yang membuat portofolio bisa tumbuh tanpa jadi keranjang campur aduk.',
-    values: ['Tanpa fitur bloat', 'Jelas lebih penting daripada rumit', 'Dibangun untuk berkembang', 'Kualitas sebelum pertumbuhan'],
+    lede: 'Efolusi adalah nama dagang PT. Efolusi Dunia Teknologi, perusahaan software di Indonesia dengan tim yang tersebar di berbagai zona waktu. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan software enterprise, dan kami yang menjaganya tetap jalan.',
+    splitTitleA: 'Kami menggarap banyak hal,',
+    splitTitleEm: 'memang sengaja.',
+    splitBig: 'Kami bukan perusahaan satu produk. Kalau ada masalah yang terus mengganggu, kami bikin produk untuk itu dan membiarkannya berdiri sendiri.',
+    splitBody: 'Aturannya sederhana: semuanya harus cukup bagus sampai kami sendiri mau memakainya. Kalau belum, ya belum kami keluarkan. Itu yang bikin daftarnya bisa panjang tanpa penuh barang asal jadi.',
+    values: ['Sedikit fitur, tapi beres', 'Membosankan mengalahkan pintar', 'Tumbuh bareng Anda', 'Kami tunduk pada pengguna'],
     bandA: 'Dibangun di Indonesia,',
-    bandEm: 'dirancang',
-    bandB: 'untuk semua pasar. Di mana pun Anda memakai produk kami, standarnya sama.',
+    bandEm: 'dipakai',
+    bandB: 'di mana-mana. Buka produk kami di mana pun, hasilnya sama.',
     foundersTitleA: 'Dipimpin founder dan',
     foundersTitleEm: 'turun tangan langsung',
     foundersTitleB: '.',
-    foundersLede: 'Keputusan tetap dekat dengan produk. Merekalah yang menjaga standarnya, hari demi hari.',
+    foundersLede: 'Keputusan tetap dekat dengan produk. Mereka berdua masih menyentuh kode dan detailnya tiap hari.',
     paperTitleA: 'Perusahaan',
     paperTitleEm: 'di atas kertas',
     paperTitleB: '.',
@@ -286,7 +285,7 @@ const id = {
     closerA: 'Lihat apa yang',
     closerEm: 'kami bangun',
     closerB: '.',
-    closerBody: 'Satu standar untuk keandalan dan kualitas, di semua yang kami rilis. Temukan yang dibuat untuk pekerjaan Anda.',
+    closerBody: 'Perhatian yang sama masuk ke semua yang kami rilis. Temukan yang pas buat pekerjaan Anda.',
     closerCta: 'Lihat portofolio'
   },
 
@@ -294,11 +293,11 @@ const id = {
     meta: {
       title: 'Karier · Efolusi',
       description:
-        'Bekerja bersama Efolusi, perusahaan software dari Indonesia yang membangun produk di bidang AI, cloud, infrastruktur, DevOps, internal tools, dan software enterprise.'
+        'Bekerja bersama Efolusi, perusahaan software di Indonesia. Kami membangun produk di bidang cloud, infrastruktur, AI, internal tools, dan software enterprise.'
     },
     heroA: 'Peduli pada cara software dibangun?',
     heroEm: 'Mari bicara.',
-    lede: 'Kami senang bekerja dengan orang yang membangun hal yang berguna. Lihat posisi yang terbuka, atau sekadar menyapa. Orang-orang terbaik yang pernah bekerja dengan kami jarang pas persis dengan sebuah lowongan.',
+    lede: 'Kami suka orang yang membangun hal berguna. Lihat posisi yang terbuka, atau sekadar menyapa. Orang-orang terbaik yang pernah bekerja dengan kami hampir tidak pernah pas persis dengan sebuah lowongan.',
     whatTitleA: 'Rasanya',
     whatTitleEm: 'kerja di sini',
     whatTitleB: '.',
@@ -306,23 +305,23 @@ const id = {
       [
         'key',
         'Kepemilikan nyata',
-        'Tiap produk adalah tim kecil yang memegang full stack. Anda akan merilis hal yang dipakai orang di bulan yang sama, bukan tiket dalam antrean.'
+        'Tiap produk adalah tim kecil yang memegang seluruh stack. Anda akan merilis hal yang dipakai orang di bulan yang sama, bukan tiket dalam antrean.'
       ],
       [
         'globe',
         'Terdistribusi secara default',
-        'Kami berbasis di Indonesia dan bekerja async lintas zona waktu. Yang Anda rilis lebih penting daripada jam kerja yang Anda jalani.'
+        'Kami di Indonesia dan bekerja async lintas zona waktu. Kami peduli apa yang Anda rilis, bukan jam berapa Anda online.'
       ],
       [
         'sparkles',
-        'Kualitas di atas seremoni',
-        'Satu standar di semua yang kami rilis. Code review sungguhan, design review sungguhan, dan "cukup baik" memang harus baik.'
+        'Sedikit proses, lebih banyak membangun',
+        'Code review sungguhan. Design review sungguhan. "Cukup baik" memang harus baik, bukan sekadar centang.'
       ],
-      ['trending-up', 'Portofolio yang tumbuh', 'Produk baru berarti masalah baru untuk digarap, bukan reorg untuk dilewati.']
+      ['trending-up', 'Portofolio yang tumbuh', 'Produk baru berarti masalah baru untuk digali, bukan reorg untuk dilewati.']
     ],
     hiringTitleA: 'Posisi yang',
     hiringTitleEm: 'kami buka sekarang',
-    hiringBody: 'Setiap lamaran dibaca oleh orang sungguhan. Ceritakan apa yang sudah Anda bangun dan apa yang ingin Anda bangun berikutnya. Portofolio atau repo lebih berarti daripada CV panjang.',
+    hiringBody: 'Setiap lamaran dibaca oleh orang sungguhan. Ceritakan apa yang sudah Anda bangun dan apa yang ingin Anda bangun berikutnya. Portofolio atau repo selalu lebih berarti daripada CV panjang.',
     reachOut: 'Tanya soal posisi',
     roles: [
       ['Senior Go Engineer', 'Remote · Penuh waktu'],
@@ -334,7 +333,7 @@ const id = {
     closerEm: 'posisi Anda',
     closerB: '?',
     closerBody: 'Tetap tulis ke kami. Kalau Anda peduli pada software yang berguna dan bisa menunjukkan sesuatu yang Anda buat, kami ingin mendengarnya.',
-    closerCta: 'Menyapa'
+    closerCta: 'Sapa kami'
   },
 
   token: {
@@ -352,7 +351,7 @@ const id = {
     addrTitleA: 'Satu alamat. Periksa',
     addrTitleEm: 'setiap kali',
     addrTitleB: '.',
-    addrLede: 'Ini satu-satunya alamat kontrak $EFO yang resmi. Alamat lain yang mengaku EFO bukan milik kami. Periksa di sini dulu.',
+    addrLede: 'Ini satu-satunya alamat kontrak $EFO yang resmi. Apa pun selain ini yang mengaku EFO, bukan milik kami. Periksa di sini dulu.',
     facts: [
       ['Alamat kontrak', '0xb61a09e93b4f14585e9afbac3adaea626f25fb07'],
       ['Nama token', 'EFOLUSI'],
@@ -379,7 +378,7 @@ const id = {
     utilTitleA: 'Utilitas, didokumentasikan',
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',
-    utilLede: 'Kami menyambungkan EFO ke ekosistem sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Tidak ada janji sebelum software-nya bekerja, aturan yang sama dengan yang dipegang produk kami.',
+    utilLede: 'Kami menyambungkan EFO ke ekosistem sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
     faqTitleA: 'Jawaban',
     faqTitleEm: 'lugas',
     faqTitleB: '.',
@@ -441,7 +440,7 @@ const id = {
     closerA: 'Butuh sesuatu yang',
     closerEm: 'lain',
     closerB: '?',
-    closerBody: 'Butuh resolusi lebih tinggi, maskot produk, atau jawaban untuk sebuah liputan? Email kami, kami balas cepat.',
+    closerBody: 'Butuh file lebih besar, maskot produk, atau kutipan untuk sebuah liputan? Email kami, kami balas cepat.',
     closerCta: 'Email kami'
   },
 

@@ -10,8 +10,7 @@ const en = {
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
     footer: {
-      tagline:
-        'PT. Efolusi Dunia Teknologi. We build practical software for real business problems, and we run it in production ourselves. Made in Indonesia.',
+      tagline: 'PT. Efolusi Dunia Teknologi. We build software and run it ourselves. Made in Indonesia.',
       companyHead: 'Company',
       ecosystemHead: 'Ecosystem',
       legalHead: 'Legal',
@@ -31,21 +30,21 @@ const en = {
 
   home: {
     meta: {
-      title: 'Efolusi · Software for real business problems',
+      title: 'Efolusi · We build software and run it',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) builds practical software across AI, cloud, infrastructure, DevOps, internal tools, and enterprise systems. Reliable, secure, and ready to scale.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and we keep them running ourselves.'
     },
     hero: {
       lead: 'Practical software for',
       build: 'real',
       trail: 'business',
       products: 'problems.',
-      sub: 'Efolusi builds practical software and runs it in production, from cloud and infrastructure to internal tools and enterprise systems. Reliable, secure, and ready to scale.',
+      sub: 'Efolusi builds software and runs it ourselves. We work on cloud, infrastructure, AI, and the internal tools a business leans on every day, the ones nobody notices until they break.',
       viewPortfolio: 'See what we build',
       getInTouch: 'Get in touch',
-      proof: 'Every product is live and running in production today.'
+      proof: 'Everything here is live and in use right now.'
     },
-    marquee: ['Built for production', 'Reliable by default', 'Secure from the start', 'Ready to scale', 'Clear over clever'],
+    marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
       headA: 'One studio,',
       headEm: 'three',
@@ -55,21 +54,21 @@ const en = {
           titleA: 'Our',
           titleEm: 'own',
           titleB: 'products',
-          body: 'Software across AI, cloud, DevOps, and enterprise systems. Some of it open source. Each one answers to real users.',
+          body: 'Software for cloud, infrastructure, AI, and back-office work. Some of it is open source. Every one has people using it right now.',
           cta: 'See the portfolio'
         },
         token: {
           titleA: 'The $EFO',
           titleEm: 'token',
           titleB: '',
-          body: 'Our ecosystem token, live on BNB Smart Chain and trading on Uniswap. Everything official sits in one place.',
+          body: 'Our ecosystem token, live on BNB Smart Chain and trading on Uniswap. Everything official is in one place.',
           cta: 'About the token'
         },
         standard: {
           titleA: 'One',
           titleEm: 'standard',
           titleB: '',
-          body: "If it doesn't make a real job faster, clearer, or safer, we don't ship it.",
+          body: "If it doesn't make someone's actual job easier, it doesn't ship.",
           cta: 'How we work'
         }
       }
@@ -78,16 +77,16 @@ const en = {
       headA: 'Our products,',
       headEm: 'one portfolio',
       headB: '.',
-      lede: 'Each product runs on its own, with its own team and roadmap. They share one standard for reliability and quality. Pick one and take a look.'
+      lede: 'Each one has its own team, its own roadmap, its own users. The only thing they share is us. Have a look.'
     },
     products: {
       zoyya: {
         section: 'Artificial Intelligence',
-        desc: 'An AI assistant that handles real work. It reasons through problems, learns your context, and acts without step-by-step direction.',
+        desc: 'An AI assistant that actually does the work. Give it a goal and it works out the steps itself, instead of waiting for you to spell out every one.',
         specs: ['Autonomous', 'Context-aware', 'Self-directed'],
         buttonLabel: 'Visit ZOYYA',
         tag: 'AI',
-        summary: 'An AI assistant that reasons, learns your context, and acts on its own.'
+        summary: 'An AI assistant that takes a goal and figures out the steps itself.'
       },
       komando: {
         section: 'Cloud Infrastructure',
@@ -95,11 +94,11 @@ const en = {
         specs: ['Unified', 'Full visibility', 'Single pane'],
         buttonLabel: 'Visit Komando',
         tag: 'Infrastructure',
-        summary: 'Run every server, deployment, and alert from one interface.'
+        summary: 'Run every server, deployment, and alert from one place.'
       },
       toolips: {
         section: 'Productivity',
-        desc: 'Over 100 tools to convert, compress, edit, and export files. No account, no subscription, always available.',
+        desc: 'Over 100 tools to convert, compress, edit, and export files. No account, no subscription, always there.',
         specs: ['100+ tools', 'No account', 'Always free'],
         buttonLabel: 'Visit Toolips',
         tag: 'Productivity',
@@ -107,11 +106,11 @@ const en = {
       },
       trady: {
         section: 'Content Generation',
-        desc: 'Turn a brief into a finished campaign: text, audio, video, and images in one workflow. Hours instead of weeks.',
+        desc: 'Hand it a brief and get back a finished campaign: text, audio, video, and images, all in one place. Hours, not weeks.',
         specs: ['Text + Audio', 'Video + Image', 'One workflow'],
         buttonLabel: 'Visit Trady',
         tag: 'Content',
-        summary: 'Turn a brief into a finished campaign across text, audio, video, and image.'
+        summary: 'Hand it a brief, get back a finished campaign across text, audio, video, and image.'
       },
       kongkow: {
         section: 'Social Media',
@@ -148,16 +147,16 @@ const en = {
     },
     team: {
       statementA: 'Built in Indonesia,',
-      engineered: 'engineered',
-      statementB: 'for every market, and',
-      led: 'run',
-      statementC: 'by the people who build it.'
+      engineered: 'used',
+      statementB: 'everywhere, and',
+      led: 'looked after',
+      statementC: 'by the same people who wrote it.'
     },
     ecosystem: {
       titleA: 'One token across the portfolio:',
       titleEm: '$EFO',
       titleB: '.',
-      lede: 'EFO is our ecosystem token, live on BNB Smart Chain and trading on Uniswap. The contract address, the on-chain facts, and every announcement live on the token page, and nowhere else.',
+      lede: 'EFO is our ecosystem token, live on BNB Smart Chain and trading on Uniswap. The contract address, the on-chain facts, every announcement, all of it lives on the token page and nowhere else.',
       about: 'About $EFO',
       bscscan: 'BscScan',
       tradable: 'Tradable on Uniswap v4',
@@ -169,12 +168,12 @@ const en = {
         ['Total supply', '100,000,000,000'],
         ['Pool', 'EFO/USDT on Uniswap v4']
       ],
-      note: 'Check this address before you interact with anything that calls itself EFO. It is the only one we publish.'
+      note: "Check this address before you touch anything that calls itself EFO. It's the only one we publish."
     },
     careers: {
-      titleA: 'Care about how software is built?',
+      titleA: 'Care about how software gets built?',
       titleEm: "Let's talk.",
-      body: "We like working with people who build useful things. Say hello, even if your role isn't listed yet.",
+      body: 'We like people who build useful things. Say hello, even if none of the roles below fit you yet.',
       reachOut: 'Ask about a role',
       roles: [
         ['Senior Go Engineer', 'Remote · Full-time'],
@@ -191,23 +190,23 @@ const en = {
       items: [
         [
           'What is Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) is a software company based in Indonesia. We build practical software across AI, cloud, infrastructure, DevOps, internal tools, and enterprise systems, and we run it in production ourselves. Every product is held to the same standard for reliability and quality.'
+          'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and the same team keeps them running. Nothing gets thrown over a wall.'
         ],
         [
           'Where are you based?',
-          "We're based in Indonesia and work as a distributed team. Our products are built to global standards and used by people everywhere."
+          "We're in Indonesia and work as a distributed team. Our products get used all over, so we build them to work anywhere."
         ],
         [
           'Are you hiring?',
-          'Yes. We look for people who care about how software is built and want to work across different problems. Reach out through the contact form.'
+          'Yes. We look for people who care about how software gets built and like jumping between different problems. The contact form reaches us directly.'
         ],
         [
           'How do I get support for a product?',
-          "Each product has its own support team. Go to the product's website for docs, help, or to reach the team directly."
+          "Each product has its own support team. Head to that product's site for docs, help, or to reach the team."
         ],
         [
           'Can we work together?',
-          "We're open to partnerships that fit what we build. Send a proposal or an idea through the contact form. It comes straight to us."
+          "We're open to it if it fits what we build. Send a proposal or a rough idea through the contact form and it comes straight to us."
         ]
       ]
     },
@@ -215,7 +214,7 @@ const en = {
       titleA: 'Tell us what',
       titleEm: "you're building",
       titleB: '.',
-      lede: 'Questions, partnerships, press, or just hello. Everything you send reaches a person, and we read all of it.',
+      lede: 'Questions, partnerships, press, or just hello. Whatever you send reaches a person, and we read all of it.',
       legalEntity: 'Legal entity',
       headquarters: 'Headquarters',
       headquartersValue: 'Indonesia · Distributed team',
@@ -225,7 +224,7 @@ const en = {
       emailLabel: 'Email',
       emailPlaceholder: 'you@company.com',
       messageLabel: 'Message',
-      messagePlaceholder: 'What can we help with?',
+      messagePlaceholder: "What's on your mind?",
       send: 'Send message',
       errFields: 'Please fill in every field.',
       errEmail: "That email doesn't look right.",
@@ -247,7 +246,7 @@ const en = {
       titleA: 'Find the product built for',
       titleEm: 'your work',
       titleB: '.',
-      body: 'We build the software we wish already existed, and we run it every day. Take a look.',
+      body: "Everything here started because we needed it and couldn't find anything good enough. Maybe you're in the same spot. Take a look.",
       cta: 'See the portfolio'
     }
   },
@@ -256,24 +255,24 @@ const en = {
     meta: {
       title: 'About · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) is a software company from Indonesia. We build practical software and run it in production, held to one standard for reliability and quality.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products and keep them running ourselves.'
     },
     heroA: 'We build software,',
     heroEm: 'then run it ourselves',
     heroB: '.',
-    lede: 'Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software company based in Indonesia with a distributed team. We build our own products across AI, cloud, infrastructure, and enterprise software, and we run them in production.',
-    splitTitleA: 'Broad by choice.',
-    splitTitleEm: 'Focused by discipline.',
-    splitBig: "We don't stick to one field. We look for problems worth solving, build a focused product for each, and run every one as its own platform.",
-    splitBody: "Our job is to keep the bar high. If a product doesn't make a real job faster, clearer, or safer, we don't ship it. That's how the portfolio grows without turning into a grab bag.",
-    values: ['No feature bloat', 'Clear over clever', 'Built to scale', 'Quality before growth'],
+    lede: 'Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software company in Indonesia with a team spread across timezones. We build our own products, across cloud, infrastructure, AI, and enterprise software, and we keep them running.',
+    splitTitleA: 'We take on a lot,',
+    splitTitleEm: 'on purpose.',
+    splitBig: "We're not a one-thing company. When some problem keeps getting in the way, we build a product for it and let that product stand on its own.",
+    splitBody: "The rule is simple: everything has to be good enough that we'd use it ourselves. If it isn't, it doesn't go out. That's how the list grows without filling up with junk.",
+    values: ['Fewer features, done well', 'Boring beats clever', 'Grows with you', 'We answer to our users'],
     bandA: 'Built in Indonesia,',
-    bandEm: 'engineered',
-    bandB: 'for every market. Wherever you use our products, the standard is the same.',
+    bandEm: 'used',
+    bandB: 'everywhere. Open our products anywhere and they work the same.',
     foundersTitleA: 'Founder-led and',
     foundersTitleEm: 'hands-on',
     foundersTitleB: '.',
-    foundersLede: 'Decisions stay close to the products. These are the people who keep the standard, day to day.',
+    foundersLede: 'Decisions stay close to the products. These two are still in the code and the details every day.',
     paperTitleA: 'The company',
     paperTitleEm: 'on paper',
     paperTitleB: '.',
@@ -286,7 +285,7 @@ const en = {
     closerA: 'See what',
     closerEm: "we've built",
     closerB: '.',
-    closerBody: 'One standard for reliability and quality, across everything we ship. Find the one built for your work.',
+    closerBody: 'The same care goes into everything we ship. Go find the one that fits your work.',
     closerCta: 'View the portfolio'
   },
 
@@ -294,11 +293,11 @@ const en = {
     meta: {
       title: 'Careers · Efolusi',
       description:
-        'Work with Efolusi, a software company from Indonesia building products across AI, cloud, infrastructure, DevOps, internal tools, and enterprise software.'
+        'Work with Efolusi, a software company in Indonesia. We build products across cloud, infrastructure, AI, internal tools, and enterprise software.'
     },
-    heroA: 'Care about how software is built?',
+    heroA: 'Care about how software gets built?',
     heroEm: "Let's talk.",
-    lede: "We like working with people who build useful things. Look through the open roles, or just say hello. The best people we've worked with rarely fit a listing exactly.",
+    lede: "We like people who build useful things. Look through the open roles, or just say hello. The best people we've worked with almost never matched a job post exactly.",
     whatTitleA: "What it's",
     whatTitleEm: 'actually like',
     whatTitleB: '.',
@@ -306,23 +305,23 @@ const en = {
       [
         'key',
         'Real ownership',
-        "Each product is a small team with the full stack. You'll ship things people use the same month, not tickets in a queue."
+        "Each product is a small team running the whole stack. You'll ship things people use the same month, not tickets in a queue."
       ],
       [
         'globe',
         'Distributed by default',
-        "We're based in Indonesia and work async across timezones. What you ship matters more than the hours you keep."
+        "We're in Indonesia and work async across timezones. We care what you ship, not when you're online."
       ],
       [
         'sparkles',
-        'Quality over ceremony',
-        'One standard across everything we ship. Code review is real, design review is real, and "good enough" has to be good.'
+        'Less process, more building',
+        'Code review is real. Design review is real. "Good enough" actually has to be good, not a box you tick.'
       ],
-      ['trending-up', 'A growing portfolio', 'New products mean new problems to work on, not reorgs to survive.']
+      ['trending-up', 'A growing portfolio', 'New products mean new problems to dig into, not reorgs to survive.']
     ],
     hiringTitleA: "Where we're",
     hiringTitleEm: 'hiring now',
-    hiringBody: "Every application is read by a person. Tell us what you've built and what you want to build next. A portfolio or a repo beats a long CV.",
+    hiringBody: "A person reads every application. Tell us what you've built and what you want to build next. A portfolio or a repo beats a long CV every time.",
     reachOut: 'Ask about a role',
     roles: [
       ['Senior Go Engineer', 'Remote · Full-time'],
@@ -333,7 +332,7 @@ const en = {
     closerA: "Don't see",
     closerEm: 'your role',
     closerB: '?',
-    closerBody: 'Write to us anyway. If you care about useful software and can show us something you made, we want to hear from you.',
+    closerBody: 'Write anyway. If you care about useful software and can show us something you made, we want to hear from you.',
     closerCta: 'Say hello'
   },
 
@@ -341,7 +340,7 @@ const en = {
     meta: {
       title: '$EFO token · Efolusi',
       description:
-        '$EFO is the ecosystem token of Efolusi on BNB Smart Chain, tradable on Uniswap. The official contract address, on-chain facts, trading links, and safety notes live on this page.'
+        '$EFO is the ecosystem token of Efolusi on BNB Smart Chain, tradable on Uniswap. The official contract address, on-chain facts, trading links, and safety notes are all on this page.'
     },
     heroA: 'the Efolusi ecosystem',
     heroEm: 'token',
@@ -352,7 +351,7 @@ const en = {
     addrTitleA: 'One address. Check it',
     addrTitleEm: 'every time',
     addrTitleB: '.',
-    addrLede: "This is the only official $EFO contract address. Any other address that calls itself EFO isn't ours. Check it here first.",
+    addrLede: "This is the only official $EFO contract address. Anything else that calls itself EFO isn't ours. Check it here first.",
     facts: [
       ['Contract address', '0xb61a09e93b4f14585e9afbac3adaea626f25fb07'],
       ['Token name', 'EFOLUSI'],
@@ -379,7 +378,7 @@ const en = {
     utilTitleA: 'Utility, documented',
     utilTitleEm: 'before it ships',
     utilTitleB: '.',
-    utilLede: 'We connect EFO to the ecosystem one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it is live, never before. No promises ahead of working software, the same rule our products follow.',
+    utilLede: "We wire EFO into the ecosystem one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live, never before. We'd rather show you something that works than talk about something that might.",
     faqTitleA: 'Straight',
     faqTitleEm: 'answers',
     faqTitleB: '.',
@@ -441,7 +440,7 @@ const en = {
     closerA: 'Need something',
     closerEm: 'else',
     closerB: '?',
-    closerBody: 'Need a higher resolution, a product mark, or an answer for a story? Email us, we reply quickly.',
+    closerBody: 'Need a bigger file, a product mark, or a quote for a story? Email us, we reply quickly.',
     closerCta: 'Email us'
   },
 
