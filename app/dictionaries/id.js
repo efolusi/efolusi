@@ -255,12 +255,12 @@ const id = {
     meta: {
       title: 'Tentang · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri dan menjaganya tetap jalan.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami membangun produk kami sendiri dan menjaganya tetap jalan.'
     },
     heroA: 'Kami membangun software,',
     heroEm: 'lalu menjalankannya sendiri',
     heroB: '.',
-    lede: 'Efolusi adalah nama dagang PT. Efolusi Dunia Teknologi, perusahaan software di Indonesia dengan tim yang tersebar di berbagai zona waktu. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan software enterprise, dan kami yang menjaganya tetap jalan.',
+    lede: 'Efolusi itu perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami memulainya untuk membuat alat-alat yang terus kami harap ada, dan sejak itu kami jalan terus dengan cara yang sama: cari masalah yang bikin kesal, bikin produknya, jaga tetap jalan. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu.',
     splitTitleA: 'Kami menggarap banyak hal,',
     splitTitleEm: 'memang sengaja.',
     splitBig: 'Kami bukan perusahaan satu produk. Kalau ada masalah yang terus mengganggu, kami bikin produk untuk itu dan membiarkannya berdiri sendiri.',

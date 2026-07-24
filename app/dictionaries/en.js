@@ -255,12 +255,12 @@ const en = {
     meta: {
       title: 'About · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products and keep them running ourselves.'
+        'Efolusi (PT. Efolusi Dunia Teknologi) is a small, self-funded software company in Indonesia. We build our own products and keep them running.'
     },
     heroA: 'We build software,',
     heroEm: 'then run it ourselves',
     heroB: '.',
-    lede: 'Efolusi is the trade name of PT. Efolusi Dunia Teknologi, a software company in Indonesia with a team spread across timezones. We build our own products, across cloud, infrastructure, AI, and enterprise software, and we keep them running.',
+    lede: "Efolusi is a small, self-funded software company from Indonesia. We started it to build the tools we kept wishing we had, and we've kept going the same way ever since: find a problem that annoys us, build the thing, keep it running. The legal name is PT. Efolusi Dunia Teknologi, if you ever need it.",
     splitTitleA: 'We take on a lot,',
     splitTitleEm: 'on purpose.',
     splitBig: "We're not a one-thing company. When some problem keeps getting in the way, we build a product for it and let that product stand on its own.",
