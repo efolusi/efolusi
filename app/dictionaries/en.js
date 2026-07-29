@@ -17,8 +17,6 @@ const en = {
       about: 'About',
       careers: 'Careers',
       brand: 'Brand',
-      faq: 'FAQ',
-      contact: 'Contact',
       efoToken: '$EFO token',
       bscscan: 'BscScan',
       privacy: 'Privacy policy',

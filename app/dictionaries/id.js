@@ -17,8 +17,6 @@ const id = {
       about: 'Tentang',
       careers: 'Karier',
       brand: 'Brand',
-      faq: 'FAQ',
-      contact: 'Kontak',
       efoToken: 'Token $EFO',
       bscscan: 'BscScan',
       privacy: 'Kebijakan privasi',
