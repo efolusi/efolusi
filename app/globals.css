@@ -284,6 +284,34 @@ a.ef-btn--secondary:hover {
   box-shadow: var(--focus-ring);
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+}
+
+.lang-switch:hover {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.lang-switch:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
 .menu-toggle {
   display: none;
 }

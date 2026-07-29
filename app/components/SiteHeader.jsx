@@ -77,9 +77,6 @@ export default function SiteHeader({ lang, t }) {
         <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
           {t.contact}
         </Link>
-        <Link href={switchHref} onClick={() => setMenuOpen(false)}>
-          {t.switchLanguage}
-        </Link>
       </nav>
     </header>
   );
