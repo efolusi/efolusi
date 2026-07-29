@@ -26,8 +26,6 @@ export default function SiteFooter({ lang, t }) {
             <Link href={`${base}/about`}>{t.footer.about}</Link>
             <Link href={`${base}/careers`}>{t.footer.careers}</Link>
             <Link href={`${base}/brand`}>{t.footer.brand}</Link>
-            <Link href={`${base}/#faq`}>{t.footer.faq}</Link>
-            <Link href={`${base}/#contact`}>{t.footer.contact}</Link>
           </div>
           <div className="fcol">
             <h4>{t.footer.ecosystemHead}</h4>
