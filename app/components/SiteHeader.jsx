@@ -53,6 +53,9 @@ export default function SiteHeader({ lang, t }) {
             {t.langLabel}
           </Link>
           <ThemeToggle />
+          <a className="pill pill--sm pill--plain sign-in-pill" href={`https://accounts.efolusi.com/sign-in?lang=${lang}`}>
+            {t.signIn}
+          </a>
           <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
             {t.getInTouch}
           </Link>
@@ -77,6 +80,9 @@ export default function SiteHeader({ lang, t }) {
         <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
           {t.contact}
         </Link>
+        <a href={`https://accounts.efolusi.com/sign-in?lang=${lang}`} onClick={() => setMenuOpen(false)}>
+          {t.signIn}
+        </a>
       </nav>
     </header>
   );

@@ -5,6 +5,7 @@ const id = {
   common: {
     nav: { portfolio: 'Portofolio', token: 'Token', company: 'Perusahaan', careers: 'Karier' },
     getInTouch: 'Hubungi kami',
+  signIn: 'Masuk',
     contact: 'Kontak',
     toggleMenu: 'Buka menu',
     switchLanguage: 'Switch to English',

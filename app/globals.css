@@ -2261,3 +2261,15 @@ a.ef-btn--secondary:hover {
     display: none;
   }
 }
+
+/* Account entry in the header. Secondary to the primary CTA next to it. */
+
+.sign-in-pill {
+  border: 1px solid var(--border-default);
+  background: var(--surface-card);
+  color: var(--text-primary);
+}
+
+.sign-in-pill:hover {
+  background: var(--surface-sunken);
+}

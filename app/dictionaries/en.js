@@ -5,6 +5,7 @@ const en = {
   common: {
     nav: { portfolio: 'Portfolio', token: 'Token', company: 'Company', careers: 'Careers' },
     getInTouch: 'Get in touch',
+  signIn: 'Sign in',
     contact: 'Contact',
     toggleMenu: 'Toggle menu',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
