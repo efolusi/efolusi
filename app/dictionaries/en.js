@@ -80,12 +80,6 @@ const en = {
       lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.',
       status: { live: 'Live', building: 'Building' }
     },
-    proofStrip: {
-      aria: 'Numbers you can check',
-      portfolio: 'products in the portfolio',
-      live: 'live today',
-      components: 'open-source UI components'
-    },
     products: {
       zoyya: {
         section: 'Artificial Intelligence',

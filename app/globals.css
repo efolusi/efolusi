@@ -1560,39 +1560,6 @@ a.ef-btn--secondary:hover {
   color: var(--text-muted);
 }
 
-/* Proof strip: three verifiable numbers under the marquee */
-
-.proof-strip {
-  border-bottom: 1px solid var(--border-default);
-}
-
-.proof-strip-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px 56px;
-  padding: 28px 0;
-}
-
-.proof-stat {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-}
-
-.proof-n {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl, 28px);
-  font-weight: var(--weight-semibold);
-  font-variant-numeric: tabular-nums;
-  color: var(--accent);
-}
-
-.proof-l {
-  font-size: var(--text-sm);
-  color: var(--text-muted);
-}
-
 .plist-row--building {
   cursor: default;
   opacity: 0.75;

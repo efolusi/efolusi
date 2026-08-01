@@ -80,12 +80,6 @@ const id = {
       lede: 'Tiap produk berdiri sendiri, dengan penggunanya sendiri. Benang merahnya cuma satu: kami. Silakan lihat.',
       status: { live: 'Live', building: 'Sedang dibangun' }
     },
-    proofStrip: {
-      aria: 'Angka yang bisa Anda cek',
-      portfolio: 'produk di portofolio',
-      live: 'live hari ini',
-      components: 'komponen UI open source'
-    },
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
