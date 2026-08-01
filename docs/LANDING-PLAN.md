@@ -22,7 +22,7 @@ Tujuan: pengunjung paham dalam 10 detik apa yang Efolusi buat dan bisa langsung 
 
 - [ ] Header sadar-sesi: setelah SSO siap, tombol "Sign in" berubah jadi avatar/menu akun (baca cookie sesi `.efolusi.com`, tanpa fetch berat; degradasi anggun kalau accounts.efolusi.com down).
 - [ ] Halaman /about diperkuat: siapa di balik Efolusi, prinsip "documented before it ships", link ke repo open source.
-- [ ] SEO teknis: metadata per halaman sudah ada; tambah structured data (Organization, Product) dan OG image per halaman.
+- [x] SEO teknis: metadata per halaman sudah ada; tambah structured data (Organization, Product) dan OG image per halaman. (Organization JSON-LD + OG sudah ada sebelumnya; dilengkapi brand Meridian & EarthOS. OG per halaman masih pakai satu image, cukup untuk sekarang)
 - [ ] Performa: audit ukuran font/ilustrasi, pastikan halaman utama tetap statis penuh (constraint OpenNext: tanpa ISR, cache read-only). Target LCP < 1.5s.
 
 ## Fase 3, Integrasi membership EFO (hanya setelah fitur shipped di SSO)
@@ -38,7 +38,7 @@ Gate: fase ini tidak boleh mulai sebelum wallet-linking dan tier flag live di SS
 
 - [ ] Changelog publik per produk (feed sederhana, markdown di repo, dirender statis).
 - [ ] Halaman /ecosystem: peta produk + bagaimana SSO dan EFO mengikatnya, diagram satu layar.
-- [ ] llms.txt diperluas: deskripsi tiap produk dan endpoint dokumentasi, supaya AI agent bisa mengutip situs dengan benar.
+- [x] llms.txt diperluas: deskripsi tiap produk dan endpoint dokumentasi, supaya AI agent bisa mengutip situs dengan benar. (status live/building per produk, alokasi + flywheel EFO, pointer ke accounts.efolusi.com/llms.txt untuk integrasi SSO)
 
 ## Non-goals
 
