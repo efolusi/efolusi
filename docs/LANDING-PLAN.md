@@ -24,7 +24,7 @@ Tujuan: pengunjung paham dalam 10 detik apa yang Efolusi buat dan bisa langsung 
 - [ ] Header sadar-sesi: setelah SSO siap, tombol "Sign in" berubah jadi avatar/menu akun (baca cookie sesi `.efolusi.com`, tanpa fetch berat; degradasi anggun kalau accounts.efolusi.com down).
 - [ ] Halaman /about diperkuat: siapa di balik Efolusi, prinsip "documented before it ships", link ke repo open source.
 - [x] SEO teknis: metadata per halaman sudah ada; tambah structured data (Organization, Product) dan OG image per halaman. (Organization JSON-LD + OG sudah ada sebelumnya; dilengkapi brand Meridian & EarthOS. OG per halaman masih pakai satu image, cukup untuk sekarang)
-- [ ] Performa: audit ukuran font/ilustrasi, pastikan halaman utama tetap statis penuh (constraint OpenNext: tanpa ISR, cache read-only). Target LCP < 1.5s.
+- [x] Performa: audit ukuran font/ilustrasi, pastikan halaman utama tetap statis penuh (constraint OpenNext: tanpa ISR, cache read-only). Target LCP < 1.5s. (Audit 2026-08-01: logo-owl.png 535KB dipakai untuk render 30px di tiap halaman → dibuat varian 240px/58KB untuk header/footer/favicon/JSON-LD, file asli tetap jadi download di /brand. Font sudah optimal: variable woff2 self-host via Meridian, cache immutable. Halaman tetap statis penuh, cache s-maxage=600 sudah terpasang. Pengukuran LCP production menyusul setelah deploy.)
 
 ## Fase 3, Integrasi membership EFO (hanya setelah fitur shipped di SSO)
 

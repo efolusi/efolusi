@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
     metadataBase: new URL(siteUrl),
     title: d.home.meta.title,
     description: d.home.meta.description,
-    icons: { icon: '/efolusi/logo-owl.png' },
+    icons: { icon: '/efolusi/logo-owl-240.png' },
     alternates: {
       canonical: `/${lang}`,
       languages: {
@@ -51,7 +51,7 @@ const organizationLd = {
   name: 'PT. Efolusi Dunia Teknologi',
   alternateName: 'Efolusi',
   url: siteUrl,
-  logo: `${siteUrl}/efolusi/logo-owl.png`,
+  logo: `${siteUrl}/efolusi/logo-owl-240.png`,
   email: 'hi@efolusi.com',
   foundingLocation: { '@type': 'Country', name: 'Indonesia' },
   address: { '@type': 'PostalAddress', addressCountry: 'ID' },

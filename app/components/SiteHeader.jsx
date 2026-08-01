@@ -36,7 +36,7 @@ export default function SiteHeader({ lang, t }) {
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="wrap site-header-inner">
         <Link href={base} className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
-          <img src="/efolusi/logo-owl.png" alt="" width="30" height="30" />
+          <img src="/efolusi/logo-owl-240.png" alt="" width="30" height="30" />
           Efolusi
         </Link>
 

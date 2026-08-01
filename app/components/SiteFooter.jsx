@@ -12,7 +12,7 @@ export default function SiteFooter({ lang, t }) {
         <div className="footer-top">
           <div>
             <Link href={base} className="brand">
-              <img src="/efolusi/logo-owl.png" alt="" width="28" height="28" />
+              <img src="/efolusi/logo-owl-240.png" alt="" width="28" height="28" />
               Efolusi
             </Link>
             <p className="tag-line">{t.footer.tagline}</p>
