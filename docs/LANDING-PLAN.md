@@ -37,7 +37,7 @@ Gate: fase ini tidak boleh mulai sebelum wallet-linking dan tier flag live di SS
 ## Fase 4, Skala konten (berkelanjutan)
 
 - [ ] Changelog publik per produk (feed sederhana, markdown di repo, dirender statis).
-- [ ] Halaman /ecosystem: peta produk + bagaimana SSO dan EFO mengikatnya, diagram satu layar.
+- [x] Halaman /ecosystem: peta produk + bagaimana SSO dan EFO mengikatnya, diagram satu layar. (dua bahasa, data produk dipindah ke app/lib/products.js supaya homepage dan ecosystem satu sumber, link di footer + sitemap)
 - [x] llms.txt diperluas: deskripsi tiap produk dan endpoint dokumentasi, supaya AI agent bisa mengutip situs dengan benar. (status live/building per produk, alokasi + flywheel EFO, pointer ke accounts.efolusi.com/llms.txt untuk integrasi SSO)
 
 ## Non-goals

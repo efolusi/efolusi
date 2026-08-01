@@ -3,6 +3,7 @@ const base = 'https://efolusi.com';
 const pages = [
   ['', 'monthly', 1],
   ['/token', 'weekly', 0.9],
+  ['/ecosystem', 'monthly', 0.8],
   ['/about', 'monthly', 0.7],
   ['/careers', 'monthly', 0.7],
   ['/brand', 'yearly', 0.4],

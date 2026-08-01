@@ -19,6 +19,7 @@ const id = {
       careers: 'Karier',
       brand: 'Brand',
       efoToken: 'Token $EFO',
+      ecosystem: 'Ekosistem',
       bscscan: 'BscScan',
       privacy: 'Kebijakan privasi',
       terms: 'Ketentuan penggunaan',
@@ -340,6 +341,47 @@ const id = {
     closerB: '?',
     closerBody: 'Tetap tulis ke kami. Kalau Anda peduli pada software yang berguna dan bisa menunjukkan sesuatu yang Anda buat, kami ingin mendengarnya.',
     closerCta: 'Sapa kami'
+  },
+
+  eco: {
+    meta: {
+      title: 'Ekosistem · Efolusi',
+      description:
+        'Bagaimana ekosistem Efolusi saling terhubung: produk-produknya, platform bersama di bawahnya (satu akun, satu design system), dan token $EFO yang mengikat pendapatan kembali ke pasar.'
+    },
+    heroA: 'Satu studio,',
+    heroEm: 'satu ekosistem',
+    heroB: '.',
+    lede: 'Tiap produk berdiri sendiri, tapi fondasinya sama. Halaman ini petanya: apa yang kami bangun, di atas apa berdirinya, dan bagaimana $EFO tersambung ke dalamnya.',
+    productsTitleA: 'Produk-',
+    productsTitleEm: 'produknya',
+    productsTitleB: '.',
+    productsLede: 'Delapan produk, dilabeli jujur. Live artinya melayani traffic hari ini; sedang dibangun artinya masih kami kerjakan.',
+    status: { live: 'Live', building: 'Sedang dibangun' },
+    platformTitleA: 'Berdiri di atas',
+    platformTitleEm: 'apa',
+    platformTitleB: '.',
+    platformLede: 'Dua lapisan bersama menjaga dua puluh produk masa depan tetap koheren tanpa dua puluh kali penulisan ulang.',
+    platform: [
+      [
+        'Satu akun: Efolusi SSO',
+        'Masuk sekali, pakai semuanya. Produk tidak pernah menjalankan auth sendiri; semuanya membaca satu sesi terpusat. Membership EFO nanti juga hidup di sini, sebagai satu flag yang bisa dicek semua produk.'
+      ],
+      [
+        'Satu design system: Meridian',
+        'Open source, 109 komponen, tanpa build step. Semua produk Efolusi dibangun di atasnya, itu sebabnya semuanya terasa satu keluarga.'
+      ]
+    ],
+    tokenTitleA: 'Di mana posisi',
+    tokenTitleEm: '$EFO',
+    tokenTitleB: '.',
+    tokenLede: 'Produk menghasilkan pendapatan subscription dengan uang biasa. Sebagiannya dipakai membeli kembali EFO dari pasar, dan hasil buyback dibakar, semuanya bisa diverifikasi on-chain.',
+    tokenCta: 'Semua yang resmi soal $EFO',
+    closerA: 'Mau lihat',
+    closerEm: 'detailnya',
+    closerB: '?',
+    closerBody: 'Portofolio memuat semua produk; halaman token memuat semua fakta on-chain.',
+    closerCta: 'Lihat portofolio'
   },
 
   token: {
