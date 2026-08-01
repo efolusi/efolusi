@@ -9,7 +9,16 @@ const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
 /* Structural data (ids, tints, marks, icons, links, titles) is locale-agnostic;
    the copy for each product is merged in from the dictionary by id. */
-import { productMeta } from '../lib/products.js';
+const productMeta = [
+  { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', mark: 'Zo', icon: 'brain', href: 'https://zoyya.xyz' },
+  { id: 'komando', title: 'Komando', tint: 'green', mark: 'Ko', icon: 'server', href: 'https://komando.efolusi.com' },
+  { id: 'toolips', title: 'Toolips', tint: 'amber', mark: 'To', icon: 'package', href: 'https://toolips.xyz' },
+  { id: 'trady', title: 'Trady', tint: 'coral', mark: 'Tr', icon: 'sparkles', href: 'https://trady.efolusi.com' },
+  { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
+  { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
+  { id: 'meridian', title: 'Meridian', tint: 'cocoa', mark: 'Me', icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
+  { id: 'earthos', title: 'EarthOS', tint: 'green', mark: 'Ea', icon: 'globe', href: 'https://earthos.efolusi.com' }
+];
 
 const leadership = [
   ['Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
@@ -336,29 +345,22 @@ export default function HomeClient({ d, common, lang }) {
                   <span className="eyebrow eyebrow--mono">
                     {String(index + 1).padStart(2, '0')} / {product.section}
                   </span>
-                  <h3>
-                    {product.title}{' '}
-                    <Badge tone={product.status === 'live' ? 'success' : 'neutral'}>
-                      {d.portfolio.status[product.status]}
-                    </Badge>
-                  </h3>
+                  <h3>{product.title}</h3>
                   <p className="desc">{product.desc}</p>
                   <div className="specs">
                     {product.specs.map((spec) => (
                       <Tag key={spec}>{spec}</Tag>
                     ))}
                   </div>
-                  {product.status === 'live' && (
-                    <div className="cta">
-                      <Button
-                        variant="brand"
-                        iconRight="arrow-up-right"
-                        onClick={() => window.open(product.href, '_blank', 'noopener,noreferrer')}
-                      >
-                        {product.buttonLabel}
-                      </Button>
-                    </div>
-                  )}
+                  <div className="cta">
+                    <Button
+                      variant="brand"
+                      iconRight="arrow-up-right"
+                      onClick={() => window.open(product.href, '_blank', 'noopener,noreferrer')}
+                    >
+                      {product.buttonLabel}
+                    </Button>
+                  </div>
                 </article>
               ))}
             </div>
@@ -383,31 +385,23 @@ export default function HomeClient({ d, common, lang }) {
           </div>
 
           <div className="plist reveal">
-            {stageProducts.map((product) => {
-              const isLive = product.status === 'live';
-              const Row = isLive ? 'a' : 'div';
-              const rowProps = isLive ? { href: product.href, target: '_blank', rel: 'noopener noreferrer' } : {};
-              return (
-                <Row key={product.id} className={`plist-row${isLive ? '' : ' plist-row--building'}`} {...rowProps}>
-                  <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
-                    {product.mark}
-                  </span>
-                  <span>
-                    <span className="plist-name">
-                      {product.title}
-                      <Badge tone={isLive ? 'success' : 'neutral'}>{d.portfolio.status[product.status]}</Badge>
-                      {isLive && (
-                        <span className="plist-arrow">
-                          <Icon name="arrow-up-right" size={17} />
-                        </span>
-                      )}
+            {stageProducts.map((product) => (
+              <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
+                <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
+                  {product.mark}
+                </span>
+                <span>
+                  <span className="plist-name">
+                    {product.title}
+                    <span className="plist-arrow">
+                      <Icon name="arrow-up-right" size={17} />
                     </span>
-                    <span className="plist-cat">{product.section}</span>
                   </span>
-                  <span className="plist-sum">{product.summary}</span>
-                </Row>
-              );
-            })}
+                  <span className="plist-cat">{product.section}</span>
+                </span>
+                <span className="plist-sum">{product.summary}</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

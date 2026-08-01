@@ -29,7 +29,6 @@ export default function SiteFooter({ lang, t }) {
           </div>
           <div className="fcol">
             <h4>{t.footer.ecosystemHead}</h4>
-            <Link href={`${base}/ecosystem`}>{t.footer.ecosystem}</Link>
             <Link href={`${base}/token`}>{t.footer.efoToken}</Link>
             <a
               href="https://bscscan.com/token/0xb61a09e93b4f14585e9afbac3adaea626f25fb07"

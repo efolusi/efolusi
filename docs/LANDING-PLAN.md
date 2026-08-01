@@ -13,7 +13,7 @@ Status: draft, 2026-08-01. Anak dari docs/STRATEGY.md (strategi operasi 10 tahun
 
 Tujuan: pengunjung paham dalam 10 detik apa yang Efolusi buat dan bisa langsung mencoba.
 
-- [x] Portfolio section: tiap produk (ZOYYA, CUWAN, Meridian, SSO, dst) dapat kartu dengan status jujur: `Live`, `Beta`, atau `Building`. Link hanya untuk yang bisa dibuka. (commit 849aa67, status dari probe URL 2026-08-01: zoyya/meridian/earthos live, sisanya building)
+- Portfolio badge status Live/Building + non-klik produk mati: DIBATALKAN oleh pemilik 2026-08-01 (dibangun lalu di-revert). Jangan diusulkan ulang tanpa arahan pemilik.
 - Proof strip: DIBATALKAN oleh pemilik 2026-08-01 (sudah dibangun lalu dihapus; secara desain tidak disukai). Jangan diusulkan ulang.
 - [x] CTA utama homepage: "See what we've built" ke portfolio; CTA sekunder ke kontak. Token TIDAK masuk hero homepage. (sudah terpenuhi di kode; $EFO hanya edge tile dekoratif, bukan CTA)
 - [ ] Case study singkat per produk live (masalah, solusi, hasil), format konsisten, 3 paragraf maksimal.
@@ -37,8 +37,8 @@ Gate: fase ini tidak boleh mulai sebelum wallet-linking dan tier flag live di SS
 ## Fase 4, Skala konten (berkelanjutan)
 
 - [ ] Changelog publik per produk (feed sederhana, markdown di repo, dirender statis).
-- [x] Halaman /ecosystem: peta produk + bagaimana SSO dan EFO mengikatnya, diagram satu layar. (dua bahasa, data produk dipindah ke app/lib/products.js supaya homepage dan ecosystem satu sumber, link di footer + sitemap)
-- [x] llms.txt diperluas: deskripsi tiap produk dan endpoint dokumentasi, supaya AI agent bisa mengutip situs dengan benar. (status live/building per produk, alokasi + flywheel EFO, pointer ke accounts.efolusi.com/llms.txt untuk integrasi SSO)
+- Halaman /ecosystem: DIBATALKAN oleh pemilik 2026-08-01 (dibangun lalu di-revert).
+- Perluasan llms.txt (status per produk, alokasi, pointer SSO): DIBATALKAN oleh pemilik 2026-08-01 (di-revert ke versi origin).
 
 ## Non-goals
 

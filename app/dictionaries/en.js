@@ -19,7 +19,6 @@ const en = {
       careers: 'Careers',
       brand: 'Brand',
       efoToken: '$EFO token',
-      ecosystem: 'Ecosystem',
       bscscan: 'BscScan',
       privacy: 'Privacy policy',
       terms: 'Terms of use',
@@ -42,7 +41,7 @@ const en = {
       sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
       viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'What we ship, we run ourselves and use every day.'
+      proof: 'Everything here is live, and we use it every day.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -77,8 +76,7 @@ const en = {
       headA: 'Our products,',
       headEm: 'one portfolio',
       headB: '.',
-      lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.',
-      status: { live: 'Live', building: 'Building' }
+      lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.'
     },
     products: {
       zoyya: {
@@ -335,47 +333,6 @@ const en = {
     closerB: '?',
     closerBody: 'Write anyway. If you care about software that helps and can show us something you made, we want to hear from you.',
     closerCta: 'Say hello'
-  },
-
-  eco: {
-    meta: {
-      title: 'Ecosystem · Efolusi',
-      description:
-        'How the Efolusi ecosystem fits together: the products, the shared platform underneath them (one account, one design system), and the $EFO token that ties revenue back to the market.'
-    },
-    heroA: 'One studio,',
-    heroEm: 'one ecosystem',
-    heroB: '.',
-    lede: 'Every product stands on its own, but they share the same foundations. This page is the map: what we build, what it stands on, and how $EFO is wired into it.',
-    productsTitleA: 'The',
-    productsTitleEm: 'products',
-    productsTitleB: '.',
-    productsLede: 'Eight products, honestly labeled. Live means it serves traffic today; building means we are still at work.',
-    status: { live: 'Live', building: 'Building' },
-    platformTitleA: 'What they',
-    platformTitleEm: 'stand on',
-    platformTitleB: '.',
-    platformLede: 'Two shared layers keep twenty future products coherent without twenty rewrites.',
-    platform: [
-      [
-        'One account: Efolusi SSO',
-        'Sign in once, use everything. Products never run their own auth; they read one central session. EFO membership will live here too, as a single flag every product can check.'
-      ],
-      [
-        'One design system: Meridian',
-        'Open source, 109 components, no build step. Every Efolusi product is built on it, which is why they all feel like one family.'
-      ]
-    ],
-    tokenTitleA: 'Where',
-    tokenTitleEm: '$EFO',
-    tokenTitleB: ' fits.',
-    tokenLede: 'Products earn subscription revenue in ordinary money. Part of it buys EFO back from the market, and what is bought back gets burned, all verifiable on-chain.',
-    tokenCta: 'Everything official about $EFO',
-    closerA: 'Want the',
-    closerEm: 'details',
-    closerB: '?',
-    closerBody: 'The portfolio has every product; the token page has every on-chain fact.',
-    closerCta: 'See the portfolio'
   },
 
   token: {
