@@ -1,6 +1,6 @@
 # Landing Page Improvement Plan (efolusi.com)
 
-Status: draft, 2026-08-01. Anchored to the EFO tokenomics recommendation: products first, token second, nothing unshipped on the site.
+Status: draft, 2026-08-01. Anak dari docs/STRATEGY.md (strategi operasi 10 tahun); anchored to the EFO tokenomics recommendation: products first, token second, nothing unshipped on the site.
 
 ## Prinsip
 
