@@ -14,8 +14,8 @@ Status: draft, 2026-08-01. Anchored to the EFO tokenomics recommendation: produc
 Tujuan: pengunjung paham dalam 10 detik apa yang Efolusi buat dan bisa langsung mencoba.
 
 - [x] Portfolio section: tiap produk (ZOYYA, CUWAN, Meridian, SSO, dst) dapat kartu dengan status jujur: `Live`, `Beta`, atau `Building`. Link hanya untuk yang bisa dibuka. (commit 849aa67, status dari probe URL 2026-08-01: zoyya/meridian/earthos live, sisanya building)
-- [ ] Satu "proof strip": angka yang bisa diverifikasi (jumlah produk live, komponen Meridian yang open source, uptime). Jangan pakai angka yang tidak bisa dibuktikan.
-- [ ] CTA utama homepage: "See what we've built" ke portfolio; CTA sekunder ke kontak. Token TIDAK masuk hero homepage.
+- [x] Satu "proof strip": angka yang bisa diverifikasi (jumlah produk live, komponen Meridian yang open source, uptime). Jangan pakai angka yang tidak bisa dibuktikan. (jumlah produk dihitung dari productMeta agar tidak basi; uptime dibuang karena belum ada bukti publik)
+- [x] CTA utama homepage: "See what we've built" ke portfolio; CTA sekunder ke kontak. Token TIDAK masuk hero homepage. (sudah terpenuhi di kode; $EFO hanya edge tile dekoratif, bukan CTA)
 - [ ] Case study singkat per produk live (masalah, solusi, hasil), format konsisten, 3 paragraf maksimal.
 
 ## Fase 2, Kepercayaan dan konversi (minggu 3-4)

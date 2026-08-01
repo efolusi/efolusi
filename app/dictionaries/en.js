@@ -41,7 +41,7 @@ const en = {
       sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
       viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'Everything here is live, and we use it every day.'
+      proof: 'What we ship, we run ourselves and use every day.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -78,6 +78,12 @@ const en = {
       headB: '.',
       lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.',
       status: { live: 'Live', building: 'Building' }
+    },
+    proofStrip: {
+      aria: 'Numbers you can check',
+      portfolio: 'products in the portfolio',
+      live: 'live today',
+      components: 'open-source UI components'
     },
     products: {
       zoyya: {

@@ -258,6 +258,23 @@ export default function HomeClient({ d, common, lang }) {
         </div>
       </div>
 
+      <section className="proof-strip" aria-label={d.proofStrip.aria}>
+        <div className="wrap proof-strip-row">
+          <div className="proof-stat">
+            <span className="proof-n">{productMeta.length}</span>
+            <span className="proof-l">{d.proofStrip.portfolio}</span>
+          </div>
+          <div className="proof-stat">
+            <span className="proof-n">{productMeta.filter((p) => p.status === 'live').length}</span>
+            <span className="proof-l">{d.proofStrip.live}</span>
+          </div>
+          <div className="proof-stat">
+            <span className="proof-n">109</span>
+            <span className="proof-l">{d.proofStrip.components}</span>
+          </div>
+        </div>
+      </section>
+
       <section className="csec" aria-label="At a glance">
         <div className="wrap">
           <div className="csec-head reveal">

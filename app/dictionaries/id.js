@@ -41,7 +41,7 @@ const id = {
       sub: 'Kami Efolusi, tim kecil di Indonesia. Kami membangun software kami sendiri, yang mengubah hal-hal yang lambat atau merepotkan jadi terasa gampang. Semua yang ada di sini adalah produk yang kami butuhkan untuk diri kami sendiri lebih dulu.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Semuanya di sini sudah live, dan kami memakainya tiap hari.'
+      proof: 'Yang sudah kami rilis, kami jalankan dan pakai sendiri tiap hari.'
     },
     marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
@@ -78,6 +78,12 @@ const id = {
       headB: '.',
       lede: 'Tiap produk berdiri sendiri, dengan penggunanya sendiri. Benang merahnya cuma satu: kami. Silakan lihat.',
       status: { live: 'Live', building: 'Sedang dibangun' }
+    },
+    proofStrip: {
+      aria: 'Angka yang bisa Anda cek',
+      portfolio: 'produk di portofolio',
+      live: 'live hari ini',
+      components: 'komponen UI open source'
     },
     products: {
       zoyya: {
