@@ -1560,6 +1560,17 @@ a.ef-btn--secondary:hover {
   color: var(--text-muted);
 }
 
+.plist-row--building {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.plist-name .ef-badge,
+.stage-panel h3 .ef-badge {
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
 .flywheel-cell {
   display: flex;
   align-items: flex-start;
