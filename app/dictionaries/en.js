@@ -272,6 +272,34 @@ const en = {
     foundersTitleEm: 'hands-on',
     foundersTitleB: '.',
     foundersLede: 'Decisions stay close to the products. These two are still in the code and the details every day.',
+    caseTitleA: 'Proof beats',
+    caseTitleEm: 'promises',
+    caseTitleB: '.',
+    caseLede: "One principle runs through everything here: nothing gets announced before it ships. These are the products that are live today, told the same way we judge them ourselves: the problem, what we built, and what you can check right now.",
+    caseLabels: { problem: 'The problem', solution: 'What we built', result: 'Where it stands' },
+    cases: [
+      {
+        name: 'Meridian',
+        href: 'https://meridian.efolusi.com',
+        problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
+        solution: 'One open-source design system: 109 React components and 177 tokens, no build step, MIT licensed.',
+        result: 'Every Efolusi product runs on it, including this site. The code is public, so you can judge it yourself.'
+      },
+      {
+        name: 'EarthOS',
+        href: 'https://earthos.efolusi.com',
+        problem: "Live data about Earth (satellites, aircraft, earthquakes, storms) is scattered across dozens of sources with nothing tying it together.",
+        solution: 'A real-time 3D digital twin of Earth in the browser, where every data source is a plugin on one globe.',
+        result: 'Over 100,000 live objects rendered at 60fps, open source, running in a browser tab today.'
+      },
+      {
+        name: 'ZOYYA',
+        href: 'https://zoyya.xyz',
+        problem: 'Most AI assistants wait to be told every step, which makes them a second job instead of help.',
+        solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
+        result: 'Live at zoyya.xyz, and the assistant we use for our own work every day.'
+      }
+    ],
     paperTitleA: 'The company',
     paperTitleEm: 'on paper',
     paperTitleB: '.',

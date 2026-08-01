@@ -1598,6 +1598,32 @@ a.ef-btn--secondary:hover {
   overflow-wrap: anywhere;
 }
 
+/* About page: case studies for the live products */
+
+.case-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-lg);
+}
+
+.case-k {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.case-p {
+  margin-top: 4px;
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--text-secondary);
+}
+
 /* ---------- Careers page ---------- */
 
 .perk .tick {

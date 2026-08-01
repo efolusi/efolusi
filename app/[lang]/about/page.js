@@ -101,6 +101,34 @@ export default async function AboutPage({ params }) {
         <div className="wrap">
           <div className="csec-head">
             <h2>
+              {d.caseTitleA} <span className="script accent">{d.caseTitleEm}</span>
+              {d.caseTitleB}
+            </h2>
+            <p className="section-lede">{d.caseLede}</p>
+          </div>
+
+          <div className="ruled-cells case-cells" data-cols="3" style={{ marginTop: 40 }}>
+            {d.cases.map((c) => (
+              <div className="case-card" key={c.name}>
+                <a className="case-name" href={c.href} target="_blank" rel="noopener noreferrer">
+                  {c.name} <Icon name="arrow-up-right" size={14} />
+                </a>
+                <div className="case-k">{d.caseLabels.problem}</div>
+                <p className="case-p">{c.problem}</p>
+                <div className="case-k">{d.caseLabels.solution}</div>
+                <p className="case-p">{c.solution}</p>
+                <div className="case-k">{d.caseLabels.result}</div>
+                <p className="case-p">{c.result}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="csec csec--rule">
+        <div className="wrap">
+          <div className="csec-head">
+            <h2>
               {d.paperTitleA} <span className="script accent">{d.paperTitleEm}</span>
               {d.paperTitleB}
             </h2>

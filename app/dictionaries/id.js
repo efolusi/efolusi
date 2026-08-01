@@ -272,6 +272,34 @@ const id = {
     foundersTitleEm: 'turun tangan langsung',
     foundersTitleB: '.',
     foundersLede: 'Keputusan tetap dekat dengan produk. Mereka berdua masih menyentuh kode dan detailnya tiap hari.',
+    caseTitleA: 'Bukti mengalahkan',
+    caseTitleEm: 'janji',
+    caseTitleB: '.',
+    caseLede: 'Satu prinsip berlaku untuk semua yang ada di sini: tidak ada yang diumumkan sebelum dirilis. Ini produk-produk yang live hari ini, diceritakan dengan cara kami sendiri menilainya: masalahnya, apa yang kami bangun, dan apa yang bisa Anda cek sekarang.',
+    caseLabels: { problem: 'Masalahnya', solution: 'Yang kami bangun', result: 'Posisinya sekarang' },
+    cases: [
+      {
+        name: 'Meridian',
+        href: 'https://meridian.efolusi.com',
+        problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
+        solution: 'Satu design system open source: 109 komponen React dan 177 token, tanpa build step, berlisensi MIT.',
+        result: 'Semua produk Efolusi berjalan di atasnya, termasuk situs ini. Kodenya publik, silakan nilai sendiri.'
+      },
+      {
+        name: 'EarthOS',
+        href: 'https://earthos.efolusi.com',
+        problem: 'Data live tentang bumi (satelit, pesawat, gempa, badai) terpencar di puluhan sumber tanpa ada yang menyatukan.',
+        solution: 'Digital twin 3D bumi secara real-time di browser, dengan tiap sumber data sebagai plugin di satu globe.',
+        result: 'Lebih dari 100.000 objek live dirender 60fps, open source, berjalan di tab browser hari ini.'
+      },
+      {
+        name: 'ZOYYA',
+        href: 'https://zoyya.xyz',
+        problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
+        solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
+        result: 'Live di zoyya.xyz, dan asisten yang kami pakai sendiri untuk kerja tiap hari.'
+      }
+    ],
     paperTitleA: 'Perusahaan',
     paperTitleEm: 'di atas kertas',
     paperTitleB: '.',
