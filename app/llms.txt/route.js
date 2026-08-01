@@ -33,6 +33,9 @@ const BODY = `# Efolusi
 - Token name: EFOLUSI. Symbol: EFO. Decimals: 18. Total supply: 100,000,000,000.
 - Trades in the EFO/USDT pool on Uniswap v4.
 - The address above is the only official one. Any other address is not ours.
+- Allocation: 50% liquidity pool, 30% TRADY-to-EFO migration, 15% team (locked), 5% burned.
+- Buyback and burn, verifiable on-chain: subscriptions across Efolusi products are paid in ordinary money, a portion of revenue buys EFO back from the open market via the dev wallet (0x23bb2435a859ec52736bab3180806b8c7ae85fc6), and bought-back EFO is sent to the burn address (0x000000000000000000000000000000000000dEaD). Revenue wallet: 0x0297e732858a4d99f5e6aa5ec72fb9f715396f4e. Live figures are read from the chain on https://efolusi.com/en/token.
+- Nobody is ever required to pay in EFO; every product works without it.
 - EFO is not an investment product and nothing published by Efolusi is financial advice.
 
 ## Pages

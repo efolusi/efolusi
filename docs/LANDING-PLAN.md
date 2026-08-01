@@ -8,6 +8,7 @@ Status: draft, 2026-08-01. Anak dari docs/STRATEGY.md (strategi operasi 10 tahun
 2. Halaman /token tetap satu-satunya sumber resmi soal EFO, hanya memuat yang sudah live dan terverifikasi on-chain.
 3. Setiap klaim di situs harus punya bukti (link BscScan, produk yang bisa dipakai, bar live). Tidak ada "coming soon" tanpa tanggal.
 4. Semua perubahan dua bahasa (en/id) sejak commit pertama, ikut pola dictionary yang ada.
+5. llms.txt wajib 100% sinkron dengan informasi yang dipublikasikan situs: setiap perubahan fakta di halaman mana pun (terutama /token) harus tercermin di llms.txt dalam commit yang sama, dan llms.txt tidak boleh memuat klaim yang tidak ada di situs.
 
 ## Fase 1, Kredibilitas produk (minggu 1-2)
 
