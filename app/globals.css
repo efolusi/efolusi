@@ -1465,6 +1465,104 @@ a.ef-btn--secondary:hover {
   margin-top: 8px;
 }
 
+/* Tokenomics allocation bars */
+
+.nomics {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nomics-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.nomics-label {
+  font-weight: var(--weight-semibold);
+}
+
+.nomics-share {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.nomics-track,
+.bb-track {
+  margin-top: 8px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border-default);
+  overflow: hidden;
+}
+
+.nomics-fill,
+.bb-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.nomics-note {
+  margin-top: 6px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+/* Buyback & burn live bars */
+
+.bb-row + .bb-row {
+  margin-top: 24px;
+}
+
+.bb-row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+}
+
+.bb-label {
+  font-weight: var(--weight-semibold);
+}
+
+.bb-value {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.bb-pct {
+  color: var(--text-muted);
+}
+
+.bb-fill--burned {
+  background: var(--brand-500);
+}
+
+.bb-fill--buyback {
+  background: var(--brand-300);
+}
+
+.bb-note {
+  margin-top: 14px;
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.bb-addr {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  overflow-wrap: anywhere;
+}
+
 /* ---------- Careers page ---------- */
 
 .perk .tick {

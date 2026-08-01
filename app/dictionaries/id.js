@@ -374,6 +374,31 @@ const id = {
       contractTitle: 'Kontrak di BscScan',
       contractDesc: 'Holder, transfer, dan source terverifikasi'
     },
+    nomicsTitleA: 'Ke mana pasokan',
+    nomicsTitleEm: 'dialokasikan',
+    nomicsTitleB: '.',
+    nomicsLede: 'Begini alokasi 100 miliar EFO. Sengaja dibuat sederhana, dan bisa diverifikasi on-chain.',
+    allocations: [
+      ['Liquidity pool', 50, 'Dipasangkan dengan USDT di pool Uniswap v4'],
+      ['Migrasi TRADY ke EFO', 30, 'Dicadangkan untuk holder yang migrasi dari TRADY ke EFO'],
+      ['Tim, terkunci', 15, 'Alokasi tim dalam status lock'],
+      ['Dibakar', 5, 'Dikirim ke alamat burn, keluar dari peredaran secara permanen']
+    ],
+    bbTitleA: 'Buyback dan burn,',
+    bbTitleEm: 'live',
+    bbTitleB: '.',
+    bbLede: 'Pendapatan dipakai untuk buyback lewat dev wallet, dan EFO hasil buyback dibakar. Bar di bawah dibaca langsung dari chain setiap kali halaman ini dibuka, bukan diketik oleh kami.',
+    bbBurned: 'Sudah dibakar',
+    bbBuyback: 'Wallet buyback',
+    bbOfSupply: 'dari total pasokan',
+    bbLoading: 'Membaca dari chain…',
+    bbError: 'Chain sedang tidak bisa dihubungi. Tautan di bawah selalu berfungsi.',
+    bbUpdated: 'Dibaca live dari BNB Smart Chain',
+    bbWallets: [
+      ['Dev wallet (buyback & burn)', '0x23bb2435a859ec52736bab3180806b8c7ae85fc6'],
+      ['Wallet pendapatan', '0x0297e732858a4d99f5e6aa5ec72fb9f715396f4e'],
+      ['Alamat burn', '0x000000000000000000000000000000000000dEaD']
+    ],
     utilTitleA: 'Utilitas, didokumentasikan',
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',

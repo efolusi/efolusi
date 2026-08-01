@@ -2,6 +2,7 @@ import { Badge, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
+import BuybackBurn from '../../components/BuybackBurn.jsx';
 
 const CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 const POOL = '0xd604ddcd9aed73a761afe65ccc931a608fe36ede3478e71128b6633c5ec503f4';
@@ -108,6 +109,47 @@ export default async function TokenPage({ params }) {
               <Icon name="arrow-up-right" size={16} />
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="csec csec--rule">
+        <div className="wrap">
+          <div className="csec-head">
+            <h2>
+              {d.nomicsTitleA} <span className="script accent">{d.nomicsTitleEm}</span>
+              {d.nomicsTitleB}
+            </h2>
+            <p className="section-lede">{d.nomicsLede}</p>
+          </div>
+
+          <div className="nomics" style={{ maxWidth: 760, margin: '36px auto 0' }}>
+            {d.allocations.map(([label, share, note]) => (
+              <div className="nomics-row" key={label}>
+                <div className="nomics-head">
+                  <span className="nomics-label">{label}</span>
+                  <span className="nomics-share">{share}%</span>
+                </div>
+                <div className="nomics-track">
+                  <div className="nomics-fill" style={{ width: `${share}%` }} />
+                </div>
+                <p className="nomics-note">{note}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="csec csec--rule">
+        <div className="wrap">
+          <div className="csec-head">
+            <h2>
+              {d.bbTitleA} <span className="script accent">{d.bbTitleEm}</span>
+              {d.bbTitleB}
+            </h2>
+            <p className="section-lede">{d.bbLede}</p>
+          </div>
+
+          <BuybackBurn t={d} lang={lang} />
         </div>
       </section>
 

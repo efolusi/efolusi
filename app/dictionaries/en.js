@@ -374,6 +374,31 @@ const en = {
       contractTitle: 'Contract on BscScan',
       contractDesc: 'Holders, transfers, and the verified source'
     },
+    nomicsTitleA: 'Where the supply',
+    nomicsTitleEm: 'lives',
+    nomicsTitleB: '.',
+    nomicsLede: 'How the 100 billion EFO are allocated. Simple on purpose, and verifiable on-chain.',
+    allocations: [
+      ['Liquidity pool', 50, 'Paired with USDT in the Uniswap v4 pool'],
+      ['TRADY to EFO migration', 30, 'Reserved for holders migrating from TRADY to EFO'],
+      ['Team, locked', 15, 'Team allocation under lock'],
+      ['Burned', 5, 'Sent to the burn address, permanently out of circulation']
+    ],
+    bbTitleA: 'Buyback and burn,',
+    bbTitleEm: 'live',
+    bbTitleB: '.',
+    bbLede: 'Revenue funds buybacks from the dev wallet, and bought-back EFO gets burned. These bars are read straight from the chain every time you load this page, not typed in by us.',
+    bbBurned: 'Burned',
+    bbBuyback: 'Buyback wallet',
+    bbOfSupply: 'of total supply',
+    bbLoading: 'Reading from the chain…',
+    bbError: "Couldn't reach the chain right now. The links below always work.",
+    bbUpdated: 'Read live from BNB Smart Chain',
+    bbWallets: [
+      ['Dev wallet (buyback & burn)', '0x23bb2435a859ec52736bab3180806b8c7ae85fc6'],
+      ['Revenue wallet', '0x0297e732858a4d99f5e6aa5ec72fb9f715396f4e'],
+      ['Burn address', '0x000000000000000000000000000000000000dEaD']
+    ],
     utilTitleA: 'Utility, documented',
     utilTitleEm: 'before it ships',
     utilTitleB: '.',
