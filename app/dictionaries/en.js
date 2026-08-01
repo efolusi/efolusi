@@ -390,6 +390,7 @@ const en = {
     bbLede: 'Revenue funds buybacks from the dev wallet, and bought-back EFO gets burned. These bars are read straight from the chain every time you load this page, not typed in by us.',
     bbBurned: 'Burned',
     bbBuyback: 'Buyback wallet',
+    bbRevenue: 'Revenue wallet (USDT)',
     bbOfSupply: 'of total supply',
     bbLoading: 'Reading from the chain…',
     bbError: "Couldn't reach the chain right now. The links below always work.",

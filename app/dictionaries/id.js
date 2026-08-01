@@ -390,6 +390,7 @@ const id = {
     bbLede: 'Pendapatan dipakai untuk buyback lewat dev wallet, dan EFO hasil buyback dibakar. Bar di bawah dibaca langsung dari chain setiap kali halaman ini dibuka, bukan diketik oleh kami.',
     bbBurned: 'Sudah dibakar',
     bbBuyback: 'Wallet buyback',
+    bbRevenue: 'Wallet pendapatan (USDT)',
     bbOfSupply: 'dari total pasokan',
     bbLoading: 'Membaca dari chain…',
     bbError: 'Chain sedang tidak bisa dihubungi. Tautan di bawah selalu berfungsi.',

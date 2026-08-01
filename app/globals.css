@@ -1550,6 +1550,10 @@ a.ef-btn--secondary:hover {
   background: var(--brand-300);
 }
 
+.bb-fill--revenue {
+  background: var(--success-300);
+}
+
 .bb-note {
   margin-top: 14px;
   font-size: var(--text-sm);
