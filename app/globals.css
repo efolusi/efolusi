@@ -1560,6 +1560,37 @@ a.ef-btn--secondary:hover {
   color: var(--text-muted);
 }
 
+.flywheel-cell {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.flywheel-cell .nm {
+  font-weight: var(--weight-semibold);
+}
+
+.flywheel-cell .ro {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.flywheel-step {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid var(--border-default);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--accent);
+}
+
 .bb-addr {
   display: inline-flex;
   align-items: center;

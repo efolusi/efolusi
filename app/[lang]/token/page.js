@@ -162,6 +162,18 @@ export default async function TokenPage({ params }) {
             </h2>
             <p className="section-lede">{d.utilLede}</p>
           </div>
+
+          <div className="ruled-cells flywheel-cells" data-cols="3" style={{ marginTop: 40 }}>
+            {d.flywheel.map(([title, body], i) => (
+              <div className="flywheel-cell" key={title}>
+                <div className="flywheel-step">{i + 1}</div>
+                <div>
+                  <div className="nm">{title}</div>
+                  <div className="ro">{body}</div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

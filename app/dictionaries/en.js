@@ -404,6 +404,11 @@ const en = {
     utilTitleEm: 'before it ships',
     utilTitleB: '.',
     utilLede: "We wire EFO into our products one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live, never before. We'd rather show you something that works than talk about something that might.",
+    flywheel: [
+      ['Products earn revenue', 'Subscriptions across the Efolusi ecosystem are paid in ordinary money. Nobody is ever required to pay in EFO.'],
+      ['Revenue funds buybacks', 'A portion of what the business earns buys EFO back from the open market, from the dev wallet listed above.'],
+      ['Buybacks get burned', 'Bought-back EFO is sent to the burn address, permanently out of circulation. The bars above track it live.']
+    ],
     faqTitleA: 'Straight',
     faqTitleEm: 'answers',
     faqTitleB: '.',

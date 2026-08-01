@@ -404,6 +404,11 @@ const id = {
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',
     utilLede: 'Kami menyambungkan EFO ke produk-produk kami sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
+    flywheel: [
+      ['Produk menghasilkan pendapatan', 'Subscription di seluruh ekosistem Efolusi dibayar dengan uang biasa. Tidak ada yang diwajibkan membayar pakai EFO.'],
+      ['Pendapatan mendanai buyback', 'Sebagian hasil bisnis dipakai membeli kembali EFO dari pasar terbuka, lewat dev wallet yang tercantum di atas.'],
+      ['Hasil buyback dibakar', 'EFO hasil buyback dikirim ke alamat burn, keluar dari peredaran secara permanen. Bar di atas mencatatnya secara live.']
+    ],
     faqTitleA: 'Jawaban',
     faqTitleEm: 'lugas',
     faqTitleB: '.',
