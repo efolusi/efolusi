@@ -175,10 +175,9 @@ const id = {
       body: 'Kami suka orang yang membangun hal berguna. Sapa kami, walau belum ada posisi di bawah yang pas buat Anda.',
       reachOut: 'Tanya soal posisi',
       roles: [
-        ['Senior Go Engineer', 'Remote · Penuh waktu'],
-        ['Product Designer', 'Remote · Penuh waktu'],
+        ['Senior JavaScript Engineer', 'Remote · Penuh waktu'],
         ['AI Research Engineer', 'Remote · Penuh waktu'],
-        ['Growth Lead', 'Indonesia · Penuh waktu']
+        ['Product Designer (UI/UX)', 'Remote · Penuh waktu']
       ]
     },
     faq: {
@@ -351,10 +350,9 @@ const id = {
     hiringBody: 'Setiap lamaran dibaca oleh orang sungguhan. Ceritakan apa yang sudah Anda bangun dan apa yang ingin Anda bangun berikutnya. Portofolio atau repo selalu lebih berarti daripada CV panjang.',
     reachOut: 'Tanya soal posisi',
     roles: [
-      ['Senior Go Engineer', 'Remote · Penuh waktu'],
-      ['Product Designer', 'Remote · Penuh waktu'],
+      ['Senior JavaScript Engineer', 'Remote · Penuh waktu'],
       ['AI Research Engineer', 'Remote · Penuh waktu'],
-      ['Growth Lead', 'Indonesia · Penuh waktu']
+      ['Product Designer (UI/UX)', 'Remote · Penuh waktu']
     ],
     closerA: 'Tidak menemukan',
     closerEm: 'posisi Anda',

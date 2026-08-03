@@ -175,10 +175,9 @@ const en = {
       body: 'We like people who build things that help. Say hello, even if none of the roles below fit you yet.',
       reachOut: 'Ask about a role',
       roles: [
-        ['Senior Go Engineer', 'Remote · Full-time'],
-        ['Product Designer', 'Remote · Full-time'],
+        ['Senior JavaScript Engineer', 'Remote · Full-time'],
         ['AI Research Engineer', 'Remote · Full-time'],
-        ['Growth Lead', 'Indonesia · Full-time']
+        ['Product Designer (UI/UX)', 'Remote · Full-time']
       ]
     },
     faq: {
@@ -351,10 +350,9 @@ const en = {
     hiringBody: "A person reads every application. Tell us what you've built and what you want to build next. A portfolio or a repo beats a long CV every time.",
     reachOut: 'Ask about a role',
     roles: [
-      ['Senior Go Engineer', 'Remote · Full-time'],
-      ['Product Designer', 'Remote · Full-time'],
+      ['Senior JavaScript Engineer', 'Remote · Full-time'],
       ['AI Research Engineer', 'Remote · Full-time'],
-      ['Growth Lead', 'Indonesia · Full-time']
+      ['Product Designer (UI/UX)', 'Remote · Full-time']
     ],
     closerA: "Don't see",
     closerEm: 'your role',
