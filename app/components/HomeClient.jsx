@@ -434,7 +434,7 @@ export default function HomeClient({ d, common, lang }) {
                   <span className="founder-socials">
                     {socials.map(([label, href]) => (
                       <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
-                        <SocialIcon name={label} size={16} />
+                        <SocialIcon name={label} />
                       </a>
                     ))}
                   </span>
