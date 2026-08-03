@@ -81,67 +81,67 @@ const id = {
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
-        desc: 'Asisten AI yang benar-benar mengerjakan pekerjaannya. Beri ia sebuah tujuan, ia yang menyusun langkahnya, bukan menunggu Anda menjabarkan satu per satu.',
+        desc: 'Asisten AI yang enak diajak kerja. Bilang saja mau ke mana, dia yang memikirkan jalannya; Anda tidak perlu menyuapi langkah satu per satu.',
         specs: ['Otonom', 'Paham konteks', 'Mandiri'],
         buttonLabel: 'Kunjungi ZOYYA',
         tag: 'AI',
-        summary: 'Asisten AI yang menerima tujuan lalu menyusun sendiri langkah-langkahnya.'
+        summary: 'Bilang tujuannya, dia yang memikirkan langkah-langkahnya.'
       },
       komando: {
         section: 'Infrastruktur Cloud',
-        desc: 'Satu tempat untuk menjalankan infrastruktur Anda. Semua server, deployment, pipeline, dan alert dalam satu tampilan.',
+        desc: 'Biar urusan server tidak lagi bikin deg-degan. Semua server, deployment, pipeline, dan alert kumpul rapi di satu layar, jadi masalah kelihatan sebelum sempat membesar.',
         specs: ['Terpusat', 'Terlihat penuh', 'Satu layar'],
         buttonLabel: 'Kunjungi Komando',
         tag: 'Infrastruktur',
-        summary: 'Jalankan semua server, deployment, dan alert dari satu tempat.'
+        summary: 'Semua server, deployment, dan alert kumpul rapi di satu tempat.'
       },
       toolips: {
         section: 'Produktivitas',
-        desc: 'Lebih dari 100 alat untuk konversi, kompres, edit, dan ekspor file. Tanpa akun, tanpa langganan, selalu ada.',
+        desc: 'Untuk kerjaan kecil yang suka muncul tiba-tiba: konversi, kompres, edit, ekspor. Lebih dari 100 alat, buka langsung pakai. Tanpa akun, tanpa langganan.',
         specs: ['100+ alat', 'Tanpa akun', 'Selalu gratis'],
         buttonLabel: 'Kunjungi Toolips',
         tag: 'Produktivitas',
-        summary: '100+ alat untuk konversi, kompres, edit, dan ekspor. Tanpa akun, gratis.'
+        summary: '100+ alat file yang langsung bisa dipakai. Tanpa akun, gratis.'
       },
       trady: {
         section: 'Pembuatan Konten',
-        desc: 'Kasih sebuah brief, terima kampanye yang sudah jadi: teks, audio, video, dan gambar, semua dalam satu tempat. Hitungan jam, bukan minggu.',
+        desc: 'Tulis brief-nya saja, sisanya biar Trady. Teks, audio, video, dan gambar pulang sebagai satu kampanye utuh, dalam hitungan jam, bukan minggu.',
         specs: ['Teks + Audio', 'Video + Gambar', 'Satu alur'],
         buttonLabel: 'Kunjungi Trady',
         tag: 'Konten',
-        summary: 'Kasih sebuah brief, terima kampanye yang sudah jadi: teks, audio, video, dan gambar.'
+        summary: 'Dari satu brief jadi kampanye utuh: teks, audio, video, gambar.'
       },
       kongkow: {
         section: 'Media Sosial',
-        desc: 'Posting sekali, langsung tayang ke Facebook, Instagram, TikTok, YouTube, LinkedIn, X, dan 20+ platform lain sekaligus.',
+        desc: 'Capek menempel konten yang sama ke sepuluh aplikasi? Posting sekali di sini, tayang serentak ke Facebook, Instagram, TikTok, YouTube, LinkedIn, X, dan 20+ platform lain.',
         specs: ['20+ platform', 'Sekali posting', 'Satu pusat'],
         buttonLabel: 'Kunjungi Kongkow',
         tag: 'Sosial',
-        summary: 'Posting sekali, tayang ke 20+ platform media sosial sekaligus.'
+        summary: 'Posting sekali, tayang serentak di 20+ platform.'
       },
       cuwan: {
         section: 'Trading Otomatis',
-        desc: 'Satu dashboard untuk 100+ market CEX dan DEX. Pasang strategi, lalu biarkan berjalan sepanjang waktu.',
+        desc: 'Pasang strategi, biarkan dia yang begadang. Berjalan di 100+ market CEX dan DEX, sepanjang waktu tanpa jeda.',
         specs: ['100+ market', 'CEX + DEX', '24/7'],
         buttonLabel: 'Kunjungi Cuwan',
         tag: 'Trading',
-        summary: 'Trading otomatis di 100+ market CEX dan DEX, berjalan 24/7.'
+        summary: 'Pasang strategi sekali, jalan sendiri di 100+ market, 24/7.'
       },
       meridian: {
         section: 'Sistem Desain',
-        desc: 'Design system open-source di balik tiap produk Efolusi. 109 komponen React dan 177 token, tanpa build. Situs ini pun berjalan di atasnya.',
+        desc: 'Alasan semua produk kami terasa satu keluarga. Design system open source, 109 komponen React dan 177 token, tanpa build step. Situs yang sedang Anda baca ini pun memakainya.',
         specs: ['109 komponen', 'Tanpa build', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
-        summary: 'Design system open-source kami. 109 komponen React dan 177 token, tanpa build.'
+        summary: 'Design system open source di balik semua produk kami, termasuk situs ini.'
       },
       earthos: {
         section: 'Geospasial',
-        desc: 'Tampilan 3D Bumi secara real-time di browser. Satelit, pesawat, gempa, dan badai dalam satu bola dunia, lebih dari 100.000 objek di 60fps. Tiap sumber data adalah plugin.',
+        desc: 'Bumi, live, di tab browser Anda. Satelit, pesawat, gempa, dan badai bergerak bersama di satu bola dunia, 100.000+ objek pada 60fps, dan tiap sumber data tinggal dicolok sebagai plugin.',
         specs: ['3D real-time', 'Berbasis plugin', 'Open source'],
         buttonLabel: 'Kunjungi EarthOS',
         tag: 'Geospasial',
-        summary: 'Tampilan 3D Bumi real-time, dengan satelit, penerbangan, dan cuaca live dalam satu bola dunia.'
+        summary: 'Bumi secara live di browser: satelit, penerbangan, dan cuaca di satu bola dunia.'
       }
     },
     team: {

@@ -81,67 +81,67 @@ const en = {
     products: {
       zoyya: {
         section: 'Artificial Intelligence',
-        desc: 'An AI assistant that actually does the work. Give it a goal and it works out the steps itself, instead of waiting for you to spell out every one.',
+        desc: "An AI assistant that's easy to work with. Tell it where you're headed and it figures out the route; no spoon-feeding every step.",
         specs: ['Autonomous', 'Context-aware', 'Self-directed'],
         buttonLabel: 'Visit ZOYYA',
         tag: 'AI',
-        summary: 'An AI assistant that takes a goal and figures out the steps itself.'
+        summary: 'Tell it the goal; it works out the steps on its own.'
       },
       komando: {
         section: 'Cloud Infrastructure',
-        desc: 'One place to run your infrastructure. Every server, deployment, pipeline, and alert in a single view.',
+        desc: 'So servers stop making you nervous. Every server, deployment, pipeline, and alert sits together on one screen, where trouble shows up before it grows.',
         specs: ['Unified', 'Full visibility', 'Single pane'],
         buttonLabel: 'Visit Komando',
         tag: 'Infrastructure',
-        summary: 'Run every server, deployment, and alert from one place.'
+        summary: 'Every server, deployment, and alert, tidy on one screen.'
       },
       toolips: {
         section: 'Productivity',
-        desc: 'Over 100 tools to convert, compress, edit, and export files. No account, no subscription, always there.',
+        desc: 'For the little jobs that pop up out of nowhere: convert, compress, edit, export. Over 100 tools you just open and use. No account, no subscription.',
         specs: ['100+ tools', 'No account', 'Always free'],
         buttonLabel: 'Visit Toolips',
         tag: 'Productivity',
-        summary: '100+ tools to convert, compress, edit, and export. No account, free.'
+        summary: '100+ file tools you just open and use. No account, free.'
       },
       trady: {
         section: 'Content Generation',
-        desc: 'Hand it a brief and get back a finished campaign: text, audio, video, and images, all in one place. Hours, not weeks.',
+        desc: 'Write the brief, let Trady handle the rest. Text, audio, video, and images come back as one finished campaign, in hours instead of weeks.',
         specs: ['Text + Audio', 'Video + Image', 'One workflow'],
         buttonLabel: 'Visit Trady',
         tag: 'Content',
-        summary: 'Hand it a brief, get back a finished campaign across text, audio, video, and image.'
+        summary: 'One brief in, one finished campaign out: text, audio, video, image.'
       },
       kongkow: {
         section: 'Social Media',
-        desc: 'Publish once to Facebook, Instagram, TikTok, YouTube, LinkedIn, X, and 20+ more platforms at the same time.',
+        desc: 'Tired of pasting the same post into ten apps? Publish once here and it goes out to Facebook, Instagram, TikTok, YouTube, LinkedIn, X, and 20+ more at the same time.',
         specs: ['20+ platforms', 'Publish once', 'One center'],
         buttonLabel: 'Visit Kongkow',
         tag: 'Social',
-        summary: 'Publish once to 20+ social platforms at the same time.'
+        summary: 'Publish once; it goes out to 20+ platforms at the same time.'
       },
       cuwan: {
         section: 'Automated Trading',
-        desc: 'One dashboard for 100+ CEX and DEX markets. Set a strategy and let it run, around the clock.',
+        desc: 'Set the strategy, let it do the late nights. It runs across 100+ CEX and DEX markets, around the clock without a break.',
         specs: ['100+ markets', 'CEX + DEX', '24/7'],
         buttonLabel: 'Visit Cuwan',
         tag: 'Trading',
-        summary: 'Automated trading across 100+ CEX and DEX markets, running 24/7.'
+        summary: 'Set a strategy once; it runs across 100+ markets, 24/7.'
       },
       meridian: {
         section: 'Design System',
-        desc: 'The open-source design system behind every Efolusi product. 109 React components and 177 tokens, no build step. This site runs on it.',
+        desc: "The reason our products all feel like family. An open-source design system: 109 React components and 177 tokens, no build step. The site you're reading runs on it.",
         specs: ['109 components', 'No build step', 'MIT licensed'],
         buttonLabel: 'Visit Meridian',
         tag: 'Design',
-        summary: 'Our open-source design system. 109 React components and 177 tokens, no build step.'
+        summary: 'The open-source design system behind everything we make, this site included.'
       },
       earthos: {
         section: 'Geospatial',
-        desc: 'A real-time 3D view of Earth in the browser. Satellites, aircraft, earthquakes, and storms on one globe, over 100,000 objects at 60fps. Every data source is a plugin.',
+        desc: 'Earth, live, in a browser tab. Satellites, aircraft, earthquakes, and storms move together on one globe, 100,000+ objects at 60fps, and every data source just plugs in.',
         specs: ['Real-time 3D', 'Plugin-based', 'Open source'],
         buttonLabel: 'Visit EarthOS',
         tag: 'Geospatial',
-        summary: 'A real-time 3D view of Earth, with live satellites, flights, and weather on one globe.'
+        summary: 'Earth live in the browser: satellites, flights, and weather on one globe.'
       }
     },
     team: {
