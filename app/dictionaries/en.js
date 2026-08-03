@@ -6,6 +6,7 @@ const en = {
     nav: { portfolio: 'Portfolio', token: 'Token', company: 'Company', careers: 'Careers' },
     getInTouch: 'Get in touch',
   signIn: 'Sign in',
+    account: 'Account',
     contact: 'Contact',
     toggleMenu: 'Toggle menu',
     switchLanguage: 'Ganti ke Bahasa Indonesia',

@@ -12,6 +12,22 @@ export default function SiteHeader({ lang, t }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  /* null = signed out (default while loading, so the button never flashes
+     from "Account" back to "Sign in"). The SSO cookie lives on .efolusi.com,
+     so the accounts API can answer from this origin. */
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch('https://accounts-api.efolusi.com/api/auth/get-session', {
+      credentials: 'include',
+      signal: controller.signal
+    })
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => setUser(data?.user ?? null))
+      .catch(() => {});
+    return () => controller.abort();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
@@ -53,8 +69,11 @@ export default function SiteHeader({ lang, t }) {
             {t.langLabel}
           </Link>
           <ThemeToggle />
-          <a className="pill pill--sm pill--plain sign-in-pill" href={`https://accounts.efolusi.com/sign-in?lang=${lang}`}>
-            {t.signIn}
+          <a
+            className="pill pill--sm pill--plain sign-in-pill"
+            href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}`}
+          >
+            {user ? t.account ?? 'Account' : t.signIn}
           </a>
           <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
             {t.getInTouch}
@@ -81,8 +100,12 @@ export default function SiteHeader({ lang, t }) {
           {t.contact}
         </Link>
         {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
-        <a className="menu-signin" href={`https://accounts.efolusi.com/sign-in?lang=${lang}`} onClick={() => setMenuOpen(false)}>
-          {t.signIn}
+        <a
+          className="menu-signin"
+          href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}`}
+          onClick={() => setMenuOpen(false)}
+        >
+          {user ? t.account ?? 'Account' : t.signIn}
         </a>
       </nav>
     </header>
