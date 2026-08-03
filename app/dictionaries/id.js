@@ -329,7 +329,7 @@ const id = {
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
-        problem: 'Menjalankan strategi grid secara manual berarti menunggui chart sepanjang hari dan tetap kecolongan saat tidur.',
+        problem: 'Menjalankan grid secara manual berarti sering telat pasang order: saat harga naik atau turun dalam, kesempatan profitnya hilang.',
         solution: 'Grid bot spot yang jalan di CEX maupun DEX, disetel sendiri kalau punya pandangan atau diserahkan ke AI.',
         result: 'Live di cuwan.xyz, dan dipakai menjalankan grid-grid milik kami sendiri sepanjang waktu, 24/7 tanpa jeda.'
       }

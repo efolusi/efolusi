@@ -329,7 +329,7 @@ const en = {
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
-        problem: 'Running a grid strategy by hand means babysitting charts all day and still missing moves while you sleep.',
+        problem: 'Running a grid by hand means orders go in late: when the price swings up or down hard, the profit opportunity is already gone.',
         solution: 'A spot grid bot that runs on CEX and DEX alike, tuned by hand when you have a view or handed to the AI.',
         result: 'Live at cuwan.xyz, and running our own grids around the clock, 24/7, without a single break in between.'
       }
