@@ -76,7 +76,7 @@ const id = {
       headA: 'Produk kami,',
       headEm: 'satu portofolio',
       headB: '.',
-      lede: 'Tiap produk berdiri sendiri, dengan penggunanya sendiri. Benang merahnya cuma satu: kami. Silakan lihat.'
+      lede: 'Tiap produk hidup sendiri-sendiri, punya penggunanya masing-masing. Yang menyatukan semuanya ya kami, orang-orang yang sama di baliknya. Lihat-lihat saja dulu.'
     },
     products: {
       zoyya: {

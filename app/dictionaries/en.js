@@ -76,7 +76,7 @@ const en = {
       headA: 'Our products,',
       headEm: 'one portfolio',
       headB: '.',
-      lede: 'Each one stands on its own, with its own users. The thread between them is us. Have a look.'
+      lede: 'Each one lives its own life, with its own users. The common thread is us, the same people behind all of them. Have a look around.'
     },
     products: {
       zoyya: {
