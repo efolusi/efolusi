@@ -2,6 +2,7 @@ import { Avatar, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
+import { SocialIcon } from '../../lib/social-icons.js';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -17,7 +18,14 @@ export async function generateMetadata({ params }) {
 }
 
 const leadership = [
-  ['Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
+  [
+    'Sugeng Agung Suganda',
+    'Founder & Chief Executive Officer',
+    [
+      ['LinkedIn', 'https://linkedin.com/in/sgnd'],
+      ['GitHub', 'https://github.com/sgnd']
+    ]
+  ],
   ['Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
@@ -84,13 +92,22 @@ export default async function AboutPage({ params }) {
           </div>
 
           <div className="founders founders--light">
-            {leadership.map(([name, role]) => (
+            {leadership.map(([name, role, socials]) => (
               <div className="founder" key={name}>
                 <span className="founder-blob">
                   <Avatar name={name} size={84} />
                 </span>
                 <span className="nm">{name}</span>
                 <span className="ro">{role}</span>
+                {socials ? (
+                  <span className="founder-socials">
+                    {socials.map(([label, href]) => (
+                      <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                        <SocialIcon name={label} size={16} />
+                      </a>
+                    ))}
+                  </span>
+                ) : null}
               </div>
             ))}
           </div>

@@ -3,6 +3,14 @@
 import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 
+import { SocialIcon } from '../lib/social-icons.js';
+
+const SOCIALS = [
+  ['LinkedIn', 'https://linkedin.com/company/efolusi'],
+  ['GitHub', 'https://github.com/efolusi'],
+  ['X', 'https://x.com/efolusicom']
+];
+
 export default function SiteFooter({ lang, t }) {
   const base = `/${lang}`;
 
@@ -16,6 +24,13 @@ export default function SiteFooter({ lang, t }) {
               Efolusi
             </Link>
             <p className="tag-line">{t.footer.tagline}</p>
+            <div className="footer-socials">
+              {SOCIALS.map(([label, href]) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                  <SocialIcon name={label} />
+                </a>
+              ))}
+            </div>
             <a className="footer-mail" href="mailto:hi@efolusi.com">
               <Icon name="mail" size={15} /> hi@efolusi.com
             </a>

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Accordion, Avatar, Badge, Button, CopyField, Icon, Input, StatusDot, Tag, Textarea } from '@efolusi/meridian';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
+import { SocialIcon } from '../lib/social-icons.js';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
@@ -21,7 +22,14 @@ const productMeta = [
 ];
 
 const leadership = [
-  ['Sugeng Agung Suganda', 'Founder & Chief Executive Officer'],
+  [
+    'Sugeng Agung Suganda',
+    'Founder & Chief Executive Officer',
+    [
+      ['LinkedIn', 'https://linkedin.com/in/sgnd'],
+      ['GitHub', 'https://github.com/sgnd']
+    ]
+  ],
   ['Rakha Febryza Rasendriya', 'Co-founder']
 ];
 
@@ -415,13 +423,22 @@ export default function HomeClient({ d, common, lang }) {
           </p>
 
           <div className="founders reveal">
-            {leadership.map(([name, role]) => (
+            {leadership.map(([name, role, socials]) => (
               <div className="founder" key={name}>
                 <span className="founder-blob">
                   <Avatar name={name} size={84} />
                 </span>
                 <span className="nm">{name}</span>
                 <span className="ro">{role}</span>
+                {socials ? (
+                  <span className="founder-socials">
+                    {socials.map(([label, href]) => (
+                      <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                        <SocialIcon name={label} size={16} />
+                      </a>
+                    ))}
+                  </span>
+                ) : null}
               </div>
             ))}
           </div>

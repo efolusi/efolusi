@@ -1600,6 +1600,45 @@ a.ef-btn--secondary:hover {
   overflow-wrap: anywhere;
 }
 
+/* Company social links in the footer brand column. */
+.footer-socials {
+  display: flex;
+  gap: 14px;
+  margin: 10px 0 4px;
+}
+
+.footer-socials a {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.footer-socials a:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+/* Founder social links, under the role line. Inherit the band's text color
+   on the dark band and the page color on /about. */
+.founder-socials {
+  display: inline-flex;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.founder-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-sm);
+  color: inherit;
+  opacity: 0.75;
+}
+
+.founder-socials a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
 /* About page: case studies for the live products */
 
 .case-name {
