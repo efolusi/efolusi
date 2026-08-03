@@ -288,7 +288,7 @@ const id = {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
-        solution: 'Satu design system open source: 109 komponen React dan 177 token, tanpa build step, berlisensi MIT.',
+        solution: 'Design system open source: 109 komponen React, 177 token, 9 block siap pakai, tanpa build step, MIT.',
         result: 'Semua produk Efolusi berjalan di atasnya, termasuk situs ini. Kodenya publik, silakan nilai sendiri.'
       },
       {
@@ -303,35 +303,35 @@ const id = {
         href: 'https://komando.efolusi.com',
         problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
         solution: 'Satu layar untuk semua server, deployment, pipeline, dan alert, supaya masalah kelihatan sebelum membesar.',
-        result: 'Sedang kami kerjakan, dipakai internal dulu sebelum dibuka.'
+        result: 'Live di komando.efolusi.com, mengawasi infrastruktur kami sendiri tiap hari.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan.',
         solution: 'Lebih dari 100 alat file yang langsung dipakai di browser, tanpa akun dan tanpa langganan.',
-        result: 'Sedang kami kerjakan; belum bisa diakses hari ini.'
+        result: 'Live di toolips.xyz, gratis dan tanpa akun.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'Satu video panjang berisi konten seminggu, tapi memotongnya manual menghabiskan semalaman.',
         solution: 'Pemotong otomatis: video panjang masuk, klip-klip pendek bercaption keluar, tinggal pilih.',
-        result: 'Sedang kami kerjakan; belum dirilis.'
+        result: 'Live di trady.efolusi.com, memotong video kami sendiri lebih dulu.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'Konten yang sama harus ditempel ulang ke banyak platform, satu per satu, tiap hari.',
         solution: 'Posting sekali, tayang serentak ke 20+ platform media sosial.',
-        result: 'Sedang kami kerjakan; belum dirilis.'
+        result: 'Live di kongkow.xyz, dipakai untuk kanal kami sendiri.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Menjalankan grid trading manual berarti menunggui chart sepanjang hari.',
         solution: 'Grid bot spot untuk CEX dan DEX, disetel sendiri atau oleh AI.',
-        result: 'Sedang kami kerjakan; belum dirilis.'
+        result: 'Live di cuwan.xyz, menjalankan grid kami sendiri 24/7.'
       }
     ],
     paperTitleA: 'Perusahaan',

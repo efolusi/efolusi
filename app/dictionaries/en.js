@@ -288,7 +288,7 @@ const en = {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
-        solution: 'One open-source design system: 109 React components and 177 tokens, no build step, MIT licensed.',
+        solution: 'An open-source design system: 109 React components, 177 tokens, 9 ready-made blocks, no build step, MIT.',
         result: 'Every Efolusi product runs on it, including this site. The code is public, so you can judge it yourself.'
       },
       {
@@ -303,35 +303,35 @@ const en = {
         href: 'https://komando.efolusi.com',
         problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
         solution: 'One screen for every server, deployment, pipeline, and alert, so trouble shows up before it grows.',
-        result: "In the works; we're running it internally before opening it up."
+        result: 'Live at komando.efolusi.com, watching our own infrastructure every day.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
         solution: 'Over 100 file tools you use right in the browser, no account and no subscription.',
-        result: "In the works; not reachable today."
+        result: 'Live at toolips.xyz, free and with no account needed.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'One long video holds a week of content, but cutting it by hand eats a whole evening.',
         solution: 'An automatic cutter: long video in, short captioned clips out, you just pick.',
-        result: 'In the works; not released yet.'
+        result: 'Live at trady.efolusi.com, cutting our own videos first.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'The same content had to be pasted into platform after platform, every single day.',
         solution: 'Publish once and it goes out to 20+ social platforms at the same time.',
-        result: 'In the works; not released yet.'
+        result: 'Live at kongkow.xyz, running our own channels.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Running a grid strategy by hand means babysitting charts all day.',
         solution: 'A spot grid bot for CEX and DEX, tuned by hand or by the AI.',
-        result: 'In the works; not released yet.'
+        result: 'Live at cuwan.xyz, running our own grids 24/7.'
       }
     ],
     paperTitleA: 'The company',
