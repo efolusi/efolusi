@@ -188,23 +188,23 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau perlu untuk dokumen.'
+          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau kamu perlu untuk dokumen kerjasama.'
         ],
         [
           'Kalian berbasis di mana?',
-          'Di Indonesia. Timnya tersebar dan kerjanya online, dan produknya memang dibuat supaya bisa dibuka dari mana saja.'
+          'Di Indonesia. Tim kami tersebar dan kerjanya online, dan produknya memang dibuat supaya bisa dibuka dari mana saja.'
         ],
         [
           'Sedang buka lowongan?',
-          'Lagi. Kami sedang mencari Senior JavaScript Engineer, AI Research Engineer, dan Product Designer; detailnya di halaman karier. Tidak ada yang pas? Kirim saja karya terbaik Anda, tetap kami baca.'
+          'Tentu. Kami sedang mencari Senior JavaScript Engineer, AI Research Engineer, dan Product Designer; detailnya di halaman karier. Tidak ada yang pas? Kirim saja karya terbaik Anda, akan kami baca.'
         ],
         [
           'Bagaimana kalau butuh bantuan soal produk?',
-          'Langsung saja ke situs produknya, tim di sana yang paling paham. Formulir di halaman ini untuk urusan lainnya: kerja sama, pertanyaan umum, atau sekadar menyapa.'
+          'Langsung saja ke halaman webnya, tiap produk memiliki dokumentasi dan tim support. Formulir di halaman ini untuk urusan lainnya: kerja sama, pertanyaan umum, atau sekadar menyapa.'
         ],
         [
           'Bisakah kita bekerja sama?',
-          'Bisa jadi. Ceritakan idenya lewat formulir, masih kasar juga tidak apa-apa. Yang baca manusia, bukan bot, dan kalau cocok pasti kami balas.'
+          'Bisa. Ceritakan idenya lewat formulir, masih kasar juga tidak apa-apa. Yang baca manusia, bukan bot, dan kalau cocok pasti kami balas.'
         ]
       ]
     },

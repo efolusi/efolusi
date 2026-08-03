@@ -188,23 +188,23 @@ const en = {
       items: [
         [
           'What is Efolusi?',
-          "A small software company from Indonesia. We make our own products, from AI and trading bots to an open-source design system, then use and look after them ourselves every day. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for paperwork."
+          "A small software company from Indonesia. We make our own products, from AI and trading bots to an open-source design system, then use and look after them ourselves every day. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork."
         ],
         [
           'Where are you based?',
-          "Indonesia. The team is spread out and works online, and the products are built so you can open them from anywhere."
+          "Indonesia. Our team is spread out and works online, and the products are built so you can open them from anywhere."
         ],
         [
           'Are you hiring?',
-          "We are. Right now we're looking for a Senior JavaScript Engineer, an AI Research Engineer, and a Product Designer; details are on the careers page. Nothing fits? Send us your best work anyway, we still read it."
+          "Of course. We're looking for a Senior JavaScript Engineer, an AI Research Engineer, and a Product Designer; details are on the careers page. Nothing fits? Send us your best work anyway, we'll read it."
         ],
         [
           'What if I need help with a product?',
-          "Go straight to that product's site, the team there knows it best. The form on this page is for everything else: partnerships, general questions, or just saying hi."
+          "Go straight to the product's site; each one has its own docs and support team. The form on this page is for everything else: partnerships, general questions, or just saying hi."
         ],
         [
           'Can we work together?',
-          "Could be. Tell us the idea through the form, rough is fine. A human reads it, not a bot, and if it clicks we'll write back."
+          "Sure. Tell us the idea through the form, rough is fine. A human reads it, not a bot, and if it clicks we'll write back."
         ]
       ]
     },
