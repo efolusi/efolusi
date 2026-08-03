@@ -104,12 +104,12 @@ const id = {
         summary: '100+ alat file yang langsung bisa dipakai. Tanpa akun, gratis.'
       },
       trady: {
-        section: 'Pembuatan Konten',
-        desc: 'Tulis brief-nya saja, sisanya biar Trady. Teks, audio, video, dan gambar pulang sebagai satu kampanye utuh, dalam hitungan jam, bukan minggu.',
-        specs: ['Teks + Audio', 'Video + Gambar', 'Satu alur'],
+        section: 'Daur Ulang Video',
+        desc: 'Satu video panjang itu konten seminggu, kalau ada yang sabar memotongnya. Trady yang memotong: masukkan rekamannya, terima klip-klip pendek bercaption yang siap diposting.',
+        specs: ['Video panjang masuk', 'Klip pendek keluar', 'Caption otomatis'],
         buttonLabel: 'Kunjungi Trady',
-        tag: 'Konten',
-        summary: 'Dari satu brief jadi kampanye utuh: teks, audio, video, gambar.'
+        tag: 'Video',
+        summary: 'Masukkan video panjang, terima klip pendek siap posting.'
       },
       kongkow: {
         section: 'Media Sosial',

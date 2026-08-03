@@ -104,12 +104,12 @@ const en = {
         summary: '100+ file tools you just open and use. No account, free.'
       },
       trady: {
-        section: 'Content Generation',
-        desc: 'Write the brief, let Trady handle the rest. Text, audio, video, and images come back as one finished campaign, in hours instead of weeks.',
-        specs: ['Text + Audio', 'Video + Image', 'One workflow'],
+        section: 'Video Repurposing',
+        desc: 'One long video is a week of content, if someone has the patience to cut it. Trady does the cutting: drop in a recording and get back short clips with captions, ready to post.',
+        specs: ['Long video in', 'Short clips out', 'Auto captions'],
         buttonLabel: 'Visit Trady',
-        tag: 'Content',
-        summary: 'One brief in, one finished campaign out: text, audio, video, image.'
+        tag: 'Video',
+        summary: 'Drop in a long video, get back short clips ready to post.'
       },
       kongkow: {
         section: 'Social Media',
