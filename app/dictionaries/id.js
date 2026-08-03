@@ -121,7 +121,7 @@ const id = {
       },
       cuwan: {
         section: 'Grid Trading',
-        desc: 'Grid bot spot yang jalan di mana pun Anda trading, CEX maupun DEX. Atur grid-nya sendiri kalau Anda punya pandangan, atau serahkan ke AI; dua-duanya beli dan jual sepanjang waktu tanpa jeda.',
+        desc: 'Grid bot spot yang jalan di CEX maupun DEX. Atur grid-nya sendiri atau serahkan ke AI; dia yang beli dan jual sepanjang waktu.',
         specs: ['Grid bot spot', 'AI atau manual', 'CEX + DEX'],
         buttonLabel: 'Kunjungi Cuwan',
         tag: 'Trading',
