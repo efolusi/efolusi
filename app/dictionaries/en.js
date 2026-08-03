@@ -184,27 +184,27 @@ const en = {
       headA: 'Answers to what we',
       headEm: 'hear most',
       headB: '.',
-      lede: "Didn't find it? Ask us through the form below.",
+      lede: 'Not here? The form below goes straight to us, not into a queue.',
       items: [
         [
           'What is Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and the same team keeps them running. Nothing gets thrown over a wall.'
+          "A small software company in Indonesia (legally, PT. Efolusi Dunia Teknologi). We build our own products, from AI and trading tools to an open-source design system, and the people who build them are the same people who keep them running."
         ],
         [
           'Where are you based?',
-          "We're in Indonesia and work as a distributed team. Our products get used all over, so we build them to work anywhere."
+          "Indonesia, working as a distributed team. The products get used from everywhere, so they're built to work anywhere."
         ],
         [
           'Are you hiring?',
-          'Yes. We look for people who care about how software gets built and like jumping between different problems. The contact form reaches us directly.'
+          "Right now: a Senior JavaScript Engineer, an AI Research Engineer, and a Product Designer. Details are on the careers page, and if none of them fit you but you've built something you're proud of, write anyway."
         ],
         [
           'How do I get support for a product?',
-          "Each product has its own support team. Head to that product's site for docs, help, or to reach the team."
+          "Go to that product's own site; its team answers fastest and knows it best. This form is for everything that isn't tied to one product."
         ],
         [
           'Can we work together?',
-          "We're open to it if it fits what we build. Send a proposal or a rough idea through the contact form and it comes straight to us."
+          "Quite possibly. Send a rough idea through the form, half-formed is fine, and a person will read it. If it fits what we build, we reply quickly."
         ]
       ]
     },

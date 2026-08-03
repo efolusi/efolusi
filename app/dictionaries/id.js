@@ -184,27 +184,27 @@ const id = {
       headA: 'Jawaban untuk yang',
       headEm: 'paling sering ditanya',
       headB: '.',
-      lede: 'Belum ketemu? Tanyakan langsung lewat formulir di bawah.',
+      lede: 'Belum ketemu? Formulir di bawah langsung sampai ke kami, bukan masuk antrean.',
       items: [
         [
           'Apa itu Efolusi?',
-          'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis, dan tim yang sama pula yang menjaganya tetap jalan. Tidak ada yang dilempar begitu saja ke tim lain.'
+          'Perusahaan software kecil di Indonesia (nama resminya PT. Efolusi Dunia Teknologi). Kami membangun produk kami sendiri, dari AI dan tools trading sampai design system open source, dan orang yang membangunnya adalah orang yang sama yang menjaganya tetap jalan.'
         ],
         [
           'Kalian berbasis di mana?',
-          'Kami di Indonesia dan bekerja sebagai tim terdistribusi. Produk kami dipakai orang di mana-mana, jadi kami membangunnya supaya jalan di mana saja.'
+          'Indonesia, bekerja sebagai tim terdistribusi. Produknya dipakai dari mana-mana, jadi memang dibangun supaya jalan di mana saja.'
         ],
         [
           'Sedang buka lowongan?',
-          'Ya. Kami mencari orang yang peduli pada cara software dibangun dan senang berpindah antar-masalah. Formulir kontak langsung sampai ke kami.'
+          'Saat ini: Senior JavaScript Engineer, AI Research Engineer, dan Product Designer. Detailnya ada di halaman karier, dan kalau tidak ada yang cocok tapi Anda pernah membangun sesuatu yang Anda banggakan, tulis saja.'
         ],
         [
           'Bagaimana cara mendapat dukungan untuk sebuah produk?',
-          'Tiap produk punya tim dukungannya sendiri. Kunjungi situs produk terkait untuk dokumentasi, bantuan, atau menghubungi timnya langsung.'
+          'Langsung ke situs produknya; tim di sana yang paling cepat menjawab dan paling paham. Formulir di sini untuk hal-hal yang tidak terikat ke satu produk.'
         ],
         [
           'Bisakah kita bekerja sama?',
-          'Kami terbuka, selama sejalan dengan yang kami bangun. Kirim proposal atau ide kasar lewat formulir kontak, langsung sampai ke kami.'
+          'Sangat mungkin. Kirim ide kasarnya lewat formulir, setengah jadi pun tidak apa-apa, dan akan dibaca orang sungguhan. Kalau sejalan dengan yang kami bangun, kami balas cepat.'
         ]
       ]
     },
