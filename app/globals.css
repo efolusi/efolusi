@@ -60,7 +60,9 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 16px);
+  /* Sections carry ~68px of their own top padding, so anchors may tuck part
+     of it behind the sticky nav; headings still clear the bar comfortably. */
+  scroll-padding-top: calc(var(--nav-h) - 32px);
 }
 
 /* Smooth page-to-page: cross-document view transitions where supported,
