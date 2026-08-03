@@ -188,7 +188,7 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau kamu perlu untuk dokumen kerjasama.'
+          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerjasama.'
         ],
         [
           'Kalian berbasis di mana?',
