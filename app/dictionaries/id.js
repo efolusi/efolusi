@@ -184,27 +184,27 @@ const id = {
       headA: 'Jawaban untuk yang',
       headEm: 'paling sering ditanya',
       headB: '.',
-      lede: 'Belum ketemu? Formulir di bawah langsung sampai ke kami, bukan masuk antrean.',
+      lede: 'Belum kejawab? Tulis lewat formulir di bawah, sampainya langsung ke kami.',
       items: [
         [
           'Apa itu Efolusi?',
-          'Perusahaan software kecil di Indonesia (nama resminya PT. Efolusi Dunia Teknologi). Kami membangun produk kami sendiri, dari AI dan tools trading sampai design system open source, dan orang yang membangunnya adalah orang yang sama yang menjaganya tetap jalan.'
+          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau perlu untuk dokumen.'
         ],
         [
           'Kalian berbasis di mana?',
-          'Indonesia, bekerja sebagai tim terdistribusi. Produknya dipakai dari mana-mana, jadi memang dibangun supaya jalan di mana saja.'
+          'Di Indonesia. Timnya tersebar dan kerjanya online, dan produknya memang dibuat supaya bisa dibuka dari mana saja.'
         ],
         [
           'Sedang buka lowongan?',
-          'Saat ini: Senior JavaScript Engineer, AI Research Engineer, dan Product Designer. Detailnya ada di halaman karier, dan kalau tidak ada yang cocok tapi Anda pernah membangun sesuatu yang Anda banggakan, tulis saja.'
+          'Lagi. Kami sedang mencari Senior JavaScript Engineer, AI Research Engineer, dan Product Designer; detailnya di halaman karier. Tidak ada yang pas? Kirim saja karya terbaik Anda, tetap kami baca.'
         ],
         [
-          'Bagaimana cara mendapat dukungan untuk sebuah produk?',
-          'Langsung ke situs produknya; tim di sana yang paling cepat menjawab dan paling paham. Formulir di sini untuk hal-hal yang tidak terikat ke satu produk.'
+          'Bagaimana kalau butuh bantuan soal produk?',
+          'Langsung saja ke situs produknya, tim di sana yang paling paham. Formulir di halaman ini untuk urusan lainnya: kerja sama, pertanyaan umum, atau sekadar menyapa.'
         ],
         [
           'Bisakah kita bekerja sama?',
-          'Sangat mungkin. Kirim ide kasarnya lewat formulir, setengah jadi pun tidak apa-apa, dan akan dibaca orang sungguhan. Kalau sejalan dengan yang kami bangun, kami balas cepat.'
+          'Bisa jadi. Ceritakan idenya lewat formulir, masih kasar juga tidak apa-apa. Yang baca manusia, bukan bot, dan kalau cocok pasti kami balas.'
         ]
       ]
     },

@@ -184,27 +184,27 @@ const en = {
       headA: 'Answers to what we',
       headEm: 'hear most',
       headB: '.',
-      lede: 'Not here? The form below goes straight to us, not into a queue.',
+      lede: 'Still wondering about something? The form below lands straight with us.',
       items: [
         [
           'What is Efolusi?',
-          "A small software company in Indonesia (legally, PT. Efolusi Dunia Teknologi). We build our own products, from AI and trading tools to an open-source design system, and the people who build them are the same people who keep them running."
+          "A small software company from Indonesia. We make our own products, from AI and trading bots to an open-source design system, then use and look after them ourselves every day. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for paperwork."
         ],
         [
           'Where are you based?',
-          "Indonesia, working as a distributed team. The products get used from everywhere, so they're built to work anywhere."
+          "Indonesia. The team is spread out and works online, and the products are built so you can open them from anywhere."
         ],
         [
           'Are you hiring?',
-          "Right now: a Senior JavaScript Engineer, an AI Research Engineer, and a Product Designer. Details are on the careers page, and if none of them fit you but you've built something you're proud of, write anyway."
+          "We are. Right now we're looking for a Senior JavaScript Engineer, an AI Research Engineer, and a Product Designer; details are on the careers page. Nothing fits? Send us your best work anyway, we still read it."
         ],
         [
-          'How do I get support for a product?',
-          "Go to that product's own site; its team answers fastest and knows it best. This form is for everything that isn't tied to one product."
+          'What if I need help with a product?',
+          "Go straight to that product's site, the team there knows it best. The form on this page is for everything else: partnerships, general questions, or just saying hi."
         ],
         [
           'Can we work together?',
-          "Quite possibly. Send a rough idea through the form, half-formed is fine, and a person will read it. If it fits what we build, we reply quickly."
+          "Could be. Tell us the idea through the form, rough is fine. A human reads it, not a bot, and if it clicks we'll write back."
         ]
       ]
     },
