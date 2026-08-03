@@ -280,9 +280,9 @@ const en = {
       {
         name: 'ZOYYA',
         href: 'https://zoyya.xyz',
-        problem: 'Most AI assistants wait to be told every step, which makes them a second job instead of help.',
+        problem: 'Most AI assistants wait to be told every single step, which turns them into a second job instead of actual help.',
         solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
-        result: 'Live at zoyya.xyz, and the assistant we use for our own work every day.'
+        result: 'Live at zoyya.xyz, and the assistant our whole team leans on for its day-to-day work, every single day.'
       },
       {
         name: 'Meridian',
@@ -295,43 +295,43 @@ const en = {
         name: 'EarthOS',
         href: 'https://earthos.efolusi.com',
         problem: "Live data about Earth (satellites, aircraft, earthquakes, storms) is scattered across dozens of sources with nothing tying it together.",
-        solution: 'A real-time 3D digital twin of Earth in the browser, where every data source is a plugin on one globe.',
-        result: 'Over 100,000 live objects rendered at 60fps, open source, running in a browser tab today.'
+        solution: 'A real-time 3D digital twin of Earth right in the browser, where every data source is just a plugin on one shared globe.',
+        result: 'Over 100,000 live objects rendered at 60fps, fully open source, and running in a browser tab for you today.'
       },
       {
         name: 'Komando',
         href: 'https://komando.efolusi.com',
         problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
-        solution: 'One screen for every server, deployment, pipeline, and alert, so trouble shows up before it grows.',
-        result: 'Live at komando.efolusi.com, watching our own infrastructure every day.'
+        solution: 'One screen for every server, deployment, pipeline, and alert, so trouble shows itself long before it has time to grow.',
+        result: 'Live at komando.efolusi.com, and watching over the whole of our own infrastructure every day without a break.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
-        problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
-        solution: 'Over 100 file tools you use right in the browser, no account and no subscription.',
-        result: 'Live at toolips.xyz, free and with no account needed.'
+        problem: 'Small file jobs like converting and compressing always end up on some ad-filled, tracker-heavy site you have never heard of.',
+        solution: 'Over 100 file tools you use right in the browser, with no account, no subscription, and no hassle at all.',
+        result: 'Live at toolips.xyz, free for anyone, and the place where we handle our own small file chores every week.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
-        problem: 'One long video holds a week of content, but cutting it by hand eats a whole evening.',
-        solution: 'An automatic cutter: long video in, short captioned clips out, you just pick.',
-        result: 'Live at trady.efolusi.com, cutting our own videos first.'
+        problem: 'One long video actually holds a week of content, but cutting it by hand still eats up an entire evening.',
+        solution: 'An automatic cutter: a long video goes in, short captioned clips come straight out, and you just pick the best.',
+        result: 'Live at trady.efolusi.com, and used first on our own videos, week in and week out, before anyone else.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
-        problem: 'The same content had to be pasted into platform after platform, every single day.',
-        solution: 'Publish once and it goes out to 20+ social platforms at the same time.',
-        result: 'Live at kongkow.xyz, running our own channels.'
+        problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
+        solution: 'Publish once from one place and it goes out to more than 20 social platforms at exactly the same time.',
+        result: 'Live at kongkow.xyz, and used to run all of our own social media channels across every platform, every day.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
-        problem: 'Running a grid strategy by hand means babysitting charts all day.',
-        solution: 'A spot grid bot for CEX and DEX, tuned by hand or by the AI.',
-        result: 'Live at cuwan.xyz, running our own grids 24/7.'
+        problem: 'Running a grid strategy by hand means babysitting charts all day and still missing moves while you sleep.',
+        solution: 'A spot grid bot that runs on CEX and DEX alike, tuned by hand when you have a view or handed to the AI.',
+        result: 'Live at cuwan.xyz, and running our own grids around the clock, 24/7, without a single break in between.'
       }
     ],
     paperTitleA: 'The company',

@@ -282,7 +282,7 @@ const id = {
         href: 'https://zoyya.xyz',
         problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
         solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
-        result: 'Live di zoyya.xyz, dan asisten yang kami pakai sendiri untuk kerja tiap hari.'
+        result: 'Live di zoyya.xyz, dan jadi asisten yang kami andalkan sendiri untuk pekerjaan sehari-hari di seluruh tim.'
       },
       {
         name: 'Meridian',
@@ -296,42 +296,42 @@ const id = {
         href: 'https://earthos.efolusi.com',
         problem: 'Data live tentang bumi (satelit, pesawat, gempa, badai) terpencar di puluhan sumber tanpa ada yang menyatukan.',
         solution: 'Digital twin 3D bumi secara real-time di browser, dengan tiap sumber data sebagai plugin di satu globe.',
-        result: 'Lebih dari 100.000 objek live dirender 60fps, open source, berjalan di tab browser hari ini.'
+        result: 'Lebih dari 100.000 objek live dirender 60fps, sepenuhnya open source, dan berjalan di tab browser Anda hari ini.'
       },
       {
         name: 'Komando',
         href: 'https://komando.efolusi.com',
         problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
         solution: 'Satu layar untuk semua server, deployment, pipeline, dan alert, supaya masalah kelihatan sebelum membesar.',
-        result: 'Live di komando.efolusi.com, mengawasi infrastruktur kami sendiri tiap hari.'
+        result: 'Live di komando.efolusi.com, dan mengawasi seluruh infrastruktur kami sendiri setiap hari tanpa jeda.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
-        problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan.',
-        solution: 'Lebih dari 100 alat file yang langsung dipakai di browser, tanpa akun dan tanpa langganan.',
-        result: 'Live di toolips.xyz, gratis dan tanpa akun.'
+        problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan dan pelacak.',
+        solution: 'Lebih dari 100 alat file yang langsung bisa dipakai di browser, tanpa akun, tanpa langganan, tanpa ribet.',
+        result: 'Live di toolips.xyz, gratis untuk siapa saja, dan jadi tempat kami sendiri menyelesaikan urusan file kecil.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
-        problem: 'Satu video panjang berisi konten seminggu, tapi memotongnya manual menghabiskan semalaman.',
-        solution: 'Pemotong otomatis: video panjang masuk, klip-klip pendek bercaption keluar, tinggal pilih.',
-        result: 'Live di trady.efolusi.com, memotong video kami sendiri lebih dulu.'
+        problem: 'Satu video panjang sebenarnya berisi konten untuk seminggu, tapi memotongnya secara manual menghabiskan semalaman.',
+        solution: 'Pemotong otomatis: video panjang masuk, klip-klip pendek bercaption langsung keluar, Anda tinggal memilihnya.',
+        result: 'Live di trady.efolusi.com, dan kami pakai lebih dulu untuk memotong video-video milik kami sendiri tiap minggu.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
-        problem: 'Konten yang sama harus ditempel ulang ke banyak platform, satu per satu, tiap hari.',
-        solution: 'Posting sekali, tayang serentak ke 20+ platform media sosial.',
-        result: 'Live di kongkow.xyz, dipakai untuk kanal kami sendiri.'
+        problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
+        solution: 'Posting sekali dari satu tempat, langsung tayang serentak ke lebih dari 20 platform media sosial sekaligus.',
+        result: 'Live di kongkow.xyz, dan dipakai menjalankan kanal-kanal media sosial milik kami sendiri setiap hari.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
-        problem: 'Menjalankan grid trading manual berarti menunggui chart sepanjang hari.',
-        solution: 'Grid bot spot untuk CEX dan DEX, disetel sendiri atau oleh AI.',
-        result: 'Live di cuwan.xyz, menjalankan grid kami sendiri 24/7.'
+        problem: 'Menjalankan strategi grid secara manual berarti menunggui chart sepanjang hari dan tetap kecolongan saat tidur.',
+        solution: 'Grid bot spot yang jalan di CEX maupun DEX, disetel sendiri kalau punya pandangan atau diserahkan ke AI.',
+        result: 'Live di cuwan.xyz, dan dipakai menjalankan grid-grid milik kami sendiri sepanjang waktu, 24/7 tanpa jeda.'
       }
     ],
     paperTitleA: 'Perusahaan',
