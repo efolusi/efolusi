@@ -120,12 +120,12 @@ const id = {
         summary: 'Posting sekali, tayang serentak di 20+ platform.'
       },
       cuwan: {
-        section: 'Trading Otomatis',
-        desc: 'Pasang strategi, biarkan dia yang begadang. Berjalan di 100+ market CEX dan DEX, sepanjang waktu tanpa jeda.',
-        specs: ['100+ market', 'CEX + DEX', '24/7'],
+        section: 'Grid Trading',
+        desc: 'Grid bot spot yang jalan di mana pun Anda trading, CEX maupun DEX. Tentukan rentang harganya sekali, dia yang beli dan jual di dalamnya, sepanjang waktu tanpa jeda.',
+        specs: ['Grid bot spot', 'CEX + DEX', '24/7'],
         buttonLabel: 'Kunjungi Cuwan',
         tag: 'Trading',
-        summary: 'Pasang strategi sekali, jalan sendiri di 100+ market, 24/7.'
+        summary: 'Grid bot spot untuk semua CEX dan DEX, jalan 24/7.'
       },
       meridian: {
         section: 'Sistem Desain',

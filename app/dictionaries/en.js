@@ -120,12 +120,12 @@ const en = {
         summary: 'Publish once; it goes out to 20+ platforms at the same time.'
       },
       cuwan: {
-        section: 'Automated Trading',
-        desc: 'Set the strategy, let it do the late nights. It runs across 100+ CEX and DEX markets, around the clock without a break.',
-        specs: ['100+ markets', 'CEX + DEX', '24/7'],
+        section: 'Grid Trading',
+        desc: 'A spot grid bot that runs wherever you trade, CEX or DEX. Set the price range once and it buys and sells inside it, around the clock without a break.',
+        specs: ['Spot grid bot', 'CEX + DEX', '24/7'],
         buttonLabel: 'Visit Cuwan',
         tag: 'Trading',
-        summary: 'Set a strategy once; it runs across 100+ markets, 24/7.'
+        summary: 'A spot grid bot for every CEX and DEX, running 24/7.'
       },
       meridian: {
         section: 'Design System',
