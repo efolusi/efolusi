@@ -16,6 +16,15 @@ export default function SiteHeader({ lang, t }) {
      from "Account" back to "Sign in"). The SSO cookie lives on .efolusi.com,
      so the accounts API can answer from this origin. */
   const [user, setUser] = useState(null);
+  /* Where to send the browser back to after signing in. Read from
+     window.location in an effect (this renders on the server too); until it
+     resolves, the link still works — accounts just lands on its own account
+     page instead of back here. */
+  const [returnTo, setReturnTo] = useState('');
+
+  useEffect(() => {
+    setReturnTo(encodeURIComponent(window.location.href));
+  }, []);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -71,7 +80,7 @@ export default function SiteHeader({ lang, t }) {
           <ThemeToggle />
           <a
             className="pill pill--sm pill--plain sign-in-pill"
-            href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}`}
+            href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           >
             {user ? t.account ?? 'Account' : t.signIn}
           </a>
@@ -102,7 +111,7 @@ export default function SiteHeader({ lang, t }) {
         {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
         <a
           className="menu-signin"
-          href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}`}
+          href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           onClick={() => setMenuOpen(false)}
         >
           {user ? t.account ?? 'Account' : t.signIn}
