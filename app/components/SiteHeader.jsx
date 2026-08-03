@@ -80,7 +80,8 @@ export default function SiteHeader({ lang, t }) {
         <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
           {t.contact}
         </Link>
-        <a href={`https://accounts.efolusi.com/sign-in?lang=${lang}`} onClick={() => setMenuOpen(false)}>
+        {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
+        <a className="menu-signin" href={`https://accounts.efolusi.com/sign-in?lang=${lang}`} onClick={() => setMenuOpen(false)}>
           {t.signIn}
         </a>
       </nav>

@@ -258,25 +258,32 @@ const en = {
     heroA: 'We build software,',
     heroEm: 'then run it ourselves',
     heroB: '.',
-    lede: "Efolusi is a small, self-funded software company from Indonesia. We started it to build the tools we kept wishing we had, and we've kept going the same way ever since: find a problem that annoys us, build the thing, keep it running. The legal name is PT. Efolusi Dunia Teknologi, if you ever need it.",
+    lede: "Efolusi is a small, self-funded software company from Indonesia. We started it to build the tools we kept wishing we had, and we've kept going the same way ever since: find the problem that annoys us, build the product, keep it running. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork.",
     splitTitleA: 'We take on a lot,',
     splitTitleEm: 'on purpose.',
-    splitBig: "We're not a one-thing company. When some problem keeps getting in the way, we build a product for it and let that product stand on its own.",
-    splitBody: "The rule is simple: everything has to be good enough that we'd use it ourselves. If it isn't, it doesn't go out. That's how the list grows without filling up with junk.",
-    values: ['Fewer features, done well', 'Boring beats clever', 'Grows with you', 'We answer to our users'],
+    splitBig: "We're not a one-product company. When a problem keeps getting in the way, we build a product for it and use it ourselves.",
+    splitBody: "The rule is simple: everything has to be good enough that we'd use it ourselves. If it isn't, it doesn't go out.",
+    values: ['We use it first', 'Ships when it deserves to', 'Maintained, not abandoned', 'Real problems, not trends'],
     bandA: 'Built in Indonesia,',
     bandEm: 'used',
     bandB: 'everywhere. Open our products anywhere and they work the same.',
     foundersTitleA: 'Founder-led and',
     foundersTitleEm: 'hands-on',
     foundersTitleB: '.',
-    foundersLede: 'Decisions stay close to the products. These two are still in the code and the details every day.',
+    foundersLede: 'Decisions stay close to the products. Both are hands-on, making sure every product runs the way it should.',
     caseTitleA: 'Proof beats',
     caseTitleEm: 'promises',
     caseTitleB: '.',
-    caseLede: "One principle runs through everything here: nothing gets announced before it ships. These are the products that are live today, told the same way we judge them ourselves: the problem, what we built, and what you can check right now.",
+    caseLede: "One principle runs through everything here: we only build products that are useful to us and likely useful to someone else. Each one is told the same way: the problem, what we built, and what you can check right now.",
     caseLabels: { problem: 'The problem', solution: 'What we built', result: 'Where it stands' },
     cases: [
+      {
+        name: 'ZOYYA',
+        href: 'https://zoyya.xyz',
+        problem: 'Most AI assistants wait to be told every step, which makes them a second job instead of help.',
+        solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
+        result: 'Live at zoyya.xyz, and the assistant we use for our own work every day.'
+      },
       {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
@@ -292,11 +299,39 @@ const en = {
         result: 'Over 100,000 live objects rendered at 60fps, open source, running in a browser tab today.'
       },
       {
-        name: 'ZOYYA',
-        href: 'https://zoyya.xyz',
-        problem: 'Most AI assistants wait to be told every step, which makes them a second job instead of help.',
-        solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
-        result: 'Live at zoyya.xyz, and the assistant we use for our own work every day.'
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
+        solution: 'One screen for every server, deployment, pipeline, and alert, so trouble shows up before it grows.',
+        result: "In the works; we're running it internally before opening it up."
+      },
+      {
+        name: 'Toolips',
+        href: 'https://toolips.xyz',
+        problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
+        solution: 'Over 100 file tools you use right in the browser, no account and no subscription.',
+        result: "In the works; not reachable today."
+      },
+      {
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'One long video holds a week of content, but cutting it by hand eats a whole evening.',
+        solution: 'An automatic cutter: long video in, short captioned clips out, you just pick.',
+        result: 'In the works; not released yet.'
+      },
+      {
+        name: 'Kongkow',
+        href: 'https://kongkow.xyz',
+        problem: 'The same content had to be pasted into platform after platform, every single day.',
+        solution: 'Publish once and it goes out to 20+ social platforms at the same time.',
+        result: 'In the works; not released yet.'
+      },
+      {
+        name: 'Cuwan',
+        href: 'https://cuwan.xyz',
+        problem: 'Running a grid strategy by hand means babysitting charts all day.',
+        solution: 'A spot grid bot for CEX and DEX, tuned by hand or by the AI.',
+        result: 'In the works; not released yet.'
       }
     ],
     paperTitleA: 'The company',
@@ -331,7 +366,7 @@ const en = {
       [
         'key',
         'Real ownership',
-        "Each product is a small team running the whole stack. You'll ship things people use the same month, not tickets in a queue."
+        "Every product is built by a small team running the whole stack. You'll ship things people use the same month."
       ],
       [
         'globe',
@@ -343,11 +378,11 @@ const en = {
         'Less process, more building',
         'Code review is real. Design review is real. "Good enough" actually has to be good, not a box you tick.'
       ],
-      ['trending-up', 'A growing portfolio', 'New products mean new problems to dig into, not reorgs to survive.']
+      ['trending-up', 'A growing portfolio', 'New products mean new problems worth digging into, not ignoring without a fix.']
     ],
     hiringTitleA: "Where we're",
     hiringTitleEm: 'hiring now',
-    hiringBody: "A person reads every application. Tell us what you've built and what you want to build next. A portfolio or a repo beats a long CV every time.",
+    hiringBody: "Tell us what you've built and what you want to build next. A portfolio or a repo beats a long CV every time.",
     reachOut: 'Ask about a role',
     roles: [
       ['Senior JavaScript Engineer', 'Remote · Full-time'],
@@ -373,8 +408,8 @@ const en = {
     lede: "EFO is Efolusi's own token, live on BNB Smart Chain. This page is its official home: the contract address, the on-chain facts, and every announcement we make about it.",
     tradable: 'Tradable on Uniswap v4',
     bep20: 'BEP-20',
-    addrTitleA: 'One address. Check it',
-    addrTitleEm: 'every time',
+    addrTitleA: 'One address.',
+    addrTitleEm: "Don't get it wrong",
     addrTitleB: '.',
     addrLede: "This is the only official $EFO contract address. Anything else that calls itself EFO isn't ours. Check it here first.",
     facts: [
@@ -391,10 +426,10 @@ const en = {
     poolTitleA: 'One pool,',
     poolTitleEm: 'linked from here',
     poolTitleB: '.',
-    poolLede: 'Prices and liquidity move all day, so we point you to the live sources instead of printing numbers that go stale by lunchtime.',
+    poolLede: 'Prices and liquidity move all day, so we point you to real-time sources instead of a fake chart.',
     trade: {
       swapTitle: 'Swap on Uniswap',
-      swapDesc: 'Opens the swap with EFO pre-selected on BNB Chain',
+      swapDesc: 'Swap EFO with Uniswap on BNB Chain',
       chartTitle: 'Live chart on GeckoTerminal',
       chartDesc: 'Price, liquidity, and trades for the EFO/USDT pool',
       contractTitle: 'Contract on BscScan',
@@ -429,7 +464,7 @@ const en = {
     utilTitleA: 'Utility, documented',
     utilTitleEm: 'before it ships',
     utilTitleB: '.',
-    utilLede: "We wire EFO into our products one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live, never before. We'd rather show you something that works than talk about something that might.",
+    utilLede: "We wire EFO into our products one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live. We'd rather show you something that works than talk about something that might.",
     flywheel: [
       ['Products earn revenue', 'Subscriptions across the Efolusi ecosystem are paid in ordinary money. Nobody is ever required to pay in EFO.'],
       ['Revenue funds buybacks', 'A portion of what the business earns buys EFO back from the open market, from the dev wallet listed above.'],
@@ -468,7 +503,7 @@ const en = {
     heroA: 'The owl, the wordmark,',
     heroEm: 'and the rules',
     heroB: '.',
-    lede: "The owl and the wordmark are ours, and we're a little protective of them. Everything here is free to use for press, partners, or anyone writing about us, as long as you stick to the few rules below. The site's code is MIT licensed; the Efolusi name, the owl, and our product names aren't.",
+    lede: "The owl and the wordmark are ours, and we're a little protective of them. Everything here is free to use for press, partners, or anyone writing about us, as long as you stick to the few rules below. The site's code is MIT licensed; the Efolusi name, the owl, and our names aren't.",
     owlTitleA: 'One owl,',
     owlTitleEm: 'treated well',
     owlTitleB: '.',
@@ -482,16 +517,16 @@ const en = {
     rulesTitleEm: 'briefly',
     rulesTitleB: '.',
     dos: [
-      'Use the owl as we made it, on warm paper or a white background',
-      'Set "Efolusi" in Bricolage Grotesque, semibold or heavier',
-      'Keep the owl at 24px or bigger so it stays readable',
-      'Link back to efolusi.com when you mention us or $EFO'
+      'Show the owl as it is, on a warm or white background',
+      'Write "Efolusi" in Bricolage Grotesque, semibold and up',
+      'Give the owl at least 24px so its face stays clear',
+      'Link to efolusi.com whenever you mention us or $EFO'
     ],
     donts: [
       'Recolor, redraw, stretch, or add effects to the owl',
-      'Use our name or owl to brand your own product or token',
-      "Suggest we've endorsed or partnered with you when we haven't",
-      'Pass off any contract address as ours except the one on the token page'
+      'Use our name or owl to brand your product or token',
+      "Imply we endorse or partner with you when we don't",
+      'Call any contract address ours except the one on the token page'
     ],
     closerA: 'Need something',
     closerEm: 'else',
@@ -509,7 +544,7 @@ const en = {
     title: 'Privacy policy',
     metaLine: 'PT. Efolusi Dunia Teknologi · Effective 22 July 2026',
     intro:
-      'This policy describes what data efolusi.com collects and how it is used. It applies to this website only. Each Efolusi product has its own privacy policy on its own website.',
+      'This policy describes what data efolusi.com collects and what we use it for. The short version: very little, and it is never sold. It applies to this website only; each Efolusi product has its own privacy policy on its own website.',
     collectHead: 'What we collect',
     collect: [
       ['Contact form:', ' your name, email address, and message. We use them solely to read and reply to your message. Delivery runs through Brevo, our email processor.'],
@@ -539,10 +574,10 @@ const en = {
     title: 'Terms of use',
     metaLine: 'PT. Efolusi Dunia Teknologi · Effective 22 July 2026',
     intro:
-      'By using efolusi.com you agree to these terms. This website presents PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio. It is provided for information purposes, as is, without warranties of any kind.',
+      'By using efolusi.com you agree to these terms. This website introduces PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
     productsHead: 'Products',
     products:
-      "Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
+      "Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
     trademarksHead: 'Content and trademarks',
     trademarksA:
       'The Efolusi name, the owl mark, and product names are property of PT. Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',

@@ -1,4 +1,4 @@
-import { Badge, Icon } from '@efolusi/meridian';
+import { Accordion, Badge, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
@@ -185,13 +185,14 @@ export default async function TokenPage({ params }) {
               {d.faqTitleB}
             </h2>
           </div>
-          <div className="token-faq" style={{ maxWidth: 760, margin: '36px auto 0' }}>
-            {d.faq.map(([q, a]) => (
-              <div className="token-faq-item" key={q}>
-                <h3>{q}</h3>
-                <p>{a}</p>
-              </div>
-            ))}
+          <div style={{ maxWidth: 760, margin: '36px auto 0' }}>
+            <Accordion
+              items={d.faq.map(([question, answer], index) => ({
+                id: `token-faq-${index}`,
+                title: question,
+                content: answer
+              }))}
+            />
           </div>
         </div>
       </section>

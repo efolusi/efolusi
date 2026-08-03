@@ -2334,6 +2334,11 @@ a.ef-btn--secondary:hover {
     display: flex;
   }
 
+  /* The header still shows its own sign-in pill at tablet widths. */
+  .mobile-menu .menu-signin {
+    display: none;
+  }
+
   .mobile-menu a {
     padding: 11px 12px;
     border-radius: var(--radius-sm);
@@ -2420,6 +2425,11 @@ a.ef-btn--secondary:hover {
 @media (max-width: 480px) {
   .header-actions .pill {
     display: none;
+  }
+
+  /* Phone: the header pills are gone, so sign-in moves into the menu. */
+  .mobile-menu .menu-signin {
+    display: block;
   }
 }
 

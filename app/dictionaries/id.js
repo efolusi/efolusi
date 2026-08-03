@@ -258,25 +258,32 @@ const id = {
     heroA: 'Kami membangun software,',
     heroEm: 'lalu menjalankannya sendiri',
     heroB: '.',
-    lede: 'Efolusi itu perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami memulainya untuk membuat alat-alat yang terus kami harap ada, dan sejak itu kami jalan terus dengan cara yang sama: cari masalah yang bikin kesal, bikin produknya, jaga tetap jalan. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu.',
+    lede: 'Efolusi itu perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami memulainya untuk membuat alat-alat yang terus kami harap ada, dan sejak itu kami jalan terus dengan cara yang sama: cari masalah yang bikin kesal, bikin produknya, jaga tetap jalan. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerjasama.',
     splitTitleA: 'Kami menggarap banyak hal,',
     splitTitleEm: 'memang sengaja.',
-    splitBig: 'Kami bukan perusahaan satu produk. Kalau ada masalah yang terus mengganggu, kami bikin produk untuk itu dan membiarkannya berdiri sendiri.',
-    splitBody: 'Aturannya sederhana: semuanya harus cukup bagus sampai kami sendiri mau memakainya. Kalau belum, ya belum kami keluarkan. Itu yang bikin daftarnya bisa panjang tanpa penuh barang asal jadi.',
-    values: ['Sedikit fitur, tapi beres', 'Membosankan mengalahkan pintar', 'Tumbuh bareng Anda', 'Kami tunduk pada pengguna'],
+    splitBig: 'Kami bukan perusahaan satu produk. Kalau ada masalah yang terus mengganggu, kami bikin produk untuk itu dan menggunakannya sendiri.',
+    splitBody: 'Aturannya sederhana: semuanya harus cukup bagus sampai kami sendiri mau memakainya. Kalau belum, ya tidak kami keluarkan.',
+    values: ['Kami pemakai pertamanya', 'Rilis kalau sudah layak', 'Dirawat, bukan ditinggal', 'Masalah nyata, bukan tren'],
     bandA: 'Dibangun di Indonesia,',
     bandEm: 'dipakai',
     bandB: 'di mana-mana. Buka produk kami di mana pun, hasilnya sama.',
-    foundersTitleA: 'Dipimpin founder dan',
+    foundersTitleA: 'Dipimpin founder yang',
     foundersTitleEm: 'turun tangan langsung',
     foundersTitleB: '.',
-    foundersLede: 'Keputusan tetap dekat dengan produk. Mereka berdua masih menyentuh kode dan detailnya tiap hari.',
+    foundersLede: 'Keputusan tetap dekat dengan produk. Keduanya turun tangan langsung memastikan semua produk berjalan semestinya.',
     caseTitleA: 'Bukti mengalahkan',
     caseTitleEm: 'janji',
     caseTitleB: '.',
-    caseLede: 'Satu prinsip berlaku untuk semua yang ada di sini: tidak ada yang diumumkan sebelum dirilis. Ini produk-produk yang live hari ini, diceritakan dengan cara kami sendiri menilainya: masalahnya, apa yang kami bangun, dan apa yang bisa Anda cek sekarang.',
+    caseLede: 'Satu prinsip berlaku untuk semua yang ada di sini: kami hanya membangun produk yang bermanfaat untuk kami sendiri dan besar kemungkinan berguna untuk orang lain. Tiap produk diceritakan dengan cara yang sama: masalahnya apa, apa yang kami bangun, dan apa yang bisa Anda cek sekarang.',
     caseLabels: { problem: 'Masalahnya', solution: 'Yang kami bangun', result: 'Posisinya sekarang' },
     cases: [
+      {
+        name: 'ZOYYA',
+        href: 'https://zoyya.xyz',
+        problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
+        solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
+        result: 'Live di zoyya.xyz, dan asisten yang kami pakai sendiri untuk kerja tiap hari.'
+      },
       {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
@@ -292,11 +299,39 @@ const id = {
         result: 'Lebih dari 100.000 objek live dirender 60fps, open source, berjalan di tab browser hari ini.'
       },
       {
-        name: 'ZOYYA',
-        href: 'https://zoyya.xyz',
-        problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
-        solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
-        result: 'Live di zoyya.xyz, dan asisten yang kami pakai sendiri untuk kerja tiap hari.'
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
+        solution: 'Satu layar untuk semua server, deployment, pipeline, dan alert, supaya masalah kelihatan sebelum membesar.',
+        result: 'Sedang kami kerjakan, dipakai internal dulu sebelum dibuka.'
+      },
+      {
+        name: 'Toolips',
+        href: 'https://toolips.xyz',
+        problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan.',
+        solution: 'Lebih dari 100 alat file yang langsung dipakai di browser, tanpa akun dan tanpa langganan.',
+        result: 'Sedang kami kerjakan; belum bisa diakses hari ini.'
+      },
+      {
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'Satu video panjang berisi konten seminggu, tapi memotongnya manual menghabiskan semalaman.',
+        solution: 'Pemotong otomatis: video panjang masuk, klip-klip pendek bercaption keluar, tinggal pilih.',
+        result: 'Sedang kami kerjakan; belum dirilis.'
+      },
+      {
+        name: 'Kongkow',
+        href: 'https://kongkow.xyz',
+        problem: 'Konten yang sama harus ditempel ulang ke banyak platform, satu per satu, tiap hari.',
+        solution: 'Posting sekali, tayang serentak ke 20+ platform media sosial.',
+        result: 'Sedang kami kerjakan; belum dirilis.'
+      },
+      {
+        name: 'Cuwan',
+        href: 'https://cuwan.xyz',
+        problem: 'Menjalankan grid trading manual berarti menunggui chart sepanjang hari.',
+        solution: 'Grid bot spot untuk CEX dan DEX, disetel sendiri atau oleh AI.',
+        result: 'Sedang kami kerjakan; belum dirilis.'
       }
     ],
     paperTitleA: 'Perusahaan',
@@ -331,7 +366,7 @@ const id = {
       [
         'key',
         'Kepemilikan nyata',
-        'Tiap produk adalah tim kecil yang memegang seluruh stack. Anda akan merilis hal yang dipakai orang di bulan yang sama, bukan tiket dalam antrean.'
+        'Semua produk dikembangkan oleh tim kecil yang memegang seluruh stack. Anda akan merilis hal yang dipakai orang di bulan yang sama.'
       ],
       [
         'globe',
@@ -343,11 +378,11 @@ const id = {
         'Sedikit proses, lebih banyak membangun',
         'Code review sungguhan. Design review sungguhan. "Cukup baik" memang harus baik, bukan sekadar centang.'
       ],
-      ['trending-up', 'Portofolio yang tumbuh', 'Produk baru berarti masalah baru untuk digali, bukan reorg untuk dilewati.']
+      ['trending-up', 'Portofolio yang tumbuh', 'Produk baru berarti masalah baru yang perlu digali, bukan diabaikan tanpa solusi.']
     ],
     hiringTitleA: 'Posisi yang',
     hiringTitleEm: 'kami buka sekarang',
-    hiringBody: 'Setiap lamaran dibaca oleh orang sungguhan. Ceritakan apa yang sudah Anda bangun dan apa yang ingin Anda bangun berikutnya. Portofolio atau repo selalu lebih berarti daripada CV panjang.',
+    hiringBody: 'Ceritakan apa yang sudah Anda bangun dan apa yang ingin Anda bangun berikutnya. Portofolio atau repo selalu lebih berarti daripada CV panjang.',
     reachOut: 'Tanya soal posisi',
     roles: [
       ['Senior JavaScript Engineer', 'Remote · Penuh waktu'],
@@ -373,8 +408,8 @@ const id = {
     lede: 'EFO adalah token milik Efolusi sendiri, live di BNB Smart Chain. Halaman ini rumah resminya: alamat kontrak, fakta on-chain, dan tiap pengumuman yang kami buat soal token.',
     tradable: 'Bisa ditradingkan di Uniswap v4',
     bep20: 'BEP-20',
-    addrTitleA: 'Satu alamat. Periksa',
-    addrTitleEm: 'setiap kali',
+    addrTitleA: 'Satu alamat.',
+    addrTitleEm: 'Jangan sampai salah',
     addrTitleB: '.',
     addrLede: 'Ini satu-satunya alamat kontrak $EFO yang resmi. Apa pun selain ini yang mengaku EFO, bukan milik kami. Periksa di sini dulu.',
     facts: [
@@ -391,10 +426,10 @@ const id = {
     poolTitleA: 'Satu pool,',
     poolTitleEm: 'ditautkan dari sini',
     poolTitleB: '.',
-    poolLede: 'Harga dan likuiditas bergerak sepanjang hari, jadi kami arahkan Anda ke sumber yang live, bukan mencetak angka yang sudah basi sebelum makan siang.',
+    poolLede: 'Harga dan likuiditas bergerak sepanjang hari, jadi kami arahkan Anda ke sumber yang real-time, bukan chart bohongan.',
     trade: {
       swapTitle: 'Swap di Uniswap',
-      swapDesc: 'Membuka swap dengan EFO sudah terpilih di BNB Chain',
+      swapDesc: 'Lakukan swap EFO dengan Uniswap di jaringan BNB Chain',
       chartTitle: 'Chart live di GeckoTerminal',
       chartDesc: 'Harga, likuiditas, dan transaksi pool EFO/USDT',
       contractTitle: 'Kontrak di BscScan',
@@ -403,7 +438,7 @@ const id = {
     nomicsTitleA: 'Ke mana pasokan',
     nomicsTitleEm: 'dialokasikan',
     nomicsTitleB: '.',
-    nomicsLede: 'Begini alokasi 100 miliar EFO. Sengaja dibuat sederhana, dan bisa diverifikasi on-chain.',
+    nomicsLede: 'Begini alokasi 100 miliar EFO. Sengaja kami buat sederhana, dan bisa diverifikasi on-chain.',
     allocations: [
       ['Liquidity pool', 50, 'Dipasangkan dengan USDT di pool Uniswap v4'],
       ['Migrasi TRADY ke EFO', 30, 'Dicadangkan untuk holder yang migrasi dari TRADY ke EFO'],
@@ -429,7 +464,7 @@ const id = {
     utilTitleA: 'Utilitas, didokumentasikan',
     utilTitleEm: 'sebelum dirilis',
     utilTitleB: '.',
-    utilLede: 'Kami menyambungkan EFO ke produk-produk kami sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live, tidak sebelumnya. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
+    utilLede: 'Kami menyambungkan EFO ke produk-produk kami sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
     flywheel: [
       ['Produk menghasilkan pendapatan', 'Subscription di seluruh ekosistem Efolusi dibayar dengan uang biasa. Tidak ada yang diwajibkan membayar pakai EFO.'],
       ['Pendapatan mendanai buyback', 'Sebagian hasil bisnis dipakai membeli kembali EFO dari pasar terbuka, lewat dev wallet yang tercantum di atas.'],
@@ -468,7 +503,7 @@ const id = {
     heroA: 'Owl, wordmark,',
     heroEm: 'dan aturannya',
     heroB: '.',
-    lede: 'Owl dan wordmark ini milik kami, dan kami sedikit protektif soal keduanya. Semua di sini bebas dipakai untuk pers, mitra, atau siapa pun yang menulis tentang kami, selama mengikuti beberapa aturan di bawah. Kode sumber situs ini berlisensi MIT; nama Efolusi, maskot owl, dan nama produk kami tidak.',
+    lede: 'Owl dan wordmark ini milik kami, dan kami sedikit protektif soal keduanya. Semua di sini bebas dipakai untuk pers, mitra, atau siapa pun yang menulis tentang kami, selama mengikuti beberapa aturan di bawah. Kode sumber situs ini berlisensi MIT; nama Efolusi, maskot owl, dan nama kami tidak.',
     owlTitleA: 'Satu owl,',
     owlTitleEm: 'diperlakukan baik',
     owlTitleB: '.',
@@ -482,16 +517,16 @@ const id = {
     rulesTitleEm: 'singkat saja',
     rulesTitleB: '.',
     dos: [
-      'Pakai owl seperti kami membuatnya, di atas kertas hangat atau latar putih',
-      'Set "Efolusi" dengan Bricolage Grotesque, semibold atau lebih tebal',
-      'Jaga ukuran owl minimal 24px supaya tetap terbaca',
-      'Tautkan balik ke efolusi.com saat menyebut kami atau $EFO'
+      'Tampilkan owl apa adanya, di atas latar hangat atau putih',
+      'Tulis "Efolusi" dengan Bricolage Grotesque, semibold ke atas',
+      'Beri owl ukuran minimal 24px supaya wajahnya tetap jelas',
+      'Sertakan tautan ke efolusi.com setiap menyebut kami atau $EFO'
     ],
     donts: [
-      'Mewarnai ulang, menggambar ulang, meregangkan, atau menambah efek pada owl',
-      'Memakai nama atau owl kami untuk mem-brand produk atau token Anda sendiri',
-      'Mengesankan kami mendukung atau bermitra dengan Anda padahal belum',
-      'Mengaku-akui alamat kontrak apa pun sebagai milik kami selain yang ada di halaman token'
+      'Mengubah warna, menggambar ulang, menarik bentuk, atau menambah efek pada owl',
+      'Memakai nama atau owl kami untuk brand produk atau token Anda',
+      'Memberi kesan kami mendukung atau bermitra dengan Anda padahal tidak',
+      'Menyebut alamat kontrak mana pun sebagai milik kami selain yang ada di halaman token'
     ],
     closerA: 'Butuh sesuatu yang',
     closerEm: 'lain',
@@ -509,7 +544,7 @@ const id = {
     title: 'Kebijakan privasi',
     metaLine: 'PT. Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
     intro:
-      'Kebijakan ini menjelaskan data apa yang dikumpulkan efolusi.com dan bagaimana penggunaannya. Ini berlaku hanya untuk situs ini. Tiap produk Efolusi punya kebijakan privasinya sendiri di situsnya masing-masing.',
+      'Kebijakan ini menjelaskan data apa yang dikumpulkan efolusi.com dan untuk apa kami memakainya. Singkatnya: sedikit sekali, dan tidak pernah dijual. Berlaku untuk situs ini saja; tiap produk Efolusi punya kebijakan privasinya sendiri di situsnya masing-masing.',
     collectHead: 'Yang kami kumpulkan',
     collect: [
       ['Formulir kontak:', ' nama, alamat email, dan pesan Anda. Kami memakainya semata untuk membaca dan membalas pesan Anda. Pengiriman berjalan lewat Brevo, prosesor email kami.'],
@@ -539,10 +574,10 @@ const id = {
     title: 'Ketentuan penggunaan',
     metaLine: 'PT. Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
     intro:
-      'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini menampilkan PT. Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya. Disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
+      'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT. Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
     productsHead: 'Produk',
     products:
-      'Produk Efolusi (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
+      'Produk Efolusi (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
     trademarksHead: 'Konten dan merek dagang',
     trademarksA:
       'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT. Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',
