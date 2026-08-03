@@ -121,11 +121,11 @@ const en = {
       },
       cuwan: {
         section: 'Grid Trading',
-        desc: 'A spot grid bot that runs wherever you trade, CEX or DEX. Set the price range once and it buys and sells inside it, around the clock without a break.',
-        specs: ['Spot grid bot', 'CEX + DEX', '24/7'],
+        desc: 'A spot grid bot that runs wherever you trade, CEX or DEX. Tune the grid yourself if you have a view, or hand it to the AI; either way it buys and sells around the clock.',
+        specs: ['Spot grid bot', 'AI or manual', 'CEX + DEX'],
         buttonLabel: 'Visit Cuwan',
         tag: 'Trading',
-        summary: 'A spot grid bot for every CEX and DEX, running 24/7.'
+        summary: 'A spot grid bot for every CEX and DEX, tuned by AI or by hand.'
       },
       meridian: {
         section: 'Design System',
