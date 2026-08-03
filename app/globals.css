@@ -1600,16 +1600,25 @@ a.ef-btn--secondary:hover {
   overflow-wrap: anywhere;
 }
 
-/* Company social links in the footer brand column. */
+/* Company social links in the footer brand column. The links wrap their
+   18px glyphs in a 40px hit area — on a phone the icon row was the smallest
+   tap target on the page. */
 .footer-socials {
   display: flex;
-  gap: 14px;
-  margin: 10px 0 4px;
+  gap: 8px;
+  margin: 6px 0 0;
+  margin-left: -11px;
 }
 
 .footer-socials a {
   font-size: var(--text-sm);
   color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
 }
 
 .footer-socials a:hover {
@@ -1632,6 +1641,10 @@ a.ef-btn--secondary:hover {
   font-size: var(--text-sm);
   color: inherit;
   opacity: 0.75;
+  /* Same phone-tap-target fix as .footer-socials. */
+  min-height: 40px;
+  padding: 0 6px;
+  margin: 0 -6px;
 }
 
 .founder-socials a:hover {
