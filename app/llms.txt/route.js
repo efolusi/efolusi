@@ -21,7 +21,7 @@ const BODY = `# Efolusi
 - ZOYYA (https://zoyya.xyz): general autonomous intelligence that reasons, learns your context and acts on its own.
 - Komando (https://komando.efolusi.com): centralized cloud infrastructure; every server, deployment and alert in one interface.
 - Toolips (https://toolips.xyz): 100+ productivity utilities to convert, compress, edit and export. No accounts, free.
-- Trady (https://trady.efolusi.com): video repurposing; a long video in, short captioned clips out, ready to post.
+- Trady (https://trady.efolusi.com): video repurposing; it cuts long footage into its best short clips, captioned and ready to post.
 - Kongkow (https://kongkow.xyz): social media command center; publish once to 20+ platforms.
 - Cuwan (https://cuwan.xyz): automated trading across 100+ CEX and DEX markets, running 24/7.
 - Meridian (https://meridian.efolusi.com): open-source design system, 109 React components and 177 tokens, no build step. MIT licensed, and every Efolusi product is built on it.

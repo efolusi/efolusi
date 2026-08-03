@@ -105,11 +105,11 @@ const en = {
       },
       trady: {
         section: 'Video Repurposing',
-        desc: 'One long video is a week of content, if someone has the patience to cut it. Trady does the cutting: drop in a recording and get back short clips with captions, ready to post.',
+        desc: 'One hour of footage, dozens of short clips. Trady cuts the best moments, captions them, and lines them up ready to post. You just pick.',
         specs: ['Long video in', 'Short clips out', 'Auto captions'],
         buttonLabel: 'Visit Trady',
         tag: 'Video',
-        summary: 'Drop in a long video, get back short clips ready to post.'
+        summary: 'Long videos become their best moments, ready to post.'
       },
       kongkow: {
         section: 'Social Media',

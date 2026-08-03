@@ -105,11 +105,11 @@ const id = {
       },
       trady: {
         section: 'Daur Ulang Video',
-        desc: 'Satu video panjang itu konten seminggu, kalau ada yang sabar memotongnya. Trady yang memotong: masukkan rekamannya, terima klip-klip pendek bercaption yang siap diposting.',
+        desc: 'Rekaman satu jam, jadi puluhan klip pendek. Trady memotong bagian terbaiknya, memberi caption, dan menyiapkannya untuk diposting. Anda tinggal pilih.',
         specs: ['Video panjang masuk', 'Klip pendek keluar', 'Caption otomatis'],
         buttonLabel: 'Kunjungi Trady',
         tag: 'Video',
-        summary: 'Masukkan video panjang, terima klip pendek siap posting.'
+        summary: 'Video panjang jadi klip-klip terbaik, tinggal posting.'
       },
       kongkow: {
         section: 'Media Sosial',
