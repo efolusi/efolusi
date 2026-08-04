@@ -34,14 +34,15 @@ const nextConfig = {
     ];
   },
   async redirects() {
-    // The site is now served under /en and /id. Root is a language gateway
-    // (kept temporary in case language detection lands later); the old
-    // unprefixed content URLs moved permanently to their English equivalents.
+    // The old unprefixed content URLs moved permanently to their English
+    // equivalents. `/` is NOT here: it is the language gateway, and these
+    // redirects run before middleware, which would make the guess unreachable.
     const moved = ['about', 'careers', 'token', 'brand', 'privacy', 'terms'];
-    return [
-      { source: '/', destination: '/en', permanent: false },
-      ...moved.map((path) => ({ source: `/${path}`, destination: `/en/${path}`, permanent: true }))
-    ];
+    return moved.map((path) => ({
+      source: `/${path}`,
+      destination: `/en/${path}`,
+      permanent: true
+    }));
   }
 };
 

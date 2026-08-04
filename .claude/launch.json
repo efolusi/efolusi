@@ -6,6 +6,18 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "sso-web",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "export PATH=$HOME/.nvm/versions/node/v22.22.2/bin:$PATH; cd /Volumes/Storage/Business/Efolusi/sso/apps/web && NEXT_PUBLIC_AUTH_API_URL=http://localhost:3301 pnpm dev"],
+      "port": 3300
+    },
+    {
+      "name": "sso-api",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-lc", "export PATH=$HOME/.nvm/versions/node/v22.22.2/bin:$PATH; cd /Volumes/Storage/Business/Efolusi/sso/apps/api && DATABASE_URL=postgres://identity:identity@127.0.0.1:55432/efolusi_identity BETTER_AUTH_URL=http://localhost:3301 BETTER_AUTH_SECRET=dev-secret-dev-secret-dev-secret TRUSTED_ORIGINS=http://localhost:3300 PUBLIC_ACCOUNTS_URL=http://localhost:3300 pnpm dev"],
+      "port": 3301
     }
   ]
 }
