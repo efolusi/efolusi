@@ -273,6 +273,9 @@ export default function HomeClient({ d, common, lang }) {
           </div>
           <div className="feat-grid">
             <a className="feat-card feat-card--peach reveal" href="#products">
+              <span className="feat-icon">
+                <Icon name="package" size={22} />
+              </span>
               <span className="feat-deco" aria-hidden="true">
                 <svg width="72" height="72" viewBox="0 0 72 72" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="36" cy="36" r="10" />
@@ -291,6 +294,9 @@ export default function HomeClient({ d, common, lang }) {
             </a>
 
             <a className="feat-card feat-card--cocoa reveal" href={`${base}/token`}>
+              <span className="feat-icon">
+                <Icon name="coins" size={22} />
+              </span>
               <span className="feat-deco" aria-hidden="true">
                 <svg width="84" height="40" viewBox="0 0 84 40" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
                   <path d="M4 20 q 10 -16 20 0 t 20 0 t 20 0 t 16 0" />
@@ -306,6 +312,9 @@ export default function HomeClient({ d, common, lang }) {
             </a>
 
             <a className="feat-card feat-card--amber reveal" href={`${base}/about`}>
+              <span className="feat-icon">
+                <Icon name="sparkles" size={22} />
+              </span>
               <span className="feat-deco" aria-hidden="true">
                 <svg width="64" height="64" viewBox="0 0 64 64" fill="currentColor">
                   {[8, 24, 40, 56].map((x) => [8, 24, 40, 56].map((y) => <circle key={`${x}-${y}`} cx={x} cy={y} r="2.4" />))}
