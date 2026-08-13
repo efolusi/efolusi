@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@efolusi/meridian':
-        specifier: ^1.21.0
-        version: 1.21.0(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)
+        specifier: ^1.21.1
+        version: 1.21.1(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)
       '@opennextjs/cloudflare':
         specifier: ^1.20.2
         version: 1.20.2(next@15.5.22(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(wrangler@4.115.0)
@@ -331,8 +331,8 @@ packages:
     peerDependencies:
       '@noble/ciphers': ^1.0.0
 
-  '@efolusi/meridian@1.21.0':
-    resolution: {integrity: sha512-jAMyinwtJedDSrlQr9A+DqWxh2FcpKj7Ess4/1fzBMt5G5nt5K2tr6UAtPqStoFk6kPvyCpKYapNrEKPx6ahBw==}
+  '@efolusi/meridian@1.21.1':
+    resolution: {integrity: sha512-4KpQ0+5tLMATTDEPeVgbYbNNJC5pMj6Ssa4a1pODHB1Q4ybv30JnijLO3mla2STxkpma+qTOgZty3hYZeuXSQg==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -3335,7 +3335,7 @@ snapshots:
     dependencies:
       '@noble/ciphers': 1.3.0
 
-  '@efolusi/meridian@1.21.0(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)':
+  '@efolusi/meridian@1.21.1(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
