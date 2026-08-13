@@ -1,4 +1,4 @@
-import { Avatar, Icon } from '@efolusi/meridian';
+import { Avatar, AvatarFallback, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
@@ -95,7 +95,9 @@ export default async function AboutPage({ params }) {
             {leadership.map(([name, role, socials]) => (
               <div className="founder" key={name}>
                 <span className="founder-blob">
-                  <Avatar name={name} size={84} />
+                  <Avatar size="lg" style={{ width: 84, height: 84 }}>
+                    <AvatarFallback>{name.split(' ').map((part) => part[0]).slice(0, 2).join('')}</AvatarFallback>
+                  </Avatar>
                 </span>
                 <span className="nm">{name}</span>
                 <span className="ro">{role}</span>

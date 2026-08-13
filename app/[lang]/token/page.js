@@ -1,4 +1,4 @@
-import { Accordion, Badge, Icon } from '@efolusi/meridian';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Badge, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
@@ -37,8 +37,8 @@ export default async function TokenPage({ params }) {
           </h1>
           <p className="page-lede">{d.lede}</p>
           <div className="token-status">
-            <Badge tone="success">{d.tradable}</Badge>
-            <Badge tone="neutral">{d.bep20}</Badge>
+            <Badge className="badge-success">{d.tradable}</Badge>
+            <Badge variant="secondary">{d.bep20}</Badge>
           </div>
         </div>
       </section>
@@ -186,13 +186,14 @@ export default async function TokenPage({ params }) {
             </h2>
           </div>
           <div style={{ maxWidth: 760, margin: '36px auto 0' }}>
-            <Accordion
-              items={d.faq.map(([question, answer], index) => ({
-                id: `token-faq-${index}`,
-                title: question,
-                content: answer
-              }))}
-            />
+            <Accordion type="single" collapsible>
+              {d.faq.map(([question, answer], index) => (
+                <AccordionItem key={question} value={`token-faq-${index}`}>
+                  <AccordionTrigger>{question}</AccordionTrigger>
+                  <AccordionContent>{answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>

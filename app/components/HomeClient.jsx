@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Accordion, Avatar, Badge, Button, CopyField, Icon, Input, StatusDot, Tag, Textarea } from '@efolusi/meridian';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Avatar, AvatarFallback, Badge, Button, CopyField, Icon, Input, StatusDot, Tag, Textarea } from '@efolusi/meridian';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
 import { SocialIcon } from '../lib/social-icons.js';
@@ -248,7 +248,7 @@ export default function HomeClient({ d, common, lang }) {
           </div>
 
           <div className="hero-proof reveal">
-            <StatusDot state="ok" pulse />
+            <StatusDot status="ok" pulse />
             <span>{d.hero.proof}</span>
           </div>
         </div>
@@ -426,7 +426,9 @@ export default function HomeClient({ d, common, lang }) {
             {leadership.map(([name, role, socials]) => (
               <div className="founder" key={name}>
                 <span className="founder-blob">
-                  <Avatar name={name} size={84} />
+                  <Avatar size="lg" style={{ width: 84, height: 84 }}>
+                    <AvatarFallback>{name.split(' ').map((part) => part[0]).slice(0, 2).join('')}</AvatarFallback>
+                  </Avatar>
                 </span>
                 <span className="nm">{name}</span>
                 <span className="ro">{role}</span>
@@ -473,8 +475,8 @@ export default function HomeClient({ d, common, lang }) {
             </div>
             <div className="eco-card reveal">
               <div className="eco-badges">
-                <Badge tone="success">{d.ecosystem.tradable}</Badge>
-                <Badge>{d.ecosystem.bep20}</Badge>
+                <Badge className="badge-success">{d.ecosystem.tradable}</Badge>
+                <Badge variant="secondary">{d.ecosystem.bep20}</Badge>
               </div>
               <CopyField label={d.ecosystem.contractLabel} value={EFO_CONTRACT} />
               <div className="token-facts eco-facts">
@@ -534,13 +536,14 @@ export default function HomeClient({ d, common, lang }) {
             <p className="section-lede">{d.faq.lede}</p>
           </div>
           <div className="reveal" style={{ maxWidth: 760, margin: '36px auto 0' }}>
-            <Accordion
-              items={d.faq.items.map(([question, answer], index) => ({
-                id: `faq-${index}`,
-                title: question,
-                content: answer
-              }))}
-            />
+            <Accordion type="single" collapsible>
+              {d.faq.items.map(([question, answer], index) => (
+                <AccordionItem key={question} value={`faq-${index}`}>
+                  <AccordionTrigger>{question}</AccordionTrigger>
+                  <AccordionContent>{answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </div>
       </section>

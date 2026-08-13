@@ -1349,6 +1349,12 @@ a.ef-btn--secondary:hover {
   gap: 8px;
 }
 
+.badge-success {
+  border-color: var(--success-300);
+  background: var(--success-100);
+  color: var(--success-600);
+}
+
 .eco-note {
   font-size: var(--text-sm);
   color: var(--text-muted);
