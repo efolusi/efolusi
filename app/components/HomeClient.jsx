@@ -17,7 +17,7 @@ const productMeta = [
   { id: 'trady', title: 'Trady', tint: 'coral', mark: 'Tr', icon: 'sparkles', href: 'https://trady.efolusi.com' },
   { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
   { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
-  { id: 'meridian', title: 'Meridian', tint: 'cocoa', mark: 'Me', icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
+  { id: 'meridian', title: 'Meridian', tint: 'cocoa', mark: '///', icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
   { id: 'earthos', title: 'EarthOS', tint: 'green', mark: 'Ea', icon: 'globe', href: 'https://earthos.efolusi.com' }
 ];
 
@@ -44,7 +44,7 @@ const edgeTiles = [
   { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
   { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
-  { id: 'meridian', text: 'Me', tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
+  { id: 'meridian', text: '///', tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
   { id: 'earthos', text: 'Ea', tint: 'green', href: 'https://earthos.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
 ];
 

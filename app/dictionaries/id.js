@@ -130,8 +130,8 @@ const id = {
       },
       meridian: {
         section: 'Sistem Desain',
-        desc: 'Alasan semua produk kami terasa satu keluarga. Design system open source, 109 komponen React dan 177 token, tanpa build step. Situs yang sedang Anda baca ini pun memakainya.',
-        specs: ['109 komponen', 'Tanpa build', 'Lisensi MIT'],
+        desc: 'Alasan semua produk kami terasa satu keluarga. Design system open source dengan 122 komponen React yang aksesibel dan 165 token, tanpa build step. Situs yang sedang Anda baca ini pun memakainya.',
+        specs: ['122 komponen', '165 token', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
         summary: 'Design system open source di balik semua produk kami, termasuk situs ini.'
@@ -289,7 +289,7 @@ const id = {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
-        solution: 'Design system open source: 109 komponen React, 177 token, 9 block siap pakai, tanpa build step, MIT.',
+        solution: 'Design system open source: 122 komponen React yang aksesibel, 165 token, 9 block siap pakai, tanpa build step, MIT.',
         result: 'Semua produk Efolusi berjalan di atasnya, termasuk situs ini. Kodenya publik, silakan nilai sendiri.'
       },
       {

@@ -130,8 +130,8 @@ const en = {
       },
       meridian: {
         section: 'Design System',
-        desc: "The reason our products all feel like family. An open-source design system: 109 React components and 177 tokens, no build step. The site you're reading runs on it.",
-        specs: ['109 components', 'No build step', 'MIT licensed'],
+        desc: "The reason our products all feel like family. An open-source design system with 122 accessible React components and 165 tokens, no build step. The site you're reading runs on it.",
+        specs: ['122 components', '165 tokens', 'MIT licensed'],
         buttonLabel: 'Visit Meridian',
         tag: 'Design',
         summary: 'The open-source design system behind everything we make, this site included.'
@@ -289,7 +289,7 @@ const en = {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
-        solution: 'An open-source design system: 109 React components, 177 tokens, 9 ready-made blocks, no build step, MIT.',
+        solution: 'An open-source design system: 122 accessible React components, 165 tokens, 9 ready-made blocks, no build step, MIT.',
         result: 'Every Efolusi product runs on it, including this site. The code is public, so you can judge it yourself.'
       },
       {

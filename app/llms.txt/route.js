@@ -24,7 +24,7 @@ const BODY = `# Efolusi
 - Trady (https://trady.efolusi.com): video repurposing; it cuts long footage into its best short clips, captioned and ready to post.
 - Kongkow (https://kongkow.xyz): social media command center; publish once to 20+ platforms.
 - Cuwan (https://cuwan.xyz): a spot grid trading bot for CEX and DEX markets; grids are tuned by AI or set manually, running 24/7.
-- Meridian (https://meridian.efolusi.com): open-source design system, 109 React components and 177 tokens, no build step. MIT licensed, and every Efolusi product is built on it.
+- Meridian (https://meridian.efolusi.com): open-source design system, 122 accessible React components and 165 tokens, no build step. MIT licensed, and every Efolusi product is built on it.
 - EarthOS (https://earthos.efolusi.com): real-time 3D digital twin of Earth in the browser, with live satellites, aircraft, earthquakes, wildfires and storms. Plugin-based and open source.
 
 ## $EFO token
