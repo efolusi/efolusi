@@ -419,6 +419,22 @@ a.ef-btn--secondary:hover {
   font-weight: var(--weight-semibold);
 }
 
+/* Meridian's mark must use the official 62:33 geometry, never font slashes.
+   A mask lets the same asset inherit white on espresso and the contextual
+   watermark tint without altering the production SVG. */
+.meridian-mark {
+  display: block;
+  width: 38px;
+  aspect-ratio: 62 / 33;
+  background: currentColor;
+  -webkit-mask: url('/meridian-mark.svg') center / contain no-repeat;
+  mask: url('/meridian-mark.svg') center / contain no-repeat;
+}
+
+.meridian-mark--watermark {
+  width: 260px;
+}
+
 /* ---------- Category tints, drawn from the Meridian status and brand ramps ---------- */
 
 .tint-caramel {

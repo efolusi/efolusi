@@ -17,7 +17,7 @@ const productMeta = [
   { id: 'trady', title: 'Trady', tint: 'coral', mark: 'Tr', icon: 'sparkles', href: 'https://trady.efolusi.com' },
   { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
   { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
-  { id: 'meridian', title: 'Meridian', tint: 'cocoa', mark: '///', icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
+  { id: 'meridian', title: 'Meridian', tint: 'cocoa', brandMark: true, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
   { id: 'earthos', title: 'EarthOS', tint: 'green', mark: 'Ea', icon: 'globe', href: 'https://earthos.efolusi.com' }
 ];
 
@@ -44,7 +44,7 @@ const edgeTiles = [
   { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
   { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
-  { id: 'meridian', text: '///', tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
+  { id: 'meridian', brandMark: true, tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
   { id: 'earthos', text: 'Ea', tint: 'green', href: 'https://earthos.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
 ];
 
@@ -213,7 +213,7 @@ export default function HomeClient({ d, common, lang }) {
                   className={`tile-card tint-${tile.tint}`}
                   style={{ width: tile.w || tile.size, height: tile.h || tile.size, fontSize: tile.w ? 17 : 26 }}
                 >
-                  {tile.text}
+                  {tile.brandMark ? <span className="meridian-mark" aria-hidden="true" /> : tile.text}
                 </span>
               </a>
             );
@@ -345,7 +345,7 @@ export default function HomeClient({ d, common, lang }) {
           <div className="stage-wrap reveal">
             <div className="stage">
               <div className={`stage-watermark wm-${activeProduct.tint}`} key={activeProduct.id} aria-hidden="true">
-                {activeProduct.mark}
+                {activeProduct.brandMark ? <span className="meridian-mark meridian-mark--watermark" /> : activeProduct.mark}
               </div>
 
               {stageProducts.map((product, index) => (
@@ -396,7 +396,7 @@ export default function HomeClient({ d, common, lang }) {
             {stageProducts.map((product) => (
               <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
                 <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
-                  {product.mark}
+                  {product.brandMark ? <span className="meridian-mark" /> : product.mark}
                 </span>
                 <span>
                   <span className="plist-name">
