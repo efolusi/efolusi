@@ -344,7 +344,11 @@ export default function HomeClient({ d, common, lang }) {
 
           <div className="stage-wrap reveal">
             <div className="stage">
-              <div className={`stage-watermark wm-${activeProduct.tint}`} key={activeProduct.id} aria-hidden="true">
+              <div
+                className={`stage-watermark wm-${activeProduct.tint}${activeProduct.brandMark ? ' stage-watermark--brand' : ''}`}
+                key={activeProduct.id}
+                aria-hidden="true"
+              >
                 {activeProduct.brandMark ? <span className="meridian-mark meridian-mark--watermark" /> : activeProduct.mark}
               </div>
 
