@@ -14,7 +14,7 @@ const productMeta = [
   { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', mark: 'Zo', icon: 'brain', href: 'https://zoyya.xyz' },
   { id: 'komando', title: 'Komando', tint: 'green', mark: 'Ko', icon: 'server', href: 'https://komando.efolusi.com' },
   { id: 'toolips', title: 'Toolips', tint: 'amber', mark: 'To', icon: 'package', href: 'https://toolips.xyz' },
-  { id: 'trady', title: 'Trady', tint: 'coral', mark: 'Tr', icon: 'sparkles', href: 'https://trady.efolusi.com' },
+  { id: 'trady', title: 'Trady', tint: 'coral', logo: '/trady-otter.png', icon: 'sparkles', href: 'https://trady.efolusi.com' },
   { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
   { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
   { id: 'meridian', title: 'Meridian', tint: 'cocoa', brandMark: true, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
@@ -39,7 +39,7 @@ const leadership = [
 const edgeTiles = [
   { id: 'zoyya', text: 'Zo', tint: 'caramel', href: 'https://zoyya.xyz', style: { left: '3%', top: 30, '--rot': '-8deg', '--fd': '0.4s' }, size: 72 },
   { id: 'kongkow', text: 'Kg', tint: 'peach', href: 'https://kongkow.xyz', style: { left: '2%', top: 210, '--rot': '5deg', '--fd': '1.4s' }, size: 62 },
-  { id: 'trady', text: 'Tr', tint: 'coral', href: 'https://trady.efolusi.com', style: { left: '10%', top: 450, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
+  { id: 'trady', logo: '/trady-otter.png', tint: 'coral', href: 'https://trady.efolusi.com', style: { left: '10%', top: 450, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
   { id: 'efo', text: '$EFO', tint: 'cocoa', href: 'token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
   { id: 'komando', text: 'Ko', tint: 'green', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
@@ -213,7 +213,11 @@ export default function HomeClient({ d, common, lang }) {
                   className={`tile-card tint-${tile.tint}`}
                   style={{ width: tile.w || tile.size, height: tile.h || tile.size, fontSize: tile.w ? 17 : 26 }}
                 >
-                  {tile.brandMark ? <span className="meridian-mark" aria-hidden="true" /> : tile.text}
+                  {tile.brandMark ? (
+                    <span className="meridian-mark" aria-hidden="true" />
+                  ) : tile.logo ? (
+                    <img className="product-logo product-logo--tile" src={tile.logo} alt="" />
+                  ) : tile.text}
                 </span>
               </a>
             );
@@ -345,11 +349,15 @@ export default function HomeClient({ d, common, lang }) {
           <div className="stage-wrap reveal">
             <div className="stage">
               <div
-                className={`stage-watermark wm-${activeProduct.tint}${activeProduct.brandMark ? ' stage-watermark--brand' : ''}`}
+                className={`stage-watermark wm-${activeProduct.tint}${activeProduct.brandMark ? ' stage-watermark--brand' : ''}${activeProduct.logo ? ' stage-watermark--logo' : ''}`}
                 key={activeProduct.id}
                 aria-hidden="true"
               >
-                {activeProduct.brandMark ? <span className="meridian-mark meridian-mark--watermark" /> : activeProduct.mark}
+                {activeProduct.brandMark ? (
+                  <span className="meridian-mark meridian-mark--watermark" />
+                ) : activeProduct.logo ? (
+                  <img className="product-logo product-logo--watermark" src={activeProduct.logo} alt="" />
+                ) : activeProduct.mark}
               </div>
 
               {stageProducts.map((product, index) => (
@@ -400,7 +408,11 @@ export default function HomeClient({ d, common, lang }) {
             {stageProducts.map((product) => (
               <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
                 <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
-                  {product.brandMark ? <span className="meridian-mark" /> : product.mark}
+                  {product.brandMark ? (
+                    <span className="meridian-mark" />
+                  ) : product.logo ? (
+                    <img className="product-logo product-logo--list" src={product.logo} alt="" />
+                  ) : product.mark}
                 </span>
                 <span>
                   <span className="plist-name">

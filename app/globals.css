@@ -435,6 +435,26 @@ a.ef-btn--secondary:hover {
   width: 260px;
 }
 
+.product-logo {
+  display: block;
+  object-fit: contain;
+}
+
+.product-logo--tile {
+  width: 48px;
+  height: 48px;
+}
+
+.product-logo--list {
+  width: 52px;
+  height: 52px;
+}
+
+.product-logo--watermark {
+  width: 260px;
+  height: 260px;
+}
+
 /* ---------- Category tints, drawn from the Meridian status and brand ramps ---------- */
 
 .tint-caramel {
@@ -766,6 +786,11 @@ a.ef-btn--secondary:hover {
 .stage-watermark--brand {
   right: 24px;
   bottom: 20px;
+}
+
+.stage-watermark--logo {
+  right: 24px;
+  bottom: 0;
 }
 
 @keyframes watermark-in {
