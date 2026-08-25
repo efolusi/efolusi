@@ -2,8 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
+    branches: [dev]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: efolusi-ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -18,5 +26,6 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm test
       - run: pnpm run build
       - run: pnpm exec opennextjs-cloudflare build
