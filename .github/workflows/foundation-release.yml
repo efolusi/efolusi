@@ -1,0 +1,124 @@
+name: Foundation release
+on:
+  workflow_dispatch:
+    inputs:
+      action: {required: true, type: choice, options: [candidate, promote]}
+      source_sha: {required: true, type: string}
+      source_tree: {required: true, type: string}
+      candidate_run_id: {required: false, type: string}
+      candidate_uuid: {required: false, type: string}
+permissions: {contents: read, actions: read}
+concurrency: {group: foundation-release, cancel-in-progress: false}
+env:
+  NODE_VERSION: 20.19.4
+  PNPM_VERSION: 10.29.2
+  WRANGLER_VERSION: 4.115.0
+  ACTIVE_BASELINE: bdc2f195-8b60-4b13-95b4-40fcef1928f0
+  ROLLBACK_UUID: bdc2f195-8b60-4b13-95b4-40fcef1928f0
+jobs:
+  candidate:
+    if: inputs.action == 'candidate' && github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b163ceea73d27597364c9af683
+        with: {ref: "${{ github.sha }}"}
+      - uses: actions/setup-node@1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8
+        with: {node-version: 20.19.4, cache: pnpm}
+      - name: Build exact upload input
+        env: {EXPECTED_SHA: "${{ inputs.source_sha }}", EXPECTED_TREE: "${{ inputs.source_tree }}"}
+        run: |
+          set -euo pipefail
+          test "$EXPECTED_SHA" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"
+          corepack prepare "pnpm@$PNPM_VERSION" --activate
+          test "$(node --version)" = "v$NODE_VERSION"; test "$(pnpm --version)" = "$PNPM_VERSION"
+          pnpm install --frozen-lockfile --ignore-scripts
+          pnpm test
+          pnpm exec opennextjs-cloudflare build
+          find .open-next -type f -print0 | LC_ALL=C sort -z | xargs -0 sha256sum > input-manifest
+          sha256sum input-manifest | awk '{print $1}' > input-manifest.sha256
+          tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -czf foundation-worker.tgz .open-next input-manifest
+          sha256sum foundation-worker.tgz > foundation-worker.tgz.sha256
+      - name: Upload once and read provider truth
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", SOURCE_SHA: "${{ github.sha }}", SOURCE_TREE: "${{ inputs.source_tree }}"}
+        run: |
+          set -euo pipefail
+          A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
+          test "$(pnpm exec wrangler --version | awk '{print $NF}')" = "$WRANGLER_VERSION"
+          export WRANGLER_OUTPUT_FILE_PATH="$PWD/upload-output.ndjson"
+          test ! -e "$WRANGLER_OUTPUT_FILE_PATH"
+          pnpm exec wrangler versions upload --config wrangler.jsonc --message "source.sha=$SOURCE_SHA source.tree=$SOURCE_TREE archive.sha256=$A input-manifest.sha256=$M provider.byteDigest=N/A_PROVIDER_UNAVAILABLE" --tag "source-$SOURCE_SHA" --preview-alias "candidate-${SOURCE_SHA:0:12}" > upload.stdout
+          test "$(wc -l < upload-output.ndjson | tr -d ' ')" = 1
+          UUID=$(jq -er 'select(.type=="version-upload" and .version==1)|.version_id|select(test("^[0-9a-f-]{36}$"))' upload-output.ndjson)
+          pnpm exec wrangler versions view "$UUID" --config wrangler.jsonc --json > version-readback.json
+          pnpm exec wrangler deployments status --config wrangler.jsonc --json > deployment-readback.json
+          MSG="source.sha=$SOURCE_SHA source.tree=$SOURCE_TREE archive.sha256=$A input-manifest.sha256=$M provider.byteDigest=N/A_PROVIDER_UNAVAILABLE"
+          jq -e --arg u "$UUID" --arg msg "$MSG" '.id==$u and .annotations["workers/message"]==$msg' version-readback.json >/dev/null
+          test "$(jq '[.versions[]|select(.percentage==100)]|length' deployment-readback.json)" = 1
+          test "$(jq -r '.versions[]|select(.percentage==100)|.version_id' deployment-readback.json)" = "$ACTIVE_BASELINE"
+          test "$(jq --arg u "$UUID" '[.versions[]|select(.version_id==$u)]|length' deployment-readback.json)" = 0
+      - name: Preview and receipt
+        env: {SOURCE_TREE: "${{ inputs.source_tree }}"}
+        run: |
+          set -euo pipefail
+          U=$(jq -er .version_id upload-output.ndjson); URL=$(jq -er '.preview_alias_url // .preview_url' upload-output.ndjson); H=$(curl -fsS -o preview.html -w '%{http_code}' --max-time 20 "$URL"); R=$(curl -fsS -o robots.txt -w '%{http_code}' --max-time 20 "${URL%/}/robots.txt"); test "$H" = 200; test "$R" = 200; grep -qi efolusi preview.html
+          A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
+          jq '{id:.id,message:.annotations["workers/message"],tag:.annotations["workers/tag"]}' version-readback.json > version-projection.json
+          jq '{deploymentId:.id,versions:[.versions[]|{versionId:.version_id,percentage:.percentage}]}' deployment-readback.json > deployment-projection.json
+          jq -n --arg s "$GITHUB_SHA" --arg t "$SOURCE_TREE" --arg a "$A" --arg m "$M" --arg u "$U" --arg url "$URL" --slurpfile v version-projection.json --slurpfile d deployment-projection.json '{schema:"efolusi.foundation.candidate/v3",source:{sha:$s,tree:$t,githubSha:$s},artifact:{archiveSha256:$a,inputManifestSha256:$m,uploadInputPath:".open-next",providerByteDigest:"N/A_PROVIDER_UNAVAILABLE"},toolchain:{node:"20.19.4",pnpm:"10.29.2",wrangler:"4.115.0",checkoutAction:"11bd71901bbe5b163ceea73d27597364c9af683",setupNodeAction:"1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8",uploadArtifactAction:"ea165f8d65b6e75b540449e92b4886f43607fa02"},upload:{uuid:$u,attempts:1,rc:0,archiveSha256:$a,inputManifestSha256:$m,outputRows:1},providerReadback:{version:$v[0],deployment:$d[0]},preview:{url:$url,healthCode:200,robotsCode:200,e2e:"PASS"},authority:{kind:"protected-dev-dispatch",githubSha:$s},effects:{customer:0,payment:0,productionTraffic:0,deployments:0,settings:0,secrets:0}}' > candidate-receipt.json
+          jq -n --arg githubSha "$GITHUB_SHA" --arg githubTree "$SOURCE_TREE" --arg archiveSha256 "$A" --arg inputManifestSha256 "$M" '{$githubSha,$githubTree,$archiveSha256,$inputManifestSha256}' > expected.json
+          node scripts/foundation-release-contract.mjs candidate candidate-receipt.json expected.json
+          sha256sum candidate-receipt.json foundation-worker.tgz input-manifest > SHA256SUMS
+      - name: Finalize candidate evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ ! -f candidate-receipt.json ]; then jq -n --arg conclusion "${{ job.status }}" '{schema:"efolusi.foundation.candidate-failure/v1",conclusion:$conclusion,complete:false}' > candidate-receipt.tmp; sync candidate-receipt.tmp; mv candidate-receipt.tmp candidate-receipt.json; sync .; fi
+          sha256sum candidate-receipt.json > CANDIDATE-TERMINAL-SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: "foundation-candidate-${{ github.sha }}", path: "foundation-worker.tgz\ncandidate-receipt.json\nCANDIDATE-TERMINAL-SHA256SUMS\nSHA256SUMS\ninput-manifest\nupload-output.ndjson\nupload.stdout\nversion-readback.json\ndeployment-readback.json", if-no-files-found: warn, retention-days: 30}
+  promote:
+    if: inputs.action == 'promote' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b163ceea73d27597364c9af683
+      - uses: actions/setup-node@1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8
+        with: {node-version: 20.19.4}
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with: {name: "foundation-candidate-${{ inputs.source_sha }}", run-id: "${{ inputs.candidate_run_id }}", github-token: "${{ github.token }}", path: candidate}
+      - name: Gate and candidate rollback candidate
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", CANDIDATE_UUID: "${{ inputs.candidate_uuid }}", EXPECTED_TREE: "${{ inputs.source_tree }}"}
+        run: |
+          set -euo pipefail
+          corepack prepare "pnpm@$PNPM_VERSION" --activate; pnpm install --frozen-lockfile --ignore-scripts
+          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"; sha256sum -c candidate/SHA256SUMS; test "$(jq -r .upload.uuid candidate/candidate-receipt.json)" = "$CANDIDATE_UUID"
+          pnpm exec wrangler versions view "$CANDIDATE_UUID" --config wrangler.jsonc --json > provider-version.json; pnpm exec wrangler deployments status --config wrangler.jsonc --json > state.json
+          jq '{id:.id,message:.annotations["workers/message"],tag:.annotations["workers/tag"]}' provider-version.json > fresh-version.json
+          jq '{deploymentId:.id,versions:[.versions[]|{versionId:.version_id,percentage:.percentage}]}' state.json > fresh-status.json
+          test "$(jq '[.versions[]|select(.percentage==100)]|length' state.json)" = 1; test "$(jq -r '.versions[]|select(.percentage==100)|.version_id' state.json)" = "$ACTIVE_BASELINE"
+          jq -n --arg ref "$GITHUB_REF" --arg mainSha "$GITHUB_SHA" --arg mainTree "$EXPECTED_TREE" --arg baseline "$ACTIVE_BASELINE" --slurpfile c candidate/candidate-receipt.json --slurpfile v fresh-version.json --slurpfile s fresh-status.json '{ref:$ref,mainSha:$mainSha,mainTree:$mainTree,candidate:$c[0],freshVersion:$v[0],freshStatus:$s[0],runStartBaseline:$baseline,authority:{kind:"protected-main-dispatch",githubSha:$mainSha}}' > fresh.json
+          node scripts/foundation-release-contract.mjs promotion fresh.json
+          # Prerelease rollback is N/A because proof would mutate production traffic; approved promotion below exercises c1->rollback->c2.
+          rollback_attempted=0; rollback_rc=0; rollback_recovery=0
+          contain(){ code="${1:-1}"; trap - ERR INT TERM; rollback_attempted=1; pnpm exec wrangler versions deploy "$ACTIVE_BASELINE@100%" --config wrangler.jsonc --yes && rollback_rc=0 || rollback_rc=1; recovered_uuid=null; recovered_traffic=0; if [ "$rollback_rc" = 0 ]; then pnpm exec wrangler deployments status --config wrangler.jsonc --json > rollback-state.json || rollback_rc=1; fi; if [ "$rollback_rc" = 0 ]; then recovered_uuid=$(jq -er '.versions|select(length==1)|.[0].version_id' rollback-state.json) || rollback_rc=1; recovered_traffic=$(jq -er '.versions|select(length==1)|.[0].percentage' rollback-state.json) || rollback_rc=1; fi; if [ "$rollback_rc" = 0 ] && [ "$recovered_uuid" = "$ACTIVE_BASELINE" ] && [ "$recovered_traffic" = 100 ] && curl -fsS --max-time 20 https://efolusi.com/ >/dev/null; then rollback_recovery=1; fi; jq -n --argjson a "$rollback_attempted" --argjson r "$rollback_rc" --argjson v "$rollback_recovery" --arg u "$recovered_uuid" --argjson p "$recovered_traffic" '{armed:true,attempted:$a,rc:$r,recoveryVerified:$v,activeUuid:$u,trafficPercent:$p}' > rollback-receipt.tmp; sync rollback-receipt.tmp; mv rollback-receipt.tmp rollback-receipt.json; sync .; [ "$rollback_rc" = 0 ] && [ "$rollback_recovery" = 1 ] || code=1; exit "$code"; }
+          trap 'contain 1' ERR; trap 'contain 130' INT TERM; : > phases.ndjson
+          for pair in candidate1:$CANDIDATE_UUID rollback:$ROLLBACK_UUID candidate2:$CANDIDATE_UUID; do n=${pair%%:*}; id=${pair#*:}; pnpm exec wrangler versions deploy "$id@100%" --config wrangler.jsonc --yes; pnpm exec wrangler deployments status --config wrangler.jsonc --json > state.json; test "$(jq '[.versions[]|select(.percentage==100)]|length' state.json)" = 1; a=$(jq -r '.versions[]|select(.percentage==100)|.version_id' state.json); test "$a" = "$id"; h=$(curl -fsS -o /dev/null -w '%{http_code}' --max-time 20 https://efolusi.com/); r=$(curl -fsS -o /dev/null -w '%{http_code}' --max-time 20 https://efolusi.com/robots.txt); test "$h" = 200; test "$r" = 200; jq -cn --arg n "$n" --arg u "$id" '{name:$n,uuid:$u,attempts:1,rc:0,activeUuid:$u,trafficPercent:100,healthCode:200,robotsCode:200}' >> phases.ndjson; done
+          pnpm exec wrangler deployments status --config wrangler.jsonc --json > final.json
+          D=$(jq -er .id final.json); F=$(jq -er '.versions|length' final.json); test "$F" = 1; A=$(jq -er '.versions[0].version_id' final.json); P=$(jq -er '.versions[0].percentage' final.json); test "$A" = "$CANDIDATE_UUID"; test "$P" = 100
+          jq -n --arg c "$CANDIDATE_UUID" --arg b "$ACTIVE_BASELINE" --arg r "$ROLLBACK_UUID" --arg d "$D" --arg a "$A" --argjson p "$P" --slurpfile phases phases.ndjson '{schema:"efolusi.foundation.promotion/v3",candidateUuid:$c,baselineUuid:$b,rollbackUuid:$r,phases:$phases,finalState:{activeVersions:[$a],candidateTrafficPercent:$p,deploymentId:$d},rollback:{armed:true,attempted:0,rc:0,recoveryVerified:0,activeUuid:null},effects:{customer:0,payment:0,settings:0,secrets:0}}' > terminal-receipt.tmp
+          sync terminal-receipt.tmp; mv terminal-receipt.tmp terminal-receipt.json; sync .
+          node scripts/foundation-release-contract.mjs terminal terminal-receipt.json; sha256sum terminal-receipt.json > PROMOTION-SHA256SUMS
+          trap - ERR INT TERM
+      - name: Finalize terminal evidence
+        if: always()
+        run: |
+          set -euo pipefail
+          if [ ! -f terminal-receipt.json ]; then jq -n --arg conclusion "${{ job.status }}" '{schema:"efolusi.foundation.terminal-failure/v1",conclusion:$conclusion,complete:false}' > terminal-receipt.tmp; sync terminal-receipt.tmp; mv terminal-receipt.tmp terminal-receipt.json; sync .; fi
+          sha256sum terminal-receipt.json rollback-receipt.json 2>/dev/null > TERMINAL-SHA256SUMS || sha256sum terminal-receipt.json > TERMINAL-SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with: {name: "foundation-promotion-${{ github.sha }}", path: "terminal-receipt.json\nrollback-receipt.json\nTERMINAL-SHA256SUMS\nfresh.json\nprovider-version.json\nstate.json\nfinal.json\nphases.ndjson", if-no-files-found: warn, retention-days: 30}
