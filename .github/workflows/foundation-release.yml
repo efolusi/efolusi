@@ -110,7 +110,9 @@ jobs:
         run: |
           set -euo pipefail
           pnpm install --frozen-lockfile --ignore-scripts
-          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"; sha256sum -c candidate/SHA256SUMS; test "$(jq -r .upload.uuid candidate/candidate-receipt.json)" = "$CANDIDATE_UUID"
+          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"
+          (cd candidate; test "$(cut -d' ' -f3 SHA256SUMS | LC_ALL=C sort)" = "$(printf '%s\n' candidate-receipt.json foundation-worker.tgz input-manifest preview.body preview.headers preview.status robots.body robots.headers robots.status upload-output.ndjson upload-record.json upload-record.recheck.json | LC_ALL=C sort)"; test "$(wc -l < SHA256SUMS | tr -d ' ')" = 12; sha256sum -c SHA256SUMS)
+          test "$(jq -r .upload.uuid candidate/candidate-receipt.json)" = "$CANDIDATE_UUID"
           pnpm exec wrangler versions view "$CANDIDATE_UUID" --config wrangler.jsonc --json > provider-version.json; pnpm exec wrangler deployments status --config wrangler.jsonc --json > state.json
           jq '{id:.id,message:.annotations["workers/message"],tag:.annotations["workers/tag"]}' provider-version.json > fresh-version.json
           jq '{deploymentId:.id,versions:[.versions[]|{versionId:.version_id,percentage:.percentage}]}' state.json > fresh-status.json
