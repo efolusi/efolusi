@@ -51,10 +51,10 @@ jobs:
           SOURCE_TREE=$(git rev-parse HEAD^{tree})
           A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
           test "$(pnpm exec wrangler --version | awk '{print $NF}')" = "$WRANGLER_VERSION"
-          export WRANGLER_OUTPUT_FILE_PATH="$PWD/upload-output.ndjson"
-          test ! -e "$WRANGLER_OUTPUT_FILE_PATH"
-          pnpm exec wrangler versions upload --config wrangler.jsonc --message "source.sha=$SOURCE_SHA source.tree=$SOURCE_TREE archive.sha256=$A input-manifest.sha256=$M provider.byteDigest=N/A_PROVIDER_UNAVAILABLE" --tag "source-$SOURCE_SHA" --preview-alias "candidate-${SOURCE_SHA:0:12}" > upload.stdout
+          test ! -e upload-output.ndjson
+          WRANGLER_OUTPUT_FILE_PATH="$PWD/upload-output.ndjson" pnpm exec wrangler versions upload --config wrangler.jsonc --message "source.sha=$SOURCE_SHA source.tree=$SOURCE_TREE archive.sha256=$A input-manifest.sha256=$M provider.byteDigest=N/A_PROVIDER_UNAVAILABLE" --tag "source-$SOURCE_SHA" --preview-alias "candidate-${SOURCE_SHA:0:12}" > upload.stdout
           node scripts/foundation-release-contract.mjs upload-output upload-output.ndjson > upload-record.json
+          sha256sum upload-output.ndjson > upload-output.sha256
           UUID=$(jq -er '.version_id' upload-record.json)
           pnpm exec wrangler versions view "$UUID" --config wrangler.jsonc --json > version-readback.json
           pnpm exec wrangler deployments status --config wrangler.jsonc --json > deployment-readback.json
@@ -68,16 +68,22 @@ jobs:
           set -euo pipefail
           SOURCE_TREE=$(git rev-parse HEAD^{tree})
           U=$(jq -er .version_id upload-record.json); URL=$(jq -er .preview_alias_url upload-record.json)
-          H=$(curl -sS -H 'Cookie: lang=en' -D preview.headers -o preview.body -w '%{http_code}' --max-time 20 "$URL"); R=$(curl -fsS -o robots.txt -w '%{http_code}' --max-time 20 "${URL%/}/robots.txt")
-          test "$H" = 307; test "$R" = 200
+          curl -sS -H 'Cookie: lang=en' -D preview.headers -o preview.body -w '%{http_code}\n' --max-time 20 "$URL" > preview.status
+          curl -sS -D robots.headers -o robots.body -w '%{http_code}\n' --max-time 20 "${URL%/}/robots.txt" > robots.status
+          test "$(cat preview.status)" = 307; test "$(cat robots.status)" = 200
           test "$(awk 'BEGIN{IGNORECASE=1}/^location:/{sub(/\r$/,"");sub(/^[^:]*:[[:space:]]*/,"");print}' preview.headers)" = "/en"
+          ROBOTS_TYPE=$(awk -F': ' 'tolower($1)=="content-type"{gsub("\\r","",$2);print $2}' robots.headers); [[ "$ROBOTS_TYPE" =~ ^text/plain([\;][[:space:]]*charset=[A-Za-z0-9._-]+)?$ ]]; test -s robots.body
+          sha256sum -c upload-output.sha256; node scripts/foundation-release-contract.mjs upload-output upload-output.ndjson > upload-record.recheck.json; cmp upload-record.json upload-record.recheck.json
+          UH=$(cut -d' ' -f1 upload-output.sha256); PH=$(sha256sum preview.headers|cut -d' ' -f1); PB=$(sha256sum preview.body|cut -d' ' -f1); RH=$(sha256sum robots.headers|cut -d' ' -f1); RB=$(sha256sum robots.body|cut -d' ' -f1)
           A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
           jq '{id:.id,message:.annotations["workers/message"],tag:.annotations["workers/tag"]}' version-readback.json > version-projection.json
           jq '{deploymentId:.id,versions:[.versions[]|{versionId:.version_id,percentage:.percentage}]}' deployment-readback.json > deployment-projection.json
-          jq -n --arg s "$GITHUB_SHA" --arg t "$SOURCE_TREE" --arg a "$A" --arg m "$M" --arg u "$U" --arg url "$URL" --slurpfile v version-projection.json --slurpfile d deployment-projection.json '{schema:"efolusi.foundation.candidate/v3",source:{sha:$s,tree:$t,githubSha:$s},artifact:{archiveSha256:$a,inputManifestSha256:$m,uploadInputPath:".open-next",providerByteDigest:"N/A_PROVIDER_UNAVAILABLE"},toolchain:{node:"22.22.2",pnpm:"10.29.2",wrangler:"4.115.0",checkoutAction:"11d5960a326750d5838078e36cf38b85af677262",pnpmAction:"b906affcce14559ad1aafd4ab0e942779e9f58b1",setupNodeAction:"49933ea5288caeca8642d1e84afbd3f7d6820020",uploadArtifactAction:"ea165f8d65b6e75b540449e92b4886f43607fa02"},upload:{uuid:$u,attempts:1,rc:0,archiveSha256:$a,inputManifestSha256:$m,outputRows:2},providerReadback:{version:$v[0],deployment:$d[0]},preview:{url:$url,rootCode:307,rootLocation:"/en",robotsCode:200,e2e:"PASS"},authority:{kind:"protected-dev-push",githubSha:$s},effects:{customer:0,payment:0,productionTraffic:0,deployments:0,settings:0,secrets:0}}' > candidate-receipt.json
+          jq -n --arg s "$GITHUB_SHA" --arg t "$SOURCE_TREE" --arg a "$A" --arg m "$M" --arg u "$U" --arg url "$URL" --arg uh "$UH" --arg ph "$PH" --arg pb "$PB" --arg rh "$RH" --arg rb "$RB" --arg rt "$ROBOTS_TYPE" --slurpfile v version-projection.json --slurpfile d deployment-projection.json '{schema:"efolusi.foundation.candidate/v3",source:{sha:$s,tree:$t,githubSha:$s},artifact:{archiveSha256:$a,inputManifestSha256:$m,uploadInputPath:".open-next",providerByteDigest:"N/A_PROVIDER_UNAVAILABLE"},toolchain:{node:"22.22.2",pnpm:"10.29.2",wrangler:"4.115.0",checkoutAction:"11d5960a326750d5838078e36cf38b85af677262",pnpmAction:"b906affcce14559ad1aafd4ab0e942779e9f58b1",setupNodeAction:"49933ea5288caeca8642d1e84afbd3f7d6820020",uploadArtifactAction:"ea165f8d65b6e75b540449e92b4886f43607fa02"},upload:{uuid:$u,attempts:1,rc:0,archiveSha256:$a,inputManifestSha256:$m,outputRows:2,outputSha256:$uh},providerReadback:{version:$v[0],deployment:$d[0]},preview:{url:$url,rootCode:307,rootLocation:"/en",rootHeadersSha256:$ph,rootBodySha256:$pb,robotsCode:200,robotsContentType:$rt,robotsHeadersSha256:$rh,robotsBodySha256:$rb,e2e:"PASS"},authority:{kind:"protected-dev-push",githubSha:$s},effects:{customer:0,payment:0,productionTraffic:0,deployments:0,settings:0,secrets:0}}' > candidate-receipt.json
           jq -n --arg githubSha "$GITHUB_SHA" --arg githubTree "$SOURCE_TREE" --arg archiveSha256 "$A" --arg inputManifestSha256 "$M" '{$githubSha,$githubTree,$archiveSha256,$inputManifestSha256}' > expected.json
           node scripts/foundation-release-contract.mjs candidate candidate-receipt.json expected.json
-          sha256sum candidate-receipt.json foundation-worker.tgz input-manifest > SHA256SUMS
+          node scripts/foundation-release-contract.mjs candidate-evidence candidate-receipt.json > RAW-SHA256SUMS
+          sha256sum -c RAW-SHA256SUMS
+          sha256sum candidate-receipt.json foundation-worker.tgz input-manifest > SHA256SUMS; cat RAW-SHA256SUMS >> SHA256SUMS
       - name: Finalize candidate evidence
         if: always()
         run: |
@@ -86,7 +92,7 @@ jobs:
           sha256sum candidate-receipt.json > CANDIDATE-TERMINAL-SHA256SUMS
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
-        with: {name: "foundation-candidate-${{ github.sha }}", path: "foundation-worker.tgz\ncandidate-receipt.json\nCANDIDATE-TERMINAL-SHA256SUMS\nSHA256SUMS\ninput-manifest\nupload-output.ndjson\nupload-record.json\nupload.stdout\nversion-readback.json\ndeployment-readback.json\npreview.headers", if-no-files-found: warn, retention-days: 30}
+        with: {name: "foundation-candidate-${{ github.sha }}", path: "foundation-worker.tgz\ncandidate-receipt.json\nCANDIDATE-TERMINAL-SHA256SUMS\nSHA256SUMS\nRAW-SHA256SUMS\ninput-manifest\nupload-output.ndjson\nupload-output.sha256\nupload-record.json\nupload-record.recheck.json\nupload.stdout\nversion-readback.json\ndeployment-readback.json\npreview.status\npreview.headers\npreview.body\nrobots.status\nrobots.headers\nrobots.body", if-no-files-found: warn, retention-days: 30}
   promote:
     if: inputs.action == 'promote' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
