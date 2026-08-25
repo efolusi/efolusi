@@ -1,8 +1,10 @@
 name: Foundation release
 on:
+  push:
+    branches: [dev]
   workflow_dispatch:
     inputs:
-      action: {required: true, type: choice, options: [candidate, promote]}
+      action: {required: true, type: choice, options: [promote]}
       source_sha: {required: true, type: string}
       source_tree: {required: true, type: string}
       candidate_run_id: {required: false, type: string}
@@ -17,7 +19,7 @@ env:
   ROLLBACK_UUID: bdc2f195-8b60-4b13-95b4-40fcef1928f0
 jobs:
   candidate:
-    if: inputs.action == 'candidate' && github.ref == 'refs/heads/dev'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -26,12 +28,12 @@ jobs:
       - uses: actions/setup-node@1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8
         with: {node-version: 20.19.4, cache: pnpm}
       - name: Build exact upload input
-        env: {EXPECTED_SHA: "${{ inputs.source_sha }}", EXPECTED_TREE: "${{ inputs.source_tree }}"}
+        env: {EXPECTED_SHA: "${{ github.sha }}"}
         run: |
           set -euo pipefail
           test "$EXPECTED_SHA" = "$GITHUB_SHA"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-          test "$(git rev-parse HEAD^{tree})" = "$EXPECTED_TREE"
+          SOURCE_TREE=$(git rev-parse HEAD^{tree}); test -n "$SOURCE_TREE"
           corepack prepare "pnpm@$PNPM_VERSION" --activate
           test "$(node --version)" = "v$NODE_VERSION"; test "$(pnpm --version)" = "$PNPM_VERSION"
           pnpm install --frozen-lockfile --ignore-scripts
@@ -42,9 +44,10 @@ jobs:
           tar --sort=name --mtime='UTC 1970-01-01' --owner=0 --group=0 --numeric-owner -czf foundation-worker.tgz .open-next input-manifest
           sha256sum foundation-worker.tgz > foundation-worker.tgz.sha256
       - name: Upload once and read provider truth
-        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", SOURCE_SHA: "${{ github.sha }}", SOURCE_TREE: "${{ inputs.source_tree }}"}
+        env: {CLOUDFLARE_API_TOKEN: "${{ secrets.CLOUDFLARE_API_TOKEN }}", SOURCE_SHA: "${{ github.sha }}"}
         run: |
           set -euo pipefail
+          SOURCE_TREE=$(git rev-parse HEAD^{tree})
           A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
           test "$(pnpm exec wrangler --version | awk '{print $NF}')" = "$WRANGLER_VERSION"
           export WRANGLER_OUTPUT_FILE_PATH="$PWD/upload-output.ndjson"
@@ -60,14 +63,14 @@ jobs:
           test "$(jq -r '.versions[]|select(.percentage==100)|.version_id' deployment-readback.json)" = "$ACTIVE_BASELINE"
           test "$(jq --arg u "$UUID" '[.versions[]|select(.version_id==$u)]|length' deployment-readback.json)" = 0
       - name: Preview and receipt
-        env: {SOURCE_TREE: "${{ inputs.source_tree }}"}
         run: |
           set -euo pipefail
+          SOURCE_TREE=$(git rev-parse HEAD^{tree})
           U=$(jq -er .version_id upload-output.ndjson); URL=$(jq -er '.preview_alias_url // .preview_url' upload-output.ndjson); H=$(curl -fsS -o preview.html -w '%{http_code}' --max-time 20 "$URL"); R=$(curl -fsS -o robots.txt -w '%{http_code}' --max-time 20 "${URL%/}/robots.txt"); test "$H" = 200; test "$R" = 200; grep -qi efolusi preview.html
           A=$(cut -d' ' -f1 foundation-worker.tgz.sha256); M=$(cat input-manifest.sha256)
           jq '{id:.id,message:.annotations["workers/message"],tag:.annotations["workers/tag"]}' version-readback.json > version-projection.json
           jq '{deploymentId:.id,versions:[.versions[]|{versionId:.version_id,percentage:.percentage}]}' deployment-readback.json > deployment-projection.json
-          jq -n --arg s "$GITHUB_SHA" --arg t "$SOURCE_TREE" --arg a "$A" --arg m "$M" --arg u "$U" --arg url "$URL" --slurpfile v version-projection.json --slurpfile d deployment-projection.json '{schema:"efolusi.foundation.candidate/v3",source:{sha:$s,tree:$t,githubSha:$s},artifact:{archiveSha256:$a,inputManifestSha256:$m,uploadInputPath:".open-next",providerByteDigest:"N/A_PROVIDER_UNAVAILABLE"},toolchain:{node:"20.19.4",pnpm:"10.29.2",wrangler:"4.115.0",checkoutAction:"11bd71901bbe5b163ceea73d27597364c9af683",setupNodeAction:"1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8",uploadArtifactAction:"ea165f8d65b6e75b540449e92b4886f43607fa02"},upload:{uuid:$u,attempts:1,rc:0,archiveSha256:$a,inputManifestSha256:$m,outputRows:1},providerReadback:{version:$v[0],deployment:$d[0]},preview:{url:$url,healthCode:200,robotsCode:200,e2e:"PASS"},authority:{kind:"protected-dev-dispatch",githubSha:$s},effects:{customer:0,payment:0,productionTraffic:0,deployments:0,settings:0,secrets:0}}' > candidate-receipt.json
+          jq -n --arg s "$GITHUB_SHA" --arg t "$SOURCE_TREE" --arg a "$A" --arg m "$M" --arg u "$U" --arg url "$URL" --slurpfile v version-projection.json --slurpfile d deployment-projection.json '{schema:"efolusi.foundation.candidate/v3",source:{sha:$s,tree:$t,githubSha:$s},artifact:{archiveSha256:$a,inputManifestSha256:$m,uploadInputPath:".open-next",providerByteDigest:"N/A_PROVIDER_UNAVAILABLE"},toolchain:{node:"20.19.4",pnpm:"10.29.2",wrangler:"4.115.0",checkoutAction:"11bd71901bbe5b163ceea73d27597364c9af683",setupNodeAction:"1e60f620b9541d5e24b8b2aa5ac0c1e9b1c8c8",uploadArtifactAction:"ea165f8d65b6e75b540449e92b4886f43607fa02"},upload:{uuid:$u,attempts:1,rc:0,archiveSha256:$a,inputManifestSha256:$m,outputRows:1},providerReadback:{version:$v[0],deployment:$d[0]},preview:{url:$url,healthCode:200,robotsCode:200,e2e:"PASS"},authority:{kind:"protected-dev-push",githubSha:$s},effects:{customer:0,payment:0,productionTraffic:0,deployments:0,settings:0,secrets:0}}' > candidate-receipt.json
           jq -n --arg githubSha "$GITHUB_SHA" --arg githubTree "$SOURCE_TREE" --arg archiveSha256 "$A" --arg inputManifestSha256 "$M" '{$githubSha,$githubTree,$archiveSha256,$inputManifestSha256}' > expected.json
           node scripts/foundation-release-contract.mjs candidate candidate-receipt.json expected.json
           sha256sum candidate-receipt.json foundation-worker.tgz input-manifest > SHA256SUMS
