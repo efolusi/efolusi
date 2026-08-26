@@ -3,9 +3,8 @@
 const BODY = `# Efolusi
 
 > Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia.
-> We build our own products and run them ourselves, from AI and cloud
-> infrastructure to automated trading, geospatial and the open-source tools
-> underneath it all.
+> We build and validate software products, open-source projects, and internal
+> infrastructure. Product status varies and is stated explicitly below.
 
 ## Company
 - Legal entity: PT. Efolusi Dunia Teknologi
@@ -18,14 +17,14 @@ const BODY = `# Efolusi
 - Co-founder: Rakha Febryza Rasendriya
 
 ## Products
-- ZOYYA (https://zoyya.xyz): general autonomous intelligence that reasons, learns your context and acts on its own.
-- Komando (https://komando.efolusi.com): centralized cloud infrastructure; every server, deployment and alert in one interface.
-- Toolips (https://toolips.xyz): 100+ productivity utilities to convert, compress, edit and export. No accounts, free.
-- Trady (https://trady.efolusi.com): video repurposing; it cuts long footage into its best short clips, captioned and ready to post.
-- Kongkow (https://kongkow.xyz): social media command center; publish once to 20+ platforms.
-- Cuwan (https://cuwan.xyz): a spot grid trading bot for CEX and DEX markets; grids are tuned by AI or set manually, running 24/7.
-- Meridian (https://meridian.efolusi.com): open-source design system, 122 accessible React components and 165 tokens, no build step. MIT licensed, and every Efolusi product is built on it.
-- EarthOS (https://earthos.efolusi.com): real-time 3D digital twin of Earth in the browser, with live satellites, aircraft, earthquakes, wildfires and storms. Plugin-based and open source.
+- ZOYYA (https://zoyya.xyz): active-beta workspace where humans and goal-specific agents work together; Nova is being consolidated into it as ZOYYA Desktop.
+- Komando (https://komando.efolusi.com): internal shared infrastructure layer in development; not an external commercial product.
+- Toolips (https://toolips.xyz): capability and integration layer being standardized for ZOYYA invocation.
+- Trady (https://trady.efolusi.com): video-repurposing workflow in paid-customer validation.
+- Kongkow (https://kongkow.xyz): social product in repositioning and revenue validation; product-market fit is not yet proven.
+- Cuwan (https://cuwan.xyz): high-risk trading automation in safety-gated revenue validation; performance and customer claims require auditable evidence.
+- Meridian (https://meridian.efolusi.com): MIT-licensed open-source design system.
+- EarthOS (https://earthos.efolusi.com): open-source geospatial core taken out of the active roadmap pending a proven use case and business model.
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07
@@ -34,7 +33,7 @@ const BODY = `# Efolusi
 - Trades in the EFO/USDT pool on Uniswap v4.
 - The address above is the only official one. Any other address is not ours.
 - Allocation: 50% liquidity pool, 30% TRADY-to-EFO migration, 15% team (locked), 5% burned.
-- Buyback and burn, verifiable on-chain: subscriptions across Efolusi products are paid in ordinary money, a portion of revenue buys EFO back from the open market via the dev wallet (0x23bb2435a859ec52736bab3180806b8c7ae85fc6), and bought-back EFO is sent to the burn address (0x000000000000000000000000000000000000dEaD). Revenue wallet: 0x0297e732858a4d99f5e6aa5ec72fb9f715396f4e. Live figures are read from the chain on https://efolusi.com/en/token.
+- Any product subscription is denominated in ordinary money; nobody is required to pay in EFO. Any buyback-and-burn transaction must use the disclosed wallets and remain independently verifiable on-chain. Dev wallet: 0x23bb2435a859ec52736bab3180806b8c7ae85fc6. Revenue wallet: 0x0297e732858a4d99f5e6aa5ec72fb9f715396f4e. Burn address: 0x000000000000000000000000000000000000dEaD. On-chain figures are shown at https://efolusi.com/en/token.
 - Nobody is ever required to pay in EFO; every product works without it.
 - EFO is not an investment product and nothing published by Efolusi is financial advice.
 

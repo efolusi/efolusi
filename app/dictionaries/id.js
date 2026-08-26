@@ -42,7 +42,7 @@ const id = {
       sub: 'Kami Efolusi, tim kecil di Indonesia. Kami membangun software kami sendiri, yang mengubah hal-hal yang lambat atau merepotkan jadi terasa gampang. Semua yang ada di sini adalah produk yang kami butuhkan untuk diri kami sendiri lebih dulu.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Semuanya di sini sudah live, dan kami memakainya tiap hari.'
+      proof: 'Produk aktif, eksperimen, open source, dan infrastruktur internal—statusnya kami tampilkan apa adanya.'
     },
     marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
@@ -54,7 +54,7 @@ const id = {
           titleA: 'Produk',
           titleEm: 'kami',
           titleB: 'sendiri',
-          body: 'Software untuk bagian pekerjaan yang lambat dan berulang. Ada yang gratis, ada yang open source. Semuanya kami pakai sendiri.',
+          body: 'Software untuk bagian pekerjaan yang lambat dan berulang. Ada yang aktif, sedang divalidasi, open source, atau hanya dipakai internal.',
           cta: 'Lihat portofolio'
         },
         token: {
@@ -77,72 +77,72 @@ const id = {
       headA: 'Produk kami,',
       headEm: 'satu portofolio',
       headB: '.',
-      lede: 'Tiap produk hidup sendiri-sendiri, punya penggunanya masing-masing. Yang menyatukan semuanya ya kami, orang-orang yang sama di baliknya. Lihat-lihat saja dulu.'
+      lede: 'Portofolio kami mencakup produk aktif, validasi revenue, shared platform internal, open source, dan aset yang sementara dikeluarkan. Status produk tidak kami samakan dengan sekadar halaman yang bisa dibuka.'
     },
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
-        desc: 'Asisten AI yang enak diajak kerja. Bilang saja mau ke mana, dia yang memikirkan jalannya; Anda tidak perlu menyuapi langkah satu per satu.',
-        specs: ['Otonom', 'Paham konteks', 'Mandiri'],
+        desc: 'Workspace tempat manusia dan agent dengan tujuan spesifik bekerja bersama. ZOYYA Desktop sedang disatukan sebagai experience kolaborasi dalam platform yang sama.',
+        specs: ['Beta aktif', 'Human + agent', 'Desktop disiapkan'],
         buttonLabel: 'Kunjungi ZOYYA',
         tag: 'AI',
-        summary: 'Bilang tujuannya, dia yang memikirkan langkah-langkahnya.'
+        summary: 'Workspace kolaborasi manusia dan agent; Desktop sedang dikonsolidasikan.'
       },
       komando: {
         section: 'Infrastruktur Cloud',
-        desc: 'Biar urusan server tidak lagi bikin deg-degan. Semua server, deployment, pipeline, dan alert kumpul rapi di satu layar, jadi masalah kelihatan sebelum sempat membesar.',
-        specs: ['Terpusat', 'Terlihat penuh', 'Satu layar'],
-        buttonLabel: 'Kunjungi Komando',
+        desc: 'Shared infrastructure layer internal yang sedang dibangun untuk inventory, deployment, health, backup, restore, dan operasi seluruh produk Efolusi.',
+        specs: ['Shared platform', 'Internal', 'Sedang dibangun'],
+        buttonLabel: 'Lihat status Komando',
         tag: 'Infrastruktur',
-        summary: 'Semua server, deployment, dan alert kumpul rapi di satu tempat.'
+        summary: 'Infrastructure layer internal yang sedang dibangun untuk seluruh produk.'
       },
       toolips: {
         section: 'Produktivitas',
-        desc: 'Untuk kerjaan kecil yang suka muncul tiba-tiba: konversi, kompres, edit, ekspor. Lebih dari 100 alat, buka langsung pakai. Tanpa akun, tanpa langganan.',
-        specs: ['100+ alat', 'Tanpa akun', 'Selalu gratis'],
+        desc: 'Kumpulan capability dan integrasi yang sedang distandarkan agar dapat dipanggil ZOYYA secara typed, permissioned, dan auditable.',
+        specs: ['Capability layer', 'Integrasi ZOYYA', 'Sedang dibangun'],
         buttonLabel: 'Kunjungi Toolips',
         tag: 'Produktivitas',
-        summary: '100+ alat file yang langsung bisa dipakai. Tanpa akun, gratis.'
+        summary: 'Tool dan integration layer yang sedang disiapkan untuk ZOYYA.'
       },
       trady: {
         section: 'Daur Ulang Video',
-        desc: 'Rekaman satu jam, jadi puluhan klip pendek. Trady memotong bagian terbaiknya, memberi caption, dan menyiapkannya untuk diposting. Anda tinggal pilih.',
-        specs: ['Video panjang masuk', 'Klip pendek keluar', 'Caption otomatis'],
+        desc: 'Workflow repurposing video yang sedang divalidasi bersama agency dan tim konten. Fokusnya paket klip berbahasa Indonesia dengan review manusia.',
+        specs: ['Validasi berbayar', 'Agency', 'Review manusia'],
         buttonLabel: 'Kunjungi Trady',
         tag: 'Video',
-        summary: 'Video panjang jadi klip-klip terbaik, tinggal posting.'
+        summary: 'Workflow repurposing video dalam validasi pelanggan berbayar.'
       },
       kongkow: {
         section: 'Media Sosial',
-        desc: 'Capek menempel konten yang sama ke sepuluh aplikasi? Posting sekali di sini, tayang serentak ke Facebook, Instagram, TikTok, YouTube, LinkedIn, X, dan 20+ platform lain.',
-        specs: ['20+ platform', 'Sekali posting', 'Satu pusat'],
-        buttonLabel: 'Kunjungi Kongkow',
+        desc: 'Social product yang sedang direposisi dan diuji untuk menemukan satu pekerjaan pelanggan yang benar-benar dibayar.',
+        specs: ['Validasi revenue', 'Repositioning', 'Belum PMF'],
+        buttonLabel: 'Lihat status Kongkow',
         tag: 'Sosial',
-        summary: 'Posting sekali, tayang serentak di 20+ platform.'
+        summary: 'Social product dalam repositioning dan validasi revenue.'
       },
       cuwan: {
         section: 'Grid Trading',
-        desc: 'Grid bot spot yang jalan di CEX maupun DEX. Atur grid-nya sendiri atau serahkan ke AI; dia yang beli dan jual sepanjang waktu.',
-        specs: ['Grid bot spot', 'AI atau manual', 'CEX + DEX'],
-        buttonLabel: 'Kunjungi Cuwan',
+        desc: 'Otomasi trading dalam validasi revenue dengan gerbang legal, keamanan kredensial, risk disclosure, dan performa yang dapat diaudit.',
+        specs: ['Validasi revenue', 'Risiko tinggi', 'Safety-gated'],
+        buttonLabel: 'Lihat status Cuwan',
         tag: 'Trading',
-        summary: 'Grid bot spot untuk semua CEX dan DEX, disetel AI atau manual.'
+        summary: 'Otomasi trading dalam validasi revenue yang dibatasi gerbang keselamatan.'
       },
       meridian: {
         section: 'Sistem Desain',
-        desc: 'Alasan semua produk kami terasa satu keluarga. Design system open source dengan 122 komponen React yang aksesibel dan 165 token, tanpa build step. Situs yang sedang Anda baca ini pun memakainya.',
-        specs: ['122 komponen', '165 token', 'Lisensi MIT'],
+        desc: 'Design system open source yang dipakai untuk menjaga konsistensi antarmuka Efolusi. Kode, dokumentasi, dan lisensinya dapat diperiksa publik.',
+        specs: ['Open source', 'Design system', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
-        summary: 'Design system open source di balik semua produk kami, termasuk situs ini.'
+        summary: 'Design system open source berlisensi MIT untuk antarmuka yang konsisten.'
       },
       earthos: {
         section: 'Geospasial',
-        desc: 'Bumi, live, di tab browser Anda. Satelit, pesawat, gempa, dan badai bergerak bersama di satu bola dunia, 100.000+ objek pada 60fps, dan tiap sumber data tinggal dicolok sebagai plugin.',
-        specs: ['3D real-time', 'Berbasis plugin', 'Open source'],
+        desc: 'Core geospasial 3D open source yang sementara dikeluarkan dari roadmap aktif sampai ada use case, strategic value, dan business model yang terbukti.',
+        specs: ['Diambil keluar', 'Open source', 'Tanpa roadmap aktif'],
         buttonLabel: 'Kunjungi EarthOS',
         tag: 'Geospasial',
-        summary: 'Bumi secara live di browser: satelit, penerbangan, dan cuaca di satu bola dunia.'
+        summary: 'Core geospasial open source yang sementara tidak aktif.'
       }
     },
     team: {
@@ -189,7 +189,7 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Perusahaan software kecil dari Indonesia. Kami bikin produk sendiri, dari AI, bot trading, sampai design system open source, lalu kami pakai dan urus sendiri tiap hari. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerjasama.'
+          'Perusahaan software kecil dari Indonesia. Kami membangun dan memvalidasi produk software, merawat proyek open source, dan mengoperasikan infrastruktur internal. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerja sama.'
         ],
         [
           'Kalian berbasis di mana?',
@@ -283,56 +283,56 @@ const id = {
         href: 'https://zoyya.xyz',
         problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
         solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
-        result: 'Live di zoyya.xyz, dan jadi asisten yang kami andalkan sendiri untuk pekerjaan sehari-hari di seluruh tim.'
+        result: 'Beta aktif di zoyya.xyz. Fokus komersialnya sedang dipersempit ke satu pekerjaan bisnis berulang yang dapat diukur.'
       },
       {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
-        solution: 'Design system open source: 122 komponen React yang aksesibel, 165 token, 9 block siap pakai, tanpa build step, MIT.',
-        result: 'Semua produk Efolusi berjalan di atasnya, termasuk situs ini. Kodenya publik, silakan nilai sendiri.'
+        solution: 'Design system open source untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang.',
+        result: 'Kode dan lisensi MIT tersedia publik; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
       },
       {
         name: 'EarthOS',
         href: 'https://earthos.efolusi.com',
         problem: 'Data live tentang bumi (satelit, pesawat, gempa, badai) terpencar di puluhan sumber tanpa ada yang menyatukan.',
         solution: 'Digital twin 3D bumi secara real-time di browser, dengan tiap sumber data sebagai plugin di satu globe.',
-        result: 'Lebih dari 100.000 objek live dirender 60fps, sepenuhnya open source, dan berjalan di tab browser Anda hari ini.'
+        result: 'Core dan plugin SDK tersedia sebagai open source. Pengembangan solusi vertikal menunggu design partner dengan data dan kebutuhan operasional.'
       },
       {
         name: 'Komando',
         href: 'https://komando.efolusi.com',
         problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
-        solution: 'Satu layar untuk semua server, deployment, pipeline, dan alert, supaya masalah kelihatan sebelum membesar.',
-        result: 'Live di komando.efolusi.com, dan mengawasi seluruh infrastruktur kami sendiri setiap hari tanpa jeda.'
+        solution: 'Eksperimen satu layar untuk server, deployment, pipeline, dan alert.',
+        result: 'Sedang dibangun menjadi shared infrastructure layer internal; adopsi lintas produk belum diklaim sebelum ada bukti.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan dan pelacak.',
-        solution: 'Lebih dari 100 alat file yang langsung bisa dipakai di browser, tanpa akun, tanpa langganan, tanpa ribet.',
-        result: 'Live di toolips.xyz, gratis untuk siapa saja, dan jadi tempat kami sendiri menyelesaikan urusan file kecil.'
+        solution: 'Kumpulan utilitas file yang langsung digunakan di browser tanpa akun.',
+        result: 'Sedang distandarkan sebagai tool dan integration layer untuk ZOYYA; registry dan permission contract belum selesai.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'Satu video panjang sebenarnya berisi konten untuk seminggu, tapi memotongnya secara manual menghabiskan semalaman.',
-        solution: 'Pemotong otomatis: video panjang masuk, klip-klip pendek bercaption langsung keluar, Anda tinggal memilihnya.',
-        result: 'Live di trady.efolusi.com, dan kami pakai lebih dulu untuk memotong video-video milik kami sendiri tiap minggu.'
+        solution: 'Workflow video panjang menjadi paket klip bercaption dengan review manusia.',
+        result: 'Sedang divalidasi sebagai layanan berbayar untuk agency dan tim konten; belum dinyatakan sebagai produk matang.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
-        solution: 'Posting sekali dari satu tempat, langsung tayang serentak ke lebih dari 20 platform media sosial sekaligus.',
-        result: 'Live di kongkow.xyz, dan dipakai menjalankan kanal-kanal media sosial milik kami sendiri setiap hari.'
+        solution: 'Eksperimen social product dan workflow penyusunan konten.',
+        result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Menjalankan grid secara manual berarti sering telat pasang order: saat harga naik atau turun dalam, kesempatan profitnya hilang.',
-        solution: 'Grid bot spot yang jalan di CEX maupun DEX, disetel sendiri kalau punya pandangan atau diserahkan ke AI.',
-        result: 'Live di cuwan.xyz, dan dipakai menjalankan grid-grid milik kami sendiri sepanjang waktu, 24/7 tanpa jeda.'
+        solution: 'Eksperimen otomasi grid trading dengan konfigurasi manual atau berbantuan model.',
+        result: 'Masuk validasi revenue dengan gerbang legal, keamanan kredensial, dan performa yang dapat diaudit.'
       }
     ],
     paperTitleA: 'Perusahaan',
@@ -467,8 +467,8 @@ const id = {
     utilTitleB: '.',
     utilLede: 'Kami menyambungkan EFO ke produk-produk kami sepotong demi sepotong. Tiap utilitas, tokenomik, dan dokumentasi muncul di sini saat sudah live. Kami lebih suka menunjukkan yang sudah jalan daripada menjanjikan yang belum.',
     flywheel: [
-      ['Produk menghasilkan pendapatan', 'Subscription di seluruh ekosistem Efolusi dibayar dengan uang biasa. Tidak ada yang diwajibkan membayar pakai EFO.'],
-      ['Pendapatan mendanai buyback', 'Sebagian hasil bisnis dipakai membeli kembali EFO dari pasar terbuka, lewat dev wallet yang tercantum di atas.'],
+      ['Produk mengenakan harga dalam uang biasa', 'Setiap subscription produk didenominasikan dalam uang biasa. Tidak ada yang diwajibkan membayar pakai EFO.'],
+      ['Buyback tercatat on-chain', 'Saat dana perusahaan digunakan untuk buyback EFO, transaksinya harus berasal dari wallet yang diungkapkan dan dapat diverifikasi secara independen on-chain.'],
       ['Hasil buyback dibakar', 'EFO hasil buyback dikirim ke alamat burn, keluar dari peredaran secara permanen. Bar di atas mencatatnya secara live.']
     ],
     faqTitleA: 'Jawaban',

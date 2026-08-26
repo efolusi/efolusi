@@ -432,7 +432,7 @@ a.ef-btn--secondary:hover {
 }
 
 .meridian-mark--watermark {
-  width: 260px;
+  width: 400px;
 }
 
 .product-logo {
@@ -451,8 +451,10 @@ a.ef-btn--secondary:hover {
 }
 
 .product-logo--watermark {
-  width: 260px;
-  height: 260px;
+  width: 360px;
+  height: 360px;
+  filter: grayscale(1);
+  opacity: 0.13;
 }
 
 /* ---------- Category tints, drawn from the Meridian status and brand ramps ---------- */
@@ -770,10 +772,10 @@ a.ef-btn--secondary:hover {
 
 .stage-watermark {
   position: absolute;
-  right: -16px;
-  bottom: -90px;
+  right: -15px;
+  bottom: -82px;
   font-family: var(--font-display);
-  font-size: 330px;
+  font-size: 300px;
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-display);
   line-height: 1;
@@ -784,13 +786,13 @@ a.ef-btn--secondary:hover {
 }
 
 .stage-watermark--brand {
-  right: 24px;
-  bottom: 20px;
+  right: -27px;
+  bottom: -64px;
 }
 
 .stage-watermark--logo {
-  right: 24px;
-  bottom: 0;
+  right: -45px;
+  bottom: -112px;
 }
 
 @keyframes watermark-in {
