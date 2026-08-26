@@ -66,7 +66,6 @@ For local Next.js development, put the variables in `.env.local`. For `npm run p
 
 ```bash
 BREVO_API_KEY=
-BREVO_LIST_ID=
 EMAIL_TO=
 EMAIL_FROM=
 ```
@@ -83,15 +82,9 @@ Required variables:
 
 ### Newsletter
 
-The newsletter form posts to `app/api/newsletter/route.js` and creates or updates a contact in Brevo.
+The newsletter endpoint is fail-closed and does not read, store or forward form data until an authoritative Brevo double-opt-in configuration contract is reviewed and implemented.
 
-Required variable:
-
-- `BREVO_API_KEY`
-
-Optional variable:
-
-- `BREVO_LIST_ID`, adds subscribers to a specific Brevo list when provided
+There are currently no newsletter provider variables accepted by the endpoint.
 
 ## Project Structure
 
@@ -100,7 +93,7 @@ app/
   api/
     _lib/guard.js         Shared endpoint protections (origin check, rate limit)
     contact/route.js      Contact form endpoint (Brevo transactional email)
-    newsletter/route.js   Newsletter signup endpoint (Brevo contacts)
+    newsletter/route.js   Fail-closed newsletter DOI prerequisite boundary
   about|careers|brand|token/page.js
                         The subpages, each with its own copy at the top
   privacy/page.js         Privacy policy
@@ -122,6 +115,8 @@ open-next.config.ts       OpenNext Cloudflare adapter configuration
 
 Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP (5 requests per minute) through the Workers rate limiting binding. The contact form also carries a honeypot field; submissions that fill it are silently dropped.
 
+Missing or failing rate-limit bindings deny requests. Local development may explicitly opt into an unbound limiter with `ALLOW_UNBOUND_RATE_LIMIT_IN_DEVELOPMENT=true`; production always ignores that bypass.
+
 ## Content Updates
 
 Home page copy, product entries, leadership, roles and FAQ items live in the arrays at the top of `app/page.js`. Each other page keeps its own copy at the top of its `page.js`. Update those arrays before touching the rendered JSX.
@@ -139,7 +134,6 @@ The app deploys to Cloudflare Workers through the OpenNext Cloudflare adapter.
    npx wrangler secret put BREVO_API_KEY
    npx wrangler secret put EMAIL_TO
    npx wrangler secret put EMAIL_FROM
-   npx wrangler secret put BREVO_LIST_ID
    ```
 
 3. Deploy:
@@ -148,7 +142,7 @@ The app deploys to Cloudflare Workers through the OpenNext Cloudflare adapter.
    npm run deploy
    ```
 
-4. Verify the contact and newsletter forms in production with real credentials.
+4. Verify the contact form. Newsletter remains unavailable until its separate DOI prerequisite is approved.
 
 Continuous deployment can also be set up with Workers Builds by connecting this repository in the Cloudflare dashboard; the build command is `npx opennextjs-cloudflare build` and the deploy command is `npx opennextjs-cloudflare deploy`.
 
