@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "efolusi", "runtimeExecutable": "pnpm", "runtimeArgs": ["dev"], "port": 3000 },
+    {
+      "name": "sso-web", "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "test -n \"$SSO_REPO_DIR\" && test -f \"$SSO_ENV_FILE\" && set -a && . \"$SSO_ENV_FILE\" && set +a && cd \"$SSO_REPO_DIR/apps/web\" && exec pnpm dev"],
+      "port": 3300
+    },
+    {
+      "name": "sso-api", "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "test -n \"$SSO_REPO_DIR\" && test -f \"$SSO_ENV_FILE\" && set -a && . \"$SSO_ENV_FILE\" && set +a && cd \"$SSO_REPO_DIR/apps/api\" && exec pnpm dev"],
+      "port": 3301
+    }
+  ]
+}
