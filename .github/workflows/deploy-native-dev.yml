@@ -23,6 +23,7 @@ jobs:
           ref: ${{ github.sha }}
       - name: Build, restart, and verify isolated dev web
         env:
+          EFOLUSI_EXTERNAL_ORIGIN: https://dev-efolusi.efolusi.com
           GITHUB_SHA: ${{ github.sha }}
         run: |
           set -Eeuo pipefail
@@ -36,6 +37,7 @@ jobs:
             PATH="/usr/local/bin:/usr/bin:/bin" \
             PM2_HOME="$HOME/.pm2" \
             NODE_ENV="production" \
+            EFOLUSI_EXTERNAL_ORIGIN="$EFOLUSI_EXTERNAL_ORIGIN" \
             HOSTNAME="127.0.0.1" \
             PORT="13000" \
             pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
