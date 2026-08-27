@@ -1,7 +1,7 @@
 name: Foundation release
 on:
   push:
-    branches: [dev]
+    branches: [main]
   workflow_dispatch:
     inputs:
       action: {required: true, type: choice, options: [promote]}
@@ -17,7 +17,7 @@ env:
   WRANGLER_VERSION: 4.115.0
 jobs:
   candidate:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/dev'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:

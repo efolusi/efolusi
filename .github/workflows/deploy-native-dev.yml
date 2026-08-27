@@ -1,0 +1,36 @@
+name: Deploy native dev web
+
+on:
+  push:
+    branches: [dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-efolusi-dev-web
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref_name == 'dev'
+    runs-on: [self-hosted, Linux, X64, efolusi]
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+      - name: Pull, build, restart, and verify dev web
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          DEPLOY_BUILD_SCRIPT: build
+          EFOLUSI_DEPLOY_ENVIRONMENT: dev
+        run: |
+          set -Eeuo pipefail
+          /home/deploy/bin/efolusi-deploy \
+            efolusi \
+            dev \
+            dev \
+            git@github.com:efolusi/efolusi.git \
+            http://127.0.0.1:13000/
