@@ -26,8 +26,29 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
         run: |
           set -Eeuo pipefail
+          exec 9>"/home/foundation-runner/native-deploy.lock"
+          flock -w 2700 9
           corepack pnpm install --frozen-lockfile
           corepack pnpm run build
-          sudo /usr/bin/systemctl restart foundation-dev-web.service
-          sudo /usr/bin/systemctl is-active foundation-dev-web.service
+          if pm2 jlist | node -e '
+            const fs = require("node:fs");
+            const apps = JSON.parse(fs.readFileSync(0, "utf8"));
+            process.exit(apps.some((app) => app.name === "efolusi-dev-efolusi-web") ? 0 : 1);
+          '; then
+            pm2 restart efolusi-dev-efolusi-web --update-env
+          else
+            pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
+              --name efolusi-dev-efolusi-web \
+              --cwd "$GITHUB_WORKSPACE" \
+              -- start -H 127.0.0.1 -p 13000
+          fi
+          pm2 save
+          pm2 jlist | node -e '
+            const fs = require("node:fs");
+            const apps = JSON.parse(fs.readFileSync(0, "utf8"));
+            const app = apps.find((candidate) => candidate.name === "efolusi-dev-efolusi-web");
+            if (!app || app.pm2_env?.status !== "online" || app.pm2_env?.pm_cwd !== process.env.GITHUB_WORKSPACE) {
+              process.exit(1);
+            }
+          '
           curl --fail --silent --show-error --max-time 15 http://127.0.0.1:13000/ >/dev/null
