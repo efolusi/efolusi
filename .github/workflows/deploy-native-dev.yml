@@ -28,10 +28,6 @@ jobs:
           set -Eeuo pipefail
           corepack pnpm install --frozen-lockfile
           corepack pnpm run build
-          pm2 delete efolusi-dev-efolusi-web 2>/dev/null || true
-          pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
-            --name efolusi-dev-efolusi-web \
-            --cwd "$GITHUB_WORKSPACE" \
-            -- start -H 127.0.0.1 -p 13000
-          pm2 save
+          sudo /usr/bin/systemctl restart foundation-dev-web.service
+          sudo /usr/bin/systemctl is-active foundation-dev-web.service
           curl --fail --silent --show-error --max-time 15 http://127.0.0.1:13000/ >/dev/null
