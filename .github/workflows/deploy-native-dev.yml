@@ -30,18 +30,18 @@ jobs:
           flock -w 2700 9
           corepack pnpm install --frozen-lockfile
           corepack pnpm run build
-          if pm2 jlist | node -e '
-            const fs = require("node:fs");
-            const apps = JSON.parse(fs.readFileSync(0, "utf8"));
-            process.exit(apps.some((app) => app.name === "efolusi-dev-efolusi-web") ? 0 : 1);
-          '; then
-            pm2 restart efolusi-dev-efolusi-web --update-env
-          else
+          pm2 delete efolusi-dev-efolusi-web 2>/dev/null || true
+          env -i \
+            HOME="$HOME" \
+            PATH="/usr/local/bin:/usr/bin:/bin" \
+            PM2_HOME="$HOME/.pm2" \
+            NODE_ENV="production" \
+            HOSTNAME="127.0.0.1" \
+            PORT="13000" \
             pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
               --name efolusi-dev-efolusi-web \
               --cwd "$GITHUB_WORKSPACE" \
               -- start -H 127.0.0.1 -p 13000
-          fi
           pm2 save
           pm2 jlist | node -e '
             const fs = require("node:fs");
@@ -51,4 +51,12 @@ jobs:
               process.exit(1);
             }
           '
-          curl --fail --silent --show-error --max-time 15 http://127.0.0.1:13000/ >/dev/null
+          ready=false
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error --max-time 5 http://127.0.0.1:13000/ >/dev/null; then
+              ready=true
+              break
+            fi
+            sleep 1
+          done
+          test "$ready" = "true"
