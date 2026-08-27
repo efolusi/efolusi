@@ -15,22 +15,23 @@ concurrency:
 jobs:
   deploy:
     if: github.ref_name == 'dev'
-    runs-on: [self-hosted, Linux, X64, efolusi]
+    runs-on: [self-hosted, Linux, X64, foundation-dev-web]
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ github.sha }}
-      - name: Pull, build, restart, and verify dev web
+      - name: Build, restart, and verify isolated dev web
         env:
           GITHUB_SHA: ${{ github.sha }}
-          DEPLOY_BUILD_SCRIPT: build
-          EFOLUSI_DEPLOY_ENVIRONMENT: dev
         run: |
           set -Eeuo pipefail
-          /home/deploy/bin/efolusi-deploy \
-            efolusi \
-            dev \
-            dev \
-            git@github.com:efolusi/efolusi.git \
-            http://127.0.0.1:13000/
+          corepack pnpm install --frozen-lockfile
+          corepack pnpm run build
+          pm2 delete efolusi-dev-efolusi-web 2>/dev/null || true
+          pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
+            --name efolusi-dev-efolusi-web \
+            --cwd "$GITHUB_WORKSPACE" \
+            -- start -H 127.0.0.1 -p 13000
+          pm2 save
+          curl --fail --silent --show-error --max-time 15 http://127.0.0.1:13000/ >/dev/null
