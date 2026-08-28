@@ -28,7 +28,7 @@ export default function SiteHeader({ lang, t }) {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch('https://accounts-api.efolusi.com/api/auth/get-session', {
+    fetch('https://my-api.efolusi.com/api/auth/get-session', {
       credentials: 'include',
       signal: controller.signal
     })
@@ -80,7 +80,7 @@ export default function SiteHeader({ lang, t }) {
           <ThemeToggle />
           <a
             className="pill pill--sm pill--plain sign-in-pill"
-            href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+            href={user ? 'https://my.efolusi.com/account' : `https://my.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           >
             {user ? t.account ?? 'Account' : t.signIn}
           </a>
@@ -111,7 +111,7 @@ export default function SiteHeader({ lang, t }) {
         {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
         <a
           className="menu-signin"
-          href={user ? 'https://accounts.efolusi.com/account' : `https://accounts.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+          href={user ? 'https://my.efolusi.com/account' : `https://my.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           onClick={() => setMenuOpen(false)}
         >
           {user ? t.account ?? 'Account' : t.signIn}
