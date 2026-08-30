@@ -101,7 +101,6 @@ public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
 ecosystem.config.cjs      Dev/prod PM2 process contract
-infra/nginx/efolusi.conf  Dev/prod reverse-proxy hostnames and loopback ports
 ```
 
 ## Endpoint protections
@@ -134,10 +133,10 @@ runs `pnpm build`, and restarts the environment-specific PM2 application.
 | `dev` | `/home/deploy/efolusi-dev/efolusi` | `efolusi-dev-efolusi-web` | `127.0.0.1:13000` | `dev-efolusi.efolusi.com` |
 | `main` | `/home/deploy/efolusi-prod/efolusi` | `efolusi-prod-efolusi-web` | `127.0.0.1:3000` | `efolusi.com` |
 
-Nginx is the only public ingress. DNS must point the three configured hosts to
-the shared VPS before cutover. The old Workers/OpenNext deployment source has
-been removed; this source change does not delete provider-side historical
-deployments.
+Nginx and DNS are managed as separate infrastructure changes. The old
+Workers/OpenNext deployment source has been removed; this source change does
+not delete provider-side historical deployments or modify DNS, certificates,
+or Nginx host configuration.
 
 ## Notes
 
