@@ -19,32 +19,11 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: 22
-      - name: Select exact environment
-        id: target
-        shell: bash
-        run: |
-          set -Eeuo pipefail
-          if [[ "$GITHUB_REF_NAME" == dev ]]; then
-            echo "environment=dev" >>"$GITHUB_OUTPUT"
-            echo "health_url=http://127.0.0.1:13000/" >>"$GITHUB_OUTPUT"
-          elif [[ "$GITHUB_REF_NAME" == main ]]; then
-            echo "environment=prod" >>"$GITHUB_OUTPUT"
-            echo "health_url=http://127.0.0.1:3000/" >>"$GITHUB_OUTPUT"
-          else
-            exit 65
-          fi
       - name: Pull, build, restart, and verify landing page
         env:
           GITHUB_SHA: ${{ github.sha }}
-          DEPLOY_BUILD_SCRIPT: build
         run: |
           set -Eeuo pipefail
-          /home/deploy/bin/efolusi-deploy \
-            efolusi \
-            "${{ steps.target.outputs.environment }}" \
-            "$GITHUB_REF_NAME" \
-            git@github.com:efolusi/efolusi.git \
-            "${{ steps.target.outputs.health_url }}"
+          sudo -n -u deploy /usr/local/sbin/efolusi-landing-deploy \
+            "$GITHUB_SHA" \
+            "$GITHUB_REF_NAME"
