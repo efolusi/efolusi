@@ -10,8 +10,7 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Native Node.js 22 (NVM), PM2 and Nginx deployment on the shared Efolusi VPS
-- Shared Valkey rate limiting through `REDIS_URL`
+- Cloudflare Workers deployment via @opennextjs/cloudflare
 
 ## Getting Started
 
@@ -49,18 +48,26 @@ npm run build
 
 Creates a production build and checks the app for build-time issues.
 
+```bash
+npm run preview
+```
+
+Builds the Cloudflare Worker with OpenNext and serves it locally in the workerd runtime. Use this to test the site exactly as it runs in production.
+
+```bash
+npm run deploy
+```
+
+Builds and deploys the site to Cloudflare Workers.
+
 ## Environment Variables
 
-Put local variables in `.env.local`. On the VPS, keep the environment-specific
-`.env` in `/home/deploy/efolusi-dev/efolusi` or
-`/home/deploy/efolusi-prod/efolusi`; it is not committed to this public
-repository.
+For local Next.js development, put the variables in `.env.local`. For `npm run preview` (workerd runtime), put them in `.dev.vars`. Both files are ignored by git.
 
 ```bash
 BREVO_API_KEY=
 EMAIL_TO=
 EMAIL_FROM=
-REDIS_URL=redis://:<password>@127.0.0.1:6381/<dedicated-db-index>
 ```
 
 ### Contact Form
@@ -100,21 +107,15 @@ app/
 public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
-ecosystem.config.cjs      Dev/prod PM2 process contract
-infra/nginx/efolusi.conf  Dev/prod reverse-proxy hostnames and loopback ports
+wrangler.jsonc            Cloudflare Workers configuration (incl. rate limits)
+open-next.config.ts       OpenNext Cloudflare adapter configuration
 ```
 
 ## Endpoint protections
 
-Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit
-per IP (5 requests per minute) through the environment's shared Valkey service.
-The contact form also carries a honeypot field; submissions that fill it are
-silently dropped.
+Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP (5 requests per minute) through the Workers rate limiting binding. The contact form also carries a honeypot field; submissions that fill it are silently dropped.
 
-Missing or failing `REDIS_URL` enforcement denies requests. Local development
-may explicitly opt into an unbound limiter with
-`ALLOW_UNBOUND_RATE_LIMIT_IN_DEVELOPMENT=true`; production always ignores that
-bypass. Dev and production must use isolated Valkey databases/namespaces.
+Missing or failing rate-limit bindings deny requests. Local development may explicitly opt into an unbound limiter with `ALLOW_UNBOUND_RATE_LIMIT_IN_DEVELOPMENT=true`; production always ignores that bypass.
 
 ## Content Updates
 
@@ -124,25 +125,31 @@ Site metadata lives in `app/layout.js`.
 
 ## Deployment
 
-The self-hosted GitHub Actions runner calls `/home/deploy/bin/efolusi-deploy` on
-every `dev` or `main` push. The helper checks out the exact GitHub SHA under the
-canonical directory, selects Node 22 through NVM, installs the frozen lockfile,
-runs `pnpm build`, and restarts the environment-specific PM2 application.
+The app deploys to Cloudflare Workers through the OpenNext Cloudflare adapter.
 
-| Branch | Directory | PM2 process | Loopback | Public host |
-| --- | --- | --- | --- | --- |
-| `dev` | `/home/deploy/efolusi-dev/efolusi` | `efolusi-dev-efolusi-web` | `127.0.0.1:13000` | `dev-efolusi.efolusi.com` |
-| `main` | `/home/deploy/efolusi-prod/efolusi` | `efolusi-prod-efolusi-web` | `127.0.0.1:3000` | `efolusi.com` |
+1. Authenticate wrangler once with `npx wrangler login`.
+2. Set the secrets on the Worker:
 
-Nginx is the only public ingress. DNS must point the three configured hosts to
-the shared VPS before cutover. The old Workers/OpenNext deployment source has
-been removed; this source change does not delete provider-side historical
-deployments.
+   ```bash
+   npx wrangler secret put BREVO_API_KEY
+   npx wrangler secret put EMAIL_TO
+   npx wrangler secret put EMAIL_FROM
+   ```
+
+3. Deploy:
+
+   ```bash
+   npm run deploy
+   ```
+
+4. Verify the contact form. Newsletter remains unavailable until its separate DOI prerequisite is approved.
+
+Continuous deployment can also be set up with Workers Builds by connecting this repository in the Cloudflare dashboard; the build command is `npx opennextjs-cloudflare build` and the deploy command is `npx opennextjs-cloudflare deploy`.
 
 ## Notes
 
 - `node` version must be `>=20`.
-- `.env.local`, `.env`, `.next`, and `node_modules` are intentionally ignored.
+- `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
 
 ## License
 

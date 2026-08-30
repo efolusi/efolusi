@@ -49,32 +49,23 @@ describe('validateEmail', () => {
 });
 
 describe('passesRateLimit', () => {
-  const request = req({ 'x-forwarded-for': '192.0.2.1, 127.0.0.1' });
+  const request = req({ 'cf-connecting-ip': '192.0.2.1' });
+  const context = (binding) => () => ({ env: { TEST_LIMIT: binding } });
 
-  it('passes only counts inside the shared Valkey window', async () => {
-    expect(await passesRateLimit(request, 'contact', { nodeEnv: 'production', increment: async () => 1 })).toBe(true);
-    expect(await passesRateLimit(request, 'contact', { nodeEnv: 'production', increment: async () => 5 })).toBe(true);
-    expect(await passesRateLimit(request, 'contact', { nodeEnv: 'production', increment: async () => 6 })).toBe(false);
+  it('passes only an explicit successful binding result', async () => {
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context({ limit: async () => ({ success: true }) }) })).toBe(true);
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context({ limit: async () => ({ success: false }) }) })).toBe(false);
   });
 
-  it('uses the canonical namespace, client address, and window', async () => {
-    let observed;
-    await passesRateLimit(request, 'CONTACT_RATE_LIMIT', {
-      nodeEnv: 'production',
-      increment: async (...args) => { observed = args; return 1; },
-    });
-    expect(observed).toEqual(['efolusi:rate-limit:CONTACT_RATE_LIMIT:192.0.2.1', 60_000]);
+  it('fails closed in production when binding is missing or throws', async () => {
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context(undefined) })).toBe(false);
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: () => { throw new Error('binding unavailable'); } })).toBe(false);
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context({ limit: async () => { throw new Error('provider failure'); } }) })).toBe(false);
   });
 
-  it('fails closed in production when shared Valkey enforcement throws', async () => {
-    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', increment: async () => { throw new Error('Valkey unavailable'); } })).toBe(false);
-    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', increment: async () => 0 })).toBe(false);
-  });
-
-  it('allows a failed store only with explicit non-production bypass', async () => {
-    const failure = async () => { throw new Error('Valkey unavailable'); };
-    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'development', allowDevelopmentBypass: 'true', increment: failure })).toBe(true);
-    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'test', allowDevelopmentBypass: 'false', increment: failure })).toBe(false);
-    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', allowDevelopmentBypass: 'true', increment: failure })).toBe(false);
+  it('allows missing binding only with explicit non-production bypass', async () => {
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'development', allowDevelopmentBypass: 'true', getContext: context(undefined) })).toBe(true);
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'test', allowDevelopmentBypass: 'false', getContext: context(undefined) })).toBe(false);
+    expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', allowDevelopmentBypass: 'true', getContext: context(undefined) })).toBe(false);
   });
 });
