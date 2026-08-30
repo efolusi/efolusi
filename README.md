@@ -132,7 +132,8 @@ restarts the matching PM2 process. Cloudflare Workers deployment is disabled.
 
 ## Notes
 
-- `node` version must be `>=20`.
+- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI. The native
+  deployment helper uses the same NVM runtime.
 - `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
 
 ## License
