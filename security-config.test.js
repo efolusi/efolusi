@@ -92,7 +92,9 @@ describe('tracked development launcher boundary', () => {
     expect(() => validateLauncher(parsed)).not.toThrow();
     expect(serialized).toContain('$SSO_REPO_DIR');
     expect(serialized).toContain('$SSO_ENV_FILE');
-    expect(readFileSync('.gitignore', 'utf8').split(/\r?\n/)).toContain('.claude/launch.json');
+    const ignoredPaths = readFileSync('.gitignore', 'utf8').split(/\r?\n/);
+    expect(ignoredPaths).toContain('.claude/launch.json');
+    expect(ignoredPaths).toContain('.env');
     expect(existsSync('.claude/launch.json')).toBe(false);
   });
 
