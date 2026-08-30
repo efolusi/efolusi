@@ -1,64 +1,50 @@
-name: Deploy native dev web
+name: Deploy native landing page
 
 on:
   push:
-    branches: [dev]
+    branches: [dev, main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: deploy-efolusi-dev-web
+  group: deploy-efolusi-${{ github.ref_name }}-web
   cancel-in-progress: false
 
 jobs:
   deploy:
-    if: github.ref_name == 'dev'
+    if: github.ref_name == 'dev' || github.ref_name == 'main'
     runs-on: [self-hosted, Linux, X64, foundation-dev-web]
     timeout-minutes: 45
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          ref: ${{ github.sha }}
-      - name: Build, restart, and verify isolated dev web
-        env:
-          EFOLUSI_EXTERNAL_ORIGIN: https://dev-efolusi.efolusi.com
-          GITHUB_SHA: ${{ github.sha }}
+          node-version: 22
+      - name: Select exact environment
+        id: target
+        shell: bash
         run: |
           set -Eeuo pipefail
-          exec 9>"/home/foundation-runner/native-deploy.lock"
-          flock -w 2700 9
-          corepack pnpm install --frozen-lockfile
-          corepack pnpm run build
-          pm2 delete efolusi-dev-efolusi-web 2>/dev/null || true
-          env -i \
-            HOME="$HOME" \
-            PATH="/usr/local/bin:/usr/bin:/bin" \
-            PM2_HOME="$HOME/.pm2" \
-            NODE_ENV="production" \
-            EFOLUSI_EXTERNAL_ORIGIN="$EFOLUSI_EXTERNAL_ORIGIN" \
-            HOSTNAME="127.0.0.1" \
-            PORT="13000" \
-            pm2 start "$GITHUB_WORKSPACE/node_modules/next/dist/bin/next" \
-              --name efolusi-dev-efolusi-web \
-              --cwd "$GITHUB_WORKSPACE" \
-              -- start -H 127.0.0.1 -p 13000
-          pm2 save
-          pm2 jlist | node -e '
-            const fs = require("node:fs");
-            const apps = JSON.parse(fs.readFileSync(0, "utf8"));
-            const app = apps.find((candidate) => candidate.name === "efolusi-dev-efolusi-web");
-            if (!app || app.pm2_env?.status !== "online" || app.pm2_env?.pm_cwd !== process.env.GITHUB_WORKSPACE) {
-              process.exit(1);
-            }
-          '
-          ready=false
-          for attempt in $(seq 1 30); do
-            if curl --fail --silent --show-error --max-time 5 http://127.0.0.1:13000/ >/dev/null; then
-              ready=true
-              break
-            fi
-            sleep 1
-          done
-          test "$ready" = "true"
+          if [[ "$GITHUB_REF_NAME" == dev ]]; then
+            echo "environment=dev" >>"$GITHUB_OUTPUT"
+            echo "health_url=http://127.0.0.1:13000/" >>"$GITHUB_OUTPUT"
+          elif [[ "$GITHUB_REF_NAME" == main ]]; then
+            echo "environment=prod" >>"$GITHUB_OUTPUT"
+            echo "health_url=http://127.0.0.1:3000/" >>"$GITHUB_OUTPUT"
+          else
+            exit 65
+          fi
+      - name: Pull, build, restart, and verify landing page
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          DEPLOY_BUILD_SCRIPT: build
+        run: |
+          set -Eeuo pipefail
+          /home/deploy/bin/efolusi-deploy \
+            efolusi \
+            "${{ steps.target.outputs.environment }}" \
+            "$GITHUB_REF_NAME" \
+            git@github.com:efolusi/efolusi.git \
+            "${{ steps.target.outputs.health_url }}"
