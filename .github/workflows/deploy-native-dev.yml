@@ -19,6 +19,9 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
       - name: Select exact environment
         id: target
         shell: bash
@@ -39,8 +42,6 @@ jobs:
           DEPLOY_BUILD_SCRIPT: build
         run: |
           set -Eeuo pipefail
-          source "$HOME/.nvm/nvm.sh"
-          nvm use 22
           /home/deploy/bin/efolusi-deploy \
             efolusi \
             "${{ steps.target.outputs.environment }}" \
