@@ -7,10 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .env.local
+.env
+.env.*
+!.env.example
 .claude/launch.json
-
-# Cloudflare
-.open-next
-.wrangler
-.dev.vars
-cloudflare-env.d.ts

@@ -45,7 +45,7 @@ function permissionMaps(workflow) {
 
 function validateWorkflow(workflow, { allowActionsRead = false } = {}) {
   const uses = [...workflow.matchAll(/^\s*(?:-\s*)?uses:\s*([^\s#]+)/gm)].map((match) => match[1]);
-  if (uses.length === 0 || !uses.every((value) => FULL_ACTION_SHA.test(value))) {
+  if (!uses.every((value) => FULL_ACTION_SHA.test(value))) {
     throw new Error('every step-level and job-level action must use a lowercase 40-hex SHA');
   }
 
@@ -128,7 +128,23 @@ describe('CI action provenance', () => {
   });
 
   it('rejects job-level mutable actions and write permissions', () => {
-    const hostile = `permissions: {contents: read}\n+jobs:\n+  bypass:\n+    permissions: {contents: read, id-token: write}\n+    uses: owner/action@v1\n`;
+    const hostile = `permissions: {contents: read}
+jobs:
+  bypass:
+    permissions: {contents: read, id-token: write}
+    uses: owner/action@v1
+`;
     expect(() => validateWorkflow(hostile)).toThrow();
+  });
+
+  it('accepts a workflow with no third-party actions and exact read permission', () => {
+    const nativeOnly = `permissions: {contents: read}
+jobs:
+  deploy:
+    runs-on: [self-hosted]
+    steps:
+      - run: /home/deploy/bin/efolusi-deploy
+`;
+    expect(() => validateWorkflow(nativeOnly)).not.toThrow();
   });
 });

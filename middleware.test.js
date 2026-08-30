@@ -30,8 +30,10 @@ describe('language redirect external origin', () => {
   });
 
   it('binds the canonical dev origin during build and in the PM2 runtime', () => {
-    const workflow = readFileSync('.github/workflows/deploy-native-dev.yml', 'utf8');
-    expect(workflow).toContain('EFOLUSI_EXTERNAL_ORIGIN: https://dev-efolusi.efolusi.com');
-    expect(workflow).toContain('EFOLUSI_EXTERNAL_ORIGIN="$EFOLUSI_EXTERNAL_ORIGIN"');
+    const workflow = readFileSync('.github/workflows/deploy-native.yml', 'utf8');
+    const ecosystem = readFileSync('ecosystem.config.cjs', 'utf8');
+    expect(workflow).toContain('branches: [dev, main]');
+    expect(ecosystem).toContain('https://dev-efolusi.efolusi.com');
+    expect(ecosystem).toContain('https://efolusi.com');
   });
 });

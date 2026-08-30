@@ -14,10 +14,10 @@ Thanks for your interest in the Efolusi site. This repository holds the marketin
 npm install
 npm run dev        # Next.js dev server on :3000
 npm run build      # production build check
-npm run preview    # build and serve in the Cloudflare workerd runtime
 ```
 
-CI runs `npm run build` and the OpenNext Cloudflare build on every pull request; both must pass.
+CI runs the test suite and native Next.js production build on the self-hosted
+Efolusi runner; both must pass.
 
 ## License
 

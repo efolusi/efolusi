@@ -4,9 +4,9 @@ import { NextResponse, type NextRequest } from 'next/server';
  * The language gateway.
  *
  * A visitor landing on `/` is sent to the language their location suggests:
- * Indonesia gets `/id`, everywhere else gets `/en`. Cloudflare resolves the
- * country at the edge and puts it in `cf-ipcountry`, so this costs no lookup
- * and no third-party call.
+ * Indonesia gets `/id`, everywhere else gets `/en`. When the Cloudflare DNS
+ * proxy is enabled it supplies `cf-ipcountry`; otherwise the safe default is
+ * English. Application execution stays on the native VPS in both cases.
  *
  * A CHOICE ALWAYS BEATS A GUESS. Every visit to a language path writes
  * `lang`, and this handler reads that cookie first — so someone in Jakarta who
@@ -41,7 +41,7 @@ function externalOrigin(value: string | undefined): string | undefined {
   return url.origin;
 }
 
-/** Keep Cloudflare's request origin by default; native dev pins its public proxy origin. */
+/** Keep the request origin by default; native PM2 pins its public proxy origin. */
 export function languageRedirectUrl(requestUrl: URL, configuredOrigin: string | undefined): URL {
   const origin = externalOrigin(configuredOrigin);
   if (!origin) return new URL(requestUrl.href);
