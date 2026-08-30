@@ -1,7 +1,3 @@
-import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
-
-initOpenNextCloudflareForDev();
-
 /* Next's dev tooling needs eval for source maps; production stays strict. */
 const scriptSrc = process.env.NODE_ENV === 'development' ? "'self' 'unsafe-inline' 'unsafe-eval'" : "'self' 'unsafe-inline'";
 
@@ -12,7 +8,7 @@ const securityHeaders = [
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
   {
     key: 'Content-Security-Policy',
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://accounts-api.efolusi.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`
+    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://my-api.efolusi.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`
   }
 ];
 

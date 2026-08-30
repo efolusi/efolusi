@@ -1,0 +1,29 @@
+name: Deploy native landing page
+
+on:
+  push:
+    branches: [dev, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-efolusi-${{ github.ref_name }}-web
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref_name == 'dev' || github.ref_name == 'main'
+    runs-on: [self-hosted, Linux, X64, foundation-dev-web]
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Pull, build, restart, and verify landing page
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          set -Eeuo pipefail
+          sudo -n -u deploy /usr/local/sbin/efolusi-landing-deploy \
+            "$GITHUB_SHA" \
+            "$GITHUB_REF_NAME"

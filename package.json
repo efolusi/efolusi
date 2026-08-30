@@ -2,7 +2,7 @@
     "name": "efolusi",
     "private": true,
     "version": "1.0.0",
-    "description": "Efolusi studio site built with Next.js and the Meridian design system, deployed on Cloudflare Workers.",
+    "description": "Efolusi landing page built with Next.js and the Meridian design system.",
     "license": "MIT",
     "repository": {
         "type": "git",
@@ -13,10 +13,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "test": "vitest run",
-        "preview": "node scripts/predeploy.mjs && opennextjs-cloudflare build && opennextjs-cloudflare preview",
-        "deploy": "node scripts/predeploy.mjs && opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-        "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+        "test": "vitest run"
     },
     "dependencies": {
         "@efolusi/meridian": "^1.21.1",
@@ -29,7 +26,6 @@
         "node": ">=20"
     },
     "devDependencies": {
-        "vitest": "^2.1.9",
-        "wrangler": "^4.113.0"
+        "vitest": "^2.1.9"
     }
 }

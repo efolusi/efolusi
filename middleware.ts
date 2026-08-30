@@ -24,6 +24,30 @@ const COOKIE = 'lang';
 /** A year: long enough that the choice survives, short enough to lapse. */
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
+function externalOrigin(value: string | undefined): string | undefined {
+  if (value === undefined) return undefined;
+
+  const url = new URL(value);
+  if (
+    url.protocol !== 'https:' ||
+    url.username ||
+    url.password ||
+    url.pathname !== '/' ||
+    url.search ||
+    url.hash
+  ) {
+    throw new Error('EFOLUSI_EXTERNAL_ORIGIN must be an HTTPS origin without credentials, path, query, or fragment');
+  }
+  return url.origin;
+}
+
+/** Keep Cloudflare's request origin by default; native dev pins its public proxy origin. */
+export function languageRedirectUrl(requestUrl: URL, configuredOrigin: string | undefined): URL {
+  const origin = externalOrigin(configuredOrigin);
+  if (!origin) return new URL(requestUrl.href);
+  return new URL(`${requestUrl.pathname}${requestUrl.search}`, origin);
+}
+
 function isLocale(value: string | undefined): value is Locale {
   return value === 'en' || value === 'id';
 }
@@ -53,7 +77,7 @@ export function middleware(request: NextRequest) {
   const country = request.headers.get('cf-ipcountry');
   const locale: Locale = isLocale(stored) ? stored : country === 'ID' ? 'id' : 'en';
 
-  const url = request.nextUrl.clone();
+  const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
   url.pathname = `/${locale}`;
   // 307, not 308: the destination depends on who is asking, so it must never
   // be cached as a permanent fact about this URL.

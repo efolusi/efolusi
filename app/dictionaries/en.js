@@ -42,7 +42,7 @@ const en = {
       sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
       viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'Everything here is live, and we use it every day.'
+      proof: 'Active products, validations, open source, and internal infrastructure—shown with their real status.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -54,7 +54,7 @@ const en = {
           titleA: 'Our',
           titleEm: 'own',
           titleB: 'products',
-          body: "Software for the slow, repetitive parts of the day. Some of it's free, some open source. We use every one of them ourselves.",
+          body: "Software for slow, repetitive work. Some is active, some under validation, some open source, and some internal only.",
           cta: 'See the portfolio'
         },
         token: {
@@ -77,72 +77,72 @@ const en = {
       headA: 'Our products,',
       headEm: 'one portfolio',
       headB: '.',
-      lede: 'Each one lives its own life, with its own users. The common thread is us, the same people behind all of them. Have a look around.'
+      lede: 'Our portfolio includes active products, revenue validations, internal shared platforms, open source, and assets temporarily taken out. A reachable page is not the same as a production product.'
     },
     products: {
       zoyya: {
         section: 'Artificial Intelligence',
-        desc: "An AI assistant that's easy to work with. Tell it where you're headed and it figures out the route; no spoon-feeding every step.",
-        specs: ['Autonomous', 'Context-aware', 'Self-directed'],
+        desc: 'A workspace where humans and goal-specific agents work together. ZOYYA Desktop is being consolidated as a collaboration experience on the same platform.',
+        specs: ['Active beta', 'Human + agent', 'Desktop in progress'],
         buttonLabel: 'Visit ZOYYA',
         tag: 'AI',
-        summary: 'Tell it the goal; it works out the steps on its own.'
+        summary: 'A human-agent workspace with Desktop consolidation in progress.'
       },
       komando: {
         section: 'Cloud Infrastructure',
-        desc: 'So servers stop making you nervous. Every server, deployment, pipeline, and alert sits together on one screen, where trouble shows up before it grows.',
-        specs: ['Unified', 'Full visibility', 'Single pane'],
-        buttonLabel: 'Visit Komando',
+        desc: 'An internal shared infrastructure layer being built for inventory, deployment, health, backup, restore, and operations across Efolusi products.',
+        specs: ['Shared platform', 'Internal', 'In development'],
+        buttonLabel: 'View Komando status',
         tag: 'Infrastructure',
-        summary: 'Every server, deployment, and alert, tidy on one screen.'
+        summary: 'An internal infrastructure layer being built for all products.'
       },
       toolips: {
         section: 'Productivity',
-        desc: 'For the little jobs that pop up out of nowhere: convert, compress, edit, export. Over 100 tools you just open and use. No account, no subscription.',
-        specs: ['100+ tools', 'No account', 'Always free'],
+        desc: 'A capability and integration collection being standardized for typed, permissioned, and auditable invocation by ZOYYA.',
+        specs: ['Capability layer', 'ZOYYA integration', 'In development'],
         buttonLabel: 'Visit Toolips',
         tag: 'Productivity',
-        summary: '100+ file tools you just open and use. No account, free.'
+        summary: 'The tool and integration layer being prepared for ZOYYA.'
       },
       trady: {
         section: 'Video Repurposing',
-        desc: 'One hour of footage, dozens of short clips. Trady cuts the best moments, captions them, and lines them up ready to post. You just pick.',
-        specs: ['Long video in', 'Short clips out', 'Auto captions'],
+        desc: 'A video-repurposing workflow being validated with agencies and content teams, focused on Indonesian-language clip packages with human review.',
+        specs: ['Paid validation', 'Agency', 'Human review'],
         buttonLabel: 'Visit Trady',
         tag: 'Video',
-        summary: 'Long videos become their best moments, ready to post.'
+        summary: 'A video-repurposing workflow in paid-customer validation.'
       },
       kongkow: {
         section: 'Social Media',
-        desc: 'Tired of pasting the same post into ten apps? Publish once here and it goes out to Facebook, Instagram, TikTok, YouTube, LinkedIn, X, and 20+ more at the same time.',
-        specs: ['20+ platforms', 'Publish once', 'One center'],
-        buttonLabel: 'Visit Kongkow',
+        desc: 'A social product being repositioned and tested to find one customer job that produces real paid demand.',
+        specs: ['Revenue validation', 'Repositioning', 'Pre-PMF'],
+        buttonLabel: 'View Kongkow status',
         tag: 'Social',
-        summary: 'Publish once; it goes out to 20+ platforms at the same time.'
+        summary: 'A social product in repositioning and revenue validation.'
       },
       cuwan: {
         section: 'Grid Trading',
-        desc: 'A spot grid bot that runs wherever you trade, CEX or DEX. Tune the grid yourself if you have a view, or hand it to the AI; either way it buys and sells around the clock.',
-        specs: ['Spot grid bot', 'AI or manual', 'CEX + DEX'],
-        buttonLabel: 'Visit Cuwan',
+        desc: 'Trading automation in revenue validation, gated by legal review, credential security, risk disclosure, and auditable performance.',
+        specs: ['Revenue validation', 'High risk', 'Safety gated'],
+        buttonLabel: 'View Cuwan status',
         tag: 'Trading',
-        summary: 'A spot grid bot for every CEX and DEX, tuned by AI or by hand.'
+        summary: 'Trading automation in safety-gated revenue validation.'
       },
       meridian: {
         section: 'Design System',
-        desc: "The reason our products all feel like family. An open-source design system with 122 accessible React components and 165 tokens, no build step. The site you're reading runs on it.",
-        specs: ['122 components', '165 tokens', 'MIT licensed'],
+        desc: 'An open-source design system used to keep Efolusi interfaces consistent. Its code, documentation, and license can be inspected publicly.',
+        specs: ['Open source', 'Design system', 'MIT licensed'],
         buttonLabel: 'Visit Meridian',
         tag: 'Design',
-        summary: 'The open-source design system behind everything we make, this site included.'
+        summary: 'An MIT-licensed open-source design system for consistent interfaces.'
       },
       earthos: {
         section: 'Geospatial',
-        desc: 'Earth, live, in a browser tab. Satellites, aircraft, earthquakes, and storms move together on one globe, 100,000+ objects at 60fps, and every data source just plugs in.',
-        specs: ['Real-time 3D', 'Plugin-based', 'Open source'],
+        desc: 'An open-source 3D geospatial core taken out of the active roadmap until a use case, strategic value, and business model are proven.',
+        specs: ['Taken out', 'Open source', 'No active roadmap'],
         buttonLabel: 'Visit EarthOS',
         tag: 'Geospatial',
-        summary: 'Earth live in the browser: satellites, flights, and weather on one globe.'
+        summary: 'An open-source geospatial core that is temporarily inactive.'
       }
     },
     team: {
@@ -189,7 +189,7 @@ const en = {
       items: [
         [
           'What is Efolusi?',
-          "A small software company from Indonesia. We make our own products, from AI and trading bots to an open-source design system, then use and look after them ourselves every day. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork."
+          "A small software company from Indonesia. We build and validate software products, maintain open-source projects, and operate internal infrastructure. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork."
         ],
         [
           'Where are you based?',
@@ -283,56 +283,56 @@ const en = {
         href: 'https://zoyya.xyz',
         problem: 'Most AI assistants wait to be told every single step, which turns them into a second job instead of actual help.',
         solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
-        result: 'Live at zoyya.xyz, and the assistant our whole team leans on for its day-to-day work, every single day.'
+        result: 'Active beta at zoyya.xyz. Its commercial focus is being narrowed to one measurable recurring business outcome.'
       },
       {
         name: 'Meridian',
         href: 'https://meridian.efolusi.com',
         problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
-        solution: 'An open-source design system: 122 accessible React components, 165 tokens, 9 ready-made blocks, no build step, MIT.',
-        result: 'Every Efolusi product runs on it, including this site. The code is public, so you can judge it yourself.'
+        solution: 'An open-source design system for reusable components, tokens, and interface patterns.',
+        result: 'The code and MIT license are public; its contribution to product consistency can be inspected directly.'
       },
       {
         name: 'EarthOS',
         href: 'https://earthos.efolusi.com',
         problem: "Live data about Earth (satellites, aircraft, earthquakes, storms) is scattered across dozens of sources with nothing tying it together.",
         solution: 'A real-time 3D digital twin of Earth right in the browser, where every data source is just a plugin on one shared globe.',
-        result: 'Over 100,000 live objects rendered at 60fps, fully open source, and running in a browser tab for you today.'
+        result: 'The core and plugin SDK are open source. Vertical solution work awaits a design partner with data and an operational need.'
       },
       {
         name: 'Komando',
         href: 'https://komando.efolusi.com',
         problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
-        solution: 'One screen for every server, deployment, pipeline, and alert, so trouble shows itself long before it has time to grow.',
-        result: 'Live at komando.efolusi.com, and watching over the whole of our own infrastructure every day without a break.'
+        solution: 'An experiment in bringing servers, deployments, pipelines, and alerts into one screen.',
+        result: 'Being built as an internal shared infrastructure layer; cross-product adoption is not claimed before it is evidenced.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Small file jobs like converting and compressing always end up on some ad-filled, tracker-heavy site you have never heard of.',
-        solution: 'Over 100 file tools you use right in the browser, with no account, no subscription, and no hassle at all.',
-        result: 'Live at toolips.xyz, free for anyone, and the place where we handle our own small file chores every week.'
+        solution: 'A collection of file utilities that run directly in the browser without an account.',
+        result: 'Being standardized as the tool and integration layer for ZOYYA; registry and permission contracts are not yet complete.'
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'One long video actually holds a week of content, but cutting it by hand still eats up an entire evening.',
-        solution: 'An automatic cutter: a long video goes in, short captioned clips come straight out, and you just pick the best.',
-        result: 'Live at trady.efolusi.com, and used first on our own videos, week in and week out, before anyone else.'
+        solution: 'A workflow that turns long video into a reviewed package of captioned clips.',
+        result: 'Being validated as a paid service for agencies and content teams; not represented as a mature product.'
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
-        solution: 'Publish once from one place and it goes out to more than 20 social platforms at exactly the same time.',
-        result: 'Live at kongkow.xyz, and used to run all of our own social media channels across every platform, every day.'
+        solution: 'A social-product and content-composition workflow experiment.',
+        result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Running a grid by hand means orders go in late: when the price swings up or down hard, the profit opportunity is already gone.',
-        solution: 'A spot grid bot that runs on CEX and DEX alike, tuned by hand when you have a view or handed to the AI.',
-        result: 'Live at cuwan.xyz, and running our own grids around the clock, 24/7, without a single break in between.'
+        solution: 'A grid-trading automation experiment with manual or model-assisted configuration.',
+        result: 'In revenue validation with legal, credential-security, and auditable-performance gates.'
       }
     ],
     paperTitleA: 'The company',
@@ -467,8 +467,8 @@ const en = {
     utilTitleB: '.',
     utilLede: "We wire EFO into our products one piece at a time. Each bit of utility, tokenomics, and documentation shows up here once it's live. We'd rather show you something that works than talk about something that might.",
     flywheel: [
-      ['Products earn revenue', 'Subscriptions across the Efolusi ecosystem are paid in ordinary money. Nobody is ever required to pay in EFO.'],
-      ['Revenue funds buybacks', 'A portion of what the business earns buys EFO back from the open market, from the dev wallet listed above.'],
+      ['Products charge ordinary money', 'Any product subscription is denominated in ordinary money. Nobody is ever required to pay in EFO.'],
+      ['Buybacks are on-chain', 'When company funds are used for an EFO buyback, the transaction must come from a disclosed wallet and remain independently verifiable on-chain.'],
       ['Buybacks get burned', 'Bought-back EFO is sent to the burn address, permanently out of circulation. The bars above track it live.']
     ],
     faqTitleA: 'Straight',
