@@ -10,7 +10,6 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Cloudflare Workers deployment via @opennextjs/cloudflare
 
 ## Getting Started
 
@@ -48,21 +47,10 @@ npm run build
 
 Creates a production build and checks the app for build-time issues.
 
-```bash
-npm run preview
-```
-
-Builds the Cloudflare Worker with OpenNext and serves it locally in the workerd runtime. Use this to test the site exactly as it runs in production.
-
-```bash
-npm run deploy
-```
-
-Builds and deploys the site to Cloudflare Workers.
-
 ## Environment Variables
 
-For local Next.js development, put the variables in `.env.local`. For `npm run preview` (workerd runtime), put them in `.dev.vars`. Both files are ignored by git.
+For local Next.js development, put the variables in `.env.local`. The file is
+ignored by git.
 
 ```bash
 BREVO_API_KEY=
@@ -107,8 +95,6 @@ app/
 public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
-wrangler.jsonc            Cloudflare Workers configuration (incl. rate limits)
-open-next.config.ts       OpenNext Cloudflare adapter configuration
 ```
 
 ## Endpoint protections
@@ -134,7 +120,7 @@ restarts the matching PM2 process. Cloudflare Workers deployment is disabled.
 
 - Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI. The native
   deployment helper uses the same NVM runtime.
-- `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
+- `.env.local`, `.next`, and `node_modules` are intentionally ignored.
 
 ## License
 
