@@ -27,9 +27,6 @@ importers:
       vitest:
         specifier: ^2.1.9
         version: 2.1.9(@types/node@18.19.130)(terser@5.16.9)
-      wrangler:
-        specifier: ^4.113.0
-        version: 4.115.0
 
 packages:
 

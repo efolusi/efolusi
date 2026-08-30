@@ -125,26 +125,10 @@ Site metadata lives in `app/layout.js`.
 
 ## Deployment
 
-The app deploys to Cloudflare Workers through the OpenNext Cloudflare adapter.
-
-1. Authenticate wrangler once with `npx wrangler login`.
-2. Set the secrets on the Worker:
-
-   ```bash
-   npx wrangler secret put BREVO_API_KEY
-   npx wrangler secret put EMAIL_TO
-   npx wrangler secret put EMAIL_FROM
-   ```
-
-3. Deploy:
-
-   ```bash
-   npm run deploy
-   ```
-
-4. Verify the contact form. Newsletter remains unavailable until its separate DOI prerequisite is approved.
-
-Continuous deployment can also be set up with Workers Builds by connecting this repository in the Cloudflare dashboard; the build command is `npx opennextjs-cloudflare build` and the deploy command is `npx opennextjs-cloudflare deploy`.
+The landing page deploys from `dev` and `main` through the Efolusi self-hosted
+runner. The shared deployment helper pulls the exact branch into
+`/home/deploy/efolusi-{dev|prod}/efolusi`, builds it with NVM Node.js 22, and
+restarts the matching PM2 process. Cloudflare Workers deployment is disabled.
 
 ## Notes
 
