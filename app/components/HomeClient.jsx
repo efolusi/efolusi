@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Avatar, AvatarFallback, Badge, Button, CopyField, Icon, Input, StatusDot, Tag, Textarea } from '@efolusi/meridian';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
+import NoEmailObfuscation from './NoEmailObfuscation.jsx';
 import { SocialIcon } from '../lib/social-icons.js';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
@@ -585,7 +586,9 @@ export default function HomeClient({ d, common, lang }) {
                 <div className="ci">
                   <div className="k">{d.contact.email}</div>
                   <div className="v">
-                    <a href="mailto:hi@efolusi.com">hi@efolusi.com</a>
+                    <NoEmailObfuscation>
+                      <a href="mailto:hi@efolusi.com">hi@efolusi.com</a>
+                    </NoEmailObfuscation>
                   </div>
                 </div>
               </div>

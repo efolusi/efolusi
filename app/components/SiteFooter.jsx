@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 
 import { SocialIcon } from '../lib/social-icons.js';
+import NoEmailObfuscation from './NoEmailObfuscation.jsx';
 
 const SOCIALS = [
   ['LinkedIn', 'https://linkedin.com/company/efolusi'],
@@ -31,9 +32,11 @@ export default function SiteFooter({ lang, t }) {
                 </a>
               ))}
             </div>
-            <a className="footer-mail" href="mailto:hi@efolusi.com">
-              <Icon name="mail" size={15} /> hi@efolusi.com
-            </a>
+            <NoEmailObfuscation>
+              <a className="footer-mail" href="mailto:hi@efolusi.com">
+                <Icon name="mail" size={15} /> hi@efolusi.com
+              </a>
+            </NoEmailObfuscation>
           </div>
 
           <div className="fcol">

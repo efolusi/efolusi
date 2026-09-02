@@ -1,5 +1,10 @@
-/* Next's dev tooling needs eval for source maps; production stays strict. */
-const scriptSrc = process.env.NODE_ENV === 'development' ? "'self' 'unsafe-inline' 'unsafe-eval'" : "'self' 'unsafe-inline'";
+/* Next's dev tooling needs eval for source maps; production stays strict.
+   Cloudflare auto-injects its Web Analytics beacon from static.cloudflareinsights.com
+   into proxied HTML, so that host must be allowed or the console fills with CSP errors. */
+const scriptSrc =
+  process.env.NODE_ENV === 'development'
+    ? "'self' 'unsafe-inline' 'unsafe-eval'"
+    : "'self' 'unsafe-inline' https://static.cloudflareinsights.com";
 
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
