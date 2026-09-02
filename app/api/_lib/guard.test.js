@@ -63,6 +63,19 @@ describe('passesRateLimit', () => {
     expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context({ limit: async () => { throw new Error('provider failure'); } }) })).toBe(false);
   });
 
+  it('enforces the native in-memory limiter without any injected context', async () => {
+    const ipReq = (ip) => req({ 'x-real-ip': ip });
+    const opts = { nodeEnv: 'production' };
+    for (let i = 0; i < 5; i += 1) {
+      expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_TEST_LIMIT', opts)).toBe(true);
+    }
+    expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_TEST_LIMIT', opts)).toBe(false);
+    // A different client IP has its own bucket.
+    expect(await passesRateLimit(ipReq('198.51.100.8'), 'NATIVE_TEST_LIMIT', opts)).toBe(true);
+    // A different limiter name has its own bucket too.
+    expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_OTHER_LIMIT', opts)).toBe(true);
+  });
+
   it('allows missing binding only with explicit non-production bypass', async () => {
     expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'development', allowDevelopmentBypass: 'true', getContext: context(undefined) })).toBe(true);
     expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'test', allowDevelopmentBypass: 'false', getContext: context(undefined) })).toBe(false);
