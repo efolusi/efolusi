@@ -90,11 +90,11 @@ const en = {
       },
       runa: {
         section: 'Artificial Intelligence',
-        desc: 'The AI self-company: a control plane of agents that run your business, from operations to follow-through.',
-        specs: ['AI self-company', 'Agents', 'Control plane'],
+        desc: 'The control plane for the AI agents your org builds and runs — multi-tenant agent operations, the platform other Efolusi products (like Zoyya) run on.',
+        specs: ['Agent-ops platform', 'Multi-tenant', 'Control plane'],
         buttonLabel: 'Visit Runa',
         tag: 'AI',
-        summary: 'The AI self-company: agents that run your business.'
+        summary: 'The control plane for the AI agents your org builds and runs.'
       },
       relay: {
         section: 'AI Infrastructure',
@@ -130,11 +130,11 @@ const en = {
       },
       kongkow: {
         section: 'Social Media',
-        desc: 'An omni-channel manager for multiple accounts: manage every account, one place.',
-        specs: ['Omni-channel', 'Multi-account', 'One place'],
+        desc: 'A community social network with cross-posting — write once and publish to every social network you connect.',
+        specs: ['Social network', 'Cross-post', 'Write once'],
         buttonLabel: 'Visit Kongkow',
         tag: 'Social',
-        summary: 'Manage every account, one place.'
+        summary: 'Post once, publish everywhere.'
       },
       pay: {
         section: 'Payments',
@@ -329,7 +329,7 @@ const en = {
         name: 'Runa',
         href: 'https://runa.efolusi.com',
         problem: 'Running a small company means the same operational work every week, and nobody left to hand it to.',
-        solution: 'An AI self-company: a control plane where agents own recurring business work and report back on it.',
+        solution: 'A control plane where teams build, run, and govern AI agents across the org — the platform layer products like Zoyya build on.',
         result: 'In build, run on our own operations first; external availability is not claimed yet.'
       },
       {
@@ -364,7 +364,7 @@ const en = {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
-        solution: 'An omni-channel manager that keeps every account and its posting queue in one place.',
+        solution: 'A social network where you write once and cross-post to every social account you connect.',
         result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
       },
       {
