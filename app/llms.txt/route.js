@@ -18,12 +18,12 @@ const BODY = `# Efolusi
 
 ## Products
 - ZOYYA (https://zoyya.xyz): AI agent workspace where humans and goal-specific agents work together. Zoyya acts. You watch.
-- Runa (https://runa.efolusi.com): the AI self-company — agents that run your business.
+- Runa (https://runa.efolusi.com): the control plane for the AI agents your org builds and runs — the platform layer products like Zoyya build on.
 - Relay (https://relay.efolusi.com): one control plane for every AI provider — a single gateway in front of all LLM providers.
 - Trady (https://trady.efolusi.com): content clipper — long video in, short clips out. Not a trading product.
 - Toolips (https://toolips.xyz): all-in-one tools — Drop. Fix. Download.
 - Cuwan (https://cuwan.xyz): automated grid & DCA trading bots; the only trading product in the portfolio.
-- Kongkow (https://kongkow.xyz): omni-channel manager for multiple accounts — manage every account, one place.
+- Kongkow (https://kongkow.xyz): a community social network with cross-posting — write once, publish to every social network you connect.
 - Pay (https://pay.efolusi.com): centralized payment gateway across products — one integration, every payment gateway.
 - My (https://my.efolusi.com): identity and SSO — one Efolusi account for every product.
 - Loop (https://loop.efolusi.com): specification workspace — the spec comes first.

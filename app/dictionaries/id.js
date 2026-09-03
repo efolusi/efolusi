@@ -90,11 +90,11 @@ const id = {
       },
       runa: {
         section: 'Kecerdasan Buatan',
-        desc: 'AI self-company: control plane berisi agent yang menjalankan bisnis Anda, dari operasional sampai tindak lanjut.',
-        specs: ['AI self-company', 'Agent', 'Control plane'],
+        desc: 'Control plane untuk agent AI yang dibangun & dijalankan organisasi Anda — operasi agent multi-tenant, platform tempat produk Efolusi lain (seperti Zoyya) berjalan.',
+        specs: ['Platform agent-ops', 'Multi-tenant', 'Control plane'],
         buttonLabel: 'Kunjungi Runa',
         tag: 'AI',
-        summary: 'AI self-company: agent yang menjalankan bisnis Anda.'
+        summary: 'Control plane untuk agent AI yang dibangun & dijalankan organisasi Anda.'
       },
       relay: {
         section: 'Infrastruktur AI',
@@ -130,11 +130,11 @@ const id = {
       },
       kongkow: {
         section: 'Media Sosial',
-        desc: 'Omni-channel manager untuk banyak akun: kelola semua akun di satu tempat.',
-        specs: ['Omni-channel', 'Multi-akun', 'Satu tempat'],
+        desc: 'Social network komunitas dengan cross-posting — tulis sekali, terbit ke semua sosmed yang Anda hubungkan.',
+        specs: ['Social network', 'Cross-post', 'Tulis sekali'],
         buttonLabel: 'Kunjungi Kongkow',
         tag: 'Sosial',
-        summary: 'Kelola semua akun, satu tempat.'
+        summary: 'Tulis sekali, terbit ke semua sosmed.'
       },
       pay: {
         section: 'Pembayaran',
@@ -329,7 +329,7 @@ const id = {
         name: 'Runa',
         href: 'https://runa.efolusi.com',
         problem: 'Menjalankan perusahaan kecil berarti pekerjaan operasional yang sama tiap minggu, tanpa siapa pun untuk dititipi.',
-        solution: 'AI self-company: control plane tempat agent memegang pekerjaan bisnis berulang dan melaporkannya kembali.',
+        solution: 'Control plane tempat tim membangun, menjalankan, dan mengatur agent AI di seluruh organisasi — lapisan platform tempat produk seperti Zoyya dibangun.',
         result: 'Sedang dibangun dan dipakai di operasional kami sendiri lebih dulu; ketersediaan untuk publik belum diklaim.'
       },
       {
@@ -364,7 +364,7 @@ const id = {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
-        solution: 'Omni-channel manager yang menyatukan semua akun dan antrean posting di satu tempat.',
+        solution: 'Social network tempat Anda menulis sekali dan cross-post ke semua akun sosmed yang terhubung.',
         result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
       },
       {
