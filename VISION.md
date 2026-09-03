@@ -16,7 +16,7 @@ The site carries no secrets and no moat; opening it demonstrates the studio's bu
 
 ## Where this fits in Efolusi
 
-Open-source, the portfolio's front door. Every product links back here; here is where a visitor learns the products belong to one company with one thesis: open where it helps, closed where it counts, solving problems the giants overlook. See the company [VISION.md](../000/VISION.md).
+Open-source, the portfolio's front door. Every product links back here; here is where a visitor learns the products belong to one company with one thesis: open where it helps, closed where it counts, solving problems the giants overlook. See the company docs in `company/` (`FACTS.md`, `FLYWHEEL.md`) in the Efolusi monorepo.
 
 ## What success looks like
 

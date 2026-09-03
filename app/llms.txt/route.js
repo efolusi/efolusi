@@ -17,14 +17,19 @@ const BODY = `# Efolusi
 - Co-founder: Rakha Febryza Rasendriya
 
 ## Products
-- ZOYYA (https://zoyya.xyz): active-beta workspace where humans and goal-specific agents work together; Nova is being consolidated into it as ZOYYA Desktop.
-- Komando (https://komando.efolusi.com): internal shared infrastructure layer in development; not an external commercial product.
-- Toolips (https://toolips.xyz): capability and integration layer being standardized for ZOYYA invocation.
-- Trady (https://trady.efolusi.com): video-repurposing workflow in paid-customer validation.
-- Kongkow (https://kongkow.xyz): social product in repositioning and revenue validation; product-market fit is not yet proven.
-- Cuwan (https://cuwan.xyz): high-risk trading automation in safety-gated revenue validation; performance and customer claims require auditable evidence.
-- Meridian (https://meridian.efolusi.com): MIT-licensed open-source design system.
-- EarthOS (https://earthos.efolusi.com): open-source geospatial core taken out of the active roadmap pending a proven use case and business model.
+- ZOYYA (https://zoyya.xyz): AI agent workspace where humans and goal-specific agents work together. Zoyya acts. You watch.
+- Runa (https://runa.efolusi.com): the AI self-company — agents that run your business.
+- Relay (https://relay.efolusi.com): one control plane for every AI provider — a single gateway in front of all LLM providers.
+- Trady (https://trady.efolusi.com): content clipper — long video in, short clips out. Not a trading product.
+- Toolips (https://toolips.xyz): all-in-one tools — Drop. Fix. Download.
+- Cuwan (https://cuwan.xyz): automated grid & DCA trading bots; the only trading product in the portfolio.
+- Kongkow (https://kongkow.xyz): omni-channel manager for multiple accounts — manage every account, one place.
+- Pay (https://pay.efolusi.com): centralized payment gateway across products — one integration, every payment gateway.
+- My (https://my.efolusi.com): identity and SSO — one Efolusi account for every product.
+- Loop (https://loop.efolusi.com): specification workspace — the spec comes first.
+- Sanctum (https://sanctum.efolusi.com): vault + private knowledge system — a vault your AI can use but never read.
+- Komando (https://komando.efolusi.com): omni cloud, server, and monitoring in one dashboard.
+- Meridian (https://meridian.efolusi.com): the Efolusi design system, published as the npm package @efolusi/meridian (MIT-licensed, open source).
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07

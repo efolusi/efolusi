@@ -82,67 +82,107 @@ const en = {
     products: {
       zoyya: {
         section: 'Artificial Intelligence',
-        desc: 'A workspace where humans and goal-specific agents work together. ZOYYA Desktop is being consolidated as a collaboration experience on the same platform.',
-        specs: ['Active beta', 'Human + agent', 'Desktop in progress'],
+        desc: 'An AI agent workspace where humans and goal-specific agents work together. Zoyya acts. You watch.',
+        specs: ['Active beta', 'Human + agent', 'AI workspace'],
         buttonLabel: 'Visit ZOYYA',
         tag: 'AI',
-        summary: 'A human-agent workspace with Desktop consolidation in progress.'
+        summary: 'An AI agent workspace: Zoyya acts, you watch.'
       },
-      komando: {
-        section: 'Cloud Infrastructure',
-        desc: 'An internal shared infrastructure layer being built for inventory, deployment, health, backup, restore, and operations across Efolusi products.',
-        specs: ['Shared platform', 'Internal', 'In development'],
-        buttonLabel: 'View Komando status',
-        tag: 'Infrastructure',
-        summary: 'An internal infrastructure layer being built for all products.'
+      runa: {
+        section: 'Artificial Intelligence',
+        desc: 'The AI self-company: a control plane of agents that run your business, from operations to follow-through.',
+        specs: ['AI self-company', 'Agents', 'Control plane'],
+        buttonLabel: 'Visit Runa',
+        tag: 'AI',
+        summary: 'The AI self-company: agents that run your business.'
+      },
+      relay: {
+        section: 'AI Infrastructure',
+        desc: 'One control plane for every AI provider: a single gateway in front of all LLM providers, with one key and one bill.',
+        specs: ['AI gateway', 'Multi-provider', 'One control plane'],
+        buttonLabel: 'Visit Relay',
+        tag: 'AI',
+        summary: 'One control plane for every AI provider.'
+      },
+      trady: {
+        section: 'Content Clipping',
+        desc: 'A content clipper: long video in, short clips out. Turns long recordings into packages of short, captioned clips.',
+        specs: ['Content clipper', 'Long video in', 'Short clips out'],
+        buttonLabel: 'Visit Trady',
+        tag: 'Video',
+        summary: 'Content clipper: long video in, short clips out.'
       },
       toolips: {
         section: 'Productivity',
-        desc: 'A capability and integration collection being standardized for typed, permissioned, and auditable invocation by ZOYYA.',
-        specs: ['Capability layer', 'ZOYYA integration', 'In development'],
+        desc: 'All-in-one tools for everyday file jobs, running directly in the browser. Drop. Fix. Download.',
+        specs: ['All-in-one tools', 'In the browser', 'No account needed'],
         buttonLabel: 'Visit Toolips',
         tag: 'Productivity',
-        summary: 'The tool and integration layer being prepared for ZOYYA.'
+        summary: 'All-in-one tools: Drop. Fix. Download.'
       },
-      trady: {
-        section: 'Video Repurposing',
-        desc: 'A video-repurposing workflow being validated with agencies and content teams, focused on Indonesian-language clip packages with human review.',
-        specs: ['Paid validation', 'Agency', 'Human review'],
-        buttonLabel: 'Visit Trady',
-        tag: 'Video',
-        summary: 'A video-repurposing workflow in paid-customer validation.'
+      cuwan: {
+        section: 'Trading Automation',
+        desc: 'Automated grid and DCA trading bots. The only trading product in the portfolio, gated by risk disclosure and auditable performance.',
+        specs: ['Grid & DCA bots', 'Automation', 'Risk disclosed'],
+        buttonLabel: 'Visit Cuwan',
+        tag: 'Trading',
+        summary: 'Automated grid & DCA trading bots.'
       },
       kongkow: {
         section: 'Social Media',
-        desc: 'A social product being repositioned and tested to find one customer job that produces real paid demand.',
-        specs: ['Revenue validation', 'Repositioning', 'Pre-PMF'],
-        buttonLabel: 'View Kongkow status',
+        desc: 'An omni-channel manager for multiple accounts: manage every account, one place.',
+        specs: ['Omni-channel', 'Multi-account', 'One place'],
+        buttonLabel: 'Visit Kongkow',
         tag: 'Social',
-        summary: 'A social product in repositioning and revenue validation.'
+        summary: 'Manage every account, one place.'
       },
-      cuwan: {
-        section: 'Grid Trading',
-        desc: 'Trading automation in revenue validation, gated by legal review, credential security, risk disclosure, and auditable performance.',
-        specs: ['Revenue validation', 'High risk', 'Safety gated'],
-        buttonLabel: 'View Cuwan status',
-        tag: 'Trading',
-        summary: 'Trading automation in safety-gated revenue validation.'
+      pay: {
+        section: 'Payments',
+        desc: 'The centralized payment gateway behind every Efolusi product: one integration, every payment gateway.',
+        specs: ['Payment gateway', 'One integration', 'Platform'],
+        buttonLabel: 'Visit Pay',
+        tag: 'Payments',
+        summary: 'One integration, every payment gateway.'
+      },
+      my: {
+        section: 'Identity',
+        desc: 'Identity and single sign-on for the whole portfolio: one Efolusi account for every product.',
+        specs: ['SSO', 'One account', 'Every product'],
+        buttonLabel: 'Visit My',
+        tag: 'Identity',
+        summary: 'One account for every Efolusi product.'
+      },
+      loop: {
+        section: 'Specifications',
+        desc: 'A specification workspace where PRDs and specs are reviewed and versioned before development. The spec comes first.',
+        specs: ['Spec workspace', 'Reviewed', 'Versioned'],
+        buttonLabel: 'Visit Loop',
+        tag: 'Productivity',
+        summary: 'The spec comes first.'
+      },
+      sanctum: {
+        section: 'Privacy',
+        desc: 'A vault and private knowledge system: a vault your AI can use but never read.',
+        specs: ['Vault', 'Private knowledge', 'Zero knowledge'],
+        buttonLabel: 'Visit Sanctum',
+        tag: 'Privacy',
+        summary: 'A vault your AI can use but never read.'
+      },
+      komando: {
+        section: 'Cloud Infrastructure',
+        desc: 'Omni cloud, server, and monitoring in one dashboard: one terminal for every server, database, URL, and cert you own.',
+        specs: ['Servers', 'Monitoring', 'One dashboard'],
+        buttonLabel: 'Visit Komando',
+        tag: 'Infrastructure',
+        summary: 'One terminal for every server, database, URL and cert you own.'
       },
       meridian: {
         section: 'Design System',
-        desc: 'An open-source design system used to keep Efolusi interfaces consistent. Its code, documentation, and license can be inspected publicly.',
+        desc: 'The Efolusi design system, published as the npm package @efolusi/meridian and used across every product. Its code, documentation, and license can be inspected publicly.',
         specs: ['Open source', 'Design system', 'MIT licensed'],
         buttonLabel: 'Visit Meridian',
         tag: 'Design',
-        summary: 'An MIT-licensed open-source design system for consistent interfaces.'
-      },
-      earthos: {
-        section: 'Geospatial',
-        desc: 'An open-source 3D geospatial core taken out of the active roadmap until a use case, strategic value, and business model are proven.',
-        specs: ['Taken out', 'Open source', 'No active roadmap'],
-        buttonLabel: 'Visit EarthOS',
-        tag: 'Geospatial',
-        summary: 'An open-source geospatial core that is temporarily inactive.'
+        summary: 'The Efolusi design system.'
       }
     },
     team: {
@@ -282,57 +322,92 @@ const en = {
         name: 'ZOYYA',
         href: 'https://zoyya.xyz',
         problem: 'Most AI assistants wait to be told every single step, which turns them into a second job instead of actual help.',
-        solution: 'An autonomous assistant that takes a goal, works out the steps itself, and learns your context as it goes.',
-        result: 'Active beta at zoyya.xyz. Its commercial focus is being narrowed to one measurable recurring business outcome.'
+        solution: 'An agent workspace that takes a goal, works out the steps itself, and learns your context as it goes.',
+        result: 'Active beta at zoyya.xyz. Zoyya acts, you watch: every run is visible and reviewable.'
       },
       {
-        name: 'Meridian',
-        href: 'https://meridian.efolusi.com',
-        problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
-        solution: 'An open-source design system for reusable components, tokens, and interface patterns.',
-        result: 'The code and MIT license are public; its contribution to product consistency can be inspected directly.'
+        name: 'Runa',
+        href: 'https://runa.efolusi.com',
+        problem: 'Running a small company means the same operational work every week, and nobody left to hand it to.',
+        solution: 'An AI self-company: a control plane where agents own recurring business work and report back on it.',
+        result: 'In build, run on our own operations first; external availability is not claimed yet.'
       },
       {
-        name: 'EarthOS',
-        href: 'https://earthos.efolusi.com',
-        problem: "Live data about Earth (satellites, aircraft, earthquakes, storms) is scattered across dozens of sources with nothing tying it together.",
-        solution: 'A real-time 3D digital twin of Earth right in the browser, where every data source is just a plugin on one shared globe.',
-        result: 'The core and plugin SDK are open source. Vertical solution work awaits a design partner with data and an operational need.'
+        name: 'Relay',
+        href: 'https://relay.efolusi.com',
+        problem: 'Every product needed its own keys, quotas, and billing for every LLM provider, and none of it was comparable.',
+        solution: 'One control plane in front of every AI provider, with a single key, one set of limits, and one bill.',
+        result: 'Live as the gateway all Efolusi products call for AI; provider routing and spend are visible in one place.'
       },
       {
-        name: 'Komando',
-        href: 'https://komando.efolusi.com',
-        problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
-        solution: 'An experiment in bringing servers, deployments, pipelines, and alerts into one screen.',
-        result: 'Being built as an internal shared infrastructure layer; cross-product adoption is not claimed before it is evidenced.'
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'One long video actually holds a week of content, but cutting it by hand still eats up an entire evening.',
+        solution: 'A content clipper: long video in, short captioned clips out, with a review pass before anything ships.',
+        result: 'Being validated as a paid service for agencies and content teams; not represented as a mature product.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Small file jobs like converting and compressing always end up on some ad-filled, tracker-heavy site you have never heard of.',
         solution: 'A collection of file utilities that run directly in the browser without an account.',
-        result: 'Being standardized as the tool and integration layer for ZOYYA; registry and permission contracts are not yet complete.'
-      },
-      {
-        name: 'Trady',
-        href: 'https://trady.efolusi.com',
-        problem: 'One long video actually holds a week of content, but cutting it by hand still eats up an entire evening.',
-        solution: 'A workflow that turns long video into a reviewed package of captioned clips.',
-        result: 'Being validated as a paid service for agencies and content teams; not represented as a mature product.'
-      },
-      {
-        name: 'Kongkow',
-        href: 'https://kongkow.xyz',
-        problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
-        solution: 'A social-product and content-composition workflow experiment.',
-        result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
+        result: 'Live at toolips.xyz with a free tier and a paid Pro plan.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Running a grid by hand means orders go in late: when the price swings up or down hard, the profit opportunity is already gone.',
-        solution: 'A grid-trading automation experiment with manual or model-assisted configuration.',
-        result: 'In revenue validation with legal, credential-security, and auditable-performance gates.'
+        solution: 'Automated grid and DCA trading bots with manual or model-assisted configuration.',
+        result: 'In revenue validation with legal, credential-security, and auditable-performance gates. The only trading product we make.'
+      },
+      {
+        name: 'Kongkow',
+        href: 'https://kongkow.xyz',
+        problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
+        solution: 'An omni-channel manager that keeps every account and its posting queue in one place.',
+        result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
+      },
+      {
+        name: 'Pay',
+        href: 'https://pay.efolusi.com',
+        problem: 'Every product that wanted to charge money had to integrate a payment gateway again, and each one differed.',
+        solution: 'A centralized payment gateway: one integration for the whole portfolio, every provider behind it.',
+        result: 'Live as the billing path for Efolusi products; no product talks to a payment provider directly anymore.'
+      },
+      {
+        name: 'My',
+        href: 'https://my.efolusi.com',
+        problem: 'A portfolio of products meant a separate account and a separate password for each one.',
+        solution: 'One identity provider: a single Efolusi account, with SSO into every product.',
+        result: 'Live at my.efolusi.com; products sign in through it instead of keeping their own passwords.'
+      },
+      {
+        name: 'Loop',
+        href: 'https://loop.efolusi.com',
+        problem: 'Work started before anybody agreed what was being built, so the rework arrived later and cost more.',
+        solution: 'A specification workspace where PRDs and specs are reviewed and versioned before development starts.',
+        result: 'In build and used on our own products first: the spec comes first.'
+      },
+      {
+        name: 'Sanctum',
+        href: 'https://sanctum.efolusi.com',
+        problem: 'Giving an AI assistant useful context usually means handing it your secrets in plain text.',
+        solution: 'A vault and private knowledge system your AI can use but never read.',
+        result: 'In build; the encryption model is the product and is being reviewed before any public claim.'
+      },
+      {
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
+        solution: 'One dashboard for every server, database, URL, and certificate you own, with monitoring attached.',
+        result: 'Being built as a shared operations layer; cross-product adoption is not claimed before it is evidenced.'
+      },
+      {
+        name: 'Meridian',
+        href: 'https://meridian.efolusi.com',
+        problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them a dozen times.',
+        solution: 'A design system for reusable components, tokens, and interface patterns, published as an npm package.',
+        result: 'Published as @efolusi/meridian under the MIT license; its contribution to product consistency can be inspected directly.'
       }
     ],
     paperTitleA: 'The company',
@@ -578,7 +653,7 @@ const en = {
       'By using efolusi.com you agree to these terms. This website introduces PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
     productsHead: 'Products',
     products:
-      "Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
+      "Efolusi products (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
     trademarksHead: 'Content and trademarks',
     trademarksA:
       'The Efolusi name, the owl mark, and product names are property of PT. Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',

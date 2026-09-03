@@ -57,13 +57,18 @@ const organizationLd = {
   address: { '@type': 'PostalAddress', addressCountry: 'ID' },
   brand: [
     { '@type': 'Brand', name: 'ZOYYA', url: 'https://zoyya.xyz' },
-    { '@type': 'Brand', name: 'Komando', url: 'https://komando.efolusi.com' },
-    { '@type': 'Brand', name: 'Toolips', url: 'https://toolips.xyz' },
+    { '@type': 'Brand', name: 'Runa', url: 'https://runa.efolusi.com' },
+    { '@type': 'Brand', name: 'Relay', url: 'https://relay.efolusi.com' },
     { '@type': 'Brand', name: 'Trady', url: 'https://trady.efolusi.com' },
-    { '@type': 'Brand', name: 'Kongkow', url: 'https://kongkow.xyz' },
+    { '@type': 'Brand', name: 'Toolips', url: 'https://toolips.xyz' },
     { '@type': 'Brand', name: 'Cuwan', url: 'https://cuwan.xyz' },
-    { '@type': 'Brand', name: 'Meridian', url: 'https://meridian.efolusi.com' },
-    { '@type': 'Brand', name: 'EarthOS', url: 'https://earthos.efolusi.com' }
+    { '@type': 'Brand', name: 'Kongkow', url: 'https://kongkow.xyz' },
+    { '@type': 'Brand', name: 'Pay', url: 'https://pay.efolusi.com' },
+    { '@type': 'Brand', name: 'My', url: 'https://my.efolusi.com' },
+    { '@type': 'Brand', name: 'Loop', url: 'https://loop.efolusi.com' },
+    { '@type': 'Brand', name: 'Sanctum', url: 'https://sanctum.efolusi.com' },
+    { '@type': 'Brand', name: 'Komando', url: 'https://komando.efolusi.com' },
+    { '@type': 'Brand', name: 'Meridian', url: 'https://meridian.efolusi.com' }
   ]
 };
 

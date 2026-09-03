@@ -13,13 +13,18 @@ const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
    the copy for each product is merged in from the dictionary by id. */
 const productMeta = [
   { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', mark: 'Zo', icon: 'brain', href: 'https://zoyya.xyz' },
-  { id: 'komando', title: 'Komando', tint: 'green', mark: 'Ko', icon: 'server', href: 'https://komando.efolusi.com' },
-  { id: 'toolips', title: 'Toolips', tint: 'amber', mark: 'To', icon: 'package', href: 'https://toolips.xyz' },
+  { id: 'runa', title: 'Runa', tint: 'cocoa', mark: 'Ru', icon: 'sparkles', href: 'https://runa.efolusi.com' },
+  { id: 'relay', title: 'Relay', tint: 'amber', mark: 'Re', icon: 'zap', href: 'https://relay.efolusi.com' },
   { id: 'trady', title: 'Trady', tint: 'coral', logo: '/trady-otter.png', icon: 'sparkles', href: 'https://trady.efolusi.com' },
-  { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
+  { id: 'toolips', title: 'Toolips', tint: 'amber', mark: 'To', icon: 'package', href: 'https://toolips.xyz' },
   { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
-  { id: 'meridian', title: 'Meridian', tint: 'cocoa', brandMark: true, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
-  { id: 'earthos', title: 'EarthOS', tint: 'green', mark: 'Ea', icon: 'globe', href: 'https://earthos.efolusi.com' }
+  { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
+  { id: 'pay', title: 'Pay', tint: 'green', mark: 'Pa', icon: 'credit-card', href: 'https://pay.efolusi.com' },
+  { id: 'my', title: 'My', tint: 'caramel', mark: 'My', icon: 'key', href: 'https://my.efolusi.com' },
+  { id: 'loop', title: 'Loop', tint: 'peach', mark: 'Lo', icon: 'file-text', href: 'https://loop.efolusi.com' },
+  { id: 'sanctum', title: 'Sanctum', tint: 'cocoa', mark: 'Sa', icon: 'lock', href: 'https://sanctum.efolusi.com' },
+  { id: 'komando', title: 'Komando', tint: 'green', mark: 'Ko', icon: 'server', href: 'https://komando.efolusi.com' },
+  { id: 'meridian', title: 'Meridian', tint: 'cocoa', brandMark: true, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' }
 ];
 
 const leadership = [
@@ -46,7 +51,7 @@ const edgeTiles = [
   { id: 'toolips', text: 'To', tint: 'amber', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
   { id: 'cuwan', text: 'Cu', tint: 'green', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
   { id: 'meridian', brandMark: true, tint: 'cocoa', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
-  { id: 'earthos', text: 'Ea', tint: 'green', href: 'https://earthos.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
+  { id: 'runa', text: 'Ru', tint: 'cocoa', href: 'https://runa.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
 ];
 
 const stickers = [

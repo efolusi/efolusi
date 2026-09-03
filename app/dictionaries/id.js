@@ -82,67 +82,107 @@ const id = {
     products: {
       zoyya: {
         section: 'Kecerdasan Buatan',
-        desc: 'Workspace tempat manusia dan agent dengan tujuan spesifik bekerja bersama. ZOYYA Desktop sedang disatukan sebagai experience kolaborasi dalam platform yang sama.',
-        specs: ['Beta aktif', 'Human + agent', 'Desktop disiapkan'],
+        desc: 'Workspace AI agent tempat manusia dan agent dengan tujuan spesifik bekerja bersama. Zoyya acts. You watch.',
+        specs: ['Beta aktif', 'Human + agent', 'Workspace AI'],
         buttonLabel: 'Kunjungi ZOYYA',
         tag: 'AI',
-        summary: 'Workspace kolaborasi manusia dan agent; Desktop sedang dikonsolidasikan.'
+        summary: 'Workspace AI agent: Zoyya acts, you watch.'
       },
-      komando: {
-        section: 'Infrastruktur Cloud',
-        desc: 'Shared infrastructure layer internal yang sedang dibangun untuk inventory, deployment, health, backup, restore, dan operasi seluruh produk Efolusi.',
-        specs: ['Shared platform', 'Internal', 'Sedang dibangun'],
-        buttonLabel: 'Lihat status Komando',
-        tag: 'Infrastruktur',
-        summary: 'Infrastructure layer internal yang sedang dibangun untuk seluruh produk.'
+      runa: {
+        section: 'Kecerdasan Buatan',
+        desc: 'AI self-company: control plane berisi agent yang menjalankan bisnis Anda, dari operasional sampai tindak lanjut.',
+        specs: ['AI self-company', 'Agent', 'Control plane'],
+        buttonLabel: 'Kunjungi Runa',
+        tag: 'AI',
+        summary: 'AI self-company: agent yang menjalankan bisnis Anda.'
+      },
+      relay: {
+        section: 'Infrastruktur AI',
+        desc: 'Satu control plane untuk semua provider AI: satu gateway di depan semua provider LLM, dengan satu key dan satu tagihan.',
+        specs: ['AI gateway', 'Multi-provider', 'Satu control plane'],
+        buttonLabel: 'Kunjungi Relay',
+        tag: 'AI',
+        summary: 'Satu control plane untuk semua provider AI.'
+      },
+      trady: {
+        section: 'Content Clipping',
+        desc: 'Content clipper: video panjang masuk, klip pendek keluar. Mengubah rekaman panjang menjadi paket klip pendek bercaption.',
+        specs: ['Content clipper', 'Video panjang masuk', 'Klip pendek keluar'],
+        buttonLabel: 'Kunjungi Trady',
+        tag: 'Video',
+        summary: 'Content clipper: video panjang masuk, klip pendek keluar.'
       },
       toolips: {
         section: 'Produktivitas',
-        desc: 'Kumpulan capability dan integrasi yang sedang distandarkan agar dapat dipanggil ZOYYA secara typed, permissioned, dan auditable.',
-        specs: ['Capability layer', 'Integrasi ZOYYA', 'Sedang dibangun'],
+        desc: 'All-in-one tools untuk pekerjaan file sehari-hari, langsung di browser. Drop. Fix. Download.',
+        specs: ['All-in-one tools', 'Di browser', 'Tanpa akun'],
         buttonLabel: 'Kunjungi Toolips',
         tag: 'Produktivitas',
-        summary: 'Tool dan integration layer yang sedang disiapkan untuk ZOYYA.'
+        summary: 'All-in-one tools: Drop. Fix. Download.'
       },
-      trady: {
-        section: 'Daur Ulang Video',
-        desc: 'Workflow repurposing video yang sedang divalidasi bersama agency dan tim konten. Fokusnya paket klip berbahasa Indonesia dengan review manusia.',
-        specs: ['Validasi berbayar', 'Agency', 'Review manusia'],
-        buttonLabel: 'Kunjungi Trady',
-        tag: 'Video',
-        summary: 'Workflow repurposing video dalam validasi pelanggan berbayar.'
+      cuwan: {
+        section: 'Otomasi Trading',
+        desc: 'Bot trading grid dan DCA otomatis. Satu-satunya produk trading di portofolio, dengan risk disclosure dan performa yang dapat diaudit.',
+        specs: ['Bot grid & DCA', 'Otomasi', 'Risk disclosure'],
+        buttonLabel: 'Kunjungi Cuwan',
+        tag: 'Trading',
+        summary: 'Bot trading grid & DCA otomatis.'
       },
       kongkow: {
         section: 'Media Sosial',
-        desc: 'Social product yang sedang direposisi dan diuji untuk menemukan satu pekerjaan pelanggan yang benar-benar dibayar.',
-        specs: ['Validasi revenue', 'Repositioning', 'Belum PMF'],
-        buttonLabel: 'Lihat status Kongkow',
+        desc: 'Omni-channel manager untuk banyak akun: kelola semua akun di satu tempat.',
+        specs: ['Omni-channel', 'Multi-akun', 'Satu tempat'],
+        buttonLabel: 'Kunjungi Kongkow',
         tag: 'Sosial',
-        summary: 'Social product dalam repositioning dan validasi revenue.'
+        summary: 'Kelola semua akun, satu tempat.'
       },
-      cuwan: {
-        section: 'Grid Trading',
-        desc: 'Otomasi trading dalam validasi revenue dengan gerbang legal, keamanan kredensial, risk disclosure, dan performa yang dapat diaudit.',
-        specs: ['Validasi revenue', 'Risiko tinggi', 'Safety-gated'],
-        buttonLabel: 'Lihat status Cuwan',
-        tag: 'Trading',
-        summary: 'Otomasi trading dalam validasi revenue yang dibatasi gerbang keselamatan.'
+      pay: {
+        section: 'Pembayaran',
+        desc: 'Payment gateway terpusat di balik semua produk Efolusi: satu integrasi, semua payment gateway.',
+        specs: ['Payment gateway', 'Satu integrasi', 'Platform'],
+        buttonLabel: 'Kunjungi Pay',
+        tag: 'Pembayaran',
+        summary: 'Satu integrasi, semua payment gateway.'
+      },
+      my: {
+        section: 'Identitas',
+        desc: 'Identity dan single sign-on untuk seluruh portofolio: satu akun Efolusi untuk semua produk.',
+        specs: ['SSO', 'Satu akun', 'Semua produk'],
+        buttonLabel: 'Kunjungi My',
+        tag: 'Identitas',
+        summary: 'Satu akun untuk semua produk Efolusi.'
+      },
+      loop: {
+        section: 'Spesifikasi',
+        desc: 'Workspace spesifikasi tempat PRD dan spec di-review dan diversikan sebelum development. The spec comes first.',
+        specs: ['Workspace spec', 'Ter-review', 'Ter-versi'],
+        buttonLabel: 'Kunjungi Loop',
+        tag: 'Produktivitas',
+        summary: 'The spec comes first.'
+      },
+      sanctum: {
+        section: 'Privasi',
+        desc: 'Vault dan private knowledge system: vault yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.',
+        specs: ['Vault', 'Private knowledge', 'Zero knowledge'],
+        buttonLabel: 'Kunjungi Sanctum',
+        tag: 'Privasi',
+        summary: 'Vault yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.'
+      },
+      komando: {
+        section: 'Infrastruktur Cloud',
+        desc: 'Omni cloud, server, dan monitoring dalam satu dashboard: satu terminal untuk semua server, database, URL, dan cert milik Anda.',
+        specs: ['Server', 'Monitoring', 'Satu dashboard'],
+        buttonLabel: 'Kunjungi Komando',
+        tag: 'Infrastruktur',
+        summary: 'Satu terminal untuk semua server, database, URL, dan cert milik Anda.'
       },
       meridian: {
         section: 'Sistem Desain',
-        desc: 'Design system open source yang dipakai untuk menjaga konsistensi antarmuka Efolusi. Kode, dokumentasi, dan lisensinya dapat diperiksa publik.',
+        desc: 'Design system Efolusi, dipublikasikan sebagai package npm @efolusi/meridian dan dipakai semua produk. Kode, dokumentasi, dan lisensinya dapat diperiksa publik.',
         specs: ['Open source', 'Design system', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
-        summary: 'Design system open source berlisensi MIT untuk antarmuka yang konsisten.'
-      },
-      earthos: {
-        section: 'Geospasial',
-        desc: 'Core geospasial 3D open source yang sementara dikeluarkan dari roadmap aktif sampai ada use case, strategic value, dan business model yang terbukti.',
-        specs: ['Diambil keluar', 'Open source', 'Tanpa roadmap aktif'],
-        buttonLabel: 'Kunjungi EarthOS',
-        tag: 'Geospasial',
-        summary: 'Core geospasial open source yang sementara tidak aktif.'
+        summary: 'Design system Efolusi.'
       }
     },
     team: {
@@ -282,57 +322,92 @@ const id = {
         name: 'ZOYYA',
         href: 'https://zoyya.xyz',
         problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
-        solution: 'Asisten otonom yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
-        result: 'Beta aktif di zoyya.xyz. Fokus komersialnya sedang dipersempit ke satu pekerjaan bisnis berulang yang dapat diukur.'
+        solution: 'Workspace agent yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
+        result: 'Beta aktif di zoyya.xyz. Zoyya acts, you watch: setiap proses terlihat dan dapat ditinjau.'
       },
       {
-        name: 'Meridian',
-        href: 'https://meridian.efolusi.com',
-        problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
-        solution: 'Design system open source untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang.',
-        result: 'Kode dan lisensi MIT tersedia publik; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
+        name: 'Runa',
+        href: 'https://runa.efolusi.com',
+        problem: 'Menjalankan perusahaan kecil berarti pekerjaan operasional yang sama tiap minggu, tanpa siapa pun untuk dititipi.',
+        solution: 'AI self-company: control plane tempat agent memegang pekerjaan bisnis berulang dan melaporkannya kembali.',
+        result: 'Sedang dibangun dan dipakai di operasional kami sendiri lebih dulu; ketersediaan untuk publik belum diklaim.'
       },
       {
-        name: 'EarthOS',
-        href: 'https://earthos.efolusi.com',
-        problem: 'Data live tentang bumi (satelit, pesawat, gempa, badai) terpencar di puluhan sumber tanpa ada yang menyatukan.',
-        solution: 'Digital twin 3D bumi secara real-time di browser, dengan tiap sumber data sebagai plugin di satu globe.',
-        result: 'Core dan plugin SDK tersedia sebagai open source. Pengembangan solusi vertikal menunggu design partner dengan data dan kebutuhan operasional.'
+        name: 'Relay',
+        href: 'https://relay.efolusi.com',
+        problem: 'Tiap produk butuh key, kuota, dan tagihan sendiri untuk tiap provider LLM, dan semuanya tidak sebanding.',
+        solution: 'Satu control plane di depan semua provider AI, dengan satu key, satu set limit, dan satu tagihan.',
+        result: 'Live sebagai gateway yang dipanggil semua produk Efolusi untuk AI; routing provider dan biaya terlihat di satu tempat.'
       },
       {
-        name: 'Komando',
-        href: 'https://komando.efolusi.com',
-        problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
-        solution: 'Eksperimen satu layar untuk server, deployment, pipeline, dan alert.',
-        result: 'Sedang dibangun menjadi shared infrastructure layer internal; adopsi lintas produk belum diklaim sebelum ada bukti.'
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'Satu video panjang sebenarnya berisi konten untuk seminggu, tapi memotongnya secara manual menghabiskan semalaman.',
+        solution: 'Content clipper: video panjang masuk, klip pendek bercaption keluar, dengan review sebelum dipublikasikan.',
+        result: 'Sedang divalidasi sebagai layanan berbayar untuk agency dan tim konten; belum dinyatakan sebagai produk matang.'
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan dan pelacak.',
         solution: 'Kumpulan utilitas file yang langsung digunakan di browser tanpa akun.',
-        result: 'Sedang distandarkan sebagai tool dan integration layer untuk ZOYYA; registry dan permission contract belum selesai.'
-      },
-      {
-        name: 'Trady',
-        href: 'https://trady.efolusi.com',
-        problem: 'Satu video panjang sebenarnya berisi konten untuk seminggu, tapi memotongnya secara manual menghabiskan semalaman.',
-        solution: 'Workflow video panjang menjadi paket klip bercaption dengan review manusia.',
-        result: 'Sedang divalidasi sebagai layanan berbayar untuk agency dan tim konten; belum dinyatakan sebagai produk matang.'
-      },
-      {
-        name: 'Kongkow',
-        href: 'https://kongkow.xyz',
-        problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
-        solution: 'Eksperimen social product dan workflow penyusunan konten.',
-        result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
+        result: 'Live di toolips.xyz dengan tier gratis dan paket Pro berbayar.'
       },
       {
         name: 'Cuwan',
         href: 'https://cuwan.xyz',
         problem: 'Menjalankan grid secara manual berarti sering telat pasang order: saat harga naik atau turun dalam, kesempatan profitnya hilang.',
-        solution: 'Eksperimen otomasi grid trading dengan konfigurasi manual atau berbantuan model.',
-        result: 'Masuk validasi revenue dengan gerbang legal, keamanan kredensial, dan performa yang dapat diaudit.'
+        solution: 'Bot trading grid dan DCA otomatis dengan konfigurasi manual atau berbantuan model.',
+        result: 'Masuk validasi revenue dengan gerbang legal, keamanan kredensial, dan performa yang dapat diaudit. Satu-satunya produk trading kami.'
+      },
+      {
+        name: 'Kongkow',
+        href: 'https://kongkow.xyz',
+        problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
+        solution: 'Omni-channel manager yang menyatukan semua akun dan antrean posting di satu tempat.',
+        result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
+      },
+      {
+        name: 'Pay',
+        href: 'https://pay.efolusi.com',
+        problem: 'Setiap produk yang ingin menarik pembayaran harus mengintegrasikan payment gateway lagi dari nol, dan tiap gateway berbeda.',
+        solution: 'Payment gateway terpusat: satu integrasi untuk seluruh portofolio, semua provider ada di belakangnya.',
+        result: 'Live sebagai jalur billing produk Efolusi; tidak ada produk yang bicara langsung ke payment provider lagi.'
+      },
+      {
+        name: 'My',
+        href: 'https://my.efolusi.com',
+        problem: 'Portofolio berisi banyak produk berarti akun dan password terpisah untuk masing-masing.',
+        solution: 'Satu identity provider: satu akun Efolusi, dengan SSO ke semua produk.',
+        result: 'Live di my.efolusi.com; produk masuk lewat SSO ini, bukan menyimpan password sendiri.'
+      },
+      {
+        name: 'Loop',
+        href: 'https://loop.efolusi.com',
+        problem: 'Pekerjaan dimulai sebelum semua orang sepakat apa yang dibangun, sehingga rework datang belakangan dan lebih mahal.',
+        solution: 'Workspace spesifikasi tempat PRD dan spec ditinjau serta diberi versi sebelum development dimulai.',
+        result: 'Sedang dibangun dan dipakai di produk kami sendiri lebih dulu: the spec comes first.'
+      },
+      {
+        name: 'Sanctum',
+        href: 'https://sanctum.efolusi.com',
+        problem: 'Memberi konteks yang berguna ke asisten AI biasanya berarti menyerahkan rahasia Anda dalam bentuk terbuka.',
+        solution: 'Vault dan private knowledge system yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.',
+        result: 'Sedang dibangun; model enkripsinya adalah produknya sendiri dan sedang ditinjau sebelum klaim publik apa pun.'
+      },
+      {
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
+        solution: 'Satu dashboard untuk semua server, database, URL, dan sertifikat yang Anda miliki, lengkap dengan monitoring.',
+        result: 'Sedang dibangun sebagai lapisan operasi bersama; adopsi lintas produk belum diklaim sebelum ada bukti.'
+      },
+      {
+        name: 'Meridian',
+        href: 'https://meridian.efolusi.com',
+        problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang belasan kali.',
+        solution: 'Design system untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang, dipublikasikan sebagai package npm.',
+        result: 'Dipublikasikan sebagai @efolusi/meridian dengan lisensi MIT; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
       }
     ],
     paperTitleA: 'Perusahaan',
@@ -578,7 +653,7 @@ const id = {
       'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT. Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
     productsHead: 'Produk',
     products:
-      'Produk Efolusi (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
+      'Produk Efolusi (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
     trademarksHead: 'Konten dan merek dagang',
     trademarksA:
       'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT. Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',

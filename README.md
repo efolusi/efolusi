@@ -10,22 +10,22 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Cloudflare Workers deployment via @opennextjs/cloudflare
+- Deployed natively on the Efolusi VM with PM2 behind Nginx (no Cloudflare Workers, no Vercel)
 
 ## Getting Started
 
-Clone and install dependencies:
+Clone and install dependencies (this repo uses pnpm via corepack):
 
 ```bash
 git clone https://github.com/efolusi/efolusi.git
 cd efolusi
-npm install
+corepack pnpm install
 ```
 
 Start the development server:
 
 ```bash
-npm run dev
+corepack pnpm dev
 ```
 
 Open the site at:
@@ -37,32 +37,35 @@ http://localhost:3000
 ## Scripts
 
 ```bash
-npm run dev
+corepack pnpm dev
 ```
 
 Runs the local Next.js development server.
 
 ```bash
-npm run build
+corepack pnpm run build
 ```
 
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-npm run preview
+corepack pnpm start
 ```
 
-Builds the Cloudflare Worker with OpenNext and serves it locally in the workerd runtime. Use this to test the site exactly as it runs in production.
+Serves the production build the same way PM2 runs it on the server.
 
 ```bash
-npm run deploy
+corepack pnpm test
 ```
 
-Builds and deploys the site to Cloudflare Workers.
+Runs the Vitest suite (middleware and security-config checks).
+
+There is no `deploy` script: deployment happens on the server, see [Deployment](#deployment).
 
 ## Environment Variables
 
-For local Next.js development, put the variables in `.env.local`. For `npm run preview` (workerd runtime), put them in `.dev.vars`. Both files are ignored by git.
+For local development, put the variables in `.env.local`, which is ignored by git. On the
+server the same variables live in the environment file the PM2 process is started with.
 
 ```bash
 BREVO_API_KEY=
@@ -107,33 +110,53 @@ app/
 public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
-wrangler.jsonc            Cloudflare Workers configuration (incl. rate limits)
-open-next.config.ts       OpenNext Cloudflare adapter configuration
+infra/
+  nginx/efolusi-prod.conf Nginx server block that fronts the PM2 process
+ecosystem.config.cjs      PM2 process definition (port 3000 prod, 13000 dev)
+middleware.ts             Security headers and CSP
 ```
 
 ## Endpoint protections
 
-Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP (5 requests per minute) through the Workers rate limiting binding. The contact form also carries a honeypot field; submissions that fill it are silently dropped.
+Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP
+(5 requests per minute) using a native in-memory fixed-window limiter in
+`app/api/_lib/guard.js`. The contact form also carries a honeypot field; submissions that
+fill it are silently dropped.
 
-Missing or failing rate-limit bindings deny requests. Local development may explicitly opt into an unbound limiter with `ALLOW_UNBOUND_RATE_LIMIT_IN_DEVELOPMENT=true`; production always ignores that bypass.
+A failing limiter denies the request. Local development may explicitly opt into an unbound
+limiter with `ALLOW_UNBOUND_RATE_LIMIT_IN_DEVELOPMENT=true`; production always ignores that
+bypass.
 
 ## Content Updates
 
-Home page copy, product entries, leadership, roles and FAQ items live in the arrays at the top of `app/page.js`. Each other page keeps its own copy at the top of its `page.js`. Update those arrays before touching the rendered JSX.
+All user-facing copy is bilingual and lives in `app/dictionaries/en.js` and
+`app/dictionaries/id.js`; the two files must always stay in sync. Structural product data
+(ids, marks, tints, links) lives in `productMeta` in `app/components/HomeClient.jsx`, and
+the AI-answer-engine catalog in `app/llms.txt/route.js`. Site metadata and JSON-LD live in
+`app/[lang]/layout.js`.
 
-Site metadata lives in `app/layout.js`.
+The canonical product lineup, domains and taglines come from `company/FACTS.md` in the
+Efolusi monorepo. If a surface here disagrees with that file, this surface is wrong.
 
 ## Deployment
 
-The landing page deploys from `dev` and `main` through the Efolusi self-hosted
-runner. The shared deployment helper pulls the exact branch into
-`/home/deploy/efolusi-{dev|prod}/efolusi`, builds it with NVM Node.js 22, and
-restarts the matching PM2 process. Cloudflare Workers deployment is disabled.
+The landing page runs natively on the Efolusi VM. There is no Cloudflare Workers, OpenNext
+or Vercel deployment; Cloudflare only provides DNS, proxying and security in front of it.
+
+A push to `dev` or `main` triggers `.github/workflows/deploy-native-dev.yml` on the
+self-hosted runner, which calls `/usr/local/sbin/efolusi-landing-deploy` as the `deploy`
+user. That helper pulls the exact commit into `/home/deploy/efolusi-{dev,prod}/efolusi`,
+installs and builds with Node.js 22, and restarts the matching PM2 process
+(`efolusi-prod-efolusi-web` on port 3000, `efolusi-dev-efolusi-web` on port 13000) as
+defined in `ecosystem.config.cjs`. Nginx (`infra/nginx/efolusi-prod.conf`) terminates TLS
+and proxies to that port.
+
+Because `main` deploys straight to production, land changes on `dev` first.
 
 ## Notes
 
-- `node` version must be `>=20`.
-- `.env.local`, `.dev.vars`, `.next`, `.open-next`, `.wrangler`, and `node_modules` are intentionally ignored.
+- `node` version must be `>=22 <25`.
+- `.env.local`, `.next`, and `node_modules` are intentionally ignored.
 
 ## License
 
