@@ -1236,7 +1236,7 @@ a.ef-btn--secondary:hover {
 }
 
 .band a.band-link:hover {
-  color: #ffffff;
+  color: var(--text-on-brand);
 }
 
 /* ---------- Footer ---------- */
@@ -1331,11 +1331,13 @@ a.ef-btn--secondary:hover {
 }
 
 .flag i:first-child {
+  /* Indonesian-flag red — a national-flag brand literal, no Meridian status
+     token matches this hue and it must stay fixed in both themes (never remap). */
   background: #d94a3d;
 }
 
 .flag i:last-child {
-  background: #fffdf8;
+  background: var(--sand-25);
 }
 
 /* ---------- Subpage hero: centered, matching the home language ---------- */
@@ -1894,7 +1896,7 @@ a.ef-btn--secondary:hover {
 }
 
 .pill--cream:hover {
-  background: #ffffff;
+  background: var(--surface-card);
   color: var(--brand-950);
 }
 
@@ -1926,7 +1928,7 @@ a.ef-btn--secondary:hover {
   height: 36px;
   border-radius: var(--radius-full);
   background: var(--brand-500);
-  color: #ffffff;
+  color: var(--text-on-brand);
   transition: transform var(--dur-med) var(--ease-spring);
 }
 
@@ -2120,7 +2122,7 @@ a.ef-btn--secondary:hover {
 }
 
 .feat-card--peach .feat-icon {
-  background: #ffffff;
+  background: var(--surface-card);
   color: var(--brand-700);
 }
 
