@@ -81,20 +81,20 @@ const id = {
     },
     products: {
       zoyya: {
-        section: 'Kecerdasan Buatan',
-        desc: 'Workspace AI agent tempat manusia dan agent dengan tujuan spesifik bekerja bersama. Zoyya acts. You watch.',
-        specs: ['Beta aktif', 'Human + agent', 'Workspace AI'],
+        section: 'Desain & aplikasi',
+        desc: 'Buat desain, website, aplikasi mobile, backend, database, preview, dan rilis siap-domain dengan AI.',
+        specs: ['Desain', 'Web & aplikasi mobile', 'Backend hingga domain'],
         buttonLabel: 'Kunjungi ZOYYA',
-        tag: 'AI',
-        summary: 'Workspace AI agent: Zoyya acts, you watch.'
+        tag: 'Desain & aplikasi',
+        summary: 'Wujudkan ide menjadi aplikasi yang didesain dan bekerja dengan AI.'
       },
       runa: {
-        section: 'Kecerdasan Buatan',
-        desc: 'Control plane untuk agent AI yang dibangun & dijalankan organisasi Anda — operasi agent multi-tenant, platform tempat produk Efolusi lain (seperti Zoyya) berjalan.',
-        specs: ['Platform agent-ops', 'Multi-tenant', 'Control plane'],
+        section: 'Tim AI',
+        desc: 'Bangun dan koordinasikan tim AI pribadi atau bisnis: tetapkan tujuan, delegasikan pekerjaan, tinjau hasil, dan hubungkan produk Efolusi sebagai alat.',
+        specs: ['Pribadi & bisnis', 'Tujuan & delegasi', 'Orkestrasi alat'],
         buttonLabel: 'Kunjungi Runa',
         tag: 'AI',
-        summary: 'Control plane untuk agent AI yang dibangun & dijalankan organisasi Anda.'
+        summary: 'Control plane orkestrasi untuk tim AI pribadi dan bisnis.'
       },
       relay: {
         section: 'Infrastruktur AI',
