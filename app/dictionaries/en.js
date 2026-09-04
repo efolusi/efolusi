@@ -81,20 +81,20 @@ const en = {
     },
     products: {
       zoyya: {
-        section: 'Artificial Intelligence',
-        desc: 'An AI agent workspace where humans and goal-specific agents work together. Zoyya acts. You watch.',
-        specs: ['Active beta', 'Human + agent', 'AI workspace'],
+        section: 'Design & applications',
+        desc: 'Create designs, websites, mobile apps, backends, databases, previews, and domain-ready releases with AI.',
+        specs: ['Design', 'Web & mobile apps', 'Backend to domain'],
         buttonLabel: 'Visit ZOYYA',
-        tag: 'AI',
-        summary: 'An AI agent workspace: Zoyya acts, you watch.'
+        tag: 'Design & apps',
+        summary: 'Turn an idea into a designed, working application with AI.'
       },
       runa: {
-        section: 'Artificial Intelligence',
-        desc: 'The control plane for the AI agents your org builds and runs — multi-tenant agent operations, the platform other Efolusi products (like Zoyya) run on.',
-        specs: ['Agent-ops platform', 'Multi-tenant', 'Control plane'],
+        section: 'AI teams',
+        desc: 'Build and coordinate a personal or business AI team: set goals, delegate work, review results, and connect approved Efolusi products as tools.',
+        specs: ['Personal & business', 'Goals & delegation', 'Tool orchestration'],
         buttonLabel: 'Visit Runa',
         tag: 'AI',
-        summary: 'The control plane for the AI agents your org builds and runs.'
+        summary: 'The orchestration control plane for personal and business AI teams.'
       },
       relay: {
         section: 'AI Infrastructure',
