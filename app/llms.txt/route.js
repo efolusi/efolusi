@@ -17,8 +17,8 @@ const BODY = `# Efolusi
 - Co-founder: Rakha Febryza Rasendriya
 
 ## Products
-- ZOYYA (https://zoyya.xyz): AI agent workspace where humans and goal-specific agents work together. Zoyya acts. You watch.
-- Runa (https://runa.efolusi.com): the control plane for the AI agents your org builds and runs — the platform layer products like Zoyya build on.
+- ZOYYA (https://zoyya.xyz): AI-assisted design and application builder for creating designs, websites, mobile apps, backends, databases, previews, and domain-ready releases.
+- Runa (https://runa.efolusi.com): the orchestration control plane for personal and business AI teams — set goals, delegate work, review results, and connect approved Efolusi products as tools.
 - Relay (https://relay.efolusi.com): one control plane for every AI provider — a single gateway in front of all LLM providers.
 - Trady (https://trady.efolusi.com): content clipper — long video in, short clips out. Not a trading product.
 - Toolips (https://toolips.xyz): all-in-one tools — Drop. Fix. Download.
