@@ -135,14 +135,6 @@ const en = {
         buttonLabel: 'Visit Meridian',
         tag: 'Design',
         summary: 'An MIT-licensed open-source design system for consistent interfaces.'
-      },
-      earthos: {
-        section: 'Geospatial',
-        desc: 'An open-source 3D geospatial core taken out of the active roadmap until a use case, strategic value, and business model are proven.',
-        specs: ['Taken out', 'Open source', 'No active roadmap'],
-        buttonLabel: 'Visit EarthOS',
-        tag: 'Geospatial',
-        summary: 'An open-source geospatial core that is temporarily inactive.'
       }
     },
     team: {
@@ -291,13 +283,6 @@ const en = {
         problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them eight times.',
         solution: 'An open-source design system for reusable components, tokens, and interface patterns.',
         result: 'The code and MIT license are public; its contribution to product consistency can be inspected directly.'
-      },
-      {
-        name: 'EarthOS',
-        href: 'https://earthos.efolusi.com',
-        problem: "Live data about Earth (satellites, aircraft, earthquakes, storms) is scattered across dozens of sources with nothing tying it together.",
-        solution: 'A real-time 3D digital twin of Earth right in the browser, where every data source is just a plugin on one shared globe.',
-        result: 'The core and plugin SDK are open source. Vertical solution work awaits a design partner with data and an operational need.'
       },
       {
         name: 'Komando',
@@ -578,7 +563,7 @@ const en = {
       'By using efolusi.com you agree to these terms. This website introduces PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
     productsHead: 'Products',
     products:
-      "Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
+      "Efolusi products (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, and Meridian) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
     trademarksHead: 'Content and trademarks',
     trademarksA:
       'The Efolusi name, the owl mark, and product names are property of PT. Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',

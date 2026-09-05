@@ -17,14 +17,13 @@ const BODY = `# Efolusi
 - Co-founder: Rakha Febryza Rasendriya
 
 ## Products
-- ZOYYA (https://zoyya.xyz): active-beta workspace where humans and goal-specific agents work together; Nova is being consolidated into it as ZOYYA Desktop.
+- ZOYYA (https://zoyya.xyz): active-beta workspace where humans and goal-specific agents work together.
 - Komando (https://komando.efolusi.com): internal shared infrastructure layer in development; not an external commercial product.
 - Toolips (https://toolips.xyz): capability and integration layer being standardized for ZOYYA invocation.
 - Trady (https://trady.efolusi.com): video-repurposing workflow in paid-customer validation.
 - Kongkow (https://kongkow.xyz): social product in repositioning and revenue validation; product-market fit is not yet proven.
 - Cuwan (https://cuwan.xyz): high-risk trading automation in safety-gated revenue validation; performance and customer claims require auditable evidence.
 - Meridian (https://meridian.efolusi.com): MIT-licensed open-source design system.
-- EarthOS (https://earthos.efolusi.com): open-source geospatial core taken out of the active roadmap pending a proven use case and business model.
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07
