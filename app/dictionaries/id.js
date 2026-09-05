@@ -74,115 +74,116 @@ const id = {
       }
     },
     portfolio: {
-      headA: 'Produk kami,',
-      headEm: 'satu portofolio',
-      headB: '.',
-      lede: 'Portofolio kami mencakup produk aktif, validasi revenue, shared platform internal, open source, dan aset yang sementara dikeluarkan. Status produk tidak kami samakan dengan sekadar halaman yang bisa dibuka.'
+      headA: "Apa yang ingin",
+      headEm: "kamu kerjakan",
+      headB: "?",
+      lede: "Bangun aplikasi, siapkan konten, atau kelola pekerjaan dengan AI. Mulai dari produk yang kamu butuhkan."
     },
     products: {
       zoyya: {
-        section: 'Desain & aplikasi',
-        desc: 'Buat desain, website, aplikasi mobile, backend, database, preview, dan rilis siap-domain dengan AI.',
-        specs: ['Desain', 'Web & aplikasi mobile', 'Backend hingga domain'],
+        section: "Desain & aplikasi",
+        desc: "Ubah brief yang disetujui menjadi produk web yang didesain dan dapat dijalankan. Alur mobile, database, dan domain terkelola masih diluncurkan bertahap.",
+        specs: ["Pembuatan web", "Preview berjalan", "Lainnya bertahap"],
         buttonLabel: 'Kunjungi ZOYYA',
-        tag: 'Desain & aplikasi',
-        summary: 'Wujudkan ide menjadi aplikasi yang didesain dan bekerja dengan AI.'
+        tag: "Desain & aplikasi",
+        summary: "Desain dan bangun produk web; alur aplikasi lainnya masih diluncurkan bertahap."
       },
       runa: {
-        section: 'Tim AI',
-        desc: 'Bangun dan koordinasikan tim AI pribadi atau bisnis: tetapkan tujuan, delegasikan pekerjaan, tinjau hasil, dan hubungkan produk Efolusi sebagai alat.',
-        specs: ['Pribadi & bisnis', 'Tujuan & delegasi', 'Orkestrasi alat'],
-        buttonLabel: 'Kunjungi Runa',
-        tag: 'AI',
-        summary: 'Control plane orkestrasi untuk tim AI pribadi dan bisnis.'
+        headline: "Tim AI untukmu atau bisnismu.",
+        section: "Tim AI",
+        desc: "Bangun dan koordinasikan tim AI pribadi atau bisnis: tetapkan tujuan, delegasikan pekerjaan, tinjau hasil, dan hubungkan produk Efolusi yang disetujui sebagai alat.",
+        specs: ["Pribadi & bisnis", "Tujuan & delegasi", "Orkestrasi alat"],
+        buttonLabel: 'Jelajahi Runa',
+        tag: "Tim AI",
+        summary: "Koordinasikan tim AI pribadi atau bisnis beserta alat yang boleh mereka gunakan."
       },
       relay: {
-        section: 'Infrastruktur AI',
-        desc: 'Satu control plane untuk semua provider AI: satu gateway di depan semua provider LLM, dengan satu key dan satu tagihan.',
+        section: "Infrastruktur AI",
+        desc: "Akses berbagai model AI dan pantau penggunaannya melalui satu API.",
         specs: ['AI gateway', 'Multi-provider', 'Satu control plane'],
         buttonLabel: 'Kunjungi Relay',
-        tag: 'AI',
-        summary: 'Satu control plane untuk semua provider AI.'
+        tag: "Infrastruktur AI",
+        summary: "Akses berbagai model AI dan pantau penggunaannya melalui satu API."
       },
       trady: {
-        section: 'Content Clipping',
-        desc: 'Content clipper: video panjang masuk, klip pendek keluar. Mengubah rekaman panjang menjadi paket klip pendek bercaption.',
+        section: "Video",
+        desc: "Ubah rekaman panjang menjadi klip pendek dengan caption.",
         specs: ['Content clipper', 'Video panjang masuk', 'Klip pendek keluar'],
         buttonLabel: 'Kunjungi Trady',
-        tag: 'Video',
-        summary: 'Content clipper: video panjang masuk, klip pendek keluar.'
+        tag: "Video",
+        summary: "Ubah rekaman panjang menjadi klip pendek dengan caption."
       },
       toolips: {
-        section: 'Produktivitas',
-        desc: 'All-in-one tools untuk pekerjaan file sehari-hari, langsung di browser. Drop. Fix. Download.',
+        section: "Utilitas",
+        desc: "Tools praktis untuk pekerjaan file dan tugas kecil sehari-hari.",
         specs: ['All-in-one tools', 'Di browser', 'Tanpa akun'],
         buttonLabel: 'Kunjungi Toolips',
-        tag: 'Produktivitas',
-        summary: 'All-in-one tools: Drop. Fix. Download.'
+        tag: "Utilitas",
+        summary: "Tools praktis untuk pekerjaan file dan tugas kecil sehari-hari."
       },
       cuwan: {
-        section: 'Otomasi Trading',
-        desc: 'Bot trading grid dan DCA otomatis. Satu-satunya produk trading di portofolio, dengan risk disclosure dan performa yang dapat diaudit.',
-        specs: ['Bot grid & DCA', 'Otomasi', 'Risk disclosure'],
+        section: "Trading",
+        desc: "Siapkan dan evaluasi strategi grid di workspace paper-only selama kontrol eksekusi divalidasi.",
+        specs: ["Paper only", "Strategi grid", "Eksekusi divalidasi"],
         buttonLabel: 'Kunjungi Cuwan',
-        tag: 'Trading',
-        summary: 'Bot trading grid & DCA otomatis.'
+        tag: "Trading",
+        summary: "Evaluasi strategi grid tanpa mengklaim otomasi dana nyata."
       },
       kongkow: {
-        section: 'Media Sosial',
-        desc: 'Social network komunitas dengan cross-posting — tulis sekali, terbit ke semua sosmed yang Anda hubungkan.',
+        section: "Publikasi sosial",
+        desc: "Bangun komunitas dan siapkan publikasi lintas kanal. Konektor yang sudah dirilis ditandai di dalam aplikasi.",
         specs: ['Social network', 'Cross-post', 'Tulis sekali'],
         buttonLabel: 'Kunjungi Kongkow',
-        tag: 'Sosial',
-        summary: 'Tulis sekali, terbit ke semua sosmed.'
+        tag: "Publikasi sosial",
+        summary: "Bangun komunitas dan terbitkan hanya melalui konektor yang ditandai siap."
       },
       pay: {
-        section: 'Pembayaran',
-        desc: 'Payment gateway terpusat di balik semua produk Efolusi: satu integrasi, semua payment gateway.',
+        section: "Pembayaran",
+        desc: "Fondasi pembayaran untuk produk dalam ekosistem Efolusi.",
         specs: ['Payment gateway', 'Satu integrasi', 'Platform'],
         buttonLabel: 'Kunjungi Pay',
-        tag: 'Pembayaran',
-        summary: 'Satu integrasi, semua payment gateway.'
+        tag: "Pembayaran",
+        summary: "Fondasi pembayaran untuk produk dalam ekosistem Efolusi."
       },
       my: {
-        section: 'Identitas',
-        desc: 'Identity dan single sign-on untuk seluruh portofolio: satu akun Efolusi untuk semua produk.',
+        section: "Akun",
+        desc: "Satu akun untuk mengakses produk Efolusi.",
         specs: ['SSO', 'Satu akun', 'Semua produk'],
         buttonLabel: 'Kunjungi My',
-        tag: 'Identitas',
-        summary: 'Satu akun untuk semua produk Efolusi.'
+        tag: "Akun",
+        summary: "Satu akun untuk mengakses produk Efolusi."
       },
       loop: {
-        section: 'Spesifikasi',
-        desc: 'Workspace spesifikasi tempat PRD dan spec di-review dan diversikan sebelum development. The spec comes first.',
+        section: "Spesifikasi produk",
+        desc: "Perjelas kebutuhan dan kriteria selesai sebelum pengembangan dimulai.",
         specs: ['Workspace spec', 'Ter-review', 'Ter-versi'],
         buttonLabel: 'Kunjungi Loop',
-        tag: 'Produktivitas',
-        summary: 'The spec comes first.'
+        tag: "Spesifikasi produk",
+        summary: "Perjelas kebutuhan dan kriteria selesai sebelum pengembangan dimulai."
       },
       sanctum: {
-        section: 'Privasi',
-        desc: 'Vault dan private knowledge system: vault yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.',
-        specs: ['Vault', 'Private knowledge', 'Zero knowledge'],
+        section: "Privasi & pengetahuan",
+        desc: "Kelola pengetahuan privat dan atur informasi yang boleh dibagikan kepada AI.",
+        specs: ["Pengetahuan privat", "Kontrol pengungkapan"],
         buttonLabel: 'Kunjungi Sanctum',
-        tag: 'Privasi',
-        summary: 'Vault yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.'
+        tag: "Privasi & pengetahuan",
+        summary: "Kelola pengetahuan privat dan atur informasi yang boleh dibagikan kepada AI."
       },
       komando: {
-        section: 'Infrastruktur Cloud',
-        desc: 'Omni cloud, server, dan monitoring dalam satu dashboard: satu terminal untuk semua server, database, URL, dan cert milik Anda.',
-        specs: ['Server', 'Monitoring', 'Satu dashboard'],
+        section: "Infrastruktur",
+        desc: "Pantau HTTP, SSL, dan DNS dari satu dashboard. Operasi infrastruktur yang lebih luas masih diluncurkan bertahap.",
+        specs: ['HTTP, SSL & DNS', 'Monitoring', 'Lainnya bertahap'],
         buttonLabel: 'Kunjungi Komando',
-        tag: 'Infrastruktur',
-        summary: 'Satu terminal untuk semua server, database, URL, dan cert milik Anda.'
+        tag: "Infrastruktur",
+        summary: "Pantau HTTP, SSL, dan DNS; operasi lainnya masih diluncurkan bertahap."
       },
       meridian: {
-        section: 'Sistem Desain',
-        desc: 'Design system Efolusi, dipublikasikan sebagai package npm @efolusi/meridian dan dipakai semua produk. Kode, dokumentasi, dan lisensinya dapat diperiksa publik.',
+        section: "Design system",
+        desc: "Bangun UI yang konsisten dengan komponen React open source.",
         specs: ['Open source', 'Design system', 'Lisensi MIT'],
         buttonLabel: 'Kunjungi Meridian',
-        tag: 'Desain',
-        summary: 'Design system Efolusi.'
+        tag: "Design system",
+        summary: "Bangun UI yang konsisten dengan komponen React open source."
       }
     },
     team: {

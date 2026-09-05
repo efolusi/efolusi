@@ -74,115 +74,116 @@ const en = {
       }
     },
     portfolio: {
-      headA: 'Our products,',
-      headEm: 'one portfolio',
-      headB: '.',
-      lede: 'Our portfolio includes active products, revenue validations, internal shared platforms, open source, and assets temporarily taken out. A reachable page is not the same as a production product.'
+      headA: "What would you",
+      headEm: "like to do",
+      headB: "?",
+      lede: "Build an app, prepare content, or manage work with AI. Start with the product you need."
     },
     products: {
       zoyya: {
-        section: 'Design & applications',
-        desc: 'Create designs, websites, mobile apps, backends, databases, previews, and domain-ready releases with AI.',
-        specs: ['Design', 'Web & mobile apps', 'Backend to domain'],
+        section: "Design & apps",
+        desc: "Turn an approved brief into a designed, runnable web product. Mobile, database, and managed-domain workflows are rolling out.",
+        specs: ["Web authoring", "Runnable previews", "More in rollout"],
         buttonLabel: 'Visit ZOYYA',
-        tag: 'Design & apps',
-        summary: 'Turn an idea into a designed, working application with AI.'
+        tag: "Design & apps",
+        summary: "Design and build runnable web products; broader app workflows are rolling out."
       },
       runa: {
-        section: 'AI teams',
-        desc: 'Build and coordinate a personal or business AI team: set goals, delegate work, review results, and connect approved Efolusi products as tools.',
-        specs: ['Personal & business', 'Goals & delegation', 'Tool orchestration'],
-        buttonLabel: 'Visit Runa',
-        tag: 'AI',
-        summary: 'The orchestration control plane for personal and business AI teams.'
+        headline: "An AI team for you or your business.",
+        section: "AI teams",
+        desc: "Build and coordinate a personal or business AI team: set goals, delegate work, review results, and connect approved Efolusi products as tools.",
+        specs: ["Personal & business", "Goals & delegation", "Tool orchestration"],
+        buttonLabel: 'Explore Runa',
+        tag: "AI teams",
+        summary: "Coordinate personal or business AI teams and the tools they are allowed to use."
       },
       relay: {
-        section: 'AI Infrastructure',
-        desc: 'One control plane for every AI provider: a single gateway in front of all LLM providers, with one key and one bill.',
+        section: "AI infrastructure",
+        desc: "Access multiple AI models and track usage through one API.",
         specs: ['AI gateway', 'Multi-provider', 'One control plane'],
         buttonLabel: 'Visit Relay',
-        tag: 'AI',
-        summary: 'One control plane for every AI provider.'
+        tag: "AI infrastructure",
+        summary: "Access multiple AI models and track usage through one API."
       },
       trady: {
-        section: 'Content Clipping',
-        desc: 'A content clipper: long video in, short clips out. Turns long recordings into packages of short, captioned clips.',
+        section: "Video",
+        desc: "Turn long recordings into short, captioned clips.",
         specs: ['Content clipper', 'Long video in', 'Short clips out'],
         buttonLabel: 'Visit Trady',
-        tag: 'Video',
-        summary: 'Content clipper: long video in, short clips out.'
+        tag: "Video",
+        summary: "Turn long recordings into short, captioned clips."
       },
       toolips: {
-        section: 'Productivity',
-        desc: 'All-in-one tools for everyday file jobs, running directly in the browser. Drop. Fix. Download.',
+        section: "Utilities",
+        desc: "Practical tools for everyday file tasks and small jobs.",
         specs: ['All-in-one tools', 'In the browser', 'No account needed'],
         buttonLabel: 'Visit Toolips',
-        tag: 'Productivity',
-        summary: 'All-in-one tools: Drop. Fix. Download.'
+        tag: "Utilities",
+        summary: "Practical tools for everyday file tasks and small jobs."
       },
       cuwan: {
-        section: 'Trading Automation',
-        desc: 'Automated grid and DCA trading bots. The only trading product in the portfolio, gated by risk disclosure and auditable performance.',
-        specs: ['Grid & DCA bots', 'Automation', 'Risk disclosed'],
+        section: "Trading",
+        desc: "Prepare and evaluate grid strategies in a paper-only workspace while execution controls are validated.",
+        specs: ["Paper only", "Grid strategies", "Execution in validation"],
         buttonLabel: 'Visit Cuwan',
-        tag: 'Trading',
-        summary: 'Automated grid & DCA trading bots.'
+        tag: "Trading",
+        summary: "Evaluate grid strategies without claiming live-funds automation."
       },
       kongkow: {
-        section: 'Social Media',
-        desc: 'A community social network with cross-posting — write once and publish to every social network you connect.',
+        section: "Social publishing",
+        desc: "Build your community and prepare cross-channel publishing. Released connectors are identified inside the app.",
         specs: ['Social network', 'Cross-post', 'Write once'],
         buttonLabel: 'Visit Kongkow',
-        tag: 'Social',
-        summary: 'Post once, publish everywhere.'
+        tag: "Social publishing",
+        summary: "Build a community and publish only through connectors marked ready."
       },
       pay: {
-        section: 'Payments',
-        desc: 'The centralized payment gateway behind every Efolusi product: one integration, every payment gateway.',
+        section: "Payments",
+        desc: "Payment infrastructure for products in the Efolusi ecosystem.",
         specs: ['Payment gateway', 'One integration', 'Platform'],
         buttonLabel: 'Visit Pay',
-        tag: 'Payments',
-        summary: 'One integration, every payment gateway.'
+        tag: "Payments",
+        summary: "Payment infrastructure for products in the Efolusi ecosystem."
       },
       my: {
-        section: 'Identity',
-        desc: 'Identity and single sign-on for the whole portfolio: one Efolusi account for every product.',
+        section: "Account",
+        desc: "One account to access Efolusi products.",
         specs: ['SSO', 'One account', 'Every product'],
         buttonLabel: 'Visit My',
-        tag: 'Identity',
-        summary: 'One account for every Efolusi product.'
+        tag: "Account",
+        summary: "One account to access Efolusi products."
       },
       loop: {
-        section: 'Specifications',
-        desc: 'A specification workspace where PRDs and specs are reviewed and versioned before development. The spec comes first.',
+        section: "Product specifications",
+        desc: "Clarify requirements and what done looks like before development starts.",
         specs: ['Spec workspace', 'Reviewed', 'Versioned'],
         buttonLabel: 'Visit Loop',
-        tag: 'Productivity',
-        summary: 'The spec comes first.'
+        tag: "Product specifications",
+        summary: "Clarify requirements and what done looks like before development starts."
       },
       sanctum: {
-        section: 'Privacy',
-        desc: 'A vault and private knowledge system: a vault your AI can use but never read.',
-        specs: ['Vault', 'Private knowledge', 'Zero knowledge'],
+        section: "Privacy & knowledge",
+        desc: "Manage private knowledge and control what information can be shared with AI.",
+        specs: ["Private knowledge", "Disclosure controls"],
         buttonLabel: 'Visit Sanctum',
-        tag: 'Privacy',
-        summary: 'A vault your AI can use but never read.'
+        tag: "Privacy & knowledge",
+        summary: "Manage private knowledge and control what information can be shared with AI."
       },
       komando: {
-        section: 'Cloud Infrastructure',
-        desc: 'Omni cloud, server, and monitoring in one dashboard: one terminal for every server, database, URL, and cert you own.',
-        specs: ['Servers', 'Monitoring', 'One dashboard'],
+        section: "Infrastructure",
+        desc: "Monitor HTTP, SSL, and DNS from one dashboard. Broader infrastructure operations are rolling out.",
+        specs: ['HTTP, SSL & DNS', 'Monitoring', 'More in rollout'],
         buttonLabel: 'Visit Komando',
-        tag: 'Infrastructure',
-        summary: 'One terminal for every server, database, URL and cert you own.'
+        tag: "Infrastructure",
+        summary: "Monitor HTTP, SSL, and DNS; broader operations are rolling out."
       },
       meridian: {
-        section: 'Design System',
-        desc: 'The Efolusi design system, published as the npm package @efolusi/meridian and used across every product. Its code, documentation, and license can be inspected publicly.',
+        section: "Design system",
+        desc: "Build consistent interfaces with open-source React components.",
         specs: ['Open source', 'Design system', 'MIT licensed'],
         buttonLabel: 'Visit Meridian',
-        tag: 'Design',
-        summary: 'The Efolusi design system.'
+        tag: "Design system",
+        summary: "Build consistent interfaces with open-source React components."
       }
     },
     team: {
