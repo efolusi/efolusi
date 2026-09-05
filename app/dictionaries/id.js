@@ -135,14 +135,6 @@ const id = {
         buttonLabel: 'Kunjungi Meridian',
         tag: 'Desain',
         summary: 'Design system open source berlisensi MIT untuk antarmuka yang konsisten.'
-      },
-      earthos: {
-        section: 'Geospasial',
-        desc: 'Core geospasial 3D open source yang sementara dikeluarkan dari roadmap aktif sampai ada use case, strategic value, dan business model yang terbukti.',
-        specs: ['Diambil keluar', 'Open source', 'Tanpa roadmap aktif'],
-        buttonLabel: 'Kunjungi EarthOS',
-        tag: 'Geospasial',
-        summary: 'Core geospasial open source yang sementara tidak aktif.'
       }
     },
     team: {
@@ -291,13 +283,6 @@ const id = {
         problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang delapan kali.',
         solution: 'Design system open source untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang.',
         result: 'Kode dan lisensi MIT tersedia publik; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
-      },
-      {
-        name: 'EarthOS',
-        href: 'https://earthos.efolusi.com',
-        problem: 'Data live tentang bumi (satelit, pesawat, gempa, badai) terpencar di puluhan sumber tanpa ada yang menyatukan.',
-        solution: 'Digital twin 3D bumi secara real-time di browser, dengan tiap sumber data sebagai plugin di satu globe.',
-        result: 'Core dan plugin SDK tersedia sebagai open source. Pengembangan solusi vertikal menunggu design partner dengan data dan kebutuhan operasional.'
       },
       {
         name: 'Komando',
@@ -578,7 +563,7 @@ const id = {
       'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT. Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
     productsHead: 'Produk',
     products:
-      'Produk Efolusi (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, Meridian, EarthOS) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
+      'Produk Efolusi (ZOYYA, Komando, Toolips, Trady, Kongkow, Cuwan, dan Meridian) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
     trademarksHead: 'Konten dan merek dagang',
     trademarksA:
       'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT. Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',
