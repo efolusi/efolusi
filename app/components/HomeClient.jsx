@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Avatar, AvatarFallback, Badge, Button, CopyField, Icon, Input, StatusDot, Tag, Textarea } from '@efolusi/meridian';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Avatar, AvatarFallback, Badge, Button, CopyField, Icon, Input, StatusDot, Textarea } from '@efolusi/meridian';
+import ProductPortfolio from './ProductPortfolio.jsx';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
 import NoEmailObfuscation from './NoEmailObfuscation.jsx';
@@ -9,23 +10,6 @@ import { SocialIcon } from '../lib/social-icons.js';
 
 const EFO_CONTRACT = '0xb61a09e93b4f14585e9afbac3adaea626f25fb07';
 
-/* Structural data (ids, tints, marks, icons, links, titles) is locale-agnostic;
-   the copy for each product is merged in from the dictionary by id. */
-const productMeta = [
-  { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', mark: 'Zo', icon: 'brain', href: 'https://zoyya.xyz' },
-  { id: 'runa', title: 'Runa', tint: 'cocoa', mark: 'Ru', icon: 'sparkles', href: 'https://runa.efolusi.com' },
-  { id: 'relay', title: 'Relay', tint: 'amber', mark: 'Re', icon: 'zap', href: 'https://relay.efolusi.com' },
-  { id: 'trady', title: 'Trady', tint: 'coral', logo: '/trady-otter.png', icon: 'sparkles', href: 'https://trady.efolusi.com' },
-  { id: 'toolips', title: 'Toolips', tint: 'amber', mark: 'To', icon: 'package', href: 'https://toolips.xyz' },
-  { id: 'cuwan', title: 'Cuwan', tint: 'green', mark: 'Cu', icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
-  { id: 'kongkow', title: 'Kongkow', tint: 'peach', mark: 'Kg', icon: 'message-square', href: 'https://kongkow.xyz' },
-  { id: 'pay', title: 'Pay', tint: 'green', mark: 'Pa', icon: 'credit-card', href: 'https://pay.efolusi.com' },
-  { id: 'my', title: 'My', tint: 'caramel', mark: 'My', icon: 'key', href: 'https://my.efolusi.com' },
-  { id: 'loop', title: 'Loop', tint: 'peach', mark: 'Lo', icon: 'file-text', href: 'https://loop.efolusi.com' },
-  { id: 'sanctum', title: 'Sanctum', tint: 'cocoa', mark: 'Sa', icon: 'lock', href: 'https://sanctum.efolusi.com' },
-  { id: 'komando', title: 'Komando', tint: 'green', mark: 'Ko', icon: 'server', href: 'https://komando.efolusi.com' },
-  { id: 'meridian', title: 'Meridian', tint: 'cocoa', brandMark: true, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' }
-];
 
 const leadership = [
   [
@@ -112,13 +96,10 @@ export default function HomeClient({ d, common, lang }) {
   useRevealOnScroll();
 
   const base = `/${lang}`;
-  const stageProducts = productMeta.map((meta) => ({ ...meta, ...d.products[meta.id] }));
 
-  const [activeStage, setActiveStage] = useState('zoyya');
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
 
-  const activeProduct = stageProducts.find((item) => item.id === activeStage) || stageProducts[0];
 
   const handleContactSubmit = (event) => {
     event.preventDefault();
@@ -352,87 +333,8 @@ export default function HomeClient({ d, common, lang }) {
             <p className="section-lede">{d.portfolio.lede}</p>
           </div>
 
-          <div className="stage-wrap reveal">
-            <div className="stage">
-              <div
-                className={`stage-watermark wm-${activeProduct.tint}${activeProduct.brandMark ? ' stage-watermark--brand' : ''}${activeProduct.logo ? ' stage-watermark--logo' : ''}`}
-                key={activeProduct.id}
-                aria-hidden="true"
-              >
-                {activeProduct.brandMark ? (
-                  <span className="meridian-mark meridian-mark--watermark" />
-                ) : activeProduct.logo ? (
-                  <img className="product-logo product-logo--watermark" src={activeProduct.logo} alt="" />
-                ) : activeProduct.mark}
-              </div>
+          <ProductPortfolio products={d.products} lang={lang} />
 
-              {stageProducts.map((product, index) => (
-                <article key={product.id} className={`stage-panel${activeStage === product.id ? ' is-active' : ''}`}>
-                  <span className="eyebrow eyebrow--mono">
-                    {String(index + 1).padStart(2, '0')} / {product.section}
-                  </span>
-                  <h3>{product.title}</h3>
-                  <p className="desc">{product.desc}</p>
-                  <div className="specs">
-                    {product.specs.map((spec) => (
-                      <Tag key={spec}>{spec}</Tag>
-                    ))}
-                  </div>
-                  <div className="cta">
-                    <Button
-                      variant="brand"
-                      iconRight="arrow-up-right"
-                      onClick={() => window.open(product.href, '_blank', 'noopener,noreferrer')}
-                    >
-                      {product.buttonLabel}
-                    </Button>
-                  </div>
-                </article>
-              ))}
-            </div>
-
-            <ol className="switch">
-              {stageProducts.map((product, index) => (
-                <li key={product.id}>
-                  <button
-                    type="button"
-                    className={activeStage === product.id ? 'is-active' : ''}
-                    onMouseEnter={() => setActiveStage(product.id)}
-                    onFocus={() => setActiveStage(product.id)}
-                    onClick={() => setActiveStage(product.id)}
-                  >
-                    <span className="sw-n">{String(index + 1).padStart(2, '0')}</span>
-                    <span className="sw-nm">{product.title}</span>
-                    <span className="sw-c">{product.tag}</span>
-                  </button>
-                </li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="plist reveal">
-            {stageProducts.map((product) => (
-              <a key={product.id} className="plist-row" href={product.href} target="_blank" rel="noopener noreferrer">
-                <span className={`plist-mark tint-${product.tint}`} aria-hidden="true">
-                  {product.brandMark ? (
-                    <span className="meridian-mark" />
-                  ) : product.logo ? (
-                    <img className="product-logo product-logo--list" src={product.logo} alt="" />
-                  ) : product.mark}
-                </span>
-                <span>
-                  <span className="plist-name">
-                    {product.title}
-                    <span className="plist-arrow">
-                      <Icon name="arrow-up-right" size={17} />
-                    </span>
-                  </span>
-                  <span className="plist-cat">{product.section}</span>
-                </span>
-                <span className="plist-sum">{product.summary}</span>
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
