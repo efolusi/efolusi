@@ -63,8 +63,6 @@ const organizationLd = {
     { '@type': 'Brand', name: 'Toolips', url: 'https://toolips.xyz' },
     { '@type': 'Brand', name: 'Cuwan', url: 'https://cuwan.xyz' },
     { '@type': 'Brand', name: 'Kongkow', url: 'https://kongkow.xyz' },
-    { '@type': 'Brand', name: 'Pay', url: 'https://pay.efolusi.com' },
-    { '@type': 'Brand', name: 'My', url: 'https://my.efolusi.com' },
     { '@type': 'Brand', name: 'Loop', url: 'https://loop.efolusi.com' },
     { '@type': 'Brand', name: 'Sanctum', url: 'https://sanctum.efolusi.com' },
     { '@type': 'Brand', name: 'Komando', url: 'https://komando.efolusi.com' },

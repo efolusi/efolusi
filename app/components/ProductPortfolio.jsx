@@ -10,8 +10,7 @@ const groups = [
   { id: 'build', en: 'Build & manage applications', idLabel: 'Bangun dan kelola aplikasi', products: ['zoyya', 'loop', 'komando'] },
   { id: 'create', en: 'Create & publish content', idLabel: 'Buat & terbitkan konten', products: ['trady', 'kongkow'] },
   { id: 'developer', en: 'For developers', idLabel: 'Untuk developer', products: ['relay', 'meridian'] },
-  { id: 'trading', en: 'Trading', idLabel: 'Trading', products: ['cuwan'] },
-  { id: 'foundation', en: 'Ecosystem essentials', idLabel: 'Fondasi ekosistem', products: ['my', 'pay'] }
+  { id: 'trading', en: 'Trading', idLabel: 'Trading', products: ['cuwan'] }
 ];
 
 function ProductMark({ product }) {
@@ -40,7 +39,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
 
   return <div className="portfolio-browser">
     {!full && <div className="portfolio-featured portfolio-featured--primary">
-      {featured.map(product => <a className={`portfolio-feature portfolio-feature--${product.tint}`} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
+      {featured.map(product => <a className={`portfolio-feature portfolio-feature--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
         <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.title}</span></div><ProductAccessory product={product} featured />
         <h3>{product.headline || product.title}</h3>
         <p>{product.desc}</p>
@@ -56,7 +55,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
           <div className={`portfolio-grid portfolio-grid--${group.products.length}`}>
             {group.products.map(key => {
               const product = all.find(item => item.id === key);
-              return <a className={`portfolio-card portfolio-card--${product.tint}`} href={product.href} target="_blank" rel="noopener noreferrer" key={key}>
+              return <a className={`portfolio-card portfolio-card--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={key}>
                 <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.tag}</span></div><ProductAccessory product={product} />
                 <h4>{product.title}</h4><p>{product.summary}</p>
               </a>;
@@ -74,7 +73,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
     {full && <div className="portfolio-filters" aria-label={id ? 'Kategori produk' : 'Product categories'}>{groups.map(group => <button key={group.id} type="button" aria-pressed={filter === group.id} onClick={() => setFilter(group.id)}>{id ? group.idLabel : group.en}</button>)}</div>}
     {full && <p className="portfolio-results" role="status">{visible.length} {id ? 'produk ditemukan' : 'products found'}</p>}
     <div className="portfolio-grid">
-      {visible.map(product => <a className={`portfolio-card portfolio-card--${product.tint}`} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
+      {visible.map(product => <a className={`portfolio-card portfolio-card--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
         <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.tag}</span><Icon name="arrow-up-right" size={18} /></div>
         <h4>{product.title}</h4><p>{product.summary}</p>
       </a>)}

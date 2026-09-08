@@ -24,8 +24,6 @@ const BODY = `# Efolusi
 - Toolips (https://toolips.xyz): all-in-one tools — Drop. Fix. Download.
 - Cuwan (https://cuwan.xyz): automated grid & DCA trading bots; the only trading product in the portfolio.
 - Kongkow (https://kongkow.xyz): a community social network with cross-posting — write once, publish to every social network you connect.
-- Pay (https://pay.efolusi.com): centralized payment gateway across products — one integration, every payment gateway.
-- My (https://my.efolusi.com): identity and SSO — one Efolusi account for every product.
 - Loop (https://loop.efolusi.com): specification workspace — the spec comes first.
 - Sanctum (https://sanctum.efolusi.com): vault + private knowledge system — a vault your AI can use but never read.
 - Komando (https://komando.efolusi.com): omni cloud, server, and monitoring in one dashboard.
