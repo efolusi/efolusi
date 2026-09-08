@@ -155,7 +155,7 @@ Because `main` deploys straight to production, land changes on `dev` first.
 
 ## Notes
 
-- `node` version must be `>=22 <25`.
+- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI. The native deployment helper uses the same NVM runtime.
 - `.env.local`, `.next`, and `node_modules` are intentionally ignored.
 
 ## License

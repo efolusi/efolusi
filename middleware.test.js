@@ -32,11 +32,16 @@ describe('language redirect external origin', () => {
   it('binds the canonical dev origin during build and in the PM2 runtime', () => {
     const workflow = readFileSync('.github/workflows/deploy-native-dev.yml', 'utf8');
     const ciWorkflow = readFileSync('.github/workflows/ci.yml', 'utf8');
+    const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
+    const nvmVersion = readFileSync('.nvmrc', 'utf8').trim();
     expect(workflow).toContain('branches: [dev, main]');
     expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
     expect(workflow).toContain('sudo -n -u deploy');
     expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, foundation-dev-web]');
     expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, foundation-dev-web]');
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
+    expect(ciWorkflow).toContain('node-version: 22.23.2');
+    expect(packageJson.engines.node).toBe('22.23.2');
+    expect(nvmVersion).toBe('22.23.2');
   });
 });
