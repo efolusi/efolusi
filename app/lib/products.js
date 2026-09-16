@@ -1,7 +1,7 @@
 /* Structural data (ids, tints, logos, icons, links, titles) is locale-agnostic;
    the copy for each product is merged in from the dictionary by id. */
 export const productMeta = [
-  { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', logo: '/zoyya.svg', logoRatio: 1.085, icon: 'laptop', href: 'https://zoyya.xyz' },
+  { id: 'zoyya', title: 'ZOYYA', tint: 'caramel', logo: '/zoyya.svg', logoRatio: 1.022, icon: 'laptop', href: 'https://zoyya.xyz' },
   { id: 'runa', title: 'Runa', tint: 'cocoa', logo: '/runa.svg', logoRatio: 1.088, icon: 'bot', href: 'https://runa.efolusi.com' },
   { id: 'relay', title: 'Relay', tint: 'amber', logo: '/relay.svg', logoRatio: 1.186, icon: 'brain', href: 'https://relay.efolusi.com' },
   { id: 'trady', title: 'Trady', tint: 'coral', logo: '/trady.svg', logoRatio: 1.592, icon: 'video', href: 'https://trady.efolusi.com' },
