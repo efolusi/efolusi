@@ -36,9 +36,10 @@ describe('language redirect external origin', () => {
     const nvmVersion = readFileSync('.nvmrc', 'utf8').trim();
     expect(workflow).toContain('branches: [dev, main]');
     expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
-    expect(workflow).toContain('sudo -n -u deploy');
-    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, foundation-dev-web]');
-    expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, foundation-dev-web]');
+    expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
+    expect(workflow).not.toContain('sudo');
+    expect(workflow).toContain(`runs-on: \${{ github.ref_name == 'main' && fromJSON('["self-hosted", "Linux", "X64", "efolusi-prod"]') || fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') }}`);
+    expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-dev]');
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
     expect(ciWorkflow).toContain('node-version: 22.23.2');
     expect(packageJson.engines.node).toBe('22.23.2');
