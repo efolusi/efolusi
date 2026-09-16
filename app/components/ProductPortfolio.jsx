@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Icon, Tag } from '@efolusi/meridian';
 import { productMeta } from '../lib/products.js';
+import ProductLogo from './ProductLogo.jsx';
 
 const groups = [
   { id: 'all', en: 'All products', idLabel: 'Semua produk' },
@@ -15,7 +16,7 @@ const groups = [
 
 function ProductMark({ product }) {
   return <span className={`portfolio-mark tint-${product.tint}`} aria-hidden="true">
-    {product.brandMark ? <span className="meridian-mark" /> : product.logo ? <img src={product.logo} alt="" /> : product.mark}
+    <ProductLogo id={product.id} size={30} />
   </span>;
 }
 
