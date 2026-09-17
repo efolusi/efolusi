@@ -21,7 +21,14 @@ const leadership = [
       ['GitHub', 'https://github.com/sgnd']
     ]
   ],
-  ['Rakha Febryza Rasendriya', 'Co-founder']
+  [
+    'Rakha Febryza Rasendriya',
+    'Co-founder',
+    [
+      ['LinkedIn', 'https://www.linkedin.com/in/rakha-fr/'],
+      ['GitHub', 'https://github.com/RakhaFe21']
+    ]
+  ]
 ];
 
 /* Decorations live in the two gutters beside the centered text column, in
