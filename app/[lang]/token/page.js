@@ -1,5 +1,6 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Badge, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
+import { socialMeta } from '../../lib/page-meta.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 import BuybackBurn from '../../components/BuybackBurn.jsx';
@@ -16,7 +17,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${lang}/token`,
       languages: { en: '/en/token', id: '/id/token', 'x-default': '/en/token' }
-    }
+    },
+    ...socialMeta(lang, '/token', d.token.meta.title, d.token.meta.description)
   };
 }
 

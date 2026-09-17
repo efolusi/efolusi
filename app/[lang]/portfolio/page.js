@@ -1,3 +1,4 @@
+import { socialMeta } from '../../lib/page-meta.js';
 import { getDictionary } from '../../dictionaries/config.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
@@ -5,7 +6,14 @@ import ProductPortfolio from '../../components/ProductPortfolio.jsx';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
-  return { title: lang === 'id' ? 'Portofolio — Efolusi' : 'Portfolio — Efolusi', alternates: { canonical: `/${lang}/portfolio`, languages: { en: '/en/portfolio', id: '/id/portfolio' } } };
+  const title = lang === 'id' ? 'Efolusi · Portofolio produk' : 'Efolusi · Product portfolio';
+  const description = getDictionary(lang).home.portfolio.lede;
+  return {
+    title,
+    description,
+    alternates: { canonical: `/${lang}/portfolio`, languages: { en: '/en/portfolio', id: '/id/portfolio', 'x-default': '/en/portfolio' } },
+    ...socialMeta(lang, '/portfolio', title, description)
+  };
 }
 
 export default async function PortfolioPage({ params }) {

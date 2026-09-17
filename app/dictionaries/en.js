@@ -11,8 +11,18 @@ const en = {
     toggleMenu: 'Toggle menu',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
+    notFound: {
+      meta: 'Page not found · Efolusi',
+      code: 'Error 404',
+      titleA: 'This page',
+      titleEm: 'wandered',
+      titleB: 'off.',
+      body: 'The link may be old, or the page has moved. Everything we build is still one click away.',
+      home: 'Back to home',
+      portfolio: 'See the portfolio'
+    },
     footer: {
-      tagline: 'PT. Efolusi Dunia Teknologi. We build software and run it ourselves. Made in Indonesia.',
+      tagline: 'PT Efolusi Dunia Teknologi. We build software and run it ourselves. Made in Indonesia.',
       companyHead: 'Company',
       ecosystemHead: 'Token',
       legalHead: 'Legal',
@@ -23,7 +33,7 @@ const en = {
       bscscan: 'BscScan',
       privacy: 'Privacy policy',
       terms: 'Terms of use',
-      rights: '© 2026 PT. Efolusi Dunia Teknologi. All rights reserved.',
+      rights: '© 2026 PT Efolusi Dunia Teknologi. All rights reserved.',
       madeIn: 'Made in Indonesia'
     }
   },
@@ -32,7 +42,7 @@ const en = {
     meta: {
       title: 'Efolusi · We build software and run it',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and we keep them running ourselves.'
+        'Efolusi (PT Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and we keep them running ourselves.'
     },
     hero: {
       lead: 'Tools that',
@@ -230,7 +240,7 @@ const en = {
       items: [
         [
           'What is Efolusi?',
-          "A small software company from Indonesia. We build and validate software products, maintain open-source projects, and operate internal infrastructure. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork."
+          "A small software company from Indonesia. We build and validate software products, maintain open-source projects, and operate internal infrastructure. The legal name is PT Efolusi Dunia Teknologi, in case you need it for partnership paperwork."
         ],
         [
           'Where are you based?',
@@ -295,12 +305,12 @@ const en = {
     meta: {
       title: 'About · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) is a small, self-funded software company in Indonesia. We build our own products and keep them running.'
+        'Efolusi (PT Efolusi Dunia Teknologi) is a small, self-funded software company in Indonesia. We build our own products and keep them running.'
     },
     heroA: 'We build software,',
     heroEm: 'then run it ourselves',
     heroB: '.',
-    lede: "Efolusi is a small, self-funded software company from Indonesia. We started it to build the tools we kept wishing we had, and we've kept going the same way ever since: find the problem that annoys us, build the product, keep it running. The legal name is PT. Efolusi Dunia Teknologi, in case you need it for partnership paperwork.",
+    lede: "Efolusi is a small, self-funded software company from Indonesia. We started it to build the tools we kept wishing we had, and we've kept going the same way ever since: find the problem that annoys us, build the product, keep it running. The legal name is PT Efolusi Dunia Teknologi, in case you need it for partnership paperwork.",
     splitTitleA: 'We take on a lot,',
     splitTitleEm: 'on purpose.',
     splitBig: "We're not a one-product company. When a problem keeps getting in the way, we build a product for it and use it ourselves.",
@@ -415,7 +425,7 @@ const en = {
     paperTitleEm: 'on paper',
     paperTitleB: '.',
     facts: [
-      ['Legal entity', 'PT. Efolusi Dunia Teknologi'],
+      ['Legal entity', 'PT Efolusi Dunia Teknologi'],
       ['Headquarters', 'Indonesia · Distributed team'],
       ['Email', 'hi@efolusi.com'],
       ['Open source', 'github.com/efolusi']
@@ -615,11 +625,11 @@ const en = {
   privacy: {
     meta: {
       title: 'Privacy policy · Efolusi',
-      description: 'How PT. Efolusi Dunia Teknologi handles data collected through efolusi.com.'
+      description: 'How PT Efolusi Dunia Teknologi handles data collected through efolusi.com.'
     },
     back: '← Back to efolusi.com',
     title: 'Privacy policy',
-    metaLine: 'PT. Efolusi Dunia Teknologi · Effective 22 July 2026',
+    metaLine: 'PT Efolusi Dunia Teknologi · Effective 22 July 2026',
     intro:
       'This policy describes what data efolusi.com collects and what we use it for. The short version: very little, and it is never sold. It applies to this website only; each Efolusi product has its own privacy policy on its own website.',
     collectHead: 'What we collect',
@@ -645,19 +655,19 @@ const en = {
   terms: {
     meta: {
       title: 'Terms of use · Efolusi',
-      description: 'Terms of use for efolusi.com, the website of PT. Efolusi Dunia Teknologi.'
+      description: 'Terms of use for efolusi.com, the website of PT Efolusi Dunia Teknologi.'
     },
     back: '← Back to efolusi.com',
     title: 'Terms of use',
-    metaLine: 'PT. Efolusi Dunia Teknologi · Effective 22 July 2026',
+    metaLine: 'PT Efolusi Dunia Teknologi · Effective 22 July 2026',
     intro:
-      'By using efolusi.com you agree to these terms. This website introduces PT. Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
+      'By using efolusi.com you agree to these terms. This website introduces PT Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
     productsHead: 'Products',
     products:
       "Efolusi products (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
     trademarksHead: 'Content and trademarks',
     trademarksA:
-      'The Efolusi name, the owl mark, and product names are property of PT. Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',
+      'The Efolusi name, the owl mark, and product names are property of PT Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',
     trademarksB: '; the MIT grant does not cover the names or the mark.',
     tokenHead: 'The $EFO token',
     tokenP1:

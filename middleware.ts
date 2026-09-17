@@ -71,11 +71,17 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  if (pathname !== '/') return NextResponse.next();
-
   const stored = request.cookies.get(COOKIE)?.value;
   const country = request.headers.get('cf-ipcountry');
   const locale: Locale = isLocale(stored) ? stored : country === 'ID' ? 'id' : 'en';
+
+  // A page path outside both locales has no page. Render the branded 404 in
+  // the reader's language (the URL stays as typed, the status stays 404).
+  if (pathname !== '/') {
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+    return NextResponse.rewrite(url);
+  }
 
   const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
   url.pathname = `/${locale}`;

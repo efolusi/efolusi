@@ -11,8 +11,18 @@ const id = {
     toggleMenu: 'Buka menu',
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
+    notFound: {
+      meta: 'Halaman tidak ditemukan · Efolusi',
+      code: 'Galat 404',
+      titleA: 'Halaman ini',
+      titleEm: 'tidak',
+      titleB: 'ditemukan.',
+      body: 'Tautannya mungkin sudah lama, atau halamannya sudah pindah. Semua yang kami bangun tetap bisa Anda temukan dari beranda.',
+      home: 'Kembali ke beranda',
+      portfolio: 'Lihat portofolio'
+    },
     footer: {
-      tagline: 'PT. Efolusi Dunia Teknologi. Kami membangun software dan menjalankannya sendiri. Dibuat di Indonesia.',
+      tagline: 'PT Efolusi Dunia Teknologi. Kami membangun software dan menjalankannya sendiri. Dibuat di Indonesia.',
       companyHead: 'Perusahaan',
       ecosystemHead: 'Token',
       legalHead: 'Legal',
@@ -23,7 +33,7 @@ const id = {
       bscscan: 'BscScan',
       privacy: 'Kebijakan privasi',
       terms: 'Ketentuan penggunaan',
-      rights: '© 2026 PT. Efolusi Dunia Teknologi. Hak cipta dilindungi.',
+      rights: '© 2026 PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
       madeIn: 'Dibuat di Indonesia'
     }
   },
@@ -32,7 +42,7 @@ const id = {
     meta: {
       title: 'Efolusi · Kami membangun software dan menjalankannya sendiri',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis sehari-hari, dan kami sendiri yang menjaganya tetap jalan.'
+        'Efolusi (PT Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis sehari-hari, dan kami sendiri yang menjaganya tetap jalan.'
     },
     hero: {
       lead: 'Alat yang',
@@ -75,9 +85,9 @@ const id = {
     },
     portfolio: {
       headA: "Apa yang ingin",
-      headEm: "kamu kerjakan",
+      headEm: "Anda kerjakan",
       headB: "?",
-      lede: "Bangun aplikasi, siapkan konten, atau kelola pekerjaan dengan AI. Mulai dari produk yang kamu butuhkan."
+      lede: "Bangun aplikasi, siapkan konten, atau kelola pekerjaan dengan AI. Mulai dari produk yang Anda butuhkan."
     },
     products: {
       zoyya: {
@@ -89,7 +99,7 @@ const id = {
         summary: "Desain dan bangun produk web; alur aplikasi lainnya masih diluncurkan bertahap."
       },
       runa: {
-        headline: "Tim AI untukmu atau bisnismu.",
+        headline: "Tim AI untuk Anda atau bisnis Anda.",
         section: "Tim AI",
         desc: "Bangun dan koordinasikan tim AI pribadi atau bisnis: tetapkan tujuan, delegasikan pekerjaan, tinjau hasil, dan hubungkan produk Efolusi yang disetujui sebagai alat.",
         specs: ["Pribadi & bisnis", "Tujuan & delegasi", "Orkestrasi alat"],
@@ -230,7 +240,7 @@ const id = {
       items: [
         [
           'Apa itu Efolusi?',
-          'Perusahaan software kecil dari Indonesia. Kami membangun dan memvalidasi produk software, merawat proyek open source, dan mengoperasikan infrastruktur internal. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerja sama.'
+          'Perusahaan software kecil dari Indonesia. Kami membangun dan memvalidasi produk software, merawat proyek open source, dan mengoperasikan infrastruktur internal. Nama resminya PT Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerja sama.'
         ],
         [
           'Kalian berbasis di mana?',
@@ -295,12 +305,12 @@ const id = {
     meta: {
       title: 'Tentang · Efolusi',
       description:
-        'Efolusi (PT. Efolusi Dunia Teknologi) adalah perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami membangun produk kami sendiri dan menjaganya tetap jalan.'
+        'Efolusi (PT Efolusi Dunia Teknologi) adalah perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami membangun produk kami sendiri dan menjaganya tetap jalan.'
     },
     heroA: 'Kami membangun software,',
     heroEm: 'lalu menjalankannya sendiri',
     heroB: '.',
-    lede: 'Efolusi itu perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami memulainya untuk membuat alat-alat yang terus kami harap ada, dan sejak itu kami jalan terus dengan cara yang sama: cari masalah yang bikin kesal, bikin produknya, jaga tetap jalan. Nama resminya PT. Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerjasama.',
+    lede: 'Efolusi itu perusahaan software kecil dari Indonesia, dibiayai sendiri. Kami memulainya untuk membuat alat-alat yang terus kami harap ada, dan sejak itu kami jalan terus dengan cara yang sama: cari masalah yang bikin kesal, bikin produknya, jaga tetap jalan. Nama resminya PT Efolusi Dunia Teknologi, kalau Anda perlu untuk dokumen kerja sama.',
     splitTitleA: 'Kami menggarap banyak hal,',
     splitTitleEm: 'memang sengaja.',
     splitBig: 'Kami bukan perusahaan satu produk. Kalau ada masalah yang terus mengganggu, kami bikin produk untuk itu dan menggunakannya sendiri.',
@@ -415,7 +425,7 @@ const id = {
     paperTitleEm: 'di atas kertas',
     paperTitleB: '.',
     facts: [
-      ['Badan hukum', 'PT. Efolusi Dunia Teknologi'],
+      ['Badan hukum', 'PT Efolusi Dunia Teknologi'],
       ['Kantor pusat', 'Indonesia · Tim terdistribusi'],
       ['Email', 'hi@efolusi.com'],
       ['Open source', 'github.com/efolusi']
@@ -615,11 +625,11 @@ const id = {
   privacy: {
     meta: {
       title: 'Kebijakan privasi · Efolusi',
-      description: 'Bagaimana PT. Efolusi Dunia Teknologi menangani data yang dikumpulkan melalui efolusi.com.'
+      description: 'Bagaimana PT Efolusi Dunia Teknologi menangani data yang dikumpulkan melalui efolusi.com.'
     },
     back: '← Kembali ke efolusi.com',
     title: 'Kebijakan privasi',
-    metaLine: 'PT. Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
+    metaLine: 'PT Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
     intro:
       'Kebijakan ini menjelaskan data apa yang dikumpulkan efolusi.com dan untuk apa kami memakainya. Singkatnya: sedikit sekali, dan tidak pernah dijual. Berlaku untuk situs ini saja; tiap produk Efolusi punya kebijakan privasinya sendiri di situsnya masing-masing.',
     collectHead: 'Yang kami kumpulkan',
@@ -645,19 +655,19 @@ const id = {
   terms: {
     meta: {
       title: 'Ketentuan penggunaan · Efolusi',
-      description: 'Ketentuan penggunaan efolusi.com, situs milik PT. Efolusi Dunia Teknologi.'
+      description: 'Ketentuan penggunaan efolusi.com, situs milik PT Efolusi Dunia Teknologi.'
     },
     back: '← Kembali ke efolusi.com',
     title: 'Ketentuan penggunaan',
-    metaLine: 'PT. Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
+    metaLine: 'PT Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
     intro:
-      'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT. Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
+      'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
     productsHead: 'Produk',
     products:
       'Produk Efolusi (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
     trademarksHead: 'Konten dan merek dagang',
     trademarksA:
-      'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT. Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',
+      'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',
     trademarksB: '; lisensi MIT tidak mencakup nama-nama atau maskot.',
     tokenHead: 'Token $EFO',
     tokenP1:

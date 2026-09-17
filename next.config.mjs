@@ -27,6 +27,13 @@ const nextConfig = {
         headers: securityHeaders
       },
       {
+        // Every host except production (dev.efolusi.com, previews, localhost)
+        // is kept out of search indexes, pages and assets alike.
+        source: '/(.*)',
+        missing: [{ type: 'host', value: 'efolusi.com' }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
+      },
+      {
         // Short shared-cache TTL for pages so deploys show up within minutes;
         // hashed /_next assets keep their own immutable caching.
         source: '/((?!_next/).*)',
@@ -38,7 +45,7 @@ const nextConfig = {
     // The old unprefixed content URLs moved permanently to their English
     // equivalents. `/` is NOT here: it is the language gateway, and these
     // redirects run before middleware, which would make the guess unreachable.
-    const moved = ['about', 'careers', 'token', 'brand', 'privacy', 'terms'];
+    const moved = ['about', 'careers', 'portfolio', 'token', 'brand', 'privacy', 'terms'];
     return moved.map((path) => ({
       source: `/${path}`,
       destination: `/en/${path}`,

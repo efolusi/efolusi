@@ -1,5 +1,6 @@
 import { Avatar, AvatarFallback, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
+import { socialMeta } from '../../lib/page-meta.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 import { SocialIcon } from '../../lib/social-icons.js';
@@ -13,7 +14,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${lang}/about`,
       languages: { en: '/en/about', id: '/id/about', 'x-default': '/en/about' }
-    }
+    },
+    ...socialMeta(lang, '/about', d.about.meta.title, d.about.meta.description)
   };
 }
 
