@@ -435,26 +435,26 @@ a.ef-btn--secondary:hover {
   width: 400px;
 }
 
-.product-logo {
+/* Product marks are single-colour SVGs painted through a mask, so every logo
+   takes one ink (currentColor) and one optical size from ProductLogo. */
+.product-glyph {
   display: block;
-  object-fit: contain;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--logo) center / contain no-repeat;
+  mask: var(--logo) center / contain no-repeat;
 }
 
-.product-logo--tile {
-  width: 48px;
-  height: 48px;
+/* Logo tiles share one surface and ink in both themes, like app icons. */
+.tile-card--logo,
+.portfolio-browser .portfolio-mark {
+  background: #FFFFFF;
+  color: var(--brand-800);
 }
 
-.product-logo--list {
-  width: 52px;
-  height: 52px;
-}
-
-.product-logo--watermark {
-  width: 360px;
-  height: 360px;
-  filter: grayscale(1);
-  opacity: 0.13;
+[data-theme='dark'] .tile-card--logo,
+[data-theme='dark'] .portfolio-browser .portfolio-mark {
+  background: var(--cream-50);
 }
 
 /* ---------- Category tints, drawn from the Meridian status and brand ramps ---------- */
@@ -1900,6 +1900,13 @@ a.ef-btn--secondary:hover {
   color: var(--brand-950);
 }
 
+/* The cream pill keeps its light fill in both themes (it sits on dark bands),
+   so its hover must stay light too: dark --surface-card put brand-950 ink on
+   an espresso fill (1.01:1). */
+[data-theme='dark'] .pill--cream:hover {
+  background: var(--brand-100);
+}
+
 .pill--sm {
   height: 40px;
   padding: 0 6px 0 18px;
@@ -2564,7 +2571,6 @@ a.ef-btn--secondary:hover {
 .portfolio-card-top { display: flex; gap: 14px; align-items: center; }
 .portfolio-card-top > span:nth-child(2) { flex: 1; color: var(--text-secondary); font-size: 13px; }
 .portfolio-mark { display: flex; align-items: center; justify-content: center; flex: 0 0 48px; height: 48px; border-radius: 14px; font-family: var(--font-display); font-size: 22px; font-weight: 700; }
-.portfolio-mark img { width: 38px; height: 38px; object-fit: contain; }
 .portfolio-feature h3 { font-family: var(--font-display); font-size: 36px; line-height: 1.15; margin: 26px 0 12px; }
 .portfolio-feature p { color: var(--text-secondary); font-size: 16px; line-height: 1.65; margin: 0 0 28px; max-width: 52ch; }
 .portfolio-feature-bottom { margin-top: auto; }
@@ -2661,7 +2667,7 @@ a.ef-btn--secondary:hover {
   flex: none;
   padding: 7px;
   border-radius: var(--radius-full);
-  color: var(--text-muted);
+  color: var(--card-muted, var(--text-muted));
   background: transparent;
   box-sizing: content-box;
   transition:
@@ -2814,12 +2820,6 @@ a.ef-btn--secondary:hover {
 
 #products .portfolio-featured--primary .portfolio-feature {
   min-height: 300px;
-  color: var(--cream-50);
-  background: var(--surface-brand);
-}
-
-#products .portfolio-featured--primary .portfolio-feature:hover {
-  color: var(--cream-50);
 }
 
 #products .portfolio-featured--primary .portfolio-feature::after {
@@ -2835,20 +2835,7 @@ a.ef-btn--secondary:hover {
   rotate: 9deg;
 }
 
-#products .portfolio-featured--primary .portfolio-card-top > span:nth-child(2),
-#products .portfolio-featured--primary .portfolio-feature p {
-  color: var(--text-on-brand-muted);
-}
 
-#products .portfolio-featured--primary .portfolio-card-top > span:nth-child(2) {
-  color: var(--cream-50);
-}
-
-#products .portfolio-featured--primary .portfolio-mark {
-  background: var(--brand-800);
-  border-color: var(--brand-700);
-  color: var(--cream-50);
-}
 
 #products .portfolio-featured--primary .ef-tag {
   border-color: var(--brand-700);
@@ -2884,74 +2871,73 @@ a.ef-btn--secondary:hover {
   z-index: 2;
 }
 
-/* Every product keeps its own palette slot on both landing and full portfolio. */
-.portfolio-browser .portfolio-card[data-product='runa'] { background: var(--brand-950); color: var(--cream-50); }
-.portfolio-browser .portfolio-card[data-product='zoyya'] { background: var(--warning-100); }
-.portfolio-browser .portfolio-card[data-product='loop'] { background: var(--brand-200); }
-.portfolio-browser .portfolio-card[data-product='komando'] { background: var(--success-100); }
-.portfolio-browser .portfolio-card[data-product='trady'] { background: var(--danger-100); }
-.portfolio-browser .portfolio-card[data-product='kongkow'] { background: var(--warning-300); }
-.portfolio-browser .portfolio-card[data-product='relay'] { background: var(--sand-300); }
-.portfolio-browser .portfolio-card[data-product='toolips'] { background: var(--brand-400); }
-.portfolio-browser .portfolio-card[data-product='cuwan'] { background: var(--success-300); }
-.portfolio-browser .portfolio-card[data-product='pay'] { background: color-mix(in srgb, var(--success-300) 58%, var(--warning-100)); }
-.portfolio-browser .portfolio-card[data-product='my'] { background: var(--sand-100); }
-.portfolio-browser .portfolio-card[data-product='sanctum'] { background: var(--brand-900); color: var(--cream-50); }
-.portfolio-browser .portfolio-card[data-product='meridian'] { background: var(--brand-700); color: var(--cream-50); }
+/* Every product keeps its own palette slot on both landing and full portfolio.
+   Each slot sets its background and the ink that stays legible on it, so text
+   never inherits a theme colour that clashes with a fixed card colour. */
+.portfolio-browser [data-product] {
+  --card-bg: var(--surface-card);
+  --card-fg: #1E1A14;
+  --card-muted: var(--sand-700);
+}
+.portfolio-browser [data-product='zoyya'] { --card-bg: var(--warning-100); }
+.portfolio-browser [data-product='loop'] { --card-bg: var(--brand-200); }
+.portfolio-browser [data-product='komando'] { --card-bg: var(--success-100); }
+.portfolio-browser [data-product='trady'] { --card-bg: var(--danger-100); }
+.portfolio-browser [data-product='kongkow'] { --card-bg: var(--warning-300); }
+.portfolio-browser [data-product='relay'] { --card-bg: var(--sand-300); }
+.portfolio-browser [data-product='toolips'] { --card-bg: var(--brand-400); --card-muted: var(--brand-950); }
+.portfolio-browser [data-product='cuwan'] { --card-bg: var(--success-300); }
+.portfolio-browser [data-product='runa'] { --card-bg: var(--brand-950); }
+.portfolio-browser [data-product='sanctum'] { --card-bg: var(--brand-900); }
+.portfolio-browser [data-product='meridian'] { --card-bg: var(--brand-700); }
+.portfolio-browser [data-product='runa'],
+.portfolio-browser [data-product='sanctum'],
+.portfolio-browser [data-product='meridian'] {
+  --card-fg: var(--cream-50);
+  --card-muted: var(--text-on-brand-muted);
+}
 
+/* Dark theme: the status ramps already remap to deep tints; the fixed brand and
+   sand slots are mixed down to match, so every card takes light ink. */
+[data-theme='dark'] .portfolio-browser [data-product] {
+  --card-fg: var(--cream-50);
+  --card-muted: var(--text-on-brand-muted);
+}
+[data-theme='dark'] .portfolio-browser [data-product='loop'] { --card-bg: color-mix(in srgb, var(--brand-200) 22%, #191512); }
+[data-theme='dark'] .portfolio-browser [data-product='relay'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, #191512); }
+[data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, #191512); }
+
+.portfolio-browser [data-product],
+.portfolio-browser [data-product]:hover,
+#products .portfolio-featured--primary .portfolio-feature,
+#products .portfolio-featured--primary .portfolio-feature:hover {
+  background: var(--card-bg);
+  color: var(--card-fg);
+}
+
+.portfolio-browser [data-product] p,
+.portfolio-browser [data-product] .portfolio-card-top > span:nth-child(2),
 #products .portfolio-use-case .portfolio-card p,
-#products .portfolio-use-case .portfolio-card .portfolio-card-top > span:nth-child(2) {
-  color: var(--sand-700);
+#products .portfolio-use-case .portfolio-card .portfolio-card-top > span:nth-child(2),
+#products .portfolio-featured--primary .portfolio-feature p {
+  color: var(--card-muted);
 }
 
-.portfolio-browser .portfolio-card[data-product='runa'] p,
-.portfolio-browser .portfolio-card[data-product='runa'] .portfolio-card-top > span:nth-child(2),
-.portfolio-browser .portfolio-card[data-product='sanctum'] p,
-.portfolio-browser .portfolio-card[data-product='sanctum'] .portfolio-card-top > span:nth-child(2),
-.portfolio-browser .portfolio-card[data-product='meridian'] p,
-.portfolio-browser .portfolio-card[data-product='meridian'] .portfolio-card-top > span:nth-child(2) {
-  color: var(--text-on-brand-muted);
+#products .portfolio-featured--primary .portfolio-card-top > span:nth-child(2) {
+  color: var(--card-fg);
 }
 
-#products .portfolio-use-case .portfolio-mark {
-  background: var(--surface-card);
-  border-color: transparent;
-  box-shadow: var(--shadow-sm);
-}
 
-/* One fixed logo tile keeps monograms and supplied SVGs optically aligned. */
-.portfolio-browser .portfolio-card .portfolio-mark {
+/* One fixed logo tile for every product card, featured or not. */
+.portfolio-browser [data-product] .portfolio-mark {
   width: 48px;
   height: 48px;
-  padding: 5px;
+  padding: 0;
   box-sizing: border-box;
   border: 0;
   border-radius: 14px;
-  background: var(--surface-card);
-  color: var(--brand-800);
   box-shadow: var(--shadow-sm);
 }
-
-.portfolio-browser .portfolio-card .portfolio-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* Supplied marks use very different SVG canvases. Keep one tile size, then
-   normalize their perceived size without stretching either axis. */
-.portfolio-browser [data-product] .portfolio-mark img {
-  transform: scale(var(--portfolio-logo-scale, 1));
-  transform-origin: center;
-}
-.portfolio-browser [data-product='cuwan'] { --portfolio-logo-scale: .82; }
-.portfolio-browser [data-product='kongkow'] { --portfolio-logo-scale: .79; }
-.portfolio-browser [data-product='toolips'] { --portfolio-logo-scale: .79; }
-.portfolio-browser [data-product='trady'] { --portfolio-logo-scale: .85; }
-.portfolio-browser [data-product='loop'] { --portfolio-logo-scale: 1.05; }
-.portfolio-browser [data-product='runa'] { --portfolio-logo-scale: 1.12; }
-.portfolio-browser [data-product='sanctum'] { --portfolio-logo-scale: 1.12; }
-.portfolio-browser [data-product='komando'] { --portfolio-logo-scale: 1.1; }
 
 #products .portfolio-toolbar {
   padding: 26px 30px;

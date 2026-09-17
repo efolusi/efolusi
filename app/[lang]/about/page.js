@@ -26,7 +26,14 @@ const leadership = [
       ['GitHub', 'https://github.com/sgnd']
     ]
   ],
-  ['Rakha Febryza Rasendriya', 'Co-founder']
+  [
+    'Rakha Febryza Rasendriya',
+    'Co-founder',
+    [
+      ['LinkedIn', 'https://www.linkedin.com/in/rakha-fr/'],
+      ['GitHub', 'https://github.com/RakhaFe21']
+    ]
+  ]
 ];
 
 export default async function AboutPage({ params }) {
