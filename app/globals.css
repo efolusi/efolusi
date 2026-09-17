@@ -1900,6 +1900,13 @@ a.ef-btn--secondary:hover {
   color: var(--brand-950);
 }
 
+/* The cream pill keeps its light fill in both themes (it sits on dark bands),
+   so its hover must stay light too: dark --surface-card put brand-950 ink on
+   an espresso fill (1.01:1). */
+[data-theme='dark'] .pill--cream:hover {
+  background: var(--brand-100);
+}
+
 .pill--sm {
   height: 40px;
   padding: 0 6px 0 18px;

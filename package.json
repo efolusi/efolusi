@@ -17,7 +17,7 @@
         "test": "vitest run"
     },
     "dependencies": {
-        "@efolusi/meridian": "^1.21.1",
+        "@efolusi/meridian": "^1.21.6",
         "next": "^15.5.21",
         "react": "18.3.1",
         "react-dom": "18.3.1"
