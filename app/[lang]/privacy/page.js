@@ -1,4 +1,5 @@
 import { getDictionary } from '../../dictionaries/config.js';
+import { socialMeta } from '../../lib/page-meta.js';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -9,7 +10,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${lang}/privacy`,
       languages: { en: '/en/privacy', id: '/id/privacy', 'x-default': '/en/privacy' }
-    }
+    },
+    ...socialMeta(lang, '/privacy', d.privacy.meta.title, d.privacy.meta.description)
   };
 }
 
