@@ -52,7 +52,7 @@ const id = {
       sub: 'Kami Efolusi, tim kecil di Indonesia. Kami membangun software kami sendiri, yang mengubah hal-hal yang lambat atau merepotkan jadi terasa gampang. Semua yang ada di sini adalah produk yang kami butuhkan untuk diri kami sendiri lebih dulu.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Produk aktif, eksperimen, open source, dan infrastruktur internal—statusnya kami tampilkan apa adanya.'
+      proof: 'Produk aktif, eksperimen, open source, dan infrastruktur internal, statusnya kami tampilkan apa adanya.'
     },
     marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
@@ -340,7 +340,7 @@ const id = {
         name: 'Runa',
         href: 'https://runa.efolusi.com',
         problem: 'Menjalankan perusahaan kecil berarti pekerjaan operasional yang sama tiap minggu, tanpa siapa pun untuk dititipi.',
-        solution: 'Control plane tempat tim membangun, menjalankan, dan mengatur agent AI di seluruh organisasi — lapisan platform tempat produk seperti Zoyya dibangun.',
+        solution: 'Control plane tempat tim membangun, menjalankan, dan mengatur agent AI di seluruh organisasi, lapisan platform tempat produk seperti Zoyya dibangun.',
         result: 'Sedang dibangun dan dipakai di operasional kami sendiri lebih dulu; ketersediaan untuk publik belum diklaim.'
       },
       {

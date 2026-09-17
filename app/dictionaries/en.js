@@ -52,7 +52,7 @@ const en = {
       sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
       viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'Active products, validations, open source, and internal infrastructure—shown with their real status.'
+      proof: 'Active products, validations, open source, and internal infrastructure, shown with their real status.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -340,7 +340,7 @@ const en = {
         name: 'Runa',
         href: 'https://runa.efolusi.com',
         problem: 'Running a small company means the same operational work every week, and nobody left to hand it to.',
-        solution: 'A control plane where teams build, run, and govern AI agents across the org — the platform layer products like Zoyya build on.',
+        solution: 'A control plane where teams build, run, and govern AI agents across the org, the platform layer products like Zoyya build on.',
         result: 'In build, run on our own operations first; external availability is not claimed yet.'
       },
       {
