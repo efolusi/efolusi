@@ -42,7 +42,7 @@ const id = {
     meta: {
       title: 'Efolusi · Kami membangun software dan menjalankannya sendiri',
       description:
-        'Efolusi (PT Efolusi Dunia Teknologi) adalah perusahaan software di Indonesia. Kami membangun produk kami sendiri, di bidang cloud, infrastruktur, AI, dan tools yang dipakai bisnis sehari-hari, dan kami sendiri yang menjaganya tetap jalan.'
+        'Efolusi, perusahaan software di Indonesia. Kami membangun produk sendiri di bidang cloud, infrastruktur, AI, dan tools bisnis, lalu menjaganya tetap jalan.'
     },
     hero: {
       lead: 'Alat yang',
