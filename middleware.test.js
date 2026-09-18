@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
-import { languageRedirectUrl } from './middleware';
+import { languageRedirectUrl, rewriteTarget } from './middleware';
 
 describe('language redirect external origin', () => {
   it('preserves the request origin when no override is configured', () => {
@@ -44,5 +44,31 @@ describe('language redirect external origin', () => {
     expect(ciWorkflow).toContain('node-version: 22.23.2');
     expect(packageJson.engines.node).toBe('22.23.2');
     expect(nvmVersion).toBe('22.23.2');
+  });
+});
+
+describe('unknown-path rewrite target', () => {
+  const request = (url, proto) => ({
+    nextUrl: new URL(url),
+    headers: { get: (name) => (name === 'x-forwarded-proto' ? proto : null) },
+  });
+
+  it('targets the http origin this process listens on when a proxy terminated TLS', () => {
+    // nextUrl is https because nginx forwards the proto, but the server speaks
+    // plain http. Cloning nextUrl here made Next treat the rewrite as external
+    // and fetch https://localhost:13000, which fails the handshake and turns
+    // every unknown path into a 500.
+    const url = rewriteTarget(request('https://localhost:13000/nope', 'https'), '/en/nope');
+    expect(url.href).toBe('http://localhost:13000/en/nope');
+  });
+
+  it('keeps the request origin when nothing is proxying', () => {
+    const url = rewriteTarget(request('http://localhost:13000/nope', null), '/en/nope');
+    expect(url.href).toBe('http://localhost:13000/en/nope');
+  });
+
+  it('carries the query string across the rewrite', () => {
+    const url = rewriteTarget(request('https://localhost:13000/nope?q=1&b=2', 'https'), '/id/nope');
+    expect(url.href).toBe('http://localhost:13000/id/nope?q=1&b=2');
   });
 });

@@ -48,6 +48,26 @@ export function languageRedirectUrl(requestUrl: URL, configuredOrigin: string | 
   return new URL(`${requestUrl.pathname}${requestUrl.search}`, origin);
 }
 
+/**
+ * Where a same-server rewrite has to point.
+ *
+ * A rewrite whose origin differs from the one the server actually listens on
+ * is an EXTERNAL rewrite to Next, and it will really go and fetch that URL.
+ * Behind Cloudflare and nginx the forwarded proto makes `nextUrl` https while
+ * this process listens on plain http, so the obvious `nextUrl.clone()` turns
+ * every unknown path into a TLS handshake against an http port: EPROTO, and a
+ * 500 where the branded 404 belongs.
+ *
+ * So: when a proxy tells us it terminated TLS, target http, because that is
+ * what this process speaks. With no proxy in front, `nextUrl` is already the
+ * real origin and is used as is.
+ */
+export function rewriteTarget(request: NextRequest, pathname: string): URL {
+  const behindTlsProxy = request.headers.get('x-forwarded-proto') === 'https';
+  const origin = behindTlsProxy ? `http://${request.nextUrl.host}` : request.nextUrl.origin;
+  return new URL(`${pathname}${request.nextUrl.search}`, origin);
+}
+
 function isLocale(value: string | undefined): value is Locale {
   return value === 'en' || value === 'id';
 }
@@ -78,9 +98,7 @@ export function middleware(request: NextRequest) {
   // A page path outside both locales has no page. Render the branded 404 in
   // the reader's language (the URL stays as typed, the status stays 404).
   if (pathname !== '/') {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${locale}${pathname}`;
-    return NextResponse.rewrite(url);
+    return NextResponse.rewrite(rewriteTarget(request, `/${locale}${pathname}`));
   }
 
   const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
