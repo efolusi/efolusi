@@ -75,12 +75,20 @@ export function middleware(request: NextRequest) {
   const country = request.headers.get('cf-ipcountry');
   const locale: Locale = isLocale(stored) ? stored : country === 'ID' ? 'id' : 'en';
 
-  // A page path outside both locales has no page. Render the branded 404 in
-  // the reader's language (the URL stays as typed, the status stays 404).
+  // A page path outside both locales has no page. Send it to the same path
+  // under the reader's language, where the catch-all route renders the branded
+  // 404 with a real 404 status.
+  //
+  // A rewrite would be nicer (the typed URL would stay put), but it cannot be
+  // used here: behind nginx the request carries X-Forwarded-Proto: https, so
+  // nextUrl (and request.url) resolve to https://localhost:13000 while the
+  // server itself speaks plain http on that port. Next then treats the rewrite
+  // as EXTERNAL and really fetches it over TLS, the handshake fails with
+  // EPROTO, and every unknown path answers 500 instead of 404.
   if (pathname !== '/') {
-    const url = request.nextUrl.clone();
+    const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
     url.pathname = `/${locale}${pathname}`;
-    return NextResponse.rewrite(url);
+    return NextResponse.redirect(url, 307);
   }
 
   const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
