@@ -1,5 +1,6 @@
 import { Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
+import { socialMeta } from '../../lib/page-meta.js';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 
@@ -12,7 +13,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${lang}/brand`,
       languages: { en: '/en/brand', id: '/id/brand', 'x-default': '/en/brand' }
-    }
+    },
+    ...socialMeta(lang, '/brand', d.brand.meta.title, d.brand.meta.description)
   };
 }
 

@@ -5,6 +5,18 @@
 :root {
   --nav-h: 64px;
 
+  /* Vertical rhythm steps with the layout breakpoints (width), never with the
+     window height, so a 1440x900 and a 1440x1080 window space sections alike.
+     Values sit on the 4px spacing scale. */
+  --section-y: 96px;
+  --hero-top: 80px;
+  --hero-bottom: 88px;
+  --page-hero-top: 80px;
+  --page-hero-bottom: 56px;
+
+  /* Minimum hit area for touch layouts (WCAG 2.5.5 / Apple HIG). */
+  --tap-min: 44px;
+
   /* One rounding scale for the whole site, softer than Meridian's default so
      the playful surfaces agree. Meridian's own components read these tokens
      too, so buttons, inputs and tags round with everything else.
@@ -17,6 +29,26 @@
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 24px;
+}
+
+@media (max-width: 1020px) {
+  :root {
+    --section-y: 80px;
+    --hero-top: 64px;
+    --hero-bottom: 72px;
+    --page-hero-top: 64px;
+    --page-hero-bottom: 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --section-y: 64px;
+    --hero-top: 48px;
+    --hero-bottom: 56px;
+    --page-hero-top: 48px;
+    --page-hero-bottom: 40px;
+  }
 }
 
 /* Two shapes, no exceptions: things you press are pills, things you type into
@@ -152,6 +184,26 @@ a.ef-btn--secondary:hover {
   max-width: 560px;
 }
 
+/* No one-word orphans in headings; ledes wrap evenly. */
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+.section-lede,
+.hero-sub,
+.page-lede {
+  text-wrap: pretty;
+}
+
+/* Keyboard focus on any link or control without its own ring. Zero
+   specificity, so component rings (pills, nav, inputs) still win. */
+:where(a, button, [role='button'], summary):focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
 /* ---------- Reveal on scroll ---------- */
 
 .reveal {
@@ -184,12 +236,14 @@ a.ef-btn--secondary:hover {
   background: color-mix(in srgb, var(--surface-page) 85%, transparent);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur-med) var(--ease-out);
+  /* The scrolled rule is an inset shadow, not a border, so the header is
+     exactly --nav-h tall in both states. */
+  box-shadow: inset 0 -1px 0 transparent;
+  transition: box-shadow var(--dur-med) var(--ease-out);
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: var(--border-default);
+  box-shadow: inset 0 -1px 0 var(--border-default);
 }
 
 .site-header-inner {
@@ -227,7 +281,11 @@ a.ef-btn--secondary:hover {
 }
 
 .site-nav a {
-  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  padding: 0 16px;
   border: 1px solid var(--border-default);
   border-radius: var(--radius-full);
   font-size: var(--text-md);
@@ -247,6 +305,11 @@ a.ef-btn--secondary:hover {
   text-decoration: none;
 }
 
+.site-nav a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
 .site-nav a.is-active {
   background: var(--accent);
   border-color: var(--accent);
@@ -261,11 +324,13 @@ a.ef-btn--secondary:hover {
 }
 
 .theme-toggle {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
   border: 1px solid transparent;
   border-radius: var(--radius-full);
   background: transparent;
@@ -287,11 +352,13 @@ a.ef-btn--secondary:hover {
 }
 
 .lang-switch {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
   border: 1px solid transparent;
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
@@ -325,7 +392,7 @@ a.ef-btn--secondary:hover {
 /* ---------- Hero: masthead + text beside the floating constellation ---------- */
 
 .hero {
-  padding: clamp(36px, 5vh, 56px) 0 clamp(48px, 7vh, 72px);
+  padding: calc(var(--hero-top) - 24px) 0 calc(var(--hero-bottom) - 16px);
   overflow: hidden;
 }
 
@@ -532,11 +599,32 @@ a.ef-btn--secondary:hover {
 
 .hero-proof {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
   gap: 12px;
+  line-height: 20px;
   margin-top: 28px;
   font-size: var(--text-sm);
   color: var(--text-muted);
+}
+
+/* The dot is centred on the first line of the sentence, not on the block, so
+   it stays put when the sentence wraps. */
+.hero-proof .ef-status {
+  height: 20px;
+}
+
+@media (max-width: 640px) {
+  .hero-proof {
+    display: block;
+    text-align: center;
+  }
+
+  .hero-proof .ef-status {
+    display: inline-flex;
+    vertical-align: top;
+    margin-right: 8px;
+  }
 }
 
 /* ---------- Marquee ---------- */
@@ -606,7 +694,7 @@ a.ef-btn--secondary:hover {
 /* ---------- Sections ---------- */
 
 .section {
-  padding: clamp(72px, 10vh, 104px) 0;
+  padding: calc(var(--section-y) + 8px) 0;
 }
 
 
@@ -1000,7 +1088,7 @@ a.ef-btn--secondary:hover {
 .band {
   background: var(--surface-brand);
   color: var(--cream-50);
-  padding: clamp(64px, 9vh, 96px) 0;
+  padding: var(--section-y) 0;
 }
 
 .band h2,
@@ -1095,6 +1183,21 @@ a.ef-btn--secondary:hover {
 
 /* ---------- FAQ ---------- */
 
+/* Meridian wraps each trigger in an <h3> that falls back to the UA 1.17em
+   (16.38px) and the trigger's line-height:normal made rows 45px. Pin both:
+   the heading carries no size of its own, one-line rows are 48px. */
+.ef-acc__header {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.ef-acc__trigger {
+  box-sizing: border-box;
+  min-height: 48px;
+  padding: 12px 2px;
+  line-height: 24px;
+}
+
 .ef-acc__content {
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
@@ -1170,6 +1273,14 @@ a.ef-btn--secondary:hover {
 
 .form-status.is-error {
   color: var(--danger-600);
+}
+
+/* Form CTA sizes by role. A button in a row with an input matches the input
+   (36, Meridian md: the newsletter). A form's standalone submit is a small
+   CTA (40), the same as the header pills. */
+.contact-form .ef-btn[type='submit'] {
+  height: 40px;
+  padding: 0 20px;
 }
 
 /* ---------- Newsletter ---------- */
@@ -1344,7 +1455,7 @@ a.ef-btn--secondary:hover {
 
 .page-hero {
   text-align: center;
-  padding: clamp(48px, 8vh, 80px) 0 clamp(40px, 6vh, 56px);
+  padding: var(--page-hero-top) 0 var(--page-hero-bottom);
 }
 
 .page-hero h1 {
@@ -1366,6 +1477,21 @@ a.ef-btn--secondary:hover {
 
 .page-hero .token-status {
   justify-content: center;
+}
+
+/* ---------- 404 ---------- */
+
+.not-found .page-hero {
+  min-height: 480px;
+}
+
+.not-found .eyebrow {
+  margin-bottom: 16px;
+}
+
+.not-found .hero-actions {
+  justify-content: center;
+  margin-top: 32px;
 }
 
 /* ---------- Ecosystem section (home) ---------- */
@@ -1553,7 +1679,7 @@ a.ef-btn--secondary:hover {
 .bb-track {
   margin-top: 8px;
   height: 10px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--surface-subtle);
   border: 1px solid var(--border-default);
   overflow: hidden;
@@ -1562,7 +1688,7 @@ a.ef-btn--secondary:hover {
 .nomics-fill,
 .bb-fill {
   height: 100%;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   background: var(--accent);
 }
 
@@ -1641,7 +1767,7 @@ a.ef-btn--secondary:hover {
   justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 999px;
+  border-radius: var(--radius-full);
   border: 1px solid var(--border-default);
   font-family: var(--font-mono);
   font-size: var(--text-sm);
@@ -1979,7 +2105,7 @@ a.ef-btn--secondary:hover {
 .hero-center {
   position: relative;
   text-align: center;
-  padding: clamp(48px, 7vh, 80px) 0 clamp(56px, 8vh, 88px);
+  padding: var(--hero-top) 0 var(--hero-bottom);
 }
 
 /* Room for the two decoration gutters; only applies where they are shown. */
@@ -2197,7 +2323,7 @@ a.ef-btn--secondary:hover {
 /* Centered section headings with mixed type */
 
 .csec {
-  padding: clamp(64px, 9vh, 96px) 0;
+  padding: var(--section-y) 0;
 }
 
 .csec--rule {
@@ -2415,11 +2541,13 @@ a.ef-btn--secondary:hover {
   }
 
   .menu-toggle {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
     border: 1px solid transparent;
     border-radius: var(--radius-full);
     background: transparent;
@@ -2455,7 +2583,12 @@ a.ef-btn--secondary:hover {
   }
 
   .mobile-menu a {
-    padding: 11px 12px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 48px;
+    padding: 12px;
+    line-height: 24px;
     border-radius: var(--radius-sm);
     font-size: var(--text-lg);
     font-weight: var(--weight-medium);
@@ -2544,7 +2677,7 @@ a.ef-btn--secondary:hover {
 
   /* Phone: the header pills are gone, so sign-in moves into the menu. */
   .mobile-menu .menu-signin {
-    display: block;
+    display: flex;
   }
 }
 
@@ -2558,6 +2691,7 @@ a.ef-btn--secondary:hover {
 
 .sign-in-pill:hover {
   background: var(--surface-sunken);
+  color: var(--text-primary);
 }
 
 /* A bounded homepage selection, with a searchable full portfolio. */
@@ -2570,7 +2704,7 @@ a.ef-btn--secondary:hover {
 .portfolio-feature--coral { background: linear-gradient(135deg, var(--danger-100), var(--surface-card) 75%); }
 .portfolio-card-top { display: flex; gap: 14px; align-items: center; }
 .portfolio-card-top > span:nth-child(2) { flex: 1; color: var(--text-secondary); font-size: 13px; }
-.portfolio-mark { display: flex; align-items: center; justify-content: center; flex: 0 0 48px; height: 48px; border-radius: 14px; font-family: var(--font-display); font-size: 22px; font-weight: 700; }
+.portfolio-mark { display: flex; align-items: center; justify-content: center; flex: 0 0 48px; height: 48px; border-radius: var(--radius-md); font-family: var(--font-display); font-size: 22px; font-weight: 700; }
 .portfolio-feature h3 { font-family: var(--font-display); font-size: 36px; line-height: 1.15; margin: 26px 0 12px; }
 .portfolio-feature p { color: var(--text-secondary); font-size: 16px; line-height: 1.65; margin: 0 0 28px; max-width: 52ch; }
 .portfolio-feature-bottom { margin-top: auto; }
@@ -2602,7 +2736,7 @@ a.ef-btn--secondary:hover {
 .portfolio-search { display: flex; gap: 10px; align-items: center; padding: 12px 16px; border: 1px solid var(--border-default); border-radius: var(--radius-lg); background: var(--surface-card); }
 .portfolio-search input { border: 0; outline: 0; color: var(--text-primary); background: transparent; font: inherit; width: 220px; min-width: 0; }
 .portfolio-filters { display: flex; flex-wrap: wrap; gap: 8px; }
-.portfolio-filters button, .portfolio-empty button { border: 1px solid var(--border-default); border-radius: 999px; background: var(--surface-card); color: var(--text-secondary); padding: 10px 16px; font: inherit; font-size: 14px; cursor: pointer; }
+.portfolio-filters button, .portfolio-empty button { border: 1px solid var(--border-default); border-radius: var(--radius-full); background: var(--surface-card); color: var(--text-secondary); padding: 10px 16px; font: inherit; font-size: 14px; cursor: pointer; }
 .portfolio-filters button[aria-pressed='true'] { background: var(--text-primary); color: var(--surface-card); border-color: var(--text-primary); }
 .portfolio-results { font-size: 13px; color: var(--text-muted); margin: 20px 0 12px; }
 .portfolio-empty { padding: 36px 0; color: var(--text-secondary); }
@@ -2743,7 +2877,14 @@ a.ef-btn--secondary:hover {
   color: var(--text-link-hover);
 }
 
-.portfolio-filters button {
+.portfolio-filters button,
+.portfolio-empty button {
+  /* Fixed small-control height (was 43px from padding). */
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 40px;
+  padding-block: 0;
   transition:
     color var(--dur-fast) var(--ease-out),
     background var(--dur-fast) var(--ease-out),
@@ -2935,7 +3076,7 @@ a.ef-btn--secondary:hover {
   padding: 0;
   box-sizing: border-box;
   border: 0;
-  border-radius: 14px;
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
 }
 
@@ -3165,8 +3306,6 @@ a.ef-btn--secondary:hover {
 
 /* Product colour and monograms carry the playful tone without extra ornament. */
 #products .portfolio-deco { display: none; }
-#products .portfolio-use-case .portfolio-card:nth-child(odd) { border-radius: 24px 18px 26px 20px; }
-#products .portfolio-use-case .portfolio-card:nth-child(even) { border-radius: 18px 26px 20px 24px; }
 
 /* Product accessories: one icon family, varied organic frames. */
 #products .portfolio-accessory {
@@ -3213,17 +3352,17 @@ a.ef-btn--secondary:hover {
 }
 
 #products .portfolio-accessory--loop {
-  border-radius: 13px 24px 13px 24px;
+  border-radius: var(--radius-md) var(--radius-xl) var(--radius-md) var(--radius-xl);
   rotate: 5deg;
 }
 
 #products .portfolio-accessory--komando {
-  border-radius: 50% 18px 50% 18px;
+  border-radius: 50% var(--radius-lg) 50% var(--radius-lg);
   rotate: -4deg;
 }
 
 #products .portfolio-accessory--trady {
-  border-radius: 15px;
+  border-radius: var(--radius-lg);
   box-shadow: 7px 7px 0 color-mix(in srgb, currentColor 10%, transparent);
   rotate: -3deg;
 }
@@ -3241,7 +3380,7 @@ a.ef-btn--secondary:hover {
 
 #products .portfolio-accessory--meridian {
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-  border-radius: 18px 8px 18px 8px;
+  border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-sm);
   background: color-mix(in srgb, currentColor 7%, transparent);
 }
 
@@ -3251,5 +3390,90 @@ a.ef-btn--secondary:hover {
     right: 24px;
     width: 56px;
     height: 56px;
+  }
+}
+
+/* ---------- Touch targets (phones) ----------
+   At <=640px every control gets a hit area of at least --tap-min. Controls
+   that carry their own surface (inputs, form buttons) grow to 44px; icon
+   buttons keep their drawn size and extend an invisible ::after, so the
+   header row keeps one visual height. */
+@media (max-width: 640px) {
+  .theme-toggle::after,
+  .lang-switch::after,
+  .menu-toggle::after,
+  .ef-copyfield .ef-iconbtn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--tap-min);
+    height: var(--tap-min);
+    translate: -50% -50%;
+  }
+
+  .ef-copyfield .ef-iconbtn {
+    position: relative;
+  }
+
+  .contact-form .ef-input__el,
+  .news .ef-input__el,
+  .contact-form .ef-btn[type='submit'],
+  .news .ef-btn,
+  .ef-copyfield__box {
+    height: var(--tap-min);
+  }
+
+  .brand {
+    min-height: var(--tap-min);
+  }
+
+  /* Stacked footer links: 44px rows replace the 12px gaps between 21px lines. */
+  .fcol h4 {
+    margin-bottom: 4px;
+  }
+
+  .fcol a {
+    display: flex;
+    align-items: center;
+    min-height: var(--tap-min);
+    margin-top: 0;
+  }
+
+  .footer-mail,
+  .contact-aside .v a,
+  .portfolio-toolbar > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-min);
+  }
+
+  .footer-mail {
+    margin-top: 8px;
+  }
+
+  .footer-socials a,
+  .founder-socials a {
+    width: var(--tap-min);
+    height: var(--tap-min);
+    justify-content: center;
+  }
+
+  .footer-socials {
+    margin-left: -13px;
+  }
+
+  .founder-socials {
+    gap: 4px;
+  }
+
+  .founder-socials a {
+    padding: 0;
+    margin: 0;
+  }
+
+  .portfolio-filters button,
+  .portfolio-empty button {
+    height: var(--tap-min);
   }
 }

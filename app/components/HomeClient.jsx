@@ -488,7 +488,7 @@ export default function HomeClient({ d, common, lang }) {
               <div className="contact-aside">
                 <div className="ci">
                   <div className="k">{d.contact.legalEntity}</div>
-                  <div className="v">PT. Efolusi Dunia Teknologi</div>
+                  <div className="v">PT Efolusi Dunia Teknologi</div>
                 </div>
                 <div className="ci">
                   <div className="k">{d.contact.headquarters}</div>

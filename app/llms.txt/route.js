@@ -2,12 +2,12 @@
    Efolusi comes from us rather than from guesswork. */
 const BODY = `# Efolusi
 
-> Efolusi (PT. Efolusi Dunia Teknologi) is a software studio based in Indonesia.
+> Efolusi (PT Efolusi Dunia Teknologi) is a software studio based in Indonesia.
 > We build and validate software products, open-source projects, and internal
 > infrastructure. Product status varies and is stated explicitly below.
 
 ## Company
-- Legal entity: PT. Efolusi Dunia Teknologi
+- Legal entity: PT Efolusi Dunia Teknologi
 - Trade name: Efolusi
 - Headquarters: Indonesia, distributed team
 - Website: https://efolusi.com

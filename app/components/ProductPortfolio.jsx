@@ -68,7 +68,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
     </>}
     {full && <>
     <div className="portfolio-toolbar">
-      <h3>{full ? (id ? 'Temukan produkmu' : 'Find your next tool') : (id ? 'Jelajahi lebih banyak' : 'More to explore')}</h3>
+      <h3>{full ? (id ? 'Temukan produk Anda' : 'Find your next tool') : (id ? 'Jelajahi lebih banyak' : 'More to explore')}</h3>
       {full ? <label className="portfolio-search"><Icon name="search" size={18} /><input aria-label={id ? 'Cari produk' : 'Search products'} placeholder={id ? 'Cari produk…' : 'Search products…'} value={query} onChange={event => setQuery(event.target.value)} /></label> : <a href={`/${lang}/portfolio`}>{id ? 'Lihat semua produk' : 'Explore all products'} <span>({all.length})</span><Icon name="arrow-right" size={18} /></a>}
     </div>
     {full && <div className="portfolio-filters" aria-label={id ? 'Kategori produk' : 'Product categories'}>{groups.map(group => <button key={group.id} type="button" aria-pressed={filter === group.id} onClick={() => setFilter(group.id)}>{id ? group.idLabel : group.en}</button>)}</div>}

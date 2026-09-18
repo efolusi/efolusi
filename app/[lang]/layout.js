@@ -4,6 +4,17 @@ import { getDictionary, locales } from '../dictionaries/config.js';
 
 const siteUrl = 'https://efolusi.com';
 
+/* Only the two locales exist. Anything else in the first segment
+   (favicon.ico, typos) is a 404 instead of a copy of the English page. */
+export const dynamicParams = false;
+
+export const viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAF9F6' },
+    { media: '(prefers-color-scheme: dark)', color: '#191512' }
+  ]
+};
+
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
@@ -16,7 +27,13 @@ export async function generateMetadata({ params }) {
     metadataBase: new URL(siteUrl),
     title: d.home.meta.title,
     description: d.home.meta.description,
-    icons: { icon: '/efolusi/logo-owl-240.png' },
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: '48x48' },
+        { url: '/efolusi/logo-owl-240.png', type: 'image/png', sizes: '240x240' }
+      ],
+      apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }]
+    },
     alternates: {
       canonical: `/${lang}`,
       languages: {
@@ -48,7 +65,7 @@ const themeInit = `try{var t=localStorage.getItem('efolusi-theme');if(!t&&window
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'PT. Efolusi Dunia Teknologi',
+  name: 'PT Efolusi Dunia Teknologi',
   alternateName: 'Efolusi',
   url: siteUrl,
   logo: `${siteUrl}/efolusi/logo-owl-240.png`,

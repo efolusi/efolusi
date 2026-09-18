@@ -1,4 +1,5 @@
 import { getDictionary } from '../../dictionaries/config.js';
+import { socialMeta } from '../../lib/page-meta.js';
 
 export async function generateMetadata({ params }) {
   const { lang } = await params;
@@ -9,7 +10,8 @@ export async function generateMetadata({ params }) {
     alternates: {
       canonical: `/${lang}/terms`,
       languages: { en: '/en/terms', id: '/id/terms', 'x-default': '/en/terms' }
-    }
+    },
+    ...socialMeta(lang, '/terms', d.terms.meta.title, d.terms.meta.description)
   };
 }
 
