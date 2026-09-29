@@ -42,7 +42,7 @@ const en = {
     meta: {
       title: 'Efolusi · We build software and run it',
       description:
-        'Efolusi (PT Efolusi Dunia Teknologi) is a software company in Indonesia. We build our own products, across cloud, infrastructure, AI, and the tools businesses run on, and we keep them running ourselves.'
+        'Efolusi is a software company in Indonesia. We build our own products across cloud, infrastructure, AI and everyday business tools, and we keep them running.'
     },
     hero: {
       lead: 'Tools that',
