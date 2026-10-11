@@ -147,22 +147,6 @@ const en = {
         tag: "Social publishing",
         summary: "Build a community and publish only through connectors marked ready."
       },
-      pay: {
-        section: "Payments",
-        desc: "Payment infrastructure for products in the Efolusi ecosystem.",
-        specs: ['Payment gateway', 'One integration', 'Platform'],
-        buttonLabel: 'Visit Pay',
-        tag: "Payments",
-        summary: "Payment infrastructure for products in the Efolusi ecosystem."
-      },
-      my: {
-        section: "Account",
-        desc: "One account to access Efolusi products.",
-        specs: ['SSO', 'One account', 'Every product'],
-        buttonLabel: 'Visit My',
-        tag: "Account",
-        summary: "One account to access Efolusi products."
-      },
       loop: {
         section: "Product specifications",
         desc: "Clarify requirements and what done looks like before development starts.",
@@ -377,20 +361,6 @@ const en = {
         problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
         solution: 'A social network where you write once and cross-post to every social account you connect.',
         result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
-      },
-      {
-        name: 'Pay',
-        href: 'https://pay.efolusi.com',
-        problem: 'Every product that wanted to charge money had to integrate a payment gateway again, and each one differed.',
-        solution: 'A centralized payment gateway: one integration for the whole portfolio, every provider behind it.',
-        result: 'Live as the billing path for Efolusi products; no product talks to a payment provider directly anymore.'
-      },
-      {
-        name: 'My',
-        href: 'https://my.efolusi.com',
-        problem: 'A portfolio of products meant a separate account and a separate password for each one.',
-        solution: 'One identity provider: a single Efolusi account, with SSO into every product.',
-        result: 'Live at my.efolusi.com; products sign in through it instead of keeping their own passwords.'
       },
       {
         name: 'Loop',
