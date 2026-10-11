@@ -36,7 +36,6 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Pull, build, restart, and verify landing page
-        env:
         run: |
           set -Eeuo pipefail
           # GitHub ignores env entries named GITHUB_*, so hand the deploy script the tested
