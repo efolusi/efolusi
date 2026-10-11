@@ -147,22 +147,6 @@ const id = {
         tag: "Publikasi sosial",
         summary: "Bangun komunitas dan terbitkan hanya melalui konektor yang ditandai siap."
       },
-      pay: {
-        section: "Pembayaran",
-        desc: "Fondasi pembayaran untuk produk dalam ekosistem Efolusi.",
-        specs: ['Payment gateway', 'Satu integrasi', 'Platform'],
-        buttonLabel: 'Kunjungi Pay',
-        tag: "Pembayaran",
-        summary: "Fondasi pembayaran untuk produk dalam ekosistem Efolusi."
-      },
-      my: {
-        section: "Akun",
-        desc: "Satu akun untuk mengakses produk Efolusi.",
-        specs: ['SSO', 'Satu akun', 'Semua produk'],
-        buttonLabel: 'Kunjungi My',
-        tag: "Akun",
-        summary: "Satu akun untuk mengakses produk Efolusi."
-      },
       loop: {
         section: "Spesifikasi produk",
         desc: "Perjelas kebutuhan dan kriteria selesai sebelum pengembangan dimulai.",
@@ -377,20 +361,6 @@ const id = {
         problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
         solution: 'Social network tempat Anda menulis sekali dan cross-post ke semua akun sosmed yang terhubung.',
         result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
-      },
-      {
-        name: 'Pay',
-        href: 'https://pay.efolusi.com',
-        problem: 'Setiap produk yang ingin menarik pembayaran harus mengintegrasikan payment gateway lagi dari nol, dan tiap gateway berbeda.',
-        solution: 'Payment gateway terpusat: satu integrasi untuk seluruh portofolio, semua provider ada di belakangnya.',
-        result: 'Live sebagai jalur billing produk Efolusi; tidak ada produk yang bicara langsung ke payment provider lagi.'
-      },
-      {
-        name: 'My',
-        href: 'https://my.efolusi.com',
-        problem: 'Portofolio berisi banyak produk berarti akun dan password terpisah untuk masing-masing.',
-        solution: 'Satu identity provider: satu akun Efolusi, dengan SSO ke semua produk.',
-        result: 'Live di my.efolusi.com; produk masuk lewat SSO ini, bukan menyimpan password sendiri.'
       },
       {
         name: 'Loop',
