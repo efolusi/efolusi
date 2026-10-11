@@ -37,9 +37,11 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Pull, build, restart, and verify landing page
         env:
-          GITHUB_SHA: ${{ env.TARGET_SHA }}
         run: |
           set -Eeuo pipefail
+          # GitHub ignores env entries named GITHUB_*, so hand the deploy script the tested
+          # SHA through the shell. Under workflow_run the runner default is the default-branch head.
+          export GITHUB_SHA="$TARGET_SHA"
           /usr/local/sbin/efolusi-landing-deploy \
             "$GITHUB_SHA" \
             "$TARGET_BRANCH"
