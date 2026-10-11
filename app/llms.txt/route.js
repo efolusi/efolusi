@@ -18,14 +18,14 @@ const BODY = `# Efolusi
 
 ## Products
 - ZOYYA (https://zoyya.xyz): AI-assisted design and application builder for creating designs, websites, mobile apps, backends, databases, previews, and domain-ready releases.
-- Runa (https://runa.efolusi.com): the orchestration control plane for personal and business AI teams — set goals, delegate work, review results, and connect approved Efolusi products as tools.
-- Relay (https://relay.efolusi.com): one control plane for every AI provider — a single gateway in front of all LLM providers.
-- Trady (https://trady.efolusi.com): content clipper — long video in, short clips out. Not a trading product.
-- Toolips (https://toolips.xyz): all-in-one tools — Drop. Fix. Download.
+- Runa (https://runa.efolusi.com): the orchestration control plane for personal and business AI teams: set goals, delegate work, review results, and connect approved Efolusi products as tools.
+- Relay (https://relay.efolusi.com): one control plane for every AI provider: a single gateway in front of all LLM providers.
+- Trady (https://trady.efolusi.com): content clipper: long video in, short clips out. Not a trading product.
+- Toolips (https://toolips.xyz): all-in-one tools: Drop. Fix. Download.
 - Cuwan (https://cuwan.xyz): automated grid & DCA trading bots; the only trading product in the portfolio.
-- Kongkow (https://kongkow.xyz): a community social network with cross-posting — write once, publish to every social network you connect.
-- Loop (https://loop.efolusi.com): specification workspace — the spec comes first.
-- Sanctum (https://sanctum.efolusi.com): vault + private knowledge system — a vault your AI can use but never read.
+- Kongkow (https://kongkow.xyz): a community social network with cross-posting: write once, publish to every social network you connect.
+- Loop (https://loop.efolusi.com): specification workspace: the spec comes first.
+- Sanctum (https://sanctum.efolusi.com): vault + private knowledge system: a vault your AI can use but never read.
 - Komando (https://komando.efolusi.com): omni cloud, server, and monitoring in one dashboard.
 - Meridian (https://meridian.efolusi.com): the Efolusi design system, published as the npm package @efolusi/meridian (MIT-licensed, open source).
 
