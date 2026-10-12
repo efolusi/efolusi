@@ -6,6 +6,15 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
+const MY_ORIGINS = {
+  prod: { web: 'https://my.efolusi.com', api: 'https://my-api.efolusi.com' },
+  dev: { web: 'https://dev-my.efolusi.com', api: 'https://dev-my-api.efolusi.com' }
+};
+
+export function myOriginsFor(hostname) {
+  return hostname === 'dev.efolusi.com' ? MY_ORIGINS.dev : MY_ORIGINS.prod;
+}
+
 /* The highlight marks the page you are on, nothing else. Anchor links into
    home sections never light up. */
 export default function SiteHeader({ lang, t }) {
@@ -21,14 +30,19 @@ export default function SiteHeader({ lang, t }) {
      resolves, the link still works — accounts just lands on its own account
      page instead of back here. */
   const [returnTo, setReturnTo] = useState('');
+  /* The development site (dev.efolusi.com) signs in against the My Efolusi
+     development issuer; every other host uses production. Resolved in an
+     effect like returnTo, so the server render and first paint agree. */
+  const [my, setMy] = useState(MY_ORIGINS.prod);
 
   useEffect(() => {
     setReturnTo(encodeURIComponent(window.location.href));
+    setMy(myOriginsFor(window.location.hostname));
   }, []);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch('https://my-api.efolusi.com/api/auth/get-session', {
+    fetch(`${myOriginsFor(window.location.hostname).api}/api/auth/get-session`, {
       credentials: 'include',
       signal: controller.signal
     })
@@ -80,7 +94,7 @@ export default function SiteHeader({ lang, t }) {
           <ThemeToggle />
           <a
             className="pill pill--sm pill--plain sign-in-pill"
-            href={user ? 'https://my.efolusi.com/account' : `https://my.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+            href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           >
             {user ? t.account ?? 'Account' : t.signIn}
           </a>
@@ -111,7 +125,7 @@ export default function SiteHeader({ lang, t }) {
         {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
         <a
           className="menu-signin"
-          href={user ? 'https://my.efolusi.com/account' : `https://my.efolusi.com/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+          href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
           onClick={() => setMenuOpen(false)}
         >
           {user ? t.account ?? 'Account' : t.signIn}

@@ -6,15 +6,15 @@ const scriptSrc =
     ? "'self' 'unsafe-inline' 'unsafe-eval'"
     : "'self' 'unsafe-inline' https://static.cloudflareinsights.com";
 
+const csp = (myApi) =>
+  `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' ${myApi} https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
+
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-  {
-    key: 'Content-Security-Policy',
-    value: `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://my-api.efolusi.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`
-  }
+  { key: 'Content-Security-Policy', value: csp('https://my-api.efolusi.com') }
 ];
 
 /** @type {import('next').NextConfig} */
@@ -25,6 +25,14 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: securityHeaders
+      },
+      {
+        // The development site signs in against the My Efolusi development
+        // issuer (SiteHeader resolves it from the host), so only that host may
+        // also reach dev-my-api. Later rules override earlier ones per key.
+        source: '/(.*)',
+        has: [{ type: 'host', value: 'dev.efolusi.com' }],
+        headers: [{ key: 'Content-Security-Policy', value: csp('https://dev-my-api.efolusi.com') }]
       },
       {
         // Every host except production (dev.efolusi.com, previews, localhost)
