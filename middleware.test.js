@@ -39,12 +39,12 @@ describe('language redirect external origin', () => {
     expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
     expect(workflow).not.toContain('sudo');
     // Deploys stay on the self-hosted runners and fire only from a successful
-    // push CI run for the exact SHA; CI itself runs on GitHub-hosted runners.
+    // push CI run for the exact SHA; CI itself runs on the self-hosted dev runner.
     expect(workflow).toContain(`runs-on: \${{ (github.event.workflow_run.head_branch || github.ref_name) == 'main' && fromJSON('["self-hosted", "Linux", "X64", "efolusi-prod"]') || fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') }}`);
     expect(workflow).toContain('workflow_run:');
     expect(workflow).toContain("github.event.workflow_run.conclusion == 'success'");
-    expect(ciWorkflow).toContain('runs-on: ubuntu-latest');
-    expect(ciWorkflow).not.toContain('self-hosted');
+    expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-dev]');
+    expect(ciWorkflow).not.toContain('ubuntu-latest');
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
     expect(ciWorkflow).toContain('node-version: 22.23.2');
     expect(packageJson.engines.node).toBe('22.23.2');
