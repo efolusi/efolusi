@@ -71,7 +71,13 @@ server the same variables live in the environment file the PM2 process is starte
 BREVO_API_KEY=
 EMAIL_TO=
 EMAIL_FROM=
+SENTRY_DSN=
+SENTRY_ENVIRONMENT=
 ```
+
+### Error Reporting
+
+When `SENTRY_DSN` is set, server-side errors are posted to Sentry by `instrumentation.ts` and `app/_lib/observability.js`. A report carries the error type, message and stack, the route pattern and path without its query string, the release (`SENTRY_RELEASE`, if set), the environment (`SENTRY_ENVIRONMENT`, else `NODE_ENV`), the host name and the time. It never carries headers, cookies, request bodies, query strings, emails or IPs. Unset, nothing is sent.
 
 ### Contact Form
 
