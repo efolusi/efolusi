@@ -1,3 +1,5 @@
+import * as legal from './legal-id.js';
+
 const id = {
   htmlLang: 'id',
   ogLocale: 'id_ID',
@@ -31,8 +33,8 @@ const id = {
       brand: 'Brand',
       efoToken: 'Token $EFO',
       bscscan: 'BscScan',
-      privacy: 'Kebijakan privasi',
-      terms: 'Ketentuan penggunaan',
+      privacy: 'Pemberitahuan privasi',
+      terms: 'Ketentuan platform',
       rights: '© 2026 PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
       madeIn: 'Dibuat di Indonesia'
     }
@@ -592,68 +594,8 @@ const id = {
     closerCta: 'Email kami'
   },
 
-  privacy: {
-    meta: {
-      title: 'Kebijakan privasi · Efolusi',
-      description: 'Bagaimana PT Efolusi Dunia Teknologi menangani data yang dikumpulkan melalui efolusi.com.'
-    },
-    back: '← Kembali ke efolusi.com',
-    title: 'Kebijakan privasi',
-    metaLine: 'PT Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
-    intro:
-      'Kebijakan ini menjelaskan data apa yang dikumpulkan efolusi.com dan untuk apa kami memakainya. Singkatnya: sedikit sekali, dan tidak pernah dijual. Berlaku untuk situs ini saja; tiap produk Efolusi punya kebijakan privasinya sendiri di situsnya masing-masing.',
-    collectHead: 'Yang kami kumpulkan',
-    collect: [
-      ['Formulir kontak:', ' nama, alamat email, dan pesan Anda. Kami memakainya semata untuk membaca dan membalas pesan Anda. Pengiriman berjalan lewat Brevo, prosesor email kami.'],
-      ['Newsletter:', ' alamat email Anda, disimpan di Brevo supaya kami bisa mengirim peluncuran produk dan kabar perusahaan. Tiap email menyertakan tautan berhenti berlangganan.'],
-      ['Preferensi tema:', ' pilihan terang atau gelap Anda disimpan hanya di browser (localStorage). Tidak pernah keluar dari perangkat Anda.'],
-      ['Log server:', ' situs ini dilayani oleh Cloudflare, yang memproses log permintaan standar (alamat IP, user agent) untuk mengoperasikan dan melindungi layanan.']
-    ],
-    notHead: 'Yang tidak kami lakukan',
-    not: [
-      'Kami tidak menjalankan iklan atau pelacak analitik pihak ketiga di situs ini.',
-      'Kami tidak menjual atau membagikan data Anda ke siapa pun di luar prosesor yang disebut di atas.',
-      'Kami tidak memakai cookie untuk pelacakan.'
-    ],
-    retentionHead: 'Penyimpanan dan hak Anda',
-    retention:
-      'Pesan kontak disimpan hanya selama diperlukan untuk menangani permintaan Anda. Anda bisa berhenti berlangganan newsletter kapan saja, dan Anda bisa meminta kami menghapus data apa pun yang kami simpan tentang Anda dengan menulis ke ',
-    changesHead: 'Perubahan',
-    changes: 'Kalau kebijakan ini berubah, versi barunya diterbitkan di halaman ini dengan tanggal berlaku yang diperbarui.'
-  },
-
-  terms: {
-    meta: {
-      title: 'Ketentuan penggunaan · Efolusi',
-      description: 'Ketentuan penggunaan efolusi.com, situs milik PT Efolusi Dunia Teknologi.'
-    },
-    back: '← Kembali ke efolusi.com',
-    title: 'Ketentuan penggunaan',
-    metaLine: 'PT Efolusi Dunia Teknologi · Berlaku 22 Juli 2026',
-    intro:
-      'Dengan menggunakan efolusi.com Anda setuju pada ketentuan ini. Situs ini memperkenalkan PT Efolusi Dunia Teknologi (Efolusi) dan portofolio produknya; disediakan untuk tujuan informasi, apa adanya, tanpa jaminan dalam bentuk apa pun.',
-    productsHead: 'Produk',
-    products:
-      'Produk Efolusi (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) dioperasikan di situsnya masing-masing dengan ketentuannya sendiri. Menggunakan sebuah produk berarti menyetujui ketentuan produk itu, bukan ketentuan ini.',
-    trademarksHead: 'Konten dan merek dagang',
-    trademarksA:
-      'Nama Efolusi, maskot owl, dan nama-nama produk adalah milik PT Efolusi Dunia Teknologi. Kode sumber situs ini open source di bawah lisensi MIT di ',
-    trademarksB: '; lisensi MIT tidak mencakup nama-nama atau maskot.',
-    tokenHead: 'Token $EFO',
-    tokenP1:
-      '$EFO adalah token milik Efolusi sendiri di BNB Smart Chain. Ia bukan saham, sekuritas, atau produk investasi, dan tidak ada yang di situs ini merupakan penawaran untuk menjual atau ajakan untuk membeli instrumen keuangan apa pun. Tidak ada yang di sini merupakan nasihat keuangan.',
-    tokenP2:
-      'Aset digital bersifat volatil dan membawa risiko kerugian total: Anda bisa kehilangan semua yang Anda tanamkan. Lakukan riset sendiri dan patuhi hukum di tempat tinggal Anda sebelum berinteraksi dengan aset digital apa pun.',
-    tokenP3a: 'Satu-satunya alamat kontrak resmi adalah yang diterbitkan di ',
-    tokenP3link: 'halaman token',
-    tokenP3b:
-      '. Alamat apa pun yang diterbitkan di tempat lain bukan milik kami. Kami tidak pernah mengirim pesan duluan, tidak pernah meminta seed phrase Anda, dan tidak pernah mengumumkan airdrop atau presale di luar situs ini.',
-    liabilityHead: 'Tanggung jawab',
-    liability:
-      'Kami berupaya menjaga informasi di situs ini tetap akurat tapi tidak menjaminnya. Efolusi tidak bertanggung jawab atas kerugian yang timbul dari penggunaan situs ini. Tidak ada yang di situs ini merupakan nasihat keuangan, hukum, atau profesional.',
-    contactHead: 'Kontak',
-    contactA: 'Pertanyaan soal ketentuan ini: '
-  }
+  privacy: legal.privacy,
+  terms: legal.terms
 };
 
 export default id;

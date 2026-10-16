@@ -2451,6 +2451,42 @@ h2 {
   padding-left: 22px;
 }
 
+.legal-page h3 {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  margin-top: 28px;
+}
+
+/* Section anchors (/terms#refunds) land below the sticky header. */
+.legal-page [id] {
+  /* html already pads by --nav-h minus 32px; this adds the rest. */
+  scroll-margin-top: 48px;
+}
+
+.legal-page .legal-toc {
+  margin-top: 28px;
+  padding: 16px 20px;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.legal-page .legal-toc-head {
+  margin-top: 0;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--text-muted);
+}
+
+.legal-page .legal-toc ol {
+  margin: 8px 0 0;
+  padding-left: 22px;
+}
+
+.legal-page .legal-toc li {
+  margin-top: 4px;
+  font-size: var(--text-md);
+}
+
 .legal-page .back-home {
   display: inline-flex;
   align-items: center;
