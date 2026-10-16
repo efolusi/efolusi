@@ -82,7 +82,8 @@ describe('platform legal documents', () => {
           `https://trady.efolusi.com/${lang}/terms`,
           'https://cuwan.xyz/terms',
           'https://zoyya.xyz/terms',
-          `https://toolips.xyz/${lang}/terms`
+          `https://toolips.xyz/${lang}/terms`,
+          'https://kongkow.xyz/terms'
         ])
       );
       expect(legalLinks(docs.privacy, lang)).toEqual(
@@ -90,9 +91,19 @@ describe('platform legal documents', () => {
           `https://trady.efolusi.com/${lang}/privacy`,
           'https://cuwan.xyz/privacy',
           'https://zoyya.xyz/privacy',
-          `https://toolips.xyz/${lang}/privacy`
+          `https://toolips.xyz/${lang}/privacy`,
+          'https://kongkow.xyz/privacy'
         ])
       );
+    }
+  });
+
+  it('lists Kongkow with the products that have their own terms, not the ones without', () => {
+    for (const docs of Object.values(DOCS)) {
+      const scope = allText(docs.terms.sections.find((s) => s.id === 'scope')).join('\n');
+      expect(scope).not.toMatch(/Sanctum,? (and|dan) Kongkow/);
+      expect(scope).toMatch(/Toolips,? (and|dan) Kongkow/);
+      expect(allText(docs.terms).join('\n')).not.toMatch(/(does not publish anywhere|belum menerbitkan)/);
     }
   });
 

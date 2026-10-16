@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
-import { languageRedirectUrl, rewriteTarget } from './middleware';
+import { languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
+import { LOCALE_HEADER } from './app/_lib/locale-header.js';
 
 describe('language redirect external origin', () => {
   it('preserves the request origin when no override is configured', () => {
@@ -75,5 +76,18 @@ describe('unknown-path rewrite target', () => {
   it('carries the query string across the rewrite', () => {
     const url = rewriteTarget(request('https://localhost:13000/nope?q=1&b=2', 'https'), '/id/nope');
     expect(url.href).toBe('http://localhost:13000/id/nope?q=1&b=2');
+  });
+});
+
+describe('locale header for the global 404', () => {
+  it('tells the render which locale it is in and keeps the other headers', () => {
+    const headers = withLocaleHeader(new Headers({ accept: 'text/html' }), 'id');
+    expect(headers.get(LOCALE_HEADER)).toBe('id');
+    expect(headers.get('accept')).toBe('text/html');
+  });
+
+  it('overwrites a value the client sent', () => {
+    const headers = withLocaleHeader(new Headers({ [LOCALE_HEADER]: 'xx' }), 'en');
+    expect(headers.get(LOCALE_HEADER)).toBe('en');
   });
 });

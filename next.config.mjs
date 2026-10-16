@@ -20,6 +20,9 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  // app/global-not-found.js renders every unknown URL. The root layout sits
+  // under [lang], so without it unknown URLs got an empty error shell.
+  experimental: { globalNotFound: true },
   async headers() {
     return [
       {
