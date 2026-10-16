@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 
+import { LOCALE_HEADER } from './app/_lib/locale-header.js';
+
 /**
  * The language gateway.
  *
@@ -68,6 +70,17 @@ export function rewriteTarget(request: NextRequest, pathname: string): URL {
   return new URL(`${pathname}${request.nextUrl.search}`, origin);
 }
 
+/**
+ * The request headers a page render receives, with the locale it renders in.
+ * app/global-not-found.js gets no params, so this is how an unknown URL's 404
+ * learns its language. Any incoming value is overwritten, never trusted.
+ */
+export function withLocaleHeader(source: Headers, locale: Locale): Headers {
+  const headers = new Headers(source);
+  headers.set(LOCALE_HEADER, locale);
+  return headers;
+}
+
 function isLocale(value: string | undefined): value is Locale {
   return value === 'en' || value === 'id';
 }
@@ -79,8 +92,9 @@ export function middleware(request: NextRequest) {
   const onLocalePath = /^\/(en|id)(\/|$)/.exec(pathname);
   if (onLocalePath) {
     const current = onLocalePath[1] as Locale;
+    const next = { request: { headers: withLocaleHeader(request.headers, current) } };
     if (request.cookies.get(COOKIE)?.value !== current) {
-      const response = NextResponse.next();
+      const response = NextResponse.next(next);
       response.cookies.set(COOKIE, current, {
         maxAge: COOKIE_MAX_AGE,
         path: '/',
@@ -88,7 +102,7 @@ export function middleware(request: NextRequest) {
       });
       return response;
     }
-    return NextResponse.next();
+    return NextResponse.next(next);
   }
 
   const stored = request.cookies.get(COOKIE)?.value;
@@ -98,7 +112,9 @@ export function middleware(request: NextRequest) {
   // A page path outside both locales has no page. Render the branded 404 in
   // the reader's language (the URL stays as typed, the status stays 404).
   if (pathname !== '/') {
-    return NextResponse.rewrite(rewriteTarget(request, `/${locale}${pathname}`));
+    return NextResponse.rewrite(rewriteTarget(request, `/${locale}${pathname}`), {
+      request: { headers: withLocaleHeader(request.headers, locale) },
+    });
   }
 
   const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);

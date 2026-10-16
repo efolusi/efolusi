@@ -1,6 +1,7 @@
 import '@efolusi/meridian/styles.css';
 import '../globals.css';
 import { getDictionary, locales } from '../dictionaries/config.js';
+import { themeInit } from '../_lib/theme-init.js';
 
 const siteUrl = 'https://efolusi.com';
 
@@ -59,8 +60,6 @@ export async function generateMetadata({ params }) {
     }
   };
 }
-
-const themeInit = `try{var t=localStorage.getItem('efolusi-theme');if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}`;
 
 const organizationLd = {
   '@context': 'https://schema.org',

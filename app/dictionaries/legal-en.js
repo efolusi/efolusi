@@ -42,16 +42,17 @@ export const terms = {
           ul: [
             '**Your Efolusi account** at my.efolusi.com, the one account you use to sign in to Efolusi products.',
             '**efolusi.com**, this website.',
-            '**Relay, Loop, Runa, Komando, Sanctum and Kongkow.** These products have no terms of their own. What each one does, and the rules that apply only to it, are in the [product schedule](#schedule) at the end of this page.'
+            '**Relay, Loop, Runa, Komando and Sanctum.** These products have no terms of their own. What each one does, and the rules that apply only to it, are in the [product schedule](#schedule) at the end of this page.'
           ]
         },
-        'Trady, Cuwan, ZOYYA and Toolips have their own terms and privacy policies. When you use one of them, its own terms apply, and where they differ from these terms, the product terms prevail for that product. These terms still cover the Efolusi account you sign in with.',
+        'Trady, Cuwan, ZOYYA, Toolips and Kongkow have their own terms and privacy policies. When you use one of them, its own terms apply, and where they differ from these terms, the product terms prevail for that product. These terms still cover the Efolusi account you sign in with.',
         {
           ul: [
             'Trady: [terms](https://trady.efolusi.com/{lang}/terms) and [privacy policy](https://trady.efolusi.com/{lang}/privacy)',
             'Cuwan: [terms](https://cuwan.xyz/terms), [privacy policy](https://cuwan.xyz/privacy) and [risk disclosure](https://cuwan.xyz/risk)',
             'ZOYYA: [terms](https://zoyya.xyz/terms), [privacy policy](https://zoyya.xyz/privacy) and [refund policy](https://zoyya.xyz/refund)',
-            'Toolips: [terms](https://toolips.xyz/{lang}/terms) and [privacy policy](https://toolips.xyz/{lang}/privacy)'
+            'Toolips: [terms](https://toolips.xyz/{lang}/terms) and [privacy policy](https://toolips.xyz/{lang}/privacy)',
+            'Kongkow: [terms](https://kongkow.xyz/terms) and [privacy policy](https://kongkow.xyz/privacy)'
           ]
         },
         'Meridian, our design system, is open source under the MIT licence, and that licence governs its use. Efolusi Pay is the payment service our products use to take payments; it is not offered to the public as a product of its own.'
@@ -257,11 +258,11 @@ export const terms = {
         { h3: 'Kongkow (kongkow.xyz)', id: 'kongkow' },
         {
           ul: [
-            '**What it does:** a social network with a feed, posts, comments, stories, direct messages, groups and a bot API.',
-            '**Data it processes:** your profile, posts, comments, likes, follows, stories, direct and group messages, uploaded media, reports and bots. Direct messages are not end-to-end encrypted. If you connect a social channel, its access token is stored encrypted.',
-            '**AI providers:** AI enhance and Explain with AI send the text you chose to rewrite or explain through Relay to a language model (Anthropic Claude Haiku by default), only when you click them.',
-            "**Rules:** no harassment, hate, threats, sexual content involving minors, intimate images shared without consent, spam, impersonation, or posting other people's personal data without their permission. You can report posts and comments, and we may remove content or limit accounts that break these rules.",
-            "**Price:** free. Kongkow's former Solana wallet, tipping and paid-post features are retired, and cross-posting to other networks does not publish anywhere yet."
+            '**Own terms:** Kongkow has its own [terms of service](https://kongkow.xyz/terms) and [privacy policy](https://kongkow.xyz/privacy). Where they differ from these terms on a Kongkow matter, the Kongkow terms prevail. This entry is a summary.',
+            '**What it does:** a social network with a feed, posts, comments, stories, direct messages, groups and a bot API. It is also a publishing hub: you can send a post to social channels you connect, right away or at a time you schedule. Scheduled posts go out when they are due, and a post more than 24 hours late, for example after an outage, is not published but marked as missed so you can decide whether to post it again.',
+            '**AI providers:** Enhance and Explain send the text you give them through Relay to a language model (Anthropic Claude Haiku by default), only when you use them.',
+            "**Rules:** no harassment, hate, threats, sexual content involving minors, intimate images shared without consent, spam, impersonation, or posting other people's personal data without their permission. Only connect channels you control or may post to, and follow each platform's rules for what you publish there.",
+            "**Price:** free. Kongkow's former Solana wallet, tipping and paid-post features are retired."
           ]
         }
       ]
@@ -287,8 +288,8 @@ export const privacy = {
       id: 'scope',
       head: 'What this notice covers',
       blocks: [
-        'This notice covers your Efolusi account at my.efolusi.com, this website (efolusi.com), and Relay, Loop, Runa, Komando, Sanctum and Kongkow.',
-        'Trady, Cuwan, ZOYYA and Toolips have their own privacy policies, which prevail for those products: [Trady](https://trady.efolusi.com/{lang}/privacy), [Cuwan](https://cuwan.xyz/privacy), [ZOYYA](https://zoyya.xyz/privacy) and [Toolips](https://toolips.xyz/{lang}/privacy). This notice still covers the Efolusi account you sign in to them with.',
+        'This notice covers your Efolusi account at my.efolusi.com, this website (efolusi.com), and Relay, Loop, Runa, Komando and Sanctum.',
+        'Trady, Cuwan, ZOYYA, Toolips and Kongkow have their own privacy policies, which prevail for those products: [Trady](https://trady.efolusi.com/{lang}/privacy), [Cuwan](https://cuwan.xyz/privacy), [ZOYYA](https://zoyya.xyz/privacy), [Toolips](https://toolips.xyz/{lang}/privacy) and [Kongkow](https://kongkow.xyz/privacy). This notice still covers the Efolusi account you sign in to them with.',
         'When you work in a shared space that someone else owns, such as a Relay workspace, a Runa company or a Sanctum team, the owner decides what goes into it, and we process that content to provide the product to them.',
         "We process personal data in line with Indonesia's Personal Data Protection Law (Law No. 27 of 2022)."
       ]
@@ -385,12 +386,8 @@ export const privacy = {
         { h3: 'Kongkow', id: 'kongkow-data' },
         {
           ul: [
-            'Your profile, posts, comments, likes, follows, stories, direct and group messages, uploaded media, reports and bots. Direct messages are stored on our servers in readable form; they are not end-to-end encrypted.',
-            'Public posts and profiles can be seen by anyone. If you create a bot, the updates it receives are sent to the webhook address you set.',
-            'When you delete a post it is hidden from everyone, and when you delete a message it is hidden for you, but both stay in our database. Stories disappear from view after 24 hours but are kept, and uploaded media is kept.',
-            'AI enhance and Explain with AI send the text you chose through Relay to a language model when you click them.',
-            "If you connect a social channel, its access token is stored encrypted. Wallet records and encrypted wallet keys from Kongkow's retired Solana wallet feature are still stored.",
-            'Kongkow has no data export or account deletion of its own yet. Write to us and we will export or delete your Kongkow data.'
+            'Kongkow has its own [privacy policy](https://kongkow.xyz/privacy), which prevails for Kongkow. It sets out what Kongkow stores, what it does with the social channels you connect, how long data is kept, and how to get a copy of your data or delete your Kongkow account.',
+            'In short: Kongkow stores your profile, what you post and send, and records of the posts you send to connected channels. Channel access tokens are stored encrypted. Public posts and profiles can be seen by anyone, and direct messages are not end-to-end encrypted.'
           ]
         }
       ]
