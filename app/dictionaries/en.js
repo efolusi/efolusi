@@ -1,3 +1,5 @@
+import * as legal from './legal-en.js';
+
 const en = {
   htmlLang: 'en',
   ogLocale: 'en_US',
@@ -31,8 +33,8 @@ const en = {
       brand: 'Brand',
       efoToken: '$EFO token',
       bscscan: 'BscScan',
-      privacy: 'Privacy policy',
-      terms: 'Terms of use',
+      privacy: 'Privacy notice',
+      terms: 'Platform terms',
       rights: '© 2026 PT Efolusi Dunia Teknologi. All rights reserved.',
       madeIn: 'Made in Indonesia'
     }
@@ -592,68 +594,8 @@ const en = {
     closerCta: 'Email us'
   },
 
-  privacy: {
-    meta: {
-      title: 'Privacy policy · Efolusi',
-      description: 'How PT Efolusi Dunia Teknologi handles data collected through efolusi.com.'
-    },
-    back: '← Back to efolusi.com',
-    title: 'Privacy policy',
-    metaLine: 'PT Efolusi Dunia Teknologi · Effective 22 July 2026',
-    intro:
-      'This policy describes what data efolusi.com collects and what we use it for. The short version: very little, and it is never sold. It applies to this website only; each Efolusi product has its own privacy policy on its own website.',
-    collectHead: 'What we collect',
-    collect: [
-      ['Contact form:', ' your name, email address, and message. We use them solely to read and reply to your message. Delivery runs through Brevo, our email processor.'],
-      ['Newsletter:', ' your email address, stored with Brevo so we can send product launches and company updates. Every email includes an unsubscribe link.'],
-      ['Theme preference:', ' your light or dark choice is stored in your browser only (localStorage). It never leaves your device.'],
-      ['Server logs:', ' the site is served by Cloudflare, which processes standard request logs (IP address, user agent) to operate and protect the service.']
-    ],
-    notHead: 'What we do not do',
-    not: [
-      'We do not run advertising or third-party analytics trackers on this site.',
-      'We do not sell or share your data with anyone beyond the processors named above.',
-      'We do not use cookies for tracking.'
-    ],
-    retentionHead: 'Retention and your rights',
-    retention:
-      'Contact messages are kept only as long as needed to handle your request. You can unsubscribe from the newsletter at any time, and you can ask us to delete any data we hold about you by writing to ',
-    changesHead: 'Changes',
-    changes: 'If this policy changes, the new version is published on this page with an updated effective date.'
-  },
-
-  terms: {
-    meta: {
-      title: 'Terms of use · Efolusi',
-      description: 'Terms of use for efolusi.com, the website of PT Efolusi Dunia Teknologi.'
-    },
-    back: '← Back to efolusi.com',
-    title: 'Terms of use',
-    metaLine: 'PT Efolusi Dunia Teknologi · Effective 22 July 2026',
-    intro:
-      'By using efolusi.com you agree to these terms. This website introduces PT Efolusi Dunia Teknologi (Efolusi) and its product portfolio; it is provided for information purposes, as is, without warranties of any kind.',
-    productsHead: 'Products',
-    products:
-      "Efolusi products (Relay, Trady, Cuwan, ZOYYA, Toolips, Pay, My, Meridian, Loop, Sanctum, Kongkow, Komando, Runa) are operated on their own websites under their own terms. Using a product means agreeing to that product's terms, not these.",
-    trademarksHead: 'Content and trademarks',
-    trademarksA:
-      'The Efolusi name, the owl mark, and product names are property of PT Efolusi Dunia Teknologi. The source code of this website is open source under the MIT license at ',
-    trademarksB: '; the MIT grant does not cover the names or the mark.',
-    tokenHead: 'The $EFO token',
-    tokenP1:
-      '$EFO is Efolusi\'s own token on BNB Smart Chain. It is not a share, a security, or an investment product, and nothing on this website is an offer to sell or a solicitation to buy any financial instrument. Nothing here is financial advice.',
-    tokenP2:
-      'Digital assets are volatile and carry a risk of total loss: you can lose everything you put in. Please do your own research and follow the laws where you live before interacting with any digital asset.',
-    tokenP3a: 'The only official contract address is the one published on ',
-    tokenP3link: 'the token page',
-    tokenP3b:
-      '. Any address published anywhere else is not ours. We never send you the first message, we never ask for your seed phrase, and we never announce airdrops or presales outside this site.',
-    liabilityHead: 'Liability',
-    liability:
-      'We work to keep the information on this site accurate but do not guarantee it. Efolusi is not liable for damages arising from the use of this website. Nothing on this site is financial, legal, or professional advice.',
-    contactHead: 'Contact',
-    contactA: 'Questions about these terms: '
-  }
+  privacy: legal.privacy,
+  terms: legal.terms
 };
 
 export default en;
