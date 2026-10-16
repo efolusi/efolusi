@@ -47,7 +47,8 @@ The site is available in English (/en) and Indonesian (/id); English URLs are li
 - https://efolusi.com/en/about: the company, how it operates, its leadership
 - https://efolusi.com/en/careers: open roles and what working here is like
 - https://efolusi.com/en/brand: the owl mark, the wordmark and the usage rules
-- https://efolusi.com/en/privacy and https://efolusi.com/en/terms: legal
+- https://efolusi.com/en/terms: Efolusi Platform Terms, covering the Efolusi account (my.efolusi.com), this site, and Relay, Loop, Runa, Komando, Sanctum and Kongkow (refunds at #refunds)
+- https://efolusi.com/en/privacy: Efolusi Platform Privacy Notice for the same scope; Trady, Cuwan, ZOYYA and Toolips have their own terms and privacy pages
 `;
 
 export const dynamic = 'force-static';
