@@ -13,7 +13,7 @@ export default function NotFoundView({ lang }) {
   return (
     <>
       <SiteHeader lang={lang} t={dict.common} />
-      <main className="not-found">
+      <main id="top" tabIndex={-1} className="not-found">
         <section className="page-hero">
           <div className="wrap">
             <span className="eyebrow">{t.code}</span>

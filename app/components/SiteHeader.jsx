@@ -72,65 +72,73 @@ export default function SiteHeader({ lang, t }) {
   const switchHref = `/${other}${rest}`;
 
   return (
-    <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
-      <div className="wrap site-header-inner">
-        <Link href={base} className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
-          <img src="/efolusi/logo-owl-240.png" alt="" width="30" height="30" />
-          Efolusi
-        </Link>
+    <>
+      {/* First stop for keyboard users. Every page that renders this header puts
+          its content in <main id="top" tabIndex={-1}>, so following the link
+          moves focus into the page, not just the scroll position. */}
+      <a className="skip-link" href="#top">
+        {t.skipToContent}
+      </a>
+      <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
+        <div className="wrap site-header-inner">
+          <Link href={base} className="brand" aria-label="Efolusi home" onClick={() => setMenuOpen(false)}>
+            <img src="/efolusi/logo-owl-240.png" alt="" width="30" height="30" />
+            Efolusi
+          </Link>
 
-        <nav className="site-nav" aria-label="Primary">
-          {navLinks.map(([label, href, page]) => (
-            <Link key={label} href={href} className={page && pathname === page ? 'is-active' : ''}>
+          <nav className="site-nav" aria-label="Primary">
+            {navLinks.map(([label, href, page]) => (
+              <Link key={label} href={href} className={page && pathname === page ? 'is-active' : ''}>
+                {label}
+              </Link>
+            ))}
+          </nav>
+
+          <div className="header-actions">
+            <Link className="lang-switch" href={switchHref} aria-label={t.switchLanguage} onClick={() => setMenuOpen(false)}>
+              {t.langLabel}
+            </Link>
+            <ThemeToggle />
+            <a
+              className="pill pill--sm pill--plain sign-in-pill"
+              href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+            >
+              {user ? t.account ?? 'Account' : t.signIn}
+            </a>
+            <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
+              {t.getInTouch}
+            </Link>
+            <button
+              type="button"
+              className="menu-toggle"
+              aria-label={t.toggleMenu}
+              aria-expanded={menuOpen ? 'true' : 'false'}
+              onClick={() => setMenuOpen((value) => !value)}
+            >
+              <Icon name={menuOpen ? 'x' : 'menu'} size={18} />
+            </button>
+          </div>
+        </div>
+
+        <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
+          {navLinks.map(([label, href]) => (
+            <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
               {label}
             </Link>
           ))}
-        </nav>
-
-        <div className="header-actions">
-          <Link className="lang-switch" href={switchHref} aria-label={t.switchLanguage} onClick={() => setMenuOpen(false)}>
-            {t.langLabel}
+          <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
+            {t.contact}
           </Link>
-          <ThemeToggle />
+          {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
           <a
-            className="pill pill--sm pill--plain sign-in-pill"
+            className="menu-signin"
             href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+            onClick={() => setMenuOpen(false)}
           >
             {user ? t.account ?? 'Account' : t.signIn}
           </a>
-          <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
-            {t.getInTouch}
-          </Link>
-          <button
-            type="button"
-            className="menu-toggle"
-            aria-label={t.toggleMenu}
-            aria-expanded={menuOpen ? 'true' : 'false'}
-            onClick={() => setMenuOpen((value) => !value)}
-          >
-            <Icon name={menuOpen ? 'x' : 'menu'} size={18} />
-          </button>
-        </div>
-      </div>
-
-      <nav className={`mobile-menu${menuOpen ? ' is-open' : ''}`} aria-label="Mobile">
-        {navLinks.map(([label, href]) => (
-          <Link key={label} href={href} onClick={() => setMenuOpen(false)}>
-            {label}
-          </Link>
-        ))}
-        <Link href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
-          {t.contact}
-        </Link>
-        {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
-        <a
-          className="menu-signin"
-          href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
-          onClick={() => setMenuOpen(false)}
-        >
-          {user ? t.account ?? 'Account' : t.signIn}
-        </a>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   );
 }
