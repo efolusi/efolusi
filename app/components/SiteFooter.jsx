@@ -12,6 +12,9 @@ const SOCIALS = [
   ['X', 'https://x.com/efolusicom']
 ];
 
+/* Public uptime page for the Efolusi services. */
+export const STATUS_URL = 'https://stats.uptimerobot.com/SrVLCmD6V7';
+
 export default function SiteFooter({ lang, t }) {
   const base = `/${lang}`;
 
@@ -44,6 +47,9 @@ export default function SiteFooter({ lang, t }) {
             <Link href={`${base}/about`}>{t.footer.about}</Link>
             <Link href={`${base}/careers`}>{t.footer.careers}</Link>
             <Link href={`${base}/brand`}>{t.footer.brand}</Link>
+            <a href={STATUS_URL} target="_blank" rel="noopener noreferrer">
+              {t.footer.status}
+            </a>
           </div>
           <div className="fcol">
             <h4>{t.footer.ecosystemHead}</h4>

@@ -229,6 +229,37 @@ h2 {
 
 /* ---------- Header ---------- */
 
+/* Skip link: off screen until it takes keyboard focus, then drawn above the
+   sticky header. The target <main> is focusable (tabindex -1) only so focus
+   can land on it; it never shows a ring for that. */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: var(--z-modal);
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap-min);
+  padding: 0 20px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  transform: translateY(calc(-100% - 24px));
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: none;
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+main[tabindex='-1']:focus {
+  outline: none;
+}
+
 .site-header {
   position: sticky;
   top: 0;
@@ -1295,6 +1326,16 @@ h2 {
 .news h3 {
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
+}
+
+/* The title is under 24px and the script accent is semibold, so it is body
+   text for contrast: brand-600 reaches only 4.35:1 on the light page. */
+.news h3 .accent {
+  color: var(--brand-700);
+}
+
+[data-theme='dark'] .news h3 .accent {
+  color: var(--brand-400);
 }
 
 .news .sub {
@@ -3084,6 +3125,13 @@ h2 {
 [data-theme='dark'] .portfolio-browser [data-product='relay'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, #191512); }
 [data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, #191512); }
 
+/* brand-700 is the lightest of the three dark slots: the standard muted ink
+   (cream at 75%) reaches only 4.44:1 on it. 85% gives 5.2:1 in both themes. */
+.portfolio-browser [data-product='meridian'],
+[data-theme='dark'] .portfolio-browser [data-product='meridian'] {
+  --card-muted: rgba(248, 244, 230, 0.85);
+}
+
 .portfolio-browser [data-product],
 .portfolio-browser [data-product]:hover,
 #products .portfolio-featured--primary .portfolio-feature,
@@ -3429,12 +3477,16 @@ h2 {
   }
 }
 
-/* ---------- Touch targets (phones) ----------
-   At <=640px every control gets a hit area of at least --tap-min. Controls
-   that carry their own surface (inputs, form buttons) grow to 44px; icon
-   buttons keep their drawn size and extend an invisible ::after, so the
-   header row keeps one visual height. */
-@media (max-width: 640px) {
+/* ---------- Touch targets (EF-03) ----------
+   On a touch screen of any width (tablets and touch laptops report
+   pointer: coarse) and on every phone-width window, each control gets a hit
+   area of at least --tap-min. Controls that carry their own surface (inputs,
+   form buttons, pills) grow to 44px; icon buttons keep their drawn size and
+   extend an invisible ::after, so the header row keeps one visual height.
+   The 40px header icons sit 8px apart, so each 44px overlay clears its
+   neighbour by 4px. Mouse and trackpad layouts wider than 640px are
+   untouched. */
+@media (max-width: 640px), (pointer: coarse) {
   .theme-toggle::after,
   .lang-switch::after,
   .menu-toggle::after,
@@ -3462,6 +3514,13 @@ h2 {
 
   .brand {
     min-height: var(--tap-min);
+  }
+
+  /* Header pills (Sign in, Get in touch) and the primary nav, which only
+     show on tablet and wider touch screens. */
+  .pill--sm,
+  .site-nav a {
+    height: var(--tap-min);
   }
 
   /* Stacked footer links: 44px rows replace the 12px gaps between 21px lines. */
