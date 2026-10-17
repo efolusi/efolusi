@@ -35,16 +35,17 @@ export const terms = {
           ul: [
             '**Akun Efolusi Anda** di my.efolusi.com, satu akun yang Anda pakai untuk masuk ke produk-produk Efolusi.',
             '**efolusi.com**, situs ini.',
-            '**Relay, Loop, Runa, Komando, Sanctum, dan Kongkow.** Produk-produk ini tidak punya ketentuan sendiri. Fungsi tiap produk dan aturan yang hanya berlaku untuknya ada di [lampiran produk](#schedule) di akhir halaman ini.'
+            '**Relay, Loop, Runa, Komando, dan Sanctum.** Produk-produk ini tidak punya ketentuan sendiri. Fungsi tiap produk dan aturan yang hanya berlaku untuknya ada di [lampiran produk](#schedule) di akhir halaman ini.'
           ]
         },
-        'Trady, Cuwan, ZOYYA, dan Toolips punya ketentuan dan kebijakan privasinya sendiri. Saat Anda memakai salah satunya, ketentuan produk itu yang berlaku, dan bila berbeda dengan ketentuan ini, ketentuan produk itulah yang diutamakan untuk produk tersebut. Ketentuan ini tetap berlaku untuk akun Efolusi yang Anda pakai untuk masuk.',
+        'Trady, Cuwan, ZOYYA, Toolips, dan Kongkow punya ketentuan dan kebijakan privasinya sendiri. Saat Anda memakai salah satunya, ketentuan produk itu yang berlaku, dan bila berbeda dengan ketentuan ini, ketentuan produk itulah yang diutamakan untuk produk tersebut. Ketentuan ini tetap berlaku untuk akun Efolusi yang Anda pakai untuk masuk.',
         {
           ul: [
             'Trady: [ketentuan](https://trady.efolusi.com/{lang}/terms) dan [kebijakan privasi](https://trady.efolusi.com/{lang}/privacy)',
             'Cuwan: [ketentuan](https://cuwan.xyz/terms), [kebijakan privasi](https://cuwan.xyz/privacy), dan [pengungkapan risiko](https://cuwan.xyz/risk)',
             'ZOYYA: [ketentuan](https://zoyya.xyz/terms), [kebijakan privasi](https://zoyya.xyz/privacy), dan [kebijakan pengembalian dana](https://zoyya.xyz/refund)',
-            'Toolips: [ketentuan](https://toolips.xyz/{lang}/terms) dan [kebijakan privasi](https://toolips.xyz/{lang}/privacy)'
+            'Toolips: [ketentuan](https://toolips.xyz/{lang}/terms) dan [kebijakan privasi](https://toolips.xyz/{lang}/privacy)',
+            'Kongkow: [ketentuan](https://kongkow.xyz/terms) dan [kebijakan privasi](https://kongkow.xyz/privacy), dalam bahasa Inggris'
           ]
         },
         'Meridian, design system kami, bersifat open source di bawah lisensi MIT, dan lisensi itulah yang mengatur penggunaannya. Efolusi Pay adalah layanan pembayaran yang dipakai produk kami untuk menerima pembayaran; layanan ini tidak ditawarkan ke publik sebagai produk tersendiri.'
@@ -250,11 +251,11 @@ export const terms = {
         { h3: 'Kongkow (kongkow.xyz)', id: 'kongkow' },
         {
           ul: [
-            '**Fungsinya:** jejaring sosial dengan feed, postingan, komentar, story, pesan langsung, grup, dan API bot.',
-            '**Data yang diproses:** profil, postingan, komentar, suka, ikuti, story, pesan langsung dan pesan grup, media yang diunggah, laporan, dan bot Anda. Pesan langsung tidak dienkripsi end-to-end. Bila Anda menghubungkan kanal media sosial, token aksesnya disimpan terenkripsi.',
-            '**Penyedia AI:** AI enhance dan Explain with AI mengirim teks yang Anda pilih untuk ditulis ulang atau dijelaskan lewat Relay ke sebuah model bahasa (bawaannya Anthropic Claude Haiku), hanya saat Anda mengekliknya.',
-            '**Aturan:** dilarang melecehkan, menyebar kebencian, mengancam, konten seksual yang melibatkan anak, gambar intim yang dibagikan tanpa persetujuan, spam, menyamar sebagai orang lain, atau menyebarkan data pribadi orang lain tanpa izinnya. Anda bisa melaporkan postingan dan komentar, dan kami bisa menghapus konten atau membatasi akun yang melanggar aturan ini.',
-            '**Harga:** gratis. Fitur dompet Solana, tip, dan postingan berbayar Kongkow yang lama sudah dihentikan, dan cross-posting ke jejaring lain belum menerbitkan ke mana pun.'
+            '**Ketentuan sendiri:** Kongkow punya [ketentuan layanan](https://kongkow.xyz/terms) dan [kebijakan privasi](https://kongkow.xyz/privacy) sendiri. Bila berbeda dengan ketentuan ini untuk urusan Kongkow, ketentuan Kongkow yang diutamakan. Entri ini hanya ringkasan.',
+            '**Fungsinya:** jejaring sosial dengan feed, postingan, komentar, story, pesan langsung, grup, dan API bot. Kongkow juga tempat menerbitkan: Anda bisa mengirim postingan ke kanal media sosial yang Anda hubungkan, langsung atau pada waktu yang Anda jadwalkan. Postingan terjadwal dikirim saat waktunya tiba, dan postingan yang terlambat lebih dari 24 jam, misalnya setelah gangguan layanan, tidak diterbitkan tetapi ditandai terlewat agar Anda bisa memutuskan apakah akan memostingnya lagi.',
+            '**Penyedia AI:** Enhance dan Explain mengirim teks yang Anda berikan lewat Relay ke sebuah model bahasa (bawaannya Anthropic Claude Haiku), hanya saat Anda memakainya.',
+            '**Aturan:** dilarang melecehkan, menyebar kebencian, mengancam, konten seksual yang melibatkan anak, gambar intim yang dibagikan tanpa persetujuan, spam, menyamar sebagai orang lain, atau menyebarkan data pribadi orang lain tanpa izinnya. Hubungkan hanya kanal yang Anda kendalikan atau boleh Anda isi, dan ikuti aturan tiap platform untuk apa yang Anda terbitkan di sana.',
+            '**Harga:** gratis. Fitur dompet Solana, tip, dan postingan berbayar Kongkow yang lama sudah dihentikan.'
           ]
         }
       ]
@@ -280,8 +281,8 @@ export const privacy = {
       id: 'scope',
       head: 'Cakupan pemberitahuan ini',
       blocks: [
-        'Pemberitahuan ini mencakup akun Efolusi Anda di my.efolusi.com, situs ini (efolusi.com), serta Relay, Loop, Runa, Komando, Sanctum, dan Kongkow.',
-        'Trady, Cuwan, ZOYYA, dan Toolips punya kebijakan privasinya sendiri, yang diutamakan untuk produk tersebut: [Trady](https://trady.efolusi.com/{lang}/privacy), [Cuwan](https://cuwan.xyz/privacy), [ZOYYA](https://zoyya.xyz/privacy), dan [Toolips](https://toolips.xyz/{lang}/privacy). Pemberitahuan ini tetap mencakup akun Efolusi yang Anda pakai untuk masuk ke produk-produk itu.',
+        'Pemberitahuan ini mencakup akun Efolusi Anda di my.efolusi.com, situs ini (efolusi.com), serta Relay, Loop, Runa, Komando, dan Sanctum.',
+        'Trady, Cuwan, ZOYYA, Toolips, dan Kongkow punya kebijakan privasinya sendiri, yang diutamakan untuk produk tersebut: [Trady](https://trady.efolusi.com/{lang}/privacy), [Cuwan](https://cuwan.xyz/privacy), [ZOYYA](https://zoyya.xyz/privacy), [Toolips](https://toolips.xyz/{lang}/privacy), dan [Kongkow](https://kongkow.xyz/privacy). Pemberitahuan ini tetap mencakup akun Efolusi yang Anda pakai untuk masuk ke produk-produk itu.',
         'Saat Anda bekerja di ruang bersama milik orang lain, seperti workspace Relay, company di Runa, atau tim Sanctum, pemiliknya yang menentukan apa yang masuk ke ruang itu, dan kami memproses konten tersebut untuk menyediakan produk kepada mereka.',
         'Kami memproses data pribadi sesuai Undang-Undang Nomor 27 Tahun 2022 tentang Pelindungan Data Pribadi.'
       ]
@@ -378,12 +379,8 @@ export const privacy = {
         { h3: 'Kongkow', id: 'kongkow-data' },
         {
           ul: [
-            'Profil, postingan, komentar, suka, ikuti, story, pesan langsung dan pesan grup, media yang diunggah, laporan, dan bot Anda. Pesan langsung disimpan di server kami dalam bentuk yang bisa dibaca; pesan itu tidak dienkripsi end-to-end.',
-            'Postingan dan profil publik bisa dilihat siapa saja. Bila Anda membuat bot, pembaruan yang diterimanya dikirim ke alamat webhook yang Anda atur.',
-            'Saat Anda menghapus postingan, postingan itu disembunyikan dari semua orang, dan saat Anda menghapus pesan, pesan itu disembunyikan untuk Anda, tetapi keduanya tetap tersimpan di database kami. Story hilang dari tampilan setelah 24 jam tetapi tetap disimpan, dan media yang diunggah tetap disimpan.',
-            'AI enhance dan Explain with AI mengirim teks yang Anda pilih lewat Relay ke sebuah model bahasa saat Anda mengekliknya.',
-            'Bila Anda menghubungkan kanal media sosial, token aksesnya disimpan terenkripsi. Catatan dompet dan kunci dompet terenkripsi dari fitur dompet Solana Kongkow yang sudah dihentikan masih tersimpan.',
-            'Kongkow belum punya ekspor data maupun penghapusan akun sendiri. Tulis ke kami dan kami akan mengekspor atau menghapus data Kongkow Anda.'
+            'Kongkow punya [kebijakan privasi](https://kongkow.xyz/privacy) sendiri, yang diutamakan untuk Kongkow. Di sana dijelaskan apa yang disimpan Kongkow, apa yang dilakukannya dengan kanal media sosial yang Anda hubungkan, berapa lama data disimpan, serta cara mendapatkan salinan data atau menghapus akun Kongkow Anda.',
+            'Singkatnya: Kongkow menyimpan profil Anda, apa yang Anda posting dan kirim, serta catatan postingan yang Anda kirim ke kanal yang terhubung. Token akses kanal disimpan terenkripsi. Postingan dan profil publik bisa dilihat siapa saja, dan pesan langsung tidak dienkripsi end-to-end.'
           ]
         }
       ]
