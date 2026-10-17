@@ -46,7 +46,7 @@ export default async function AboutPage({ params }) {
   return (
     <>
       <SiteHeader lang={lang} t={dict.common} />
-    <main>
+    <main id="top" tabIndex={-1}>
       <section className="page-hero">
         <div className="wrap">
           <h1>

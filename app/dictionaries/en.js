@@ -11,6 +11,7 @@ const en = {
     account: 'Account',
     contact: 'Contact',
     toggleMenu: 'Toggle menu',
+    skipToContent: 'Skip to main content',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
     notFound: {
@@ -31,6 +32,7 @@ const en = {
       about: 'About',
       careers: 'Careers',
       brand: 'Brand',
+      status: 'Status',
       efoToken: '$EFO token',
       bscscan: 'BscScan',
       privacy: 'Privacy notice',

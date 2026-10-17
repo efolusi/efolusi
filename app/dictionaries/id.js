@@ -11,6 +11,7 @@ const id = {
     account: 'Akun',
     contact: 'Kontak',
     toggleMenu: 'Buka menu',
+    skipToContent: 'Langsung ke konten utama',
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
     notFound: {
@@ -31,6 +32,7 @@ const id = {
       about: 'Tentang',
       careers: 'Karier',
       brand: 'Brand',
+      status: 'Status',
       efoToken: 'Token $EFO',
       bscscan: 'BscScan',
       privacy: 'Pemberitahuan privasi',

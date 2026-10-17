@@ -183,7 +183,7 @@ export default function HomeClient({ d, common, lang }) {
     <>
       <SiteHeader lang={lang} t={common} />
 
-    <main id="top">
+    <main id="top" tabIndex={-1}>
       <section className="hero hero-center" id="hero">
         <div className="wrap">
           {stickers.map((s) => (
