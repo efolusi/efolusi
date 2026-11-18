@@ -42,12 +42,17 @@ describe('language redirect external origin', () => {
     expect(on).not.toMatch(/branches:|pull_request/);
     expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
     expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
-    expect(deploy).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]');
+    expect(deploy).toContain('runs-on: [self-hosted, Linux, X64, efolusi-web-deploy]');
+    expect(deploy).toContain("if: github.repository == 'efolusi/efolusi' && startsWith(github.ref, 'refs/tags/v')");
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
     // A pull request, from a fork or not, never reaches a self-hosted runner.
-    expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) && 'ubuntu-latest' || fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') }}`);
-    expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(1);
+    // Self-hosted only for main and same-repo pull requests; forks run hosted.
+    expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-ci]');
+    expect(ciWorkflow).toContain("if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository");
+    expect(ciWorkflow).toContain("if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository");
+    expect(ciWorkflow).toContain('runs-on: ubuntu-latest');
+    expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(2);
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
     expect(ciWorkflow).toContain('node-version: 26.13.1');
     expect(packageJson.engines.node).toBe('26.13.1');

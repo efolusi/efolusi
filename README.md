@@ -151,9 +151,10 @@ The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every
 prerendered at build time and served from the Worker's static assets.
 
 Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
-the tag push, or by hand on a tag, on the self-hosted `efolusi-prod` runner. It refuses a
-commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with the
-`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
+the tag push, or by hand on a tag, on the self-hosted `efolusi-web-deploy` runner. It
+refuses a commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with
+the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
+`production` environment.
 
 Every change lands through a pull request into the protected `main` branch.
 
