@@ -241,7 +241,7 @@ export default function HomeClient({ d, common, lang }) {
           </div>
 
           <div className="hero-proof reveal">
-            <StatusDot status="ok" pulse />
+            <StatusDot status="success" pulse />
             <span>{d.hero.proof}</span>
           </div>
         </div>
