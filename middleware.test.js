@@ -42,9 +42,9 @@ describe('language redirect external origin', () => {
     expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}`);
     expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(1);
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
-    expect(ciWorkflow).toContain('node-version: 22.23.2');
-    expect(packageJson.engines.node).toBe('22.23.2');
-    expect(nvmVersion).toBe('22.23.2');
+    expect(ciWorkflow).toContain('node-version: 26.13.1');
+    expect(packageJson.engines.node).toBe('26.13.1');
+    expect(nvmVersion).toBe('26.13.1');
   });
 });
 

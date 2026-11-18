@@ -14,18 +14,18 @@ Repository: <https://github.com/efolusi/efolusi>
 
 ## Getting Started
 
-Clone and install dependencies (this repo uses pnpm via corepack):
+Clone and install dependencies with pnpm 11.24.0 (`npm install -g pnpm@11.24.0`; Node 26 has no corepack):
 
 ```bash
 git clone https://github.com/efolusi/efolusi.git
 cd efolusi
-corepack pnpm install
+pnpm install
 ```
 
 Start the development server:
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Open the site at:
@@ -37,30 +37,30 @@ http://localhost:3000
 ## Scripts
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Runs the local Next.js development server.
 
 ```bash
-corepack pnpm run build
+pnpm run build
 ```
 
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-corepack pnpm preview
+pnpm preview
 ```
 
 Builds the Worker with OpenNext and serves it locally with wrangler, the way Cloudflare runs it.
 
 ```bash
-corepack pnpm test
+pnpm test
 ```
 
 Runs the Vitest suite (middleware and security-config checks).
 
-`corepack pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
+`pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
 
 ## Environment Variables
 
@@ -151,15 +151,15 @@ The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every
 prerendered at build time and served from the Worker's static assets.
 
 Production deploys only from a `v*` tag on `main`: check out the tag, then run
-`corepack pnpm deploy` with a Cloudflare API token in the shell. Actions are not used to
-deploy, so the deploy runs from the local gate after `corepack pnpm test` and
-`corepack pnpm preview` pass.
+`pnpm deploy` with a Cloudflare API token in the shell. Actions are not used to
+deploy, so the deploy runs from the local gate after `pnpm test` and
+`pnpm preview` pass.
 
 Every change lands through a pull request into the protected `main` branch.
 
 ## Notes
 
-- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI.
+- Node.js is pinned to `26.13.1` in `.nvmrc`, `package.json`, and CI.
 - `.env.local`, `.next`, `.open-next`, `.wrangler` and `node_modules` are intentionally ignored.
 
 ## License
