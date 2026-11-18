@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
@@ -30,16 +30,23 @@ describe('language redirect external origin', () => {
     );
   });
 
-  it('has no deploy workflow, CI runs on main', () => {
+  it('deploys only from a v* tag on main, CI runs on main', () => {
     const ciWorkflow = readFileSync('.github/workflows/ci.yml', 'utf8');
     const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
     const nvmVersion = readFileSync('.nvmrc', 'utf8').trim();
-    // The Worker deploys from the local gate (`pnpm deploy` on a v* tag), never from Actions.
-    expect(existsSync('.github/workflows/deploy-native.yml')).toBe(false);
+    // The Worker deploys only from a v* tag on main, on the self-hosted production runner.
+    const deploy = readFileSync('.github/workflows/deploy.yml', 'utf8');
+    const on = deploy.slice(deploy.indexOf('\non:\n'), deploy.indexOf('\npermissions:'));
+    expect(on).toContain("tags: ['v*']");
+    expect(on).toContain('workflow_dispatch:');
+    expect(on).not.toMatch(/branches:|pull_request/);
+    expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
+    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
+    expect(deploy).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]');
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
     // A pull request, from a fork or not, never reaches a self-hosted runner.
-    expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}`);
+    expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository) && 'ubuntu-latest' || fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') }}`);
     expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(1);
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
     expect(ciWorkflow).toContain('node-version: 26.13.1');

@@ -150,10 +150,10 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every page is
 prerendered at build time and served from the Worker's static assets.
 
-Production deploys only from a `v*` tag on `main`: check out the tag, then run
-`pnpm deploy` with a Cloudflare API token in the shell. Actions are not used to
-deploy, so the deploy runs from the local gate after `pnpm test` and
-`pnpm preview` pass.
+Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
+the tag push, or by hand on a tag, on the self-hosted `efolusi-prod` runner. It refuses a
+commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with the
+`CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repository secrets.
 
 Every change lands through a pull request into the protected `main` branch.
 

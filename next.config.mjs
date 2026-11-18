@@ -30,15 +30,7 @@ const nextConfig = {
         headers: securityHeaders
       },
       {
-        // The development site signs in against the My Efolusi development
-        // issuer (SiteHeader resolves it from the host), so only that host may
-        // also reach dev-my-api. Later rules override earlier ones per key.
-        source: '/(.*)',
-        has: [{ type: 'host', value: 'dev.efolusi.com' }],
-        headers: [{ key: 'Content-Security-Policy', value: csp('https://dev-my-api.efolusi.com') }]
-      },
-      {
-        // Every host except production (dev.efolusi.com, previews, localhost)
+        // Every host except production (workers.dev, previews, localhost)
         // is kept out of search indexes, pages and assets alike.
         source: '/(.*)',
         missing: [{ type: 'host', value: 'efolusi.com' }],
