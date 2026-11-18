@@ -99,7 +99,7 @@ const id = {
         headline: "Satu command line yang aman untuk server Anda.",
         section: "Server & infrastruktur",
         desc: "Server, database, cache, antrean, storage, cluster, dan VPN di balik satu perintah yang bisa dipakai Anda dan agen AI Anda. Kata sandi tersimpan di vault terenkripsi yang tidak pernah dilihat agen.",
-        specs: ['CLI open source', releases.komando, 'macOS & Linux'],
+        specs: ['CLI open source', releases.komando, 'macOS, Linux & Windows'],
         buttonLabel: 'Kunjungi Komando',
         tag: "Server & infrastruktur",
         summary: "Satu command line untuk server, database, storage, cluster, dan VPN, aman diserahkan ke agen AI."

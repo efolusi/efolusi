@@ -125,8 +125,8 @@ describe('CI action provenance', () => {
     }
 
     const ci = readFileSync('.github/workflows/ci.yml', 'utf8');
-    expect(ci).toMatch(/push:\s*\n\s+branches: \[main, dev\]/);
-    expect(ci).toMatch(/pull_request:\s*\n\s+branches: \[main, dev\]/);
+    expect(ci).toMatch(/push:\s*\n\s+branches: \[main\]/);
+    expect(ci).toMatch(/pull_request:\s*\n\s+branches: \[main\]/);
   });
 
   it('rejects job-level mutable actions and write permissions', () => {

@@ -47,7 +47,7 @@ const en = {
     meta: {
       title: 'Efolusi · We build software and run it',
       description:
-        'Efolusi is a software company in Indonesia. We build our own products open-source command lines for servers, files, video, social posts and trading bots, plus the design systems behind them.'
+        'Efolusi is a software company in Indonesia. We build our own products: open-source command lines for servers, files, video, social posts and trading bots, plus the design systems behind them.'
     },
     hero: {
       lead: 'Tools that',
@@ -99,7 +99,7 @@ const en = {
         headline: "One safe command line for your servers.",
         section: "Servers & infrastructure",
         desc: "Servers, databases, caches, queues, storage, clusters and VPNs behind one command that you and your AI agent can both use. Passwords stay in an encrypted vault the agent never sees.",
-        specs: ['Open source CLI', releases.komando, 'macOS & Linux'],
+        specs: ['Open source CLI', releases.komando, 'macOS, Linux & Windows'],
         buttonLabel: 'Visit Komando',
         tag: "Servers & infrastructure",
         summary: "One command line for servers, databases, storage, clusters and VPNs, safe to hand to an AI agent."
