@@ -46,8 +46,9 @@ describe('language redirect external origin', () => {
     expect(workflow).not.toContain('sudo');
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
-    expect(ciWorkflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-dev]');
-    expect(ciWorkflow).not.toContain('ubuntu-latest');
+    // A pull request, from a fork or not, never reaches a self-hosted runner.
+    expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}`);
+    expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(1);
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
     expect(ciWorkflow).toContain('node-version: 22.23.2');
     expect(packageJson.engines.node).toBe('22.23.2');

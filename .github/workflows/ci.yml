@@ -15,7 +15,9 @@ concurrency:
 
 jobs:
   build:
-    runs-on: [self-hosted, Linux, X64, efolusi-dev]
+    # Pull requests, forks included, run on GitHub-hosted runners only. The
+    # self-hosted efolusi-dev runner takes only pushes to main.
+    runs-on: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
