@@ -1,5 +1,7 @@
 /* llms.txt: a plain-text brief for AI answer engines, so what they say about
    Efolusi comes from us rather than from guesswork. */
+import { releases } from '../lib/products.js';
+
 const BODY = `# Efolusi
 
 > Efolusi (PT Efolusi Dunia Teknologi) is a software studio based in Indonesia.
@@ -18,10 +20,10 @@ const BODY = `# Efolusi
 
 ## Products
 Every product starts as an open-source command line (CLI) that runs on the user's own machine, for people and their AI agents. Desktop, mobile and web apps wrap the same CLI. Versions are the latest release tags.
-- Komando (https://komando.efolusi.com): one safe command line for servers, databases, caches, queues, storage, clusters and VPNs. Passwords stay in an encrypted vault the AI agent never sees. Open source (AGPL-3.0), release v0.14.1. Source: https://github.com/sgnd/komando
-- Toolips (https://toolips.xyz): one local command line for PDFs, images, secret scans and TLS checks. Open source, release v0.0.1. Source: https://github.com/sgnd/toolips
-- Trady (https://trady.efolusi.com): one local command line that turns long recordings into short captioned clips. Not a trading product. Open source, release v0.0.1. Source: https://github.com/sgnd/trady
-- Kongkow (https://kongkow.xyz): one local command line to draft, schedule and publish social media posts. Open source, release v0.1.1. Source: https://github.com/sgnd/kongkow
+- Komando (https://komando.efolusi.com): one safe command line for servers, databases, caches, queues, storage, clusters and VPNs. Passwords stay in an encrypted vault the AI agent never sees. Open source (AGPL-3.0), release ${releases.komando}. Source: https://github.com/sgnd/komando
+- Toolips (https://toolips.xyz): one local command line for PDFs, images, secret scans and TLS checks. Open source, release ${releases.toolips}. Source: https://github.com/sgnd/toolips
+- Trady (https://trady.efolusi.com): one local command line that turns long recordings into short captioned clips. Not a trading product. Open source, release ${releases.trady}. Source: https://github.com/sgnd/trady
+- Kongkow (https://kongkow.xyz): one local command line to draft, schedule and publish social media posts. Open source, release ${releases.kongkow}. Source: https://github.com/sgnd/kongkow
 - Cuwan (https://cuwan.xyz): one local command line for grid trading bots on crypto exchanges; the only trading product in the portfolio. Open source, no release yet. Source: https://github.com/sgnd/cuwan
 - Meridian (https://meridian.efolusi.com): the web design system, published as the npm package @efolusi/meridian (Apache-2.0).
 - Glamor (https://github.com/efolusi/glamor): the native design system for Mac, iPhone and iPad, built on SwiftUI (Apache-2.0).

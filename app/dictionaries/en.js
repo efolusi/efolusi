@@ -1,3 +1,4 @@
+import { releases } from '../lib/products.js';
 import * as legal from './legal-en.js';
 
 const en = {
@@ -98,7 +99,7 @@ const en = {
         headline: "One safe command line for your servers.",
         section: "Servers & infrastructure",
         desc: "Servers, databases, caches, queues, storage, clusters and VPNs behind one command that you and your AI agent can both use. Passwords stay in an encrypted vault the agent never sees.",
-        specs: ['Open source CLI', 'v0.14.1', 'macOS & Linux'],
+        specs: ['Open source CLI', releases.komando, 'macOS & Linux'],
         buttonLabel: 'Visit Komando',
         tag: "Servers & infrastructure",
         summary: "One command line for servers, databases, storage, clusters and VPNs, safe to hand to an AI agent."
@@ -106,7 +107,7 @@ const en = {
       trady: {
         section: "Video",
         desc: "A command line that turns long recordings into short captioned clips on your own machine.",
-        specs: ['Open source CLI', 'v0.0.1', 'Runs locally'],
+        specs: ['Open source CLI', releases.trady, 'Runs locally'],
         buttonLabel: 'Visit Trady',
         tag: "Video",
         summary: "Turn long recordings into short captioned clips on your own machine."
@@ -114,7 +115,7 @@ const en = {
       toolips: {
         section: "Files",
         desc: "A command line for PDFs, images, secret scans and TLS checks. Your files stay on your machine.",
-        specs: ['Open source CLI', 'v0.0.1', 'Runs locally'],
+        specs: ['Open source CLI', releases.toolips, 'Runs locally'],
         buttonLabel: 'Visit Toolips',
         tag: "Files",
         summary: "PDFs, images, secret scans and TLS checks from one local command line."
@@ -130,7 +131,7 @@ const en = {
       kongkow: {
         section: "Social posts",
         desc: "A command line to draft, schedule and publish your social media posts.",
-        specs: ['Open source CLI', 'v0.1.1', 'Runs locally'],
+        specs: ['Open source CLI', releases.kongkow, 'Runs locally'],
         buttonLabel: 'Visit Kongkow',
         tag: "Social posts",
         summary: "Draft, schedule and publish social media posts from one command line."
@@ -298,28 +299,28 @@ const en = {
         href: 'https://komando.efolusi.com',
         problem: 'Servers, databases, storage and clusters each come with their own logins and commands, and an AI agent given those passwords can break things.',
         solution: 'One command line in front of all of them. Passwords stay in an encrypted vault, it only reads unless you say otherwise, and every action is recorded.',
-        result: 'Open source, release v0.14.1. Desktop and mobile apps come next; there is no web app.'
+        result: `Open source, release ${releases.komando}. Desktop and mobile apps come next; there is no web app.`
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
         solution: 'A local command line for PDFs, images, secret scans and TLS checks, so the files never leave your machine.',
-        result: 'Open source, first release v0.0.1. A web app and desktop app are planned.'
+        result: `Open source, first release ${releases.toolips}. A web app and desktop app are planned.`
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'One long video holds a week of content, but cutting it by hand eats an entire evening.',
         solution: 'A local command line: long recording in, short captioned clips out, rendered on your own machine.',
-        result: 'Open source, first release v0.0.1. A desktop app for local rendering is planned.'
+        result: `Open source, first release ${releases.trady}. A desktop app for local rendering is planned.`
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'The same post had to be pasted into platform after platform, and something always got missed.',
         solution: 'A command line to draft, schedule and publish social posts. The schedule runs on your own machine.',
-        result: 'Open source, release v0.1.1. A web app is first in line, then a mobile app.'
+        result: `Open source, release ${releases.kongkow}. A web app is first in line, then a mobile app.`
       },
       {
         name: 'Cuwan',

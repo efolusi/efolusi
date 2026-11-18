@@ -14,3 +14,7 @@ export const productMeta = [
 /* logoRatio is width / height of each SVG's tight viewBox, used by ProductLogo
    to give every mark the same optical area. */
 export const productById = Object.fromEntries(productMeta.map(product => [product.id, product]));
+
+/* Latest release of each CLI, the one place the site states a version.
+   null means no release yet. */
+export const releases = { komando: 'v0.14.1', toolips: 'v0.0.1', trady: 'v0.0.1', kongkow: 'v0.1.1', cuwan: null };
