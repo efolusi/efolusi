@@ -27,7 +27,7 @@ const BODY = `# Efolusi
 - Loop (https://loop.efolusi.com): specification workspace: the spec comes first.
 - Sanctum (https://sanctum.efolusi.com): vault + private knowledge system: a vault your AI can use but never read.
 - Komando (https://komando.efolusi.com): omni cloud, server, and monitoring in one dashboard.
-- Meridian (https://meridian.efolusi.com): the Efolusi design system, published as the npm package @efolusi/meridian (MIT-licensed, open source).
+- Meridian (https://meridian.efolusi.com): the Efolusi design system, published as the npm package @efolusi/meridian (Apache-2.0 licensed, open source).
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07
