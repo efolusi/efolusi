@@ -3024,6 +3024,14 @@ main[tabindex='-1']:focus {
   min-height: 300px;
 }
 
+/* The featured card always sits on the deepest brand ground, whichever product
+   it holds, so its light ink and brand tags keep their contrast. */
+#products .portfolio-featured--primary [data-product] {
+  --card-bg: var(--brand-950);
+  --card-fg: var(--cream-50);
+  --card-muted: var(--text-on-brand-muted);
+}
+
 #products .portfolio-featured--primary .portfolio-feature::after {
   content: '';
   position: absolute;
@@ -3081,19 +3089,15 @@ main[tabindex='-1']:focus {
   --card-fg: var(--sand-950);
   --card-muted: var(--sand-700);
 }
-.portfolio-browser [data-product='zoyya'] { --card-bg: var(--warning-100); }
-.portfolio-browser [data-product='loop'] { --card-bg: var(--brand-200); }
 .portfolio-browser [data-product='komando'] { --card-bg: var(--success-100); }
 .portfolio-browser [data-product='trady'] { --card-bg: var(--danger-100); }
 .portfolio-browser [data-product='kongkow'] { --card-bg: var(--warning-300); }
-.portfolio-browser [data-product='relay'] { --card-bg: var(--sand-300); }
+.portfolio-browser [data-product='design-tokens'] { --card-bg: var(--sand-300); }
 .portfolio-browser [data-product='toolips'] { --card-bg: var(--brand-400); --card-muted: var(--brand-950); }
 .portfolio-browser [data-product='cuwan'] { --card-bg: var(--success-300); }
-.portfolio-browser [data-product='runa'] { --card-bg: var(--brand-950); }
-.portfolio-browser [data-product='sanctum'] { --card-bg: var(--brand-900); }
+.portfolio-browser [data-product='glamor'] { --card-bg: var(--brand-900); }
 .portfolio-browser [data-product='meridian'] { --card-bg: var(--brand-700); }
-.portfolio-browser [data-product='runa'],
-.portfolio-browser [data-product='sanctum'],
+.portfolio-browser [data-product='glamor'],
 .portfolio-browser [data-product='meridian'] {
   --card-fg: var(--cream-50);
   --card-muted: var(--text-on-brand-muted);
@@ -3105,8 +3109,7 @@ main[tabindex='-1']:focus {
   --card-fg: var(--cream-50);
   --card-muted: var(--text-on-brand-muted);
 }
-[data-theme='dark'] .portfolio-browser [data-product='loop'] { --card-bg: color-mix(in srgb, var(--brand-200) 22%, var(--surface-page)); }
-[data-theme='dark'] .portfolio-browser [data-product='relay'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, var(--surface-page)); }
+[data-theme='dark'] .portfolio-browser [data-product='design-tokens'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, var(--surface-page)); }
 [data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, var(--surface-page)); }
 
 /* brand-700 is the lightest of the three dark slots: the standard muted ink
@@ -3356,11 +3359,9 @@ main[tabindex='-1']:focus {
   opacity: .82;
 }
 
-#products .portfolio-deco--loop { width: 66px; }
 #products .portfolio-deco--komando { width: 82px; }
 #products .portfolio-deco--trady { width: 68px; }
 #products .portfolio-deco--kongkow { width: 74px; }
-#products .portfolio-deco--relay { width: 78px; }
 #products .portfolio-deco--meridian { width: 70px; }
 
 @media (max-width: 640px) {
@@ -3410,19 +3411,8 @@ main[tabindex='-1']:focus {
   opacity: .9;
 }
 
-#products .portfolio-accessory--runa {
-  border-radius: 57% 43% 48% 52% / 44% 56% 44% 56%;
-  rotate: -7deg;
-}
 
-#products .portfolio-accessory--zoyya {
-  border-radius: 50%;
-}
 
-#products .portfolio-accessory--loop {
-  border-radius: var(--radius-md) var(--radius-xl) var(--radius-md) var(--radius-xl);
-  rotate: 5deg;
-}
 
 #products .portfolio-accessory--komando {
   border-radius: 50% var(--radius-lg) 50% var(--radius-lg);
@@ -3440,11 +3430,6 @@ main[tabindex='-1']:focus {
   rotate: 4deg;
 }
 
-#products .portfolio-accessory--relay {
-  width: 60px;
-  border-radius: var(--radius-full);
-  rotate: -8deg;
-}
 
 #products .portfolio-accessory--meridian {
   border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
