@@ -7,16 +7,15 @@ import ProductLogo from './ProductLogo.jsx';
 
 const groups = [
   { id: 'all', en: 'All products', idLabel: 'Semua produk' },
-  { id: 'work', en: 'Work with AI', idLabel: 'Bekerja dengan AI', products: ['runa', 'sanctum', 'toolips'] },
-  { id: 'build', en: 'Build & manage applications', idLabel: 'Bangun dan kelola aplikasi', products: ['zoyya', 'loop', 'komando'] },
-  { id: 'create', en: 'Create & publish content', idLabel: 'Buat & terbitkan konten', products: ['trady', 'kongkow'] },
-  { id: 'developer', en: 'For developers', idLabel: 'Untuk developer', products: ['relay', 'meridian'] },
-  { id: 'trading', en: 'Trading', idLabel: 'Trading', products: ['cuwan'] }
+  { id: 'servers', en: 'Servers & infrastructure', idLabel: 'Server & infrastruktur', products: ['komando'] },
+  { id: 'files', en: 'Files & video', idLabel: 'File & video', products: ['toolips', 'trady'] },
+  { id: 'automation', en: 'Social posts & trading bots', idLabel: 'Posting sosial & bot trading', products: ['kongkow', 'cuwan'] },
+  { id: 'design', en: 'Design systems', idLabel: 'Design system', products: ['meridian', 'glamor', 'design-tokens'] }
 ];
 
 function ProductMark({ product }) {
   return <span className={`portfolio-mark tint-${product.tint}`} aria-hidden="true">
-    <ProductLogo id={product.id} size={30} />
+    {product.logo ? <ProductLogo id={product.id} size={30} /> : <span className="portfolio-mark-initial">{product.title.charAt(0)}</span>}
   </span>;
 }
 
@@ -31,12 +30,12 @@ export default function ProductPortfolio({ products, lang, full = false }) {
   const [query, setQuery] = useState('');
   const id = lang === 'id';
   const all = productMeta.map(meta => ({ ...meta, ...products[meta.id] }));
-  const featured = ['runa'].map(key => all.find(product => product.id === key));
+  const featured = ['komando'].map(key => all.find(product => product.id === key));
   const selectedGroup = groups.find(group => group.id === filter);
   const visible = full ? all.filter(product =>
     (filter === 'all' || selectedGroup.products.includes(product.id)) &&
     `${product.title} ${product.summary} ${product.section}`.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
-  ) : ['zoyya', 'trady', 'kongkow', 'cuwan', 'komando', 'meridian'].map(key => all.find(product => product.id === key));
+  ) : all;
 
   return <div className="portfolio-browser">
     {!full && <div className="portfolio-featured portfolio-featured--primary">
@@ -49,7 +48,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
     </div>}
 
     {!full && <>
-      {['build', 'create', 'developer'].map(key => {
+      {['files', 'automation', 'design'].map(key => {
         const group = groups.find(item => item.id === key);
         return <section className="portfolio-use-case" data-group={key} key={key}>
           <h3>{id ? group.idLabel : group.en}</h3>
@@ -72,7 +71,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
       {full ? <label className="portfolio-search"><Icon name="search" size={18} /><input aria-label={id ? 'Cari produk' : 'Search products'} placeholder={id ? 'Cari produk…' : 'Search products…'} value={query} onChange={event => setQuery(event.target.value)} /></label> : <a href={`/${lang}/portfolio`}>{id ? 'Lihat semua produk' : 'Explore all products'} <span>({all.length})</span><Icon name="arrow-right" size={18} /></a>}
     </div>
     {full && <div className="portfolio-filters" aria-label={id ? 'Kategori produk' : 'Product categories'}>{groups.map(group => <button key={group.id} type="button" aria-pressed={filter === group.id} onClick={() => setFilter(group.id)}>{id ? group.idLabel : group.en}</button>)}</div>}
-    {full && <p className="portfolio-results" role="status">{visible.length} {id ? 'produk ditemukan' : 'products found'}</p>}
+    {full && <p className="portfolio-results" role="status">{visible.length} {id ? 'produk ditemukan' : visible.length === 1 ? 'product found' : 'products found'}</p>}
     <div className="portfolio-grid">
       {visible.map(product => <a className={`portfolio-card portfolio-card--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
         <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.tag}</span><Icon name="arrow-up-right" size={18} /></div>

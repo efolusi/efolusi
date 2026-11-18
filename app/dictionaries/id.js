@@ -1,3 +1,4 @@
+import { releases } from '../lib/products.js';
 import * as legal from './legal-id.js';
 
 const id = {
@@ -46,7 +47,7 @@ const id = {
     meta: {
       title: 'Efolusi · Kami membangun software dan menjalankannya sendiri',
       description:
-        'Efolusi, perusahaan software di Indonesia. Kami membangun produk sendiri di bidang cloud, infrastruktur, AI, dan tools bisnis, lalu menjaganya tetap jalan.'
+        'Efolusi, perusahaan software di Indonesia. Kami membangun produk sendiri berupa command line open source untuk server, file, video, posting sosial, dan bot trading, beserta design system di baliknya.'
     },
     hero: {
       lead: 'Alat yang',
@@ -56,7 +57,7 @@ const id = {
       sub: 'Kami Efolusi, tim kecil di Indonesia. Kami membangun software kami sendiri, yang mengubah hal-hal yang lambat atau merepotkan jadi terasa gampang. Semua yang ada di sini adalah produk yang kami butuhkan untuk diri kami sendiri lebih dulu.',
       viewPortfolio: 'Lihat yang kami bangun',
       getInTouch: 'Hubungi kami',
-      proof: 'Produk aktif, eksperimen, open source, dan infrastruktur internal, statusnya kami tampilkan apa adanya.'
+      proof: 'Setiap produk dimulai sebagai command line open source yang berjalan di mesin Anda sendiri. Nomor rilis di bawah adalah tag terbaru.'
     },
     marquee: ['Kami bangun, kami jalankan', 'Membosankan kalau memang lebih baik', 'Dibuat untuk tetap hidup', 'Bukan sulap, cuma software yang jalan', 'Kami pakai yang kami rilis'],
     glance: {
@@ -68,7 +69,7 @@ const id = {
           titleA: 'Produk',
           titleEm: 'kami',
           titleB: 'sendiri',
-          body: 'Software untuk bagian pekerjaan yang lambat dan berulang. Ada yang aktif, sedang divalidasi, open source, atau hanya dipakai internal.',
+          body: 'Command line open source untuk pekerjaan yang lambat dan berulang, masing-masing dengan nomor rilis dan statusnya.',
           cta: 'Lihat portofolio'
         },
         token: {
@@ -91,97 +92,73 @@ const id = {
       headA: "Apa yang ingin",
       headEm: "Anda kerjakan",
       headB: "?",
-      lede: "Bangun aplikasi, siapkan konten, atau kelola pekerjaan dengan AI. Mulai dari produk yang Anda butuhkan."
+      lede: "Kelola server, potong video, jadwalkan posting, atau jalankan bot trading. Semuanya command line yang bisa dipakai Anda dan agen AI Anda. Akun dan tagihan dipakai bersama oleh semuanya lewat Efolusi SSO dan Pay."
     },
     products: {
-      zoyya: {
-        section: "Desain & aplikasi",
-        desc: "Ubah brief yang disetujui menjadi produk web yang didesain dan dapat dijalankan. Alur mobile, database, dan domain terkelola masih diluncurkan bertahap.",
-        specs: ["Pembuatan web", "Preview berjalan", "Lainnya bertahap"],
-        buttonLabel: 'Kunjungi ZOYYA',
-        tag: "Desain & aplikasi",
-        summary: "Desain dan bangun produk web; alur aplikasi lainnya masih diluncurkan bertahap."
-      },
-      runa: {
-        headline: "Tim AI untuk Anda atau bisnis Anda.",
-        section: "Tim AI",
-        desc: "Bangun dan koordinasikan tim AI pribadi atau bisnis: tetapkan tujuan, delegasikan pekerjaan, tinjau hasil, dan hubungkan produk Efolusi yang disetujui sebagai alat.",
-        specs: ["Pribadi & bisnis", "Tujuan & delegasi", "Orkestrasi alat"],
-        buttonLabel: 'Jelajahi Runa',
-        tag: "Tim AI",
-        summary: "Koordinasikan tim AI pribadi atau bisnis beserta alat yang boleh mereka gunakan."
-      },
-      relay: {
-        section: "Infrastruktur AI",
-        desc: "Akses berbagai model AI dan pantau penggunaannya melalui satu API.",
-        specs: ['AI gateway', 'Multi-provider', 'Satu control plane'],
-        buttonLabel: 'Kunjungi Relay',
-        tag: "Infrastruktur AI",
-        summary: "Akses berbagai model AI dan pantau penggunaannya melalui satu API."
+      komando: {
+        headline: "Satu command line yang aman untuk server Anda.",
+        section: "Server & infrastruktur",
+        desc: "Server, database, cache, antrean, storage, cluster, dan VPN di balik satu perintah yang bisa dipakai Anda dan agen AI Anda. Kata sandi tersimpan di vault terenkripsi yang tidak pernah dilihat agen.",
+        specs: ['CLI open source', releases.komando, 'macOS, Linux & Windows'],
+        buttonLabel: 'Kunjungi Komando',
+        tag: "Server & infrastruktur",
+        summary: "Satu command line untuk server, database, storage, cluster, dan VPN, aman diserahkan ke agen AI."
       },
       trady: {
         section: "Video",
-        desc: "Ubah rekaman panjang menjadi klip pendek dengan caption.",
-        specs: ['Content clipper', 'Video panjang masuk', 'Klip pendek keluar'],
+        desc: "Command line yang mengubah rekaman panjang menjadi klip pendek bertakarir di mesin Anda sendiri.",
+        specs: ['CLI open source', releases.trady, 'Jalan lokal'],
         buttonLabel: 'Kunjungi Trady',
         tag: "Video",
-        summary: "Ubah rekaman panjang menjadi klip pendek dengan caption."
+        summary: "Ubah rekaman panjang menjadi klip pendek bertakarir di mesin Anda sendiri."
       },
       toolips: {
-        section: "Utilitas",
-        desc: "Tools praktis untuk pekerjaan file dan tugas kecil sehari-hari.",
-        specs: ['All-in-one tools', 'Di browser', 'Tanpa akun'],
+        section: "File",
+        desc: "Command line untuk PDF, gambar, pemindaian secret, dan cek TLS. File Anda tetap di mesin Anda.",
+        specs: ['CLI open source', releases.toolips, 'Jalan lokal'],
         buttonLabel: 'Kunjungi Toolips',
-        tag: "Utilitas",
-        summary: "Tools praktis untuk pekerjaan file dan tugas kecil sehari-hari."
+        tag: "File",
+        summary: "PDF, gambar, pemindaian secret, dan cek TLS dari satu command line lokal."
       },
       cuwan: {
-        section: "Trading",
-        desc: "Siapkan dan evaluasi strategi grid di workspace paper-only selama kontrol eksekusi divalidasi.",
-        specs: ["Paper only", "Strategi grid", "Eksekusi divalidasi"],
+        section: "Bot trading",
+        desc: "Command line untuk bot grid trading di bursa kripto. Bot berjalan di mesin Anda sendiri.",
+        specs: ['CLI open source', 'Belum ada rilis', 'Jalan lokal'],
         buttonLabel: 'Kunjungi Cuwan',
-        tag: "Trading",
-        summary: "Evaluasi strategi grid tanpa mengklaim otomasi dana nyata."
+        tag: "Bot trading",
+        summary: "Jalankan bot grid trading di bursa kripto dari mesin Anda sendiri."
       },
       kongkow: {
-        section: "Publikasi sosial",
-        desc: "Bangun komunitas dan siapkan publikasi lintas kanal. Konektor yang sudah dirilis ditandai di dalam aplikasi.",
-        specs: ['Social network', 'Cross-post', 'Tulis sekali'],
+        section: "Posting sosial",
+        desc: "Command line untuk menulis, menjadwalkan, dan menerbitkan posting media sosial Anda.",
+        specs: ['CLI open source', releases.kongkow, 'Jalan lokal'],
         buttonLabel: 'Kunjungi Kongkow',
-        tag: "Publikasi sosial",
-        summary: "Bangun komunitas dan terbitkan hanya melalui konektor yang ditandai siap."
-      },
-      loop: {
-        section: "Spesifikasi produk",
-        desc: "Perjelas kebutuhan dan kriteria selesai sebelum pengembangan dimulai.",
-        specs: ['Workspace spec', 'Ter-review', 'Ter-versi'],
-        buttonLabel: 'Kunjungi Loop',
-        tag: "Spesifikasi produk",
-        summary: "Perjelas kebutuhan dan kriteria selesai sebelum pengembangan dimulai."
-      },
-      sanctum: {
-        section: "Privasi & pengetahuan",
-        desc: "Kelola pengetahuan privat dan atur informasi yang boleh dibagikan kepada AI.",
-        specs: ["Pengetahuan privat", "Kontrol pengungkapan"],
-        buttonLabel: 'Kunjungi Sanctum',
-        tag: "Privasi & pengetahuan",
-        summary: "Kelola pengetahuan privat dan atur informasi yang boleh dibagikan kepada AI."
-      },
-      komando: {
-        section: "Infrastruktur",
-        desc: "Pantau HTTP, SSL, dan DNS dari satu dashboard. Operasi infrastruktur yang lebih luas masih diluncurkan bertahap.",
-        specs: ['HTTP, SSL & DNS', 'Monitoring', 'Lainnya bertahap'],
-        buttonLabel: 'Kunjungi Komando',
-        tag: "Infrastruktur",
-        summary: "Pantau HTTP, SSL, dan DNS; operasi lainnya masih diluncurkan bertahap."
+        tag: "Posting sosial",
+        summary: "Tulis, jadwalkan, dan terbitkan posting media sosial dari satu command line."
       },
       meridian: {
         section: "Design system",
-        desc: "Bangun UI yang konsisten dengan komponen React open source.",
-        specs: ['Open source', 'Design system', 'Lisensi MIT'],
+        desc: "Design system untuk produk web kami: komponen React dan token, terbit di npm.",
+        specs: ['Open source', 'Web, React', 'Apache-2.0'],
         buttonLabel: 'Kunjungi Meridian',
         tag: "Design system",
-        summary: "Bangun UI yang konsisten dengan komponen React open source."
+        summary: "Komponen React dan token untuk produk web kami, terbit sebagai @efolusi/meridian."
+      },
+      glamor: {
+        section: "Design system",
+        desc: "Design system native untuk aplikasi Mac, iPhone, dan iPad kami, dibangun di atas SwiftUI.",
+        specs: ['Open source', 'SwiftUI', 'Apache-2.0'],
+        buttonLabel: 'Lihat Glamor di GitHub',
+        tag: "Design system",
+        summary: "Komponen SwiftUI dan token untuk aplikasi Mac, iPhone, dan iPad kami."
+      },
+      'design-tokens': {
+        section: "Design system",
+        desc: "Satu set token warna, tipografi, dan jarak yang dipakai bersama oleh Meridian dan Glamor.",
+        specs: ['Open source', 'JSON', 'Apache-2.0'],
+        buttonLabel: 'Lihat token di GitHub',
+        tag: "Design system",
+        summary: "Token warna, tipografi, dan jarak bersama di balik Meridian dan Glamor."
       }
     },
     team: {
@@ -318,81 +295,46 @@ const id = {
     caseLabels: { problem: 'Masalahnya', solution: 'Yang kami bangun', result: 'Posisinya sekarang' },
     cases: [
       {
-        name: 'ZOYYA',
-        href: 'https://zoyya.xyz',
-        problem: 'Kebanyakan asisten AI menunggu disuruh langkah demi langkah, sehingga jadi pekerjaan kedua, bukan bantuan.',
-        solution: 'Workspace agent yang menerima tujuan, menyusun langkahnya sendiri, dan mempelajari konteks Anda sambil berjalan.',
-        result: 'Beta aktif di zoyya.xyz. Zoyya acts, you watch: setiap proses terlihat dan dapat ditinjau.'
-      },
-      {
-        name: 'Runa',
-        href: 'https://runa.efolusi.com',
-        problem: 'Menjalankan perusahaan kecil berarti pekerjaan operasional yang sama tiap minggu, tanpa siapa pun untuk dititipi.',
-        solution: 'Control plane tempat tim membangun, menjalankan, dan mengatur agent AI di seluruh organisasi, lapisan platform tempat produk seperti Zoyya dibangun.',
-        result: 'Sedang dibangun dan dipakai di operasional kami sendiri lebih dulu; ketersediaan untuk publik belum diklaim.'
-      },
-      {
-        name: 'Relay',
-        href: 'https://relay.efolusi.com',
-        problem: 'Tiap produk butuh key, kuota, dan tagihan sendiri untuk tiap provider LLM, dan semuanya tidak sebanding.',
-        solution: 'Satu control plane di depan semua provider AI, dengan satu key, satu set limit, dan satu tagihan.',
-        result: 'Live sebagai gateway yang dipanggil semua produk Efolusi untuk AI; routing provider dan biaya terlihat di satu tempat.'
-      },
-      {
-        name: 'Trady',
-        href: 'https://trady.efolusi.com',
-        problem: 'Satu video panjang sebenarnya berisi konten untuk seminggu, tapi memotongnya secara manual menghabiskan semalaman.',
-        solution: 'Content clipper: video panjang masuk, klip pendek bercaption keluar, dengan review sebelum dipublikasikan.',
-        result: 'Sedang divalidasi sebagai layanan berbayar untuk agency dan tim konten; belum dinyatakan sebagai produk matang.'
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Server, database, storage, dan cluster masing-masing punya login dan perintah sendiri, dan agen AI yang diberi kata sandinya bisa merusak sesuatu.',
+        solution: 'Satu command line di depan semuanya. Kata sandi tersimpan di vault terenkripsi, ia hanya membaca kecuali Anda bilang lain, dan setiap tindakan tercatat.',
+        result: `Open source, rilis ${releases.komando}. Aplikasi desktop dan mobile menyusul; tidak ada aplikasi web.`
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
-        problem: 'Kerjaan file kecil seperti konversi dan kompres selalu berakhir di situs asing yang penuh iklan dan pelacak.',
-        solution: 'Kumpulan utilitas file yang langsung digunakan di browser tanpa akun.',
-        result: 'Live di toolips.xyz dengan tier gratis dan paket Pro berbayar.'
+        problem: 'Pekerjaan file kecil seperti konversi dan kompresi selalu berakhir di situs penuh iklan yang tidak Anda kenal.',
+        solution: 'Command line lokal untuk PDF, gambar, pemindaian secret, dan cek TLS, jadi file tidak pernah keluar dari mesin Anda.',
+        result: `Open source, rilis pertama ${releases.toolips}. Aplikasi web dan desktop direncanakan.`
       },
       {
-        name: 'Cuwan',
-        href: 'https://cuwan.xyz',
-        problem: 'Menjalankan grid secara manual berarti sering telat pasang order: saat harga naik atau turun dalam, kesempatan profitnya hilang.',
-        solution: 'Bot trading grid dan DCA otomatis dengan konfigurasi manual atau berbantuan model.',
-        result: 'Masuk validasi revenue dengan gerbang legal, keamanan kredensial, dan performa yang dapat diaudit. Satu-satunya produk trading kami.'
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'Satu video panjang berisi konten untuk seminggu, tapi memotongnya manual menghabiskan satu malam.',
+        solution: 'Command line lokal: rekaman panjang masuk, klip pendek bertakarir keluar, dirender di mesin Anda sendiri.',
+        result: `Open source, rilis pertama ${releases.trady}. Aplikasi desktop untuk render lokal direncanakan.`
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
-        problem: 'Konten yang sama harus ditempel ulang ke banyak platform satu per satu, setiap hari, dan selalu ada yang terlewat.',
-        solution: 'Social network tempat Anda menulis sekali dan cross-post ke semua akun sosmed yang terhubung.',
-        result: 'Sedang direposisi dan diuji untuk revenue; product-market fit belum terbukti.'
+        problem: 'Posting yang sama harus ditempel ke satu platform demi satu platform, dan selalu ada yang terlewat.',
+        solution: 'Command line untuk menulis, menjadwalkan, dan menerbitkan posting sosial. Jadwalnya berjalan di mesin Anda sendiri.',
+        result: `Open source, rilis ${releases.kongkow}. Aplikasi web lebih dulu, lalu aplikasi mobile.`
       },
       {
-        name: 'Loop',
-        href: 'https://loop.efolusi.com',
-        problem: 'Pekerjaan dimulai sebelum semua orang sepakat apa yang dibangun, sehingga rework datang belakangan dan lebih mahal.',
-        solution: 'Workspace spesifikasi tempat PRD dan spec ditinjau serta diberi versi sebelum development dimulai.',
-        result: 'Sedang dibangun dan dipakai di produk kami sendiri lebih dulu: the spec comes first.'
+        name: 'Cuwan',
+        href: 'https://cuwan.xyz',
+        problem: 'Menjalankan grid secara manual membuat order masuk terlambat saat harga bergerak tajam.',
+        solution: 'Command line untuk bot grid trading di bursa kripto, berjalan di mesin Anda dengan kunci bursa Anda sendiri.',
+        result: 'Open source, belum ada rilis. Satu-satunya produk trading yang kami buat.'
       },
       {
-        name: 'Sanctum',
-        href: 'https://sanctum.efolusi.com',
-        problem: 'Memberi konteks yang berguna ke asisten AI biasanya berarti menyerahkan rahasia Anda dalam bentuk terbuka.',
-        solution: 'Vault dan private knowledge system yang bisa dipakai AI Anda tapi tidak pernah bisa dibacanya.',
-        result: 'Sedang dibangun; model enkripsinya adalah produknya sendiri dan sedang ditinjau sebelum klaim publik apa pun.'
-      },
-      {
-        name: 'Komando',
-        href: 'https://komando.efolusi.com',
-        problem: 'Infrastruktur kami tersebar di banyak server dan dashboard, dan tiap insiden dimulai dengan mencari-cari.',
-        solution: 'Satu dashboard untuk semua server, database, URL, dan sertifikat yang Anda miliki, lengkap dengan monitoring.',
-        result: 'Sedang dibangun sebagai lapisan operasi bersama; adopsi lintas produk belum diklaim sebelum ada bukti.'
-      },
-      {
-        name: 'Meridian',
+        name: 'Meridian, Glamor, dan Design Tokens',
         href: 'https://meridian.efolusi.com',
-        problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang belasan kali.',
-        solution: 'Design system untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang, dipublikasikan sebagai package npm.',
-        result: 'Dipublikasikan sebagai @efolusi/meridian dengan lisensi Apache-2.0; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
+        problem: 'Setiap produk butuh tombol, form, dan warna yang sama, dan tim kecil tidak bisa mendesain ulang semuanya untuk tiap produk.',
+        solution: 'Meridian untuk web (React), Glamor untuk Mac, iPhone, dan iPad (SwiftUI), dan satu set token desain bersama di bawah keduanya.',
+        result: 'Ketiganya open source dengan lisensi Apache-2.0. Meridian ada di npm sebagai @efolusi/meridian.'
       }
     ],
     paperTitleA: 'Perusahaan',

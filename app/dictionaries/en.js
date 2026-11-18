@@ -1,3 +1,4 @@
+import { releases } from '../lib/products.js';
 import * as legal from './legal-en.js';
 
 const en = {
@@ -46,7 +47,7 @@ const en = {
     meta: {
       title: 'Efolusi · We build software and run it',
       description:
-        'Efolusi is a software company in Indonesia. We build our own products across cloud, infrastructure, AI and everyday business tools, and we keep them running.'
+        'Efolusi is a software company in Indonesia. We build our own products: open-source command lines for servers, files, video, social posts and trading bots, plus the design systems behind them.'
     },
     hero: {
       lead: 'Tools that',
@@ -56,7 +57,7 @@ const en = {
       sub: "We're Efolusi, a small team in Indonesia. We build our own software, the kind that takes something slow or fiddly and makes it feel easy. Everything here is a product we wanted for ourselves first.",
       viewPortfolio: "See what we've built",
       getInTouch: 'Get in touch',
-      proof: 'Active products, validations, open source, and internal infrastructure, shown with their real status.'
+      proof: 'Every product starts as an open-source command line that runs on your own machine. Release numbers below are the latest tags.'
     },
     marquee: ['We build it, then we run it', 'Boring where boring is better', 'Made to stay up', 'No magic, just software that works', 'We use what we ship'],
     glance: {
@@ -68,7 +69,7 @@ const en = {
           titleA: 'Our',
           titleEm: 'own',
           titleB: 'products',
-          body: "Software for slow, repetitive work. Some is active, some under validation, some open source, and some internal only.",
+          body: "Open-source command lines for slow, repetitive work, each with its release number and status.",
           cta: 'See the portfolio'
         },
         token: {
@@ -91,97 +92,73 @@ const en = {
       headA: "What would you",
       headEm: "like to do",
       headB: "?",
-      lede: "Build an app, prepare content, or manage work with AI. Start with the product you need."
+      lede: "Run your servers, clip a video, schedule posts or run a trading bot. Each one is a command line you and your AI agent can use. Accounts and billing are shared across all of them through Efolusi SSO and Pay."
     },
     products: {
-      zoyya: {
-        section: "Design & apps",
-        desc: "Turn an approved brief into a designed, runnable web product. Mobile, database, and managed-domain workflows are rolling out.",
-        specs: ["Web authoring", "Runnable previews", "More in rollout"],
-        buttonLabel: 'Visit ZOYYA',
-        tag: "Design & apps",
-        summary: "Design and build runnable web products; broader app workflows are rolling out."
-      },
-      runa: {
-        headline: "An AI team for you or your business.",
-        section: "AI teams",
-        desc: "Build and coordinate a personal or business AI team: set goals, delegate work, review results, and connect approved Efolusi products as tools.",
-        specs: ["Personal & business", "Goals & delegation", "Tool orchestration"],
-        buttonLabel: 'Explore Runa',
-        tag: "AI teams",
-        summary: "Coordinate personal or business AI teams and the tools they are allowed to use."
-      },
-      relay: {
-        section: "AI infrastructure",
-        desc: "Access multiple AI models and track usage through one API.",
-        specs: ['AI gateway', 'Multi-provider', 'One control plane'],
-        buttonLabel: 'Visit Relay',
-        tag: "AI infrastructure",
-        summary: "Access multiple AI models and track usage through one API."
+      komando: {
+        headline: "One safe command line for your servers.",
+        section: "Servers & infrastructure",
+        desc: "Servers, databases, caches, queues, storage, clusters and VPNs behind one command that you and your AI agent can both use. Passwords stay in an encrypted vault the agent never sees.",
+        specs: ['Open source CLI', releases.komando, 'macOS, Linux & Windows'],
+        buttonLabel: 'Visit Komando',
+        tag: "Servers & infrastructure",
+        summary: "One command line for servers, databases, storage, clusters and VPNs, safe to hand to an AI agent."
       },
       trady: {
         section: "Video",
-        desc: "Turn long recordings into short, captioned clips.",
-        specs: ['Content clipper', 'Long video in', 'Short clips out'],
+        desc: "A command line that turns long recordings into short captioned clips on your own machine.",
+        specs: ['Open source CLI', releases.trady, 'Runs locally'],
         buttonLabel: 'Visit Trady',
         tag: "Video",
-        summary: "Turn long recordings into short, captioned clips."
+        summary: "Turn long recordings into short captioned clips on your own machine."
       },
       toolips: {
-        section: "Utilities",
-        desc: "Practical tools for everyday file tasks and small jobs.",
-        specs: ['All-in-one tools', 'In the browser', 'No account needed'],
+        section: "Files",
+        desc: "A command line for PDFs, images, secret scans and TLS checks. Your files stay on your machine.",
+        specs: ['Open source CLI', releases.toolips, 'Runs locally'],
         buttonLabel: 'Visit Toolips',
-        tag: "Utilities",
-        summary: "Practical tools for everyday file tasks and small jobs."
+        tag: "Files",
+        summary: "PDFs, images, secret scans and TLS checks from one local command line."
       },
       cuwan: {
-        section: "Trading",
-        desc: "Prepare and evaluate grid strategies in a paper-only workspace while execution controls are validated.",
-        specs: ["Paper only", "Grid strategies", "Execution in validation"],
+        section: "Trading bots",
+        desc: "A command line for grid trading bots on crypto exchanges. The bots run on your own machine.",
+        specs: ['Open source CLI', 'No release yet', 'Runs locally'],
         buttonLabel: 'Visit Cuwan',
-        tag: "Trading",
-        summary: "Evaluate grid strategies without claiming live-funds automation."
+        tag: "Trading bots",
+        summary: "Run grid trading bots on crypto exchanges from your own machine."
       },
       kongkow: {
-        section: "Social publishing",
-        desc: "Build your community and prepare cross-channel publishing. Released connectors are identified inside the app.",
-        specs: ['Social network', 'Cross-post', 'Write once'],
+        section: "Social posts",
+        desc: "A command line to draft, schedule and publish your social media posts.",
+        specs: ['Open source CLI', releases.kongkow, 'Runs locally'],
         buttonLabel: 'Visit Kongkow',
-        tag: "Social publishing",
-        summary: "Build a community and publish only through connectors marked ready."
-      },
-      loop: {
-        section: "Product specifications",
-        desc: "Clarify requirements and what done looks like before development starts.",
-        specs: ['Spec workspace', 'Reviewed', 'Versioned'],
-        buttonLabel: 'Visit Loop',
-        tag: "Product specifications",
-        summary: "Clarify requirements and what done looks like before development starts."
-      },
-      sanctum: {
-        section: "Privacy & knowledge",
-        desc: "Manage private knowledge and control what information can be shared with AI.",
-        specs: ["Private knowledge", "Disclosure controls"],
-        buttonLabel: 'Visit Sanctum',
-        tag: "Privacy & knowledge",
-        summary: "Manage private knowledge and control what information can be shared with AI."
-      },
-      komando: {
-        section: "Infrastructure",
-        desc: "Monitor HTTP, SSL, and DNS from one dashboard. Broader infrastructure operations are rolling out.",
-        specs: ['HTTP, SSL & DNS', 'Monitoring', 'More in rollout'],
-        buttonLabel: 'Visit Komando',
-        tag: "Infrastructure",
-        summary: "Monitor HTTP, SSL, and DNS; broader operations are rolling out."
+        tag: "Social posts",
+        summary: "Draft, schedule and publish social media posts from one command line."
       },
       meridian: {
         section: "Design system",
-        desc: "Build consistent interfaces with open-source React components.",
-        specs: ['Open source', 'Design system', 'MIT licensed'],
+        desc: "The design system for our web products: React components and tokens, published on npm.",
+        specs: ['Open source', 'Web, React', 'Apache-2.0'],
         buttonLabel: 'Visit Meridian',
         tag: "Design system",
-        summary: "Build consistent interfaces with open-source React components."
+        summary: "React components and tokens for our web products, published as @efolusi/meridian."
+      },
+      glamor: {
+        section: "Design system",
+        desc: "The native design system for our Mac, iPhone and iPad apps, built on SwiftUI.",
+        specs: ['Open source', 'SwiftUI', 'Apache-2.0'],
+        buttonLabel: 'View Glamor on GitHub',
+        tag: "Design system",
+        summary: "SwiftUI components and tokens for our Mac, iPhone and iPad apps."
+      },
+      'design-tokens': {
+        section: "Design system",
+        desc: "One set of colour, type and spacing tokens shared by Meridian and Glamor.",
+        specs: ['Open source', 'JSON', 'Apache-2.0'],
+        buttonLabel: 'View tokens on GitHub',
+        tag: "Design system",
+        summary: "The shared colour, type and spacing tokens behind Meridian and Glamor."
       }
     },
     team: {
@@ -318,81 +295,46 @@ const en = {
     caseLabels: { problem: 'The problem', solution: 'What we built', result: 'Where it stands' },
     cases: [
       {
-        name: 'ZOYYA',
-        href: 'https://zoyya.xyz',
-        problem: 'Most AI assistants wait to be told every single step, which turns them into a second job instead of actual help.',
-        solution: 'An agent workspace that takes a goal, works out the steps itself, and learns your context as it goes.',
-        result: 'Active beta at zoyya.xyz. Zoyya acts, you watch: every run is visible and reviewable.'
-      },
-      {
-        name: 'Runa',
-        href: 'https://runa.efolusi.com',
-        problem: 'Running a small company means the same operational work every week, and nobody left to hand it to.',
-        solution: 'A control plane where teams build, run, and govern AI agents across the org, the platform layer products like Zoyya build on.',
-        result: 'In build, run on our own operations first; external availability is not claimed yet.'
-      },
-      {
-        name: 'Relay',
-        href: 'https://relay.efolusi.com',
-        problem: 'Every product needed its own keys, quotas, and billing for every LLM provider, and none of it was comparable.',
-        solution: 'One control plane in front of every AI provider, with a single key, one set of limits, and one bill.',
-        result: 'Live as the gateway all Efolusi products call for AI; provider routing and spend are visible in one place.'
-      },
-      {
-        name: 'Trady',
-        href: 'https://trady.efolusi.com',
-        problem: 'One long video actually holds a week of content, but cutting it by hand still eats up an entire evening.',
-        solution: 'A content clipper: long video in, short captioned clips out, with a review pass before anything ships.',
-        result: 'Being validated as a paid service for agencies and content teams; not represented as a mature product.'
+        name: 'Komando',
+        href: 'https://komando.efolusi.com',
+        problem: 'Servers, databases, storage and clusters each come with their own logins and commands, and an AI agent given those passwords can break things.',
+        solution: 'One command line in front of all of them. Passwords stay in an encrypted vault, it only reads unless you say otherwise, and every action is recorded.',
+        result: `Open source, release ${releases.komando}. Desktop and mobile apps come next; there is no web app.`
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
-        problem: 'Small file jobs like converting and compressing always end up on some ad-filled, tracker-heavy site you have never heard of.',
-        solution: 'A collection of file utilities that run directly in the browser without an account.',
-        result: 'Live at toolips.xyz with a free tier and a paid Pro plan.'
+        problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
+        solution: 'A local command line for PDFs, images, secret scans and TLS checks, so the files never leave your machine.',
+        result: `Open source, first release ${releases.toolips}. A web app and desktop app are planned.`
       },
       {
-        name: 'Cuwan',
-        href: 'https://cuwan.xyz',
-        problem: 'Running a grid by hand means orders go in late: when the price swings up or down hard, the profit opportunity is already gone.',
-        solution: 'Automated grid and DCA trading bots with manual or model-assisted configuration.',
-        result: 'In revenue validation with legal, credential-security, and auditable-performance gates. The only trading product we make.'
+        name: 'Trady',
+        href: 'https://trady.efolusi.com',
+        problem: 'One long video holds a week of content, but cutting it by hand eats an entire evening.',
+        solution: 'A local command line: long recording in, short captioned clips out, rendered on your own machine.',
+        result: `Open source, first release ${releases.trady}. A desktop app for local rendering is planned.`
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
-        problem: 'The same content had to be pasted into platform after platform, every single day, and something always got missed.',
-        solution: 'A social network where you write once and cross-post to every social account you connect.',
-        result: 'Being repositioned and tested for revenue; product-market fit is not yet proven.'
+        problem: 'The same post had to be pasted into platform after platform, and something always got missed.',
+        solution: 'A command line to draft, schedule and publish social posts. The schedule runs on your own machine.',
+        result: `Open source, release ${releases.kongkow}. A web app is first in line, then a mobile app.`
       },
       {
-        name: 'Loop',
-        href: 'https://loop.efolusi.com',
-        problem: 'Work started before anybody agreed what was being built, so the rework arrived later and cost more.',
-        solution: 'A specification workspace where PRDs and specs are reviewed and versioned before development starts.',
-        result: 'In build and used on our own products first: the spec comes first.'
+        name: 'Cuwan',
+        href: 'https://cuwan.xyz',
+        problem: 'Running a grid by hand means orders go in late when the price swings hard.',
+        solution: 'A command line for grid trading bots on crypto exchanges, running on your own machine with your own exchange keys.',
+        result: 'Open source, no release yet. The only trading product we make.'
       },
       {
-        name: 'Sanctum',
-        href: 'https://sanctum.efolusi.com',
-        problem: 'Giving an AI assistant useful context usually means handing it your secrets in plain text.',
-        solution: 'A vault and private knowledge system your AI can use but never read.',
-        result: 'In build; the encryption model is the product and is being reviewed before any public claim.'
-      },
-      {
-        name: 'Komando',
-        href: 'https://komando.efolusi.com',
-        problem: 'Our own infrastructure was spread across servers and dashboards, and every incident started with a search.',
-        solution: 'One dashboard for every server, database, URL, and certificate you own, with monitoring attached.',
-        result: 'Being built as a shared operations layer; cross-product adoption is not claimed before it is evidenced.'
-      },
-      {
-        name: 'Meridian',
+        name: 'Meridian, Glamor and Design Tokens',
         href: 'https://meridian.efolusi.com',
-        problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them a dozen times.',
-        solution: 'A design system for reusable components, tokens, and interface patterns, published as an npm package.',
-        result: 'Published as @efolusi/meridian under the Apache-2.0 license; its contribution to product consistency can be inspected directly.'
+        problem: 'Every product needs the same buttons, forms and colours, and a small team cannot redesign them for each one.',
+        solution: 'Meridian for the web (React), Glamor for Mac, iPhone and iPad (SwiftUI), and one shared set of design tokens under both.',
+        result: 'All three are open source under Apache-2.0. Meridian is on npm as @efolusi/meridian.'
       }
     ],
     paperTitleA: 'The company',
