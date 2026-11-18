@@ -13,22 +13,6 @@
   --hero-bottom: 88px;
   --page-hero-top: 80px;
   --page-hero-bottom: 56px;
-
-  /* Minimum hit area for touch layouts (WCAG 2.5.5 / Apple HIG). */
-  --tap-min: 44px;
-
-  /* One rounding scale for the whole site, softer than Meridian's default so
-     the playful surfaces agree. Meridian's own components read these tokens
-     too, so buttons, inputs and tags round with everything else.
-       sm  8  — ticks and other small squares
-       md 12  — icon buttons, menu items, inner controls
-       lg 16  — chips and small tiles
-       xl 24  — every large surface: cards, panels, forms, the stage
-       full   — pills, badges, tags, round icons */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
 }
 
 @media (max-width: 1020px) {
@@ -3094,7 +3078,7 @@ main[tabindex='-1']:focus {
    never inherits a theme colour that clashes with a fixed card colour. */
 .portfolio-browser [data-product] {
   --card-bg: var(--surface-card);
-  --card-fg: #1E1A14;
+  --card-fg: var(--sand-950);
   --card-muted: var(--sand-700);
 }
 .portfolio-browser [data-product='zoyya'] { --card-bg: var(--warning-100); }
@@ -3121,9 +3105,9 @@ main[tabindex='-1']:focus {
   --card-fg: var(--cream-50);
   --card-muted: var(--text-on-brand-muted);
 }
-[data-theme='dark'] .portfolio-browser [data-product='loop'] { --card-bg: color-mix(in srgb, var(--brand-200) 22%, #191512); }
-[data-theme='dark'] .portfolio-browser [data-product='relay'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, #191512); }
-[data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, #191512); }
+[data-theme='dark'] .portfolio-browser [data-product='loop'] { --card-bg: color-mix(in srgb, var(--brand-200) 22%, var(--surface-page)); }
+[data-theme='dark'] .portfolio-browser [data-product='relay'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, var(--surface-page)); }
+[data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, var(--surface-page)); }
 
 /* brand-700 is the lightest of the three dark slots: the standard muted ink
    (cream at 75%) reaches only 4.44:1 on it. 85% gives 5.2:1 in both themes. */
