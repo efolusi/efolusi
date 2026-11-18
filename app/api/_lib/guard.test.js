@@ -63,17 +63,12 @@ describe('passesRateLimit', () => {
     expect(await passesRateLimit(request, 'TEST_LIMIT', { nodeEnv: 'production', getContext: context({ limit: async () => { throw new Error('provider failure'); } }) })).toBe(false);
   });
 
-  it('enforces the native in-memory limiter without any injected context', async () => {
-    const ipReq = (ip) => req({ 'x-real-ip': ip });
-    const opts = { nodeEnv: 'production' };
-    for (let i = 0; i < 5; i += 1) {
-      expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_TEST_LIMIT', opts)).toBe(true);
-    }
-    expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_TEST_LIMIT', opts)).toBe(false);
-    // A different client IP has its own bucket.
-    expect(await passesRateLimit(ipReq('198.51.100.8'), 'NATIVE_TEST_LIMIT', opts)).toBe(true);
-    // A different limiter name has its own bucket too.
-    expect(await passesRateLimit(ipReq('198.51.100.7'), 'NATIVE_OTHER_LIMIT', opts)).toBe(true);
+  it('keys the limiter by CF-Connecting-IP', async () => {
+    const keys = [];
+    const getContext = context({ limit: async ({ key }) => { keys.push(key); return { success: true }; } });
+    await passesRateLimit(req({ 'cf-connecting-ip': '198.51.100.7' }), 'TEST_LIMIT', { nodeEnv: 'production', getContext });
+    await passesRateLimit(req({ 'x-real-ip': '198.51.100.8' }), 'TEST_LIMIT', { nodeEnv: 'production', getContext });
+    expect(keys).toEqual(['198.51.100.7', 'unknown']);
   });
 
   it('allows missing binding only with explicit non-production bypass', async () => {

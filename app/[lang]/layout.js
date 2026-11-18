@@ -1,13 +1,15 @@
 import '@efolusi/meridian/styles.css';
 import '../globals.css';
+import { notFound } from 'next/navigation';
 import { getDictionary, locales } from '../dictionaries/config.js';
 import { themeInit } from '../_lib/theme-init.js';
 
 const siteUrl = 'https://efolusi.com';
 
 /* Only the two locales exist. Anything else in the first segment
-   (favicon.ico, typos) is a 404 instead of a copy of the English page. */
-export const dynamicParams = false;
+   (favicon.ico, typos) is a 404 instead of a copy of the English page.
+   The layout checks this itself: `dynamicParams = false` makes OpenNext on
+   Workers answer 404 even for the prerendered locales. */
 
 export const viewport = {
   themeColor: [
@@ -83,6 +85,7 @@ const organizationLd = {
 
 export default async function LangLayout({ children, params }) {
   const { lang } = await params;
+  if (!locales.includes(lang)) notFound();
   const d = getDictionary(lang);
 
   return (

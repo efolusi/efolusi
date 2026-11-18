@@ -66,3 +66,9 @@ const nextConfig = {
 };
 
 export default nextConfig;
+
+// `next dev` gets the wrangler.jsonc bindings (rate limits) through the OpenNext adapter.
+if (process.env.NODE_ENV === 'development') {
+  const { initOpenNextCloudflareForDev } = await import('@opennextjs/cloudflare');
+  initOpenNextCloudflareForDev();
+}
