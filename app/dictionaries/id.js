@@ -392,7 +392,7 @@ const id = {
         href: 'https://meridian.efolusi.com',
         problem: 'Tiap produk yang kami mulai butuh tombol, form, dan warna yang sama, dan tim kecil tidak sanggup mendesain ulang belasan kali.',
         solution: 'Design system untuk komponen, token, dan pola antarmuka yang dapat dipakai ulang, dipublikasikan sebagai package npm.',
-        result: 'Dipublikasikan sebagai @efolusi/meridian dengan lisensi MIT; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
+        result: 'Dipublikasikan sebagai @efolusi/meridian dengan lisensi Apache-2.0; kontribusinya pada konsistensi produk dapat diperiksa langsung.'
       }
     ],
     paperTitleA: 'Perusahaan',

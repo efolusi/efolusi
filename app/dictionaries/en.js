@@ -392,7 +392,7 @@ const en = {
         href: 'https://meridian.efolusi.com',
         problem: 'Every product we started needed the same buttons, forms, and colors, and a small team cannot afford to redesign them a dozen times.',
         solution: 'A design system for reusable components, tokens, and interface patterns, published as an npm package.',
-        result: 'Published as @efolusi/meridian under the MIT license; its contribution to product consistency can be inspected directly.'
+        result: 'Published as @efolusi/meridian under the Apache-2.0 license; its contribution to product consistency can be inspected directly.'
       }
     ],
     paperTitleA: 'The company',
