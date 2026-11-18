@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
@@ -30,20 +30,12 @@ describe('language redirect external origin', () => {
     );
   });
 
-  it('deploys production only from a tag on main, CI runs on main', () => {
-    const workflow = readFileSync('.github/workflows/deploy-native.yml', 'utf8');
+  it('has no deploy workflow, CI runs on main', () => {
     const ciWorkflow = readFileSync('.github/workflows/ci.yml', 'utf8');
     const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
     const nvmVersion = readFileSync('.nvmrc', 'utf8').trim();
-    // Production deploys only from a v* tag on main or a manual run on main;
-    // no branch push or pull request reaches the efolusi-prod runner.
-    expect(workflow).toContain("tags: ['v*']");
-    expect(workflow).not.toMatch(/^\s*(branches|pull_request|workflow_run):/m);
-    expect(workflow).toContain("github.ref == 'refs/heads/main'");
-    expect(workflow).toContain('git merge-base --is-ancestor "$GITHUB_SHA" origin/main');
-    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]');
-    expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
-    expect(workflow).not.toContain('sudo');
+    // The Worker deploys from the local gate (`pnpm deploy` on a v* tag), never from Actions.
+    expect(existsSync('.github/workflows/deploy-native.yml')).toBe(false);
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
     // A pull request, from a fork or not, never reaches a self-hosted runner.

@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "efolusi-web",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true },
+  // BREVO_API_KEY, SENTRY_DSN, EMAIL_FROM and EMAIL_TO are set with `wrangler secret put`.
+  "vars": {
+    "EFOLUSI_EXTERNAL_ORIGIN": "https://efolusi.com",
+    "SENTRY_ENVIRONMENT": "production"
+  },
+  // 5 requests per 60 s per client IP, the same limit the PM2 build kept in memory.
+  "ratelimits": [
+    { "name": "CONTACT_RATE_LIMIT", "namespace_id": "1001", "simple": { "limit": 5, "period": 60 } },
+    { "name": "NEWSLETTER_RATE_LIMIT", "namespace_id": "1002", "simple": { "limit": 5, "period": 60 } }
+  ]
+}

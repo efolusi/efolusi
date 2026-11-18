@@ -10,7 +10,7 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Deployed natively on the Efolusi VM with PM2 behind Nginx (no Cloudflare Workers, no Vercel)
+- Deployed to Cloudflare Workers with OpenNext (`@opennextjs/cloudflare`), Worker `efolusi-web`
 
 ## Getting Started
 
@@ -49,10 +49,10 @@ corepack pnpm run build
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-corepack pnpm start
+corepack pnpm preview
 ```
 
-Serves the production build the same way PM2 runs it on the server.
+Builds the Worker with OpenNext and serves it locally with wrangler, the way Cloudflare runs it.
 
 ```bash
 corepack pnpm test
@@ -60,12 +60,13 @@ corepack pnpm test
 
 Runs the Vitest suite (middleware and security-config checks).
 
-There is no `deploy` script: deployment happens on the server, see [Deployment](#deployment).
+`corepack pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
 
 ## Environment Variables
 
 For local development, put the variables in `.env.local`, which is ignored by git. On the
-server the same variables live in the environment file the PM2 process is started with.
+Worker they are secrets, set once with `wrangler secret put <NAME>`. Plain values
+(`EFOLUSI_EXTERNAL_ORIGIN`, `SENTRY_ENVIRONMENT`) live in `vars` in `wrangler.jsonc`.
 
 ```bash
 BREVO_API_KEY=
@@ -116,16 +117,16 @@ app/
 public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
-infra/
-  nginx/efolusi-prod.conf Nginx server block that fronts the PM2 process
-ecosystem.config.cjs      PM2 process definition (port 3000 prod, 13000 dev)
+open-next.config.ts       OpenNext adapter config (prerendered pages served from assets)
+wrangler.jsonc            Worker name, assets, vars and rate limit bindings
 middleware.ts             Security headers and CSP
 ```
 
 ## Endpoint protections
 
 Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP
-(5 requests per minute) using a native in-memory fixed-window limiter in
+(5 requests per minute, keyed by `CF-Connecting-IP`) using the Workers Rate Limiting
+bindings `CONTACT_RATE_LIMIT` and `NEWSLETTER_RATE_LIMIT` from `wrangler.jsonc`, read in
 `app/api/_lib/guard.js`. The contact form also carries a honeypot field; submissions that
 fill it are silently dropped.
 
@@ -146,25 +147,20 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 
 ## Deployment
 
-The landing page runs natively on the Efolusi VM. There is no Cloudflare Workers, OpenNext
-or Vercel deployment; Cloudflare only provides DNS, proxying and security in front of it.
+The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every page is
+prerendered at build time and served from the Worker's static assets.
 
-Production deploys only from a `v*` tag on `main`, or a manual run of
-`.github/workflows/deploy-native.yml` on `main`. The job runs on the self-hosted
-`efolusi-prod` runner, refuses a commit that is not on `main`, and calls
-`/usr/local/sbin/efolusi-landing-deploy` as the `deploy` user. That helper pulls the commit
-into `/home/deploy/efolusi-prod/efolusi`, installs and builds with Node.js 22, and restarts
-the PM2 process `efolusi-prod-efolusi-web` on port 3000 as defined in
-`ecosystem.config.cjs`. Nginx (`infra/nginx/efolusi-prod.conf`) terminates TLS and proxies
-to that port.
+Production deploys only from a `v*` tag on `main`: check out the tag, then run
+`corepack pnpm deploy` with a Cloudflare API token in the shell. Actions are not used to
+deploy, so the deploy runs from the local gate after `corepack pnpm test` and
+`corepack pnpm preview` pass.
 
-Every change lands through a pull request into the protected `main` branch. A push to
-`main` runs CI only; it does not deploy.
+Every change lands through a pull request into the protected `main` branch.
 
 ## Notes
 
-- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI. The native deployment helper uses the same NVM runtime.
-- `.env.local`, `.next`, and `node_modules` are intentionally ignored.
+- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI.
+- `.env.local`, `.next`, `.open-next`, `.wrangler` and `node_modules` are intentionally ignored.
 
 ## License
 
