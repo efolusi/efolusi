@@ -2,9 +2,9 @@ import { headers } from 'next/headers';
 
 export const PRODUCTION_HOST = 'efolusi.com';
 
-/* Only the production host is indexable. dev.efolusi.com and any other host
-   (previews, localhost) tell crawlers to stay out and never advertise the
-   production sitemap. Decided per request from Host, since dev and prod run
+/* Only the production host is indexable. Any other host (workers.dev,
+   previews, localhost) tells crawlers to stay out and never advertises the
+   production sitemap. Decided per request from Host, since every host runs
    the same build. */
 export function robotsFor(host) {
   const hostname = String(host || '').split(':')[0].toLowerCase();

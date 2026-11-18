@@ -14,18 +14,18 @@ Repository: <https://github.com/efolusi/efolusi>
 
 ## Getting Started
 
-Clone and install dependencies (this repo uses pnpm via corepack):
+Clone and install dependencies with pnpm 11.24.0 (`npm install -g pnpm@11.24.0`; Node 26 has no corepack):
 
 ```bash
 git clone https://github.com/efolusi/efolusi.git
 cd efolusi
-corepack pnpm install
+pnpm install
 ```
 
 Start the development server:
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Open the site at:
@@ -37,30 +37,30 @@ http://localhost:3000
 ## Scripts
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Runs the local Next.js development server.
 
 ```bash
-corepack pnpm run build
+pnpm run build
 ```
 
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-corepack pnpm preview
+pnpm preview
 ```
 
 Builds the Worker with OpenNext and serves it locally with wrangler, the way Cloudflare runs it.
 
 ```bash
-corepack pnpm test
+pnpm test
 ```
 
 Runs the Vitest suite (middleware and security-config checks).
 
-`corepack pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
+`pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
 
 ## Environment Variables
 
@@ -150,16 +150,17 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every page is
 prerendered at build time and served from the Worker's static assets.
 
-Production deploys only from a `v*` tag on `main`: check out the tag, then run
-`corepack pnpm deploy` with a Cloudflare API token in the shell. Actions are not used to
-deploy, so the deploy runs from the local gate after `corepack pnpm test` and
-`corepack pnpm preview` pass.
+Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
+the tag push, or by hand on a tag, on the self-hosted `efolusi-web-deploy` runner. It
+refuses a commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with
+the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
+`production` environment.
 
 Every change lands through a pull request into the protected `main` branch.
 
 ## Notes
 
-- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI.
+- Node.js is pinned to `26.13.1` in `.nvmrc`, `package.json`, and CI.
 - `.env.local`, `.next`, `.open-next`, `.wrangler` and `node_modules` are intentionally ignored.
 
 ## License
