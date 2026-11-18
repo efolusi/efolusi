@@ -1,5 +1,7 @@
 /* llms.txt: a plain-text brief for AI answer engines, so what they say about
    Efolusi comes from us rather than from guesswork. */
+import { releases } from '../lib/products.js';
+
 const BODY = `# Efolusi
 
 > Efolusi (PT Efolusi Dunia Teknologi) is a software studio based in Indonesia.
@@ -17,17 +19,18 @@ const BODY = `# Efolusi
 - Co-founder: Rakha Febryza Rasendriya
 
 ## Products
-- ZOYYA (https://zoyya.xyz): AI-assisted design and application builder for creating designs, websites, mobile apps, backends, databases, previews, and domain-ready releases.
-- Runa (https://runa.efolusi.com): the orchestration control plane for personal and business AI teams: set goals, delegate work, review results, and connect approved Efolusi products as tools.
-- Relay (https://relay.efolusi.com): one control plane for every AI provider: a single gateway in front of all LLM providers.
-- Trady (https://trady.efolusi.com): content clipper: long video in, short clips out. Not a trading product.
-- Toolips (https://toolips.xyz): all-in-one tools: Drop. Fix. Download.
-- Cuwan (https://cuwan.xyz): automated grid & DCA trading bots; the only trading product in the portfolio.
-- Kongkow (https://kongkow.xyz): a community social network with cross-posting: write once, publish to every social network you connect.
-- Loop (https://loop.efolusi.com): specification workspace: the spec comes first.
-- Sanctum (https://sanctum.efolusi.com): vault + private knowledge system: a vault your AI can use but never read.
-- Komando (https://komando.efolusi.com): omni cloud, server, and monitoring in one dashboard.
-- Meridian (https://meridian.efolusi.com): the Efolusi design system, published as the npm package @efolusi/meridian (MIT-licensed, open source).
+Every product starts as an open-source command line (CLI) that runs on the user's own machine, for people and their AI agents. Desktop, mobile and web apps wrap the same CLI. Versions are the latest release tags.
+- Komando (https://komando.efolusi.com): one safe command line for servers, databases, caches, queues, storage, clusters and VPNs. Passwords stay in an encrypted vault the AI agent never sees. Open source (AGPL-3.0), release ${releases.komando}. Source: https://github.com/sgnd/komando
+- Toolips (https://toolips.xyz): one local command line for PDFs, images, secret scans and TLS checks. Open source, release ${releases.toolips}. Source: https://github.com/sgnd/toolips
+- Trady (https://trady.efolusi.com): one local command line that turns long recordings into short captioned clips. Not a trading product. Open source, release ${releases.trady}. Source: https://github.com/sgnd/trady
+- Kongkow (https://kongkow.xyz): one local command line to draft, schedule and publish social media posts. Open source, release ${releases.kongkow}. Source: https://github.com/sgnd/kongkow
+- Cuwan (https://cuwan.xyz): one local command line for grid trading bots on crypto exchanges; the only trading product in the portfolio. Open source, no release yet. Source: https://github.com/sgnd/cuwan
+- Meridian (https://meridian.efolusi.com): the web design system, published as the npm package @efolusi/meridian (Apache-2.0).
+- Glamor (https://github.com/efolusi/glamor): the native design system for Mac, iPhone and iPad, built on SwiftUI (Apache-2.0).
+- Design Tokens (https://github.com/efolusi/design-tokens): shared design tokens for Meridian and Glamor (Apache-2.0).
+
+## Shared platform
+- Efolusi SSO (https://my.efolusi.com) and Efolusi Pay: one account and one billing system shared by all products. They are not separate products.
 
 ## $EFO token
 - Official contract address: 0xb61a09e93b4f14585e9afbac3adaea626f25fb07

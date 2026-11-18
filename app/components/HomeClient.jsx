@@ -35,15 +35,13 @@ const leadership = [
    staggered vertical slots so neighbours never touch. They are hidden below
    1200px, where the gutters get too narrow to hold them. */
 const edgeTiles = [
-  { id: 'zoyya', href: 'https://zoyya.xyz', style: { left: '3%', top: 30, '--rot': '-8deg', '--fd': '0.4s' }, size: 72 },
   { id: 'kongkow', href: 'https://kongkow.xyz', style: { left: '2%', top: 210, '--rot': '5deg', '--fd': '1.4s' }, size: 62 },
   { id: 'trady', href: 'https://trady.efolusi.com', style: { left: '10%', top: 450, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
   { id: 'efo', text: '$EFO', tint: 'cocoa', href: 'token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
   { id: 'komando', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
   { id: 'cuwan', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
-  { id: 'meridian', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 },
-  { id: 'runa', href: 'https://runa.efolusi.com', style: { right: '3%', top: 570, '--rot': '7deg', '--fd': '0.9s' }, size: 66 }
+  { id: 'meridian', href: 'https://meridian.efolusi.com', style: { left: '9%', top: 550, '--rot': '-6deg', '--fd': '1.6s' }, size: 64 }
 ];
 
 const stickers = [

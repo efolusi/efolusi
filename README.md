@@ -149,15 +149,17 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 The landing page runs natively on the Efolusi VM. There is no Cloudflare Workers, OpenNext
 or Vercel deployment; Cloudflare only provides DNS, proxying and security in front of it.
 
-A push to `dev` or `main` triggers `.github/workflows/deploy-native-dev.yml` on the
-self-hosted runner, which calls `/usr/local/sbin/efolusi-landing-deploy` as the `deploy`
-user. That helper pulls the exact commit into `/home/deploy/efolusi-{dev,prod}/efolusi`,
-installs and builds with Node.js 22, and restarts the matching PM2 process
-(`efolusi-prod-efolusi-web` on port 3000, `efolusi-dev-efolusi-web` on port 13000) as
-defined in `ecosystem.config.cjs`. Nginx (`infra/nginx/efolusi-prod.conf`) terminates TLS
-and proxies to that port.
+Production deploys only from a `v*` tag on `main`, or a manual run of
+`.github/workflows/deploy-native.yml` on `main`. The job runs on the self-hosted
+`efolusi-prod` runner, refuses a commit that is not on `main`, and calls
+`/usr/local/sbin/efolusi-landing-deploy` as the `deploy` user. That helper pulls the commit
+into `/home/deploy/efolusi-prod/efolusi`, installs and builds with Node.js 22, and restarts
+the PM2 process `efolusi-prod-efolusi-web` on port 3000 as defined in
+`ecosystem.config.cjs`. Nginx (`infra/nginx/efolusi-prod.conf`) terminates TLS and proxies
+to that port.
 
-Because `main` deploys straight to production, land changes on `dev` first.
+Every change lands through a pull request into the protected `main` branch. A push to
+`main` runs CI only; it does not deploy.
 
 ## Notes
 
