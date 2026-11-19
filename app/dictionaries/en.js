@@ -9,7 +9,6 @@ const en = {
     nav: { portfolio: 'Portfolio', token: 'Token', company: 'Company', careers: 'Careers' },
     getInTouch: 'Get in touch',
   signIn: 'Sign in',
-    account: 'Account',
     contact: 'Contact',
     toggleMenu: 'Toggle menu',
     skipToContent: 'Skip to main content',
