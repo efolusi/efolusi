@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
-const my = { web: 'https://my.efolusi.com', api: 'https://my-api.efolusi.com' };
+const my = { web: 'https://my.efolusi.com' };
 
 /* The highlight marks the page you are on, nothing else. Anchor links into
    home sections never light up. */
@@ -14,10 +14,6 @@ export default function SiteHeader({ lang, t }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  /* null = signed out (default while loading, so the button never flashes
-     from "Account" back to "Sign in"). The SSO cookie lives on .efolusi.com,
-     so the accounts API can answer from this origin. */
-  const [user, setUser] = useState(null);
   /* Where to send the browser back to after signing in. Read from
      window.location in an effect (this renders on the server too); until it
      resolves, the link still works — accounts just lands on its own account
@@ -26,18 +22,6 @@ export default function SiteHeader({ lang, t }) {
 
   useEffect(() => {
     setReturnTo(encodeURIComponent(window.location.href));
-  }, []);
-
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(`${my.api}/api/auth/get-session`, {
-      credentials: 'include',
-      signal: controller.signal
-    })
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => setUser(data?.user ?? null))
-      .catch(() => {});
-    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -89,9 +73,9 @@ export default function SiteHeader({ lang, t }) {
             <ThemeToggle />
             <a
               className="pill pill--sm pill--plain sign-in-pill"
-              href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+              href={`${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
             >
-              {user ? t.account ?? 'Account' : t.signIn}
+              {t.signIn}
             </a>
             <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
               {t.getInTouch}
@@ -120,10 +104,10 @@ export default function SiteHeader({ lang, t }) {
           {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
           <a
             className="menu-signin"
-            href={user ? `${my.web}/account` : `${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
+            href={`${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
             onClick={() => setMenuOpen(false)}
           >
-            {user ? t.account ?? 'Account' : t.signIn}
+            {t.signIn}
           </a>
         </nav>
       </header>

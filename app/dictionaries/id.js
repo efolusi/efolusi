@@ -9,7 +9,6 @@ const id = {
     nav: { portfolio: 'Portofolio', token: 'Token', company: 'Perusahaan', careers: 'Karier' },
     getInTouch: 'Hubungi kami',
   signIn: 'Masuk',
-    account: 'Akun',
     contact: 'Kontak',
     toggleMenu: 'Buka menu',
     skipToContent: 'Langsung ke konten utama',
