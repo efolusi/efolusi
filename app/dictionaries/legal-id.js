@@ -9,7 +9,7 @@ import { LEGAL_VERSION } from './legal-en.js';
 const ENTITY = 'PT Efolusi Dunia Teknologi';
 const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Banten 42186, Indonesia';
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
-const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 16 Oktober 2026`;
+const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 19 November 2026`;
 
 export const terms = {
   meta: {
@@ -400,7 +400,7 @@ export const privacy = {
         'Kami membagikan data pribadi hanya sejauh diperlukan untuk menjalankan produk:',
         {
           ul: [
-            '**Penyedia layanan:** Cloudflare (pengiriman dan perlindungan jaringan), Resend (email akun dan produk), Brevo (email formulir kontak), Sentry (laporan galat, yang kami bersihkan dari data pribadi sebelum dikirim), Have I Been Pwned (pemeriksaan kata sandi bocor), dan layanan pembayaran kami Efolusi Pay beserta mitra pembayarannya saat Anda membeli paket.',
+            '**Penyedia layanan:** Cloudflare (pengiriman dan perlindungan jaringan), Resend (email akun dan produk), Brevo (email formulir kontak), Have I Been Pwned (pemeriksaan kata sandi bocor), dan layanan pembayaran kami Efolusi Pay beserta mitra pembayarannya saat Anda membeli paket.',
             '**Penyedia AI:** seperti dijelaskan di bagian Penyedia AI.',
             '**Pihak ketiga yang Anda tuju lewat produk:** situs, API, host, webhook, dan kanal yang Anda atur.',
             '**Produk Efolusi lain:** saat Anda masuk ke sebuah produk, atau memberi satu produk akses ke produk lain, misalnya proyek Loop ke Runa.',

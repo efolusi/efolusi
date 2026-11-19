@@ -16,7 +16,7 @@ export const LEGAL_VERSION = '2026-10-16';
 const ENTITY = 'PT Efolusi Dunia Teknologi';
 const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Banten 42186, Indonesia';
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
-const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 16 October 2026`;
+const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 19 November 2026`;
 
 export const terms = {
   meta: {
@@ -407,7 +407,7 @@ export const privacy = {
         'We share personal data only as needed to run the products:',
         {
           ul: [
-            '**Service providers:** Cloudflare (network delivery and protection), Resend (account and product emails), Brevo (contact form emails), Sentry (error reports, which we strip of personal details before sending), Have I Been Pwned (the breached password check), and our payment service Efolusi Pay with its payment partners when you buy a plan.',
+            '**Service providers:** Cloudflare (network delivery and protection), Resend (account and product emails), Brevo (contact form emails), Have I Been Pwned (the breached password check), and our payment service Efolusi Pay with its payment partners when you buy a plan.',
             '**AI providers:** as described under AI providers.',
             '**Third parties you point a product at:** the websites, APIs, hosts, webhooks and channels you set up.',
             '**Other Efolusi products:** when you sign in to a product, or give one product access to another, such as a Loop project to Runa.',

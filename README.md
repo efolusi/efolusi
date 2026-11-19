@@ -10,22 +10,22 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Deployed natively on the Efolusi VM with PM2 behind Nginx (no Cloudflare Workers, no Vercel)
+- Deployed to Cloudflare Workers with OpenNext (`@opennextjs/cloudflare`), Worker `efolusi`
 
 ## Getting Started
 
-Clone and install dependencies (this repo uses pnpm via corepack):
+Clone and install dependencies with pnpm 11.24.0 (`npm install -g pnpm@11.24.0`; Node 26 has no corepack):
 
 ```bash
 git clone https://github.com/efolusi/efolusi.git
 cd efolusi
-corepack pnpm install
+pnpm install
 ```
 
 Start the development server:
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Open the site at:
@@ -37,47 +37,43 @@ http://localhost:3000
 ## Scripts
 
 ```bash
-corepack pnpm dev
+pnpm dev
 ```
 
 Runs the local Next.js development server.
 
 ```bash
-corepack pnpm run build
+pnpm run build
 ```
 
 Creates a production build and checks the app for build-time issues.
 
 ```bash
-corepack pnpm start
+pnpm preview
 ```
 
-Serves the production build the same way PM2 runs it on the server.
+Builds the Worker with OpenNext and serves it locally with wrangler, the way Cloudflare runs it.
 
 ```bash
-corepack pnpm test
+pnpm test
 ```
 
 Runs the Vitest suite (middleware and security-config checks).
 
-There is no `deploy` script: deployment happens on the server, see [Deployment](#deployment).
+`pnpm deploy` builds and deploys the Worker, see [Deployment](#deployment).
 
 ## Environment Variables
 
 For local development, put the variables in `.env.local`, which is ignored by git. On the
-server the same variables live in the environment file the PM2 process is started with.
+Worker they are secrets of the `production` environment in GitHub, which the deploy
+uploads with the Worker. Plain values
+(`EFOLUSI_EXTERNAL_ORIGIN`) lives in `vars` in `wrangler.jsonc`.
 
 ```bash
 BREVO_API_KEY=
 EMAIL_TO=
 EMAIL_FROM=
-SENTRY_DSN=
-SENTRY_ENVIRONMENT=
 ```
-
-### Error Reporting
-
-When `SENTRY_DSN` is set, server-side errors are posted to Sentry by `instrumentation.ts` and `app/_lib/observability.js`. A report carries the error type, message and stack, the route pattern and path without its query string, the release (`SENTRY_RELEASE`, if set), the environment (`SENTRY_ENVIRONMENT`, else `NODE_ENV`), the host name and the time. It never carries headers, cookies, request bodies, query strings, emails or IPs. Unset, nothing is sent.
 
 ### Contact Form
 
@@ -116,16 +112,16 @@ app/
 public/
   efolusi/logo-owl.png    Site icon and brand asset
   og-image.png            Social share image
-infra/
-  nginx/efolusi-prod.conf Nginx server block that fronts the PM2 process
-ecosystem.config.cjs      PM2 process definition (port 3000 prod, 13000 dev)
+open-next.config.ts       OpenNext adapter config (prerendered pages served from assets)
+wrangler.jsonc            Worker name, assets, vars and rate limit bindings
 middleware.ts             Security headers and CSP
 ```
 
 ## Endpoint protections
 
 Both API endpoints reject cross-origin POSTs, cap field lengths, and rate limit per IP
-(5 requests per minute) using a native in-memory fixed-window limiter in
+(5 requests per minute, keyed by `CF-Connecting-IP`) using the Workers Rate Limiting
+bindings `CONTACT_RATE_LIMIT` and `NEWSLETTER_RATE_LIMIT` from `wrangler.jsonc`, read in
 `app/api/_lib/guard.js`. The contact form also carries a honeypot field; submissions that
 fill it are silently dropped.
 
@@ -146,25 +142,24 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 
 ## Deployment
 
-The landing page runs natively on the Efolusi VM. There is no Cloudflare Workers, OpenNext
-or Vercel deployment; Cloudflare only provides DNS, proxying and security in front of it.
+The site runs as the Cloudflare Worker `efolusi`, built with OpenNext, on the custom
+domains `efolusi.com` and `www.efolusi.com`. Every page is prerendered at build time and
+served from the Worker's static assets.
 
-Production deploys only from a `v*` tag on `main`, or a manual run of
-`.github/workflows/deploy-native.yml` on `main`. The job runs on the self-hosted
-`efolusi-prod` runner, refuses a commit that is not on `main`, and calls
-`/usr/local/sbin/efolusi-landing-deploy` as the `deploy` user. That helper pulls the commit
-into `/home/deploy/efolusi-prod/efolusi`, installs and builds with Node.js 22, and restarts
-the PM2 process `efolusi-prod-efolusi-web` on port 3000 as defined in
-`ecosystem.config.cjs`. Nginx (`infra/nginx/efolusi-prod.conf`) terminates TLS and proxies
-to that port.
+Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
+the tag push, or by hand on a tag, on a GitHub-hosted runner. It
+refuses a commit that is not on `main`, runs the tests, builds, and deploys with
+the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
+`production` environment, which only `v*` tags may deploy to. The same environment holds
+the Worker secrets `BREVO_API_KEY`, `EMAIL_FROM` and `EMAIL_TO`; the deploy
+stops when one is missing.
 
-Every change lands through a pull request into the protected `main` branch. A push to
-`main` runs CI only; it does not deploy.
+Every change lands through a pull request into the protected `main` branch.
 
 ## Notes
 
-- Node.js is pinned to `22.23.2` in `.nvmrc`, `package.json`, and CI. The native deployment helper uses the same NVM runtime.
-- `.env.local`, `.next`, and `node_modules` are intentionally ignored.
+- Node.js is pinned to `26.13.1` in `.nvmrc`, `package.json`, and CI.
+- `.env.local`, `.next`, `.open-next`, `.wrangler` and `node_modules` are intentionally ignored.
 
 ## License
 

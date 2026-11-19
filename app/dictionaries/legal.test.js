@@ -58,8 +58,11 @@ describe('platform legal documents', () => {
     for (const docs of Object.values(DOCS)) {
       for (const kind of ['terms', 'privacy']) expect(docs[kind].metaLine).toContain('2026-10-16');
     }
-    expect(en.terms.metaLine).toContain('16 October 2026');
-    expect(id.terms.metaLine).toContain('16 Oktober 2026');
+    // 2026-11-19: Sentry left the provider list. Removing a provider asks no one to accept again,
+    // so the version stays and only the date moves.
+    expect(en.terms.metaLine).toContain('19 November 2026');
+    expect(id.terms.metaLine).toContain('19 November 2026');
+    expect(JSON.stringify(DOCS)).not.toMatch(/sentry/i);
   });
 
   it('names the published entity, address and contact, and no other inbox', () => {

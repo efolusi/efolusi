@@ -15,16 +15,18 @@ concurrency:
 
 jobs:
   build:
-    # Pull requests, forks included, run on GitHub-hosted runners only. The
-    # self-hosted efolusi-dev runner takes only pushes to main.
-    runs-on: ${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}
+    # The repo is public, so every job runs on a GitHub-hosted runner.
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22.23.2
+          node-version: 26.13.1
       - run: test "$(node --version)" = "v$(cat .nvmrc)"
-      - run: test "$(corepack pnpm --version)" = "11.24.0"
-      - run: corepack pnpm install --frozen-lockfile
-      - run: corepack pnpm test
-      - run: corepack pnpm run build
+      # Node 25+ ships without corepack, so pnpm is installed at the version in package.json.
+      - run: npm install -g pnpm@11.24.0
+      - run: test "$(pnpm --version)" = "11.24.0"
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm test
+      - run: pnpm run build
+

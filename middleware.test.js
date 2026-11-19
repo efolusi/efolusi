@@ -2,8 +2,24 @@ import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
-import { languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
+import { apexRedirectUrl, languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
 import { LOCALE_HEADER } from './app/_lib/locale-header.js';
+
+describe('www to apex redirect', () => {
+  it('moves a www page to the apex, keeping path and query', () => {
+    expect(apexRedirectUrl(new URL('https://www.efolusi.com/en/about?x=1'))?.href).toBe('https://efolusi.com/en/about?x=1');
+  });
+
+  it.each(['//evil.example/x?y=1', '/\\evil.example/x', '/%2F%2Fevil.example'])('never leaves efolusi.com: %s', (path) => {
+    const url = apexRedirectUrl(new URL(`https://www.efolusi.com${path}`));
+    expect(url?.origin).toBe('https://efolusi.com');
+  });
+
+  it('leaves the apex and other hosts alone', () => {
+    expect(apexRedirectUrl(new URL('https://efolusi.com/en'))).toBeNull();
+    expect(apexRedirectUrl(new URL('http://localhost:3000/en'))).toBeNull();
+  });
+});
 
 describe('language redirect external origin', () => {
   it('preserves the request origin when no override is configured', () => {
@@ -30,29 +46,43 @@ describe('language redirect external origin', () => {
     );
   });
 
-  it('deploys production only from a tag on main, CI runs on main', () => {
-    const workflow = readFileSync('.github/workflows/deploy-native.yml', 'utf8');
+  it('deploys only from a v* tag on main, CI runs on main', () => {
     const ciWorkflow = readFileSync('.github/workflows/ci.yml', 'utf8');
     const packageJson = JSON.parse(readFileSync('package.json', 'utf8'));
     const nvmVersion = readFileSync('.nvmrc', 'utf8').trim();
-    // Production deploys only from a v* tag on main or a manual run on main;
-    // no branch push or pull request reaches the efolusi-prod runner.
-    expect(workflow).toContain("tags: ['v*']");
-    expect(workflow).not.toMatch(/^\s*(branches|pull_request|workflow_run):/m);
-    expect(workflow).toContain("github.ref == 'refs/heads/main'");
-    expect(workflow).toContain('git merge-base --is-ancestor "$GITHUB_SHA" origin/main');
-    expect(workflow).toContain('runs-on: [self-hosted, Linux, X64, efolusi-prod]');
-    expect(workflow).toContain('/usr/local/sbin/efolusi-landing-deploy');
-    expect(workflow).not.toContain('sudo');
+    // The Worker deploys only from a v* tag on main, on a GitHub-hosted runner.
+    const deploy = readFileSync('.github/workflows/deploy.yml', 'utf8');
+    const on = deploy.slice(deploy.indexOf('\non:\n'), deploy.indexOf('\npermissions:'));
+    expect(on).toContain("tags: ['v*']");
+    expect(on).toContain('workflow_dispatch:');
+    expect(on).not.toMatch(/branches:|pull_request/);
+    expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
+    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
+    expect(deploy).toContain('runs-on: ubuntu-latest');
+    // The Worker secrets come from the production environment and go up with the deploy.
+    expect(deploy).not.toMatch(/SENTRY/);
+    expect(deploy).toContain('pnpm exec opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/worker-secrets.json"');
+    expect(deploy.indexOf('opennextjs-cloudflare build')).toBeLessThan(deploy.indexOf('worker-secrets.json'));
+    for (const name of ['BREVO_API_KEY', 'EMAIL_FROM', 'EMAIL_TO']) {
+      expect(deploy).toContain(`${name}: \${{ secrets.${name} }}`);
+    }
+    // The Worker has the repo's name and serves the custom domains.
+    const wrangler = readFileSync('wrangler.jsonc', 'utf8');
+    expect(wrangler).toContain('"name": "efolusi",');
+    expect(wrangler).toContain('{ "pattern": "efolusi.com", "custom_domain": true }');
+    expect(wrangler).toContain('{ "pattern": "www.efolusi.com", "custom_domain": true }');
+    expect(deploy).toContain("if: github.repository == 'efolusi/efolusi' && startsWith(github.ref, 'refs/tags/v')");
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
-    // A pull request, from a fork or not, never reaches a self-hosted runner.
-    expect(ciWorkflow).toContain(`runs-on: \${{ (github.event_name == 'push' && github.ref == 'refs/heads/main') && fromJSON('["self-hosted", "Linux", "X64", "efolusi-dev"]') || 'ubuntu-latest' }}`);
+    // The repo is public: every job runs on a GitHub-hosted runner.
+    expect(ciWorkflow).toContain('runs-on: ubuntu-latest');
     expect(ciWorkflow.match(/runs-on:/g)).toHaveLength(1);
+    expect(ciWorkflow).not.toContain('self-hosted');
+    expect(deploy).not.toContain('self-hosted');
     expect(ciWorkflow).toContain('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020');
-    expect(ciWorkflow).toContain('node-version: 22.23.2');
-    expect(packageJson.engines.node).toBe('22.23.2');
-    expect(nvmVersion).toBe('22.23.2');
+    expect(ciWorkflow).toContain('node-version: 26.13.1');
+    expect(packageJson.engines.node).toBe('26.13.1');
+    expect(nvmVersion).toBe('26.13.1');
   });
 });
 

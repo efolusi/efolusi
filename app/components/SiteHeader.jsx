@@ -6,14 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Icon } from '@efolusi/meridian';
 import ThemeToggle from './ThemeToggle.jsx';
 
-const MY_ORIGINS = {
-  prod: { web: 'https://my.efolusi.com', api: 'https://my-api.efolusi.com' },
-  dev: { web: 'https://dev-my.efolusi.com', api: 'https://dev-my-api.efolusi.com' }
-};
-
-export function myOriginsFor(hostname) {
-  return hostname === 'dev.efolusi.com' ? MY_ORIGINS.dev : MY_ORIGINS.prod;
-}
+const my = { web: 'https://my.efolusi.com', api: 'https://my-api.efolusi.com' };
 
 /* The highlight marks the page you are on, nothing else. Anchor links into
    home sections never light up. */
@@ -30,19 +23,14 @@ export default function SiteHeader({ lang, t }) {
      resolves, the link still works — accounts just lands on its own account
      page instead of back here. */
   const [returnTo, setReturnTo] = useState('');
-  /* The development site (dev.efolusi.com) signs in against the My Efolusi
-     development issuer; every other host uses production. Resolved in an
-     effect like returnTo, so the server render and first paint agree. */
-  const [my, setMy] = useState(MY_ORIGINS.prod);
 
   useEffect(() => {
     setReturnTo(encodeURIComponent(window.location.href));
-    setMy(myOriginsFor(window.location.hostname));
   }, []);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`${myOriginsFor(window.location.hostname).api}/api/auth/get-session`, {
+    fetch(`${my.api}/api/auth/get-session`, {
       credentials: 'include',
       signal: controller.signal
     })
