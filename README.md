@@ -10,7 +10,7 @@ Repository: <https://github.com/efolusi/efolusi>
 - React 18
 - @efolusi/meridian design system (components, tokens, self-hosted fonts)
 - Brevo API for the contact form and newsletter subscriptions
-- Deployed to Cloudflare Workers with OpenNext (`@opennextjs/cloudflare`), Worker `efolusi-web`
+- Deployed to Cloudflare Workers with OpenNext (`@opennextjs/cloudflare`), Worker `efolusi`
 
 ## Getting Started
 
@@ -65,7 +65,8 @@ Runs the Vitest suite (middleware and security-config checks).
 ## Environment Variables
 
 For local development, put the variables in `.env.local`, which is ignored by git. On the
-Worker they are secrets, set once with `wrangler secret put <NAME>`. Plain values
+Worker they are secrets of the `production` environment in GitHub, which the deploy
+uploads with the Worker. Plain values
 (`EFOLUSI_EXTERNAL_ORIGIN`, `SENTRY_ENVIRONMENT`) live in `vars` in `wrangler.jsonc`.
 
 ```bash
@@ -147,14 +148,17 @@ Efolusi monorepo. If a surface here disagrees with that file, this surface is wr
 
 ## Deployment
 
-The site runs as the Cloudflare Worker `efolusi-web`, built with OpenNext. Every page is
-prerendered at build time and served from the Worker's static assets.
+The site runs as the Cloudflare Worker `efolusi`, built with OpenNext, on the custom
+domains `efolusi.com` and `www.efolusi.com`. Every page is prerendered at build time and
+served from the Worker's static assets.
 
 Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
 the tag push, or by hand on a tag, on a GitHub-hosted runner. It
-refuses a commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with
+refuses a commit that is not on `main`, runs the tests, builds, and deploys with
 the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
-`production` environment, which only `v*` tags may deploy to.
+`production` environment, which only `v*` tags may deploy to. The same environment holds
+the Worker secrets `BREVO_API_KEY`, `SENTRY_DSN`, `EMAIL_FROM` and `EMAIL_TO`; the deploy
+stops when one is missing.
 
 Every change lands through a pull request into the protected `main` branch.
 

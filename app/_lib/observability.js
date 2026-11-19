@@ -95,7 +95,7 @@ export function reportError(error, context = {}) {
     timestamp: Date.now() / 1000,
     platform: 'node',
     level: 'error',
-    logger: 'efolusi-web',
+    logger: 'efolusi',
     environment: process.env.SENTRY_ENVIRONMENT || process.env.NODE_ENV || 'production',
     release: process.env.SENTRY_RELEASE || undefined,
     server_name: serverName,
