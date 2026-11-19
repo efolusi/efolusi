@@ -15,11 +15,9 @@ concurrency:
 
 jobs:
   build:
-    # Pushes to main and pull requests from this repo run on the self-hosted
-    # runner. The repo is public, so a fork's pull request never reaches it.
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: [self-hosted, Linux, X64, efolusi-ci]
-    steps: &build-steps
+    # The repo is public, so every job runs on a GitHub-hosted runner.
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -32,8 +30,3 @@ jobs:
       - run: pnpm test
       - run: pnpm run build
 
-  build-fork:
-    # Pull requests from forks run on a GitHub-hosted runner only.
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
-    runs-on: ubuntu-latest
-    steps: *build-steps
