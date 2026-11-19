@@ -44,9 +44,10 @@ describe('language redirect external origin', () => {
     expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
     expect(deploy).toContain('runs-on: ubuntu-latest');
     // The Worker secrets come from the production environment and go up with the deploy.
+    expect(deploy).not.toMatch(/SENTRY/);
     expect(deploy).toContain('pnpm exec opennextjs-cloudflare deploy --secrets-file "$RUNNER_TEMP/worker-secrets.json"');
     expect(deploy.indexOf('opennextjs-cloudflare build')).toBeLessThan(deploy.indexOf('worker-secrets.json'));
-    for (const name of ['BREVO_API_KEY', 'SENTRY_DSN', 'EMAIL_FROM', 'EMAIL_TO']) {
+    for (const name of ['BREVO_API_KEY', 'EMAIL_FROM', 'EMAIL_TO']) {
       expect(deploy).toContain(`${name}: \${{ secrets.${name} }}`);
     }
     // The Worker has the repo's name and serves the custom domains.

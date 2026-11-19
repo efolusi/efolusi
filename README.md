@@ -67,19 +67,13 @@ Runs the Vitest suite (middleware and security-config checks).
 For local development, put the variables in `.env.local`, which is ignored by git. On the
 Worker they are secrets of the `production` environment in GitHub, which the deploy
 uploads with the Worker. Plain values
-(`EFOLUSI_EXTERNAL_ORIGIN`, `SENTRY_ENVIRONMENT`) live in `vars` in `wrangler.jsonc`.
+(`EFOLUSI_EXTERNAL_ORIGIN`) lives in `vars` in `wrangler.jsonc`.
 
 ```bash
 BREVO_API_KEY=
 EMAIL_TO=
 EMAIL_FROM=
-SENTRY_DSN=
-SENTRY_ENVIRONMENT=
 ```
-
-### Error Reporting
-
-When `SENTRY_DSN` is set, server-side errors are posted to Sentry by `instrumentation.ts` and `app/_lib/observability.js`. A report carries the error type, message and stack, the route pattern and path without its query string, the release (`SENTRY_RELEASE`, if set), the environment (`SENTRY_ENVIRONMENT`, else `NODE_ENV`), the host name and the time. It never carries headers, cookies, request bodies, query strings, emails or IPs. Unset, nothing is sent.
 
 ### Contact Form
 
@@ -157,7 +151,7 @@ the tag push, or by hand on a tag, on a GitHub-hosted runner. It
 refuses a commit that is not on `main`, runs the tests, builds, and deploys with
 the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
 `production` environment, which only `v*` tags may deploy to. The same environment holds
-the Worker secrets `BREVO_API_KEY`, `SENTRY_DSN`, `EMAIL_FROM` and `EMAIL_TO`; the deploy
+the Worker secrets `BREVO_API_KEY`, `EMAIL_FROM` and `EMAIL_TO`; the deploy
 stops when one is missing.
 
 Every change lands through a pull request into the protected `main` branch.

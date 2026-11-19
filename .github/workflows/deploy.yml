@@ -40,12 +40,11 @@ jobs:
       - name: Write the Worker secrets file
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
-          SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
           EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: |
           node -e '
-            const names = ["BREVO_API_KEY", "SENTRY_DSN", "EMAIL_FROM", "EMAIL_TO"];
+            const names = ["BREVO_API_KEY", "EMAIL_FROM", "EMAIL_TO"];
             const missing = names.filter((n) => !process.env[n]);
             if (missing.length) { console.error("missing secrets: " + missing.join(", ")); process.exit(1); }
             const out = Object.fromEntries(names.map((n) => [n, process.env[n]]));
