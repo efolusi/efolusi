@@ -81,11 +81,20 @@ export function withLocaleHeader(source: Headers, locale: Locale): Headers {
   return headers;
 }
 
+/** www.efolusi.com serves nothing of its own: every page moves to the apex. */
+export function apexRedirectUrl(requestUrl: URL): URL | null {
+  if (requestUrl.hostname !== 'www.efolusi.com') return null;
+  return new URL(`${requestUrl.pathname}${requestUrl.search}`, 'https://efolusi.com');
+}
+
 function isLocale(value: string | undefined): value is Locale {
   return value === 'en' || value === 'id';
 }
 
 export function middleware(request: NextRequest) {
+  const apex = apexRedirectUrl(new URL(request.url));
+  if (apex) return NextResponse.redirect(apex, 301);
+
   const { pathname } = request.nextUrl;
 
   // Remember the language the reader is actually in, including a manual switch.
