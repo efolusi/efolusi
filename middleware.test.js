@@ -10,6 +10,11 @@ describe('www to apex redirect', () => {
     expect(apexRedirectUrl(new URL('https://www.efolusi.com/en/about?x=1'))?.href).toBe('https://efolusi.com/en/about?x=1');
   });
 
+  it.each(['//evil.example/x?y=1', '/\\evil.example/x', '/%2F%2Fevil.example'])('never leaves efolusi.com: %s', (path) => {
+    const url = apexRedirectUrl(new URL(`https://www.efolusi.com${path}`));
+    expect(url?.origin).toBe('https://efolusi.com');
+  });
+
   it('leaves the apex and other hosts alone', () => {
     expect(apexRedirectUrl(new URL('https://efolusi.com/en'))).toBeNull();
     expect(apexRedirectUrl(new URL('http://localhost:3000/en'))).toBeNull();

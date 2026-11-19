@@ -84,7 +84,12 @@ export function withLocaleHeader(source: Headers, locale: Locale): Headers {
 /** www.efolusi.com serves nothing of its own: every page moves to the apex. */
 export function apexRedirectUrl(requestUrl: URL): URL | null {
   if (requestUrl.hostname !== 'www.efolusi.com') return null;
-  return new URL(`${requestUrl.pathname}${requestUrl.search}`, 'https://efolusi.com');
+  // Change only the host. Joining the path onto a base would read "//host" as a new host.
+  const url = new URL(requestUrl.href);
+  url.protocol = 'https:';
+  url.hostname = 'efolusi.com';
+  url.port = '';
+  return url;
 }
 
 function isLocale(value: string | undefined): value is Locale {
