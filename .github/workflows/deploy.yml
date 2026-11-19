@@ -36,7 +36,8 @@ jobs:
       - run: pnpm test
       # Build before any secret is on disk or in the environment.
       - run: pnpm exec opennextjs-cloudflare build
-      # The Worker's own secrets go up with the deploy. A missing one stops the deploy.
+      # The Worker's own secrets go up with the deploy. A missing required one stops the deploy;
+      # an empty SENTRY_DSN is left out.
       - name: Write the Worker secrets file
         env:
           BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
@@ -45,9 +46,11 @@ jobs:
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: |
           node -e '
-            const names = ["BREVO_API_KEY", "SENTRY_DSN", "EMAIL_FROM", "EMAIL_TO"];
-            const missing = names.filter((n) => !process.env[n]);
+            const required = ["BREVO_API_KEY", "EMAIL_FROM", "EMAIL_TO"];
+            const optional = ["SENTRY_DSN"]; // empty: error reporting stays off
+            const missing = required.filter((n) => !process.env[n]);
             if (missing.length) { console.error("missing secrets: " + missing.join(", ")); process.exit(1); }
+            const names = required.concat(optional.filter((n) => process.env[n]));
             const out = Object.fromEntries(names.map((n) => [n, process.env[n]]));
             require("fs").writeFileSync(process.argv[1], JSON.stringify(out), { mode: 0o600 });
           ' "$RUNNER_TEMP/worker-secrets.json"

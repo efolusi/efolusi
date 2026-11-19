@@ -49,6 +49,9 @@ describe('language redirect external origin', () => {
     for (const name of ['BREVO_API_KEY', 'SENTRY_DSN', 'EMAIL_FROM', 'EMAIL_TO']) {
       expect(deploy).toContain(`${name}: \${{ secrets.${name} }}`);
     }
+    // SENTRY_DSN is optional: an empty value is left out instead of stopping the deploy.
+    expect(deploy).toContain('const required = ["BREVO_API_KEY", "EMAIL_FROM", "EMAIL_TO"];');
+    expect(deploy).toContain('const optional = ["SENTRY_DSN"];');
     // The Worker has the repo's name and serves the custom domains.
     const wrangler = readFileSync('wrangler.jsonc', 'utf8');
     expect(wrangler).toContain('"name": "efolusi",');
