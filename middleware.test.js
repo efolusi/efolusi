@@ -2,8 +2,24 @@ import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
-import { languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
+import { apexRedirectUrl, languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
 import { LOCALE_HEADER } from './app/_lib/locale-header.js';
+
+describe('www to apex redirect', () => {
+  it('moves a www page to the apex, keeping path and query', () => {
+    expect(apexRedirectUrl(new URL('https://www.efolusi.com/en/about?x=1'))?.href).toBe('https://efolusi.com/en/about?x=1');
+  });
+
+  it.each(['//evil.example/x?y=1', '/\\evil.example/x', '/%2F%2Fevil.example'])('never leaves efolusi.com: %s', (path) => {
+    const url = apexRedirectUrl(new URL(`https://www.efolusi.com${path}`));
+    expect(url?.origin).toBe('https://efolusi.com');
+  });
+
+  it('leaves the apex and other hosts alone', () => {
+    expect(apexRedirectUrl(new URL('https://efolusi.com/en'))).toBeNull();
+    expect(apexRedirectUrl(new URL('http://localhost:3000/en'))).toBeNull();
+  });
+});
 
 describe('language redirect external origin', () => {
   it('preserves the request origin when no override is configured', () => {
