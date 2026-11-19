@@ -153,8 +153,9 @@ prerendered at build time and served from the Worker's static assets.
 Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
 the tag push, or by hand on a tag, on a GitHub-hosted runner. It
 refuses a commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with
-the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
-`production` environment.
+the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable. The job
+names the `production` environment. Today the token is a repository secret; it moves
+into `production` when that environment is set up with a `v*` tag rule.
 
 Every change lands through a pull request into the protected `main` branch.
 
