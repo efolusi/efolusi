@@ -43,6 +43,16 @@ describe('language redirect external origin', () => {
     expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
     expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
     expect(deploy).toContain('runs-on: ubuntu-latest');
+    // The Worker secrets come from the production environment and go up with the deploy.
+    expect(deploy).toContain('pnpm run deploy -- --secrets-file "$RUNNER_TEMP/worker-secrets.json"');
+    for (const name of ['BREVO_API_KEY', 'SENTRY_DSN', 'EMAIL_FROM', 'EMAIL_TO']) {
+      expect(deploy).toContain(`${name}: \${{ secrets.${name} }}`);
+    }
+    // The Worker has the repo's name and serves the custom domains.
+    const wrangler = readFileSync('wrangler.jsonc', 'utf8');
+    expect(wrangler).toContain('"name": "efolusi",');
+    expect(wrangler).toContain('{ "pattern": "efolusi.com", "custom_domain": true }');
+    expect(wrangler).toContain('{ "pattern": "www.efolusi.com", "custom_domain": true }');
     expect(deploy).toContain("if: github.repository == 'efolusi/efolusi' && startsWith(github.ref, 'refs/tags/v')");
     expect(ciWorkflow).toContain('branches: [main]');
     expect(ciWorkflow).not.toContain('[main, dev]');
