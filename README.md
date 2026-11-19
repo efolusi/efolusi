@@ -154,7 +154,7 @@ served from the Worker's static assets.
 
 Production deploys only from a `v*` tag on `main`. `.github/workflows/deploy.yml` runs on
 the tag push, or by hand on a tag, on a GitHub-hosted runner. It
-refuses a commit that is not on `main`, runs the tests, and runs `pnpm run deploy` with
+refuses a commit that is not on `main`, runs the tests, builds, and deploys with
 the `CLOUDFLARE_API_TOKEN` secret and `CLOUDFLARE_ACCOUNT_ID` variable of the
 `production` environment, which only `v*` tags may deploy to. The same environment holds
 the Worker secrets `BREVO_API_KEY`, `SENTRY_DSN`, `EMAIL_FROM` and `EMAIL_TO`; the deploy
