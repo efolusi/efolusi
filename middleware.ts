@@ -51,26 +51,6 @@ export function languageRedirectUrl(requestUrl: URL, configuredOrigin: string | 
 }
 
 /**
- * Where a same-server rewrite has to point.
- *
- * A rewrite whose origin differs from the one the server actually listens on
- * is an EXTERNAL rewrite to Next, and it will really go and fetch that URL.
- * Behind Cloudflare and nginx the forwarded proto makes `nextUrl` https while
- * this process listens on plain http, so the obvious `nextUrl.clone()` turns
- * every unknown path into a TLS handshake against an http port: EPROTO, and a
- * 500 where the branded 404 belongs.
- *
- * So: when a proxy tells us it terminated TLS, target http, because that is
- * what this process speaks. With no proxy in front, `nextUrl` is already the
- * real origin and is used as is.
- */
-export function rewriteTarget(request: NextRequest, pathname: string): URL {
-  const behindTlsProxy = request.headers.get('x-forwarded-proto') === 'https';
-  const origin = behindTlsProxy ? `http://${request.nextUrl.host}` : request.nextUrl.origin;
-  return new URL(`${pathname}${request.nextUrl.search}`, origin);
-}
-
-/**
  * The request headers a page render receives, with the locale it renders in.
  * app/global-not-found.js gets no params, so this is how an unknown URL's 404
  * learns its language. Any incoming value is overwritten, never trusted.
@@ -114,6 +94,10 @@ export function middleware(request: NextRequest) {
         path: '/',
         sameSite: 'lax',
       });
+      // A shared cache must never store a response that sets a cookie. Only the
+      // first visit in a language carries one; later visits keep the page's
+      // shared-cache rule from next.config.mjs.
+      response.headers.set('Cache-Control', 'private, no-store');
       return response;
     }
     return NextResponse.next(next);
@@ -126,7 +110,10 @@ export function middleware(request: NextRequest) {
   // A page path outside both locales has no page. Render the branded 404 in
   // the reader's language (the URL stays as typed, the status stays 404).
   if (pathname !== '/') {
-    return NextResponse.rewrite(rewriteTarget(request, `/${locale}${pathname}`), {
+    // Same origin, path set on a copy: the Worker serves the rewrite itself.
+    const target = request.nextUrl.clone();
+    target.pathname = `/${locale}${pathname}`;
+    return NextResponse.rewrite(target, {
       request: { headers: withLocaleHeader(request.headers, locale) },
     });
   }

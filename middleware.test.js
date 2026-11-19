@@ -2,7 +2,9 @@ import { readFileSync } from 'node:fs';
 
 import { describe, expect, it } from 'vitest';
 
-import { apexRedirectUrl, languageRedirectUrl, rewriteTarget, withLocaleHeader } from './middleware';
+import { NextRequest } from 'next/server';
+
+import { apexRedirectUrl, languageRedirectUrl, middleware, withLocaleHeader } from './middleware';
 import { LOCALE_HEADER } from './app/_lib/locale-header.js';
 
 describe('www to apex redirect', () => {
@@ -86,29 +88,31 @@ describe('language redirect external origin', () => {
   });
 });
 
-describe('unknown-path rewrite target', () => {
-  const request = (url, proto) => ({
-    nextUrl: new URL(url),
-    headers: { get: (name) => (name === 'x-forwarded-proto' ? proto : null) },
+describe('unknown-path rewrite', () => {
+  const run = (path) => middleware(new NextRequest(`https://efolusi.com${path}`, { headers: { 'cf-ipcountry': 'ID' } }));
+
+  it('renders the 404 page of the reader\'s language on the same origin, keeping the query', () => {
+    const target = run('/nope?q=1&b=2').headers.get('x-middleware-rewrite');
+    expect(target).toBe('https://efolusi.com/id/nope?q=1&b=2');
   });
 
-  it('targets the http origin this process listens on when a proxy terminated TLS', () => {
-    // nextUrl is https because nginx forwards the proto, but the server speaks
-    // plain http. Cloning nextUrl here made Next treat the rewrite as external
-    // and fetch https://localhost:13000, which fails the handshake and turns
-    // every unknown path into a 500.
-    const url = rewriteTarget(request('https://localhost:13000/nope', 'https'), '/en/nope');
-    expect(url.href).toBe('http://localhost:13000/en/nope');
+  it('never rewrites to another host', () => {
+    const target = new URL(run('//evil.example/x').headers.get('x-middleware-rewrite') ?? '');
+    expect(target.origin).toBe('https://efolusi.com');
+  });
+});
+
+describe('the lang cookie and shared caches', () => {
+  it('marks a response that sets the cookie as private', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/id/about')));
+    expect(res.headers.get('set-cookie')).toMatch(/^lang=id/);
+    expect(res.headers.get('cache-control')).toBe('private, no-store');
   });
 
-  it('keeps the request origin when nothing is proxying', () => {
-    const url = rewriteTarget(request('http://localhost:13000/nope', null), '/en/nope');
-    expect(url.href).toBe('http://localhost:13000/en/nope');
-  });
-
-  it('carries the query string across the rewrite', () => {
-    const url = rewriteTarget(request('https://localhost:13000/nope?q=1&b=2', 'https'), '/id/nope');
-    expect(url.href).toBe('http://localhost:13000/id/nope?q=1&b=2');
+  it('leaves a page that sets no cookie to the shared cache rule', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/id/about'), { headers: { cookie: 'lang=id' } }));
+    expect(res.headers.get('set-cookie')).toBeNull();
+    expect(res.headers.get('cache-control')).toBeNull();
   });
 });
 
@@ -122,5 +126,16 @@ describe('locale header for the global 404', () => {
   it('overwrites a value the client sent', () => {
     const headers = withLocaleHeader(new Headers({ [LOCALE_HEADER]: 'xx' }), 'en');
     expect(headers.get(LOCALE_HEADER)).toBe('en');
+  });
+});
+
+describe('the shared-cache rule in next.config.mjs', () => {
+  it('applies only when the lang cookie matches the page language', async () => {
+    const { default: config } = await import('./next.config.mjs');
+    const rules = (await config.headers()).filter((rule) => rule.headers.some((h) => h.key === 'Cache-Control'));
+    expect(rules.map((rule) => [rule.source, rule.has])).toEqual([
+      ['/en/:path*', [{ type: 'cookie', key: 'lang', value: 'en' }]],
+      ['/id/:path*', [{ type: 'cookie', key: 'lang', value: 'id' }]],
+    ]);
   });
 });
