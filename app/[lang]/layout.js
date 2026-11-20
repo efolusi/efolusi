@@ -3,6 +3,7 @@ import '../globals.css';
 import { notFound } from 'next/navigation';
 import { getDictionary, locales } from '../dictionaries/config.js';
 import { themeInit } from '../_lib/theme-init.js';
+import { AnalyticsBeacon } from '../_lib/analytics.js';
 
 const siteUrl = 'https://efolusi.com';
 
@@ -94,6 +95,7 @@ export default async function LangLayout({ children, params }) {
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
         {children}
+        <AnalyticsBeacon />
       </body>
     </html>
   );

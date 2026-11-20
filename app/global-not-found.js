@@ -5,6 +5,7 @@ import { defaultLocale, getDictionary, isLocale } from './dictionaries/config.js
 import NotFoundView from './components/NotFoundView.jsx';
 import { LOCALE_HEADER } from './_lib/locale-header.js';
 import { themeInit } from './_lib/theme-init.js';
+import { AnalyticsBeacon } from './_lib/analytics.js';
 
 /*
  * Every URL no page claims ends here, with a real 404 status.
@@ -37,6 +38,7 @@ export default async function GlobalNotFound() {
       <body>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
         <NotFoundView lang={lang} />
+        <AnalyticsBeacon />
       </body>
     </html>
   );
