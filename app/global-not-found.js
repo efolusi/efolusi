@@ -4,7 +4,7 @@ import { cookies, headers } from 'next/headers';
 import { defaultLocale, getDictionary, isLocale } from './dictionaries/config.js';
 import NotFoundView from './components/NotFoundView.jsx';
 import { LOCALE_HEADER } from './_lib/locale-header.js';
-import { themeInit } from './_lib/theme-init.js';
+import ThemeInit from './components/ThemeInit.jsx';
 
 /*
  * Every URL no page claims ends here, with a real 404 status.
@@ -32,10 +32,11 @@ export async function generateMetadata() {
 
 export default async function GlobalNotFound() {
   const lang = await resolveLang();
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
   return (
     <html lang={getDictionary(lang).htmlLang} suppressHydrationWarning>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <ThemeInit nonce={nonce} />
         <NotFoundView lang={lang} />
       </body>
     </html>

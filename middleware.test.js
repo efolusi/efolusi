@@ -129,13 +129,51 @@ describe('locale header for the global 404', () => {
   });
 });
 
-describe('the shared-cache rule in next.config.mjs', () => {
-  it('applies only when the lang cookie matches the page language', async () => {
+describe('no shared cache for pages', () => {
+  it('next.config.mjs gives no page a shared-cache header (each page carries its own nonce)', async () => {
     const { default: config } = await import('./next.config.mjs');
     const rules = (await config.headers()).filter((rule) => rule.headers.some((h) => h.key === 'Cache-Control'));
-    expect(rules.map((rule) => [rule.source, rule.has])).toEqual([
-      ['/en/:path*', [{ type: 'cookie', key: 'lang', value: 'en' }]],
-      ['/id/:path*', [{ type: 'cookie', key: 'lang', value: 'id' }]],
-    ]);
+    expect(rules).toEqual([]);
+  });
+});
+
+describe('content security policy', () => {
+  const csp = (res) => res.headers.get('content-security-policy') ?? '';
+  const scriptSrc = (policy) => /script-src ([^;]*)/.exec(policy)?.[1] ?? '';
+
+  it('puts a per-request nonce in script-src of a page response', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/en'), { headers: { cookie: 'lang=en' } }));
+    expect(scriptSrc(csp(res))).toMatch(/^'self' 'nonce-[A-Za-z0-9+/=]{24}' https:\/\/static\.cloudflareinsights\.com$/);
+  });
+
+  it('hands the same policy to the render so Next nonces its own scripts', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/en'), { headers: { cookie: 'lang=en' } }));
+    expect(res.headers.get('x-middleware-request-content-security-policy')).toBe(csp(res));
+  });
+
+  it('gives two requests different nonces', () => {
+    const one = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    const two = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    expect(one).not.toBe(two);
+  });
+
+  it('keeps no unsafe-inline in script-src', () => {
+    for (const path of ['/en', '/id/about', '/nope', '/nope.php']) {
+      expect(scriptSrc(csp(middleware(new NextRequest(new URL(`https://efolusi.com${path}`)))))).not.toContain("'unsafe-inline'");
+    }
+  });
+
+  it('covers the 404 for a dotted path without a locale rewrite', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/nope.php')));
+    expect(csp(res)).toContain("'nonce-");
+    expect(res.headers.get('x-middleware-rewrite')).toBeNull();
+  });
+
+  it('keeps the other directives', () => {
+    const policy = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    expect(policy).toContain("connect-src 'self' https://cloudflareinsights.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com;");
+    expect(policy).toContain("default-src 'self'; ");
+    expect(policy).toContain("style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';");
+    expect(policy).toMatch(/frame-ancestors 'none'; base-uri 'self'; form-action 'self'$/);
   });
 });
