@@ -1,8 +1,9 @@
 import '@efolusi/meridian/styles.css';
 import '../globals.css';
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import ThemeInit from '../components/ThemeInit.jsx';
 import { getDictionary, locales } from '../dictionaries/config.js';
-import { themeInit } from '../_lib/theme-init.js';
 
 const siteUrl = 'https://efolusi.com';
 
@@ -87,11 +88,14 @@ export default async function LangLayout({ children, params }) {
   const { lang } = await params;
   if (!locales.includes(lang)) notFound();
   const d = getDictionary(lang);
+  // middleware.ts sets the nonce; reading it renders every page per request.
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
     <html lang={d.htmlLang} suppressHydrationWarning>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <ThemeInit nonce={nonce} />
+        {/* JSON-LD is a data block the browser never runs, so script-src and the nonce do not apply. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
         {children}
       </body>

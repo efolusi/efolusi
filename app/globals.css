@@ -338,34 +338,6 @@ main[tabindex='-1']:focus {
   gap: 8px;
 }
 
-.theme-toggle {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-full);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-
-.theme-toggle:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
-}
-
-.theme-toggle:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
 .lang-switch {
   position: relative;
   display: inline-flex;
@@ -3456,7 +3428,6 @@ main[tabindex='-1']:focus {
    neighbour by 4px. Mouse and trackpad layouts wider than 640px are
    untouched. */
 @media (max-width: 640px), (pointer: coarse) {
-  .theme-toggle::after,
   .lang-switch::after,
   .menu-toggle::after,
   .ef-copyfield .ef-iconbtn::after {

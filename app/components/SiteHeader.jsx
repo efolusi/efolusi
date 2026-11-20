@@ -3,8 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Icon } from '@efolusi/meridian';
-import ThemeToggle from './ThemeToggle.jsx';
+import { Icon, ThemeToggle } from '@efolusi/meridian';
 
 const my = { web: 'https://my.efolusi.com' };
 
@@ -70,7 +69,7 @@ export default function SiteHeader({ lang, t }) {
             <Link className="lang-switch" href={switchHref} aria-label={t.switchLanguage} onClick={() => setMenuOpen(false)}>
               {t.langLabel}
             </Link>
-            <ThemeToggle />
+            <ThemeToggle lang={lang} />
             <a
               className="pill pill--sm pill--plain sign-in-pill"
               href={`${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
