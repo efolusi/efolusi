@@ -36,12 +36,17 @@ const nextConfig = {
         missing: [{ type: 'host', value: 'efolusi.com' }],
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
       },
-      {
-        // Short shared-cache TTL for pages so deploys show up within minutes;
-        // hashed /_next assets keep their own immutable caching.
-        source: '/((?!_next/).*)',
+      // Short shared-cache TTL for pages so deploys show up within minutes;
+      // hashed /_next assets keep their own immutable caching. Only when the
+      // lang cookie already matches the page: otherwise middleware.ts sets the
+      // cookie and marks the response private, so no shared cache keeps it.
+      // Paths outside /en and /id (the / redirect, any future top-level page)
+      // get no shared-cache header; add a rule here for a new top-level page.
+      ...['en', 'id'].map((lang) => ({
+        source: `/${lang}/:path*`,
+        has: [{ type: 'cookie', key: 'lang', value: lang }],
         headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=60' }]
-      }
+      }))
     ];
   },
   async redirects() {
