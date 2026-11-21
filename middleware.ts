@@ -88,6 +88,11 @@ export function contentSecurityPolicy(nonce: string, dev = process.env.NODE_ENV 
   return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
 }
 
+/** The URL paths of public/, listed by next.config.mjs at build time. */
+function publicFiles(): Set<string> {
+  return new Set(JSON.parse(process.env.EFOLUSI_PUBLIC_FILES ?? '[]') as string[]);
+}
+
 function newNonce(): string {
   const bytes = new Uint8Array(16);
   crypto.getRandomValues(bytes);
@@ -119,10 +124,9 @@ export function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // The exact metadata routes (app/robots.js, app/sitemap.js, app/llms.txt) and the efolusi/ files take no locale. Public files are served
-  // before the Worker runs, so any other dotted path (/nope.php) has no file and
-  // falls through to the branded 404 below.
-  if (/^\/(favicon\.ico|robots\.txt|sitemap\.xml|llms\.txt)$|^\/efolusi\//.test(pathname)) {
+  // The exact metadata routes (app/robots.js, app/sitemap.js, app/llms.txt) and every file in public/ take no locale.
+  // Any other dotted path (/nope.php) has no file and falls through to the branded 404 below.
+  if (/^\/(robots\.txt|sitemap\.xml|llms\.txt)$/.test(pathname) || publicFiles().has(pathname)) {
     return withPolicy(NextResponse.next({ request: { headers: renderHeaders(request.headers, nonce, policy) } }));
   }
 

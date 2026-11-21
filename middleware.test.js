@@ -4,10 +4,15 @@ import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
 
+import nextConfig from './next.config.mjs';
+
 import { NextRequest } from 'next/server';
 
 import { apexRedirectUrl, languageRedirectUrl, middleware, withLocaleHeader } from './middleware';
 import { LOCALE_HEADER } from './app/_lib/locale-header.js';
+
+// next.config.mjs lists public/ at build time and hands the list to middleware through env.
+process.env.EFOLUSI_PUBLIC_FILES = nextConfig.env.EFOLUSI_PUBLIC_FILES;
 
 describe('www to apex redirect', () => {
   it('moves a www page to the apex, keeping path and query', () => {
@@ -219,6 +224,24 @@ describe('content security policy', () => {
       const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
       expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
     }
+  });
+
+  it('exempts every file in public/ from the locale rewrite', () => {
+    const files = [];
+    const walk = (dir, url) => {
+      for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.isDirectory()) walk(join(dir, e.name), `${url}/${e.name}`);
+        else files.push(`${url}/${e.name}`);
+      }
+    };
+    walk(fileURLToPath(new URL('./public', import.meta.url)), '');
+    expect(files.length).toBeGreaterThan(0);
+    for (const path of files) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
+    }
+    const missing = middleware(new NextRequest(new URL('https://efolusi.com/efolusi/missing.php')));
+    expect(missing.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/en/efolusi/missing.php');
   });
 
   it('keeps the other directives', () => {
