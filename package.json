@@ -4,7 +4,7 @@
     "version": "0.0.8",
     "packageManager": "pnpm@11.24.0",
     "description": "Efolusi landing page built with Next.js and the Meridian design system.",
-    "license": "MIT",
+    "license": "SEE LICENSE IN LICENSE",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/efolusi/efolusi.git"

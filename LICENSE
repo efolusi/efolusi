@@ -1,21 +1,25 @@
-MIT License
+Efolusi Reference License
 
 Copyright (c) 2026 PT. Efolusi Dunia Teknologi
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository is a reference implementation of Meridian: the landing
+page, docs, pricing, and the other pages of this product site.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You may:
+- read this source;
+- run this site on your own machine to see how Meridian is wired;
+- quote a small excerpt, with a link to this repository, when
+  discussing that wiring.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+You may not copy this site, or a substantial part of it, into another
+site, template, theme, or product, and you may not publish, sell, or
+sublicense it.
+
+The product name, logo, and text are not part of this grant.
+
+Meridian stays under the Apache License 2.0. Files copied from
+Meridian, and the @efolusi/meridian package, keep the license that
+ships with them. Bundled fonts keep the SIL Open Font License 1.1.
+This license does not change those terms.
+
+This site is provided "AS IS", without warranty of any kind.

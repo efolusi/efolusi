@@ -37,7 +37,7 @@ const en = {
       bscscan: 'BscScan',
       privacy: 'Privacy notice',
       terms: 'Platform terms',
-      rights: '© 2026 PT Efolusi Dunia Teknologi. All rights reserved.',
+      rights: '© 2026 PT Efolusi Dunia Teknologi. Site source is a Meridian reference implementation.',
       madeIn: 'Made in Indonesia'
     }
   },
@@ -505,7 +505,7 @@ const en = {
     heroA: 'The owl, the wordmark,',
     heroEm: 'and the rules',
     heroB: '.',
-    lede: "The owl and the wordmark are ours, and we're a little protective of them. Everything here is free to use for press, partners, or anyone writing about us, as long as you stick to the few rules below. The site's code is MIT licensed; the Efolusi name, the owl, and our names aren't.",
+    lede: "The owl and the wordmark are ours, and we're a little protective of them. Everything here is free to use for press, partners, or anyone writing about us, as long as you stick to the few rules below. The source of this site is a reference implementation of Meridian: you may read it and run it on your own machine, and you may not copy the site into another product. The Efolusi name, the owl, and our names stay ours.",
     owlTitleA: 'One owl,',
     owlTitleEm: 'treated well',
     owlTitleB: '.',

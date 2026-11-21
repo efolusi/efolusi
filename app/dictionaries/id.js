@@ -37,7 +37,7 @@ const id = {
       bscscan: 'BscScan',
       privacy: 'Pemberitahuan privasi',
       terms: 'Ketentuan platform',
-      rights: '© 2026 PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
+      rights: '© 2026 PT Efolusi Dunia Teknologi. Sumber situs ini adalah contoh penerapan Meridian.',
       madeIn: 'Dibuat di Indonesia'
     }
   },
@@ -505,7 +505,7 @@ const id = {
     heroA: 'Owl, wordmark,',
     heroEm: 'dan aturannya',
     heroB: '.',
-    lede: 'Owl dan wordmark ini milik kami, dan kami sedikit protektif soal keduanya. Semua di sini bebas dipakai untuk pers, mitra, atau siapa pun yang menulis tentang kami, selama mengikuti beberapa aturan di bawah. Kode sumber situs ini berlisensi MIT; nama Efolusi, maskot owl, dan nama kami tidak.',
+    lede: 'Owl dan wordmark ini milik kami, dan kami sedikit protektif soal keduanya. Semua di sini bebas dipakai untuk pers, mitra, atau siapa pun yang menulis tentang kami, selama mengikuti beberapa aturan di bawah. Sumber situs ini adalah contoh penerapan Meridian: Anda boleh membaca dan menjalankannya di mesin sendiri, dan Anda tidak boleh menyalin situs ini ke produk lain. Nama Efolusi, maskot owl, dan nama kami tetap milik kami.',
     owlTitleA: 'Satu owl,',
     owlTitleEm: 'diperlakukan baik',
     owlTitleB: '.',

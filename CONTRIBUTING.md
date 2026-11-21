@@ -21,4 +21,4 @@ CI runs `npm run build` and the OpenNext Cloudflare build on every pull request;
 
 ## License
 
-By contributing you agree that your contributions are licensed under the MIT license. The Efolusi name and the owl mark are not covered by the MIT grant.
+By contributing you agree that your contributions are licensed under the Efolusi Reference License. The Efolusi name and the owl mark are not part of that grant.
