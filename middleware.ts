@@ -85,7 +85,7 @@ export function contentSecurityPolicy(nonce: string, dev = process.env.NODE_ENV 
   const scriptSrc = dev
     ? `'self' 'nonce-${nonce}' 'unsafe-eval'`
     : `'self' 'nonce-${nonce}' https://static.cloudflareinsights.com`;
-  return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
+  return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
 }
 
 function newNonce(): string {

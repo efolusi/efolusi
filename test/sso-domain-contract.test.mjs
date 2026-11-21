@@ -36,7 +36,7 @@ test('CSP names no SSO API and allows the Cloudflare beacon', async () => {
     rule.headers.filter((h) => h.key === 'Content-Security-Policy').map((h) => ({ source: rule.source, value: h.value }))
   )
   expect(cspRules).toEqual([{ source: '/api/:path*', value: "default-src 'none'; frame-ancestors 'none'" }])
-  expect(middlewareSource).toContain("connect-src 'self' https://cloudflareinsights.com ")
+  expect(middlewareSource).toContain("connect-src 'self' https://cloudflareinsights.com;")
   expect(middlewareSource).toContain('https://static.cloudflareinsights.com')
   expect(middlewareSource).not.toMatch(/my-api/)
 })

@@ -171,7 +171,7 @@ describe('content security policy', () => {
 
   it('keeps the other directives', () => {
     const policy = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
-    expect(policy).toContain("connect-src 'self' https://cloudflareinsights.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com;");
+    expect(policy).toContain("connect-src 'self' https://cloudflareinsights.com;");
     expect(policy).toContain("default-src 'self'; ");
     expect(policy).toContain("style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';");
     expect(policy).toMatch(/frame-ancestors 'none'; base-uri 'self'; form-action 'self'$/);
