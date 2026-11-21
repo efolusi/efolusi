@@ -1,3 +1,5 @@
+import { execFileSync } from 'node:child_process';
+
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'DENY' },
@@ -5,9 +7,16 @@ const securityHeaders = [
   { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' }
 ];
 
+// The release marker: the full git sha of this build, in every page's head
+// (`<meta name="release">`). CI gives it as GITHUB_SHA; locally it comes from git.
+// A build without a valid sha stops, so no page ships a wrong marker.
+const releaseSha = process.env.GITHUB_SHA ?? execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+if (!/^[0-9a-f]{40}$/.test(releaseSha)) throw new Error('release sha is not 40 lowercase hex characters');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha },
   // app/global-not-found.js renders every unknown URL. The root layout sits
   // under [lang], so without it unknown URLs got an empty error shell.
   experimental: { globalNotFound: true },
