@@ -163,10 +163,20 @@ describe('content security policy', () => {
     }
   });
 
-  it('covers the 404 for a dotted path without a locale rewrite', () => {
+  it('sends an unknown dotted path to the branded 404 in the reader language', () => {
     const res = middleware(new NextRequest(new URL('https://efolusi.com/nope.php')));
     expect(csp(res)).toContain("'nonce-");
-    expect(res.headers.get('x-middleware-rewrite')).toBeNull();
+    expect(res.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/en/nope.php');
+    const id = middleware(new NextRequest(new URL('https://efolusi.com/nope.php'), { headers: { cookie: 'lang=id' } }));
+    expect(id.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/id/nope.php');
+  });
+
+  it('leaves the metadata routes without a locale rewrite', () => {
+    for (const path of ['/robots.txt', '/sitemap.xml', '/favicon.ico']) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(csp(res)).toContain("'nonce-");
+      expect(res.headers.get('x-middleware-rewrite')).toBeNull();
+    }
   });
 
   it('keeps the other directives', () => {
