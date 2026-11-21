@@ -55,7 +55,7 @@ export const terms = {
             'Kongkow: [terms](https://kongkow.xyz/terms) and [privacy policy](https://kongkow.xyz/privacy)'
           ]
         },
-        'Meridian, our design system, is open source under the Apache License 2.0, and that licence governs its use. Efolusi Pay is the payment service our products use to take payments; it is not offered to the public as a product of its own.'
+        'Meridian, our design system, is open source under the MIT licence, and that licence governs its use. Efolusi Pay is the payment service our products use to take payments; it is not offered to the public as a product of its own.'
       ]
     },
     {
@@ -166,7 +166,7 @@ export const terms = {
       id: 'trademarks',
       head: 'Content and trademarks',
       blocks: [
-        `The Efolusi name, the owl mark and the product names belong to ${ENTITY}. The source of this website is a reference implementation of Meridian under the Efolusi Reference License at [github.com/efolusi/efolusi](https://github.com/efolusi/efolusi). You may read it and run it on your own machine. You may not copy the site into another product. The license does not cover the names or the mark. Apart from the open-source projects, the products, their software and their design remain ours.`
+        `The Efolusi name, the owl mark and the product names belong to ${ENTITY}. The source code of this website is open source under the MIT licence at [github.com/efolusi/efolusi](https://github.com/efolusi/efolusi); the MIT licence does not cover the names or the mark. Apart from the open-source projects, the products, their software and their design remain ours.`
       ]
     },
     {

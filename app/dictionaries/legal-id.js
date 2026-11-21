@@ -48,7 +48,7 @@ export const terms = {
             'Kongkow: [ketentuan](https://kongkow.xyz/terms) dan [kebijakan privasi](https://kongkow.xyz/privacy), dalam bahasa Inggris'
           ]
         },
-        'Meridian, design system kami, bersifat open source di bawah Lisensi Apache 2.0, dan lisensi itulah yang mengatur penggunaannya. Efolusi Pay adalah layanan pembayaran yang dipakai produk kami untuk menerima pembayaran; layanan ini tidak ditawarkan ke publik sebagai produk tersendiri.'
+        'Meridian, design system kami, bersifat open source di bawah lisensi MIT, dan lisensi itulah yang mengatur penggunaannya. Efolusi Pay adalah layanan pembayaran yang dipakai produk kami untuk menerima pembayaran; layanan ini tidak ditawarkan ke publik sebagai produk tersendiri.'
       ]
     },
     {
@@ -159,7 +159,7 @@ export const terms = {
       id: 'trademarks',
       head: 'Konten dan merek dagang',
       blocks: [
-        `Nama Efolusi, maskot owl, dan nama-nama produk adalah milik ${ENTITY}. Sumber situs ini adalah contoh penerapan Meridian di bawah Efolusi Reference License di [github.com/efolusi/efolusi](https://github.com/efolusi/efolusi). Anda boleh membaca sumbernya dan menjalankannya di mesin sendiri. Anda tidak boleh menyalin situs ini ke produk lain. Lisensi itu tidak mencakup nama atau maskot. Di luar proyek open source, produk kami beserta perangkat lunak dan desainnya tetap milik kami.`
+        `Nama Efolusi, maskot owl, dan nama-nama produk adalah milik ${ENTITY}. Kode sumber situs ini open source di bawah lisensi MIT di [github.com/efolusi/efolusi](https://github.com/efolusi/efolusi); lisensi MIT tidak mencakup nama-nama atau maskot. Di luar proyek open source, produk kami beserta perangkat lunak dan desainnya tetap milik kami.`
       ]
     },
     {

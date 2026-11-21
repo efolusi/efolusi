@@ -163,4 +163,4 @@ Every change lands through a pull request into the protected `main` branch.
 
 ## License
 
-Efolusi Reference License, see [LICENSE](LICENSE). You may read this site and run it locally as a sample of Meridian. You may not copy it into another product. The product name and logo are not part of that grant. Meridian itself remains Apache-2.0.
+MIT, see [LICENSE](LICENSE). The Efolusi name and the owl mark are not covered by the MIT grant; do not use them to brand derived sites.
