@@ -2,7 +2,7 @@ import '@efolusi/meridian/styles.css';
 import '../globals.css';
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
-import ThemeInit from '../components/ThemeInit.jsx';
+import { themeInitScript } from '@efolusi/meridian/theme';
 import { getDictionary, locales } from '../dictionaries/config.js';
 import { RELEASE_SHA } from '../lib/release.js';
 
@@ -96,7 +96,7 @@ export default async function LangLayout({ children, params }) {
   return (
     <html lang={d.htmlLang} suppressHydrationWarning>
       <body>
-        <ThemeInit nonce={nonce} />
+        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         {/* JSON-LD is a data block the browser never runs, so script-src and the nonce do not apply. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationLd) }} />
         {children}

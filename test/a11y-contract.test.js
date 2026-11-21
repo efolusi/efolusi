@@ -52,13 +52,11 @@ describe('footer status link', () => {
 
 describe('theme control (Meridian contract)', () => {
   it('runs Meridian\'s pre-paint script, with the request nonce, on every page and the 404', () => {
-    // themeInitScript sits in a client module, so a server layout renders it through ThemeInit.
-    const init = read('../app/components/ThemeInit.jsx');
-    expect(init).toContain("import { themeInitScript } from '@efolusi/meridian';");
-    expect(init).toContain('<script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />');
+    // Meridian 1.27.0 ships themeInitScript for server code at @efolusi/meridian/theme.
     for (const file of ['../app/[lang]/layout.js', '../app/global-not-found.js']) {
       const src = read(file);
-      expect(src).toContain('<ThemeInit nonce={nonce} />');
+      expect(src).toContain("import { themeInitScript } from '@efolusi/meridian/theme';");
+      expect(src).toContain('<script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />');
       expect(src).toContain("const nonce = (await headers()).get('x-nonce') ?? undefined;");
     }
   });
@@ -70,7 +68,7 @@ describe('theme control (Meridian contract)', () => {
   });
 
   it('keeps no site-made theme control beside it', () => {
-    for (const file of ['../app/components/ThemeToggle.jsx', '../app/_lib/theme-init.js']) {
+    for (const file of ['../app/components/ThemeToggle.jsx', '../app/components/ThemeInit.jsx', '../app/_lib/theme-init.js']) {
       expect(existsSync(new URL(file, import.meta.url))).toBe(false);
     }
     expect(css).not.toMatch(/\.theme-toggle\b/);
