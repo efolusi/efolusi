@@ -32,8 +32,8 @@ describe('platform legal documents', () => {
   it('states how account deletion reaches the products (sso-cloud#46)', () => {
     const sections = (lang, doc, key) => allText(doc.sections.find((x) => x.id === key));
     const facts = {
-      en: [/each product you (have )?used/i, /7 days/, /Financial records, such as payments, are kept/, /never used are not told/i],
-      id: [/setiap produk yang pernah Anda pakai/i, /7 hari/, /Catatan keuangan, seperti pembayaran, tetap disimpan/, /tidak pernah Anda pakai tidak diberi tahu/i]
+      en: [/each product you (have )?used/i, /7 days/, /always tell Pay/i, /Financial records are kept/, /never used are not told/i],
+      id: [/setiap produk yang pernah Anda pakai/i, /7 hari/, /selalu memberi tahu Pay/i, /Catatan keuangan tetap disimpan/, /tidak pernah Anda pakai tidak diberi tahu/i]
     };
     for (const [lang, docs] of Object.entries(DOCS)) {
       const deletion = sections(lang, docs.privacy, 'deletion').join(' ');
