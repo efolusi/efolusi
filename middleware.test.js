@@ -191,15 +191,25 @@ describe('content security policy', () => {
   it('exempts every dotted route under app/ from the locale rewrite (found by scanning, not by memory)', () => {
     const found = ['/llms.txt', '/robots.txt', '/sitemap.xml'];
     const dotted = [];
+    // Next metadata files at the root serve fixed or dotted URLs (robots.txt, manifest.webmanifest, icon.png ...).
+    const METADATA = /^(robots|sitemap|manifest|icon|apple-icon|opengraph-image|twitter-image)(\.[^.]+)+$/;
+    const urlOf = (name) => {
+      const base = name.replace(/\.[jt]sx?$/, '');
+      if (base === 'robots') return '/robots.txt';
+      if (base === 'sitemap') return '/sitemap.xml';
+      if (base === 'manifest') return '/manifest.webmanifest';
+      return `/${/\.[^.]+$/.test(base) ? base : name}`;
+    };
     const walk = (dir, url) => {
       for (const e of readdirSync(dir, { withFileTypes: true })) {
         if (e.isDirectory()) {
-          if (e.name.startsWith('_') || e.name.startsWith('[') || e.name.startsWith('(')) continue;
-          const next = `${url}/${e.name}`;
-          if (e.name.includes('.') && readdirSync(join(dir, e.name)).some((f) => /^route\.[jt]sx?$/.test(f))) dotted.push(next);
+          // _private and [dynamic] folders serve no fixed dotted URL; (group) folders add no URL segment.
+          if (e.name.startsWith('_') || e.name.startsWith('[')) continue;
+          const next = e.name.startsWith('(') ? url : `${url}/${e.name}`;
+          if (!e.name.startsWith('(') && e.name.includes('.') && readdirSync(join(dir, e.name)).some((f) => /^route\.[jt]sx?$/.test(f))) dotted.push(next);
           walk(join(dir, e.name), next);
-        } else if (/^(robots|sitemap)\.[jt]sx?$/.test(e.name) && url === '') {
-          dotted.push(e.name.startsWith('robots') ? '/robots.txt' : '/sitemap.xml');
+        } else if (url === '' && !/\.test\./.test(e.name) && METADATA.test(e.name)) {
+          dotted.push(urlOf(e.name));
         }
       }
     };
