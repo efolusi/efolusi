@@ -236,9 +236,16 @@ describe('content security policy', () => {
     };
     walk(fileURLToPath(new URL('./public', import.meta.url)), '');
     expect(files.length).toBeGreaterThan(0);
-    for (const path of files) {
+    // Names starting with _ (_headers, _redirects) are Cloudflare config, never served.
+    const served = files.filter((path) => !path.split('/').pop().startsWith('_'));
+    expect(served.length).toBeGreaterThan(0);
+    for (const path of served) {
       const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
       expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
+    }
+    for (const path of files.filter((p) => !served.includes(p))) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBe(`https://efolusi.com/en${path}`);
     }
     const missing = middleware(new NextRequest(new URL('https://efolusi.com/efolusi/missing.php')));
     expect(missing.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/en/efolusi/missing.php');

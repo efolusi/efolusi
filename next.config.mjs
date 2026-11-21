@@ -19,7 +19,8 @@ if (!/^[0-9a-f]{40}$/.test(releaseSha)) throw new Error('release sha is not 40 l
 // Every file in public/ as a URL path. Middleware cannot read the disk, so it gets this list through env.
 const publicDir = fileURLToPath(new URL('./public', import.meta.url));
 const publicFiles = readdirSync(publicDir, { recursive: true, withFileTypes: true })
-  .filter((entry) => entry.isFile())
+  // Names starting with _ (_headers, _redirects) are Cloudflare config, never served.
+  .filter((entry) => entry.isFile() && !entry.name.startsWith('_'))
   .map((entry) => `/${relative(publicDir, `${entry.parentPath}/${entry.name}`)}`);
 
 /** @type {import('next').NextConfig} */

@@ -88,9 +88,11 @@ export function contentSecurityPolicy(nonce: string, dev = process.env.NODE_ENV 
   return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
 }
 
-/** The URL paths of public/, listed by next.config.mjs at build time. */
+/** The URL paths of public/, listed by next.config.mjs at build time and parsed once. */
+let publicFileSet: Set<string> | undefined;
 function publicFiles(): Set<string> {
-  return new Set(JSON.parse(process.env.EFOLUSI_PUBLIC_FILES ?? '[]') as string[]);
+  publicFileSet ??= new Set(JSON.parse(process.env.EFOLUSI_PUBLIC_FILES ?? '[]') as string[]);
+  return publicFileSet;
 }
 
 function newNonce(): string {
