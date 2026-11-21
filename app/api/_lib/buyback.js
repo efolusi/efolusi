@@ -37,6 +37,25 @@ function toEfo(hex) {
   return Number(BigInt(hex) / 10n ** 18n);
 }
 
+/* Reads at most MAX_BODY bytes, so a chunked answer with no content-length cannot grow without bound. */
+async function readCapped(res) {
+  const reader = res.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > MAX_BODY) {
+      await reader.cancel();
+      throw new Error('RPC response too large');
+    }
+    text += decoder.decode(value, { stream: true });
+  }
+  return text + decoder.decode();
+}
+
 async function readFromRpc(fetchImpl) {
   let lastErr;
   for (const rpc of RPCS) {
@@ -53,7 +72,7 @@ async function readFromRpc(fetchImpl) {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       if (Number(res.headers.get('content-length') || 0) > MAX_BODY) throw new Error('RPC response too large');
-      const out = await res.json();
+      const out = JSON.parse(await readCapped(res));
       if (!Array.isArray(out)) throw new Error('bad RPC response');
       const byId = Object.fromEntries(out.filter((r) => r && typeof r === 'object').map((r) => [r.id, r.result]));
       for (const id of [1, 2, 3]) {
