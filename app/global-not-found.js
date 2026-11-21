@@ -4,7 +4,7 @@ import { cookies, headers } from 'next/headers';
 import { defaultLocale, getDictionary, isLocale } from './dictionaries/config.js';
 import NotFoundView from './components/NotFoundView.jsx';
 import { LOCALE_HEADER } from './_lib/locale-header.js';
-import ThemeInit from './components/ThemeInit.jsx';
+import { themeInitScript } from '@efolusi/meridian/theme';
 import { RELEASE_SHA } from './lib/release.js';
 
 /*
@@ -37,7 +37,7 @@ export default async function GlobalNotFound() {
   return (
     <html lang={getDictionary(lang).htmlLang} suppressHydrationWarning>
       <body>
-        <ThemeInit nonce={nonce} />
+        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         <NotFoundView lang={lang} />
       </body>
     </html>
