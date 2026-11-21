@@ -93,4 +93,18 @@ describe('buyback balances', () => {
     const f = vi.fn(async () => new Response('[]', { headers: { 'content-length': '5000' } }));
     expect(await getBalances({ fetchImpl: f, now: () => 0 })).toBeNull();
   });
+
+  it('stops reading a chunked answer that has no content-length once it passes 4096 bytes', async () => {
+    let pulled = 0;
+    const body = new ReadableStream({
+      pull(c) {
+        pulled += 1024;
+        c.enqueue(new TextEncoder().encode('x'.repeat(1024)));
+        if (pulled > 1_000_000) c.close();
+      }
+    });
+    const f = vi.fn(async () => new Response(body));
+    expect(await getBalances({ fetchImpl: f, now: () => 0 })).toBeNull();
+    expect(pulled).toBeLessThan(20_000);
+  });
 });
