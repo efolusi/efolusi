@@ -1,4 +1,6 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
 
@@ -172,10 +174,40 @@ describe('content security policy', () => {
   });
 
   it('leaves the metadata routes without a locale rewrite', () => {
-    for (const path of ['/robots.txt', '/sitemap.xml', '/favicon.ico']) {
+    for (const path of ['/robots.txt', '/sitemap.xml', '/favicon.ico', '/llms.txt']) {
       const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
       expect(csp(res)).toContain("'nonce-");
       expect(res.headers.get('x-middleware-rewrite')).toBeNull();
+    }
+  });
+
+  it('gives look-alikes of the metadata routes the branded 404', () => {
+    for (const path of ['/sitemap.php', '/robots-x', '/favicon.evil', '/llms.txt.bak']) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBe(`https://efolusi.com/en${path}`);
+    }
+  });
+
+  it('exempts every dotted route under app/ from the locale rewrite (found by scanning, not by memory)', () => {
+    const found = ['/llms.txt', '/robots.txt', '/sitemap.xml'];
+    const dotted = [];
+    const walk = (dir, url) => {
+      for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.isDirectory()) {
+          if (e.name.startsWith('_') || e.name.startsWith('[') || e.name.startsWith('(')) continue;
+          const next = `${url}/${e.name}`;
+          if (e.name.includes('.') && readdirSync(join(dir, e.name)).some((f) => /^route\.[jt]sx?$/.test(f))) dotted.push(next);
+          walk(join(dir, e.name), next);
+        } else if (/^(robots|sitemap)\.[jt]sx?$/.test(e.name) && url === '') {
+          dotted.push(e.name.startsWith('robots') ? '/robots.txt' : '/sitemap.xml');
+        }
+      }
+    };
+    walk(fileURLToPath(new URL('./app', import.meta.url)), '');
+    expect(dotted.sort()).toEqual(found);
+    for (const path of dotted) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
     }
   });
 
