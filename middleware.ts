@@ -119,9 +119,10 @@ export function middleware(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
-  // Files and dotted paths take no locale. Public files are served before the
-  // Worker runs, so what reaches here is the global 404 (/nope.php), which needs the policy.
-  if (/^\/(favicon|robots|sitemap|efolusi\/)/.test(pathname) || /\.[^/]*$/.test(pathname)) {
+  // The exact metadata routes (app/robots.js, app/sitemap.js, app/llms.txt) and the efolusi/ files take no locale. Public files are served
+  // before the Worker runs, so any other dotted path (/nope.php) has no file and
+  // falls through to the branded 404 below.
+  if (/^\/(favicon\.ico|robots\.txt|sitemap\.xml|llms\.txt)$|^\/efolusi\//.test(pathname)) {
     return withPolicy(NextResponse.next({ request: { headers: renderHeaders(request.headers, nonce, policy) } }));
   }
 
