@@ -4,6 +4,7 @@ import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import ThemeInit from '../components/ThemeInit.jsx';
 import { getDictionary, locales } from '../dictionaries/config.js';
+import { RELEASE_SHA } from '../lib/release.js';
 
 const siteUrl = 'https://efolusi.com';
 
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }) {
 
   return {
     metadataBase: new URL(siteUrl),
+    other: { release: RELEASE_SHA },
     title: d.home.meta.title,
     description: d.home.meta.description,
     icons: {
