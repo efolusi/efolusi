@@ -140,7 +140,7 @@ export const terms = {
       head: 'Closing your account',
       blocks: [
         'You can stop using a product at any time. To close your Efolusi account, sign in at [my.efolusi.com](https://my.efolusi.com), open your account page and use **Delete account** at the bottom of the page. You confirm with your password, and the account is deleted straight away. This cannot be undone. If your account has no password, write to us and we will delete it for you.',
-        `Once the account is deleted, you can no longer use it to sign in to any product. Deleting the account does not yet delete the data each product holds for you. To have that removed as well, write to ${EMAIL} from the same email address and tell us which products you used. The [Privacy Notice](/{lang}/privacy#deletion) explains what is deleted and what is kept.`,
+        `Once the account is deleted, you can no longer use it to sign in to any product. When the account is deleted, we tell each product you used to delete the data it holds for you, and we always tell Pay. Products you never used are not told. If a product cannot receive the notice yet, write to ${EMAIL} from the same email address and tell us which product. The [Privacy Notice](/{lang}/privacy#deletion) explains what is deleted and what is kept.`,
         'We may suspend or close an account that breaks these terms, that the law requires us to close, or that puts the products or other people at risk. Unless it is urgent or unlawful to do so, we will tell you first.'
       ]
     },
@@ -440,7 +440,7 @@ export const privacy = {
       blocks: [
         'You can delete your Efolusi account at [my.efolusi.com](https://my.efolusi.com): open your account page, use **Delete account** at the bottom and confirm with your password. If your account has no password, write to us instead.',
         'Deletion is immediate. It removes your profile, password, two-step verification, sessions, connected apps, product memberships and linked wallet. Security events stay for their two-year period, daily wallet balance records stay because they are kept by wallet address, and copies stay in backups for up to 14 days. An uploaded profile picture is not yet removed automatically; ask us and we will delete it.',
-        `Deleting your account does not yet delete the data each product holds. To remove it, use the delete options inside the product where they exist (listed above), or write to ${EMAIL} from your account email address and tell us which products you used. We will confirm when it is done.`,
+        `When you delete your account, we tell each product you have used to delete the data it holds for you. We retry for up to 7 days if a product cannot be reached. We always tell Pay, which holds payment records. Products you have never used are not told. A product that is not yet connected to this notice cannot receive it: for those, write to ${EMAIL} from your account email address and tell us which product, and we will confirm when it is done.`,
         'You can download a copy of your account data as a JSON file with **Download my data** on your account page.'
       ]
     },

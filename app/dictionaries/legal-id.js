@@ -133,7 +133,7 @@ export const terms = {
       head: 'Menutup akun Anda',
       blocks: [
         'Anda bisa berhenti memakai produk kapan saja. Untuk menutup akun Efolusi, masuk di [my.efolusi.com](https://my.efolusi.com), buka halaman akun, lalu pakai **Hapus akun** di bagian paling bawah. Anda mengonfirmasi dengan kata sandi, dan akun langsung terhapus. Langkah ini tidak bisa dibatalkan. Kalau akun Anda tidak punya kata sandi, tulis ke kami dan kami akan menghapusnya untuk Anda.',
-        `Setelah akun terhapus, Anda tidak bisa lagi memakainya untuk masuk ke produk mana pun. Menghapus akun belum menghapus data yang disimpan tiap produk untuk Anda. Untuk menghapus data itu juga, tulis ke ${EMAIL} dari alamat email yang sama dan sebutkan produk yang pernah Anda pakai. [Pemberitahuan Privasi](/{lang}/privacy#deletion) menjelaskan apa yang dihapus dan apa yang disimpan.`,
+        `Setelah akun terhapus, Anda tidak bisa lagi memakainya untuk masuk ke produk mana pun. Saat akun dihapus, kami memberi tahu setiap produk yang pernah Anda pakai untuk menghapus data yang disimpannya tentang Anda, dan kami selalu memberi tahu Pay. Produk yang tidak pernah Anda pakai tidak diberi tahu. Kalau sebuah produk belum bisa menerima pemberitahuan itu, tulis ke ${EMAIL} dari alamat email yang sama dan sebutkan produknya. [Pemberitahuan Privasi](/{lang}/privacy#deletion) menjelaskan apa yang dihapus dan apa yang disimpan.`,
         'Kami bisa menangguhkan atau menutup akun yang melanggar ketentuan ini, yang wajib kami tutup menurut hukum, atau yang membahayakan produk maupun orang lain. Kecuali dalam keadaan mendesak atau bila dilarang hukum, kami akan memberi tahu Anda lebih dulu.'
       ]
     },
@@ -433,7 +433,7 @@ export const privacy = {
       blocks: [
         'Anda bisa menghapus akun Efolusi di [my.efolusi.com](https://my.efolusi.com): buka halaman akun, pakai **Hapus akun** di bagian paling bawah, lalu konfirmasi dengan kata sandi. Kalau akun Anda tidak punya kata sandi, tulis ke kami saja.',
         'Penghapusan langsung berlaku. Profil, kata sandi, verifikasi dua langkah, sesi, aplikasi terhubung, keanggotaan produk, dan dompet tertaut Anda ikut terhapus. Peristiwa keamanan tetap disimpan sampai masa dua tahunnya habis, catatan saldo dompet harian tetap ada karena disimpan per alamat dompet, dan salinan tetap ada di cadangan hingga 14 hari. Foto profil yang Anda unggah belum terhapus otomatis; minta ke kami dan kami akan menghapusnya.',
-        `Menghapus akun belum menghapus data yang disimpan tiap produk. Untuk menghapusnya, pakai pilihan hapus di dalam produk bila tersedia (lihat di atas), atau tulis ke ${EMAIL} dari alamat email akun Anda dan sebutkan produk yang pernah Anda pakai. Kami akan mengabari Anda setelah selesai.`,
+        `Saat Anda menghapus akun, kami memberi tahu setiap produk yang pernah Anda pakai untuk menghapus data yang disimpannya tentang Anda. Kami mencoba lagi hingga 7 hari kalau produk tidak bisa dihubungi. Kami selalu memberi tahu Pay, yang menyimpan catatan pembayaran. Produk yang tidak pernah Anda pakai tidak diberi tahu. Produk yang belum terhubung ke pemberitahuan ini tidak bisa menerimanya: untuk produk itu, tulis ke ${EMAIL} dari alamat email akun Anda dan sebutkan produknya, dan kami akan mengabari Anda setelah selesai.`,
         'Anda bisa mengunduh salinan data akun Anda sebagai berkas JSON lewat **Unduh data saya** di halaman akun.'
       ]
     },
