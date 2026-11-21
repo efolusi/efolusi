@@ -10,10 +10,17 @@ const RPCS = ['https://bsc-dataseed.bnbchain.org', 'https://bsc-rpc.publicnode.c
 const FRESH_MS = 30_000;
 const TIMEOUT_MS = 4_000;
 
+const HEX_RESULT = /^0x[0-9a-fA-F]{1,64}$/;
+const MAX_BODY = 4096;
+
 let cache = null;
+let failedAt = null;
+let inflight = null;
 
 export function resetBuybackCache() {
   cache = null;
+  failedAt = null;
+  inflight = null;
 }
 
 function balanceOfCall(wallet, id, token = CONTRACT) {
@@ -45,9 +52,13 @@ async function readFromRpc(fetchImpl) {
         ])
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      if (Number(res.headers.get('content-length') || 0) > MAX_BODY) throw new Error('RPC response too large');
       const out = await res.json();
-      const byId = Object.fromEntries(out.map((r) => [r.id, r.result]));
-      if (!byId[1] || !byId[2] || !byId[3]) throw new Error('bad RPC response');
+      if (!Array.isArray(out)) throw new Error('bad RPC response');
+      const byId = Object.fromEntries(out.filter((r) => r && typeof r === 'object').map((r) => [r.id, r.result]));
+      for (const id of [1, 2, 3]) {
+        if (typeof byId[id] !== 'string' || !HEX_RESULT.test(byId[id])) throw new Error('bad RPC response');
+      }
       // USDT on BSC also uses 18 decimals; keep cents for the smaller number
       return { burned: toEfo(byId[1]), buyback: toEfo(byId[2]), revenue: Number(BigInt(byId[3]) / 10n ** 16n) / 100 };
     } catch (err) {
@@ -57,13 +68,27 @@ async function readFromRpc(fetchImpl) {
   throw lastErr;
 }
 
+function staleOrNull() {
+  return cache ? { ...cache.value, stale: true } : null;
+}
+
 export async function getBalances({ fetchImpl = fetch, now = Date.now } = {}) {
   if (cache && now() - cache.at < FRESH_MS) return cache.value;
-  try {
-    const value = await readFromRpc(fetchImpl);
-    cache = { at: now(), value };
-    return value;
-  } catch {
-    return cache ? { ...cache.value, stale: true } : null;
-  }
+  // After a failed read, pause for 30 s so a down upstream is not hit on every request.
+  if (failedAt !== null && now() - failedAt < FRESH_MS) return staleOrNull();
+  if (inflight) return inflight;
+  inflight = readFromRpc(fetchImpl)
+    .then((value) => {
+      cache = { at: now(), value };
+      failedAt = null;
+      return value;
+    })
+    .catch(() => {
+      failedAt = now();
+      return staleOrNull();
+    })
+    .finally(() => {
+      inflight = null;
+    });
+  return inflight;
 }

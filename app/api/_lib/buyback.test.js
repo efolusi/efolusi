@@ -58,4 +58,39 @@ describe('buyback balances', () => {
     const bad = vi.fn(async () => new Response(JSON.stringify([{ id: 1, result: '0x1' }])));
     expect(await getBalances({ fetchImpl: bad, now: () => 0 })).toBeNull();
   });
+
+  it('does not stampede a failing upstream: two calls inside 30 s hit each RPC once', async () => {
+    const bad = vi.fn(async () => new Response('x', { status: 500 }));
+    await getBalances({ fetchImpl: bad, now: () => 0 });
+    await getBalances({ fetchImpl: bad, now: () => 10_000 });
+    expect(bad).toHaveBeenCalledTimes(2);
+  });
+
+  it('shares one in-flight read between concurrent callers', async () => {
+    const f = vi.fn(async () => rpcOk());
+    await Promise.all([getBalances({ fetchImpl: f, now: () => 0 }), getBalances({ fetchImpl: f, now: () => 0 })]);
+    expect(f).toHaveBeenCalledTimes(1);
+  });
+
+  it('retries after the 30 s failure pause', async () => {
+    const bad = vi.fn(async () => new Response('x', { status: 500 }));
+    await getBalances({ fetchImpl: bad, now: () => 0 });
+    await getBalances({ fetchImpl: bad, now: () => 31_000 });
+    expect(bad).toHaveBeenCalledTimes(4);
+  });
+
+  it.each([
+    ['not an array', { id: 1 }],
+    ['non-hex result', [{ id: 1, result: 'nope' }, { id: 2, result: '0x1' }, { id: 3, result: '0x1' }]],
+    ['result too long', [{ id: 1, result: '0x' + '1'.repeat(65) }, { id: 2, result: '0x1' }, { id: 3, result: '0x1' }]],
+    ['null entries', [null, { id: 2, result: '0x1' }, { id: 3, result: '0x1' }]]
+  ])('returns null for a malformed answer: %s', async (_n, body) => {
+    const f = vi.fn(async () => new Response(JSON.stringify(body)));
+    expect(await getBalances({ fetchImpl: f, now: () => 0 })).toBeNull();
+  });
+
+  it('refuses an oversized upstream answer by content-length', async () => {
+    const f = vi.fn(async () => new Response('[]', { headers: { 'content-length': '5000' } }));
+    expect(await getBalances({ fetchImpl: f, now: () => 0 })).toBeNull();
+  });
 });
