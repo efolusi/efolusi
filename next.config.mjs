@@ -1,4 +1,7 @@
 import { execFileSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
+import { relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
@@ -13,10 +16,17 @@ const securityHeaders = [
 const releaseSha = process.env.GITHUB_SHA ?? execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
 if (!/^[0-9a-f]{40}$/.test(releaseSha)) throw new Error('release sha is not 40 lowercase hex characters');
 
+// Every file in public/ as a URL path. Middleware cannot read the disk, so it gets this list through env.
+const publicDir = fileURLToPath(new URL('./public', import.meta.url));
+const publicFiles = readdirSync(publicDir, { recursive: true, withFileTypes: true })
+  // Names starting with _ (_headers, _redirects) are Cloudflare config, never served.
+  .filter((entry) => entry.isFile() && !entry.name.startsWith('_'))
+  .map((entry) => `/${relative(publicDir, `${entry.parentPath}/${entry.name}`)}`);
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha },
+  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha, EFOLUSI_PUBLIC_FILES: JSON.stringify(publicFiles) },
   // app/global-not-found.js renders every unknown URL. The root layout sits
   // under [lang], so without it unknown URLs got an empty error shell.
   experimental: { globalNotFound: true },
