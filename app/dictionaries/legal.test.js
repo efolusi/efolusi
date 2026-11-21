@@ -29,6 +29,20 @@ describe('platform legal documents', () => {
     }
   });
 
+  it('states how account deletion reaches the products (sso-cloud#46)', () => {
+    const sections = (lang, doc, key) => allText(doc.sections.find((x) => x.id === key));
+    const facts = {
+      en: [/each product you (have )?used/i, /7 days/, /always tell Pay/i, /Financial records are kept/, /never used are not told/i],
+      id: [/setiap produk yang pernah Anda pakai/i, /7 hari/, /selalu memberi tahu Pay/i, /Catatan keuangan tetap disimpan/, /tidak pernah Anda pakai tidak diberi tahu/i]
+    };
+    for (const [lang, docs] of Object.entries(DOCS)) {
+      const deletion = sections(lang, docs.privacy, 'deletion').join(' ');
+      for (const fact of facts[lang]) expect(deletion, `${lang} ${fact}`).toMatch(fact);
+      const ending = sections(lang, docs.terms, 'ending').join(' ');
+      expect(ending, `${lang} ending`).not.toMatch(/does not yet delete|belum menghapus data/);
+    }
+  });
+
   it('keeps the anchors other pages and products link to', () => {
     expect(ids(en.terms)).toEqual(
       expect.arrayContaining(['scope', 'account', 'refunds', 'ending', 'law', 'schedule', 'my', 'relay', 'loop', 'runa', 'komando', 'sanctum', 'kongkow'])
