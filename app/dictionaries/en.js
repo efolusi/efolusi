@@ -519,7 +519,7 @@ const en = {
     marksTitleEm: 'one ink',
     marksTitleB: '.',
     marksMeta: 'SVG · single colour',
-    marksNote: 'Each mark is one solid colour on warm or white paper.',
+    marksNote: 'Each mark is one solid colour on warm or white paper, drawn in the same 64 by 64 square so all eight take the same space.',
     rulesTitleA: 'The rules,',
     rulesTitleEm: 'briefly',
     rulesTitleB: '.',

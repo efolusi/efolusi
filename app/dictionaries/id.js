@@ -519,7 +519,7 @@ const id = {
     marksTitleEm: 'satu warna',
     marksTitleB: '.',
     marksMeta: 'SVG · satu warna',
-    marksNote: 'Setiap logo berwarna solid tunggal, di atas latar hangat atau putih.',
+    marksNote: 'Setiap logo berwarna solid tunggal di atas latar hangat atau putih, digambar dalam kotak 64 kali 64 yang sama supaya kedelapannya memakai ruang yang sama.',
     rulesTitleA: 'Aturannya,',
     rulesTitleEm: 'singkat saja',
     rulesTitleB: '.',

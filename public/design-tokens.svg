@@ -1,5 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <title>Design Tokens</title>
-  <g fill="#2C1709"><circle cx="13" cy="13" r="13"/><rect x="28" width="24" height="24" rx="5"/><rect x="28" y="40" width="24" height="12" rx="6"/></g>
-  <polygon points="12,30 22,30 12,50 2,50" fill="#2C1709" stroke="#2C1709" stroke-width="4" stroke-linejoin="round"/>
+  <path fill="#2C1709" d="M30 18C30 24.63 24.63 30 18 30C11.37 30 6 24.63 6 18C6 11.37 11.37 6 18 6C24.63 6 30 11.37 30 18ZM34 10Q34 6 38 6L54 6Q58 6 58 10L58 26Q58 30 54 30L38 30Q34 30 34 26ZM34 52Q34 46 40 46L52 46Q58 46 58 52Q58 58 52 58L40 58Q34 58 34 52ZM16.66 36.68Q18 34 21 34L27 34Q30 34 28.66 36.68L19.34 55.32Q18 58 15 58L9 58Q6 58 7.34 55.32Z"/>
 </svg>

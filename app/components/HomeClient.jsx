@@ -206,7 +206,7 @@ export default function HomeClient({ d, common, lang }) {
                   className={`tile-card ${tile.text ? `tint-${tile.tint}` : 'tile-card--logo'}`}
                   style={{ width: tile.w || tile.size, height: tile.h || tile.size, fontSize: tile.w ? 17 : 26 }}
                 >
-                  {tile.text || <ProductLogo id={tile.id} size={Math.round(tile.size * 0.52)} />}
+                  {tile.text || <ProductLogo id={tile.id} size={Math.round(tile.size * 0.6)} />}
                 </span>
               </a>
             );
