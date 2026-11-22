@@ -1,4 +1,6 @@
-/* Structural data (ids, tints, logos, icons, links, titles) is locale-agnostic;
+import { releaseRepos } from './latest-releases.mjs';
+
+/* Structural data (ids, tints, logos, links, titles) is locale-agnostic;
    the copy for each product is merged in from the dictionary by id. */
 export const productMeta = [
   { id: 'komando', title: 'Komando', tint: 'green', logo: '/komando.svg', logoRatio: 1.516, href: 'https://komando.efolusi.com' },
@@ -15,6 +17,11 @@ export const productMeta = [
    to give every mark the same optical area. */
 export const productById = Object.fromEntries(productMeta.map(product => [product.id, product]));
 
-/* Latest release of each CLI, the one place the site states a version.
-   null means no release yet. */
-export const releases = { komando: 'v0.14.1', toolips: 'v0.0.1', trady: 'v0.0.1', kongkow: 'v0.1.1', cuwan: null };
+/* Latest release tag of each product that ships one. next.config.mjs reads them
+   from GitHub at build time (app/lib/latest-releases.mjs) and hands them over in
+   EFOLUSI_RELEASES. A product without a release, or whose lookup failed, is null
+   and shows no version. */
+export const releases = { ...Object.fromEntries(Object.keys(releaseRepos).map(id => [id, null])), ...JSON.parse(process.env.EFOLUSI_RELEASES ?? '{}') };
+
+/* ", release <tag>" for prose, or nothing when there is no tag. */
+export const withRelease = (tag, label) => (tag ? `, ${label} ${tag}` : '');
