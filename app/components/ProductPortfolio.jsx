@@ -15,7 +15,7 @@ const groups = [
 
 function ProductMark({ product }) {
   return <span className={`portfolio-mark tint-${product.tint}`} aria-hidden="true">
-    {product.logo ? <ProductLogo id={product.id} size={30} /> : <span className="portfolio-mark-initial">{product.title.charAt(0)}</span>}
+    {product.logo ? <ProductLogo id={product.id} size={36} /> : <span className="portfolio-mark-initial">{product.title.charAt(0)}</span>}
   </span>;
 }
 
