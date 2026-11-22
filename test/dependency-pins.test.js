@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest';
 
 const read = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 
-describe('Meridian is pinned until its bump pull request (EF26)', () => {
+describe('Meridian is pinned exactly (EF28: v2.0.0)', () => {
   const version = JSON.parse(read('package.json')).dependencies['@efolusi/meridian'];
 
   it('package.json names one exact version, no range', () => {

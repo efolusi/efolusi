@@ -467,7 +467,7 @@ main[tabindex='-1']:focus {
   box-shadow: var(--focus-ring), var(--shadow-lg);
 }
 
-.tile-card.tint-cocoa {
+.tile-card.tint-band {
   font-family: var(--font-mono);
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
@@ -527,10 +527,10 @@ main[tabindex='-1']:focus {
   color: var(--brand-800);
 }
 
-.tint-cocoa {
+.tint-band {
   background: var(--surface-brand);
   border-color: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .tick.tick--caramel {
@@ -813,7 +813,7 @@ main[tabindex='-1']:focus {
    own; the fixed brand tints swap to the dark accent-subtle. */
 .wm-caramel,
 .wm-peach,
-.wm-cocoa {
+.wm-band {
   color: var(--accent-subtle);
 }
 
@@ -1054,17 +1054,17 @@ main[tabindex='-1']:focus {
   color: var(--brand-700);
 }
 
-/* ---------- Brand band (cocoa) ---------- */
+/* ---------- Brand band ---------- */
 
 .band {
   background: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
   padding: var(--section-y) 0;
 }
 
 .band h2,
 .band h3 {
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .band .band-grid {
@@ -1322,7 +1322,7 @@ main[tabindex='-1']:focus {
 }
 
 .band a.band-link {
-  color: var(--cream-50);
+  color: var(--text-on-brand);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -2052,7 +2052,7 @@ main[tabindex='-1']:focus {
   height: 36px;
   border-radius: var(--radius-full);
   background: var(--brand-500);
-  color: var(--text-on-brand);
+  color: var(--sand-950);
   transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
@@ -2062,7 +2062,7 @@ main[tabindex='-1']:focus {
 
 .pill--cream .pill-arrow {
   background: var(--brand-900);
-  color: var(--cream-50);
+  color: var(--text-on-media);
 }
 
 /* Sticker tags */
@@ -2215,13 +2215,13 @@ main[tabindex='-1']:focus {
   color: var(--sand-700);
 }
 
-.feat-card--cocoa {
+.feat-card--band {
   background: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
-.feat-card--cocoa:hover {
-  color: var(--cream-50);
+.feat-card--band:hover {
+  color: var(--text-on-brand);
 }
 
 .feat-card--amber {
@@ -2240,9 +2240,9 @@ main[tabindex='-1']:focus {
   box-shadow: var(--shadow-sm);
 }
 
-.feat-card--cocoa .feat-icon {
+.feat-card--band .feat-icon {
   background: var(--brand-800);
-  color: var(--cream-50);
+  color: var(--text-on-media);
 }
 
 .feat-card--peach .feat-icon {
@@ -2278,7 +2278,7 @@ main[tabindex='-1']:focus {
   max-width: 30ch;
 }
 
-.feat-card--cocoa p {
+.feat-card--band p {
   color: var(--text-on-brand-muted);
 }
 
@@ -2291,8 +2291,8 @@ main[tabindex='-1']:focus {
   color: var(--brand-700);
 }
 
-.feat-card--cocoa .feat-cta {
-  color: var(--cream-50);
+.feat-card--band .feat-cta {
+  color: var(--text-on-brand);
 }
 
 .feat-deco {
@@ -2303,7 +2303,7 @@ main[tabindex='-1']:focus {
   pointer-events: none;
 }
 
-.feat-card--cocoa .feat-deco {
+.feat-card--band .feat-deco {
   color: var(--brand-700);
 }
 
@@ -2350,7 +2350,7 @@ main[tabindex='-1']:focus {
   line-height: 1.3;
   max-width: 760px;
   margin: 0 auto;
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .founders {
@@ -2386,7 +2386,7 @@ main[tabindex='-1']:focus {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   margin-top: 16px;
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .founder .ro {
@@ -3003,8 +3003,8 @@ main[tabindex='-1']:focus {
    it holds, so its light ink and brand tags keep their contrast. */
 #products .portfolio-featured--primary [data-product] {
   --card-bg: var(--brand-950);
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 
 #products .portfolio-featured--primary .portfolio-feature::after {
@@ -3074,15 +3074,15 @@ main[tabindex='-1']:focus {
 .portfolio-browser [data-product='meridian'] { --card-bg: var(--brand-700); }
 .portfolio-browser [data-product='glamor'],
 .portfolio-browser [data-product='meridian'] {
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 
 /* Dark theme: the status ramps already remap to deep tints; the fixed brand and
    sand slots are mixed down to match, so every card takes light ink. */
 [data-theme='dark'] .portfolio-browser [data-product] {
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 [data-theme='dark'] .portfolio-browser [data-product='design-tokens'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, var(--surface-page)); }
 [data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, var(--surface-page)); }
