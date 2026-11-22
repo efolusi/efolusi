@@ -1,4 +1,4 @@
-import { releases } from '../lib/products.js';
+import { releases, withRelease } from '../lib/products.js';
 import * as legal from './legal-id.js';
 
 const id = {
@@ -98,7 +98,7 @@ const id = {
         headline: "Satu command line yang aman untuk server Anda.",
         section: "Server & infrastruktur",
         desc: "Server, database, cache, antrean, storage, cluster, dan VPN di balik satu perintah yang bisa dipakai Anda dan agen AI Anda. Kata sandi tersimpan di vault terenkripsi yang tidak pernah dilihat agen.",
-        specs: ['CLI open source', releases.komando, 'macOS, Linux & Windows'],
+        specs: ['CLI open source', releases.komando, 'macOS, Linux & Windows'].filter(Boolean),
         buttonLabel: 'Kunjungi Komando',
         tag: "Server & infrastruktur",
         summary: "Satu command line untuk server, database, storage, cluster, dan VPN, aman diserahkan ke agen AI."
@@ -106,7 +106,7 @@ const id = {
       trady: {
         section: "Video",
         desc: "Command line yang mengubah rekaman panjang menjadi klip pendek bertakarir di mesin Anda sendiri.",
-        specs: ['CLI open source', releases.trady, 'Jalan lokal'],
+        specs: ['CLI open source', releases.trady, 'Jalan lokal'].filter(Boolean),
         buttonLabel: 'Kunjungi Trady',
         tag: "Video",
         summary: "Ubah rekaman panjang menjadi klip pendek bertakarir di mesin Anda sendiri."
@@ -114,7 +114,7 @@ const id = {
       toolips: {
         section: "File",
         desc: "Command line untuk PDF, gambar, pemindaian secret, dan cek TLS. File Anda tetap di mesin Anda.",
-        specs: ['CLI open source', releases.toolips, 'Jalan lokal'],
+        specs: ['CLI open source', releases.toolips, 'Jalan lokal'].filter(Boolean),
         buttonLabel: 'Kunjungi Toolips',
         tag: "File",
         summary: "PDF, gambar, pemindaian secret, dan cek TLS dari satu command line lokal."
@@ -122,7 +122,7 @@ const id = {
       cuwan: {
         section: "Bot trading",
         desc: "Command line untuk bot grid trading di bursa kripto. Bot berjalan di mesin Anda sendiri.",
-        specs: ['CLI open source', 'Belum ada rilis', 'Jalan lokal'],
+        specs: ['CLI open source', releases.cuwan, 'Jalan lokal'].filter(Boolean),
         buttonLabel: 'Kunjungi Cuwan',
         tag: "Bot trading",
         summary: "Jalankan bot grid trading di bursa kripto dari mesin Anda sendiri."
@@ -130,7 +130,7 @@ const id = {
       kongkow: {
         section: "Posting sosial",
         desc: "Command line untuk menulis, menjadwalkan, dan menerbitkan posting media sosial Anda.",
-        specs: ['CLI open source', releases.kongkow, 'Jalan lokal'],
+        specs: ['CLI open source', releases.kongkow, 'Jalan lokal'].filter(Boolean),
         buttonLabel: 'Kunjungi Kongkow',
         tag: "Posting sosial",
         summary: "Tulis, jadwalkan, dan terbitkan posting media sosial dari satu command line."
@@ -298,28 +298,28 @@ const id = {
         href: 'https://komando.efolusi.com',
         problem: 'Server, database, storage, dan cluster masing-masing punya login dan perintah sendiri, dan agen AI yang diberi kata sandinya bisa merusak sesuatu.',
         solution: 'Satu command line di depan semuanya. Kata sandi tersimpan di vault terenkripsi, ia hanya membaca kecuali Anda bilang lain, dan setiap tindakan tercatat.',
-        result: `Open source, rilis ${releases.komando}. Aplikasi desktop dan mobile menyusul; tidak ada aplikasi web.`
+        result: `Open source${withRelease(releases.komando, 'rilis')}. Aplikasi desktop dan mobile menyusul; tidak ada aplikasi web.`
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Pekerjaan file kecil seperti konversi dan kompresi selalu berakhir di situs penuh iklan yang tidak Anda kenal.',
         solution: 'Command line lokal untuk PDF, gambar, pemindaian secret, dan cek TLS, jadi file tidak pernah keluar dari mesin Anda.',
-        result: `Open source, rilis pertama ${releases.toolips}. Aplikasi web dan desktop direncanakan.`
+        result: `Open source${withRelease(releases.toolips, 'rilis pertama')}. Aplikasi web dan desktop direncanakan.`
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'Satu video panjang berisi konten untuk seminggu, tapi memotongnya manual menghabiskan satu malam.',
         solution: 'Command line lokal: rekaman panjang masuk, klip pendek bertakarir keluar, dirender di mesin Anda sendiri.',
-        result: `Open source, rilis pertama ${releases.trady}. Aplikasi desktop untuk render lokal direncanakan.`
+        result: `Open source${withRelease(releases.trady, 'rilis pertama')}. Aplikasi desktop untuk render lokal direncanakan.`
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'Posting yang sama harus ditempel ke satu platform demi satu platform, dan selalu ada yang terlewat.',
         solution: 'Command line untuk menulis, menjadwalkan, dan menerbitkan posting sosial. Jadwalnya berjalan di mesin Anda sendiri.',
-        result: `Open source, rilis ${releases.kongkow}. Aplikasi web lebih dulu, lalu aplikasi mobile.`
+        result: `Open source${withRelease(releases.kongkow, 'rilis')}. Aplikasi web lebih dulu, lalu aplikasi mobile.`
       },
       {
         name: 'Cuwan',

@@ -3,6 +3,8 @@ import { readdirSync } from 'node:fs';
 import { relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+import { latestReleases, releaseRepos } from './app/lib/latest-releases.mjs';
+
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'DENY' },
@@ -23,10 +25,18 @@ const publicFiles = readdirSync(publicDir, { recursive: true, withFileTypes: tru
   .filter((entry) => entry.isFile() && !entry.name.startsWith('_'))
   .map((entry) => `/${relative(publicDir, `${entry.parentPath}/${entry.name}`)}`);
 
+// The newest release tag of each product, read from GitHub on every build so the cards cannot go stale.
+// A failed lookup leaves that product without a version and says so in the build log.
+// Tests import this file, so they skip the network (VITEST) and see no versions.
+const releases = process.env.VITEST ? {} : await latestReleases(releaseRepos).then(({ tags, failed }) => {
+  if (failed.length) console.warn(`WARNING: release lookup failed for ${failed.join(', ')}; the site shows no version for them.`);
+  return tags;
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
-  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha, EFOLUSI_PUBLIC_FILES: JSON.stringify(publicFiles) },
+  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha, EFOLUSI_PUBLIC_FILES: JSON.stringify(publicFiles), EFOLUSI_RELEASES: JSON.stringify(releases) },
   // app/global-not-found.js renders every unknown URL. The root layout sits
   // under [lang], so without it unknown URLs got an empty error shell.
   experimental: { globalNotFound: true },

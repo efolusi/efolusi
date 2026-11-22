@@ -19,12 +19,6 @@ function ProductMark({ product }) {
   </span>;
 }
 
-function ProductAccessory({ product, featured = false }) {
-  return <span className={`portfolio-accessory portfolio-accessory--${product.id}${featured ? ' portfolio-accessory--featured' : ''}`} aria-hidden="true">
-    <Icon name={product.icon} size={featured ? 34 : 25} />
-  </span>;
-}
-
 export default function ProductPortfolio({ products, lang, full = false }) {
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
@@ -40,7 +34,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
   return <div className="portfolio-browser">
     {!full && <div className="portfolio-featured portfolio-featured--primary">
       {featured.map(product => <a className={`portfolio-feature portfolio-feature--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={product.id}>
-        <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.title}</span></div><ProductAccessory product={product} featured />
+        <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.title}</span></div>
         <h3>{product.headline || product.title}</h3>
         <p>{product.desc}</p>
         <div className="portfolio-feature-bottom"><div className="portfolio-specs">{product.specs.map(spec => <Tag key={spec}>{spec}</Tag>)}</div><span className="portfolio-visit">{product.buttonLabel} <Icon name="arrow-up-right" size={16} /></span></div>
@@ -56,7 +50,7 @@ export default function ProductPortfolio({ products, lang, full = false }) {
             {group.products.map(key => {
               const product = all.find(item => item.id === key);
               return <a className={`portfolio-card portfolio-card--${product.tint}`} data-product={product.id} href={product.href} target="_blank" rel="noopener noreferrer" key={key}>
-                <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.tag}</span></div><ProductAccessory product={product} />
+                <div className="portfolio-card-top"><ProductMark product={product} /><span>{product.tag}</span></div>
                 <h4>{product.title}</h4><p>{product.summary}</p>
               </a>;
             })}
