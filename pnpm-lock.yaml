@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@efolusi/meridian':
-        specifier: ^1.29.0
+        specifier: 1.29.0
         version: 1.29.0(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)
       '@opennextjs/cloudflare':
         specifier: 1.20.17

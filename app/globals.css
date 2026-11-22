@@ -473,22 +473,6 @@ main[tabindex='-1']:focus {
   font-weight: var(--weight-semibold);
 }
 
-/* Meridian's mark must use the official 62:33 geometry, never font slashes.
-   A mask lets the same asset inherit white on espresso and the contextual
-   watermark tint without altering the production SVG. */
-.meridian-mark {
-  display: block;
-  width: 38px;
-  aspect-ratio: 1;
-  background: currentColor;
-  -webkit-mask: url('/meridian.svg') center / contain no-repeat;
-  mask: url('/meridian.svg') center / contain no-repeat;
-}
-
-.meridian-mark--watermark {
-  width: 400px;
-}
-
 /* Product marks are single-colour SVGs painted through a mask, so every logo
    takes one ink (currentColor) and one square box from ProductLogo. */
 .product-glyph {
