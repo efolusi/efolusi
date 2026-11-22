@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+  <title>Design Tokens</title>
+  <g fill="#2C1709"><circle cx="13" cy="13" r="13"/><rect x="28" width="24" height="24" rx="5"/><rect x="28" y="40" width="24" height="12" rx="6"/></g>
+  <polygon points="12,30 22,30 12,50 2,50" fill="#2C1709" stroke="#2C1709" stroke-width="4" stroke-linejoin="round"/>
+</svg>

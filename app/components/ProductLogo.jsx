@@ -7,7 +7,7 @@ const OPTICAL = { kongkow: 0.9, toolips: 0.9 };
 
 /* Logo files are served with a long browser cache. Bump this whenever any SVG
    under public/ changes so visitors never mix old and new geometry. */
-const LOGO_VERSION = '2026-09-16b';
+const LOGO_VERSION = '2026-11-22';
 
 export default function ProductLogo({ id, size }) {
   const product = productById[id];

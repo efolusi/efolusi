@@ -1,6 +1,8 @@
 import { Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import { socialMeta } from '../../lib/page-meta.js';
+import { productMeta } from '../../lib/products.js';
+import ProductLogo from '../../components/ProductLogo.jsx';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 
@@ -69,6 +71,34 @@ export default async function BrandPage({ params }) {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="csec csec--rule">
+        <div className="wrap">
+          <div className="csec-head">
+            <h2>
+              {d.marksTitleA} <span className="script accent">{d.marksTitleEm}</span>
+              {d.marksTitleB}
+            </h2>
+          </div>
+          <div className="brand-assets brand-assets--marks" style={{ marginTop: 36 }}>
+            {productMeta.filter((p) => p.logo).map((p) => (
+              <div className="brand-tile" key={p.id}>
+                <div className="brand-preview brand-preview--mark">
+                  <ProductLogo id={p.id} size={72} />
+                </div>
+                <div className="brand-meta">
+                  <div className="nm">{p.title}</div>
+                  <div className="ro">{d.marksMeta}</div>
+                  <a className="brand-download" href={p.logo} download={`${p.id}.svg`}>
+                    {d.download} <Icon name="download" size={14} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="ro" style={{ marginTop: 16 }}>{d.marksNote}</p>
         </div>
       </section>
 

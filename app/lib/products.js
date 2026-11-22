@@ -7,8 +7,8 @@ export const productMeta = [
   { id: 'cuwan', title: 'Cuwan', tint: 'green', logo: '/cuwan.svg', logoRatio: 1.145, icon: 'chart-candlestick', href: 'https://cuwan.xyz' },
   { id: 'kongkow', title: 'Kongkow', tint: 'peach', logo: '/kongkow.svg', logoRatio: 0.992, icon: 'message-square', href: 'https://kongkow.xyz' },
   { id: 'meridian', title: 'Meridian', tint: 'cocoa', logo: '/meridian-mark.svg', logoRatio: 1.879, icon: 'layout-dashboard', href: 'https://meridian.efolusi.com' },
-  { id: 'glamor', title: 'Glamor', tint: 'cocoa', icon: 'smartphone', href: 'https://github.com/efolusi/glamor' },
-  { id: 'design-tokens', title: 'Design Tokens', tint: 'amber', icon: 'sliders-horizontal', href: 'https://github.com/efolusi/design-tokens' }
+  { id: 'glamor', title: 'Glamor', tint: 'cocoa', logo: '/glamor.svg', logoRatio: 1, icon: 'smartphone', href: 'https://github.com/efolusi/glamor' },
+  { id: 'design-tokens', title: 'Design Tokens', tint: 'amber', logo: '/design-tokens.svg', logoRatio: 1, icon: 'sliders-horizontal', href: 'https://github.com/efolusi/design-tokens' }
 ];
 
 /* logoRatio is width / height of each SVG's tight viewBox, used by ProductLogo

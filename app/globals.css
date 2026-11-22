@@ -1909,6 +1909,16 @@ main[tabindex='-1']:focus {
   border-bottom: 1px solid var(--border-default);
 }
 
+.brand-assets--marks {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* The mark inks in the same dark brown as the wordmark. */
+.brand-preview--mark {
+  min-height: 160px;
+  color: var(--sand-950);
+}
+
 .brand-wordmark {
   font-family: var(--font-display);
   font-weight: var(--weight-display);
@@ -2644,6 +2654,15 @@ main[tabindex='-1']:focus {
 
   .brand-assets {
     grid-template-columns: 1fr;
+  }
+
+  .brand-assets--marks {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .brand-preview--mark {
+    min-height: 120px;
   }
 
   .ruled-cells[data-cols='2'],
