@@ -37,7 +37,7 @@ const leadership = [
 const edgeTiles = [
   { id: 'kongkow', href: 'https://kongkow.xyz', style: { left: '2%', top: 210, '--rot': '5deg', '--fd': '1.4s' }, size: 62 },
   { id: 'trady', href: 'https://trady.efolusi.com', style: { left: '10%', top: 450, '--rot': '7deg', '--fd': '0.8s' }, size: 64 },
-  { id: 'efo', text: '$EFO', tint: 'cocoa', href: 'token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
+  { id: 'efo', text: '$EFO', tint: 'band', href: 'token', style: { right: '4%', top: 30, '--rot': '6deg', '--fd': '0.6s' }, w: 96, h: 48 },
   { id: 'komando', href: 'https://komando.efolusi.com', style: { right: '2%', top: 205, '--rot': '6deg', '--fd': '1.2s' }, size: 68 },
   { id: 'toolips', href: 'https://toolips.xyz', style: { right: '14%', top: 385, '--rot': '-6deg', '--fd': '1.7s' }, size: 66 },
   { id: 'cuwan', href: 'https://cuwan.xyz', style: { right: '9%', top: 530, '--rot': '-5deg', '--fd': '0.2s' }, size: 70 },
@@ -286,7 +286,7 @@ export default function HomeClient({ d, common, lang }) {
               </span>
             </a>
 
-            <a className="feat-card feat-card--cocoa reveal" href={`${base}/token`}>
+            <a className="feat-card feat-card--band reveal" href={`${base}/token`}>
               <span className="feat-icon">
                 <Icon name="coins" size={22} />
               </span>
@@ -343,8 +343,8 @@ export default function HomeClient({ d, common, lang }) {
       <section className="band band-team" id="team">
         <div className="wrap">
           <p className="band-statement reveal">
-            {d.team.statementA} <span className="script" style={{ color: 'var(--brand-300)' }}>{d.team.engineered}</span>{' '}
-            {d.team.statementB} <span className="script" style={{ color: 'var(--brand-300)' }}>{d.team.led}</span>{' '}
+            {d.team.statementA} <span className="script">{d.team.engineered}</span>{' '}
+            {d.team.statementB} <span className="script">{d.team.led}</span>{' '}
             {d.team.statementC}
           </p>
 
@@ -558,7 +558,7 @@ export default function HomeClient({ d, common, lang }) {
       <section className="band closer">
         <div className="wrap">
           <h2 className="reveal">
-            {d.closer.titleA} <span className="script" style={{ color: 'var(--brand-300)' }}>{d.closer.titleEm}</span>
+            {d.closer.titleA} <span className="script">{d.closer.titleEm}</span>
             {d.closer.titleB}
           </h2>
           <p className="reveal">{d.closer.body}</p>

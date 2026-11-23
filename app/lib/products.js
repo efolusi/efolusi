@@ -8,8 +8,8 @@ export const productMeta = [
   { id: 'toolips', title: 'Toolips', tint: 'amber', logo: '/toolips.svg', href: 'https://toolips.xyz' },
   { id: 'cuwan', title: 'Cuwan', tint: 'green', logo: '/cuwan.svg', href: 'https://cuwan.xyz' },
   { id: 'kongkow', title: 'Kongkow', tint: 'peach', logo: '/kongkow.svg', href: 'https://kongkow.xyz' },
-  { id: 'meridian', title: 'Meridian', tint: 'cocoa', logo: '/meridian.svg', href: 'https://meridian.efolusi.com' },
-  { id: 'glamor', title: 'Glamor', tint: 'cocoa', logo: '/glamor.svg', href: 'https://github.com/efolusi/glamor' },
+  { id: 'meridian', title: 'Meridian', tint: 'band', logo: '/meridian.svg', href: 'https://meridian.efolusi.com' },
+  { id: 'glamor', title: 'Glamor', tint: 'band', logo: '/glamor.svg', href: 'https://github.com/efolusi/glamor' },
   { id: 'design-tokens', title: 'Design Tokens', tint: 'amber', logo: '/design-tokens.svg', href: 'https://github.com/efolusi/design-tokens' }
 ];
 
