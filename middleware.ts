@@ -72,6 +72,43 @@ export function apexRedirectUrl(requestUrl: URL): URL | null {
   return url;
 }
 
+/**
+ * The page CSP, with a fresh nonce per request. Next reads the nonce from this
+ * header on the request and puts it on its own scripts.
+ *
+ * No 'strict-dynamic': with it, browsers ignore the host list, and Cloudflare
+ * injects its beacon as a parser-inserted <script> without a nonce, so the
+ * beacon would be blocked. Next's chunks load from 'self'.
+ */
+export function contentSecurityPolicy(nonce: string, dev = process.env.NODE_ENV === 'development'): string {
+  // Next's dev tooling needs eval for source maps; production stays strict.
+  const scriptSrc = dev
+    ? `'self' 'nonce-${nonce}' 'unsafe-eval'`
+    : `'self' 'nonce-${nonce}' https://static.cloudflareinsights.com`;
+  return `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
+}
+
+/** The URL paths of public/, listed by next.config.mjs at build time and parsed once. */
+let publicFileSet: Set<string> | undefined;
+function publicFiles(): Set<string> {
+  publicFileSet ??= new Set(JSON.parse(process.env.EFOLUSI_PUBLIC_FILES ?? '[]') as string[]);
+  return publicFileSet;
+}
+
+function newNonce(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return btoa(String.fromCharCode(...bytes));
+}
+
+/** Request headers for the render: the nonce, the policy, and the locale when known. */
+function renderHeaders(source: Headers, nonce: string, policy: string, locale?: Locale): Headers {
+  const headers = locale ? withLocaleHeader(source, locale) : new Headers(source);
+  headers.set('x-nonce', nonce);
+  headers.set('Content-Security-Policy', policy);
+  return headers;
+}
+
 function isLocale(value: string | undefined): value is Locale {
   return value === 'en' || value === 'id';
 }
@@ -80,27 +117,37 @@ export function middleware(request: NextRequest) {
   const apex = apexRedirectUrl(new URL(request.url));
   if (apex) return NextResponse.redirect(apex, 301);
 
+  const nonce = newNonce();
+  const policy = contentSecurityPolicy(nonce);
+  const withPolicy = (response: NextResponse) => {
+    response.headers.set('Content-Security-Policy', policy);
+    return response;
+  };
+
   const { pathname } = request.nextUrl;
+
+  // The exact metadata routes (app/robots.js, app/sitemap.js, app/llms.txt) and every file in public/ take no locale.
+  // Any other dotted path (/nope.php) has no file and falls through to the branded 404 below.
+  if (/^\/(robots\.txt|sitemap\.xml|llms\.txt)$/.test(pathname) || publicFiles().has(pathname)) {
+    return withPolicy(NextResponse.next({ request: { headers: renderHeaders(request.headers, nonce, policy) } }));
+  }
 
   // Remember the language the reader is actually in, including a manual switch.
   const onLocalePath = /^\/(en|id)(\/|$)/.exec(pathname);
   if (onLocalePath) {
     const current = onLocalePath[1] as Locale;
-    const next = { request: { headers: withLocaleHeader(request.headers, current) } };
+    const next = { request: { headers: renderHeaders(request.headers, nonce, policy, current) } };
+    const response = withPolicy(NextResponse.next(next));
     if (request.cookies.get(COOKIE)?.value !== current) {
-      const response = NextResponse.next(next);
       response.cookies.set(COOKIE, current, {
         maxAge: COOKIE_MAX_AGE,
         path: '/',
         sameSite: 'lax',
       });
-      // A shared cache must never store a response that sets a cookie. Only the
-      // first visit in a language carries one; later visits keep the page's
-      // shared-cache rule from next.config.mjs.
+      // A shared cache must never store a response that sets a cookie.
       response.headers.set('Cache-Control', 'private, no-store');
-      return response;
     }
-    return NextResponse.next(next);
+    return response;
   }
 
   const stored = request.cookies.get(COOKIE)?.value;
@@ -113,9 +160,11 @@ export function middleware(request: NextRequest) {
     // Same origin, path set on a copy: the Worker serves the rewrite itself.
     const target = request.nextUrl.clone();
     target.pathname = `/${locale}${pathname}`;
-    return NextResponse.rewrite(target, {
-      request: { headers: withLocaleHeader(request.headers, locale) },
-    });
+    return withPolicy(
+      NextResponse.rewrite(target, {
+        request: { headers: renderHeaders(request.headers, nonce, policy, locale) },
+      }),
+    );
   }
 
   const url = languageRedirectUrl(request.nextUrl, process.env.EFOLUSI_EXTERNAL_ORIGIN);
@@ -126,6 +175,6 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Skip assets and API routes; only pages need a language.
-  matcher: ['/((?!_next/|api/|favicon|robots|sitemap|efolusi/|.*\\.).*)'],
+  // Every page and the global 404 need the CSP; built assets and API routes do not.
+  matcher: ['/((?!_next/static|_next/image|api/).*)'],
 };

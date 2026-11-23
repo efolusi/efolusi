@@ -88,7 +88,7 @@ html {
 }
 
 main {
-  animation: page-in 0.45s var(--ease-out);
+  animation: page-in 0.45s var(--ease-enter);
 }
 
 @keyframes page-in {
@@ -194,8 +194,8 @@ h2 {
   opacity: 0;
   transform: translateY(14px);
   transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-spring);
+    opacity var(--dur-slow) var(--ease-enter),
+    transform var(--dur-slow) var(--ease-emphasised);
 }
 
 .reveal.in {
@@ -254,7 +254,7 @@ main[tabindex='-1']:focus {
   /* The scrolled rule is an inset shadow, not a border, so the header is
      exactly --nav-h tall in both states. */
   box-shadow: inset 0 -1px 0 transparent;
-  transition: box-shadow var(--dur-med) var(--ease-out);
+  transition: box-shadow var(--dur-base) var(--ease-enter);
 }
 
 .site-header.is-scrolled {
@@ -308,9 +308,9 @@ main[tabindex='-1']:focus {
   color: var(--text-secondary);
   text-decoration: none;
   transition:
-    background var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
+    background var(--dur-fast) var(--ease-enter),
+    border-color var(--dur-fast) var(--ease-enter),
+    color var(--dur-fast) var(--ease-enter);
 }
 
 .site-nav a:hover {
@@ -338,34 +338,6 @@ main[tabindex='-1']:focus {
   gap: 8px;
 }
 
-.theme-toggle {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  width: 40px;
-  height: 40px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-full);
-  background: transparent;
-  color: var(--text-secondary);
-  cursor: pointer;
-  transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
-}
-
-.theme-toggle:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
-}
-
-.theme-toggle:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
 .lang-switch {
   position: relative;
   display: inline-flex;
@@ -381,8 +353,8 @@ main[tabindex='-1']:focus {
   letter-spacing: 0.04em;
   color: var(--text-secondary);
   transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out);
+    background var(--dur-fast) var(--ease-enter),
+    color var(--dur-fast) var(--ease-enter);
 }
 
 .lang-switch:hover {
@@ -442,7 +414,7 @@ main[tabindex='-1']:focus {
   stroke-linecap: round;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  animation: scribble-draw 0.7s var(--ease-out) 0.9s forwards;
+  animation: scribble-draw 0.7s var(--ease-enter) 0.9s forwards;
 }
 
 @keyframes scribble-draw {
@@ -464,10 +436,10 @@ main[tabindex='-1']:focus {
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-display);
   color: var(--brand-500);
-  animation: pop-in 0.55s var(--ease-spring) var(--d, 0s) both;
+  animation: pop-in 0.55s var(--ease-emphasised) var(--d, 0s) both;
   transition:
-    transform var(--dur-med) var(--ease-spring),
-    box-shadow var(--dur-med) var(--ease-out);
+    transform var(--dur-base) var(--ease-emphasised),
+    box-shadow var(--dur-base) var(--ease-enter);
 }
 
 @keyframes pop-in {
@@ -495,30 +467,14 @@ main[tabindex='-1']:focus {
   box-shadow: var(--focus-ring), var(--shadow-lg);
 }
 
-.tile-card.tint-cocoa {
+.tile-card.tint-band {
   font-family: var(--font-mono);
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
 }
 
-/* Meridian's mark must use the official 62:33 geometry, never font slashes.
-   A mask lets the same asset inherit white on espresso and the contextual
-   watermark tint without altering the production SVG. */
-.meridian-mark {
-  display: block;
-  width: 38px;
-  aspect-ratio: 62 / 33;
-  background: currentColor;
-  -webkit-mask: url('/meridian-mark.svg') center / contain no-repeat;
-  mask: url('/meridian-mark.svg') center / contain no-repeat;
-}
-
-.meridian-mark--watermark {
-  width: 400px;
-}
-
 /* Product marks are single-colour SVGs painted through a mask, so every logo
-   takes one ink (currentColor) and one optical size from ProductLogo. */
+   takes one ink (currentColor) and one square box from ProductLogo. */
 .product-glyph {
   display: block;
   flex: none;
@@ -571,10 +527,10 @@ main[tabindex='-1']:focus {
   color: var(--brand-800);
 }
 
-.tint-cocoa {
+.tint-band {
   background: var(--surface-brand);
   border-color: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .tick.tick--caramel {
@@ -770,7 +726,7 @@ main[tabindex='-1']:focus {
   border-bottom: 1px solid var(--border-default);
   color: var(--text-primary);
   text-decoration: none;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-enter);
 }
 
 .plist-row:hover {
@@ -792,7 +748,7 @@ main[tabindex='-1']:focus {
   font-weight: var(--weight-bold);
   letter-spacing: var(--tracking-display);
   line-height: 1;
-  transition: transform var(--dur-med) var(--ease-spring);
+  transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
 .plist-row:hover .plist-mark {
@@ -825,7 +781,7 @@ main[tabindex='-1']:focus {
 .plist-arrow {
   display: inline-flex;
   color: var(--text-muted);
-  transition: transform var(--dur-med) var(--ease-spring), color var(--dur-fast) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-emphasised), color var(--dur-fast) var(--ease-enter);
 }
 
 .plist-row:hover .plist-arrow {
@@ -857,7 +813,7 @@ main[tabindex='-1']:focus {
    own; the fixed brand tints swap to the dark accent-subtle. */
 .wm-caramel,
 .wm-peach,
-.wm-cocoa {
+.wm-band {
   color: var(--accent-subtle);
 }
 
@@ -885,7 +841,7 @@ main[tabindex='-1']:focus {
   color: var(--surface-sunken);
   user-select: none;
   pointer-events: none;
-  animation: watermark-in var(--dur-slow) var(--ease-spring);
+  animation: watermark-in var(--dur-slow) var(--ease-emphasised);
 }
 
 .stage-watermark--brand {
@@ -916,8 +872,8 @@ main[tabindex='-1']:focus {
   transform: translateY(10px);
   pointer-events: none;
   transition:
-    opacity var(--dur-slow) var(--ease-out),
-    transform var(--dur-slow) var(--ease-spring);
+    opacity var(--dur-slow) var(--ease-enter),
+    transform var(--dur-slow) var(--ease-emphasised);
 }
 
 .stage-panel.is-active {
@@ -979,9 +935,9 @@ main[tabindex='-1']:focus {
   color: var(--text-secondary);
   cursor: pointer;
   transition:
-    background var(--dur-fast) var(--ease-out),
-    color var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out);
+    background var(--dur-fast) var(--ease-enter),
+    color var(--dur-fast) var(--ease-enter),
+    box-shadow var(--dur-base) var(--ease-enter);
 }
 
 .switch button:hover {
@@ -1098,17 +1054,17 @@ main[tabindex='-1']:focus {
   color: var(--brand-700);
 }
 
-/* ---------- Brand band (cocoa) ---------- */
+/* ---------- Brand band ---------- */
 
 .band {
   background: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
   padding: var(--section-y) 0;
 }
 
 .band h2,
 .band h3 {
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .band .band-grid {
@@ -1163,7 +1119,7 @@ main[tabindex='-1']:focus {
   border-bottom: 1px solid var(--border-default);
   color: var(--text-primary);
   text-decoration: none;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-enter);
 }
 
 .role:hover {
@@ -1187,8 +1143,8 @@ main[tabindex='-1']:focus {
   margin-left: auto;
   color: var(--text-muted);
   transition:
-    transform var(--dur-med) var(--ease-spring),
-    color var(--dur-fast) var(--ease-out);
+    transform var(--dur-base) var(--ease-emphasised),
+    color var(--dur-fast) var(--ease-enter);
 }
 
 .role:hover .role-arrow {
@@ -1366,7 +1322,7 @@ main[tabindex='-1']:focus {
 }
 
 .band a.band-link {
-  color: var(--cream-50);
+  color: var(--text-on-brand);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -1637,7 +1593,7 @@ main[tabindex='-1']:focus {
   gap: 12px;
   color: var(--text-primary);
   text-decoration: none;
-  transition: background var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-enter);
 }
 
 .trade-link:hover {
@@ -1937,6 +1893,16 @@ main[tabindex='-1']:focus {
   border-bottom: 1px solid var(--border-default);
 }
 
+.brand-assets--marks {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* The mark inks in the same dark brown as the wordmark. */
+.brand-preview--mark {
+  min-height: 160px;
+  color: var(--sand-950);
+}
+
 .brand-wordmark {
   font-family: var(--font-display);
   font-weight: var(--weight-display);
@@ -2002,9 +1968,9 @@ main[tabindex='-1']:focus {
   white-space: nowrap;
   text-decoration: none;
   transition:
-    background var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out);
+    background var(--dur-fast) var(--ease-enter),
+    border-color var(--dur-fast) var(--ease-enter),
+    transform var(--dur-fast) var(--ease-enter);
 }
 
 .pill:hover {
@@ -2086,8 +2052,8 @@ main[tabindex='-1']:focus {
   height: 36px;
   border-radius: var(--radius-full);
   background: var(--brand-500);
-  color: var(--text-on-brand);
-  transition: transform var(--dur-med) var(--ease-spring);
+  color: var(--sand-950);
+  transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
 .pill:hover .pill-arrow {
@@ -2096,7 +2062,7 @@ main[tabindex='-1']:focus {
 
 .pill--cream .pill-arrow {
   background: var(--brand-900);
-  color: var(--cream-50);
+  color: var(--text-on-media);
 }
 
 /* Sticker tags */
@@ -2224,7 +2190,7 @@ main[tabindex='-1']:focus {
   flex-direction: column;
   text-decoration: none;
   color: var(--text-primary);
-  transition: transform var(--dur-med) var(--ease-spring), box-shadow var(--dur-med) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-emphasised), box-shadow var(--dur-base) var(--ease-enter);
 }
 
 .feat-card:hover {
@@ -2249,13 +2215,13 @@ main[tabindex='-1']:focus {
   color: var(--sand-700);
 }
 
-.feat-card--cocoa {
+.feat-card--band {
   background: var(--surface-brand);
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
-.feat-card--cocoa:hover {
-  color: var(--cream-50);
+.feat-card--band:hover {
+  color: var(--text-on-brand);
 }
 
 .feat-card--amber {
@@ -2274,9 +2240,9 @@ main[tabindex='-1']:focus {
   box-shadow: var(--shadow-sm);
 }
 
-.feat-card--cocoa .feat-icon {
+.feat-card--band .feat-icon {
   background: var(--brand-800);
-  color: var(--cream-50);
+  color: var(--text-on-media);
 }
 
 .feat-card--peach .feat-icon {
@@ -2312,7 +2278,7 @@ main[tabindex='-1']:focus {
   max-width: 30ch;
 }
 
-.feat-card--cocoa p {
+.feat-card--band p {
   color: var(--text-on-brand-muted);
 }
 
@@ -2325,8 +2291,8 @@ main[tabindex='-1']:focus {
   color: var(--brand-700);
 }
 
-.feat-card--cocoa .feat-cta {
-  color: var(--cream-50);
+.feat-card--band .feat-cta {
+  color: var(--text-on-brand);
 }
 
 .feat-deco {
@@ -2337,7 +2303,7 @@ main[tabindex='-1']:focus {
   pointer-events: none;
 }
 
-.feat-card--cocoa .feat-deco {
+.feat-card--band .feat-deco {
   color: var(--brand-700);
 }
 
@@ -2384,7 +2350,7 @@ main[tabindex='-1']:focus {
   line-height: 1.3;
   max-width: 760px;
   margin: 0 auto;
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .founders {
@@ -2420,7 +2386,7 @@ main[tabindex='-1']:focus {
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
   margin-top: 16px;
-  color: var(--cream-50);
+  color: var(--text-on-brand);
 }
 
 .founder .ro {
@@ -2674,6 +2640,15 @@ main[tabindex='-1']:focus {
     grid-template-columns: 1fr;
   }
 
+  .brand-assets--marks {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .brand-preview--mark {
+    min-height: 120px;
+  }
+
   .ruled-cells[data-cols='2'],
   .ruled-cells[data-cols='4'] {
     grid-template-columns: 1fr;
@@ -2782,8 +2757,8 @@ main[tabindex='-1']:focus {
 .portfolio-browser > .portfolio-grid .portfolio-card {
   border: 0;
   transition:
-    transform var(--dur-med) var(--ease-spring),
-    box-shadow var(--dur-med) var(--ease-out);
+    transform var(--dur-base) var(--ease-emphasised),
+    box-shadow var(--dur-base) var(--ease-enter);
 }
 .portfolio-browser > .portfolio-grid .portfolio-card::before {
   content: none;
@@ -2825,10 +2800,10 @@ main[tabindex='-1']:focus {
   position: relative;
   overflow: hidden;
   transition:
-    transform var(--dur-med) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-med) var(--ease-out),
-    background-color var(--dur-fast) var(--ease-out);
+    transform var(--dur-base) var(--ease-enter),
+    border-color var(--dur-fast) var(--ease-enter),
+    box-shadow var(--dur-base) var(--ease-enter),
+    background-color var(--dur-fast) var(--ease-enter);
 }
 
 .portfolio-feature::before,
@@ -2839,7 +2814,7 @@ main[tabindex='-1']:focus {
   width: 3px;
   background: var(--card-accent, var(--brand-400));
   opacity: 0;
-  transition: opacity var(--dur-fast) var(--ease-out);
+  transition: opacity var(--dur-fast) var(--ease-enter);
 }
 
 .portfolio-feature:hover,
@@ -2866,9 +2841,9 @@ main[tabindex='-1']:focus {
   background: transparent;
   box-sizing: content-box;
   transition:
-    color var(--dur-fast) var(--ease-out),
-    background var(--dur-fast) var(--ease-out),
-    transform var(--dur-med) var(--ease-spring);
+    color var(--dur-fast) var(--ease-enter),
+    background var(--dur-fast) var(--ease-enter),
+    transform var(--dur-base) var(--ease-emphasised);
 }
 
 .portfolio-feature:hover .portfolio-card-top > svg,
@@ -2885,7 +2860,7 @@ main[tabindex='-1']:focus {
 
 .portfolio-mark {
   border: 1px solid transparent;
-  transition: transform var(--dur-med) var(--ease-spring);
+  transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
 .portfolio-featured--primary .portfolio-feature {
@@ -2929,7 +2904,7 @@ main[tabindex='-1']:focus {
 .portfolio-visit,
 .portfolio-toolbar > a,
 .portfolio-foundation > a {
-  transition: color var(--dur-fast) var(--ease-out);
+  transition: color var(--dur-fast) var(--ease-enter);
 }
 
 .portfolio-feature:hover .portfolio-visit,
@@ -2947,10 +2922,10 @@ main[tabindex='-1']:focus {
   height: 40px;
   padding-block: 0;
   transition:
-    color var(--dur-fast) var(--ease-out),
-    background var(--dur-fast) var(--ease-out),
-    border-color var(--dur-fast) var(--ease-out),
-    transform var(--dur-fast) var(--ease-out);
+    color var(--dur-fast) var(--ease-enter),
+    background var(--dur-fast) var(--ease-enter),
+    border-color var(--dur-fast) var(--ease-enter),
+    transform var(--dur-fast) var(--ease-enter);
 }
 
 .portfolio-filters button:hover {
@@ -2969,8 +2944,8 @@ main[tabindex='-1']:focus {
 
 .portfolio-search {
   transition:
-    border-color var(--dur-fast) var(--ease-out),
-    box-shadow var(--dur-fast) var(--ease-out);
+    border-color var(--dur-fast) var(--ease-enter),
+    box-shadow var(--dur-fast) var(--ease-enter);
 }
 
 .portfolio-search:focus-within {
@@ -3003,8 +2978,8 @@ main[tabindex='-1']:focus {
   box-shadow: none;
   transform: none;
   transition:
-    transform var(--dur-med) var(--ease-spring),
-    box-shadow var(--dur-med) var(--ease-out);
+    transform var(--dur-base) var(--ease-emphasised),
+    box-shadow var(--dur-base) var(--ease-enter);
 }
 
 #products .portfolio-feature:hover,
@@ -3028,8 +3003,8 @@ main[tabindex='-1']:focus {
    it holds, so its light ink and brand tags keep their contrast. */
 #products .portfolio-featured--primary [data-product] {
   --card-bg: var(--brand-950);
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 
 #products .portfolio-featured--primary .portfolio-feature::after {
@@ -3099,15 +3074,15 @@ main[tabindex='-1']:focus {
 .portfolio-browser [data-product='meridian'] { --card-bg: var(--brand-700); }
 .portfolio-browser [data-product='glamor'],
 .portfolio-browser [data-product='meridian'] {
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 
 /* Dark theme: the status ramps already remap to deep tints; the fixed brand and
    sand slots are mixed down to match, so every card takes light ink. */
 [data-theme='dark'] .portfolio-browser [data-product] {
-  --card-fg: var(--cream-50);
-  --card-muted: var(--text-on-brand-muted);
+  --card-fg: var(--text-on-media);
+  --card-muted: var(--text-on-media-muted);
 }
 [data-theme='dark'] .portfolio-browser [data-product='design-tokens'] { --card-bg: color-mix(in srgb, var(--sand-300) 18%, var(--surface-page)); }
 [data-theme='dark'] .portfolio-browser [data-product='toolips'] { --card-bg: color-mix(in srgb, var(--brand-400) 30%, var(--surface-page)); }
@@ -3175,7 +3150,7 @@ main[tabindex='-1']:focus {
 }
 
 #products .portfolio-feature .portfolio-visit > svg {
-  transition: transform var(--dur-med) var(--ease-spring);
+  transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
 #products .portfolio-feature:hover .portfolio-visit > svg,
@@ -3330,7 +3305,7 @@ main[tabindex='-1']:focus {
   color: currentColor;
   opacity: .3;
   pointer-events: none;
-  transition: transform var(--dur-med) var(--ease-spring), opacity var(--dur-fast) var(--ease-out);
+  transition: transform var(--dur-base) var(--ease-emphasised), opacity var(--dur-fast) var(--ease-enter);
 }
 
 #products .portfolio-deco svg {
@@ -3376,76 +3351,6 @@ main[tabindex='-1']:focus {
 /* Product colour and monograms carry the playful tone without extra ornament. */
 #products .portfolio-deco { display: none; }
 
-/* Product accessories: one icon family, varied organic frames. */
-#products .portfolio-accessory {
-  position: absolute;
-  z-index: 0;
-  top: 25px;
-  right: 26px;
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  color: currentColor;
-  background: color-mix(in srgb, currentColor 9%, transparent);
-  opacity: .52;
-  pointer-events: none;
-  transition:
-    transform var(--dur-med) var(--ease-spring),
-    opacity var(--dur-fast) var(--ease-out);
-}
-
-#products .portfolio-card:hover .portfolio-accessory,
-#products .portfolio-feature:hover .portfolio-accessory {
-  transform: rotate(6deg) scale(1.08);
-  opacity: .75;
-}
-
-#products .portfolio-accessory--featured {
-  top: 38px;
-  right: 52px;
-  width: 76px;
-  height: 76px;
-  color: var(--brand-300);
-  background: var(--brand-800);
-  opacity: .9;
-}
-
-
-
-
-#products .portfolio-accessory--komando {
-  border-radius: 50% var(--radius-lg) 50% var(--radius-lg);
-  rotate: -4deg;
-}
-
-#products .portfolio-accessory--trady {
-  border-radius: var(--radius-lg);
-  box-shadow: 7px 7px 0 color-mix(in srgb, currentColor 10%, transparent);
-  rotate: -3deg;
-}
-
-#products .portfolio-accessory--kongkow {
-  border-radius: 50% 50% 50% 12px;
-  rotate: 4deg;
-}
-
-
-#products .portfolio-accessory--meridian {
-  border: 1px solid color-mix(in srgb, currentColor 22%, transparent);
-  border-radius: var(--radius-lg) var(--radius-sm) var(--radius-lg) var(--radius-sm);
-  background: color-mix(in srgb, currentColor 7%, transparent);
-}
-
-@media (max-width: 640px) {
-  #products .portfolio-accessory--featured {
-    top: 28px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-  }
-}
-
 /* ---------- Touch targets (EF-03) ----------
    On a touch screen of any width (tablets and touch laptops report
    pointer: coarse) and on every phone-width window, each control gets a hit
@@ -3456,7 +3361,6 @@ main[tabindex='-1']:focus {
    neighbour by 4px. Mouse and trackpad layouts wider than 640px are
    untouched. */
 @media (max-width: 640px), (pointer: coarse) {
-  .theme-toggle::after,
   .lang-switch::after,
   .menu-toggle::after,
   .ef-copyfield .ef-iconbtn::after {

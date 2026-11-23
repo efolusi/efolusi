@@ -4,8 +4,9 @@ import { cookies, headers } from 'next/headers';
 import { defaultLocale, getDictionary, isLocale } from './dictionaries/config.js';
 import NotFoundView from './components/NotFoundView.jsx';
 import { LOCALE_HEADER } from './_lib/locale-header.js';
-import { themeInit } from './_lib/theme-init.js';
+import { themeInitScript } from '@efolusi/meridian/theme';
 import { AnalyticsBeacon } from './_lib/analytics.js';
+import { RELEASE_SHA } from './lib/release.js';
 
 /*
  * Every URL no page claims ends here, with a real 404 status.
@@ -28,15 +29,16 @@ async function resolveLang() {
 
 export async function generateMetadata() {
   const lang = await resolveLang();
-  return { title: getDictionary(lang).common.notFound.meta, robots: { index: false } };
+  return { title: getDictionary(lang).common.notFound.meta, robots: { index: false }, other: { release: RELEASE_SHA } };
 }
 
 export default async function GlobalNotFound() {
   const lang = await resolveLang();
+  const nonce = (await headers()).get('x-nonce') ?? undefined;
   return (
     <html lang={getDictionary(lang).htmlLang} suppressHydrationWarning>
       <body>
-        <script dangerouslySetInnerHTML={{ __html: themeInit }} />
+        <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         <NotFoundView lang={lang} />
         <AnalyticsBeacon />
       </body>

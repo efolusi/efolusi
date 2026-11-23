@@ -1,8 +1,8 @@
 import { defineCloudflareConfig } from '@opennextjs/cloudflare';
 import staticAssetsIncrementalCache from '@opennextjs/cloudflare/overrides/incremental-cache/static-assets-incremental-cache';
 
-// Every page is prerendered at build time and never revalidated, so the
-// prerendered output is served from the Worker's static assets.
+// Pages render per request (each carries its own CSP nonce). Nothing
+// revalidates, so the read-only static-assets cache is enough for the rest.
 export default defineCloudflareConfig({
   incrementalCache: staticAssetsIncrementalCache,
   enableCacheInterception: true

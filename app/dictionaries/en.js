@@ -1,4 +1,4 @@
-import { releases } from '../lib/products.js';
+import { releases, withRelease } from '../lib/products.js';
 import * as legal from './legal-en.js';
 
 const en = {
@@ -98,7 +98,7 @@ const en = {
         headline: "One safe command line for your servers.",
         section: "Servers & infrastructure",
         desc: "Servers, databases, caches, queues, storage, clusters and VPNs behind one command that you and your AI agent can both use. Passwords stay in an encrypted vault the agent never sees.",
-        specs: ['Open source CLI', releases.komando, 'macOS, Linux & Windows'],
+        specs: ['Open source CLI', releases.komando, 'macOS, Linux & Windows'].filter(Boolean),
         buttonLabel: 'Visit Komando',
         tag: "Servers & infrastructure",
         summary: "One command line for servers, databases, storage, clusters and VPNs, safe to hand to an AI agent."
@@ -106,7 +106,7 @@ const en = {
       trady: {
         section: "Video",
         desc: "A command line that turns long recordings into short captioned clips on your own machine.",
-        specs: ['Open source CLI', releases.trady, 'Runs locally'],
+        specs: ['Open source CLI', releases.trady, 'Runs locally'].filter(Boolean),
         buttonLabel: 'Visit Trady',
         tag: "Video",
         summary: "Turn long recordings into short captioned clips on your own machine."
@@ -114,7 +114,7 @@ const en = {
       toolips: {
         section: "Files",
         desc: "A command line for PDFs, images, secret scans and TLS checks. Your files stay on your machine.",
-        specs: ['Open source CLI', releases.toolips, 'Runs locally'],
+        specs: ['Open source CLI', releases.toolips, 'Runs locally'].filter(Boolean),
         buttonLabel: 'Visit Toolips',
         tag: "Files",
         summary: "PDFs, images, secret scans and TLS checks from one local command line."
@@ -122,7 +122,7 @@ const en = {
       cuwan: {
         section: "Trading bots",
         desc: "A command line for grid trading bots on crypto exchanges. The bots run on your own machine.",
-        specs: ['Open source CLI', 'No release yet', 'Runs locally'],
+        specs: ['Open source CLI', releases.cuwan, 'Runs locally'].filter(Boolean),
         buttonLabel: 'Visit Cuwan',
         tag: "Trading bots",
         summary: "Run grid trading bots on crypto exchanges from your own machine."
@@ -130,7 +130,7 @@ const en = {
       kongkow: {
         section: "Social posts",
         desc: "A command line to draft, schedule and publish your social media posts.",
-        specs: ['Open source CLI', releases.kongkow, 'Runs locally'],
+        specs: ['Open source CLI', releases.kongkow, 'Runs locally'].filter(Boolean),
         buttonLabel: 'Visit Kongkow',
         tag: "Social posts",
         summary: "Draft, schedule and publish social media posts from one command line."
@@ -298,28 +298,28 @@ const en = {
         href: 'https://komando.efolusi.com',
         problem: 'Servers, databases, storage and clusters each come with their own logins and commands, and an AI agent given those passwords can break things.',
         solution: 'One command line in front of all of them. Passwords stay in an encrypted vault, it only reads unless you say otherwise, and every action is recorded.',
-        result: `Open source, release ${releases.komando}. Desktop and mobile apps come next; there is no web app.`
+        result: `Open source${withRelease(releases.komando, 'release')}. Desktop and mobile apps come next; there is no web app.`
       },
       {
         name: 'Toolips',
         href: 'https://toolips.xyz',
         problem: 'Small file jobs like converting and compressing always end up on some ad-filled site you have never heard of.',
         solution: 'A local command line for PDFs, images, secret scans and TLS checks, so the files never leave your machine.',
-        result: `Open source, first release ${releases.toolips}. A web app and desktop app are planned.`
+        result: `Open source${withRelease(releases.toolips, 'first release')}. A web app and desktop app are planned.`
       },
       {
         name: 'Trady',
         href: 'https://trady.efolusi.com',
         problem: 'One long video holds a week of content, but cutting it by hand eats an entire evening.',
         solution: 'A local command line: long recording in, short captioned clips out, rendered on your own machine.',
-        result: `Open source, first release ${releases.trady}. A desktop app for local rendering is planned.`
+        result: `Open source${withRelease(releases.trady, 'first release')}. A desktop app for local rendering is planned.`
       },
       {
         name: 'Kongkow',
         href: 'https://kongkow.xyz',
         problem: 'The same post had to be pasted into platform after platform, and something always got missed.',
         solution: 'A command line to draft, schedule and publish social posts. The schedule runs on your own machine.',
-        result: `Open source, release ${releases.kongkow}. A web app is first in line, then a mobile app.`
+        result: `Open source${withRelease(releases.kongkow, 'release')}. A web app is first in line, then a mobile app.`
       },
       {
         name: 'Cuwan',
@@ -515,6 +515,11 @@ const en = {
     wordmark: 'Wordmark',
     wordmarkMeta: 'Bricolage Grotesque · 650 to 700 · tracking -0.02em',
     wordmarkNote: 'Render in type; there is no separate logotype file.',
+    marksTitleA: 'Product marks,',
+    marksTitleEm: 'one ink',
+    marksTitleB: '.',
+    marksMeta: 'SVG · single colour',
+    marksNote: 'Each mark is one solid colour on warm or white paper, drawn in the same 64 by 64 square so all eight take the same space.',
     rulesTitleA: 'The rules,',
     rulesTitleEm: 'briefly',
     rulesTitleB: '.',

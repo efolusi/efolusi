@@ -29,6 +29,37 @@ describe('platform legal documents', () => {
     }
   });
 
+  it('states how account deletion reaches the products (sso-cloud#46)', () => {
+    const sections = (lang, doc, key) => allText(doc.sections.find((x) => x.id === key));
+    const facts = {
+      en: [/each product you (have )?used/i, /7 days/, /always tell Pay/i, /Financial records are kept/, /never used are not told/i],
+      id: [/setiap produk yang pernah Anda pakai/i, /7 hari/, /selalu memberi tahu Pay/i, /Catatan keuangan tetap disimpan/, /tidak pernah Anda pakai tidak diberi tahu/i]
+    };
+    for (const [lang, docs] of Object.entries(DOCS)) {
+      const deletion = sections(lang, docs.privacy, 'deletion').join(' ');
+      for (const fact of facts[lang]) expect(deletion, `${lang} ${fact}`).toMatch(fact);
+      const ending = sections(lang, docs.terms, 'ending').join(' ');
+      expect(ending, `${lang} ending`).not.toMatch(/does not yet delete|belum menghapus data/);
+    }
+  });
+
+  it('describes account deletion with its 7-day delay and cancel link (SO53)', () => {
+    const text = (lang, doc, key) => allText(doc.sections.find((x) => x.id === key)).join(' ');
+    const facts = {
+      en: [/my\.efolusi\.com\/account\/delete/, /7 days after you ask/, /link to cancel/, /two-step verification/, /Security events stay/, /backups for up to 14 days/],
+      id: [/my\.efolusi\.com\/account\/delete/, /7 hari setelah Anda memintanya/, /tautan untuk membatalkan/, /verifikasi dua langkah/, /Catatan keamanan tetap disimpan/, /cadangan hingga 14 hari/]
+    };
+    const gone = { en: /Deletion is immediate|deleted straight away|Delete account\*\*|not yet removed automatically/, id: /Penghapusan langsung berlaku|langsung terhapus|Hapus akun\*\*|belum terhapus otomatis/ };
+    for (const [lang, docs] of Object.entries(DOCS)) {
+      const deletion = text(lang, docs.privacy, 'deletion');
+      for (const fact of facts[lang]) expect(deletion, `${lang} privacy ${fact}`).toMatch(fact);
+      const ending = text(lang, docs.terms, 'ending');
+      expect(ending, `${lang} terms`).toMatch(/7/);
+      expect(ending, `${lang} terms link`).toMatch(/my\.efolusi\.com\/account\/delete/);
+      for (const part of [deletion, ending]) expect(part, `${lang} old wording`).not.toMatch(gone[lang]);
+    }
+  });
+
   it('keeps the anchors other pages and products link to', () => {
     expect(ids(en.terms)).toEqual(
       expect.arrayContaining(['scope', 'account', 'refunds', 'ending', 'law', 'schedule', 'my', 'relay', 'loop', 'runa', 'komando', 'sanctum', 'kongkow'])
@@ -60,8 +91,9 @@ describe('platform legal documents', () => {
     }
     // 2026-11-19: Sentry left the provider list. Removing a provider asks no one to accept again,
     // so the version stays and only the date moves.
-    expect(en.terms.metaLine).toContain('19 November 2026');
-    expect(id.terms.metaLine).toContain('19 November 2026');
+    // 2026-11-22: account deletion takes 7 days with a cancel link (SO53). The text now says what the
+    // product does and adds no new obligation, so again the version stays and only the date moves.
+    for (const doc of [en.terms, id.terms, en.privacy, id.privacy]) expect(doc.metaLine).toContain('22 November 2026');
     expect(JSON.stringify(DOCS)).not.toMatch(/sentry/i);
   });
 

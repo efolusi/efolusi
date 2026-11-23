@@ -1,25 +1,42 @@
-/* Next's dev tooling needs eval for source maps; production stays strict.
-   Cloudflare auto-injects its Web Analytics beacon from static.cloudflareinsights.com
-   into proxied HTML, so that host must be allowed or the console fills with CSP errors. */
-const scriptSrc =
-  process.env.NODE_ENV === 'development'
-    ? "'self' 'unsafe-inline' 'unsafe-eval'"
-    : "'self' 'unsafe-inline' https://static.cloudflareinsights.com";
+import { execFileSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
+import { relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const csp = () =>
-  `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com https://bsc-dataseed.bnbchain.org https://bsc-rpc.publicnode.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'`;
+import { latestReleases, releaseRepos } from './app/lib/latest-releases.mjs';
 
 const securityHeaders = [
   { key: 'X-Content-Type-Options', value: 'nosniff' },
   { key: 'X-Frame-Options', value: 'DENY' },
   { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-  { key: 'Content-Security-Policy', value: csp() }
+  { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' }
 ];
+
+// The release marker: the full git sha of this build, in every page's head
+// (`<meta name="release">`). CI gives it as GITHUB_SHA; locally it comes from git.
+// A build without a valid sha stops, so no page ships a wrong marker.
+const releaseSha = process.env.GITHUB_SHA ?? execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim();
+if (!/^[0-9a-f]{40}$/.test(releaseSha)) throw new Error('release sha is not 40 lowercase hex characters');
+
+// Every file in public/ as a URL path. Middleware cannot read the disk, so it gets this list through env.
+const publicDir = fileURLToPath(new URL('./public', import.meta.url));
+const publicFiles = readdirSync(publicDir, { recursive: true, withFileTypes: true })
+  // Names starting with _ (_headers, _redirects) are Cloudflare config, never served.
+  .filter((entry) => entry.isFile() && !entry.name.startsWith('_'))
+  .map((entry) => `/${relative(publicDir, `${entry.parentPath}/${entry.name}`)}`);
+
+// The newest release tag of each product, read from GitHub on every build so the cards cannot go stale.
+// A failed lookup leaves that product without a version and says so in the build log.
+// Tests import this file, so they skip the network (VITEST) and see no versions.
+const releases = process.env.VITEST ? {} : await latestReleases(releaseRepos).then(({ tags, failed }) => {
+  if (failed.length) console.warn(`WARNING: release lookup failed for ${failed.join(', ')}; the site shows no version for them.`);
+  return tags;
+});
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  env: { NEXT_PUBLIC_RELEASE_SHA: releaseSha, EFOLUSI_PUBLIC_FILES: JSON.stringify(publicFiles), EFOLUSI_RELEASES: JSON.stringify(releases) },
   // app/global-not-found.js renders every unknown URL. The root layout sits
   // under [lang], so without it unknown URLs got an empty error shell.
   experimental: { globalNotFound: true },
@@ -36,17 +53,12 @@ const nextConfig = {
         missing: [{ type: 'host', value: 'efolusi.com' }],
         headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }]
       },
-      // Short shared-cache TTL for pages so deploys show up within minutes;
-      // hashed /_next assets keep their own immutable caching. Only when the
-      // lang cookie already matches the page: otherwise middleware.ts sets the
-      // cookie and marks the response private, so no shared cache keeps it.
-      // Paths outside /en and /id (the / redirect, any future top-level page)
-      // get no shared-cache header; add a rule here for a new top-level page.
-      ...['en', 'id'].map((lang) => ({
-        source: `/${lang}/:path*`,
-        has: [{ type: 'cookie', key: 'lang', value: lang }],
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=0, s-maxage=600, stale-while-revalidate=60' }]
-      }))
+      // Pages get their CSP, with a per-request nonce, from middleware.ts.
+      // API routes answer JSON and run no scripts.
+      {
+        source: '/api/:path*',
+        headers: [{ key: 'Content-Security-Policy', value: "default-src 'none'; frame-ancestors 'none'" }]
+      }
     ];
   },
   async redirects() {

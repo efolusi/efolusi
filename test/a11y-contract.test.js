@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { getDictionary, locales } from '../app/dictionaries/config.js';
@@ -50,11 +50,28 @@ describe('footer status link', () => {
   });
 });
 
-describe('404 theme', () => {
-  it('runs the same pre-paint theme script as every other page', () => {
-    const scriptTag = '<script dangerouslySetInnerHTML={{ __html: themeInit }} />';
-    expect(read('../app/[lang]/layout.js')).toContain(scriptTag);
-    expect(read('../app/global-not-found.js')).toContain(scriptTag);
+describe('theme control (Meridian contract)', () => {
+  it('runs Meridian\'s pre-paint script, with the request nonce, on every page and the 404', () => {
+    // Meridian 1.27.0 ships themeInitScript for server code at @efolusi/meridian/theme.
+    for (const file of ['../app/[lang]/layout.js', '../app/global-not-found.js']) {
+      const src = read(file);
+      expect(src).toContain("import { themeInitScript } from '@efolusi/meridian/theme';");
+      expect(src).toContain('<script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />');
+      expect(src).toContain("const nonce = (await headers()).get('x-nonce') ?? undefined;");
+    }
+  });
+
+  it('uses Meridian\'s ThemeToggle in the header, in the page language', () => {
+    const header = read('../app/components/SiteHeader.jsx');
+    expect(header).toMatch(/import \{ Icon, ThemeToggle \} from '@efolusi\/meridian';/);
+    expect(header).toContain('<ThemeToggle lang={lang} />');
+  });
+
+  it('keeps no site-made theme control beside it', () => {
+    for (const file of ['../app/components/ThemeToggle.jsx', '../app/components/ThemeInit.jsx', '../app/_lib/theme-init.js']) {
+      expect(existsSync(new URL(file, import.meta.url))).toBe(false);
+    }
+    expect(css).not.toMatch(/\.theme-toggle\b/);
   });
 });
 

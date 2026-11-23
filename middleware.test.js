@@ -1,11 +1,18 @@
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { describe, expect, it } from 'vitest';
+
+import nextConfig from './next.config.mjs';
 
 import { NextRequest } from 'next/server';
 
 import { apexRedirectUrl, languageRedirectUrl, middleware, withLocaleHeader } from './middleware';
 import { LOCALE_HEADER } from './app/_lib/locale-header.js';
+
+// next.config.mjs lists public/ at build time and hands the list to middleware through env.
+process.env.EFOLUSI_PUBLIC_FILES = nextConfig.env.EFOLUSI_PUBLIC_FILES;
 
 describe('www to apex redirect', () => {
   it('moves a www page to the apex, keeping path and query', () => {
@@ -59,7 +66,14 @@ describe('language redirect external origin', () => {
     expect(on).toContain('workflow_dispatch:');
     expect(on).not.toMatch(/branches:|pull_request/);
     expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
-    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
+    // The guard reads origin/main from the full-depth checkout; no fetch runs first and no token stays in .git/config.
+    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" refs/remotes/origin/main');
+    expect(deploy).not.toMatch(/git fetch/);
+    expect(deploy).toContain('fetch-depth: 0');
+    expect(deploy).toContain('persist-credentials: false');
+    // No package cache feeds the production build (zizmor cache-poisoning).
+    expect(deploy).toContain('package-manager-cache: false');
+    expect(ciWorkflow).toContain('persist-credentials: false');
     expect(deploy).toContain('runs-on: ubuntu-latest');
     // The Worker secrets come from the production environment and go up with the deploy.
     expect(deploy).not.toMatch(/SENTRY/);
@@ -129,13 +143,126 @@ describe('locale header for the global 404', () => {
   });
 });
 
-describe('the shared-cache rule in next.config.mjs', () => {
-  it('applies only when the lang cookie matches the page language', async () => {
+describe('no shared cache for pages', () => {
+  it('next.config.mjs gives no page a shared-cache header (each page carries its own nonce)', async () => {
     const { default: config } = await import('./next.config.mjs');
     const rules = (await config.headers()).filter((rule) => rule.headers.some((h) => h.key === 'Cache-Control'));
-    expect(rules.map((rule) => [rule.source, rule.has])).toEqual([
-      ['/en/:path*', [{ type: 'cookie', key: 'lang', value: 'en' }]],
-      ['/id/:path*', [{ type: 'cookie', key: 'lang', value: 'id' }]],
-    ]);
+    expect(rules).toEqual([]);
+  });
+});
+
+describe('content security policy', () => {
+  const csp = (res) => res.headers.get('content-security-policy') ?? '';
+  const scriptSrc = (policy) => /script-src ([^;]*)/.exec(policy)?.[1] ?? '';
+
+  it('puts a per-request nonce in script-src of a page response', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/en'), { headers: { cookie: 'lang=en' } }));
+    expect(scriptSrc(csp(res))).toMatch(/^'self' 'nonce-[A-Za-z0-9+/=]{24}' https:\/\/static\.cloudflareinsights\.com$/);
+  });
+
+  it('hands the same policy to the render so Next nonces its own scripts', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/en'), { headers: { cookie: 'lang=en' } }));
+    expect(res.headers.get('x-middleware-request-content-security-policy')).toBe(csp(res));
+  });
+
+  it('gives two requests different nonces', () => {
+    const one = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    const two = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    expect(one).not.toBe(two);
+  });
+
+  it('keeps no unsafe-inline in script-src', () => {
+    for (const path of ['/en', '/id/about', '/nope', '/nope.php']) {
+      expect(scriptSrc(csp(middleware(new NextRequest(new URL(`https://efolusi.com${path}`)))))).not.toContain("'unsafe-inline'");
+    }
+  });
+
+  it('sends an unknown dotted path to the branded 404 in the reader language', () => {
+    const res = middleware(new NextRequest(new URL('https://efolusi.com/nope.php')));
+    expect(csp(res)).toContain("'nonce-");
+    expect(res.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/en/nope.php');
+    const id = middleware(new NextRequest(new URL('https://efolusi.com/nope.php'), { headers: { cookie: 'lang=id' } }));
+    expect(id.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/id/nope.php');
+  });
+
+  it('leaves the metadata routes without a locale rewrite', () => {
+    for (const path of ['/robots.txt', '/sitemap.xml', '/favicon.ico', '/llms.txt']) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(csp(res)).toContain("'nonce-");
+      expect(res.headers.get('x-middleware-rewrite')).toBeNull();
+    }
+  });
+
+  it('gives look-alikes of the metadata routes the branded 404', () => {
+    for (const path of ['/sitemap.php', '/robots-x', '/favicon.evil', '/llms.txt.bak']) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBe(`https://efolusi.com/en${path}`);
+    }
+  });
+
+  it('exempts every dotted route under app/ from the locale rewrite (found by scanning, not by memory)', () => {
+    const found = ['/llms.txt', '/robots.txt', '/sitemap.xml'];
+    const dotted = [];
+    // Next metadata files at the root serve fixed or dotted URLs (robots.txt, manifest.webmanifest, icon.png ...).
+    const METADATA = /^(robots|sitemap|manifest|icon|apple-icon|opengraph-image|twitter-image)(\.[^.]+)+$/;
+    const urlOf = (name) => {
+      const base = name.replace(/\.[jt]sx?$/, '');
+      if (base === 'robots') return '/robots.txt';
+      if (base === 'sitemap') return '/sitemap.xml';
+      if (base === 'manifest') return '/manifest.webmanifest';
+      return `/${/\.[^.]+$/.test(base) ? base : name}`;
+    };
+    const walk = (dir, url) => {
+      for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.isDirectory()) {
+          // _private and [dynamic] folders serve no fixed dotted URL; (group) folders add no URL segment.
+          if (e.name.startsWith('_') || e.name.startsWith('[')) continue;
+          const next = e.name.startsWith('(') ? url : `${url}/${e.name}`;
+          if (!e.name.startsWith('(') && e.name.includes('.') && readdirSync(join(dir, e.name)).some((f) => /^route\.[jt]sx?$/.test(f))) dotted.push(next);
+          walk(join(dir, e.name), next);
+        } else if (url === '' && !/\.test\./.test(e.name) && METADATA.test(e.name)) {
+          dotted.push(urlOf(e.name));
+        }
+      }
+    };
+    walk(fileURLToPath(new URL('./app', import.meta.url)), '');
+    expect(dotted.sort()).toEqual(found);
+    for (const path of dotted) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
+    }
+  });
+
+  it('exempts every file in public/ from the locale rewrite', () => {
+    const files = [];
+    const walk = (dir, url) => {
+      for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.isDirectory()) walk(join(dir, e.name), `${url}/${e.name}`);
+        else files.push(`${url}/${e.name}`);
+      }
+    };
+    walk(fileURLToPath(new URL('./public', import.meta.url)), '');
+    expect(files.length).toBeGreaterThan(0);
+    // Names starting with _ (_headers, _redirects) are Cloudflare config, never served.
+    const served = files.filter((path) => !path.split('/').pop().startsWith('_'));
+    expect(served.length).toBeGreaterThan(0);
+    for (const path of served) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBeNull();
+    }
+    for (const path of files.filter((p) => !served.includes(p))) {
+      const res = middleware(new NextRequest(new URL(`https://efolusi.com${path}`)));
+      expect(res.headers.get('x-middleware-rewrite'), path).toBe(`https://efolusi.com/en${path}`);
+    }
+    const missing = middleware(new NextRequest(new URL('https://efolusi.com/efolusi/missing.php')));
+    expect(missing.headers.get('x-middleware-rewrite')).toBe('https://efolusi.com/en/efolusi/missing.php');
+  });
+
+  it('keeps the other directives', () => {
+    const policy = csp(middleware(new NextRequest(new URL('https://efolusi.com/en'))));
+    expect(policy).toContain("connect-src 'self' https://cloudflareinsights.com;");
+    expect(policy).toContain("default-src 'self'; ");
+    expect(policy).toContain("style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';");
+    expect(policy).toMatch(/frame-ancestors 'none'; base-uri 'self'; form-action 'self'$/);
   });
 });
