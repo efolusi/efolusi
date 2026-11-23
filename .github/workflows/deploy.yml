@@ -22,15 +22,20 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
+          # Full history includes origin/main, so the next step needs no fetch,
+          # and the checkout token is not kept in .git/config.
           fetch-depth: 0
+          persist-credentials: false
       - name: Refuse anything but a v* tag on main
         run: |
           [[ "$GITHUB_REF" == refs/tags/v* ]]
-          git fetch --no-tags origin main
-          git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD
+          git merge-base --is-ancestor "$GITHUB_SHA" refs/remotes/origin/main
+      # No package cache in the deploy job: a cache written by another job must
+      # not feed the production build (zizmor cache-poisoning).
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 26.13.1
+          package-manager-cache: false
       - run: npm install -g pnpm@11.24.0
       - run: pnpm install --frozen-lockfile
       - run: pnpm test

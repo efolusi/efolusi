@@ -66,7 +66,14 @@ describe('language redirect external origin', () => {
     expect(on).toContain('workflow_dispatch:');
     expect(on).not.toMatch(/branches:|pull_request/);
     expect(deploy).toContain('[[ "$GITHUB_REF" == refs/tags/v* ]]');
-    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" FETCH_HEAD');
+    // The guard reads origin/main from the full-depth checkout; no fetch runs first and no token stays in .git/config.
+    expect(deploy).toContain('git merge-base --is-ancestor "$GITHUB_SHA" refs/remotes/origin/main');
+    expect(deploy).not.toMatch(/git fetch/);
+    expect(deploy).toContain('fetch-depth: 0');
+    expect(deploy).toContain('persist-credentials: false');
+    // No package cache feeds the production build (zizmor cache-poisoning).
+    expect(deploy).toContain('package-manager-cache: false');
+    expect(ciWorkflow).toContain('persist-credentials: false');
     expect(deploy).toContain('runs-on: ubuntu-latest');
     // The Worker secrets come from the production environment and go up with the deploy.
     expect(deploy).not.toMatch(/SENTRY/);
