@@ -3,4 +3,4 @@ allowBuilds:
   sharp: true
   workerd: true
 minimumReleaseAgeExclude:
-  - '@efolusi/meridian@2.1.0'
+  - '@efolusi/meridian@2.2.0'
