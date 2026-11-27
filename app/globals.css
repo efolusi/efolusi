@@ -35,21 +35,6 @@
   }
 }
 
-/* Two shapes, no exceptions: things you press are pills, things you type into
-   are rounded rectangles. A pill-shaped textarea reads as a mistake, so the
-   fields share one radius instead of each picking its own. */
-.ef-btn,
-.ef-tag,
-.ef-badge {
-  border-radius: var(--radius-full);
-}
-
-.ef-input__el,
-.ef-textarea,
-.ef-copyfield__box {
-  border-radius: var(--radius-lg);
-}
-
 /* Fields default to --surface-card, the same colour as the card they sit in,
    so on the dark theme the form melted into one brown block. Sink them one
    step so a field looks like a field. */
@@ -130,27 +115,6 @@ main {
 
 [data-theme='dark'] .accent {
   color: var(--brand-400);
-}
-
-/* Hover states carry color and background, never an underline. */
-a:hover {
-  text-decoration: none;
-}
-
-/* Anchors dressed in Meridian button classes must not inherit link hover styles. */
-a.ef-btn,
-a.ef-btn:hover {
-  text-decoration: none;
-}
-
-a.ef-btn--primary,
-a.ef-btn--primary:hover {
-  color: var(--accent-contrast);
-}
-
-a.ef-btn--secondary,
-a.ef-btn--secondary:hover {
-  color: var(--text-primary);
 }
 
 .section-title {
@@ -1506,12 +1470,6 @@ main[tabindex='-1']:focus {
   gap: 8px;
 }
 
-.badge-success {
-  border-color: var(--success-300);
-  background: var(--success-100);
-  color: var(--success-600);
-}
-
 .eco-note {
   font-size: var(--text-sm);
   color: var(--text-muted);
@@ -2412,8 +2370,6 @@ main[tabindex='-1']:focus {
 }
 
 .legal-page h1 {
-  font-size: clamp(30px, 4vw, 40px);
-  font-weight: var(--weight-display);
   margin-top: 32px;
 }
 
