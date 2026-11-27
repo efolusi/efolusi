@@ -13,15 +13,6 @@ export default function SiteHeader({ lang, t }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  /* Where to send the browser back to after signing in. Read from
-     window.location in an effect (this renders on the server too); until it
-     resolves, the link still works — accounts just lands on its own account
-     page instead of back here. */
-  const [returnTo, setReturnTo] = useState('');
-
-  useEffect(() => {
-    setReturnTo(encodeURIComponent(window.location.href));
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
@@ -70,10 +61,7 @@ export default function SiteHeader({ lang, t }) {
               {t.langLabel}
             </Link>
             <ThemeToggle lang={lang} />
-            <a
-              className="pill pill--sm pill--plain sign-in-pill"
-              href={`${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
-            >
+            <a className="pill pill--sm pill--plain sign-in-pill" href={`${my.web}/sign-in?lang=${lang}`}>
               {t.signIn}
             </a>
             <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
@@ -101,11 +89,7 @@ export default function SiteHeader({ lang, t }) {
             {t.contact}
           </Link>
           {/* Duplicates the header pill, so it only shows once the pill hides (<=480px). */}
-          <a
-            className="menu-signin"
-            href={`${my.web}/sign-in?lang=${lang}${returnTo ? `&next=${returnTo}` : ''}`}
-            onClick={() => setMenuOpen(false)}
-          >
+          <a className="menu-signin" href={`${my.web}/sign-in?lang=${lang}`} onClick={() => setMenuOpen(false)}>
             {t.signIn}
           </a>
         </nav>
