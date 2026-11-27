@@ -401,7 +401,7 @@ export default function HomeClient({ d, common, lang }) {
             </div>
             <div className="eco-card reveal">
               <div className="eco-badges">
-                <Badge className="badge-success">{d.ecosystem.tradable}</Badge>
+                <Badge variant="success">{d.ecosystem.tradable}</Badge>
                 <Badge variant="secondary">{d.ecosystem.bep20}</Badge>
               </div>
               <CopyField label={d.ecosystem.contractLabel} value={EFO_CONTRACT} />

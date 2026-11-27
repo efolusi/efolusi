@@ -39,7 +39,7 @@ export default async function TokenPage({ params }) {
           </h1>
           <p className="page-lede">{d.lede}</p>
           <div className="token-status">
-            <Badge className="badge-success">{d.tradable}</Badge>
+            <Badge variant="success">{d.tradable}</Badge>
             <Badge variant="secondary">{d.bep20}</Badge>
           </div>
         </div>

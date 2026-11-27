@@ -94,7 +94,7 @@ export default async function LangLayout({ children, params }) {
   const nonce = (await headers()).get('x-nonce') ?? undefined;
 
   return (
-    <html lang={d.htmlLang} suppressHydrationWarning>
+    <html lang={d.htmlLang} data-shape="pill" suppressHydrationWarning>
       <body>
         <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         {/* JSON-LD is a data block the browser never runs, so script-src and the nonce do not apply. */}

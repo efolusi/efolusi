@@ -52,7 +52,7 @@ export default function LegalDocument({ doc, lang }) {
       <a className="back-home" href={`/${lang}`}>
         {doc.back}
       </a>
-      <h1>{doc.title}</h1>
+      <h1 className="ef-page-title">{doc.title}</h1>
       <p className="legal-meta">{doc.metaLine}</p>
 
       {doc.intro.map((block, i) => (

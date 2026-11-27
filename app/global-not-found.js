@@ -35,7 +35,7 @@ export default async function GlobalNotFound() {
   const lang = await resolveLang();
   const nonce = (await headers()).get('x-nonce') ?? undefined;
   return (
-    <html lang={getDictionary(lang).htmlLang} suppressHydrationWarning>
+    <html lang={getDictionary(lang).htmlLang} data-shape="pill" suppressHydrationWarning>
       <body>
         <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeInitScript() }} />
         <NotFoundView lang={lang} />
