@@ -11,7 +11,7 @@ const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Bante
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
 const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 28 November 2026`;
 const PAGE_META_LINE = `${ENTITY} · Terakhir diperbarui 28 November 2026`;
-const DRAFT = '**Draf: belum ditinjau hukum.**';
+const DRAFT = '**Draf: belum ditinjau hukum dan belum berlaku.**';
 
 export const terms = {
   meta: {
@@ -635,7 +635,7 @@ export const sla = {
     {
       id: 'credits',
       head: 'Kredit layanan',
-      blocks: ['Jika target tidak terpenuhi, kredit diberikan sesuai tingkat kekurangan (mis. < 99,9% sampai 99,0% → 10%; < 99,0% → 25%).']
+      blocks: ['Jika target tidak terpenuhi, kredit diberikan sesuai tingkat kekurangan: 10% bila ketersediaan 99,0% atau lebih, tetapi di bawah 99,9%; 25% bila di bawah 99,0%.']
     },
     {
       id: 'exclusions',

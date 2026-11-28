@@ -18,7 +18,7 @@ const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Bante
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
 const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 28 November 2026`;
 const PAGE_META_LINE = `${ENTITY} · Last updated 28 November 2026`;
-const DRAFT = '**Draft: pending legal review.**';
+const DRAFT = '**Draft: pending legal review and not yet in effect.**';
 
 export const terms = {
   meta: {
@@ -134,7 +134,7 @@ export const terms = {
             '**Processing time:** Time to funds returning follows the gateway and card issuer, typically a few business days.',
             '**Chargebacks / disputes:** Gateway-opened disputes follow an evidence window; the outcome (won/lost) posts to the ledger. A lost dispute reverses funds by amount.',
             '**Fees:** Gateway refund/chargeback fees may be passed through per the agreement.',
-            '**Disputes:** Merchant-customer transaction disputes are resolved between the parties; Pay provides supporting data.'
+            '**Disputes:** Disputes over a transaction between a merchant and a customer are resolved between the parties; Pay provides supporting data.'
           ]
         }
       ]
@@ -638,7 +638,7 @@ export const sla = {
     {
       id: 'credits',
       head: 'Service credits',
-      blocks: ['If the target is missed, credits apply by shortfall tier (e.g. < 99.9% to 99.0% → 10%; < 99.0% → 25%).']
+      blocks: ['If the target is missed, credits apply by shortfall tier: 10% when availability is 99.0% or more but below 99.9%; 25% when it is below 99.0%.']
     },
     {
       id: 'exclusions',
