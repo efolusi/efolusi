@@ -115,6 +115,13 @@ export default function HomeClient({ d, common, lang }) {
   const base = `/${lang}`;
 
   const [motionPaused, setMotionPaused] = useState(false);
+  // WIP comparison branch (never merged): ?cards=a|b|c picks a light-card variant, none is today's look.
+  // Shipping v0.0.18 = keep the chosen block in globals.css, delete this state and the other two blocks.
+  const [cardsVariant, setCardsVariant] = useState(undefined);
+  useEffect(() => {
+    const v = new URLSearchParams(window.location.search).get('cards');
+    if (v === 'a' || v === 'b' || v === 'c') setCardsVariant(v);
+  }, []);
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
 
@@ -282,7 +289,7 @@ export default function HomeClient({ d, common, lang }) {
         />
       </div>
 
-      <section className="csec" aria-label="At a glance">
+      <section className="csec" aria-label="At a glance" data-variant={cardsVariant}>
         <div className="wrap">
           <div className="csec-head reveal">
             <h2>

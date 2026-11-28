@@ -2156,6 +2156,106 @@ main[tabindex='-1']:focus {
   color: var(--warning-300);
 }
 
+/* WIP light-card variants (comparison branch, never merged). Switch: data-variant="a|b|c" on the
+   "At a glance" section (?cards=a|b|c in the page URL); no attribute = today's cards above.
+   Shipping v0.0.18: keep one variant's vars below, delete the other two and the consumer's [data-variant]. */
+
+/* Consumer: every variant fills the same slots. */
+.csec[data-variant] .feat-grid .feat-card {
+  background: var(--feat-bg);
+  color: var(--feat-ink);
+}
+
+.csec[data-variant] .feat-grid .feat-card p {
+  color: var(--feat-ink-2);
+}
+
+.csec[data-variant] .feat-grid .feat-icon {
+  background: var(--feat-disc);
+  color: var(--feat-disc-ink);
+  box-shadow: none;
+}
+
+.csec[data-variant] .feat-grid .feat-deco {
+  color: var(--feat-doodle);
+}
+
+.csec[data-variant] .feat-grid .feat-cta {
+  color: var(--feat-cta);
+}
+
+@media (hover: hover) {
+  .csec[data-variant] .feat-grid .feat-card:hover {
+    color: var(--feat-ink);
+  }
+}
+
+/* A: white raised cards on the page, one accent tint (cocoa-brown) in the disc and the doodle. */
+.csec[data-variant='a'] .feat-grid .feat-card {
+  --feat-bg: var(--surface-card);
+  --feat-ink: var(--text-primary);
+  --feat-ink-2: var(--text-secondary);
+  --feat-disc: var(--brand-100);
+  --feat-disc-ink: var(--brand-700);
+  --feat-doodle: var(--brand-300);
+  --feat-cta: var(--brand-700);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme='dark'] .csec[data-variant='a'] .feat-grid .feat-card {
+  --feat-disc: var(--surface-brand);
+  --feat-disc-ink: var(--brand-300);
+  --feat-doodle: var(--brand-600);
+  --feat-cta: var(--brand-300);
+}
+
+/* B: one tint per card from one palette: same lightness and chroma, only the hue moves (OKLCH). */
+.csec[data-variant='b'] .feat-grid .feat-card--peach {
+  --feat-h: 58;
+}
+
+.csec[data-variant='b'] .feat-grid .feat-card--band {
+  --feat-h: 150;
+}
+
+.csec[data-variant='b'] .feat-grid .feat-card--amber {
+  --feat-h: 228;
+}
+
+.csec[data-variant='b'] .feat-grid .feat-card {
+  --feat-bg: oklch(0.94 0.034 var(--feat-h));
+  --feat-ink: var(--sand-950);
+  --feat-ink-2: oklch(0.36 0.03 var(--feat-h));
+  --feat-disc: oklch(0.985 0.012 var(--feat-h));
+  --feat-disc-ink: oklch(0.4 0.09 var(--feat-h));
+  --feat-doodle: oklch(0.44 0.09 var(--feat-h));
+  --feat-cta: oklch(0.38 0.09 var(--feat-h));
+}
+
+[data-theme='dark'] .csec[data-variant='b'] .feat-grid .feat-card {
+  --feat-bg: oklch(0.3 0.034 var(--feat-h));
+  --feat-ink: var(--text-primary);
+  --feat-ink-2: oklch(0.86 0.03 var(--feat-h));
+  --feat-disc: oklch(0.22 0.03 var(--feat-h));
+  --feat-disc-ink: oklch(0.86 0.08 var(--feat-h));
+  --feat-doodle: oklch(0.62 0.09 var(--feat-h));
+  --feat-cta: oklch(0.86 0.08 var(--feat-h));
+  box-shadow: var(--shadow-md);
+}
+
+/* C: deep cocoa cards with cream text, light page and dark page alike. */
+.csec[data-variant='c'] .feat-grid .feat-card {
+  --feat-bg: var(--brand-900);
+  --feat-ink: var(--brand-50);
+  --feat-ink-2: var(--brand-200);
+  --feat-disc: var(--brand-100);
+  --feat-disc-ink: var(--brand-800);
+  --feat-doodle: var(--brand-600);
+  --feat-cta: var(--brand-100);
+  box-shadow: var(--shadow-md);
+}
+
 /* Centered section headings with mixed type */
 
 .csec {
