@@ -629,8 +629,8 @@ main[tabindex='-1']:focus {
 }
 
 .tick.tick--caramel {
-  background: var(--brand-100);
-  color: var(--brand-700);
+  background: var(--accent-subtle);
+  color: var(--accent-subtle-fg);
 }
 
 .tick.tick--green {
@@ -894,7 +894,7 @@ main[tabindex='-1']:focus {
   flex: none;
   border-radius: var(--radius-sm);
   background: var(--accent-subtle);
-  color: var(--brand-700);
+  color: var(--accent-subtle-fg);
 }
 
 /* ---------- Brand band ---------- */
@@ -1700,7 +1700,7 @@ main[tabindex='-1']:focus {
   height: 32px;
   border-radius: var(--radius-sm);
   background: var(--accent-subtle);
-  color: var(--brand-700);
+  color: var(--accent-subtle-fg);
 }
 
 .perk h3 {
@@ -1864,6 +1864,9 @@ main[tabindex='-1']:focus {
 
 .pill--cream {
   background: var(--cream-50);
+  /* On the cream band the fill alone is 1.09:1; the accent edge is the control's
+     boundary (WCAG 1.4.11), as it is on Meridian's primary button. */
+  border-color: var(--accent-edge);
   color: var(--brand-950);
 }
 
@@ -2088,26 +2091,15 @@ main[tabindex='-1']:focus {
   height: 52px;
   border-radius: var(--radius-full);
   background: var(--surface-card);
-  color: var(--brand-700);
+  /* --accent-edge follows the theme: 4.9:1 on the white card, 6:1 on the dark
+     one. A fixed brand-700 was 2.26:1 on the dark card behind the peach icon. */
+  color: var(--accent-edge);
   box-shadow: var(--shadow-sm);
 }
 
 .feat-card--band .feat-icon {
   background: var(--brand-800);
   color: var(--text-on-media);
-}
-
-.feat-card--peach .feat-icon {
-  background: var(--surface-card);
-  color: var(--brand-700);
-}
-
-[data-theme='dark'] .feat-icon {
-  color: var(--brand-300);
-}
-
-[data-theme='dark'] .feat-card--peach .feat-icon {
-  color: var(--brand-700);
 }
 
 .feat-card.feat-card--amber .feat-cta {
@@ -2225,12 +2217,15 @@ main[tabindex='-1']:focus {
   width: 128px;
   height: 128px;
   border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
-  background: var(--brand-100);
+  /* The band is the brand surface, so a brand-coloured blob vanished on it in
+     light (1.00:1). A card-coloured shape with a 2px accent-edge ring is seen
+     on the band in both themes (ring 3.8:1 light, 5.4:1 dark). */
+  background: var(--surface-card);
+  box-shadow: 0 0 0 2px var(--accent-edge);
 }
 
 .founder:nth-child(2n) .founder-blob {
   border-radius: 44% 56% 48% 52% / 56% 44% 58% 42%;
-  background: var(--brand-100);
 }
 
 .founder .nm {
