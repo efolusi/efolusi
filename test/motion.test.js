@@ -28,3 +28,9 @@ describe('the scroll reveal is real (EF43)', () => {
     expect(home).not.toMatch(/fallbackTimer|setTimeout/);
   });
 });
+
+describe('no endless pulse marks a state that is not live (EF44)', () => {
+  it('the hero status dot does not pulse', () => {
+    expect(home).not.toMatch(/<StatusDot[^>]*\bpulse\b/);
+  });
+});

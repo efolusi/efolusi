@@ -240,7 +240,7 @@ export default function HomeClient({ d, common, lang }) {
           </div>
 
           <div className="hero-proof">
-            <StatusDot status="success" pulse />
+            <StatusDot status="success" />
             <span>{d.hero.proof}</span>
           </div>
         </div>
