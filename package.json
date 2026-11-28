@@ -1,7 +1,7 @@
 {
     "name": "efolusi",
     "private": true,
-    "version": "0.0.14",
+    "version": "0.0.15",
     "packageManager": "pnpm@11.24.0",
     "description": "Efolusi landing page built with Next.js and the Meridian design system.",
     "license": "MIT",
