@@ -38,6 +38,11 @@ const id = {
       bscscan: 'BscScan',
       privacy: 'Pemberitahuan privasi',
       terms: 'Ketentuan platform',
+      dpa: 'DPA Pay',
+      sla: 'SLA Pay',
+      aup: 'Penggunaan Pay yang dapat diterima',
+      cookie: 'Kebijakan cookie Pay',
+      trust: 'Keamanan dan kepercayaan Pay',
       rights: '© {year} PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
       madeIn: 'Dibuat di Indonesia'
     }
@@ -544,7 +549,12 @@ const id = {
   },
 
   privacy: legal.privacy,
-  terms: legal.terms
+  terms: legal.terms,
+  dpa: legal.dpa,
+  sla: legal.sla,
+  aup: legal.aup,
+  cookie: legal.cookie,
+  trust: legal.trust
 };
 
 export default id;

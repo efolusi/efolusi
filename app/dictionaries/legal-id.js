@@ -9,7 +9,9 @@ import { LEGAL_VERSION } from './legal-en.js';
 const ENTITY = 'PT Efolusi Dunia Teknologi';
 const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Banten 42186, Indonesia';
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
-const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 22 November 2026`;
+const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 28 November 2026`;
+const PAGE_META_LINE = `${ENTITY} · Terakhir diperbarui 28 November 2026`;
+const DRAFT = '**Draf: belum ditinjau hukum.**';
 
 export const terms = {
   meta: {
@@ -116,7 +118,48 @@ export const terms = {
         },
         `Untuk meminta pengembalian dana, tulis ke ${EMAIL} dari alamat email akun Anda, sebutkan produk dan tanggal pembayarannya. Kalau Anda tertagih dua kali, tertagih dengan jumlah yang salah, atau sudah membayar paket yang tidak pernah aktif di akun Anda dan kami tidak bisa memperbaikinya, kami mengembalikan pembayaran itu sepenuhnya. Permintaan lain kami tinjau satu per satu. Pengembalian dana yang disetujui diproses lewat Efolusi Pay. Bila pembayaran Sanctum dikembalikan, paket yang dibeli dengan pembayaran itu berakhir.`,
         'Bagian ini tidak membatasi hak pengembalian dana yang diberikan hukum perlindungan konsumen kepada Anda, termasuk Undang-Undang Nomor 8 Tahun 1999 tentang Perlindungan Konsumen.',
-        'Pembelian di Trady, Cuwan, ZOYYA, dan Toolips mengikuti ketentuan tagihan dan pengembalian dana produk masing-masing.'
+        'Pembelian di Trady, Cuwan, ZOYYA, dan Toolips mengikuti ketentuan tagihan dan pengembalian dana produk masing-masing.',
+        { h3: 'Refund dan chargeback Efolusi Pay', id: 'pay-refunds' },
+        `${DRAFT} Kebijakan refund dan chargeback Efolusi Pay:`,
+        {
+          ul: [
+            '**Refund:** Refund diproses melalui gateway asal. Refund tidak melebihi jumlah dibayar dikurangi yang sudah direfund (guard anti over-refund). Refund parsial dan penuh didukung dan bersifat idempoten.',
+            '**Waktu pemrosesan:** Waktu dana kembali mengikuti gateway dan penerbit kartu, umumnya beberapa hari kerja.',
+            '**Chargeback / dispute:** Dispute yang dibuka gateway diikuti jendela bukti; hasil (won/lost) diposting ke ledger. Kehilangan dispute membalik dana sesuai jumlah.',
+            '**Biaya:** Biaya refund/chargeback dari gateway dapat diteruskan sesuai perjanjian.',
+            '**Sengketa:** Sengketa terkait transaksi merchant-pelanggan diselesaikan antara para pihak; Pay menyediakan data pendukung.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'pay',
+      head: 'Efolusi Pay',
+      blocks: [
+        'Bagian ini memuat ketentuan Efolusi Pay, layanan pembayaran yang dipakai produk kami, untuk produk dan merchant Efolusi. Dalam bagian ini, "Ketentuan ini" dan "dokumen ini" berarti ketentuan Efolusi Pay yang menyusul.',
+        `${DRAFT} Dokumen ini mengatur pemakaian Pay ("Layanan") oleh produk/merchant ("Anda") milik Efolusi.`,
+        { h3: 'Penerimaan', id: 'pay-acceptance' },
+        'Dengan mengakses atau memakai Layanan, Anda menyetujui Ketentuan ini beserta [Privacy Policy](/{lang}/privacy#pay), [DPA](/{lang}/dpa), dan [AUP](/{lang}/aup) yang menjadi bagian tak terpisahkan.',
+        { h3: 'Layanan', id: 'pay-service' },
+        'Pay adalah orkestrasi pembayaran: satu API dan satu webhook untuk banyak payment gateway, dengan ledger internal per produk. Pay bukan bank dan bukan penyimpan dana nasabah kecuali sejauh diizinkan hukum yang berlaku.',
+        { h3: 'Kewajiban Anda', id: 'pay-obligations' },
+        {
+          ul: [
+            'Menjaga kerahasiaan api_key dan webhook_secret.',
+            'Mematuhi aturan tiap payment gateway dan hukum yang berlaku.',
+            'Tidak memakai Layanan untuk aktivitas terlarang (lihat [AUP](/{lang}/aup)).'
+          ]
+        },
+        { h3: 'Biaya', id: 'pay-fees' },
+        'Biaya mengikuti halaman Harga dan/atau perjanjian tertulis. Fee gateway diteruskan sesuai tarif provider.',
+        { h3: 'Penangguhan dan penghentian', id: 'pay-suspension' },
+        'Kami dapat menangguhkan akses jika terjadi pelanggaran, risiko fraud, atau permintaan regulator, dengan pemberitahuan wajar sepanjang memungkinkan.',
+        { h3: 'Batasan tanggung jawab', id: 'pay-liability' },
+        'Sepanjang diizinkan hukum, tanggung jawab kami dibatasi sesuai perjanjian; kami tidak bertanggung jawab atas kerugian tidak langsung.',
+        { h3: 'Perubahan', id: 'pay-changes' },
+        'Kami dapat memperbarui Ketentuan ini; perubahan material diberitahukan sebelum berlaku.',
+        { h3: 'Hukum yang berlaku', id: 'pay-law' },
+        'Tunduk pada hukum Republik Indonesia. **Catatan §10: status PJP (Bank Indonesia) wajib divalidasi legal sebelum go-live.**'
       ]
     },
     {
@@ -384,6 +427,30 @@ export const privacy = {
       ]
     },
     {
+      id: 'pay',
+      head: 'Efolusi Pay',
+      blocks: [
+        'Bagian ini memuat kebijakan privasi Efolusi Pay, layanan pembayaran yang dipakai produk kami. Dalam bagian ini, "kebijakan ini" berarti kebijakan Efolusi Pay yang menyusul.',
+        `${DRAFT} Kebijakan ini menjelaskan pemrosesan data pribadi oleh Pay sesuai **UU No. 27 Tahun 2022 (UU PDP)** dan selaras dengan **GDPR** untuk subjek data di UE.`,
+        { h3: 'Data yang diproses', id: 'pay-data-processed' },
+        'Metadata transaksi, email/nama pelanggan (bila dikirim produk), alamat IP, dan data teknis. Pay **tidak menyimpan data kartu** (hosted checkout/tokenization gateway, PCI DSS SAQ-A).',
+        { h3: 'Dasar pemrosesan', id: 'pay-legal-basis' },
+        'Pelaksanaan kontrak, kewajiban hukum, dan kepentingan sah (pencegahan fraud). Untuk subjek GDPR: Art. 6(1)(b), (c), (f).',
+        { h3: 'Minimisasi dan retensi', id: 'pay-retention' },
+        'Data pribadi diminimalkan dan diretensi sesuai kebijakan retensi; setelah lewat, data dianonimkan (lihat mekanisme retensi & hak hapus).',
+        { h3: 'Hak subjek data', id: 'pay-rights' },
+        'Akses, koreksi, penghapusan, pembatasan, dan portabilitas. Permintaan hak hapus ditindaklanjuti termasuk penghapusan berdasarkan email.',
+        { h3: 'Notifikasi kebocoran', id: 'pay-breach' },
+        'Insiden yang berdampak diberitahukan ke otoritas dan subjek data **≤ 3×24 jam** sesuai UU PDP.',
+        { h3: 'Pemrosesan oleh pihak ketiga', id: 'pay-third-parties' },
+        'Payment gateway dan sub-processor memproses data sesuai [DPA](/{lang}/dpa); daftar sub-processor tersedia di [halaman kepercayaan](/{lang}/trust#sub-processors).',
+        { h3: 'Transfer lintas negara', id: 'pay-transfers' },
+        'Transfer dilakukan dengan pelindungan yang memadai sesuai UU PDP dan GDPR.',
+        { h3: 'Kontak', id: 'pay-contact' },
+        `Pertanyaan privasi: ${EMAIL}. **Catatan §10: konsultasi legal wajib sebelum go-live.**`
+      ]
+    },
+    {
       id: 'ai',
       head: 'Penyedia AI',
       blocks: [
@@ -398,7 +465,7 @@ export const privacy = {
         'Kami membagikan data pribadi hanya sejauh diperlukan untuk menjalankan produk:',
         {
           ul: [
-            '**Penyedia layanan:** Cloudflare (pengiriman dan perlindungan jaringan), Resend (email akun dan produk), Brevo (email formulir kontak), Have I Been Pwned (pemeriksaan kata sandi bocor), dan layanan pembayaran kami Efolusi Pay beserta mitra pembayarannya saat Anda membeli paket.',
+            '**Penyedia layanan:** Cloudflare (pengiriman dan perlindungan jaringan), Resend (email akun dan produk), Brevo (email formulir kontak), Have I Been Pwned (pemeriksaan kata sandi bocor), dan layanan pembayaran kami Efolusi Pay beserta mitra pembayarannya saat Anda membeli paket: Mayar untuk pembayaran di Indonesia dan NOWPayments untuk pembayaran kripto. Lihat [halaman kepercayaan Efolusi Pay](/{lang}/trust#sub-processors).',
             '**Penyedia AI:** seperti dijelaskan di bagian Penyedia AI.',
             '**Pihak ketiga yang Anda tuju lewat produk:** situs, API, host, webhook, dan kanal yang Anda atur.',
             '**Produk Efolusi lain:** saat Anda masuk ke sebuah produk, atau memberi satu produk akses ke produk lain, misalnya proyek Loop ke Runa.',
@@ -462,7 +529,8 @@ export const privacy = {
             'efolusi.com memasang cookie lang selama satu tahun dan menyimpan tema Anda di penyimpanan browser.',
             'Cloudflare bisa memasang cookie yang diperlukannya untuk melindungi situs dari bot dan penyalahgunaan.'
           ]
-        }
+        },
+        'Kebijakan cookie Efolusi Pay ada di halamannya sendiri: [Kebijakan cookie Efolusi Pay](/{lang}/cookie).'
       ]
     },
     {
@@ -485,5 +553,227 @@ export const privacy = {
       head: 'Kontak',
       blocks: [`${ENTITY}, ${ADDRESS}.`, `Pertanyaan dan permintaan soal privasi: ${EMAIL}.`]
     }
+  ]
+};
+
+/*
+ * Dokumen Efolusi Pay. Dipindahkan dari pay.efolusi.com pada 2026-11-28 (PY87, PY109): teksnya milik
+ * pemilik dan dibawa apa adanya, kecuali nama host dan produk, judul bagian (huruf kapital kalimat,
+ * tanpa nomor), dan id bagian. Id bagian sama dengan legal-en.js. Tiap dokumen ditutup dengan bagian kontak.
+ */
+
+const contact = {
+  id: 'contact',
+  head: 'Kontak',
+  blocks: [`${ENTITY}, ${ADDRESS}.`, `Pertanyaan tentang dokumen ini: ${EMAIL}.`]
+};
+
+export const dpa = {
+  meta: {
+    title: 'Perjanjian pemrosesan data Efolusi Pay · Efolusi',
+    description: 'Perjanjian pemrosesan data yang berlaku saat Efolusi Pay memproses data pribadi atas nama produk atau merchant Efolusi.'
+  },
+  title: 'Perjanjian pemrosesan data Efolusi Pay (DPA)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Daftar isi',
+  intro: [`${DRAFT} DPA ini melengkapi [Ketentuan Layanan](/{lang}/terms#pay) saat Pay memproses data pribadi atas nama Anda (pengendali).`],
+  sections: [
+    { id: 'roles', head: 'Peran', blocks: ['Anda = pengendali data; Pay = prosesor. Payment gateway dapat menjadi pengendali/prosesor mandiri.'] },
+    {
+      id: 'scope',
+      head: 'Ruang lingkup dan instruksi',
+      blocks: ['Pay memproses data hanya sesuai instruksi terdokumentasi Anda dan hukum yang berlaku.']
+    },
+    {
+      id: 'security',
+      head: 'Kerahasiaan dan keamanan',
+      blocks: ['Enkripsi in-transit/at-rest, kontrol akses least-privilege, audit log immutable, dan pengujian keamanan berkala.']
+    },
+    {
+      id: 'sub-processors',
+      head: 'Sub-processor',
+      blocks: [
+        'Anda menyetujui pemakaian sub-processor terdaftar; perubahan diberitahukan dengan hak keberatan wajar.',
+        'Daftarnya ada di [halaman kepercayaan](/{lang}/trust#sub-processors).'
+      ]
+    },
+    {
+      id: 'assistance',
+      head: 'Bantuan',
+      blocks: ['Kami membantu Anda memenuhi hak subjek data, notifikasi kebocoran, dan penilaian dampak (DPIA).']
+    },
+    {
+      id: 'deletion',
+      head: 'Penghapusan',
+      blocks: ['Saat kontrak berakhir, data dihapus atau dikembalikan sesuai instruksi, kecuali retensi diwajibkan hukum.']
+    },
+    { id: 'audit', head: 'Audit', blocks: ['Anda dapat mengaudit kepatuhan secara wajar dengan pemberitahuan sebelumnya.'] },
+    contact
+  ]
+};
+
+export const sla = {
+  meta: {
+    title: 'Perjanjian tingkat layanan Efolusi Pay · Efolusi',
+    description: 'Target ketersediaan, definisi downtime, dan kredit layanan bagi pelanggan paket Efolusi Pay yang mencakup jaminan tingkat layanan.'
+  },
+  title: 'Perjanjian tingkat layanan Efolusi Pay (SLA)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Daftar isi',
+  intro: [`${DRAFT} SLA ini berlaku untuk pelanggan pada paket yang mencakup jaminan tingkat layanan.`],
+  sections: [
+    {
+      id: 'availability',
+      head: 'Ketersediaan',
+      blocks: ['Target ketersediaan bulanan **99,9%** untuk API Charge dan penerimaan webhook, di luar pemeliharaan terjadwal.']
+    },
+    {
+      id: 'downtime',
+      head: 'Definisi downtime',
+      blocks: ['Periode saat API mengembalikan error 5xx pada tingkat melebihi ambang, terverifikasi dari monitoring.']
+    },
+    {
+      id: 'credits',
+      head: 'Kredit layanan',
+      blocks: ['Jika target tidak terpenuhi, kredit diberikan sesuai tingkat kekurangan (mis. < 99,9% sampai 99,0% → 10%; < 99,0% → 25%).']
+    },
+    {
+      id: 'exclusions',
+      head: 'Pengecualian',
+      blocks: ['Force majeure, gangguan pihak ketiga (payment gateway), dan penyalahgunaan di luar cakupan.']
+    },
+    {
+      id: 'support',
+      head: 'Dukungan',
+      blocks: ['Waktu tanggap sesuai tingkat keparahan; insiden kritis ditangani oleh on-call.']
+    },
+    {
+      id: 'maintenance',
+      head: 'Pemeliharaan',
+      blocks: ['Pemeliharaan terjadwal diberitahukan sebelumnya dan diupayakan di luar jam sibuk.']
+    },
+    contact
+  ]
+};
+
+export const aup = {
+  meta: {
+    title: 'Kebijakan penggunaan yang dapat diterima Efolusi Pay · Efolusi',
+    description: 'Untuk apa Efolusi Pay tidak boleh dipakai, dan apa yang terjadi bila kebijakan ini dilanggar.'
+  },
+  title: 'Kebijakan penggunaan yang dapat diterima Efolusi Pay (AUP)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Daftar isi',
+  intro: [`${DRAFT} Anda dilarang memakai Layanan untuk:`],
+  sections: [
+    {
+      id: 'prohibited',
+      head: 'Aktivitas terlarang',
+      blocks: [
+        {
+          ul: [
+            'Transaksi ilegal, pencucian uang, atau pendanaan terorisme.',
+            'Barang/jasa terlarang menurut hukum atau aturan gateway.',
+            'Penipuan, penyalahgunaan kartu, atau manipulasi transaksi.',
+            'Upaya membobol keamanan, penyalahgunaan API, atau serangan (DoS, injeksi).',
+            'Penggunaan yang melanggar hak kekayaan intelektual pihak lain.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'enforcement',
+      head: 'Penegakan',
+      blocks: ['Pelanggaran dapat berujung penangguhan atau penghentian, dan pelaporan ke regulator/penegak hukum bila diwajibkan.']
+    },
+    contact
+  ]
+};
+
+export const cookie = {
+  meta: {
+    title: 'Kebijakan cookie Efolusi Pay · Efolusi',
+    description: 'Cookie apa yang dipakai Efolusi Pay, mana yang opsional, dan cara menolak yang opsional.'
+  },
+  title: 'Kebijakan cookie Efolusi Pay',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Daftar isi',
+  intro: [
+    DRAFT,
+    'Untuk cookie di efolusi.com dan my.efolusi.com, lihat [Cookie dan penyimpanan browser](/{lang}/privacy#cookies) di pemberitahuan privasi platform.'
+  ],
+  sections: [
+    {
+      id: 'use',
+      head: 'Penggunaan cookie',
+      blocks: ['Situs publik Pay mengutamakan tanpa cookie pihak ketiga. Analitik yang dipakai bersifat privacy-first tanpa PII dan dipasang setelah persetujuan.']
+    },
+    {
+      id: 'types',
+      head: 'Jenis cookie',
+      blocks: [
+        {
+          ul: [
+            '**Esensial:** diperlukan untuk fungsi dasar situs.',
+            '**Analitik (opsional):** hanya aktif setelah Anda menyetujui.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'control',
+      head: 'Kontrol',
+      blocks: ['Anda dapat menolak cookie non-esensial melalui banner persetujuan; menolak tidak mengganggu fungsi inti.']
+    },
+    contact
+  ]
+};
+
+export const trust = {
+  meta: {
+    title: 'Keamanan dan kepercayaan Efolusi Pay · Efolusi',
+    description: 'Kontrol keamanan, cakupan data kartu, dan daftar sub-processor Efolusi Pay.'
+  },
+  title: 'Keamanan dan kepercayaan Efolusi Pay',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Daftar isi',
+  intro: ['Bagaimana Pay menjaga data dan dana: ringkasan kontrol keamanan, cakupan PCI, dan daftar sub-processor.'],
+  sections: [
+    {
+      id: 'security-controls',
+      head: 'Kontrol keamanan',
+      blocks: [
+        {
+          ul: [
+            '**Tanpa data kartu (PCI DSS SAQ-A).** Pay memakai hosted checkout/tokenization gateway; nomor kartu tak pernah menyentuh sistem kami.',
+            '**HMAC dua arah.** Request produk dan webhook keluar sama-sama ditandatangani (HMAC-SHA256), dengan perlindungan replay berbasis timestamp.',
+            '**Enkripsi.** TLS in-transit; kredensial & PII terenkripsi at-rest; backup AES-256-GCM.',
+            '**SSRF guard.** Callback URL divalidasi + resolusi DNS dicek; IP privat/loopback/metadata diblokir.',
+            '**Isolasi tenant.** Setiap query ter-scope product_id; idempotency-key ter-scope per produk.',
+            '**Audit log immutable.** Aksi privileged (refund, ubah config, rotasi, disable-provider) tercatat append-only.',
+            '**Least privilege & rate limit.** Kuota per-produk & per-IP; token produk ter-scope.',
+            '**Integritas dana.** Ledger double-entry (Σdebit==Σkredit), guard anti double/over-refund & anti-overdraw payout.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'sub-processors',
+      head: 'Daftar sub-processor',
+      blocks: [
+        {
+          table: {
+            head: ['Pihak', 'Tujuan', 'Wilayah'],
+            rows: [
+              ['Mayar', 'Payment gateway (Indonesia)', 'ID'],
+              ['NOWPayments', 'Payment gateway (crypto)', 'TBD'],
+              ['(Cloud/hosting)', 'Infrastruktur & object storage (self-host tersedia)', 'TBD']
+            ]
+          }
+        },
+        'Daftar dapat berubah; perubahan material diberitahukan sesuai [DPA](/{lang}/dpa). Halaman kepercayaan ini bersifat ringkasan, bukan pengganti dokumen legal.'
+      ]
+    },
+    contact
   ]
 };

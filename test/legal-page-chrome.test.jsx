@@ -21,7 +21,7 @@ function render(lang, kind) {
 afterEach(() => vi.useRealTimers());
 
 describe.each(locales)('legal pages carry the site chrome (%s)', (lang) => {
-  describe.each(['privacy', 'terms'])('/%s', (kind) => {
+  describe.each(['privacy', 'terms', 'dpa', 'sla', 'aup', 'cookie', 'trust'])('/%s', (kind) => {
     const html = render(lang, kind);
     const other = lang === 'en' ? 'id' : 'en';
 
@@ -49,9 +49,10 @@ describe.each(locales)('legal pages carry the site chrome (%s)', (lang) => {
       expect(html).toMatch(/<main[^>]*id="top"[^>]*tabindex="-1"/);
     });
 
-    it('links the legal row of the footer to both legal pages', () => {
-      expect(html).toContain(`href="/${lang}/privacy"`);
-      expect(html).toContain(`href="/${lang}/terms"`);
+    it('links the legal row of the footer to every legal page', () => {
+      for (const page of ['privacy', 'terms', 'dpa', 'sla', 'aup', 'cookie', 'trust']) {
+        expect(html).toContain(`href="/${lang}/${page}"`);
+      }
     });
   });
 });
@@ -73,14 +74,18 @@ describe('the footer year is computed', () => {
 
 describe('legal titles are sentence case', () => {
   const sentenceCase = (title) => {
-    const words = title.split(' · ')[0].split(' ').filter((w) => w !== 'Efolusi');
+    // Names (Efolusi, Pay) and acronyms such as (DPA) keep their capitals.
+    const words = title
+      .split(' · ')[0]
+      .split(' ')
+      .filter((w) => w !== 'Efolusi' && w !== 'Pay' && !/^\(?[A-Z]{2,}\)?$/.test(w));
     // Only the first word of the title may start with a capital.
     return words.slice(1).every((w) => w === w.toLowerCase());
   };
 
   it.each(locales)('%s page title, tab title and heading', (lang) => {
     const d = getDictionary(lang);
-    for (const kind of ['privacy', 'terms']) {
+    for (const kind of ['privacy', 'terms', 'dpa', 'sla', 'aup', 'cookie', 'trust']) {
       expect(sentenceCase(d[kind].title), d[kind].title).toBe(true);
       expect(sentenceCase(d[kind].meta.title), d[kind].meta.title).toBe(true);
     }

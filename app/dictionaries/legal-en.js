@@ -16,7 +16,9 @@ export const LEGAL_VERSION = '2026-10-16';
 const ENTITY = 'PT Efolusi Dunia Teknologi';
 const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Banten 42186, Indonesia';
 const EMAIL = '[hi@efolusi.com](mailto:hi@efolusi.com)';
-const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 22 November 2026`;
+const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 28 November 2026`;
+const PAGE_META_LINE = `${ENTITY} · Last updated 28 November 2026`;
+const DRAFT = '**Draft: pending legal review.**';
 
 export const terms = {
   meta: {
@@ -123,7 +125,48 @@ export const terms = {
         },
         `To ask for a refund, write to ${EMAIL} from the email address on your account, with the product and the date of the payment. If you were charged twice, charged the wrong amount, or paid for a plan that was never applied to your account and we cannot fix it, we refund the payment in full. Other requests are reviewed one by one. Approved refunds are processed through Efolusi Pay. When a Sanctum payment is refunded, the plan it paid for ends.`,
         'This section does not limit any refund right that consumer protection law gives you, including Indonesian Law No. 8 of 1999 on Consumer Protection.',
-        'Purchases in Trady, Cuwan, ZOYYA and Toolips follow the billing and refund terms of that product.'
+        'Purchases in Trady, Cuwan, ZOYYA and Toolips follow the billing and refund terms of that product.',
+        { h3: 'Efolusi Pay refunds and chargebacks', id: 'pay-refunds' },
+        `${DRAFT} The refund and chargeback policy of Efolusi Pay:`,
+        {
+          ul: [
+            '**Refunds:** Refunds are processed via the originating gateway. A refund never exceeds the amount paid minus already-refunded (anti over-refund guard). Partial and full refunds are supported and idempotent.',
+            '**Processing time:** Time to funds returning follows the gateway and card issuer, typically a few business days.',
+            '**Chargebacks / disputes:** Gateway-opened disputes follow an evidence window; the outcome (won/lost) posts to the ledger. A lost dispute reverses funds by amount.',
+            '**Fees:** Gateway refund/chargeback fees may be passed through per the agreement.',
+            '**Disputes:** Merchant-customer transaction disputes are resolved between the parties; Pay provides supporting data.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'pay',
+      head: 'Efolusi Pay',
+      blocks: [
+        'This section holds the terms of Efolusi Pay, the payment service our products use, for Efolusi products and merchants. In this section, "these Terms" means the Efolusi Pay terms that follow.',
+        `${DRAFT} These Terms govern use of Pay (the "Service") by Efolusi products/merchants ("you").`,
+        { h3: 'Acceptance', id: 'pay-acceptance' },
+        'By accessing or using the Service you agree to these Terms together with the [Privacy Policy](/{lang}/privacy#pay), [DPA](/{lang}/dpa), and [AUP](/{lang}/aup), which form an integral part hereof.',
+        { h3: 'The Service', id: 'pay-service' },
+        'Pay is payment orchestration: one API and one webhook across many payment gateways, with an internal per-product ledger. Pay is not a bank and does not hold customer funds except as permitted by applicable law.',
+        { h3: 'Your obligations', id: 'pay-obligations' },
+        {
+          ul: [
+            'Keep your api_key and webhook_secret confidential.',
+            "Comply with each payment gateway's rules and applicable law.",
+            'Do not use the Service for prohibited activity (see [AUP](/{lang}/aup)).'
+          ]
+        },
+        { h3: 'Fees', id: 'pay-fees' },
+        'Fees follow the Pricing page and/or a written agreement. Gateway fees are passed through at provider rates.',
+        { h3: 'Suspension and termination', id: 'pay-suspension' },
+        'We may suspend access for breach, fraud risk, or regulator request, with reasonable notice where possible.',
+        { h3: 'Limitation of liability', id: 'pay-liability' },
+        'To the extent permitted by law, our liability is capped per the agreement; we are not liable for indirect losses.',
+        { h3: 'Changes', id: 'pay-changes' },
+        'We may update these Terms; material changes are notified before they take effect.',
+        { h3: 'Governing law', id: 'pay-law' },
+        'Governed by the laws of the Republic of Indonesia. **Note (§10): PJP (Bank Indonesia) status must be validated by counsel before go-live.**'
       ]
     },
     {
@@ -391,6 +434,30 @@ export const privacy = {
       ]
     },
     {
+      id: 'pay',
+      head: 'Efolusi Pay',
+      blocks: [
+        'This section holds the privacy policy of Efolusi Pay, the payment service our products use. In this section, "this policy" means the Efolusi Pay policy that follows.',
+        `${DRAFT} This policy describes how Pay processes personal data under **Indonesia's PDP Law (Law 27/2022)** and in alignment with **GDPR** for EU data subjects.`,
+        { h3: 'Data processed', id: 'pay-data-processed' },
+        'Transaction metadata, customer email/name (when sent by a product), IP address, and technical data. Pay **does not store card data** (gateway hosted checkout/tokenization, PCI DSS SAQ-A).',
+        { h3: 'Legal basis', id: 'pay-legal-basis' },
+        'Contract performance, legal obligation, and legitimate interest (fraud prevention). For GDPR subjects: Art. 6(1)(b), (c), (f).',
+        { h3: 'Minimization and retention', id: 'pay-retention' },
+        'Personal data is minimized and retained per the retention policy; afterwards data is anonymized (see retention & erasure mechanisms).',
+        { h3: 'Data subject rights', id: 'pay-rights' },
+        'Access, rectification, erasure, restriction, and portability. Erasure requests are honored, including deletion by email.',
+        { h3: 'Breach notification', id: 'pay-breach' },
+        'Impactful incidents are notified to the authority and data subjects **within 3×24 hours** per the PDP Law.',
+        { h3: 'Third-party processing', id: 'pay-third-parties' },
+        'Payment gateways and sub-processors process data under the [DPA](/{lang}/dpa); a sub-processor list is on the [trust page](/{lang}/trust#sub-processors).',
+        { h3: 'Cross-border transfers', id: 'pay-transfers' },
+        'Transfers use adequate safeguards per the PDP Law and GDPR.',
+        { h3: 'Contact', id: 'pay-contact' },
+        `Privacy questions: ${EMAIL}. **Note (§10): legal consultation required before go-live.**`
+      ]
+    },
+    {
       id: 'ai',
       head: 'AI providers',
       blocks: [
@@ -405,7 +472,7 @@ export const privacy = {
         'We share personal data only as needed to run the products:',
         {
           ul: [
-            '**Service providers:** Cloudflare (network delivery and protection), Resend (account and product emails), Brevo (contact form emails), Have I Been Pwned (the breached password check), and our payment service Efolusi Pay with its payment partners when you buy a plan.',
+            '**Service providers:** Cloudflare (network delivery and protection), Resend (account and product emails), Brevo (contact form emails), Have I Been Pwned (the breached password check), and our payment service Efolusi Pay with its payment partners when you buy a plan: Mayar for payments in Indonesia and NOWPayments for crypto payments. See the [Efolusi Pay trust page](/{lang}/trust#sub-processors).',
             '**AI providers:** as described under AI providers.',
             '**Third parties you point a product at:** the websites, APIs, hosts, webhooks and channels you set up.',
             '**Other Efolusi products:** when you sign in to a product, or give one product access to another, such as a Loop project to Runa.',
@@ -469,7 +536,8 @@ export const privacy = {
             'efolusi.com sets a lang cookie for one year and keeps your theme in your browser storage.',
             'Cloudflare may set cookies it needs to protect the sites against bots and abuse.'
           ]
-        }
+        },
+        'The cookie policy of Efolusi Pay is on its own page: [Efolusi Pay cookie policy](/{lang}/cookie).'
       ]
     },
     {
@@ -492,5 +560,212 @@ export const privacy = {
       head: 'Contact',
       blocks: [`${ENTITY}, ${ADDRESS}.`, `Privacy questions and requests: ${EMAIL}.`]
     }
+  ]
+};
+
+/*
+ * Efolusi Pay documents. Moved from pay.efolusi.com on 2026-11-28 (PY87, PY109): the text is the
+ * owner's and is carried over as written, apart from the host and product names, the headings
+ * (sentence case, no numbers) and the section anchors. Each document ends with a contact section.
+ */
+
+const contact = {
+  id: 'contact',
+  head: 'Contact',
+  blocks: [`${ENTITY}, ${ADDRESS}.`, `Questions about this document: ${EMAIL}.`]
+};
+
+export const dpa = {
+  meta: {
+    title: 'Efolusi Pay data processing agreement · Efolusi',
+    description: 'The data processing agreement that applies when Efolusi Pay processes personal data on behalf of an Efolusi product or merchant.'
+  },
+  title: 'Efolusi Pay data processing agreement (DPA)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Contents',
+  intro: [`${DRAFT} This DPA supplements the [Terms](/{lang}/terms#pay) where Pay processes personal data on your behalf (controller).`],
+  sections: [
+    { id: 'roles', head: 'Roles', blocks: ['You = data controller; Pay = processor. Payment gateways may be independent controllers/processors.'] },
+    { id: 'scope', head: 'Scope and instructions', blocks: ['Pay processes data only per your documented instructions and applicable law.'] },
+    {
+      id: 'security',
+      head: 'Confidentiality and security',
+      blocks: ['In-transit/at-rest encryption, least-privilege access control, immutable audit logs, and periodic security testing.']
+    },
+    {
+      id: 'sub-processors',
+      head: 'Sub-processors',
+      blocks: [
+        'You approve the use of listed sub-processors; changes are notified with a reasonable right to object.',
+        'The list is on the [trust page](/{lang}/trust#sub-processors).'
+      ]
+    },
+    {
+      id: 'assistance',
+      head: 'Assistance',
+      blocks: ['We assist you with data subject rights, breach notification, and impact assessments (DPIA).']
+    },
+    {
+      id: 'deletion',
+      head: 'Deletion',
+      blocks: ['On termination, data is deleted or returned per your instruction, unless retention is legally required.']
+    },
+    { id: 'audit', head: 'Audit', blocks: ['You may audit compliance reasonably with prior notice.'] },
+    contact
+  ]
+};
+
+export const sla = {
+  meta: {
+    title: 'Efolusi Pay service level agreement · Efolusi',
+    description: 'The availability target, downtime definition and service credits for customers on an Efolusi Pay plan that includes a service level commitment.'
+  },
+  title: 'Efolusi Pay service level agreement (SLA)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Contents',
+  intro: [`${DRAFT} This SLA applies to customers on a plan that includes a service level commitment.`],
+  sections: [
+    {
+      id: 'availability',
+      head: 'Availability',
+      blocks: ['Monthly availability target **99.9%** for the Charge API and webhook ingestion, excluding scheduled maintenance.']
+    },
+    {
+      id: 'downtime',
+      head: 'Downtime definition',
+      blocks: ['Periods where the API returns 5xx above threshold, verified from monitoring.']
+    },
+    {
+      id: 'credits',
+      head: 'Service credits',
+      blocks: ['If the target is missed, credits apply by shortfall tier (e.g. < 99.9% to 99.0% → 10%; < 99.0% → 25%).']
+    },
+    {
+      id: 'exclusions',
+      head: 'Exclusions',
+      blocks: ['Force majeure, third-party (payment gateway) outages, and abuse fall outside scope.']
+    },
+    { id: 'support', head: 'Support', blocks: ['Response times by severity; critical incidents handled by on-call.'] },
+    {
+      id: 'maintenance',
+      head: 'Maintenance',
+      blocks: ['Scheduled maintenance is pre-announced and targeted outside peak hours.']
+    },
+    contact
+  ]
+};
+
+export const aup = {
+  meta: {
+    title: 'Efolusi Pay acceptable use policy · Efolusi',
+    description: 'What you must not use Efolusi Pay for, and what happens when the policy is broken.'
+  },
+  title: 'Efolusi Pay acceptable use policy (AUP)',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Contents',
+  intro: [`${DRAFT} You must not use the Service for:`],
+  sections: [
+    {
+      id: 'prohibited',
+      head: 'Prohibited activity',
+      blocks: [
+        {
+          ul: [
+            'Illegal transactions, money laundering, or terrorist financing.',
+            'Goods/services prohibited by law or gateway rules.',
+            'Fraud, card abuse, or transaction manipulation.',
+            'Attempts to breach security, API abuse, or attacks (DoS, injection).',
+            'Use that infringes third-party intellectual property.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'enforcement',
+      head: 'Enforcement',
+      blocks: ['Violations may lead to suspension or termination, and reporting to regulators/law enforcement where required.']
+    },
+    contact
+  ]
+};
+
+export const cookie = {
+  meta: {
+    title: 'Efolusi Pay cookie policy · Efolusi',
+    description: 'Which cookies Efolusi Pay uses, which are optional, and how to decline the optional ones.'
+  },
+  title: 'Efolusi Pay cookie policy',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Contents',
+  intro: [
+    DRAFT,
+    'For cookies on efolusi.com and my.efolusi.com, see [Cookies and browser storage](/{lang}/privacy#cookies) in the platform privacy notice.'
+  ],
+  sections: [
+    {
+      id: 'use',
+      head: 'Use of cookies',
+      blocks: ['The public Pay site favors no third-party cookies. Any analytics used is privacy-first without PII and loads only after consent.']
+    },
+    {
+      id: 'types',
+      head: 'Cookie types',
+      blocks: [{ ul: ['**Essential:** required for basic site function.', '**Analytics (optional):** active only after you consent.'] }]
+    },
+    {
+      id: 'control',
+      head: 'Control',
+      blocks: ['You can decline non-essential cookies via the consent banner; declining does not impair core function.']
+    },
+    contact
+  ]
+};
+
+export const trust = {
+  meta: {
+    title: 'Efolusi Pay security and trust · Efolusi',
+    description: 'The security controls, card data scope and sub-processor list of Efolusi Pay.'
+  },
+  title: 'Efolusi Pay security and trust',
+  metaLine: PAGE_META_LINE,
+  contentsHead: 'Contents',
+  intro: ['How Pay protects data and funds: a summary of security controls, PCI scope, and our sub-processor list.'],
+  sections: [
+    {
+      id: 'security-controls',
+      head: 'Security controls',
+      blocks: [
+        {
+          ul: [
+            '**No card data (PCI DSS SAQ-A).** Pay uses gateway hosted checkout/tokenization; card numbers never touch our systems.',
+            '**Two-way HMAC.** Product requests and outbound webhooks are both signed (HMAC-SHA256), with timestamp-based replay protection.',
+            '**Encryption.** TLS in transit; credentials & PII encrypted at rest; AES-256-GCM backups.',
+            '**SSRF guard.** Callback URLs are validated and DNS-resolved; private/loopback/metadata IPs are blocked.',
+            '**Tenant isolation.** Every query is scoped to product_id; idempotency keys are per-product.',
+            '**Immutable audit log.** Privileged actions (refund, config change, rotation, disable-provider) are append-only.',
+            '**Least privilege & rate limits.** Per-product and per-IP quotas; scoped product tokens.',
+            '**Fund integrity.** Double-entry ledger (Σdebit==Σcredit), anti double/over-refund and anti-overdraw payout guards.'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'sub-processors',
+      head: 'Sub-processor list',
+      blocks: [
+        {
+          table: {
+            head: ['Party', 'Purpose', 'Region'],
+            rows: [
+              ['Mayar', 'Payment gateway (Indonesia)', 'ID'],
+              ['NOWPayments', 'Payment gateway (crypto)', 'TBD'],
+              ['(Cloud/hosting)', 'Infrastructure & object storage (self-host available)', 'TBD']
+            ]
+          }
+        },
+        'This list may change; material changes are notified per the [DPA](/{lang}/dpa). This trust page is a summary, not a substitute for the legal documents.'
+      ]
+    },
+    contact
   ]
 };

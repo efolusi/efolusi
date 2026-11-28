@@ -38,6 +38,11 @@ const en = {
       bscscan: 'BscScan',
       privacy: 'Privacy notice',
       terms: 'Platform terms',
+      dpa: 'Pay DPA',
+      sla: 'Pay SLA',
+      aup: 'Pay acceptable use',
+      cookie: 'Pay cookie policy',
+      trust: 'Pay security and trust',
       rights: '© {year} PT Efolusi Dunia Teknologi. All rights reserved.',
       madeIn: 'Made in Indonesia'
     }
@@ -544,7 +549,12 @@ const en = {
   },
 
   privacy: legal.privacy,
-  terms: legal.terms
+  terms: legal.terms,
+  dpa: legal.dpa,
+  sla: legal.sla,
+  aup: legal.aup,
+  cookie: legal.cookie,
+  trust: legal.trust
 };
 
 export default en;

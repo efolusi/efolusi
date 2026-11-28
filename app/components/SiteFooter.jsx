@@ -67,6 +67,11 @@ export default function SiteFooter({ lang, t }) {
             <h4>{t.footer.legalHead}</h4>
             <Link href={`${base}/privacy`}>{t.footer.privacy}</Link>
             <Link href={`${base}/terms`}>{t.footer.terms}</Link>
+            <Link href={`${base}/dpa`}>{t.footer.dpa}</Link>
+            <Link href={`${base}/sla`}>{t.footer.sla}</Link>
+            <Link href={`${base}/aup`}>{t.footer.aup}</Link>
+            <Link href={`${base}/cookie`}>{t.footer.cookie}</Link>
+            <Link href={`${base}/trust`}>{t.footer.trust}</Link>
           </div>
         </div>
 

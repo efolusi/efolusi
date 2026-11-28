@@ -8,7 +8,12 @@ const pages = [
   ['/careers', 'monthly', 0.7],
   ['/brand', 'yearly', 0.4],
   ['/privacy', 'yearly', 0.3],
-  ['/terms', 'yearly', 0.3]
+  ['/terms', 'yearly', 0.3],
+  ['/dpa', 'yearly', 0.3],
+  ['/sla', 'yearly', 0.3],
+  ['/aup', 'yearly', 0.3],
+  ['/cookie', 'yearly', 0.3],
+  ['/trust', 'yearly', 0.3]
 ];
 
 export default function sitemap() {
