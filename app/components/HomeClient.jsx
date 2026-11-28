@@ -64,6 +64,9 @@ function useRevealOnScroll() {
       return undefined;
     }
 
+    // Hide the not-yet-seen blocks only now that the script that shows them is running.
+    document.documentElement.classList.add('reveal-ready');
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -94,6 +97,7 @@ function useRevealOnScroll() {
     return () => {
       io.disconnect();
       window.clearTimeout(fallbackTimer);
+      document.documentElement.classList.remove('reveal-ready');
     };
   }, []);
 }
@@ -211,7 +215,7 @@ export default function HomeClient({ d, common, lang }) {
               </a>
             );
           })}
-          <h1 className="reveal">
+          <h1>
             {d.hero.lead} <span className="script accent">{d.hero.build}</span> {d.hero.trail}{' '}
             <span className="scribble">
               {d.hero.products}
@@ -220,9 +224,9 @@ export default function HomeClient({ d, common, lang }) {
               </svg>
             </span>
           </h1>
-          <p className="hero-sub reveal">{d.hero.sub}</p>
+          <p className="hero-sub">{d.hero.sub}</p>
 
-          <div className="hero-actions reveal">
+          <div className="hero-actions">
             {/* Curls in from the left and points at the portfolio button. */}
             <span className="hero-doodle hero-deco" aria-hidden="true">
               <svg viewBox="0 0 72 56">
@@ -240,7 +244,7 @@ export default function HomeClient({ d, common, lang }) {
             </a>
           </div>
 
-          <div className="hero-proof reveal">
+          <div className="hero-proof">
             <StatusDot status="success" pulse />
             <span>{d.hero.proof}</span>
           </div>
