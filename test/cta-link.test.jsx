@@ -36,7 +36,7 @@ describe('CtaLink', () => {
   it('primary: the xl pill with the arrow bubble, the bubble hidden from assistive tech', () => {
     const html = renderToStaticMarkup(<CtaLink href="#x">Go</CtaLink>);
     expect(html).toContain('class="ef-btn ef-btn--primary ef-btn--xl ef-btn--pill ef-btn--bubble"');
-    expect(html).toContain('<span class="ef-btn__bubble" aria-hidden="true">');
+    expect(html).toContain('<span class="ef-btn__bubble" data-turn="true" aria-hidden="true">');
     expect(html).toContain('href="#x"');
   });
 
@@ -63,6 +63,10 @@ describe('the installed Meridian has the 2.6.0 button parts the CTA needs', () =
   const css = read('node_modules/@efolusi/meridian/components.css');
   it.each(['.ef-btn--bubble', '.ef-btn__bubble', '.ef-btn--band{'])('ships %s', (selector) => {
     expect(css).toContain(selector);
+  });
+
+  it('the arrow turns 45 degrees on hover and focus for a bubble that carries data-turn', () => {
+    expect(css).toMatch(/\.ef-btn--bubble:is\(:hover,:focus-visible\) \.ef-btn__bubble\[data-turn\] \[data-slot="icon"\]\{rotate:45deg\}/);
   });
 
   it('the band button keeps its accent-edge boundary on the cream band (1.4.11)', () => {
