@@ -32,6 +32,32 @@ function Block({ block, lang }) {
       </h3>
     );
   }
+  if (block.table) {
+    return (
+      <div className="legal-table">
+        <table>
+          <thead>
+            <tr>
+              {block.table.head.map((cell) => (
+                <th key={cell} scope="col">
+                  {cell}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {block.table.rows.map((row) => (
+              <tr key={row[0]}>
+                {row.map((cell, i) => (
+                  <td key={i}>{cell}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
   return (
     <ul>
       {block.ul.map((item) => (
@@ -44,10 +70,11 @@ function Block({ block, lang }) {
 }
 
 /*
- * Shared page of /terms and /privacy, inside the same header and footer as
+ * Shared page of every legal document (terms, privacy, dpa, sla, aup, cookie, trust), inside the same header and footer as
  * every other page of the site. `doc` comes from the dictionaries
  * (app/dictionaries/legal-*.js): intro blocks plus sections, each with an id
- * that other pages and products link to (for example /terms#refunds). `t` is
+ * that other pages and products link to (for example /terms#refunds). A block is a
+ * paragraph, { h3, id }, { ul } or { table: { head, rows } }. `t` is
  * the dictionary's `common` block for the header and footer.
  */
 export default function LegalDocument({ doc, lang, t }) {

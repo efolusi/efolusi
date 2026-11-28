@@ -5,6 +5,8 @@ import * as en from './legal-en.js';
 import * as id from './legal-id.js';
 
 const DOCS = { en, id };
+const KINDS = ['terms', 'privacy', 'dpa', 'sla', 'aup', 'cookie', 'trust'];
+const PAY_KINDS = ['dpa', 'sla', 'aup', 'cookie', 'trust'];
 const ENTITY = 'PT Efolusi Dunia Teknologi';
 const ADDRESS = 'Bumi Cikande Indah, Blok D12 No 15, Cikande, Kab. Serang, Banten 42186';
 
@@ -24,8 +26,8 @@ const allText = (value) =>
 
 describe('platform legal documents', () => {
   it('ships the same sections and anchors in English and Indonesian', () => {
-    for (const kind of ['terms', 'privacy']) {
-      expect(ids(id[kind])).toEqual(ids(en[kind]));
+    for (const kind of KINDS) {
+      expect(ids(id[kind]), kind).toEqual(ids(en[kind]));
     }
   });
 
@@ -69,17 +71,26 @@ describe('platform legal documents', () => {
 
   it('resolves every in-page and cross-page anchor', () => {
     for (const [lang, docs] of Object.entries(DOCS)) {
-      const own = { terms: ids(docs.terms), privacy: ids(docs.privacy) };
-      for (const kind of ['terms', 'privacy']) {
+      const own = Object.fromEntries(KINDS.map((kind) => [kind, ids(docs[kind])]));
+      for (const kind of KINDS) {
         for (const href of legalLinks(docs[kind], lang)) {
           const local = href.match(/^#(.+)$/);
           if (local) expect(own[kind], `${lang} ${kind} ${href}`).toContain(local[1]);
-          const cross = href.match(/^\/(en|id)\/(terms|privacy)#(.+)$/);
+          const cross = href.match(/^\/(en|id)\/(terms|privacy|dpa|sla|aup|cookie|trust)(?:#(.+))?$/);
           if (cross) {
             expect(cross[1]).toBe(lang);
-            expect(own[cross[2]], `${lang} ${kind} ${href}`).toContain(cross[3]);
+            if (cross[3]) expect(own[cross[2]], `${lang} ${kind} ${href}`).toContain(cross[3]);
           }
         }
+      }
+    }
+  });
+
+  it('has unique anchors on every page, so a link never lands on the wrong place', () => {
+    for (const [lang, docs] of Object.entries(DOCS)) {
+      for (const kind of KINDS) {
+        const found = ids(docs[kind]);
+        expect(found.length, `${lang} ${kind}`).toBe(new Set(found).size);
       }
     }
   });
@@ -93,7 +104,9 @@ describe('platform legal documents', () => {
     // so the version stays and only the date moves.
     // 2026-11-22: account deletion takes 7 days with a cancel link (SO53). The text now says what the
     // product does and adds no new obligation, so again the version stays and only the date moves.
-    for (const doc of [en.terms, id.terms, en.privacy, id.privacy]) expect(doc.metaLine).toContain('22 November 2026');
+    // 2026-11-28: the Efolusi Pay documents moved here from pay.efolusi.com (PY87, PY109). The accounts of
+    // people are not asked for anything new, so the version stays and only the date moves.
+    for (const doc of [en.terms, id.terms, en.privacy, id.privacy]) expect(doc.metaLine).toContain('28 November 2026');
     expect(JSON.stringify(DOCS)).not.toMatch(/sentry/i);
   });
 
@@ -144,9 +157,43 @@ describe('platform legal documents', () => {
 
   it('has no unresolved drafting markers, em dashes or double hyphens', () => {
     for (const docs of Object.values(DOCS)) {
-      for (const text of allText([docs.terms, docs.privacy])) {
+      for (const text of allText(KINDS.map((kind) => docs[kind]))) {
         expect(text).not.toMatch(/\[(PLACEHOLDER|DECISION|FIX)|TODO|—|–|--/);
       }
+    }
+  });
+});
+
+describe('Efolusi Pay legal documents (moved from pay.efolusi.com)', () => {
+  it('names the published entity, address and the one inbox on every new page', () => {
+    for (const docs of Object.values(DOCS)) {
+      for (const kind of PAY_KINDS) {
+        const text = allText(docs[kind]).join('\n');
+        expect(text, kind).toContain(ENTITY);
+        expect(text, kind).toContain(ADDRESS);
+        expect([...new Set(text.match(/[\w.+-]+@[\w-]+\.[\w.]+/g))], kind).toEqual(['hi@efolusi.com']);
+      }
+    }
+  });
+
+  it('keeps the owner text of the merged sections: Pay terms, Pay privacy, refunds and chargebacks', () => {
+    const text = (doc, key) => allText(doc.sections.find((x) => x.id === key)).join('\n');
+    expect(text(en.terms, 'pay')).toMatch(/Pay is not a bank and does not hold customer funds/);
+    expect(text(id.terms, 'pay')).toMatch(/Pay bukan bank dan bukan penyimpan dana nasabah/);
+    expect(text(en.privacy, 'pay')).toMatch(/within 3×24 hours/);
+    expect(text(id.privacy, 'pay')).toMatch(/≤ 3×24 jam/);
+    expect(text(en.terms, 'refunds')).toMatch(/anti over-refund guard[\s\S]*lost dispute reverses funds/);
+    expect(text(id.terms, 'refunds')).toMatch(/guard anti over-refund[\s\S]*Kehilangan dispute membalik dana/);
+  });
+
+  it('names the payment sub-processors in the privacy notice and lists them on the trust page', () => {
+    for (const [lang, docs] of Object.entries(DOCS)) {
+      const sharing = allText(docs.privacy.sections.find((x) => x.id === 'sharing')).join('\n');
+      expect(sharing, lang).toMatch(/Mayar/);
+      expect(sharing, lang).toMatch(/NOWPayments/);
+      const table = docs.trust.sections.find((x) => x.id === 'sub-processors').blocks.find((b) => b.table).table;
+      expect(table.rows.map((row) => row[0]), lang).toEqual(expect.arrayContaining(['Mayar', 'NOWPayments']));
+      for (const row of table.rows) expect(row.length, lang).toBe(table.head.length);
     }
   });
 });

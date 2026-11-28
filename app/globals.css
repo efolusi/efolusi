@@ -2313,7 +2313,7 @@ main[tabindex='-1']:focus {
   color: var(--text-muted);
 }
 
-/* ---------- Legal pages (privacy, terms) ---------- */
+/* ---------- Legal pages (terms, privacy, dpa, sla, aup, cookie, trust) ---------- */
 
 .legal-page {
   max-width: var(--container-text);
@@ -2384,6 +2384,32 @@ main[tabindex='-1']:focus {
 .legal-page .legal-toc li {
   margin-top: 4px;
   font-size: var(--text-md);
+}
+
+/* The sub-processor table scrolls inside its own box on a narrow screen instead of the page. */
+.legal-page .legal-table {
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.legal-page .legal-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.legal-page .legal-table th,
+.legal-page .legal-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-default);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.legal-page .legal-table th {
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
 }
 
 /* ---------- Responsive ---------- */
