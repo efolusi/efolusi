@@ -14,6 +14,8 @@ const id = {
     skipToContent: 'Langsung ke konten utama',
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
+    pauseMotion: 'Jeda animasi',
+    playMotion: 'Putar animasi',
     notFound: {
       meta: 'Halaman tidak ditemukan · Efolusi',
       code: 'Galat 404',
@@ -37,7 +39,7 @@ const id = {
       bscscan: 'BscScan',
       privacy: 'Pemberitahuan privasi',
       terms: 'Ketentuan platform',
-      rights: '© 2026 PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
+      rights: '© {year} PT Efolusi Dunia Teknologi. Hak cipta dilindungi.',
       madeIn: 'Dibuat di Indonesia'
     }
   },

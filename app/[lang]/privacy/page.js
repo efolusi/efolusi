@@ -19,5 +19,5 @@ export async function generateMetadata({ params }) {
 export default async function PrivacyPage({ params }) {
   const { lang } = await params;
   const d = getDictionary(lang);
-  return <LegalDocument doc={d.privacy} lang={d.htmlLang} />;
+  return <LegalDocument doc={d.privacy} lang={d.htmlLang} t={d.common} />;
 }

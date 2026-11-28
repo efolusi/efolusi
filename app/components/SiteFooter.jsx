@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Icon } from '@efolusi/meridian';
 
 import { SocialIcon } from '../lib/social-icons.js';
+import { withYear } from '../lib/copyright.js';
 import NoEmailObfuscation from './NoEmailObfuscation.jsx';
 
 const SOCIALS = [
@@ -70,7 +71,7 @@ export default function SiteFooter({ lang, t }) {
         </div>
 
         <div className="footer-bot">
-          <p>{t.footer.rights}</p>
+          <p>{withYear(t.footer.rights)}</p>
           <span className="made">
             <span className="flag">
               <i />

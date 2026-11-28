@@ -1,4 +1,6 @@
 import { parseInline } from '../lib/legal-inline.js';
+import SiteHeader from './SiteHeader.jsx';
+import SiteFooter from './SiteFooter.jsx';
 
 function Inline({ text, lang }) {
   return parseInline(text, lang).map((part, i) => {
@@ -42,42 +44,45 @@ function Block({ block, lang }) {
 }
 
 /*
- * Shared body of /terms and /privacy. `doc` comes from the dictionaries
+ * Shared page of /terms and /privacy, inside the same header and footer as
+ * every other page of the site. `doc` comes from the dictionaries
  * (app/dictionaries/legal-*.js): intro blocks plus sections, each with an id
- * that other pages and products link to (for example /terms#refunds).
+ * that other pages and products link to (for example /terms#refunds). `t` is
+ * the dictionary's `common` block for the header and footer.
  */
-export default function LegalDocument({ doc, lang }) {
+export default function LegalDocument({ doc, lang, t }) {
   return (
-    <main className="legal-page">
-      <a className="back-home" href={`/${lang}`}>
-        {doc.back}
-      </a>
-      <h1 className="ef-page-title">{doc.title}</h1>
-      <p className="legal-meta">{doc.metaLine}</p>
+    <>
+      <SiteHeader lang={lang} t={t} />
+      <main id="top" tabIndex={-1} className="legal-page">
+        <h1 className="ef-page-title">{doc.title}</h1>
+        <p className="legal-meta">{doc.metaLine}</p>
 
-      {doc.intro.map((block, i) => (
-        <Block key={i} block={block} lang={lang} />
-      ))}
+        {doc.intro.map((block, i) => (
+          <Block key={i} block={block} lang={lang} />
+        ))}
 
-      <nav className="legal-toc" aria-label={doc.contentsHead}>
-        <p className="legal-toc-head">{doc.contentsHead}</p>
-        <ol>
-          {doc.sections.map((section) => (
-            <li key={section.id}>
-              <a href={`#${section.id}`}>{section.head}</a>
-            </li>
-          ))}
-        </ol>
-      </nav>
+        <nav className="legal-toc" aria-label={doc.contentsHead}>
+          <p className="legal-toc-head">{doc.contentsHead}</p>
+          <ol>
+            {doc.sections.map((section) => (
+              <li key={section.id}>
+                <a href={`#${section.id}`}>{section.head}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
 
-      {doc.sections.map((section) => (
-        <section key={section.id} aria-labelledby={section.id}>
-          <h2 id={section.id}>{section.head}</h2>
-          {section.blocks.map((block, i) => (
-            <Block key={i} block={block} lang={lang} />
-          ))}
-        </section>
-      ))}
-    </main>
+        {doc.sections.map((section) => (
+          <section key={section.id} aria-labelledby={section.id}>
+            <h2 id={section.id}>{section.head}</h2>
+            {section.blocks.map((block, i) => (
+              <Block key={i} block={block} lang={lang} />
+            ))}
+          </section>
+        ))}
+      </main>
+      <SiteFooter lang={lang} t={t} />
+    </>
   );
 }

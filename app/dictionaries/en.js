@@ -14,6 +14,8 @@ const en = {
     skipToContent: 'Skip to main content',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
+    pauseMotion: 'Pause animation',
+    playMotion: 'Play animation',
     notFound: {
       meta: 'Page not found · Efolusi',
       code: 'Error 404',
@@ -37,7 +39,7 @@ const en = {
       bscscan: 'BscScan',
       privacy: 'Privacy notice',
       terms: 'Platform terms',
-      rights: '© 2026 PT Efolusi Dunia Teknologi. All rights reserved.',
+      rights: '© {year} PT Efolusi Dunia Teknologi. All rights reserved.',
       madeIn: 'Made in Indonesia'
     }
   },

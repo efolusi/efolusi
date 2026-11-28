@@ -64,6 +64,9 @@ function useRevealOnScroll() {
       return undefined;
     }
 
+    // Hide the not-yet-seen blocks only now that the script that shows them is running.
+    document.documentElement.classList.add('reveal-ready');
+
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -87,13 +90,9 @@ function useRevealOnScroll() {
 
     reveals.forEach((element) => io.observe(element));
 
-    const fallbackTimer = window.setTimeout(() => {
-      reveals.forEach((element) => element.classList.add('in'));
-    }, 1600);
-
     return () => {
       io.disconnect();
-      window.clearTimeout(fallbackTimer);
+      document.documentElement.classList.remove('reveal-ready');
     };
   }, []);
 }
@@ -103,6 +102,7 @@ export default function HomeClient({ d, common, lang }) {
 
   const base = `/${lang}`;
 
+  const [motionPaused, setMotionPaused] = useState(false);
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
 
@@ -181,7 +181,7 @@ export default function HomeClient({ d, common, lang }) {
     <>
       <SiteHeader lang={lang} t={common} />
 
-    <main id="top" tabIndex={-1}>
+    <main id="top" tabIndex={-1} className={motionPaused ? 'is-motion-paused' : undefined}>
       <section className="hero hero-center" id="hero">
         <div className="wrap">
           {stickers.map((s) => (
@@ -211,7 +211,7 @@ export default function HomeClient({ d, common, lang }) {
               </a>
             );
           })}
-          <h1 className="reveal">
+          <h1>
             {d.hero.lead} <span className="script accent">{d.hero.build}</span> {d.hero.trail}{' '}
             <span className="scribble">
               {d.hero.products}
@@ -220,9 +220,9 @@ export default function HomeClient({ d, common, lang }) {
               </svg>
             </span>
           </h1>
-          <p className="hero-sub reveal">{d.hero.sub}</p>
+          <p className="hero-sub">{d.hero.sub}</p>
 
-          <div className="hero-actions reveal">
+          <div className="hero-actions">
             {/* Curls in from the left and points at the portfolio button. */}
             <span className="hero-doodle hero-deco" aria-hidden="true">
               <svg viewBox="0 0 72 56">
@@ -240,21 +240,34 @@ export default function HomeClient({ d, common, lang }) {
             </a>
           </div>
 
-          <div className="hero-proof reveal">
-            <StatusDot status="success" pulse />
+          <div className="hero-proof">
+            <StatusDot status="success" />
             <span>{d.hero.proof}</span>
           </div>
         </div>
       </section>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...d.marquee, ...d.marquee].map((item, index) => (
-            <span className="marquee-item" key={`${item}-${index}`}>
-              {item}
-            </span>
-          ))}
+      <div className="marquee-wrap">
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track">
+            {[...d.marquee, ...d.marquee].map((item, index) => (
+              <span className="marquee-item" key={`${item}-${index}`}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
+        {/* The words, stickers and tiles move for longer than 5 seconds, so they get a pause (WCAG 2.2.2). */}
+        <Button
+          type="button"
+          className="marquee-pause"
+          variant="secondary"
+          size="icon-lg"
+          shape="pill"
+          iconLeft={motionPaused ? 'play' : 'pause'}
+          aria-label={motionPaused ? common.playMotion : common.pauseMotion}
+          onClick={() => setMotionPaused((value) => !value)}
+        />
       </div>
 
       <section className="csec" aria-label="At a glance">
@@ -511,7 +524,7 @@ export default function HomeClient({ d, common, lang }) {
                 <label htmlFor="cf-company">Company</label>
                 <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
               </div>
-              <Button type="submit" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
+              <Button type="submit" size="lg" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
                 {d.contact.send}
               </Button>
               <div

@@ -3,9 +3,14 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Icon, ThemeToggle } from '@efolusi/meridian';
+import { Icon, ThemeToggle, buttonVariants } from '@efolusi/meridian';
 
 const my = { web: 'https://my.efolusi.com' };
+
+/* Header buttons are Meridian buttons: lg is the 44 px target, pill is the site's shape.
+   `header-pill` only lets the phone layout hide them (the menu repeats both). */
+const signInButton = buttonVariants({ variant: 'secondary', size: 'lg', shape: 'pill', className: 'header-pill' });
+const contactButton = buttonVariants({ variant: 'primary', size: 'lg', shape: 'pill', className: 'header-pill' });
 
 /* The highlight marks the page you are on, nothing else. Anchor links into
    home sections never light up. */
@@ -57,14 +62,21 @@ export default function SiteHeader({ lang, t }) {
           </nav>
 
           <div className="header-actions">
-            <Link className="lang-switch" href={switchHref} aria-label={t.switchLanguage} onClick={() => setMenuOpen(false)}>
+            <Link
+              className="lang-switch"
+              href={switchHref}
+              hrefLang={other}
+              lang={other}
+              aria-label={t.switchLanguage}
+              onClick={() => setMenuOpen(false)}
+            >
               {t.langLabel}
             </Link>
             <ThemeToggle lang={lang} />
-            <a className="pill pill--sm pill--plain sign-in-pill" href={`${my.web}/sign-in?lang=${lang}`}>
+            <a className={signInButton} href={`${my.web}/sign-in?lang=${lang}`}>
               {t.signIn}
             </a>
-            <Link className="pill pill--primary pill--sm pill--plain" href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
+            <Link className={contactButton} href={`${base}/#contact`} onClick={() => setMenuOpen(false)}>
               {t.getInTouch}
             </Link>
             <button

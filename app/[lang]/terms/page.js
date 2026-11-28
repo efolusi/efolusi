@@ -19,5 +19,5 @@ export async function generateMetadata({ params }) {
 export default async function TermsPage({ params }) {
   const { lang } = await params;
   const d = getDictionary(lang);
-  return <LegalDocument doc={d.terms} lang={d.htmlLang} />;
+  return <LegalDocument doc={d.terms} lang={d.htmlLang} t={d.common} />;
 }
