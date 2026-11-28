@@ -72,7 +72,7 @@ describe('hero stagger: h1, sub, actions, proof in 0, 100, 200, 300 ms', () => {
   });
 
   it('no hero block is a .reveal and none carries an inline opacity', () => {
-    const hero = home.slice(home.indexOf('<section className="hero'), home.indexOf('marquee-wrap'));
+    const hero = home.slice(home.indexOf('<section className="hero'), home.indexOf('<div className="marquee"'));
     expect(hero).not.toMatch(/\breveal\b/);
     expect(hero).not.toMatch(/opacity/);
   });

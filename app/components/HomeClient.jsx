@@ -244,7 +244,7 @@ export default function HomeClient({ d, common, lang }) {
             <a className="pill pill--primary" href="#products">
               {d.hero.viewPortfolio}
               <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
+                <Icon name="arrow-up-right" size={20} />
               </span>
             </a>
             <a className="pill pill--outline" href="#contact">
@@ -259,27 +259,18 @@ export default function HomeClient({ d, common, lang }) {
         </div>
       </section>
 
-      <div className="marquee-wrap">
-        <div className="marquee" aria-hidden="true">
-          <div className="marquee-track">
-            {[...d.marquee, ...d.marquee].map((item, index) => (
-              <span className="marquee-item" key={`${item}-${index}`}>
-                {item}
-              </span>
-            ))}
-          </div>
+      {/* The words move for longer than 5 seconds, so they stop without a visible control (WCAG 2.2.2):
+          while the pointer is over the strip, while anything in it has focus, and on a tap or press
+          (tap again to resume). A tap holds the stickers, tiles and the status dot ring too.
+          Reduced motion runs none of it. */}
+      <div className="marquee" aria-hidden="true" onClick={() => setMotionPaused((value) => !value)}>
+        <div className="marquee-track">
+          {[...d.marquee, ...d.marquee].map((item, index) => (
+            <span className="marquee-item" key={`${item}-${index}`}>
+              {item}
+            </span>
+          ))}
         </div>
-        {/* The words, stickers and tiles move for longer than 5 seconds, so they get a pause (WCAG 2.2.2). */}
-        <Button
-          type="button"
-          className="marquee-pause"
-          variant="secondary"
-          size="icon-lg"
-          shape="pill"
-          iconLeft={motionPaused ? 'play' : 'pause'}
-          aria-label={motionPaused ? common.playMotion : common.pauseMotion}
-          onClick={() => setMotionPaused((value) => !value)}
-        />
       </div>
 
       <section className="csec" aria-label="At a glance">
@@ -411,7 +402,7 @@ export default function HomeClient({ d, common, lang }) {
                 <a className="pill pill--primary" href={`${base}/token`}>
                   {d.ecosystem.about}
                   <span className="pill-arrow">
-                    <Icon name="arrow-up-right" size={16} />
+                    <Icon name="arrow-up-right" size={20} />
                   </span>
                 </a>
                 <a
@@ -455,7 +446,7 @@ export default function HomeClient({ d, common, lang }) {
               <a className="pill pill--primary" href="#contact">
                 {d.careers.reachOut}
                 <span className="pill-arrow">
-                  <Icon name="arrow-up-right" size={16} />
+                  <Icon name="arrow-up-right" size={20} />
                 </span>
               </a>
             </div>
@@ -591,7 +582,7 @@ export default function HomeClient({ d, common, lang }) {
             <a className="pill pill--cream" href="#products">
               {d.closer.cta}
               <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
+                <Icon name="arrow-up-right" size={20} />
               </span>
             </a>
           </div>
