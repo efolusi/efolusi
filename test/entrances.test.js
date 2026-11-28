@@ -41,9 +41,9 @@ describe('page-in: main fades and rises once on the first load', () => {
     expect(keyframes).toBeTruthy();
   });
 
-  it('the cross-document view transition stays, and the page-in steps aside while one runs', () => {
+  it('the cross-document view transition stays, and the page-in is not switched off while one is active (it blinked)', () => {
     expect(css).toMatch(/@view-transition \{\s*navigation: auto;/);
-    expect(block).toMatch(/:root:active-view-transition main \{\s*animation: none;/);
+    expect(css.replace(/\/\*[\s\S]*?\*\//g, '')).not.toContain(':active-view-transition');
   });
 });
 

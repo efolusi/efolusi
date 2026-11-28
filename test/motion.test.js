@@ -38,10 +38,9 @@ describe('the status dot keeps its slow pulse, stopped by the pause button (EF44
 });
 
 describe('a page enters once (EF42, reversed 2026-11-28)', () => {
-  it('<main> fades in on the first load and steps aside for the view transition', () => {
+  it('<main> fades in and rises on load and on every in-app navigation, beside the view transition', () => {
     expect(css).toContain('navigation: auto;');
     expect(css).toMatch(/\nmain \{\n {2}animation: enter-rise var\(--dur-slow\) var\(--ease-enter\) both;/);
-    expect(css).toContain(':root:active-view-transition main {');
   });
 });
 

@@ -77,9 +77,8 @@ html {
   scroll-padding-top: calc(var(--nav-h) - 32px);
 }
 
-/* Smooth page-to-page: cross-document view transitions where supported. The
-   page-in of <main> (Entrances, below) steps aside while one runs, so a page
-   never rises twice. */
+/* Smooth page-to-page: cross-document view transitions where supported, beside
+   the page-in of <main> (see Entrances, below). */
 @view-transition {
   navigation: auto;
 }
@@ -176,9 +175,15 @@ h2 {
 /* An entrance is an enhancement, never a gate. Each one is an animation that
    starts hidden in its first keyframe and ends visible, with fill-mode both, so
    a browser that cannot run it (or runs no script yet) shows the content at once.
-   No base rule below holds opacity 0. One page entrance: this rise is for the
-   first load; between two pages the cross-document view transition (above) is
-   the entrance and this one steps aside while it runs. */
+   No base rule below holds opacity 0.
+
+   One page entrance: this rise. It is the entrance for the first load, for every
+   in-app (Next link) navigation, where no view transition runs, and for browsers
+   without view transitions. The cross-document view transition above stays as it
+   was and only runs on a full page load in Chromium, together with the rise (both
+   250 ms, so they read as one fade with a small rise). Do not switch the rise off
+   while a transition is active (:root:active-view-transition): it comes back when
+   the transition ends, so the page showed, vanished and faded in again (measured). */
 
 :root {
   --stagger-step: 100ms;
@@ -197,10 +202,6 @@ h2 {
 
 main {
   animation: enter-rise var(--dur-slow) var(--ease-enter) both;
-}
-
-:root:active-view-transition main {
-  animation: none;
 }
 
 /* Hero: heading, sub, actions, proof, one step apart (0, 100, 200, 300 ms). */
