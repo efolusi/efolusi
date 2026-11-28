@@ -2112,7 +2112,12 @@ main[tabindex='-1']:focus {
   flex-direction: column;
   text-decoration: none;
   color: var(--text-primary);
-  transition: transform var(--dur-base) var(--ease-emphasised), box-shadow var(--dur-base) var(--ease-enter);
+  /* The cards are also .reveal: this rule comes later, so it must keep the
+     reveal's opacity fade or the cards would pop in. */
+  transition:
+    opacity var(--dur-slow) var(--ease-enter),
+    transform var(--dur-base) var(--ease-emphasised),
+    box-shadow var(--dur-base) var(--ease-enter);
 }
 
 .feat-card:hover {

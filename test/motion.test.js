@@ -41,3 +41,10 @@ describe('a page enters once (EF42)', () => {
     expect(css).not.toMatch(/page-in/);
   });
 });
+
+describe('the feature cards keep their reveal fade (EF43)', () => {
+  it('.feat-card lists opacity in its own transition', () => {
+    const rule = css.match(/\n\.feat-card \{[^}]*\}/)[0];
+    expect(rule).toMatch(/transition:[^;]*opacity var\(--dur-slow\)/);
+  });
+});
