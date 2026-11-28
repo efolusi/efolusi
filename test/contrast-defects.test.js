@@ -30,9 +30,10 @@ describe('plain defects: founder blobs, the closer button, two dark icon inks', 
     expect(rule).not.toContain('--brand-100');
   });
 
-  it('the cream closer button has a boundary from the accent edge token', () => {
-    const rule = ruleOf(css, '\n.pill--cream {');
-    expect(rule).toContain('border-color: var(--accent-edge);');
+  it('the cream closer button is Meridian\'s band button, which has a boundary from the accent edge token', () => {
+    expect(css).not.toContain('.pill--cream');
+    expect(read('app/components/HomeClient.jsx')).toContain('<CtaLink variant="band"');
+    expect(read('node_modules/@efolusi/meridian/components.css')).toMatch(/\.ef-btn--band\{[^}]*border-color:var\(--accent-edge\)/);
   });
 
   it('the feature card icon ink follows the themed accent edge, in light and dark alike', () => {

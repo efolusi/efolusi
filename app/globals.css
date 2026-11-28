@@ -1784,125 +1784,12 @@ main[tabindex='-1']:focus {
   align-items: flex-start;
 }
 
-/* ---------- Wonder layer: pills, script accents, badges, stickers ---------- */
+/* ---------- Wonder layer: script accents, badges, stickers ---------- */
 
 .script {
   font-family: var(--font-sans);
   font-style: italic;
   font-weight: var(--weight-semibold);
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  height: 52px;
-  padding: 0 8px 0 24px;
-  border: 1px solid transparent;
-  border-radius: var(--radius-full);
-  font-size: var(--text-lg);
-  font-weight: var(--weight-semibold);
-  white-space: nowrap;
-  text-decoration: none;
-  transition:
-    background var(--dur-fast) var(--ease-enter),
-    border-color var(--dur-fast) var(--ease-enter),
-    transform var(--dur-fast) var(--ease-enter);
-}
-
-@media (hover: hover) {
-  .pill:hover {
-    text-decoration: none;
-  }
-}
-
-.pill:active {
-  transform: scale(0.985);
-}
-
-.pill:focus-visible {
-  outline: none;
-  box-shadow: var(--focus-ring);
-}
-
-.pill--primary {
-  background: var(--accent);
-  color: var(--accent-contrast);
-}
-
-@media (hover: hover) {
-  .pill--primary:hover {
-    background: var(--accent-hover);
-    color: var(--accent-contrast);
-  }
-}
-
-.pill--outline {
-  border-color: var(--border-strong);
-  color: var(--text-primary);
-  padding-right: 24px;
-}
-
-@media (hover: hover) {
-  .pill--outline:hover {
-    background: var(--surface-sunken);
-    color: var(--text-primary);
-  }
-}
-
-.pill--cream {
-  background: var(--cream-50);
-  /* On the cream band the fill alone is 1.09:1; the accent edge is the control's
-     boundary (WCAG 1.4.11), as it is on Meridian's primary button. */
-  border-color: var(--accent-edge);
-  color: var(--brand-950);
-}
-
-@media (hover: hover) {
-  .pill--cream:hover {
-    background: var(--surface-card);
-    color: var(--brand-950);
-  }
-}
-
-/* The cream pill keeps its light fill in both themes (it sits on dark bands),
-   so its hover must stay light too: dark --surface-card put brand-950 ink on
-   an espresso fill (1.01:1). */
-@media (hover: hover) {
-  [data-theme='dark'] .pill--cream:hover {
-    background: var(--brand-100);
-  }
-}
-
-.pill-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-full);
-  /* The bubble is the button's label colour and the arrow is the button's own colour, so the
-     bubble reads on the button in light and dark (copper on copper was 1.10:1). */
-  background: var(--text-primary);
-  color: var(--surface-page);
-  transition: transform var(--dur-base) var(--ease-emphasised);
-}
-
-.pill--primary .pill-arrow {
-  background: var(--accent-contrast);
-  color: var(--accent);
-}
-
-@media (hover: hover) {
-  .pill:hover .pill-arrow {
-    transform: rotate(45deg);
-  }
-}
-
-/* The cream pill keeps its light fill in both themes, so its bubble keeps the dark label ink. */
-.pill--cream .pill-arrow {
-  background: var(--brand-950);
-  color: var(--cream-50);
 }
 
 /* Sticker tags */
@@ -2481,8 +2368,7 @@ main[tabindex='-1']:focus {
     align-items: stretch;
   }
 
-  .hero-actions .ef-btn,
-  .hero-actions .pill {
+  .hero-actions .ef-btn {
     width: 100%;
     justify-content: center;
   }
@@ -2788,7 +2674,6 @@ main[tabindex='-1']:focus {
 
   .feat-card,
   .role-arrow,
-  .pill-arrow,
   .tile-card {
     transition-duration: 0.01ms !important;
   }
@@ -2800,7 +2685,6 @@ main[tabindex='-1']:focus {
   @media (hover: hover) {
     .feat-card:hover,
     .role:hover .role-arrow,
-    .pill:hover .pill-arrow,
     .edge-tile:hover .tile-card {
       transform: none !important;
     }
@@ -3160,7 +3044,7 @@ main[tabindex='-1']:focus {
    On a touch screen of any width (tablets and touch laptops report
    pointer: coarse) and on every phone-width window, each control gets a hit
    area of at least --tap-min. Controls that carry their own surface (inputs,
-   form buttons, pills) grow to 44px; the copy-field icon button keeps its
+   form buttons) grow to 44px; the copy-field icon button keeps its
    drawn size and extends an invisible ::after. The three header controls are
    size md, which is 44px on a coarse pointer (see the header control rule),
    so they need neither.

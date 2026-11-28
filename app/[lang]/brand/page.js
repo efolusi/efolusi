@@ -3,6 +3,7 @@ import { getDictionary } from '../../dictionaries/config.js';
 import { socialMeta } from '../../lib/page-meta.js';
 import { productMeta } from '../../lib/products.js';
 import ProductLogo from '../../components/ProductLogo.jsx';
+import CtaLink from '../../components/CtaLink.jsx';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 
@@ -147,12 +148,9 @@ export default async function BrandPage({ params }) {
           </h2>
           <p>{d.closerBody}</p>
           <div className="closer-actions">
-            <a className="pill pill--cream" href="mailto:hi@efolusi.com">
+            <CtaLink variant="band" href="mailto:hi@efolusi.com">
               {d.closerCta}
-              <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
-              </span>
-            </a>
+            </CtaLink>
           </div>
         </div>
       </section>

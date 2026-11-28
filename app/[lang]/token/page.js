@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Badge, Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import { socialMeta } from '../../lib/page-meta.js';
+import CtaLink from '../../components/CtaLink.jsx';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 import BuybackBurn from '../../components/BuybackBurn.jsx';
@@ -208,12 +209,9 @@ export default async function TokenPage({ params }) {
           </h2>
           <p>{d.closerBody}</p>
           <div className="closer-actions">
-            <a className="pill pill--cream" href={`/${lang}/#contact`}>
+            <CtaLink variant="band" href={`/${lang}/#contact`}>
               {d.closerCta}
-              <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
-              </span>
-            </a>
+            </CtaLink>
           </div>
         </div>
       </section>

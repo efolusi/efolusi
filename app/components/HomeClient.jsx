@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger, Avatar, AvatarFallback, Badge, Button, CopyField, Icon, Input, StatusDot, Textarea } from '@efolusi/meridian';
 import ProductLogo from './ProductLogo.jsx';
 import ProductPortfolio from './ProductPortfolio.jsx';
+import CtaLink from './CtaLink.jsx';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
 import NoEmailObfuscation from './NoEmailObfuscation.jsx';
@@ -241,15 +242,12 @@ export default function HomeClient({ d, common, lang }) {
                 <path d="M4 6 C 10 34, 26 46, 58 44 M58 44 l-13 -7 M58 44 l-11 9" />
               </svg>
             </span>
-            <a className="pill pill--primary" href="#products">
+            <CtaLink variant="primary" href="#products">
               {d.hero.viewPortfolio}
-              <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={20} />
-              </span>
-            </a>
-            <a className="pill pill--outline" href="#contact">
+            </CtaLink>
+            <CtaLink variant="secondary" href="#contact">
               {d.hero.getInTouch}
-            </a>
+            </CtaLink>
           </div>
 
           <div className="hero-proof">
@@ -399,20 +397,12 @@ export default function HomeClient({ d, common, lang }) {
               </h2>
               <p className="section-lede">{d.ecosystem.lede}</p>
               <div className="eco-actions">
-                <a className="pill pill--primary" href={`${base}/token`}>
+                <CtaLink variant="primary" href={`${base}/token`}>
                   {d.ecosystem.about}
-                  <span className="pill-arrow">
-                    <Icon name="arrow-up-right" size={20} />
-                  </span>
-                </a>
-                <a
-                  className="pill pill--outline"
-                  href={`https://bscscan.com/token/${EFO_CONTRACT}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                </CtaLink>
+                <CtaLink variant="secondary" href={`https://bscscan.com/token/${EFO_CONTRACT}`} target="_blank" rel="noopener noreferrer">
                   {d.ecosystem.bscscan}
-                </a>
+                </CtaLink>
               </div>
             </div>
             <div className="eco-card reveal">
@@ -443,12 +433,9 @@ export default function HomeClient({ d, common, lang }) {
                 {d.careers.titleA} <span className="script accent">{d.careers.titleEm}</span>
               </h2>
               <p className="body">{d.careers.body}</p>
-              <a className="pill pill--primary" href="#contact">
+              <CtaLink variant="primary" href="#contact">
                 {d.careers.reachOut}
-                <span className="pill-arrow">
-                  <Icon name="arrow-up-right" size={20} />
-                </span>
-              </a>
+              </CtaLink>
             </div>
 
             <div className="roles reveal">
@@ -579,12 +566,9 @@ export default function HomeClient({ d, common, lang }) {
           </h2>
           <p className="reveal">{d.closer.body}</p>
           <div className="closer-actions reveal">
-            <a className="pill pill--cream" href="#products">
+            <CtaLink variant="band" href="#products">
               {d.closer.cta}
-              <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={20} />
-              </span>
-            </a>
+            </CtaLink>
           </div>
         </div>
       </section>
