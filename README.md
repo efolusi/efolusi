@@ -101,8 +101,8 @@ app/
     newsletter/route.js   Fail-closed newsletter DOI prerequisite boundary
   about|careers|brand|token/page.js
                         The subpages, each with its own copy at the top
-  privacy/page.js         Privacy policy
-  terms/page.js           Terms of use
+  privacy|terms|dpa|sla|aup|cookie|trust/page.js
+                          The legal documents; the text is in dictionaries/legal-*.js
   components/             Shared header, footer and theme toggle
   sitemap.js, robots.js, llms.txt/route.js
                         SEO and AI-answer-engine metadata routes

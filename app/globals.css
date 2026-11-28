@@ -9,6 +9,43 @@
      (decision MD109); until Meridian ships this token itself, it is set here. */
   --accent-word: var(--accent-edge);
 
+  /* Card tones. Proposed rows for design-tokens (names and values below), local until Meridian ships them.
+     Four tones, the same seven slots each, the same values in light and dark. One rule for every disc:
+     the card's own hue and chroma, 0.10 lighter in OKLCH on a dark tone and 0.10 deeper on a light tone.
+     The mark (the card's decoration) steps 0.20 the same way, except cocoa and copper, whose marks are copper
+     and deep copper. Light text and links on the dark tones (cream), deep copper links on the light tones. */
+  --tone-cocoa-fill: #3a2418;
+  --tone-cocoa-on-fill: var(--brand-100);
+  --tone-cocoa-on-fill-muted: #cfc6b7;
+  --tone-cocoa-disc: #553d31;
+  --tone-cocoa-on-disc: var(--copper-300);
+  --tone-cocoa-mark: var(--copper-500);
+  --tone-cocoa-link: var(--brand-100);
+
+  --tone-copper-fill: var(--copper-300);
+  --tone-copper-on-fill: var(--sand-950);
+  --tone-copper-on-fill-muted: var(--sand-800);
+  --tone-copper-disc: #c69578;
+  --tone-copper-on-disc: var(--sand-950);
+  --tone-copper-mark: var(--brand-700);
+  --tone-copper-link: var(--brand-800);
+
+  --tone-sand-fill: var(--brand-100);
+  --tone-sand-on-fill: var(--sand-950);
+  --tone-sand-on-fill-muted: var(--sand-800);
+  --tone-sand-disc: #d3c8b2;
+  --tone-sand-on-disc: var(--brand-700);
+  --tone-sand-mark: #b3a993;
+  --tone-sand-link: var(--brand-800);
+
+  --tone-olive-fill: #2e2413;
+  --tone-olive-on-fill: var(--brand-100);
+  --tone-olive-on-fill-muted: #cfc6b7;
+  --tone-olive-disc: #483d2c;
+  --tone-olive-on-disc: var(--copper-300);
+  --tone-olive-mark: #645846;
+  --tone-olive-link: var(--brand-100);
+
   /* Vertical rhythm steps with the layout breakpoints (width), never with the
      window height, so a 1440x900 and a 1440x1080 window space sections alike.
      Values sit on the 4px spacing scale. */
@@ -579,15 +616,14 @@ main[tabindex='-1']:focus {
   mask: var(--logo) center / contain no-repeat;
 }
 
-/* Logo tiles share one surface and ink in both themes, like app icons. */
-.tile-card--logo,
-.portfolio-browser .portfolio-mark {
+/* The floating logo tiles in the hero share one surface and ink in both themes, like app icons.
+   They sit on the page, not on a card. The logo tile inside a product card follows the card (see below). */
+.tile-card--logo {
   background: #FFFFFF;
   color: var(--brand-800);
 }
 
-[data-theme='dark'] .tile-card--logo,
-[data-theme='dark'] .portfolio-browser .portfolio-mark {
+[data-theme='dark'] .tile-card--logo {
   background: var(--cream-50);
 }
 
@@ -699,6 +735,7 @@ main[tabindex='-1']:focus {
 .marquee {
   border-top: 1px solid var(--border-default);
   background: var(--surface-subtle);
+  position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -713,6 +750,26 @@ main[tabindex='-1']:focus {
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
+}
+
+/* Keyboard focus lands on the strip itself: the ring sits inside the edge because the strip clips overflow.
+   Same ring colour as the other focus rings (--focus-ring-color). */
+.marquee:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: -4px;
+}
+
+/* One copy of the words for screen readers; the visible strip is aria-hidden. */
+.marquee-list {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  list-style: none;
 }
 
 .marquee:focus-within .marquee-track {
@@ -1898,7 +1955,10 @@ main[tabindex='-1']:focus {
   box-shadow: var(--shadow-md);
 }
 
-/* Feature trio cards */
+/* Feature trio cards.
+   Three surfaces you tell apart at a glance, in light and in dark. Each card takes one tone (see the
+   tone rows in :root); every tone has the same seven slots, so the card, its disc, its decoration and
+   its link follow one rule. Light: cocoa, copper, sand. Dark: sand, cocoa, olive (cream, cocoa, dark olive). */
 
 .feat-grid {
   display: grid;
@@ -1916,7 +1976,8 @@ main[tabindex='-1']:focus {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(--text-primary);
+  background: var(--feat-fill);
+  color: var(--feat-on-fill);
   /* The cards are also .reveal: this rule comes later, so it must keep the
      reveal's opacity fade or the cards would pop in. */
   transition:
@@ -1929,41 +1990,9 @@ main[tabindex='-1']:focus {
   .feat-card:hover {
     transform: translateY(var(--hover-lift));
     box-shadow: var(--shadow-lg);
-    color: inherit;
+    color: var(--feat-on-fill);
     text-decoration: none;
   }
-}
-
-/* Fixed-light card: text must use fixed inks, not theme tokens,
-   or dark mode paints light text on the light background. */
-.feat-card--peach {
-  background: var(--brand-100);
-  color: var(--sand-950);
-}
-
-@media (hover: hover) {
-  .feat-card--peach:hover {
-    color: var(--sand-950);
-  }
-}
-
-.feat-card.feat-card--peach p {
-  color: var(--sand-700);
-}
-
-.feat-card--band {
-  background: var(--surface-brand);
-  color: var(--text-on-brand);
-}
-
-@media (hover: hover) {
-  .feat-card--band:hover {
-    color: var(--text-on-brand);
-  }
-}
-
-.feat-card--amber {
-  background: var(--warning-100);
 }
 
 .feat-icon {
@@ -1973,20 +2002,8 @@ main[tabindex='-1']:focus {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-full);
-  background: var(--surface-card);
-  /* --accent-edge follows the theme: 4.9:1 on the white card, 6:1 on the dark
-     one. A fixed brand-700 was 2.26:1 on the dark card behind the peach icon. */
-  color: var(--accent-edge);
-  box-shadow: var(--shadow-sm);
-}
-
-.feat-card--band .feat-icon {
-  background: var(--brand-800);
-  color: var(--text-on-media);
-}
-
-.feat-card.feat-card--amber .feat-cta {
-  color: var(--warning-600);
+  background: var(--feat-disc);
+  color: var(--feat-on-disc);
 }
 
 .feat-card h3 {
@@ -2001,12 +2018,8 @@ main[tabindex='-1']:focus {
   font-size: var(--text-md);
   line-height: var(--leading-relaxed);
   margin-top: 10px;
-  color: var(--text-secondary);
+  color: var(--feat-on-fill-muted);
   max-width: 30ch;
-}
-
-.feat-card--band p {
-  color: var(--text-on-brand-muted);
 }
 
 .feat-card .feat-cta {
@@ -2015,27 +2028,76 @@ main[tabindex='-1']:focus {
   gap: 6px;
   margin-top: 16px;
   font-weight: var(--weight-semibold);
-  color: var(--brand-700);
-}
-
-.feat-card--band .feat-cta {
-  color: var(--text-on-brand);
+  color: var(--feat-link);
 }
 
 .feat-deco {
   position: absolute;
   top: 24px;
   right: 24px;
-  color: var(--brand-300);
+  color: var(--feat-mark);
   pointer-events: none;
 }
 
-.feat-card--band .feat-deco {
-  color: var(--brand-700);
+/* Which tone each card takes. Light: products cocoa, token copper, rule sand. Dark: products sand, token cocoa, rule olive. */
+.feat-card--products {
+  --feat-fill: var(--tone-cocoa-fill);
+  --feat-on-fill: var(--tone-cocoa-on-fill);
+  --feat-on-fill-muted: var(--tone-cocoa-on-fill-muted);
+  --feat-disc: var(--tone-cocoa-disc);
+  --feat-on-disc: var(--tone-cocoa-on-disc);
+  --feat-mark: var(--tone-cocoa-mark);
+  --feat-link: var(--tone-cocoa-link);
 }
 
-.feat-card--amber .feat-deco {
-  color: var(--warning-300);
+.feat-card--token {
+  --feat-fill: var(--tone-copper-fill);
+  --feat-on-fill: var(--tone-copper-on-fill);
+  --feat-on-fill-muted: var(--tone-copper-on-fill-muted);
+  --feat-disc: var(--tone-copper-disc);
+  --feat-on-disc: var(--tone-copper-on-disc);
+  --feat-mark: var(--tone-copper-mark);
+  --feat-link: var(--tone-copper-link);
+}
+
+.feat-card--rule {
+  --feat-fill: var(--tone-sand-fill);
+  --feat-on-fill: var(--tone-sand-on-fill);
+  --feat-on-fill-muted: var(--tone-sand-on-fill-muted);
+  --feat-disc: var(--tone-sand-disc);
+  --feat-on-disc: var(--tone-sand-on-disc);
+  --feat-mark: var(--tone-sand-mark);
+  --feat-link: var(--tone-sand-link);
+}
+
+[data-theme='dark'] .feat-card--products {
+  --feat-fill: var(--tone-sand-fill);
+  --feat-on-fill: var(--tone-sand-on-fill);
+  --feat-on-fill-muted: var(--tone-sand-on-fill-muted);
+  --feat-disc: var(--tone-sand-disc);
+  --feat-on-disc: var(--tone-sand-on-disc);
+  --feat-mark: var(--tone-sand-mark);
+  --feat-link: var(--tone-sand-link);
+}
+
+[data-theme='dark'] .feat-card--token {
+  --feat-fill: var(--tone-cocoa-fill);
+  --feat-on-fill: var(--tone-cocoa-on-fill);
+  --feat-on-fill-muted: var(--tone-cocoa-on-fill-muted);
+  --feat-disc: var(--tone-cocoa-disc);
+  --feat-on-disc: var(--tone-cocoa-on-disc);
+  --feat-mark: var(--tone-cocoa-mark);
+  --feat-link: var(--tone-cocoa-link);
+}
+
+[data-theme='dark'] .feat-card--rule {
+  --feat-fill: var(--tone-olive-fill);
+  --feat-on-fill: var(--tone-olive-on-fill);
+  --feat-on-fill-muted: var(--tone-olive-on-fill-muted);
+  --feat-disc: var(--tone-olive-disc);
+  --feat-on-disc: var(--tone-olive-on-disc);
+  --feat-mark: var(--tone-olive-mark);
+  --feat-link: var(--tone-olive-link);
 }
 
 /* Centered section headings with mixed type */
@@ -2138,7 +2200,7 @@ main[tabindex='-1']:focus {
   color: var(--text-muted);
 }
 
-/* ---------- Legal pages (privacy, terms) ---------- */
+/* ---------- Legal pages (terms, privacy, dpa, sla, aup, cookie, trust) ---------- */
 
 .legal-page {
   max-width: var(--container-text);
@@ -2209,6 +2271,32 @@ main[tabindex='-1']:focus {
 .legal-page .legal-toc li {
   margin-top: 4px;
   font-size: var(--text-md);
+}
+
+/* The sub-processor table scrolls inside its own box on a narrow screen instead of the page. */
+.legal-page .legal-table {
+  margin-top: 16px;
+  overflow-x: auto;
+}
+
+.legal-page .legal-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.legal-page .legal-table th,
+.legal-page .legal-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-default);
+  font-size: var(--text-md);
+  line-height: var(--leading-relaxed);
+  text-align: left;
+  color: var(--text-secondary);
+}
+
+.legal-page .legal-table th {
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
 }
 
 /* ---------- Responsive ---------- */
@@ -2849,7 +2937,12 @@ main[tabindex='-1']:focus {
 }
 
 
-/* One fixed logo tile for every product card, featured or not. */
+/* One fixed logo tile for every product card, featured or not. The tile is a tone of its own card, the
+   same rule as the home cards' discs (v0.0.18): the card's own hue, 0.10 lighter in OKLab lightness on a
+   dark card (under 0.6) and 0.10 deeper on a light card, in light and in dark. It is written with a and b,
+   not hue: a very pale card (mint, rose) has a powerless hue in the browser, and a relative colour read
+   through h turns it pink. Chroma is kept and lifted to at least 0.04 so the palest cards keep a visible
+   mint or rose. The logo takes the card's own text ink. No plain white tile. */
 .portfolio-browser [data-product] .portfolio-mark {
   width: 48px;
   height: 48px;
@@ -2857,7 +2950,13 @@ main[tabindex='-1']:focus {
   box-sizing: border-box;
   border: 0;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  background: oklab(
+    from var(--card-bg)
+    calc(l + 0.1 * clamp(-1, (0.6 - l) * 100, 1))
+    calc(a * max(1, 0.04 / max(hypot(a, b), 0.005)))
+    calc(b * max(1, 0.04 / max(hypot(a, b), 0.005)))
+  );
+  color: var(--card-fg);
 }
 
 #products .portfolio-toolbar {

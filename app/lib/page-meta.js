@@ -19,3 +19,18 @@ export function socialMeta(lang, path, title, description) {
     twitter: { card: 'summary_large_image', title, description, images: ['/og-image.png'] }
   };
 }
+
+/* Metadata of one legal document (terms, privacy, dpa, sla, aup, cookie, trust): title, canonical, hreflang. */
+export async function legalMetadata(kind, params) {
+  const { lang } = await params;
+  const { meta } = getDictionary(lang)[kind];
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `/${lang}/${kind}`,
+      languages: { en: `/en/${kind}`, id: `/id/${kind}`, 'x-default': `/en/${kind}` }
+    },
+    ...socialMeta(lang, `/${kind}`, meta.title, meta.description)
+  };
+}

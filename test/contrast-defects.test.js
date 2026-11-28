@@ -36,11 +36,20 @@ describe('plain defects: founder blobs, the closer button, two dark icon inks', 
     expect(read('node_modules/@efolusi/meridian/components.css')).toMatch(/\.ef-btn--band\{[^}]*border-color:var\(--accent-edge\)/);
   });
 
-  it('the feature card icon ink follows the themed accent edge, in light and dark alike', () => {
-    expect(ruleOf(css, '\n.feat-icon {')).toContain('color: var(--accent-edge);');
-    expect(css).not.toMatch(/\[data-theme='dark'\] \.feat-card--peach \.feat-icon \{[^}]*--brand-700/);
-    expect(css).not.toMatch(/\.feat-card--peach \.feat-icon \{[^}]*--brand-700/);
-    expect(css).not.toMatch(/\.feat-icon \{[^}]*--brand-700/);
+  it('the feature card disc and its icon come from the card tone, never a primitive or a literal', () => {
+    const rule = ruleOf(css, '\n.feat-icon {');
+    expect(rule).toContain('background: var(--feat-disc);');
+    expect(rule).toContain('color: var(--feat-on-disc);');
+    expect(rule).not.toMatch(/#[0-9a-f]{3,8}|--brand-|--sand-|--copper-/i);
+  });
+
+  it('the logo tile inside a product card is a tone of its own card, with the card ink, never a plain white tile', () => {
+    const rule = ruleOf(css, '\n.portfolio-browser [data-product] .portfolio-mark {');
+    // a and b, never h: a pale card has a powerless hue and `h` would read 0 (pink).
+    expect(rule).toMatch(/background: oklab\(\s*from var\(--card-bg\)\s*calc\(l \+ 0\.1 \* clamp\(-1, \(0\.6 - l\) \* 100, 1\)\)\s*calc\(a \* /);
+    expect(rule).not.toMatch(/\bc h\b/);
+    expect(rule).toContain('color: var(--card-fg);');
+    expect(css).not.toMatch(/\.portfolio-browser \.portfolio-mark \{[^}]*#FFFFFF/);
   });
 
   it.each(['.check .tick {', '.perk .tick {', '.tick.tick--caramel {'])('%s takes the ink made for the subtle accent surface', (selector) => {
