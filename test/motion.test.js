@@ -34,3 +34,10 @@ describe('no endless pulse marks a state that is not live (EF44)', () => {
     expect(home).not.toMatch(/<StatusDot[^>]*\bpulse\b/);
   });
 });
+
+describe('a page enters once (EF42)', () => {
+  it('<main> has no entrance animation of its own beside the view transition', () => {
+    expect(css).toContain('navigation: auto;');
+    expect(css).not.toMatch(/page-in/);
+  });
+});

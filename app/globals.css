@@ -70,25 +70,10 @@ html {
   scroll-padding-top: calc(var(--nav-h) - 32px);
 }
 
-/* Smooth page-to-page: cross-document view transitions where supported,
-   and a soft enter animation everywhere. */
+/* Smooth page-to-page: cross-document view transitions where supported. One
+   entrance only: a second animation on <main> made every page rise twice. */
 @view-transition {
   navigation: auto;
-}
-
-main {
-  animation: page-in 0.45s var(--ease-enter);
-}
-
-@keyframes page-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
 }
 
 .wrap {
