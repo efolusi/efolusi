@@ -699,6 +699,7 @@ main[tabindex='-1']:focus {
 .marquee {
   border-top: 1px solid var(--border-default);
   background: var(--surface-subtle);
+  position: relative;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -713,6 +714,26 @@ main[tabindex='-1']:focus {
   .marquee:hover .marquee-track {
     animation-play-state: paused;
   }
+}
+
+/* Keyboard focus lands on the strip itself: the ring sits inside the edge because the strip clips overflow.
+   Same ring colour as the other focus rings (--focus-ring-color). */
+.marquee:focus-visible {
+  outline: 2px solid var(--focus-ring-color);
+  outline-offset: -4px;
+}
+
+/* One copy of the words for screen readers; the visible strip is aria-hidden. */
+.marquee-list {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  list-style: none;
 }
 
 .marquee:focus-within .marquee-track {
@@ -2185,7 +2206,7 @@ main[tabindex='-1']:focus {
   }
 }
 
-/* A: white raised cards on the page, one accent tint (cocoa-brown) in the disc and the doodle. */
+/* A: white raised cards on the page, one accent tint (brand brown) in the disc and the doodle. */
 .csec[data-variant='a'] .feat-grid .feat-card {
   --feat-bg: var(--surface-card);
   --feat-ink: var(--text-primary);
@@ -2239,7 +2260,7 @@ main[tabindex='-1']:focus {
   box-shadow: var(--shadow-md);
 }
 
-/* C: deep cocoa cards with cream text, light page and dark page alike. */
+/* C: deep brown cards with cream text, light page and dark page alike. */
 .csec[data-variant='c'] .feat-grid .feat-card {
   --feat-bg: var(--brand-900);
   --feat-ink: var(--brand-50);

@@ -270,8 +270,14 @@ export default function HomeClient({ d, common, lang }) {
           while the pointer is over the strip, while anything in it has focus, and on a tap or press
           (tap again to resume). A tap holds the stickers, tiles and the status dot ring too.
           Reduced motion runs none of it. */}
-      <div className="marquee" aria-hidden="true" onClick={() => setMotionPaused((value) => !value)}>
-        <div className="marquee-track">
+      <div className="marquee" role="region" aria-label={common.marqueeLabel} tabIndex={0} onClick={() => setMotionPaused((value) => !value)}>
+        {/* Screen readers get the list once; the doubled strip below is only the loop. */}
+        <ul className="marquee-list">
+          {d.marquee.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+        <div className="marquee-track" aria-hidden="true">
           {[...d.marquee, ...d.marquee].map((item, index) => (
             <span className="marquee-item" key={`${item}-${index}`}>
               {item}

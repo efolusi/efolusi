@@ -14,6 +14,7 @@ const en = {
     skipToContent: 'Skip to main content',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
+    marqueeLabel: 'Our working principles',
     notFound: {
       meta: 'Page not found · Efolusi',
       code: 'Error 404',
