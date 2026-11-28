@@ -31,7 +31,7 @@ describe('the scroll reveal is real (EF43)', () => {
   });
 });
 
-describe('the status dot keeps its slow pulse, stopped by the pause button (EF44, reversed 2026-11-28)', () => {
+describe('the status dot keeps its slow pulse, held by a tap on the strip and stopped by reduced motion (EF44, reversed 2026-11-28)', () => {
   it('the hero status dot pulses', () => {
     expect(home).toMatch(/<StatusDot[^>]*\bpulse\b/);
   });
@@ -74,28 +74,38 @@ describe('no dead motion CSS (EF48)', () => {
   });
 });
 
-describe('moving decoration can be paused (WCAG 2.2.2)', () => {
-  it.each(['en', 'id'])('%s has a pause and a play label', (lang) => {
-    const common = getDictionary(lang).common;
-    expect(common.pauseMotion).toMatch(/\S/);
-    expect(common.playMotion).toMatch(/\S/);
-    expect(common.pauseMotion).not.toBe(common.playMotion);
+describe('moving decoration stops without a visible control (WCAG 2.2.2, owner 2026-11-28: no pause button)', () => {
+  const marqueeBlock = home.slice(home.indexOf('<div className="marquee"'), home.indexOf('<section className="csec"'));
+
+  it('the home page has no pause or play control and the dictionaries carry no label for one', () => {
+    expect(home).not.toMatch(/marquee-pause|pauseMotion|playMotion|iconLeft=\{motionPaused/);
+    expect(marqueeBlock).not.toMatch(/<Button|<button/);
+    for (const lang of ['en', 'id']) {
+      const common = getDictionary(lang).common;
+      expect(common).not.toHaveProperty('pauseMotion');
+      expect(common).not.toHaveProperty('playMotion');
+    }
+    expect(css).not.toMatch(/marquee-pause|marquee-wrap/);
   });
 
-  it('the home page has a real button that flips the page into paused motion', () => {
-    expect(home).toMatch(/aria-label=\{motionPaused \? common\.playMotion : common\.pauseMotion\}/);
-    expect(home).toMatch(/onClick=\{\(\) => setMotionPaused\(\(value\) => !value\)\}/);
+  it('a tap or press on the strip toggles the held state, and the held state holds the page motion', () => {
+    expect(marqueeBlock).toMatch(/<div className="marquee"[^>]*onClick=\{\(\) => setMotionPaused\(\(value\) => !value\)\}/);
     expect(home).toMatch(/<main id="top" tabIndex=\{-1\} className=\{motionPaused \? 'is-motion-paused' : undefined\}>/);
   });
 
-  it('paused motion stops the marquee and the floating stickers and tiles', () => {
+  it('the marquee pauses while the pointer is over it and while anything in it has focus', () => {
+    expect(css).toMatch(/@media \(hover: hover\) \{\n {2}\.marquee:hover \.marquee-track \{\n {4}animation-play-state: paused;/);
+    expect(css).toMatch(/\.marquee:focus-within \.marquee-track \{\n {2}animation-play-state: paused;/);
+  });
+
+  it('a tap holds the marquee, the floating stickers and tiles and the status dot ring', () => {
     const rule = css.match(/\.is-motion-paused[^{]*\{[^}]*\}/)[0];
-    for (const selector of ['.marquee-track', '.sticker', '.edge-tile']) expect(rule).toContain(selector);
+    for (const selector of ['.marquee-track', '.sticker', '.edge-tile', '.ef-status__dot::after']) expect(rule).toContain(selector);
     expect(rule).toContain('animation-play-state: paused;');
   });
 
-  it('the button is a 44 px target and hides when motion is already reduced', () => {
-    expect(home).toMatch(/size="icon-lg"/);
-    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{[^@]*\.marquee-pause \{\n {4}display: none;/);
+  it('under reduced motion the marquee does not run and the status dot ring does not pulse', () => {
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{\n {2}\.marquee-track \{\n {4}animation: none;/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{\n {2}main,[\s\S]*?\.ef-status__dot::after \{\n {4}animation: none;/);
   });
 });

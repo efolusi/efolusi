@@ -226,8 +226,8 @@ main {
 }
 
 /* The dot marks a live state: the open-source command line each product starts
-   as is released and running. Its ring breathes slowly; the pause button and
-   reduced motion stop it (see the pause rule at the marquee and the reduced-motion block below). */
+   as is released and running. Its ring breathes slowly; a tap on the marquee strip and
+   reduced motion stop it (see the held rule at the marquee and the reduced-motion block below). */
 .hero-proof .ef-status--pulse .ef-status__dot::after {
   animation-duration: var(--dur-loop-slow);
 }
@@ -700,6 +700,7 @@ main[tabindex='-1']:focus {
   border-top: 1px solid var(--border-default);
   background: var(--surface-subtle);
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .marquee-track {
@@ -714,20 +715,11 @@ main[tabindex='-1']:focus {
   }
 }
 
-/* The pause button sits at the end of the strip. */
-.marquee-wrap {
-  position: relative;
+.marquee:focus-within .marquee-track {
+  animation-play-state: paused;
 }
 
-.marquee-pause {
-  position: absolute;
-  top: 50%;
-  right: 16px;
-  translate: 0 -50%;
-  background: var(--surface-card);
-}
-
-/* Paused by the button: the words, the stickers, the tiles and the dot's ring hold still. */
+/* Held by a tap on the strip: the words, the stickers, the tiles and the dot's ring hold still. */
 .is-motion-paused .marquee-track,
 .is-motion-paused .sticker,
 .is-motion-paused .edge-tile,
@@ -778,11 +770,6 @@ main[tabindex='-1']:focus {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
-  }
-
-  /* Nothing moves, so there is nothing to pause. */
-  .marquee-pause {
-    display: none;
   }
 }
 
@@ -1894,9 +1881,16 @@ main[tabindex='-1']:focus {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-full);
-  background: var(--brand-500);
-  color: var(--sand-950);
+  /* The bubble is the button's label colour and the arrow is the button's own colour, so the
+     bubble reads on the button in light and dark (copper on copper was 1.10:1). */
+  background: var(--text-primary);
+  color: var(--surface-page);
   transition: transform var(--dur-base) var(--ease-emphasised);
+}
+
+.pill--primary .pill-arrow {
+  background: var(--accent-contrast);
+  color: var(--accent);
 }
 
 @media (hover: hover) {
@@ -1905,9 +1899,10 @@ main[tabindex='-1']:focus {
   }
 }
 
+/* The cream pill keeps its light fill in both themes, so its bubble keeps the dark label ink. */
 .pill--cream .pill-arrow {
-  background: var(--brand-900);
-  color: var(--text-on-media);
+  background: var(--brand-950);
+  color: var(--cream-50);
 }
 
 /* Sticker tags */
