@@ -14,8 +14,6 @@ const en = {
     skipToContent: 'Skip to main content',
     switchLanguage: 'Ganti ke Bahasa Indonesia',
     langLabel: 'ID',
-    pauseMotion: 'Pause animation',
-    playMotion: 'Play animation',
     notFound: {
       meta: 'Page not found · Efolusi',
       code: 'Error 404',
