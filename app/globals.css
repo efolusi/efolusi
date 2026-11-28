@@ -77,8 +77,9 @@ html {
   scroll-padding-top: calc(var(--nav-h) - 32px);
 }
 
-/* Smooth page-to-page: cross-document view transitions where supported. One
-   entrance only: a second animation on <main> made every page rise twice. */
+/* Smooth page-to-page: cross-document view transitions where supported. The
+   page-in of <main> (Entrances, below) steps aside while one runs, so a page
+   never rises twice. */
 @view-transition {
   navigation: auto;
 }
@@ -169,6 +170,97 @@ h2 {
     transition: none;
   }
 }
+
+/* ---------- Entrances: page, hero and status dot ---------- */
+
+/* An entrance is an enhancement, never a gate. Each one is an animation that
+   starts hidden in its first keyframe and ends visible, with fill-mode both, so
+   a browser that cannot run it (or runs no script yet) shows the content at once.
+   No base rule below holds opacity 0. One page entrance: this rise is for the
+   first load; between two pages the cross-document view transition (above) is
+   the entrance and this one steps aside while it runs. */
+
+:root {
+  --stagger-step: 100ms;
+}
+
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    translate: 0 var(--shift-md);
+  }
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+main {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+}
+
+:root:active-view-transition main {
+  animation: none;
+}
+
+/* Hero: heading, sub, actions, proof, one step apart (0, 100, 200, 300 ms). */
+.hero-center h1 {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 0);
+}
+
+.hero-center .hero-sub {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 1);
+}
+
+.hero-center .hero-actions {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 2);
+}
+
+.hero-center .hero-proof {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 3);
+}
+
+/* The dot marks a live state: the open-source command line each product starts
+   as is released and running. Its ring breathes slowly; the pause button and
+   reduced motion stop it (see the pause rule at the marquee and the reduced-motion block below). */
+.hero-proof .ef-status--pulse .ef-status__dot::after {
+  animation-duration: var(--dur-loop-slow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main,
+  .hero-center h1,
+  .hero-center .hero-sub,
+  .hero-center .hero-actions,
+  .hero-center .hero-proof,
+  .ef-status__dot::after {
+    animation: none;
+  }
+}
+
+/* Printed page or saved PDF: everything shows, nothing moves. */
+@media print {
+  main,
+  .hero-center h1,
+  .hero-center .hero-sub,
+  .hero-center .hero-actions,
+  .hero-center .hero-proof,
+  .ef-status__dot::after,
+  .reveal,
+  .reveal-ready .reveal:not(.in) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- End of entrances ---------- */
 
 /* ---------- Header ---------- */
 
@@ -634,10 +726,11 @@ main[tabindex='-1']:focus {
   background: var(--surface-card);
 }
 
-/* Paused by the button: the words, the stickers and the tiles hold still. */
+/* Paused by the button: the words, the stickers, the tiles and the dot's ring hold still. */
 .is-motion-paused .marquee-track,
 .is-motion-paused .sticker,
-.is-motion-paused .edge-tile {
+.is-motion-paused .edge-tile,
+.is-motion-paused .ef-status__dot::after {
   animation-play-state: paused;
 }
 

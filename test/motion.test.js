@@ -26,21 +26,22 @@ describe('the hero is visible at first paint (EF41)', () => {
 });
 
 describe('the scroll reveal is real (EF43)', () => {
-  it('has no timer that reveals every block 1.6 s after mount', () => {
+  it('has no timer that reveals every block after a fixed time', () => {
     expect(home).not.toMatch(/fallbackTimer|setTimeout/);
   });
 });
 
-describe('no endless pulse marks a state that is not live (EF44)', () => {
-  it('the hero status dot does not pulse', () => {
-    expect(home).not.toMatch(/<StatusDot[^>]*\bpulse\b/);
+describe('the status dot keeps its slow pulse, stopped by the pause button (EF44, reversed 2026-11-28)', () => {
+  it('the hero status dot pulses', () => {
+    expect(home).toMatch(/<StatusDot[^>]*\bpulse\b/);
   });
 });
 
-describe('a page enters once (EF42)', () => {
-  it('<main> has no entrance animation of its own beside the view transition', () => {
+describe('a page enters once (EF42, reversed 2026-11-28)', () => {
+  it('<main> fades in on the first load and steps aside for the view transition', () => {
     expect(css).toContain('navigation: auto;');
-    expect(css).not.toMatch(/page-in/);
+    expect(css).toMatch(/\nmain \{\n {2}animation: enter-rise var\(--dur-slow\) var\(--ease-enter\) both;/);
+    expect(css).toContain(':root:active-view-transition main {');
   });
 });
 
