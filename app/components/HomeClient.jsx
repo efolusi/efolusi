@@ -64,6 +64,18 @@ function useRevealOnScroll() {
       return undefined;
     }
 
+    // A block already in view at load shows at once: it is marked before anything is hidden,
+    // so it never blinks out and back in. No timer reveals the rest; only a scroll does.
+    const viewportHeight = window.innerHeight;
+    const unseen = reveals.filter((element) => {
+      const { top, bottom } = element.getBoundingClientRect();
+      if (top < viewportHeight && bottom > 0) {
+        element.classList.add('in');
+        return false;
+      }
+      return true;
+    });
+
     // Hide the not-yet-seen blocks only now that the script that shows them is running.
     document.documentElement.classList.add('reveal-ready');
 
@@ -88,7 +100,7 @@ function useRevealOnScroll() {
       { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
 
-    reveals.forEach((element) => io.observe(element));
+    unseen.forEach((element) => io.observe(element));
 
     return () => {
       io.disconnect();
@@ -241,7 +253,7 @@ export default function HomeClient({ d, common, lang }) {
           </div>
 
           <div className="hero-proof">
-            <StatusDot status="success" />
+            <StatusDot status="success" pulse />
             <span>{d.hero.proof}</span>
           </div>
         </div>

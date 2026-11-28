@@ -77,8 +77,8 @@ html {
   scroll-padding-top: calc(var(--nav-h) - 32px);
 }
 
-/* Smooth page-to-page: cross-document view transitions where supported. One
-   entrance only: a second animation on <main> made every page rise twice. */
+/* Smooth page-to-page: cross-document view transitions where supported, beside
+   the page-in of <main> (see Entrances, below). */
 @view-transition {
   navigation: auto;
 }
@@ -169,6 +169,99 @@ h2 {
     transition: none;
   }
 }
+
+/* ---------- Entrances: page, hero and status dot ---------- */
+
+/* An entrance is an enhancement, never a gate. Each one is an animation that
+   starts hidden in its first keyframe and ends visible, with fill-mode both, so
+   a browser that cannot run it (or runs no script yet) shows the content at once.
+   No base rule below holds opacity 0.
+
+   One page entrance: this rise. It is the entrance for the first load, for every
+   in-app (Next link) navigation, where no view transition runs, and for browsers
+   without view transitions. The cross-document view transition above stays as it
+   was and only runs on a full page load in Chromium, together with the rise (both
+   250 ms, so they read as one fade with a small rise). Do not switch the rise off
+   while a transition is active (:root:active-view-transition): it comes back when
+   the transition ends, so the page showed, vanished and faded in again (measured). */
+
+:root {
+  --stagger-step: 100ms;
+}
+
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    translate: 0 var(--shift-md);
+  }
+  to {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+main {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+}
+
+/* Hero: heading, sub, actions, proof, one step apart (0, 100, 200, 300 ms). */
+.hero-center h1 {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 0);
+}
+
+.hero-center .hero-sub {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 1);
+}
+
+.hero-center .hero-actions {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 2);
+}
+
+.hero-center .hero-proof {
+  animation: enter-rise var(--dur-slow) var(--ease-enter) both;
+  animation-delay: calc(var(--stagger-step) * 3);
+}
+
+/* The dot marks a live state: the open-source command line each product starts
+   as is released and running. Its ring breathes slowly; the pause button and
+   reduced motion stop it (see the pause rule at the marquee and the reduced-motion block below). */
+.hero-proof .ef-status--pulse .ef-status__dot::after {
+  animation-duration: var(--dur-loop-slow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main,
+  .hero-center h1,
+  .hero-center .hero-sub,
+  .hero-center .hero-actions,
+  .hero-center .hero-proof,
+  .ef-status__dot::after {
+    animation: none;
+  }
+}
+
+/* Printed page or saved PDF: everything shows, nothing moves. */
+@media print {
+  main,
+  .hero-center h1,
+  .hero-center .hero-sub,
+  .hero-center .hero-actions,
+  .hero-center .hero-proof,
+  .ef-status__dot::after,
+  .reveal,
+  .reveal-ready .reveal:not(.in) {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    translate: none !important;
+    transition: none !important;
+  }
+}
+
+/* ---------- End of entrances ---------- */
 
 /* ---------- Header ---------- */
 
@@ -537,8 +630,8 @@ main[tabindex='-1']:focus {
 }
 
 .tick.tick--caramel {
-  background: var(--brand-100);
-  color: var(--brand-700);
+  background: var(--accent-subtle);
+  color: var(--accent-subtle-fg);
 }
 
 .tick.tick--green {
@@ -634,10 +727,11 @@ main[tabindex='-1']:focus {
   background: var(--surface-card);
 }
 
-/* Paused by the button: the words, the stickers and the tiles hold still. */
+/* Paused by the button: the words, the stickers, the tiles and the dot's ring hold still. */
 .is-motion-paused .marquee-track,
 .is-motion-paused .sticker,
-.is-motion-paused .edge-tile {
+.is-motion-paused .edge-tile,
+.is-motion-paused .ef-status__dot::after {
   animation-play-state: paused;
 }
 
@@ -801,7 +895,7 @@ main[tabindex='-1']:focus {
   flex: none;
   border-radius: var(--radius-sm);
   background: var(--accent-subtle);
-  color: var(--brand-700);
+  color: var(--accent-subtle-fg);
 }
 
 /* ---------- Brand band ---------- */
@@ -1607,7 +1701,7 @@ main[tabindex='-1']:focus {
   height: 32px;
   border-radius: var(--radius-sm);
   background: var(--accent-subtle);
-  color: var(--brand-700);
+  color: var(--accent-subtle-fg);
 }
 
 .perk h3 {
@@ -1771,6 +1865,9 @@ main[tabindex='-1']:focus {
 
 .pill--cream {
   background: var(--cream-50);
+  /* On the cream band the fill alone is 1.09:1; the accent edge is the control's
+     boundary (WCAG 1.4.11), as it is on Meridian's primary button. */
+  border-color: var(--accent-edge);
   color: var(--brand-950);
 }
 
@@ -1995,26 +2092,15 @@ main[tabindex='-1']:focus {
   height: 52px;
   border-radius: var(--radius-full);
   background: var(--surface-card);
-  color: var(--brand-700);
+  /* --accent-edge follows the theme: 4.9:1 on the white card, 6:1 on the dark
+     one. A fixed brand-700 was 2.26:1 on the dark card behind the peach icon. */
+  color: var(--accent-edge);
   box-shadow: var(--shadow-sm);
 }
 
 .feat-card--band .feat-icon {
   background: var(--brand-800);
   color: var(--text-on-media);
-}
-
-.feat-card--peach .feat-icon {
-  background: var(--surface-card);
-  color: var(--brand-700);
-}
-
-[data-theme='dark'] .feat-icon {
-  color: var(--brand-300);
-}
-
-[data-theme='dark'] .feat-card--peach .feat-icon {
-  color: var(--brand-700);
 }
 
 .feat-card.feat-card--amber .feat-cta {
@@ -2132,12 +2218,20 @@ main[tabindex='-1']:focus {
   width: 128px;
   height: 128px;
   border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
+  /* The band is the brand surface, so a brand-coloured blob vanished on it in
+     light (1.00:1). A card-coloured shape with a 2px accent-edge ring is seen
+     on the band: ring 3.8:1 in light, 5.4:1 in dark. */
+  background: var(--surface-card);
+  box-shadow: 0 0 0 2px var(--accent-edge);
+}
+
+/* Dark kept the cream blob it already had (12:1 on the band); it gains the ring. */
+[data-theme='dark'] .founder-blob {
   background: var(--brand-100);
 }
 
 .founder:nth-child(2n) .founder-blob {
   border-radius: 44% 56% 48% 52% / 56% 44% 58% 42%;
-  background: var(--brand-100);
 }
 
 .founder .nm {
