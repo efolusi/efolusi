@@ -14,6 +14,8 @@ const id = {
     skipToContent: 'Langsung ke konten utama',
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
+    pauseMotion: 'Jeda animasi',
+    playMotion: 'Putar animasi',
     notFound: {
       meta: 'Halaman tidak ditemukan · Efolusi',
       code: 'Galat 404',

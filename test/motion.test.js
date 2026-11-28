@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
+import { getDictionary } from '../app/dictionaries/config.js';
+
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
 const css = read('app/globals.css');
 const home = read('app/components/HomeClient.jsx');
@@ -69,5 +71,31 @@ describe('reduced motion reaches every animation (EF46)', () => {
 describe('no dead motion CSS (EF48)', () => {
   it.each(['.stage', '.plist', '.switch ', '.portfolio-deco', '.wm-', 'watermark-in'])('globals.css has no %s rule', (name) => {
     expect(css).not.toContain(name);
+  });
+});
+
+describe('moving decoration can be paused (WCAG 2.2.2)', () => {
+  it.each(['en', 'id'])('%s has a pause and a play label', (lang) => {
+    const common = getDictionary(lang).common;
+    expect(common.pauseMotion).toMatch(/\S/);
+    expect(common.playMotion).toMatch(/\S/);
+    expect(common.pauseMotion).not.toBe(common.playMotion);
+  });
+
+  it('the home page has a real button that flips the page into paused motion', () => {
+    expect(home).toMatch(/aria-label=\{motionPaused \? common\.playMotion : common\.pauseMotion\}/);
+    expect(home).toMatch(/onClick=\{\(\) => setMotionPaused\(\(value\) => !value\)\}/);
+    expect(home).toMatch(/<main id="top" tabIndex=\{-1\} className=\{motionPaused \? 'is-motion-paused' : undefined\}>/);
+  });
+
+  it('paused motion stops the marquee and the floating stickers and tiles', () => {
+    const rule = css.match(/\.is-motion-paused[^{]*\{[^}]*\}/)[0];
+    for (const selector of ['.marquee-track', '.sticker', '.edge-tile']) expect(rule).toContain(selector);
+    expect(rule).toContain('animation-play-state: paused;');
+  });
+
+  it('the button is a 44 px target and hides when motion is already reduced', () => {
+    expect(home).toMatch(/size="icon-lg"/);
+    expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{[^@]*\.marquee-pause \{\n {4}display: none;/);
   });
 });

@@ -102,6 +102,7 @@ export default function HomeClient({ d, common, lang }) {
 
   const base = `/${lang}`;
 
+  const [motionPaused, setMotionPaused] = useState(false);
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
 
@@ -180,7 +181,7 @@ export default function HomeClient({ d, common, lang }) {
     <>
       <SiteHeader lang={lang} t={common} />
 
-    <main id="top" tabIndex={-1}>
+    <main id="top" tabIndex={-1} className={motionPaused ? 'is-motion-paused' : undefined}>
       <section className="hero hero-center" id="hero">
         <div className="wrap">
           {stickers.map((s) => (
@@ -246,14 +247,27 @@ export default function HomeClient({ d, common, lang }) {
         </div>
       </section>
 
-      <div className="marquee" aria-hidden="true">
-        <div className="marquee-track">
-          {[...d.marquee, ...d.marquee].map((item, index) => (
-            <span className="marquee-item" key={`${item}-${index}`}>
-              {item}
-            </span>
-          ))}
+      <div className="marquee-wrap">
+        <div className="marquee" aria-hidden="true">
+          <div className="marquee-track">
+            {[...d.marquee, ...d.marquee].map((item, index) => (
+              <span className="marquee-item" key={`${item}-${index}`}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
+        {/* The words, stickers and tiles move for longer than 5 seconds, so they get a pause (WCAG 2.2.2). */}
+        <Button
+          type="button"
+          className="marquee-pause"
+          variant="secondary"
+          size="icon-lg"
+          shape="pill"
+          iconLeft={motionPaused ? 'play' : 'pause'}
+          aria-label={motionPaused ? common.playMotion : common.pauseMotion}
+          onClick={() => setMotionPaused((value) => !value)}
+        />
       </div>
 
       <section className="csec" aria-label="At a glance">

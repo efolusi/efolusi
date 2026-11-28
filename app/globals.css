@@ -568,6 +568,26 @@ main[tabindex='-1']:focus {
   animation-play-state: paused;
 }
 
+/* The pause button sits at the end of the strip. */
+.marquee-wrap {
+  position: relative;
+}
+
+.marquee-pause {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  translate: 0 -50%;
+  background: var(--surface-card);
+}
+
+/* Paused by the button: the words, the stickers and the tiles hold still. */
+.is-motion-paused .marquee-track,
+.is-motion-paused .sticker,
+.is-motion-paused .edge-tile {
+  animation-play-state: paused;
+}
+
 .marquee-item {
   display: inline-flex;
   align-items: center;
@@ -611,6 +631,11 @@ main[tabindex='-1']:focus {
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
+  }
+
+  /* Nothing moves, so there is nothing to pause. */
+  .marquee-pause {
+    display: none;
   }
 }
 
