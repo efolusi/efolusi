@@ -1,6 +1,7 @@
 import { Icon } from '@efolusi/meridian';
 import { getDictionary } from '../../dictionaries/config.js';
 import { socialMeta } from '../../lib/page-meta.js';
+import CtaLink from '../../components/CtaLink.jsx';
 import SiteHeader from '../../components/SiteHeader.jsx';
 import SiteFooter from '../../components/SiteFooter.jsx';
 
@@ -67,12 +68,9 @@ export default async function CareersPage({ params }) {
                 {d.hiringTitleA} <span className="script accent">{d.hiringTitleEm}</span>
               </h2>
               <p className="body">{d.hiringBody}</p>
-              <a className="pill pill--primary" href={contact}>
+              <CtaLink variant="primary" href={contact}>
                 {d.reachOut}
-                <span className="pill-arrow">
-                  <Icon name="arrow-up-right" size={16} />
-                </span>
-              </a>
+              </CtaLink>
             </div>
 
             <div className="roles">
@@ -100,12 +98,9 @@ export default async function CareersPage({ params }) {
           </h2>
           <p>{d.closerBody}</p>
           <div className="closer-actions">
-            <a className="pill pill--cream" href={contact}>
+            <CtaLink variant="band" href={contact}>
               {d.closerCta}
-              <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
-              </span>
-            </a>
+            </CtaLink>
           </div>
         </div>
       </section>

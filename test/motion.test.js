@@ -64,7 +64,7 @@ describe('reduced motion reaches every animation (EF46)', () => {
   });
 
   it('takes the movement out of the hover lifts and nudges', () => {
-    for (const selector of ['.feat-card:hover', '.role:hover .role-arrow', '.pill:hover .pill-arrow', '.edge-tile:hover .tile-card']) named(selector);
+    for (const selector of ['.feat-card:hover', '.role:hover .role-arrow', '.edge-tile:hover .tile-card']) named(selector);
   });
 });
 

@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@efolusi/meridian':
-        specifier: 2.5.2
-        version: 2.5.2(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)
+        specifier: 2.6.0
+        version: 2.6.0(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)
       '@opennextjs/cloudflare':
         specifier: 1.20.17
         version: 1.20.17(next@15.5.24(@types/node@18.19.130)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(supports-color@10.2.2)(wrangler@4.164.0(@types/node@18.19.130))
@@ -337,8 +337,8 @@ packages:
   '@dotenvx/tooling@1.0.6':
     resolution: {integrity: sha512-d1AhKqlprzjR7+/7YTYbf9lTjeIUxr2WN+gYL5jf9O25wymlVWzuwOujq9IWJOt33sGWcLjr1eswSOmqm4SRMg==}
 
-  '@efolusi/meridian@2.5.2':
-    resolution: {integrity: sha512-VmTdIV/+NLukKGLklxuOUHMg7N7X+ReFOCImCUhJSk8pWdeVdw8EEB6Unz/41PaQt9YzHKukAHG0V/2puDylwQ==}
+  '@efolusi/meridian@2.6.0':
+    resolution: {integrity: sha512-kdIS1a4YcnPXClojKC06R+wepQe2mES8ziPF9zplMMH1Sz3ZWZUA1hjCUkAk3YMcbcI8v1/GeArQaiOXjRut4Q==}
     peerDependencies:
       react: '>=18'
       react-dom: '>=18'
@@ -2973,7 +2973,7 @@ snapshots:
 
   '@dotenvx/tooling@1.0.6': {}
 
-  '@efolusi/meridian@2.5.2(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)':
+  '@efolusi/meridian@2.6.0(react-dom@18.3.1(react@18.3.1))(react-is@19.2.8)(react@18.3.1)(redux@5.0.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)

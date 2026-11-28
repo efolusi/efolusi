@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Icon } from '@efolusi/meridian';
 import { getDictionary } from '../dictionaries/config.js';
+import CtaLink from './CtaLink.jsx';
 import SiteHeader from './SiteHeader.jsx';
 import SiteFooter from './SiteFooter.jsx';
 
@@ -22,15 +22,12 @@ export default function NotFoundView({ lang }) {
             </h1>
             <p className="page-lede">{t.body}</p>
             <div className="hero-actions">
-              <Link className="pill pill--primary" href={`/${lang}`}>
+              <CtaLink variant="primary" as={Link} href={`/${lang}`}>
                 {t.home}
-                <span className="pill-arrow">
-                  <Icon name="arrow-up-right" size={16} />
-                </span>
-              </Link>
-              <Link className="pill pill--outline" href={`/${lang}/portfolio`}>
+              </CtaLink>
+              <CtaLink variant="secondary" as={Link} href={`/${lang}/portfolio`}>
                 {t.portfolio}
-              </Link>
+              </CtaLink>
             </div>
           </div>
         </section>
