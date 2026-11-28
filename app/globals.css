@@ -616,15 +616,14 @@ main[tabindex='-1']:focus {
   mask: var(--logo) center / contain no-repeat;
 }
 
-/* Logo tiles share one surface and ink in both themes, like app icons. */
-.tile-card--logo,
-.portfolio-browser .portfolio-mark {
+/* The floating logo tiles in the hero share one surface and ink in both themes, like app icons.
+   They sit on the page, not on a card. The logo tile inside a product card follows the card (see below). */
+.tile-card--logo {
   background: #FFFFFF;
   color: var(--brand-800);
 }
 
-[data-theme='dark'] .tile-card--logo,
-[data-theme='dark'] .portfolio-browser .portfolio-mark {
+[data-theme='dark'] .tile-card--logo {
   background: var(--cream-50);
 }
 
@@ -3028,7 +3027,12 @@ main[tabindex='-1']:focus {
 }
 
 
-/* One fixed logo tile for every product card, featured or not. */
+/* One fixed logo tile for every product card, featured or not. The tile is a tone of its own card, the
+   same rule as the home cards' discs (v0.0.18): the card's own hue, 0.10 lighter in OKLab lightness on a
+   dark card (under 0.6) and 0.10 deeper on a light card, in light and in dark. It is written with a and b,
+   not hue: a very pale card (mint, rose) has a powerless hue in the browser, and a relative colour read
+   through h turns it pink. Chroma is kept and lifted to at least 0.04 so the palest cards keep a visible
+   mint or rose. The logo takes the card's own text ink. No plain white tile. */
 .portfolio-browser [data-product] .portfolio-mark {
   width: 48px;
   height: 48px;
@@ -3036,7 +3040,13 @@ main[tabindex='-1']:focus {
   box-sizing: border-box;
   border: 0;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
+  background: oklab(
+    from var(--card-bg)
+    calc(l + 0.1 * clamp(-1, (0.6 - l) * 100, 1))
+    calc(a * max(1, 0.04 / max(hypot(a, b), 0.005)))
+    calc(b * max(1, 0.04 / max(hypot(a, b), 0.005)))
+  );
+  color: var(--card-fg);
 }
 
 #products .portfolio-toolbar {
