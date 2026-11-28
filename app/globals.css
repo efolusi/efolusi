@@ -5,6 +5,10 @@
 :root {
   --nav-h: 64px;
 
+  /* The italic accent word follows Meridian's accent edge in both themes
+     (decision MD109); until Meridian ships this token itself, it is set here. */
+  --accent-word: var(--accent-edge);
+
   /* Vertical rhythm steps with the layout breakpoints (width), never with the
      window height, so a 1440x900 and a 1440x1080 window space sections alike.
      Values sit on the 4px spacing scale. */
@@ -110,11 +114,7 @@ main {
 }
 
 .accent {
-  color: var(--brand-600);
-}
-
-[data-theme='dark'] .accent {
-  color: var(--brand-400);
+  color: var(--accent-word);
 }
 
 .section-title {
@@ -308,8 +308,8 @@ main[tabindex='-1']:focus {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: 40px;
-  height: 40px;
+  width: var(--tap-min);
+  height: var(--tap-min);
   border: 1px solid transparent;
   border-radius: var(--radius-full);
   font-size: var(--text-sm);
@@ -1210,13 +1210,9 @@ main[tabindex='-1']:focus {
   color: var(--danger-600);
 }
 
-/* Form CTA sizes by role. A button in a row with an input matches the input
-   (36, Meridian md: the newsletter). A form's standalone submit is a small
-   CTA (40), the same as the header pills. */
-.contact-form .ef-btn[type='submit'] {
-  height: 40px;
-  padding: 0 20px;
-}
+/* Form CTA sizes by role, all Meridian sizes. A button in a row with an input
+   matches the input (md, 36: the newsletter). A form's standalone submit is
+   lg (44), the same as the header buttons. */
 
 /* ---------- Newsletter ---------- */
 
@@ -1982,26 +1978,6 @@ main[tabindex='-1']:focus {
   background: var(--brand-100);
 }
 
-.pill--sm {
-  height: 40px;
-  padding: 0 6px 0 18px;
-  font-size: var(--text-md);
-}
-
-.pill--sm.pill--outline {
-  padding-right: 18px;
-}
-
-.pill--sm .pill-arrow {
-  width: 28px;
-  height: 28px;
-}
-
-/* No trailing arrow: keep the padding even on both sides. */
-.pill--plain {
-  padding: 0 20px;
-}
-
 .pill-arrow {
   display: inline-flex;
   align-items: center;
@@ -2434,14 +2410,6 @@ main[tabindex='-1']:focus {
   font-size: var(--text-md);
 }
 
-.legal-page .back-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--text-md);
-  font-weight: var(--weight-medium);
-}
-
 /* ---------- Responsive ---------- */
 
 @media (max-width: 1200px) {
@@ -2663,7 +2631,7 @@ main[tabindex='-1']:focus {
 }
 
 @media (max-width: 480px) {
-  .header-actions .pill {
+  .header-actions .header-pill {
     display: none;
   }
 
@@ -2671,19 +2639,6 @@ main[tabindex='-1']:focus {
   .mobile-menu .menu-signin {
     display: flex;
   }
-}
-
-/* Account entry in the header. Secondary to the primary CTA next to it. */
-
-.sign-in-pill {
-  border: 1px solid var(--border-default);
-  background: var(--surface-card);
-  color: var(--text-primary);
-}
-
-.sign-in-pill:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
 }
 
 /* A bounded homepage selection, with a searchable full portfolio. */
@@ -3335,7 +3290,6 @@ main[tabindex='-1']:focus {
 
   .contact-form .ef-input__el,
   .news .ef-input__el,
-  .contact-form .ef-btn[type='submit'],
   .news .ef-btn,
   .ef-copyfield__box {
     height: var(--tap-min);
@@ -3345,9 +3299,8 @@ main[tabindex='-1']:focus {
     min-height: var(--tap-min);
   }
 
-  /* Header pills (Sign in, Get in touch) and the primary nav, which only
-     show on tablet and wider touch screens. */
-  .pill--sm,
+  /* The primary nav, which only shows on tablet and wider touch screens. The
+     header buttons are Meridian lg (44) and need no rule. */
   .site-nav a {
     height: var(--tap-min);
   }

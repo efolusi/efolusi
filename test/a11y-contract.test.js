@@ -63,7 +63,7 @@ describe('theme control (Meridian contract)', () => {
 
   it('uses Meridian\'s ThemeToggle in the header, in the page language', () => {
     const header = read('../app/components/SiteHeader.jsx');
-    expect(header).toMatch(/import \{ Icon, ThemeToggle \} from '@efolusi\/meridian';/);
+    expect(header).toMatch(/import \{ Icon, ThemeToggle, buttonVariants \} from '@efolusi\/meridian';/);
     expect(header).toContain('<ThemeToggle lang={lang} />');
   });
 
@@ -79,7 +79,7 @@ describe('touch target floor (EF-03)', () => {
   it('applies to any coarse pointer, not only phone widths', () => {
     expect(css).toContain('@media (max-width: 640px), (pointer: coarse) {');
     const block = css.slice(css.indexOf('@media (max-width: 640px), (pointer: coarse) {'));
-    for (const selector of ['.ef-copyfield .ef-iconbtn::after', '.fcol a', '.footer-mail', '.pill--sm', '.site-nav a']) {
+    for (const selector of ['.ef-copyfield .ef-iconbtn::after', '.fcol a', '.footer-mail', '.site-nav a']) {
       expect(block).toContain(selector);
     }
   });

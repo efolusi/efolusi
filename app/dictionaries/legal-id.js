@@ -13,12 +13,11 @@ const META_LINE = `${ENTITY} · Versi ${LEGAL_VERSION} · Terakhir diperbarui 22
 
 export const terms = {
   meta: {
-    title: 'Ketentuan Platform · Efolusi',
+    title: 'Ketentuan platform · Efolusi',
     description:
       'Ketentuan untuk akun Efolusi Anda di my.efolusi.com, untuk efolusi.com, dan untuk produk Efolusi yang tidak punya ketentuan sendiri.'
   },
-  back: '← Kembali ke efolusi.com',
-  title: 'Ketentuan Platform Efolusi',
+  title: 'Ketentuan platform Efolusi',
   metaLine: META_LINE,
   contentsHead: 'Daftar isi',
   intro: [
@@ -265,12 +264,11 @@ export const terms = {
 
 export const privacy = {
   meta: {
-    title: 'Pemberitahuan Privasi Platform · Efolusi',
+    title: 'Pemberitahuan privasi platform · Efolusi',
     description:
       'Cara PT Efolusi Dunia Teknologi menangani data pribadi di akun Efolusi Anda, di efolusi.com, dan di produk Efolusi yang tidak punya kebijakan privasi sendiri.'
   },
-  back: '← Kembali ke efolusi.com',
-  title: 'Pemberitahuan Privasi Platform Efolusi',
+  title: 'Pemberitahuan privasi platform Efolusi',
   metaLine: META_LINE,
   contentsHead: 'Daftar isi',
   intro: [

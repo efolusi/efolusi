@@ -20,12 +20,11 @@ const META_LINE = `${ENTITY} · Version ${LEGAL_VERSION} · Last updated 22 Nove
 
 export const terms = {
   meta: {
-    title: 'Platform Terms · Efolusi',
+    title: 'Platform terms · Efolusi',
     description:
       'The terms for your Efolusi account at my.efolusi.com, for efolusi.com, and for the Efolusi products that do not have terms of their own.'
   },
-  back: '← Back to efolusi.com',
-  title: 'Efolusi Platform Terms',
+  title: 'Efolusi platform terms',
   metaLine: META_LINE,
   contentsHead: 'Contents',
   intro: [
@@ -272,12 +271,11 @@ export const terms = {
 
 export const privacy = {
   meta: {
-    title: 'Platform Privacy Notice · Efolusi',
+    title: 'Platform privacy notice · Efolusi',
     description:
       'How PT Efolusi Dunia Teknologi handles personal data in your Efolusi account, on efolusi.com, and in the Efolusi products that do not have their own privacy policy.'
   },
-  back: '← Back to efolusi.com',
-  title: 'Efolusi Platform Privacy Notice',
+  title: 'Efolusi platform privacy notice',
   metaLine: META_LINE,
   contentsHead: 'Contents',
   intro: [

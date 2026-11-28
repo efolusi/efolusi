@@ -30,7 +30,7 @@ describe('the header Sign in links carry no next parameter', () => {
         .map((tag) => tag.match(/href="([^"]*)"/)[1]);
 
     it(`${lang}: the pill goes to my sign-in with the language only`, () => {
-      expect(hrefs('sign-in-pill')).toEqual([`https://my.efolusi.com/sign-in?lang=${lang}`]);
+      expect(hrefs('header-pill').filter((href) => href.startsWith('https://my.'))).toEqual([`https://my.efolusi.com/sign-in?lang=${lang}`]);
     });
 
     it(`${lang}: the mobile menu link goes to my sign-in with the language only`, () => {

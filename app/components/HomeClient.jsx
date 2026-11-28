@@ -511,7 +511,7 @@ export default function HomeClient({ d, common, lang }) {
                 <label htmlFor="cf-company">Company</label>
                 <input id="cf-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
               </div>
-              <Button type="submit" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
+              <Button type="submit" size="lg" fullWidth iconRight="send" loading={contactStatus.type === 'sending'}>
                 {d.contact.send}
               </Button>
               <div

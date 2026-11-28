@@ -37,7 +37,7 @@ const en = {
       bscscan: 'BscScan',
       privacy: 'Privacy notice',
       terms: 'Platform terms',
-      rights: '© 2026 PT Efolusi Dunia Teknologi. All rights reserved.',
+      rights: '© {year} PT Efolusi Dunia Teknologi. All rights reserved.',
       madeIn: 'Made in Indonesia'
     }
   },
