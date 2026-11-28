@@ -14,6 +14,7 @@ const id = {
     skipToContent: 'Langsung ke konten utama',
     switchLanguage: 'Switch to English',
     langLabel: 'EN',
+    marqueeLabel: 'Prinsip kerja kami',
     notFound: {
       meta: 'Halaman tidak ditemukan · Efolusi',
       code: 'Galat 404',

@@ -35,11 +35,11 @@ describe('plain defects: founder blobs, the closer button, two dark icon inks', 
     expect(rule).toContain('border-color: var(--accent-edge);');
   });
 
-  it('the feature card icon ink follows the themed accent edge, in light and dark alike', () => {
-    expect(ruleOf(css, '\n.feat-icon {')).toContain('color: var(--accent-edge);');
-    expect(css).not.toMatch(/\[data-theme='dark'\] \.feat-card--peach \.feat-icon \{[^}]*--brand-700/);
-    expect(css).not.toMatch(/\.feat-card--peach \.feat-icon \{[^}]*--brand-700/);
-    expect(css).not.toMatch(/\.feat-icon \{[^}]*--brand-700/);
+  it('the feature card disc and its icon come from the card tone, never a primitive or a literal', () => {
+    const rule = ruleOf(css, '\n.feat-icon {');
+    expect(rule).toContain('background: var(--feat-disc);');
+    expect(rule).toContain('color: var(--feat-on-disc);');
+    expect(rule).not.toMatch(/#[0-9a-f]{3,8}|--brand-|--sand-|--copper-/i);
   });
 
   it.each(['.check .tick {', '.perk .tick {', '.tick.tick--caramel {'])('%s takes the ink made for the subtle accent surface', (selector) => {
