@@ -65,3 +65,9 @@ describe('reduced motion reaches every animation (EF46)', () => {
     for (const selector of ['.feat-card:hover', '.role:hover .role-arrow', '.pill:hover .pill-arrow', '.edge-tile:hover .tile-card']) named(selector);
   });
 });
+
+describe('no dead motion CSS (EF48)', () => {
+  it.each(['.stage', '.plist', '.switch ', '.portfolio-deco', '.wm-', 'watermark-in'])('globals.css has no %s rule', (name) => {
+    expect(css).not.toContain(name);
+  });
+});
