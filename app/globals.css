@@ -9,6 +9,43 @@
      (decision MD109); until Meridian ships this token itself, it is set here. */
   --accent-word: var(--accent-edge);
 
+  /* Card tones. Proposed rows for design-tokens (names and values below), local until Meridian ships them.
+     Four tones, the same seven slots each, the same values in light and dark. One rule for every disc:
+     the card's own hue and chroma, 0.10 lighter in OKLCH on a dark tone and 0.10 deeper on a light tone.
+     The mark (the card's decoration) steps 0.20 the same way, except cocoa and copper, whose marks are copper
+     and deep copper. Light text and links on the dark tones (cream), deep copper links on the light tones. */
+  --tone-cocoa-fill: #3a2418;
+  --tone-cocoa-on-fill: var(--brand-100);
+  --tone-cocoa-on-fill-muted: #cfc6b7;
+  --tone-cocoa-disc: #553d31;
+  --tone-cocoa-on-disc: var(--copper-300);
+  --tone-cocoa-mark: var(--copper-500);
+  --tone-cocoa-link: var(--brand-100);
+
+  --tone-copper-fill: var(--copper-300);
+  --tone-copper-on-fill: var(--sand-950);
+  --tone-copper-on-fill-muted: var(--sand-800);
+  --tone-copper-disc: #c69578;
+  --tone-copper-on-disc: var(--sand-950);
+  --tone-copper-mark: var(--brand-700);
+  --tone-copper-link: var(--brand-800);
+
+  --tone-sand-fill: var(--brand-100);
+  --tone-sand-on-fill: var(--sand-950);
+  --tone-sand-on-fill-muted: var(--sand-800);
+  --tone-sand-disc: #d3c8b2;
+  --tone-sand-on-disc: var(--brand-700);
+  --tone-sand-mark: #b3a993;
+  --tone-sand-link: var(--brand-800);
+
+  --tone-olive-fill: #2e2413;
+  --tone-olive-on-fill: var(--brand-100);
+  --tone-olive-on-fill-muted: #cfc6b7;
+  --tone-olive-disc: #483d2c;
+  --tone-olive-on-disc: var(--copper-300);
+  --tone-olive-mark: #645846;
+  --tone-olive-link: var(--brand-100);
+
   /* Vertical rhythm steps with the layout breakpoints (width), never with the
      window height, so a 1440x900 and a 1440x1080 window space sections alike.
      Values sit on the 4px spacing scale. */
@@ -2032,7 +2069,10 @@ main[tabindex='-1']:focus {
   box-shadow: var(--shadow-md);
 }
 
-/* Feature trio cards */
+/* Feature trio cards.
+   Three surfaces you tell apart at a glance, in light and in dark. Each card takes one tone (see the
+   tone rows in :root); every tone has the same seven slots, so the card, its disc, its decoration and
+   its link follow one rule. Light: cocoa, copper, sand. Dark: sand, cocoa, olive (cream, cocoa, dark olive). */
 
 .feat-grid {
   display: grid;
@@ -2050,7 +2090,8 @@ main[tabindex='-1']:focus {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  color: var(--text-primary);
+  background: var(--feat-fill);
+  color: var(--feat-on-fill);
   /* The cards are also .reveal: this rule comes later, so it must keep the
      reveal's opacity fade or the cards would pop in. */
   transition:
@@ -2063,41 +2104,9 @@ main[tabindex='-1']:focus {
   .feat-card:hover {
     transform: translateY(var(--hover-lift));
     box-shadow: var(--shadow-lg);
-    color: inherit;
+    color: var(--feat-on-fill);
     text-decoration: none;
   }
-}
-
-/* Fixed-light card: text must use fixed inks, not theme tokens,
-   or dark mode paints light text on the light background. */
-.feat-card--peach {
-  background: var(--brand-100);
-  color: var(--sand-950);
-}
-
-@media (hover: hover) {
-  .feat-card--peach:hover {
-    color: var(--sand-950);
-  }
-}
-
-.feat-card.feat-card--peach p {
-  color: var(--sand-700);
-}
-
-.feat-card--band {
-  background: var(--surface-brand);
-  color: var(--text-on-brand);
-}
-
-@media (hover: hover) {
-  .feat-card--band:hover {
-    color: var(--text-on-brand);
-  }
-}
-
-.feat-card--amber {
-  background: var(--warning-100);
 }
 
 .feat-icon {
@@ -2107,20 +2116,8 @@ main[tabindex='-1']:focus {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-full);
-  background: var(--surface-card);
-  /* --accent-edge follows the theme: 4.9:1 on the white card, 6:1 on the dark
-     one. A fixed brand-700 was 2.26:1 on the dark card behind the peach icon. */
-  color: var(--accent-edge);
-  box-shadow: var(--shadow-sm);
-}
-
-.feat-card--band .feat-icon {
-  background: var(--brand-800);
-  color: var(--text-on-media);
-}
-
-.feat-card.feat-card--amber .feat-cta {
-  color: var(--warning-600);
+  background: var(--feat-disc);
+  color: var(--feat-on-disc);
 }
 
 .feat-card h3 {
@@ -2135,12 +2132,8 @@ main[tabindex='-1']:focus {
   font-size: var(--text-md);
   line-height: var(--leading-relaxed);
   margin-top: 10px;
-  color: var(--text-secondary);
+  color: var(--feat-on-fill-muted);
   max-width: 30ch;
-}
-
-.feat-card--band p {
-  color: var(--text-on-brand-muted);
 }
 
 .feat-card .feat-cta {
@@ -2149,127 +2142,76 @@ main[tabindex='-1']:focus {
   gap: 6px;
   margin-top: 16px;
   font-weight: var(--weight-semibold);
-  color: var(--brand-700);
-}
-
-.feat-card--band .feat-cta {
-  color: var(--text-on-brand);
+  color: var(--feat-link);
 }
 
 .feat-deco {
   position: absolute;
   top: 24px;
   right: 24px;
-  color: var(--brand-300);
+  color: var(--feat-mark);
   pointer-events: none;
 }
 
-.feat-card--band .feat-deco {
-  color: var(--brand-700);
+/* Which tone each card takes. Light: products cocoa, token copper, rule sand. Dark: products sand, token cocoa, rule olive. */
+.feat-card--products {
+  --feat-fill: var(--tone-cocoa-fill);
+  --feat-on-fill: var(--tone-cocoa-on-fill);
+  --feat-on-fill-muted: var(--tone-cocoa-on-fill-muted);
+  --feat-disc: var(--tone-cocoa-disc);
+  --feat-on-disc: var(--tone-cocoa-on-disc);
+  --feat-mark: var(--tone-cocoa-mark);
+  --feat-link: var(--tone-cocoa-link);
 }
 
-.feat-card--amber .feat-deco {
-  color: var(--warning-300);
+.feat-card--token {
+  --feat-fill: var(--tone-copper-fill);
+  --feat-on-fill: var(--tone-copper-on-fill);
+  --feat-on-fill-muted: var(--tone-copper-on-fill-muted);
+  --feat-disc: var(--tone-copper-disc);
+  --feat-on-disc: var(--tone-copper-on-disc);
+  --feat-mark: var(--tone-copper-mark);
+  --feat-link: var(--tone-copper-link);
 }
 
-/* WIP light-card variants (comparison branch, never merged). Switch: data-variant="a|b|c" on the
-   "At a glance" section (?cards=a|b|c in the page URL); no attribute = today's cards above.
-   Shipping v0.0.18: keep one variant's vars below, delete the other two and the consumer's [data-variant]. */
-
-/* Consumer: every variant fills the same slots. */
-.csec[data-variant] .feat-grid .feat-card {
-  background: var(--feat-bg);
-  color: var(--feat-ink);
+.feat-card--rule {
+  --feat-fill: var(--tone-sand-fill);
+  --feat-on-fill: var(--tone-sand-on-fill);
+  --feat-on-fill-muted: var(--tone-sand-on-fill-muted);
+  --feat-disc: var(--tone-sand-disc);
+  --feat-on-disc: var(--tone-sand-on-disc);
+  --feat-mark: var(--tone-sand-mark);
+  --feat-link: var(--tone-sand-link);
 }
 
-.csec[data-variant] .feat-grid .feat-card p {
-  color: var(--feat-ink-2);
+[data-theme='dark'] .feat-card--products {
+  --feat-fill: var(--tone-sand-fill);
+  --feat-on-fill: var(--tone-sand-on-fill);
+  --feat-on-fill-muted: var(--tone-sand-on-fill-muted);
+  --feat-disc: var(--tone-sand-disc);
+  --feat-on-disc: var(--tone-sand-on-disc);
+  --feat-mark: var(--tone-sand-mark);
+  --feat-link: var(--tone-sand-link);
 }
 
-.csec[data-variant] .feat-grid .feat-icon {
-  background: var(--feat-disc);
-  color: var(--feat-disc-ink);
-  box-shadow: none;
+[data-theme='dark'] .feat-card--token {
+  --feat-fill: var(--tone-cocoa-fill);
+  --feat-on-fill: var(--tone-cocoa-on-fill);
+  --feat-on-fill-muted: var(--tone-cocoa-on-fill-muted);
+  --feat-disc: var(--tone-cocoa-disc);
+  --feat-on-disc: var(--tone-cocoa-on-disc);
+  --feat-mark: var(--tone-cocoa-mark);
+  --feat-link: var(--tone-cocoa-link);
 }
 
-.csec[data-variant] .feat-grid .feat-deco {
-  color: var(--feat-doodle);
-}
-
-.csec[data-variant] .feat-grid .feat-cta {
-  color: var(--feat-cta);
-}
-
-@media (hover: hover) {
-  .csec[data-variant] .feat-grid .feat-card:hover {
-    color: var(--feat-ink);
-  }
-}
-
-/* A: white raised cards on the page, one accent tint (brand brown) in the disc and the doodle. */
-.csec[data-variant='a'] .feat-grid .feat-card {
-  --feat-bg: var(--surface-card);
-  --feat-ink: var(--text-primary);
-  --feat-ink-2: var(--text-secondary);
-  --feat-disc: var(--brand-100);
-  --feat-disc-ink: var(--brand-700);
-  --feat-doodle: var(--brand-300);
-  --feat-cta: var(--brand-700);
-  border: 1px solid var(--border-default);
-  box-shadow: var(--shadow-md);
-}
-
-[data-theme='dark'] .csec[data-variant='a'] .feat-grid .feat-card {
-  --feat-disc: var(--surface-brand);
-  --feat-disc-ink: var(--brand-300);
-  --feat-doodle: var(--brand-600);
-  --feat-cta: var(--brand-300);
-}
-
-/* B: one tint per card from one palette: same lightness and chroma, only the hue moves (OKLCH). */
-.csec[data-variant='b'] .feat-grid .feat-card--peach {
-  --feat-h: 58;
-}
-
-.csec[data-variant='b'] .feat-grid .feat-card--band {
-  --feat-h: 150;
-}
-
-.csec[data-variant='b'] .feat-grid .feat-card--amber {
-  --feat-h: 228;
-}
-
-.csec[data-variant='b'] .feat-grid .feat-card {
-  --feat-bg: oklch(0.94 0.034 var(--feat-h));
-  --feat-ink: var(--sand-950);
-  --feat-ink-2: oklch(0.36 0.03 var(--feat-h));
-  --feat-disc: oklch(0.985 0.012 var(--feat-h));
-  --feat-disc-ink: oklch(0.4 0.09 var(--feat-h));
-  --feat-doodle: oklch(0.44 0.09 var(--feat-h));
-  --feat-cta: oklch(0.38 0.09 var(--feat-h));
-}
-
-[data-theme='dark'] .csec[data-variant='b'] .feat-grid .feat-card {
-  --feat-bg: oklch(0.3 0.034 var(--feat-h));
-  --feat-ink: var(--text-primary);
-  --feat-ink-2: oklch(0.86 0.03 var(--feat-h));
-  --feat-disc: oklch(0.22 0.03 var(--feat-h));
-  --feat-disc-ink: oklch(0.86 0.08 var(--feat-h));
-  --feat-doodle: oklch(0.62 0.09 var(--feat-h));
-  --feat-cta: oklch(0.86 0.08 var(--feat-h));
-  box-shadow: var(--shadow-md);
-}
-
-/* C: deep brown cards with cream text, light page and dark page alike. */
-.csec[data-variant='c'] .feat-grid .feat-card {
-  --feat-bg: var(--brand-900);
-  --feat-ink: var(--brand-50);
-  --feat-ink-2: var(--brand-200);
-  --feat-disc: var(--brand-100);
-  --feat-disc-ink: var(--brand-800);
-  --feat-doodle: var(--brand-600);
-  --feat-cta: var(--brand-100);
-  box-shadow: var(--shadow-md);
+[data-theme='dark'] .feat-card--rule {
+  --feat-fill: var(--tone-olive-fill);
+  --feat-on-fill: var(--tone-olive-on-fill);
+  --feat-on-fill-muted: var(--tone-olive-on-fill-muted);
+  --feat-disc: var(--tone-olive-disc);
+  --feat-on-disc: var(--tone-olive-on-disc);
+  --feat-mark: var(--tone-olive-mark);
+  --feat-link: var(--tone-olive-link);
 }
 
 /* Centered section headings with mixed type */

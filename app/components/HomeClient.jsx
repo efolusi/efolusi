@@ -115,13 +115,6 @@ export default function HomeClient({ d, common, lang }) {
   const base = `/${lang}`;
 
   const [motionPaused, setMotionPaused] = useState(false);
-  // WIP comparison branch (never merged): ?cards=a|b|c picks a light-card variant, none is today's look.
-  // Shipping v0.0.18 = keep the chosen block in globals.css, delete this state and the other two blocks.
-  const [cardsVariant, setCardsVariant] = useState(undefined);
-  useEffect(() => {
-    const v = new URLSearchParams(window.location.search).get('cards');
-    if (v === 'a' || v === 'b' || v === 'c') setCardsVariant(v);
-  }, []);
   const [contactStatus, setContactStatus] = useState({ type: '', text: '' });
   const [newsletterStatus, setNewsletterStatus] = useState({ type: '', text: '' });
 
@@ -286,7 +279,7 @@ export default function HomeClient({ d, common, lang }) {
         </div>
       </div>
 
-      <section className="csec" aria-label="At a glance" data-variant={cardsVariant}>
+      <section className="csec" aria-label="At a glance">
         <div className="wrap">
           <div className="csec-head reveal">
             <h2>
@@ -294,7 +287,7 @@ export default function HomeClient({ d, common, lang }) {
             </h2>
           </div>
           <div className="feat-grid">
-            <a className="feat-card feat-card--peach reveal" href="#products">
+            <a className="feat-card feat-card--products reveal" href="#products">
               <span className="feat-icon">
                 <Icon name="package" size={22} />
               </span>
@@ -315,7 +308,7 @@ export default function HomeClient({ d, common, lang }) {
               </span>
             </a>
 
-            <a className="feat-card feat-card--band reveal" href={`${base}/token`}>
+            <a className="feat-card feat-card--token reveal" href={`${base}/token`}>
               <span className="feat-icon">
                 <Icon name="coins" size={22} />
               </span>
@@ -333,7 +326,7 @@ export default function HomeClient({ d, common, lang }) {
               </span>
             </a>
 
-            <a className="feat-card feat-card--amber reveal" href={`${base}/about`}>
+            <a className="feat-card feat-card--rule reveal" href={`${base}/about`}>
               <span className="feat-icon">
                 <Icon name="sparkles" size={22} />
               </span>
