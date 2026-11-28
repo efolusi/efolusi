@@ -244,7 +244,7 @@ export default function HomeClient({ d, common, lang }) {
             <a className="pill pill--primary" href="#products">
               {d.hero.viewPortfolio}
               <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
+                <Icon name="arrow-up-right" size={20} />
               </span>
             </a>
             <a className="pill pill--outline" href="#contact">
@@ -402,7 +402,7 @@ export default function HomeClient({ d, common, lang }) {
                 <a className="pill pill--primary" href={`${base}/token`}>
                   {d.ecosystem.about}
                   <span className="pill-arrow">
-                    <Icon name="arrow-up-right" size={16} />
+                    <Icon name="arrow-up-right" size={20} />
                   </span>
                 </a>
                 <a
@@ -446,7 +446,7 @@ export default function HomeClient({ d, common, lang }) {
               <a className="pill pill--primary" href="#contact">
                 {d.careers.reachOut}
                 <span className="pill-arrow">
-                  <Icon name="arrow-up-right" size={16} />
+                  <Icon name="arrow-up-right" size={20} />
                 </span>
               </a>
             </div>
@@ -582,7 +582,7 @@ export default function HomeClient({ d, common, lang }) {
             <a className="pill pill--cream" href="#products">
               {d.closer.cta}
               <span className="pill-arrow">
-                <Icon name="arrow-up-right" size={16} />
+                <Icon name="arrow-up-right" size={20} />
               </span>
             </a>
           </div>
