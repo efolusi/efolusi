@@ -90,13 +90,8 @@ function useRevealOnScroll() {
 
     reveals.forEach((element) => io.observe(element));
 
-    const fallbackTimer = window.setTimeout(() => {
-      reveals.forEach((element) => element.classList.add('in'));
-    }, 1600);
-
     return () => {
       io.disconnect();
-      window.clearTimeout(fallbackTimer);
       document.documentElement.classList.remove('reveal-ready');
     };
   }, []);

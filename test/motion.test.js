@@ -22,3 +22,9 @@ describe('the hero is visible at first paint (EF41)', () => {
     expect(css).toMatch(/@media \(prefers-reduced-motion: reduce\) \{\n {2}\.reveal,\n {2}\.reveal-ready \.reveal:not\(\.in\) \{\n {4}opacity: 1;/);
   });
 });
+
+describe('the scroll reveal is real (EF43)', () => {
+  it('has no timer that reveals every block 1.6 s after mount', () => {
+    expect(home).not.toMatch(/fallbackTimer|setTimeout/);
+  });
+});
