@@ -99,10 +99,10 @@ describe('the language link (EF38)', () => {
     expect(header).toMatch(/className="lang-switch"[^>]*\blang=\{other\}/);
   });
 
-  it('is a 44 px target from the Meridian token', () => {
-    const block = css.match(/\.lang-switch \{[^}]*\}/)[0];
-    expect(block).toMatch(/width: var\(--tap-min\);/);
-    expect(block).toMatch(/height: var\(--tap-min\);/);
+  it('is the md control size from the Meridian token (44 px on touch)', () => {
+    const block = css.match(/\.lang-switch,\n\.menu-toggle,\n\.site-header \.ef-theme-toggle \{[^}]*\}/)[0];
+    expect(block).toMatch(/width: var\(--control-h-md\);/);
+    expect(block).toMatch(/height: var\(--control-h-md\);/);
   });
 });
 

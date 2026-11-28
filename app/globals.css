@@ -17,6 +17,13 @@
   --hero-bottom: 88px;
   --page-hero-top: 80px;
   --page-hero-bottom: 56px;
+
+  /* One hover idea (EF45): every card lifts by the same step (Meridian's
+     .ef-feature-card value, --space-1), every arrow and corner glyph nudges
+     by the same step, every product mark takes the same tilt. */
+  --hover-lift: calc(-1 * var(--space-1));
+  --hover-nudge: 2px;
+  --hover-mark: rotate(-3deg) scale(1.04);
 }
 
 @media (max-width: 1020px) {
@@ -232,9 +239,11 @@ main[tabindex='-1']:focus {
   font-size: 20px;
 }
 
-.brand:hover {
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .brand:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
 .brand img {
@@ -265,11 +274,13 @@ main[tabindex='-1']:focus {
     color var(--dur-fast) var(--ease-enter);
 }
 
-.site-nav a:hover {
-  background: var(--surface-sunken);
-  border-color: var(--border-strong);
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .site-nav a:hover {
+    background: var(--surface-sunken);
+    border-color: var(--border-strong);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
 .site-nav a:focus-visible {
@@ -290,34 +301,68 @@ main[tabindex='-1']:focus {
   gap: 8px;
 }
 
-.lang-switch {
+/* The three header controls (language, theme, menu) are one control: size md
+   (36px with a mouse, 44px on a coarse pointer, from the Meridian token), a
+   circle with no border or fill at rest, the same fill on hover (fine
+   pointers only, so a tap leaves nothing behind), on press and the same focus
+   ring. The theme toggle is Meridian's: its glass surface (ef-glass, a 1px
+   border, a fill and a sheen) is drawn at rest. Local override until Meridian
+   2.6.0 (MD132) ships the toggle without it; then delete the ThemeToggle
+   selectors from this rule. */
+.lang-switch,
+.menu-toggle,
+.site-header .ef-theme-toggle {
   position: relative;
-  display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: var(--tap-min);
-  height: var(--tap-min);
-  border: 1px solid transparent;
+  width: var(--control-h-md);
+  height: var(--control-h-md);
+  padding: 0;
+  border: 0;
   border-radius: var(--radius-full);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  background: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
   color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
   transition:
     background var(--dur-fast) var(--ease-enter),
     color var(--dur-fast) var(--ease-enter);
 }
 
-.lang-switch:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .lang-switch:hover,
+  .menu-toggle:hover,
+  .site-header .ef-theme-toggle:hover {
+    background: var(--surface-sunken);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
-.lang-switch:focus-visible {
-  outline: none;
+.lang-switch:active,
+.menu-toggle:active,
+.site-header .ef-theme-toggle:active {
+  background: var(--surface-sunken);
+  color: var(--text-primary);
+}
+
+.lang-switch:focus-visible,
+.menu-toggle:focus-visible,
+.site-header .ef-theme-toggle:focus-visible {
+  outline: 2px solid transparent;
   box-shadow: var(--focus-ring);
+}
+
+.lang-switch {
+  display: inline-flex;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .menu-toggle {
@@ -405,9 +450,15 @@ main[tabindex='-1']:focus {
   }
 }
 
-.edge-tile:hover .tile-card,
+@media (hover: hover) {
+  .edge-tile:hover .tile-card {
+    transform: var(--hover-mark);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
 .edge-tile:focus-visible .tile-card {
-  transform: scale(1.1);
+  transform: var(--hover-mark);
   box-shadow: var(--shadow-lg);
 }
 
@@ -564,8 +615,10 @@ main[tabindex='-1']:focus {
   animation: marquee 36s linear infinite;
 }
 
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+@media (hover: hover) {
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 /* The pause button sits at the end of the strip. */
@@ -819,10 +872,12 @@ main[tabindex='-1']:focus {
   transition: background var(--dur-fast) var(--ease-enter);
 }
 
-.role:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .role:hover {
+    background: var(--surface-sunken);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
 .role .rt {
@@ -844,9 +899,11 @@ main[tabindex='-1']:focus {
     color var(--dur-fast) var(--ease-enter);
 }
 
-.role:hover .role-arrow {
-  transform: translateX(4px);
-  color: var(--text-link);
+@media (hover: hover) {
+  .role:hover .role-arrow {
+    transform: translateX(var(--hover-nudge));
+    color: var(--text-link);
+  }
 }
 
 /* ---------- FAQ ---------- */
@@ -1020,8 +1077,10 @@ main[tabindex='-1']:focus {
   text-underline-offset: 3px;
 }
 
-.band a.band-link:hover {
-  color: var(--text-on-brand);
+@media (hover: hover) {
+  .band a.band-link:hover {
+    color: var(--text-on-brand);
+  }
 }
 
 /* ---------- Footer ---------- */
@@ -1048,8 +1107,10 @@ main[tabindex='-1']:focus {
   text-decoration: none;
 }
 
-.footer-mail:hover {
-  color: var(--text-primary);
+@media (hover: hover) {
+  .footer-mail:hover {
+    color: var(--text-primary);
+  }
 }
 
 .footer .tag-line {
@@ -1077,9 +1138,11 @@ main[tabindex='-1']:focus {
   margin-top: 12px;
 }
 
-.fcol a:hover {
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .fcol a:hover {
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
 .footer-bot {
@@ -1283,10 +1346,12 @@ main[tabindex='-1']:focus {
   transition: background var(--dur-fast) var(--ease-enter);
 }
 
-.trade-link:hover {
-  background: var(--surface-subtle);
-  color: var(--text-primary);
-  text-decoration: none;
+@media (hover: hover) {
+  .trade-link:hover {
+    background: var(--surface-subtle);
+    color: var(--text-primary);
+    text-decoration: none;
+  }
 }
 
 .trade-link .nm {
@@ -1471,9 +1536,11 @@ main[tabindex='-1']:focus {
   border-radius: var(--radius-full);
 }
 
-.footer-socials a:hover {
-  color: var(--text-primary);
-  text-decoration: underline;
+@media (hover: hover) {
+  .footer-socials a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+  }
 }
 
 /* Founder social links, under the role line. Inherit the band's text color
@@ -1497,9 +1564,11 @@ main[tabindex='-1']:focus {
   margin: 0 -6px;
 }
 
-.founder-socials a:hover {
-  opacity: 1;
-  text-decoration: underline;
+@media (hover: hover) {
+  .founder-socials a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
 }
 
 /* About page: case studies for the live products */
@@ -1660,8 +1729,10 @@ main[tabindex='-1']:focus {
     transform var(--dur-fast) var(--ease-enter);
 }
 
-.pill:hover {
-  text-decoration: none;
+@media (hover: hover) {
+  .pill:hover {
+    text-decoration: none;
+  }
 }
 
 .pill:active {
@@ -1678,9 +1749,11 @@ main[tabindex='-1']:focus {
   color: var(--accent-contrast);
 }
 
-.pill--primary:hover {
-  background: var(--accent-hover);
-  color: var(--accent-contrast);
+@media (hover: hover) {
+  .pill--primary:hover {
+    background: var(--accent-hover);
+    color: var(--accent-contrast);
+  }
 }
 
 .pill--outline {
@@ -1689,9 +1762,11 @@ main[tabindex='-1']:focus {
   padding-right: 24px;
 }
 
-.pill--outline:hover {
-  background: var(--surface-sunken);
-  color: var(--text-primary);
+@media (hover: hover) {
+  .pill--outline:hover {
+    background: var(--surface-sunken);
+    color: var(--text-primary);
+  }
 }
 
 .pill--cream {
@@ -1699,16 +1774,20 @@ main[tabindex='-1']:focus {
   color: var(--brand-950);
 }
 
-.pill--cream:hover {
-  background: var(--surface-card);
-  color: var(--brand-950);
+@media (hover: hover) {
+  .pill--cream:hover {
+    background: var(--surface-card);
+    color: var(--brand-950);
+  }
 }
 
 /* The cream pill keeps its light fill in both themes (it sits on dark bands),
    so its hover must stay light too: dark --surface-card put brand-950 ink on
    an espresso fill (1.01:1). */
-[data-theme='dark'] .pill--cream:hover {
-  background: var(--brand-100);
+@media (hover: hover) {
+  [data-theme='dark'] .pill--cream:hover {
+    background: var(--brand-100);
+  }
 }
 
 .pill-arrow {
@@ -1723,8 +1802,10 @@ main[tabindex='-1']:focus {
   transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
-.pill:hover .pill-arrow {
-  transform: rotate(45deg);
+@media (hover: hover) {
+  .pill:hover .pill-arrow {
+    transform: rotate(45deg);
+  }
 }
 
 .pill--cream .pill-arrow {
@@ -1865,11 +1946,13 @@ main[tabindex='-1']:focus {
     box-shadow var(--dur-base) var(--ease-enter);
 }
 
-.feat-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
-  color: inherit;
-  text-decoration: none;
+@media (hover: hover) {
+  .feat-card:hover {
+    transform: translateY(var(--hover-lift));
+    box-shadow: var(--shadow-lg);
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* Fixed-light card: text must use fixed inks, not theme tokens,
@@ -1879,8 +1962,10 @@ main[tabindex='-1']:focus {
   color: var(--sand-950);
 }
 
-.feat-card--peach:hover {
-  color: var(--sand-950);
+@media (hover: hover) {
+  .feat-card--peach:hover {
+    color: var(--sand-950);
+  }
 }
 
 .feat-card.feat-card--peach p {
@@ -1892,8 +1977,10 @@ main[tabindex='-1']:focus {
   color: var(--text-on-brand);
 }
 
-.feat-card--band:hover {
-  color: var(--text-on-brand);
+@media (hover: hover) {
+  .feat-card--band:hover {
+    color: var(--text-on-brand);
+  }
 }
 
 .feat-card--amber {
@@ -2223,28 +2310,7 @@ main[tabindex='-1']:focus {
   }
 
   .menu-toggle {
-    position: relative;
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    width: 40px;
-    height: 40px;
-    border: 1px solid transparent;
-    border-radius: var(--radius-full);
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-  }
-
-  .menu-toggle:hover {
-    background: var(--surface-sunken);
-    color: var(--text-primary);
-  }
-
-  .menu-toggle:focus-visible {
-    outline: none;
-    box-shadow: var(--focus-ring);
   }
 
   .mobile-menu {
@@ -2278,9 +2344,11 @@ main[tabindex='-1']:focus {
     text-decoration: none;
   }
 
-  .mobile-menu a:hover {
-    background: var(--surface-sunken);
-    color: var(--text-primary);
+  @media (hover: hover) {
+    .mobile-menu a:hover {
+      background: var(--surface-sunken);
+      color: var(--text-primary);
+    }
   }
 }
 
@@ -2362,7 +2430,10 @@ main[tabindex='-1']:focus {
 .portfolio-browser { margin-top: 40px; }
 .portfolio-featured { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .portfolio-feature, .portfolio-card { color: var(--text-primary); text-decoration: none; border: 1px solid var(--border-default); border-radius: var(--radius-xl); background: var(--surface-card); }
-.portfolio-feature:hover, .portfolio-card:hover { color: var(--text-primary); text-decoration: none; border-color: var(--text-muted); }
+@media (hover: hover) {
+  .portfolio-feature:hover,
+  .portfolio-card:hover { color: var(--text-primary); text-decoration: none; border-color: var(--text-muted); }
+}
 .portfolio-feature:focus-visible, .portfolio-card:focus-visible, .portfolio-browser button:focus-visible, .portfolio-search:focus-within { outline: 2px solid var(--text-link); outline-offset: 4px; }
 .portfolio-feature { padding: 30px; display: flex; flex-direction: column; background: linear-gradient(135deg, var(--accent-subtle), var(--surface-card) 75%); }
 .portfolio-feature--coral { background: linear-gradient(135deg, var(--danger-100), var(--surface-card) 75%); }
@@ -2392,10 +2463,12 @@ main[tabindex='-1']:focus {
   content: none;
   display: none;
 }
-.portfolio-browser > .portfolio-grid .portfolio-card:hover {
-  border-color: transparent;
-  transform: translateY(-6px);
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) {
+  .portfolio-browser > .portfolio-grid .portfolio-card:hover {
+    border-color: transparent;
+    transform: translateY(var(--hover-lift));
+    box-shadow: var(--shadow-lg);
+  }
 }
 .portfolio-search { display: flex; gap: 10px; align-items: center; padding: 12px 16px; border: 1px solid var(--border-default); border-radius: var(--radius-lg); background: var(--surface-card); }
 .portfolio-search input { border: 0; outline: 0; color: var(--text-primary); background: transparent; font: inherit; width: 220px; min-width: 0; }
@@ -2445,19 +2518,26 @@ main[tabindex='-1']:focus {
   transition: opacity var(--dur-fast) var(--ease-enter);
 }
 
-.portfolio-feature:hover,
-.portfolio-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--accent-subtle-border);
-  box-shadow: var(--shadow-md);
-  background-color: var(--surface-subtle);
+@media (hover: hover) {
+  .portfolio-feature:hover,
+  .portfolio-card:hover {
+    transform: translateY(var(--hover-lift));
+    border-color: var(--accent-subtle-border);
+    box-shadow: var(--shadow-md);
+    background-color: var(--surface-subtle);
+  }
 }
 
-.portfolio-feature:hover::before,
-.portfolio-card:hover::before,
 .portfolio-feature:focus-visible::before,
 .portfolio-card:focus-visible::before {
   opacity: 1;
+}
+
+@media (hover: hover) {
+  .portfolio-feature:hover::before,
+  .portfolio-card:hover::before {
+    opacity: 1;
+  }
 }
 
 .portfolio-feature .portfolio-card-top > svg,
@@ -2474,16 +2554,20 @@ main[tabindex='-1']:focus {
     transform var(--dur-base) var(--ease-emphasised);
 }
 
-.portfolio-feature:hover .portfolio-card-top > svg,
-.portfolio-card:hover .portfolio-card-top > svg {
-  color: var(--text-link-hover);
-  background: var(--accent-subtle);
-  transform: translate(2px, -2px);
+@media (hover: hover) {
+  .portfolio-feature:hover .portfolio-card-top > svg,
+  .portfolio-card:hover .portfolio-card-top > svg {
+    color: var(--text-link-hover);
+    background: var(--accent-subtle);
+    transform: translate(var(--hover-nudge), calc(-1 * var(--hover-nudge)));
+  }
 }
 
-.portfolio-feature:hover .portfolio-mark,
-.portfolio-card:hover .portfolio-mark {
-  transform: rotate(-3deg) scale(1.04);
+@media (hover: hover) {
+  .portfolio-feature:hover .portfolio-mark,
+  .portfolio-card:hover .portfolio-mark {
+    transform: var(--hover-mark);
+  }
 }
 
 .portfolio-mark {
@@ -2535,10 +2619,12 @@ main[tabindex='-1']:focus {
   transition: color var(--dur-fast) var(--ease-enter);
 }
 
-.portfolio-feature:hover .portfolio-visit,
-.portfolio-toolbar > a:hover,
-.portfolio-foundation > a:hover {
-  color: var(--text-link-hover);
+@media (hover: hover) {
+  .portfolio-feature:hover .portfolio-visit,
+  .portfolio-toolbar > a:hover,
+  .portfolio-foundation > a:hover {
+    color: var(--text-link-hover);
+  }
 }
 
 .portfolio-filters button,
@@ -2556,11 +2642,13 @@ main[tabindex='-1']:focus {
     transform var(--dur-fast) var(--ease-enter);
 }
 
-.portfolio-filters button:hover {
-  color: var(--text-primary);
-  border-color: var(--border-strong);
-  background: var(--surface-subtle);
-  transform: translateY(-1px);
+@media (hover: hover) {
+  .portfolio-filters button:hover {
+    color: var(--text-primary);
+    border-color: var(--border-strong);
+    background: var(--surface-subtle);
+    transform: translateY(var(--hover-lift));
+  }
 }
 
 .portfolio-filters button[aria-pressed='true'] {
@@ -2616,12 +2704,17 @@ main[tabindex='-1']:focus {
     transition-duration: 0.01ms !important;
   }
 
-  .feat-card:hover,
-  .role:hover .role-arrow,
-  .pill:hover .pill-arrow,
-  .edge-tile:hover .tile-card,
   .edge-tile:focus-visible .tile-card {
     transform: none !important;
+  }
+
+  @media (hover: hover) {
+    .feat-card:hover,
+    .role:hover .role-arrow,
+    .pill:hover .pill-arrow,
+    .edge-tile:hover .tile-card {
+      transform: none !important;
+    }
   }
 }
 .portfolio-use-case + .portfolio-toolbar { margin-top: 30px; }
@@ -2642,11 +2735,13 @@ main[tabindex='-1']:focus {
     box-shadow var(--dur-base) var(--ease-enter);
 }
 
-#products .portfolio-feature:hover,
-#products .portfolio-card:hover {
-  transform: translateY(-6px);
-  border-color: transparent;
-  box-shadow: var(--shadow-lg);
+@media (hover: hover) {
+  #products .portfolio-feature:hover,
+  #products .portfolio-card:hover {
+    transform: translateY(var(--hover-lift));
+    border-color: transparent;
+    box-shadow: var(--shadow-lg);
+  }
 }
 
 #products .portfolio-feature > *,
@@ -2755,11 +2850,17 @@ main[tabindex='-1']:focus {
 }
 
 .portfolio-browser [data-product],
-.portfolio-browser [data-product]:hover,
-#products .portfolio-featured--primary .portfolio-feature,
-#products .portfolio-featured--primary .portfolio-feature:hover {
+#products .portfolio-featured--primary .portfolio-feature {
   background: var(--card-bg);
   color: var(--card-fg);
+}
+
+@media (hover: hover) {
+  .portfolio-browser [data-product]:hover,
+  #products .portfolio-featured--primary .portfolio-feature:hover {
+    background: var(--card-bg);
+    color: var(--card-fg);
+  }
 }
 
 .portfolio-browser [data-product] p,
@@ -2804,18 +2905,28 @@ main[tabindex='-1']:focus {
 }
 
 /* Product-card refinements from visual review. */
-#products .portfolio-feature:hover .portfolio-visit,
 #products .portfolio-feature:focus-visible .portfolio-visit {
   color: var(--cream-50);
+}
+
+@media (hover: hover) {
+  #products .portfolio-feature:hover .portfolio-visit {
+    color: var(--cream-50);
+  }
 }
 
 #products .portfolio-feature .portfolio-visit > svg {
   transition: transform var(--dur-base) var(--ease-emphasised);
 }
 
-#products .portfolio-feature:hover .portfolio-visit > svg,
 #products .portfolio-feature:focus-visible .portfolio-visit > svg {
-  transform: translate(3px, -3px);
+  transform: translate(var(--hover-nudge), calc(-1 * var(--hover-nudge)));
+}
+
+@media (hover: hover) {
+  #products .portfolio-feature:hover .portfolio-visit > svg {
+    transform: translate(var(--hover-nudge), calc(-1 * var(--hover-nudge)));
+  }
 }
 
 /* The whole card is the link; only the labelled CTA needs an arrow. */
@@ -2960,14 +3071,12 @@ main[tabindex='-1']:focus {
    On a touch screen of any width (tablets and touch laptops report
    pointer: coarse) and on every phone-width window, each control gets a hit
    area of at least --tap-min. Controls that carry their own surface (inputs,
-   form buttons, pills) grow to 44px; icon buttons keep their drawn size and
-   extend an invisible ::after, so the header row keeps one visual height.
-   The 40px header icons sit 8px apart, so each 44px overlay clears its
-   neighbour by 4px. Mouse and trackpad layouts wider than 640px are
-   untouched. */
+   form buttons, pills) grow to 44px; the copy-field icon button keeps its
+   drawn size and extends an invisible ::after. The three header controls are
+   size md, which is 44px on a coarse pointer (see the header control rule),
+   so they need neither.
+   Mouse and trackpad layouts wider than 640px are untouched. */
 @media (max-width: 640px), (pointer: coarse) {
-  .lang-switch::after,
-  .menu-toggle::after,
   .ef-copyfield .ef-iconbtn::after {
     content: '';
     position: absolute;
