@@ -13,7 +13,7 @@ export default function CtaLink({ variant = 'primary', bubble = variant !== 'sec
     <Tag className={buttonVariants({ variant, size: 'xl', shape: 'pill', bubble, className })} {...rest}>
       {children}
       {bubble ? (
-        <span className="ef-btn__bubble" data-turn aria-hidden="true">
+        <span className="ef-btn__bubble" data-turn="" aria-hidden="true">
           <Icon name="arrow-up-right" size={20} />
         </span>
       ) : null}

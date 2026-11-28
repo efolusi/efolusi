@@ -2,6 +2,8 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 
+import { Button } from '@efolusi/meridian';
+
 import CtaLink from '../app/components/CtaLink.jsx';
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), 'utf8');
@@ -36,7 +38,7 @@ describe('CtaLink', () => {
   it('primary: the xl pill with the arrow bubble, the bubble hidden from assistive tech', () => {
     const html = renderToStaticMarkup(<CtaLink href="#x">Go</CtaLink>);
     expect(html).toContain('class="ef-btn ef-btn--primary ef-btn--xl ef-btn--pill ef-btn--bubble"');
-    expect(html).toContain('<span class="ef-btn__bubble" data-turn="true" aria-hidden="true">');
+    expect(html).toContain('<span class="ef-btn__bubble" data-turn="" aria-hidden="true">');
     expect(html).toContain('href="#x"');
   });
 
@@ -56,6 +58,44 @@ describe('CtaLink', () => {
     const html = renderToStaticMarkup(<CtaLink variant="secondary" href="https://x.test" target="_blank" rel="noopener noreferrer">Go</CtaLink>);
     expect(html).toContain('target="_blank"');
     expect(html).toContain('rel="noopener noreferrer"');
+  });
+});
+
+/* CtaLink is a link, and Meridian's Button renders only a <button> (no href, as or asChild), so CtaLink keeps its own copy
+   of the bubble markup until Meridian ships a link button (gaps row MD146, Meridian 2.6.1). This renders both and compares
+   them, so a Meridian change to the bubble fails here instead of drifting silently. */
+describe('CtaLink draws the same button and bubble as Meridian\'s Button with iconBubble', () => {
+  const parts = (html) => ({
+    tag: html.match(/^<(\w+)/)[1],
+    className: html.match(/^<\w+[^>]*? class="([^"]*)"/)[1],
+    bubble: html.match(/<span class="ef-btn__bubble"[\s\S]*<\/span><\/span>/)?.[0] ?? null,
+    bubbleAttrs: html.match(/<span class="ef-btn__bubble"([^>]*)>/)?.[1] ?? null,
+    iconSlot: html.match(/<span data-slot="icon"[^>]*>/)?.[0] ?? null,
+    svg: html.match(/<svg[\s\S]*<\/svg>/)?.[0] ?? null,
+    label: html.replace(/<span class="ef-btn__bubble"[\s\S]*$/, '').replace(/<[^>]+>/g, ''),
+  });
+
+  it.each(['primary', 'band'])('%s: the button classes, the label and the whole bubble (span class, data-turn, aria-hidden, icon slot, svg) are equal', (variant) => {
+    const meridian = parts(renderToStaticMarkup(<Button variant={variant} size="xl" shape="pill" iconBubble="arrow-up-right">Go</Button>));
+    const mine = parts(renderToStaticMarkup(<CtaLink variant={variant} href="#x">Go</CtaLink>));
+    expect(meridian.tag).toBe('button');
+    expect(mine.tag).toBe('a');
+    expect(mine.className).toBe(meridian.className);
+    expect(mine.label).toBe(meridian.label);
+    expect(mine.bubbleAttrs).toBe(meridian.bubbleAttrs);
+    expect(mine.bubbleAttrs).toContain('data-turn=""');
+    expect(mine.bubbleAttrs).toContain('aria-hidden="true"');
+    expect(mine.iconSlot).toBe(meridian.iconSlot);
+    expect(mine.svg).toBe(meridian.svg);
+    expect(mine.bubble).toBe(meridian.bubble);
+  });
+
+  it('secondary: the same button classes and no bubble in both', () => {
+    const meridian = parts(renderToStaticMarkup(<Button variant="secondary" size="xl" shape="pill">Go</Button>));
+    const mine = parts(renderToStaticMarkup(<CtaLink variant="secondary" href="#x">Go</CtaLink>));
+    expect(mine.className).toBe(meridian.className);
+    expect(mine.bubble).toBeNull();
+    expect(meridian.bubble).toBeNull();
   });
 });
 
