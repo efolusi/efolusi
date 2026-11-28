@@ -2220,9 +2220,14 @@ main[tabindex='-1']:focus {
   border-radius: 58% 42% 55% 45% / 48% 56% 44% 52%;
   /* The band is the brand surface, so a brand-coloured blob vanished on it in
      light (1.00:1). A card-coloured shape with a 2px accent-edge ring is seen
-     on the band in both themes (ring 3.8:1 light, 5.4:1 dark). */
+     on the band: ring 3.8:1 in light, 5.4:1 in dark. */
   background: var(--surface-card);
   box-shadow: 0 0 0 2px var(--accent-edge);
+}
+
+/* Dark kept the cream blob it already had (12:1 on the band); it gains the ring. */
+[data-theme='dark'] .founder-blob {
+  background: var(--brand-100);
 }
 
 .founder:nth-child(2n) .founder-blob {

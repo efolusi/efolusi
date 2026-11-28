@@ -21,6 +21,10 @@ describe('plain defects: founder blobs, the closer button, two dark icon inks', 
     expect(rule).not.toContain('--brand-100');
   });
 
+  it('dark keeps the cream blob it had and gains the same ring', () => {
+    expect(ruleOf(css, "[data-theme='dark'] .founder-blob {")).toContain('background: var(--brand-100);');
+  });
+
   it('the second blob shape keeps the same fill (no primitive)', () => {
     const rule = ruleOf(css, '.founder:nth-child(2n) .founder-blob {');
     expect(rule).not.toContain('--brand-100');
