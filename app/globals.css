@@ -1894,9 +1894,16 @@ main[tabindex='-1']:focus {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-full);
-  background: var(--brand-500);
-  color: var(--sand-950);
+  /* The bubble is the button's label colour and the arrow is the button's own colour, so the
+     bubble reads on the button in light and dark (copper on copper was 1.10:1). */
+  background: var(--text-primary);
+  color: var(--surface-page);
   transition: transform var(--dur-base) var(--ease-emphasised);
+}
+
+.pill--primary .pill-arrow {
+  background: var(--accent-contrast);
+  color: var(--accent);
 }
 
 @media (hover: hover) {
@@ -1905,9 +1912,10 @@ main[tabindex='-1']:focus {
   }
 }
 
+/* The cream pill keeps its light fill in both themes, so its bubble keeps the dark label ink. */
 .pill--cream .pill-arrow {
-  background: var(--brand-900);
-  color: var(--text-on-media);
+  background: var(--brand-950);
+  color: var(--cream-50);
 }
 
 /* Sticker tags */
