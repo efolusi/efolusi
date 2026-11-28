@@ -48,3 +48,20 @@ describe('the feature cards keep their reveal fade (EF43)', () => {
     expect(rule).toMatch(/transition:[^;]*opacity var\(--dur-slow\)/);
   });
 });
+
+describe('reduced motion reaches every animation (EF46)', () => {
+  const blocks = css.split('@media (prefers-reduced-motion: reduce) {').slice(1).join('\n');
+  const named = (selector) => expect(blocks, selector).toContain(selector);
+
+  it('stops the infinite floats and the pop-in', () => {
+    for (const selector of ['.sticker,', '.edge-tile,', '.tile-card {\n    animation: none;']) named(selector);
+  });
+
+  it('draws the scribble at once instead of leaving it hidden', () => {
+    expect(blocks).toMatch(/\.scribble path \{\n {4}animation: none;\n {4}stroke-dashoffset: 0;/);
+  });
+
+  it('takes the movement out of the hover lifts and nudges', () => {
+    for (const selector of ['.feat-card:hover', '.role:hover .role-arrow', '.pill:hover .pill-arrow', '.edge-tile:hover .tile-card']) named(selector);
+  });
+});

@@ -2868,6 +2868,38 @@ main[tabindex='-1']:focus {
     transform: none !important;
   }
 }
+
+/* The rest of the site's motion, so reduced motion reaches every animation:
+   the hero stickers and tiles stop floating and popping in, the scribble is
+   drawn at once (its dash offset would otherwise stay hidden), and hover
+   lifts and nudges keep the colour change but no movement. */
+@media (prefers-reduced-motion: reduce) {
+  .sticker,
+  .edge-tile,
+  .tile-card {
+    animation: none;
+  }
+
+  .scribble path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .feat-card,
+  .role-arrow,
+  .pill-arrow,
+  .tile-card {
+    transition-duration: 0.01ms !important;
+  }
+
+  .feat-card:hover,
+  .role:hover .role-arrow,
+  .pill:hover .pill-arrow,
+  .edge-tile:hover .tile-card,
+  .edge-tile:focus-visible .tile-card {
+    transform: none !important;
+  }
+}
 .portfolio-use-case + .portfolio-toolbar { margin-top: 30px; }
 
 /* Portfolio follows the playful visual language of the At-a-glance cards. */
